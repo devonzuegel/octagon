@@ -7,6 +7,7 @@ var UserModel = require('../models/User.js'),
     LocalStrategy = require('passport-local').Strategy,
 		UserDetails = UserModel.UserDetails;
 
+
 router.get('/', function(req, res) {
 	res.render('all_users', { title: 'Portfolio companies:', 
 														errors: req.cookies.errors,
@@ -15,6 +16,72 @@ router.get('/', function(req, res) {
 });
 
 
+// add_user methods
+  router.get('/add_user', function(req, res) {
+    // only the admin may add a user
+    if (req.cookies.username != 'admin') {
+      res.cookie('errors', ['You do not have the right permissions to perform this action.']);
+      return res.redirect('../login');
+    }
+    res.cookie('errors', []);
+    res.render('add_user', {title:"Add user", errors: req.cookies.errors});
+  });
+
+  function username_inuse(username) {
+    // return false;
+    var u = UserDetails.findOne({ 'username': username, }, 
+                                function(err, user) { return (!err  &&  user);  });
+    console.log("\n\nu= %j\n\n", u);
+  }
+
+  router.post('/add_user', function(req, res) {
+    console.log('aslfdkjsalfjaslfkjalskfjlksjaflaksjfd');
+    if (req.body.password2 != req.body.password) {
+      res.cookie('errors', ["Please make sure your passwords match."]);
+      return res.redirect('/users/add_user');
+    }
+    UserDetails.find({'username': req.body.username }, function(err, u) {
+      if (err)    return done(err);
+      console.log('u.username= %s', u.username);
+      UserModel.addUser(req.body.username, req.body.username);
+      res.redirect('../login');
+    });
+  /*  UserModel.printAll(); // prints all User data
+      // console.log('username_inuse(username)= ' + username_inuse(username));
+      // if (username_inuse('a')) {
+      //  console.log('INUSE');
+      //  res.cookie('errors', ['That username has already been used, sorry!']);
+      //  return res.redirect('/register');
+      // } else {
+    
+          // bcrypt.genSalt(10, function(err, salt) {
+          // bcrypt.hash('k', salt, function(err, hash) {
+            // console.log('hash:' + hash);
+
+            // var query = UserDetails.findOne({ 'username': 'Ghost' });
+            // // execute the query at a later time
+            // query.exec(function (err, u) {
+            //  if (err) return handleError(err);
+            //   console.log('%s %s is a %s.', u.name.first, u.name.last, u.occupation) // Space Ghost is a talk show host.
+            // })
+     */
+
+              // var users = u; //JSON.stringify(eval("(" + u + ")"));
+              // console.log('---\nusers= %s\nreq.body.username= %s', u, req.body.username);
+        //       if (u !== '[]')  {
+                // console.log('users.username !== undefined');
+                // res.cookie('errors', ['That username has already been used, sorry!']);
+                // return res.redirect('/register');  
+              // } else {
+                // console.log('users.username === undefined');
+                // // UserModel.salt_fn(pw);
+              // }
+
+        // });
+      // });
+    // }
+  });
+
 router.get('/:username', function(req, res) {
   // var u_param = req.param('username'),
   console.log('req.params.username = %s', req.params.username);
@@ -22,15 +89,13 @@ router.get('/:username', function(req, res) {
   var u_cookie = req.cookies.username;
   console.log('u_cookie: %s,  u_param: %s -----------', u_cookie, u_param);
 
-  // if current user doesn't have the right privileges, redirect to login page with descriptive errors
+  // if current user doesn't have the right privileges, redirect to login page w/ errors
   if (u_param != u_cookie  &&  u_cookie != 'admin') {
-  	res.cookie('errors', ['You do not have the right permissions to perform this action.']);
+  	res.cookie('errors', ['You do not have the right permissions to perform that action.']);
   	return res.redirect('/login');
   }
 
-  console.log('lsdjflksjflksjd');
-
-    UserDetails.findOne({ 'username': u_param, }, function(err, user) {
+  UserDetails.findOne({ 'username': u_param, }, function(err, user) {
   	if (err)    return done(err);
 
   	if (user != null) {
@@ -42,7 +107,6 @@ router.get('/:username', function(req, res) {
   });
   
 });
-
 
 
 module.exports = router;

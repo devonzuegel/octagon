@@ -4,26 +4,19 @@ block mainContent
   div.loginbox
     h1
       div.login-topbtm #{title}
-    form(method="POST", action="/add_user")
+    form(method="POST", action="/users/add_user")
       table.loginbox
         //- space
         tr(style='height:30px')
 
-        tr
-          td
-            each error in errors
+        tr: td
+          each error in errors
               p.error #{error}
 
           //- username + password
-          tr
-            td
-              input(type="text", name="username", placeholder="username")
-          tr
-            td
-              input(type="password", name="password", placeholder="password")
-          tr
-            td
-              input(type="password", name="password2", placeholder="confirm password")
+          tr: td: input(type="text", name="username", placeholder="username")
+          tr: td: input(type="password", name="password", placeholder="password")
+          tr: td: input(type="password", name="password2", placeholder="confirm password")
 
           //- space
           tr(style='height:30px')
@@ -35,6 +28,6 @@ block mainContent
             td(style='width:200px')
               p.white Have an account?
                 br
-                a(href="./login") Login here.
+                a(href="../login") Login here.
             td
               input(type="submit", value="Submit").submit
