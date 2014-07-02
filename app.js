@@ -16,18 +16,46 @@
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');
 
+
+
   app.use(passport.initialize());
+  // app.use(session({
+    //     cookie : {
+    //       maxAge: 3600000 // see below
+    //     },
+    //     store : new MongoStore(
+    //       { db: mongodb.Db( conf.mongodbName,
+    //             new mongodb.Server('localhost', 27017,
+    //                                 { auto_reconnect: true, native_parser: true }),
+    //                                 { journal: true })
+    //       }, function(error) {
+    //         if(error) {
+    //           return console.error('Failed connecting mongostore for storing session data. %s', error.stack);
+    //         }
+    //         return console.log('Connected mongostore for storing session data');
+    //       })
+    // }));
+    // ...
   app.use(passport.session());
+
+  // app.use(passport.session());
+  // app.use(function (req, res, next) {
+  //   res.locals.loggedin = req.isAuthenticated();
+  //   next();
+  // });
 
   app.use(favicon('./views/congruent_pentagon-DARK.png'));
   app.use(logger('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded());
+
   app.use(cookieParser());
+  // app.use(express.session({secret: '1234567890QWERTY'}));
+
   app.use(express.static(path.join(__dirname, 'public')));
 
   app.use('/', routes);
-  app.use('/users', users);
+  app.use('/users/', users);
   app.set('view options', { layout: false });
 
 /// catch 404 and forward to error handler

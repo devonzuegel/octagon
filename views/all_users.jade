@@ -1,0 +1,7 @@
+extends layout
+
+block mainContent
+	each error in errors
+		p.error #{error}
+	each c in companies
+		p: a(href='/users/' + c) #{c}

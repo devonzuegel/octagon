@@ -1,17 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
+/*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
+@import url(http://fonts.googleapis.com/css?family=Lato:100,400);
 
 body {
-	/*background-color: #eee;*/
-	background-image: url('../images/congruent_pentagon-LIGHT.png');
+	background-color: #aee;
+	background: url("../images/lightt_wool.png") repeat;
   padding: 50px;
   font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 
 h1 {
-	font: 32pt 'Roboto Slab', serif;
-	font-weight: 400;
+	font: 32pt 'Lato', serif;
+	font-weight: 200;
 	margin: 0;
+	text-transform: uppercase;
 }
 
 a {
@@ -21,6 +24,8 @@ a {
 }
 
 p {
+	text-align: left;
+	margin: 0px;
   font: 13pt "Source Sans Pro", Helvetica, Arial, sans-serif;
 	padding: 10px;
 }

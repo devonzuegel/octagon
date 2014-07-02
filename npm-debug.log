@@ -22,7 +22,7 @@
 11 error There is likely additional logging output above.
 12 error System Windows_NT 6.1.7601
 13 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
-14 error cwd c:\node\auth
+14 error cwd C:\node\auth
 15 error node -v v0.10.29
 16 error npm -v 1.4.14
 17 error code ELIFECYCLE

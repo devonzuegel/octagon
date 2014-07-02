@@ -1,6 +1,6 @@
-//- extends layout
+extends login_layout
 link(rel='stylesheet', href='/stylesheets/style.css')
-link(rel='shortcut icon', href='http://stanford.edu/~devonz/congruent_pentagon-DARK')
+//- link(rel='shortcut icon', href='http://formation8.com/wp-content/uploads/favicon.ico')
 
 block mainContent
   //- h1 #{title}
@@ -33,7 +33,10 @@ block mainContent
         table
           tr
             td(style='width:200px')
-              p.white Don't have an account?
+              p.white Contact 
+                a(href="mailto:drew@formation8.com") Drew Oettig 
+                x for your company's login details.
+              //- Don't have an account?
                 a(href="./register") Register here.
             td
               input(type="submit", value="Submit").submit
