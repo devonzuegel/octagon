@@ -1,7 +1,8 @@
 extends layout
 
 block mainContent
-	each error in errors
-		p.error #{error}
-	each c in companies
-		p: a(href='/users/' + c) #{c}
+  each error in errors
+    p.error #{error}
+  each c in companies
+    if c.username != 'admin'
+      p: a(href='/users/'+c.username) #{c.username}

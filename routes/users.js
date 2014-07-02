@@ -7,12 +7,24 @@ var UserModel = require('../models/User.js'),
     LocalStrategy = require('passport-local').Strategy,
 		UserDetails = UserModel.UserDetails;
 
-
 router.get('/', function(req, res) {
-	res.render('all_users', { title: 'Portfolio companies:', 
-														errors: req.cookies.errors,
-														companies: ['company A', 'company B', 'company C'] 
-	});
+  if (req.cookies.username != 'admin') {
+    res.cookie('errors', ['You do not have permission to perform that action.']);
+    return res.redirect('../login');
+  }
+
+  res.cookie('errors', []);
+  // var companies = UserDetails.find({});
+  UserDetails.find({}, {username: 1}, function(err, all_users) {
+    if (err)    return done(err);
+    console.log('all_users= %j', all_users);
+    res.render('all_users', { title: 'Portfolio companies:', 
+                              errors: req.cookies.errors,
+                              companies: all_users
+    });
+
+  });
+
 });
 
 
@@ -20,18 +32,18 @@ router.get('/', function(req, res) {
   router.get('/add_user', function(req, res) {
     // only the admin may add a user
     if (req.cookies.username != 'admin') {
-      res.cookie('errors', ['You do not have the right permissions to perform this action.']);
+      res.cookie('errors', ['You do not have permission to perform that action.']);
       return res.redirect('../login');
     }
     res.cookie('errors', []);
     res.render('add_user', {title:"Add user", errors: req.cookies.errors});
   });
 
-  function username_inuse(username) {
-    // return false;
-    var u = UserDetails.findOne({ 'username': username, }, 
-                                function(err, user) { return (!err  &&  user);  });
-    console.log("\n\nu= %j\n\n", u);
+  function username_inuse(u) {
+    return (u == 'add_user' ||  u == 'all');//  ||  
+    // var u = UserDetails.findOne({ 'username': username, }, 
+    //                             function(err, user) { return (!err  &&  user);  });
+    // console.log("\n\nu= %j\n\n", u);
   }
 
   router.post('/add_user', function(req, res) {
@@ -40,10 +52,16 @@ router.get('/', function(req, res) {
       res.cookie('errors', ["Please make sure your passwords match."]);
       return res.redirect('/users/add_user');
     }
-    UserDetails.find({'username': req.body.username }, function(err, u) {
+
+    if (username_inuse(req.body.username.toLowerCase())) {
+      res.cookie('errors', ["That username is already in use."]);
+      return res.redirect('/users/add_user');      
+    }
+
+    UserDetails.find({'username': req.body.username.toLowerCase() }, function(err, u) {
       if (err)    return done(err);
-      console.log('u.username= %s', u.username);
-      UserModel.addUser(req.body.username, req.body.username);
+      // console.log('u.username= %s', u.username);
+      UserModel.addUser(req.body.username.toLowerCase(), req.body.password);
       res.redirect('../login');
     });
   /*  UserModel.printAll(); // prints all User data
@@ -85,8 +103,8 @@ router.get('/', function(req, res) {
 router.get('/:username', function(req, res) {
   // var u_param = req.param('username'),
   console.log('req.params.username = %s', req.params.username);
-  var u_param = req.params.username;
-  var u_cookie = req.cookies.username;
+  var u_param = req.params.username.toLowerCase();
+  var u_cookie = req.cookies.username.toLowerCase();
   console.log('u_cookie: %s,  u_param: %s -----------', u_cookie, u_param);
 
   // if current user doesn't have the right privileges, redirect to login page w/ errors
@@ -102,7 +120,7 @@ router.get('/:username', function(req, res) {
   		return res.render('users', {username: u_param});
   	} else {
   		res.cookie('errors', ['That company doesn\'t exist! Here are your options:']);
-  		return res.redirect('/users/all');
+  		return res.redirect('/users');
   	}
   });
   

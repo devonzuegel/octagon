@@ -60,9 +60,26 @@
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('404', { title: '404: not found', url: req.url });
+    return;
+  }
+
+  // respond with json
+  if (req.accepts('json')) {
+    res.send({ error: 'Not found' });
+    return;
+  }
+
+  // default to plain-text. send()
+  res.type('txt').send('Not found');
+
+  // var err = new Error('Not Found');
+  // err.status = 404;
+  // next(err);
 });
 
 /// error handlers

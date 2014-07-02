@@ -17,13 +17,16 @@
 
 // home page
 	router.get('/', function(req, res) {
-	  res.render('login', {title: 'Login', errors: req.cookies.errors});
+		return res.redirect('/users');
+		// res.render('/users/', { title: 'Portfolio companies:', 
+															// errors: req.cookies.errors,
+															// companies: ['company A', 'company B', 'company C'] 
+		// });
 	});
 
 // login methods
 	router.get('/login', function(req, res) {
 	  res.cookie('errors', []);
-		// UserModel.printAll(); // prints all User data
 	  res.render('login', {title: 'Login', errors: req.cookies.errors});
 	});
 
@@ -38,7 +41,7 @@
 
 			req.logIn(user, function(err) {
 				if (err)			return next(err);
-				res.cookie('username', user.username);
+				res.cookie('username', user.username.toLowerCase());
 				res.cookie('errors', []);
 				return res.redirect('/users/' + user.username);
 			});
@@ -56,7 +59,7 @@
 
 	passport.use(new LocalStrategy(function(username, password, done) {
 	  process.nextTick(function() {
-	    UserDetails.findOne({ 'username': username, }, function(err, user) {
+	    UserDetails.findOne({ 'username': username.toLowerCase(), }, function(err, user) {
 	      if (err)    	done(err);
 	      if (!user)  	return done(null, false);
 
