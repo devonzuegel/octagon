@@ -1,0 +1,39 @@
+//- extends layout
+link(rel='stylesheet', href='/stylesheets/style.css')
+link(rel='shortcut icon', href='http://stanford.edu/~devonz/congruent_pentagon-DARK')
+
+block mainContent
+  //- h1 #{title}
+  div.loginbox
+    h1
+      div.login-topbtm #{title}
+    form(method="POST", action="/login")
+      table.loginbox
+          //- space
+          tr(style='height:30px')
+
+          tr
+            td
+              each error in errors
+                p.error #{error}
+
+          //- username + password
+          tr
+            td
+              input(type="text", name="username", placeholder="username")
+          tr
+            td
+              input(type="password", name="password", placeholder="password")
+
+          //- space
+          tr(style='height:30px')
+
+      //- submit
+      div.login-topbtm
+        table
+          tr
+            td(style='width:200px')
+              p.white Don't have an account?
+                a(href="./register") Register here.
+            td
+              input(type="submit", value="Submit").submit

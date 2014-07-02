@@ -1,0 +1,100 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
+
+body {
+	/*background-color: #eee;*/
+	background-image: url('../images/congruent_pentagon-LIGHT.png');
+  padding: 50px;
+  font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font: 32pt 'Roboto Slab', serif;
+	font-weight: 400;
+	margin: 0;
+}
+
+a {
+  color: #B1F6CB;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+p {
+  font: 13pt "Source Sans Pro", Helvetica, Arial, sans-serif;
+	padding: 10px;
+}
+
+.white { color: white; }
+
+br { margin: 0px; }
+
+/*
+.middle-tightbox {
+	padding: -1px;
+	display: inline-block;
+	border:1px solid #555;
+}*/
+
+.loginbox {
+	margin: auto;
+	background-color: white;
+	text-align: center;
+	width: 320px;
+}
+
+div.loginbox {
+	border-radius: 5px;
+	margin-top: 120px;
+	border: 1px solid #bbb;
+}
+
+.login-topbtm {
+	display: block;
+	background-color: #333;
+	color: white;
+	padding: 15px;
+	/*height: 100%;*/
+	overflow: auto;
+}
+
+input {
+	width: 90%;
+	padding: 10px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+  font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+input[type="submit"] {
+	background-color: white;
+	float: right;
+	padding: 10px;
+	border: 1px solid #444;
+
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
+	width: fit-content;
+	color: #444;
+
+	/*font-weight: bold;*/
+}
+
+input[type="submit"]:hover{
+	/*background-color: #ffc;*/
+	/*border: 2px solid white;*/
+	color: black;
+	cursor: pointer;
+	border: 1px solid black;
+}
+.error {
+	margin: 0px 10px 10px 10px;
+	border-radius: 5px;
+	border: 1px solid #fbb;
+	background-color: #fcc;
+	/*padding: 10px;*/
+}
+
+form {
+	margin: 0px;
+}
