@@ -40,7 +40,7 @@
 				if (err)			return next(err);
 				res.cookie('username', user.username);
 				res.cookie('errors', []);
-				return res.redirect('/users/?username=' + user.username);
+				return res.redirect('/users/' + user.username);
 			});
 		})(req, res, next);
 	});
