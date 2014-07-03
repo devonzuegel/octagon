@@ -7,6 +7,7 @@ var UserModel = require('../models/User.js'),
     LocalStrategy = require('passport-local').Strategy,
 		UserDetails = UserModel.UserDetails;
 
+
 router.get('/', function(req, res) {
   if (req.cookies.username != 'admin') {
     res.cookie('errors', ['You do not have permission to perform that action.']);
@@ -18,9 +19,20 @@ router.get('/', function(req, res) {
   UserDetails.find({}, {username: 1}, function(err, all_users) {
     if (err)    return done(err);
     console.log('all_users= %j', all_users);
+
+    var i = 0;
+    var data = [ {id: String(i++), ort: "Schlosskeller", name: "DnB for live", beginn: "1.11.2011, ab 22 Uhr"},
+                 {id: String(i++), ort: "603qm", name: "Electro Technik", beginn: "1.11.2011, ab 22 Uhr"},
+                 {id: String(i++), ort: "Krone", name: "da geht der Punk ", beginn: "1.11.2011, ab 20 Uhr"},
+                 {id: String(i++), ort: "Schlosskeller", name: "Wuerstchenfest", beginn: "2.11.2011, ab 20 Uhr"},
+                 {id: String(i++), ort: "Krone", name: "Karaoke", beginn: "2.11.2011, ab 21 Uhr"} ];
+
+
+
     res.render('all_users', { title: 'Portfolio companies:', 
                               errors: req.cookies.errors,
-                              companies: all_users
+                              companies: all_users,
+                              i: i,  data: data
     });
 
   });
