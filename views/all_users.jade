@@ -1,20 +1,8 @@
 extends layout
-<link href='stylee2.css' rel='stylesheet'>
 
 block mainContent
   each error in errors
     p.error #{error}
-
-  table#sort
-    thead: tr
-      th #
-      th Company Name
-    each c, i in companies
-      if (c.username != 'admin')
-        tr
-          td #{i}
-          td #{c.username}
-
-  script(type='text/javascript' src='/../javascripts/tablesort.min.js')
-  script.
-    new Tablesort(document.getElementById('sort'));
+  each c in companies
+    if c.username != 'admin'
+      p: a(href='/users/'+c.username) #{c.username}
