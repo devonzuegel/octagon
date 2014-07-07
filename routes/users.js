@@ -65,15 +65,15 @@ router.get('/', function(req, res) {
       return res.redirect('/users/add_user');
     }
 
-    if (username_inuse(req.body.username.toLowerCase())) {
+    if (username_inuse(req.body.username)) {
       res.cookie('errors', ["That username is already in use."]);
       return res.redirect('/users/add_user');      
     }
 
-    UserDetails.find({'username': req.body.username.toLowerCase() }, function(err, u) {
+    UserDetails.find({'username': req.body.username }, function(err, u) {
       if (err)    return done(err);
       // console.log('u.username= %s', u.username);
-      UserModel.addUser(req.body.username.toLowerCase(), req.body.password);
+      UserModel.addUser(req.body.username, req.body.password);
       res.redirect('../login');
     });
   /*  UserModel.printAll(); // prints all User data
@@ -115,8 +115,8 @@ router.get('/', function(req, res) {
 router.get('/:username', function(req, res) {
   // var u_param = req.param('username'),
   console.log('req.params.username = %s', req.params.username);
-  var u_param = req.params.username.toLowerCase();
-  var u_cookie = req.cookies.username.toLowerCase();
+  var u_param = req.params.username;
+  var u_cookie = req.cookies.username;
   console.log('u_cookie: %s,  u_param: %s -----------', u_cookie, u_param);
 
   // if current user doesn't have the right privileges, redirect to login page w/ errors
