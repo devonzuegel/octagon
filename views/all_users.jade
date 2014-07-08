@@ -17,6 +17,7 @@ block mainContent
           tr(onclick="window.location = 'users/" + c.username + "'", style="cursor: pointer")
             td: a #{i}
             td: a #{c.username}
+            td: a #{c.password}
   else
     p.error There are no companies in the network!
 
