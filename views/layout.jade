@@ -1,15 +1,32 @@
 doctype html
+<meta charset=”utf-8”> 
 html
   head
     //- <link rel="shortcut icon" href="/images/citroen-icon2.jpg"/>
     title= title
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     link(rel='shortcut icon', href='http://formation8.com/wp-content/uploads/favicon.ico')
     style(type="text/css"): include ../public/stylesheets/tablesort.css
     style(type="text/css"): include ../public/stylesheets/style.css
-  #wrapper
+    style(type="text/css"): include ../public/stylesheets/bootstrap.css
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src=/public/javascripts/bootstrap.js”></script>
+
+  .container
     #header
       h1 #{title}
+      div.navbar
+        div.navbar-inner
+          div.container
+            ul.nav
+              li.active: a(href='#') Home
+              li: a(href='#') Projects
+              li: a(href='#') About
+    
+    .hero-unit
+      h1 Hello!
+
 
     //- renders the page
-    #content
+    body#content
       block mainContent

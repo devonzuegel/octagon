@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap TEST</title>
+
+    <!-- ////// STYLESHEETS //////////////////////////////////////// -->
+      <!-- Jquery ui css -->  <link rel="stylesheet" href="../public/stylesheets/jquery-ui.css" />
+      <!-- Bootstrap css -->  <link rel="stylesheet" href="../public/stylesheets/bootstrap.css"> 
+      <!-- BTSP heme css -->  <link rel="stylesheet" href="../public/stylesheets/bootstrap-theme.css" />
+      <!-- Datepicker css --> <link rel="stylesheet" href="../public/stylesheets/datepicker.css"> 
+
+    <!-- ////// JAVASCRIPTS //////////////////////////////////////// -->
+      <!-- Jquery js -->      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <!-- Jquery ui js -->   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+      <!-- Bootstrap js -->   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+    
+      <div class="container">
+        <div class="hero-unit">
+          <input  type="text" placeholder="click to show datepicker"  id="example1">
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $('#example1').datepicker({
+            format: "dd/mm/yyyy"
+          });  
+        });
+      </script>
+
+
+      <h1>Hello, world!</h1>
+    </div>
+  </body>
+</html>

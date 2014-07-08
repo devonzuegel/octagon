@@ -12,6 +12,7 @@ block mainContent
       thead: tr
         th #
         th Company Name
+        th Password
       each c, i in companies
         if (c.username != 'admin')
           tr(onclick="window.location = 'users/" + c.username + "'", style="cursor: pointer")
