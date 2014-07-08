@@ -114,7 +114,7 @@
   background-color: transparent;
 }
 .datepicker table tr td.day:hover {
-  background: #eeeeee;
+  /*background: #eeeeee;*/
   cursor: pointer;
 }
 .datepicker table tr td.old,
@@ -474,8 +474,13 @@
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
   vertical-align: middle;
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;*/
   border: 1px solid #ccc;
   margin-left: -5px;
   margin-right: -5px;
+}
+.calendar_input {
+  margin-left: 40px;
+  background: url(../images/icon_cal--grey.png) no-repeat right;
+  background-size: 30px 30px;
 }

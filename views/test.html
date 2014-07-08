@@ -13,8 +13,8 @@
       <!-- Datepicker css --> <link rel="stylesheet" href="../public/stylesheets/datepicker.css"> 
 
     <!-- ////// JAVASCRIPTS //////////////////////////////////////// -->
-      <!-- Jquery js -->      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      <!-- Jquery ui js -->   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+      <!-- Jquery js -->      <script src="../public/javascripts/jquery.min.js"></script>
+      <!-- Jquery ui js -->   <script src="../public/javascripts/jquery-ui.js"></script>
       <!-- Bootstrap js -->   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,10 +32,12 @@
         <li><a href="#">Profile</a></li>
         <li><a href="#">Messages</a></li>
       </ul>
-    
       <div class="container">
         <div class="hero-unit">
-          <input  type="text" placeholder="click to show datepicker"  id="example1">
+          <form>
+            <input type="text" class='calendar_input' placeholder="Date of initial investment"  id="example1"/>
+            <!-- <input type="submit" class="calendar_btn"/> -->
+          </form>
         </div>
       </div>
 
