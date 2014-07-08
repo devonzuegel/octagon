@@ -1,8 +1,25 @@
 extends layout
+<link href='style2.css' rel='stylesheet'>
+//- style(type="text/css"): include ../public/stylesheets/style2.css
 
 block mainContent
+  br
   each error in errors
     p.error #{error}
-  each c in companies
-    if c.username != 'admin'
-      p: a(href='/users/'+c.username) #{c.username}
+
+  if (companies.length > 1)
+    table#sort
+      thead: tr
+        th #
+        th Company Name
+      each c, i in companies
+        if (c.username != 'admin')
+          tr(onclick="window.location = 'users/" + c.username + "'", style="cursor: pointer")
+            td: a #{i}
+            td: a #{c.username}
+  else
+    p.error There are no companies in the network!
+
+  script(type='text/javascript' src='/../javascripts/tablesort.uncompressed.js')
+  script.
+    new Tablesort(document.getElementById('sort'));

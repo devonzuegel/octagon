@@ -5,6 +5,9 @@
   var logger = require('morgan');
   var cookieParser = require('cookie-parser');
   var bodyParser = require('body-parser');
+  var flash = require('connect-flash')
+  var session = require('express-session')
+
 
   var routes = require('./routes/index');
   var users = require('./routes/users');
@@ -12,37 +15,8 @@
   var app = express();
   var passport = require('./models/User.js').passport;
 
-// view engine setup
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');
-
-
-
-  app.use(passport.initialize());
-  // app.use(session({
-    //     cookie : {
-    //       maxAge: 3600000 // see below
-    //     },
-    //     store : new MongoStore(
-    //       { db: mongodb.Db( conf.mongodbName,
-    //             new mongodb.Server('localhost', 27017,
-    //                                 { auto_reconnect: true, native_parser: true }),
-    //                                 { journal: true })
-    //       }, function(error) {
-    //         if(error) {
-    //           return console.error('Failed connecting mongostore for storing session data. %s', error.stack);
-    //         }
-    //         return console.log('Connected mongostore for storing session data');
-    //       })
-    // }));
-    // ...
-  app.use(passport.session());
-
-  // app.use(passport.session());
-  // app.use(function (req, res, next) {
-  //   res.locals.loggedin = req.isAuthenticated();
-  //   next();
-  // });
 
   app.use(favicon('./views/congruent_pentagon-DARK.png'));
   app.use(logger('dev'));
@@ -50,42 +24,49 @@
   app.use(bodyParser.urlencoded());
 
   app.use(cookieParser());
-  // app.use(express.session({secret: '1234567890QWERTY'}));
+  // app.use(cookieParser('S3CRE7'));
+  app.use(session({secret: 'twocubed', 
+                 saveUninitialized: true,
+                 resave: true}));
+
 
   app.use(express.static(path.join(__dirname, 'public')));
+  // app.use(express.session({ secret: 'keyboard cat' }));
+  // app.use(session({
+  //   genid: function(req) {
+  //     return genuuid(); // use UUIDs for session IDs
+  //   },
+  //   secret: 'keyboard cat'
+  // }));
+
+  app.use(flash());
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use('/', routes);
   app.use('/users/', users);
   app.set('view options', { layout: false });
 
+var server = app.listen(3000, function() {
+    console.log('Listening on port %d', server.address().port);
+});
+
+
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.status(404);
-
-  // respond with html page
-  if (req.accepts('html')) {
+  if (req.accepts('html')) {  // respond with html page
     res.render('404', { title: '404: not found', url: req.url });
-    return;
-  }
-
-  // respond with json
-  if (req.accepts('json')) {
+  } else if (req.accepts('json')) {  // respond with json
     res.send({ error: 'Not found' });
     return;
-  }
-
-  // default to plain-text. send()
-  res.type('txt').send('Not found');
-
-  // var err = new Error('Not Found');
-  // err.status = 404;
-  // next(err);
+  } else
+    // default to plain-text. send()
+    res.type('txt').send('Not found');
 });
 
-/// error handlers
-
-// development error handler
-// will print stacktrace
+/// error handler
+// development error handler, prints stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
       res.status(err.status || 500);
@@ -96,8 +77,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// production error handler, no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -105,5 +85,7 @@ app.use(function(err, req, res, next) {
       error: {}
   });
 });
+
+
 
 module.exports = app;

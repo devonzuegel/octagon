@@ -4,13 +4,12 @@ html
     //- <link rel="shortcut icon" href="/images/citroen-icon2.jpg"/>
     title= title
     link(rel='shortcut icon', href='http://formation8.com/wp-content/uploads/favicon.ico')
+    style(type="text/css"): include ../public/stylesheets/tablesort.css
     style(type="text/css"): include ../public/stylesheets/style.css
-  div#wrapper
-    div#header
+  #wrapper
+    #header
       h1 #{title}
 
-      //- img(src= "/images/55citroen_ds19_09.jpg", style="height:318px")
-
     //- renders the page
-    div#content
+    #content
       block mainContent

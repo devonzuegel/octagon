@@ -18,48 +18,61 @@
 // home page
 	router.get('/', function(req, res) {
 		return res.redirect('/users');
-		// res.render('/users/', { title: 'Portfolio companies:', 
-															// errors: req.cookies.errors,
-															// companies: ['company A', 'company B', 'company C'] 
-		// });
 	});
 
 // login methods
 	router.get('/login', function(req, res) {
+		console.log("\nreq.isAuthenticated = %s", req.isAuthenticated());
+		console.log("           req.user = %j \n", req.user);
+		
 	  res.cookie('errors', []);
 	  res.render('login', {title: 'Login', errors: req.cookies.errors});
 	});
 
-	router.post('/login', function(req, res, next) {
-		passport.authenticate('local', function(err, user, info) {
-			if (err)	return next(err);
+	router.post('/login', 
+	  passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
+	  function(req, res) {
+	    res.redirect('/');
+	  });
 
-			if (!user) {		// if can't authenticate, redirect back to login
-				res.cookie('errors', ['Invalid username or password.']);
-				return res.redirect('/login'); 
-			}
+		
+		/*
+			passport.authenticate('local', function(err, user, info) {
+				if (err)	return next(err);
 
-			req.logIn(user, function(err) {
-				if (err)			return next(err);
-				res.cookie('username', user.username.toLowerCase());
-				res.cookie('errors', []);
-				return res.redirect('/users/' + user.username);
-			});
-		})(req, res, next);
-	});
+				if (!user) {		// if can't authenticate, redirect back to login
+					res.cookie('errors', ['Invalid username or password.']);
+					return res.redirect('/login'); 
+				}
+
+				req.logIn(user, function(err) {
+					if (err)			return next(err);
+					res.cookie('username', user.username);
+					res.cookie('errors', []);
+					return res.redirect('/users/' + user.username);
+				});
+			})(req, res, next);
+
+		});
+	*/
 
 // passport stuff
 	passport.serializeUser(function(user, done) {
-	  done(null, user);
+		console.log('(serialize)      user= %j', user)
+	  done(null, user.id);
 	});
 	 
-	passport.deserializeUser(function(user, done) {
-	  done(null, user);
+	passport.deserializeUser(function(id, done) {
+		UserDetails.find({id: id}, function(err, user) {
+			if (err)    return done(err);
+			console.log('(deserialize)  user= %j', user);
+			done(err, user);
+		});
 	});
 
 	passport.use(new LocalStrategy(function(username, password, done) {
 	  process.nextTick(function() {
-	    UserDetails.findOne({ 'username': username.toLowerCase(), }, function(err, user) {
+	    UserDetails.findOne({ 'username': username, }, function(err, user) {
 	      if (err)    	done(err);
 	      if (!user)  	return done(null, false);
 
