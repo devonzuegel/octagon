@@ -13,10 +13,9 @@ block mainContent
           //- space
           tr(style='height:30px')
 
-          tr
-            td
-              each error in errors
-                p.error #{error}
+          tr: td
+            each error in errors
+              p.error #{error}
 
           //- username + password
           tr

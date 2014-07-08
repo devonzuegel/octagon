@@ -7,39 +7,51 @@ var UserModel = require('../models/User.js'),
     LocalStrategy = require('passport-local').Strategy,
 		UserDetails = UserModel.UserDetails;
 
+function require_privileges(req, res, include_msgs, fn) {
+  if (req.isAuthenticated() && req.session.is_admin) {
+    fn(req, res);
+  } else {
+    if (include_msgs)   req.flash('error', 'You do not have permission to perform that action.');
+    if (!req.isAuthenticated()) res.redirect('../login');
+    else {
+      console.log('lkkjlskadjf');
+     res.redirect('/user/' + req.session.username);}
+  }
+}
 
 router.get('/', function(req, res) {
-  console.log("\nreq.isAuthenticated = %s", req.isAuthenticated());
-  console.log("           req.user = %j \n", req.user);
-
-  if (req.cookies.username != 'admin') {
-    res.cookie('errors', ['You do not have permission to perform that action.']);
-    return res.redirect('../login');
-  }
-
-  res.cookie('errors', []);
-
-  UserDetails.find({}, function(err, all_users) {
-    if (err)    return done(err);
-    // console.log('all_users= %j', all_users);
-    res.render('all_users', { title: 'Portfolio companies:', 
-                              errors: req.cookies.errors,
-                              companies: all_users  });
+  // console.log("\nreq.isAuthenticated = %s", req.isAuthenticated());
+  // console.log("           req.user = %j \n", req.user);
+  require_privileges(req, res, true, function() {
+    UserDetails.find({}, function(err, all_users) {
+      if (err)    return done(err);
+      res.render('all_users', { title: 'Portfolio companies:', 
+                                errors: req.flash('error'),
+                                companies: all_users  });
+    });
   });
+  // if (!UserModel.has_privileges(req, true)) {
+    //   res.cookie('errors', ['You do not have permission to perform that action.']);
+    //   return res.redirect('../login');
+    // }
 
+    // if (req.cookies.username != 'admin') {
+    //   res.cookie('errors', ['You do not have permission to perform that action.']);
+    //   return res.redirect('../login');
+    // }
 });
 
 
 // add_user methods
   router.get('/add_user', function(req, res) {
     // only the admin may add a user
-    if (req.cookies.username != 'admin') {
-      res.cookie('errors', ['You do not have permission to perform that action.']);
+    if (req.session.username != 'admin') {
+      req.flash('error', 'You do not have permission to perform that action.');
+      // require_privileges();
       return res.redirect('../login');
+    } else {
+      res.render('add_user', {title:"Add user", errors: null});
     }
-
-    res.cookie('errors', []);
-    res.render('add_user', {title:"Add user", errors: req.cookies.errors});
   });
 
   function username_inuse(u) {
@@ -106,28 +118,26 @@ router.get('/', function(req, res) {
   });
 
 router.get('/:username', function(req, res) {
-  console.log("\nreq.isAuthenticated = %s", req.isAuthenticated());
-  console.log("           req.user = %j \n", req.user);
-
-  // var u_param = req.param('username'),
-  console.log('req.params.username = %s', req.params.username);
-  var u_param = req.params.username;
-  var u_cookie = req.cookies.username;
-  console.log('u_cookie: %s,  u_param: %s -----------', u_cookie, u_param);
+  console.log("req.user = %j \n", req.user);
+  var u_param = req.params.username; // gets :username from the url
+  var u_session = req.session.username;
+  console.log('u_session: %s,  u_param: %s -----------', u_session, u_param);
 
   // if current user doesn't have the right privileges, redirect to login page w/ errors
-  if (u_param != u_cookie  &&  u_cookie != 'admin') {
-  	res.cookie('errors', ['You do not have the right permissions to perform that action.']);
-  	return res.redirect('/login');
+  if (u_param != u_session  &&  u_session != 'admin') {
+    req.flash('error', 'You do not have the right permissions to perform that action.')
+    // console.log('req.isAuthenticated() = ' + req.isAuthenticated());
+    if (req.isAuthenticated())  res.redirect('/users/u_session');
+  	else                        return res.redirect('/login');
   }
 
   UserDetails.findOne({ 'username': u_param, }, function(err, user) {
   	if (err)    return done(err);
 
   	if (user != null) {
-  		return res.render('users', {username: u_param});
+  		return res.render('users', {username: u_param, errors: req.flash('error')});
   	} else {
-  		res.cookie('errors', ['That company doesn\'t exist! Here are your options:']);
+      req.flash('error', 'That company doesn\'t exist! Here are your options:.')
   		return res.redirect('/users');
   	}
   });
@@ -136,3 +146,4 @@ router.get('/:username', function(req, res) {
 
 
 module.exports = router;
+module.exports.require_privileges = require_privileges;

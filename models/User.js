@@ -50,10 +50,16 @@ function find(username) {
 
 }
 
+function has_privileges(req, admin_only){
+  if (!req.isAuthenticated()) return false;
+  if (!admin_only)  return true;
+  return req.session.is_admin;
+}
 
 module.exports.addUser = addUser;
 module.exports.passport = passport;
 module.exports.UserDetails = UserDetails;
 module.exports.printAll = printAll;
 module.exports.salt_fn = salt_fn;
+module.exports.has_privileges = has_privileges;
 // module.exports.username_inuse = username_inuse;

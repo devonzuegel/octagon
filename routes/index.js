@@ -15,6 +15,7 @@
 	    LocalStrategy = require('passport-local').Strategy,
 			UserDetails = UserModel.UserDetails;
 
+
 // home page
 	router.get('/', function(req, res) {
 		return res.redirect('/users');
@@ -22,20 +23,18 @@
 
 // login methods
 	router.get('/login', function(req, res) {
-		console.log("\nreq.isAuthenticated = %s", req.isAuthenticated());
-		console.log("           req.user = %j \n", req.user);
-		
-	  res.cookie('errors', []);
-	  res.render('login', {title: 'Login', errors: req.cookies.errors});
+		res.render('login', {title: 'Login', errors: req.flash('error')});
 	});
 
-	router.post('/login', 
-	  passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
-	  function(req, res) {
-	    res.redirect('/');
-	  });
-
-		
+	router.post('/login',
+							passport.authenticate('local', { failureRedirect: '/login', 
+																							 failureFlash: 'Invalid username or password.' }),
+						  function(req, res) {
+						  	req.session.is_admin = (req.user.username == 'admin');
+						  	req.session.username = req.user.username;
+						  	if (req.session.is_admin) res.redirect('/');
+						  	else											res.redirect('/users/' + req.user.username);
+						  });	
 		/*
 			passport.authenticate('local', function(err, user, info) {
 				if (err)	return next(err);
@@ -58,14 +57,14 @@
 
 // passport stuff
 	passport.serializeUser(function(user, done) {
-		console.log('(serialize)      user= %j', user)
+		// console.log('(serialize)      user= %j', user)
 	  done(null, user.id);
 	});
 	 
 	passport.deserializeUser(function(id, done) {
 		UserDetails.find({id: id}, function(err, user) {
 			if (err)    return done(err);
-			console.log('(deserialize)  user= %j', user);
+			// console.log('(deserialize)  user= %j', user);
 			done(err, user);
 		});
 	});
