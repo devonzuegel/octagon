@@ -3,10 +3,6 @@ extends layout
 //- style(type="text/css"): include ../public/stylesheets/style2.css
 
 block mainContent
-  br
-  each error in errors
-    p.error #{error}
-
   if (companies.length > 1)
     table#sort
       thead: tr
