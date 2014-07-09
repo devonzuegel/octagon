@@ -42,15 +42,15 @@ router.get('/', function(req, res) {
 router.get('/add_user', function(req, res) {
   require_privileges(req, res, true,
                      function() {
-                        UserDetails.find({}, function(err, all_users) {
-                          if (err)    return done(err);
-                          res.render('all_users', { title: 'Portfolio companies:', 
-                            errors: req.flash('error'),
-                            companies: all_users  });
-                        });
+                            // res.render('all_users', { title: 'Portfolio companies:', 
+                            //                           errors: req.flash('error'),
+                            //                           companies: all_users  });
+                        // console.log('dsfkjal');
+                        return;
                       },
                       function() {
-                        res.redirect('/users/' + req.session.username);
+                        console.log('ALDFKJSLDKJFALSFJ');
+                        return res.redirect('/users/' + req.session.username);
                       });
 
     // // only the admin may add a user
@@ -61,6 +61,7 @@ router.get('/add_user', function(req, res) {
     // } else {
     //   res.render('add_user', {title:"Add user", errors: undefined});
     // }
+    res.render('add_user', { title:"Add user" });
   });
 
   function username_inuse(u) {
@@ -129,6 +130,7 @@ router.get('/add_user', function(req, res) {
 router.get('/:username', function(req, res) {
   console.log("req.user = %j \n", req.user);
   var u_param = req.params.username; // gets :username from the url
+  if (u_param == 'add_user')    res.redirect('/users/add_user');
   var u_session = req.session.username;
   console.log('u_session: %s,  u_param: %s -----------', u_session, u_param);
 

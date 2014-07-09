@@ -1,6 +1,4 @@
 extends login_layout
-//- script(type='text/javascript' src='../public/javascripts/datepicker.js')
-<script type="text/javascript" src="../datepicker/js/boostrap-datepicker.js"></script>
 
 block mainContent
   div.loginbox
@@ -11,17 +9,15 @@ block mainContent
         //- space
         tr(style='height:30px')
 
-        tr: td
-          each error in errors
-              p.error #{error}
+        tr.error #{error}
 
-          //- username + password
-          tr: td: input(type="text", name="username", placeholder="company name")
-          tr: td: input(type="password", name="password", placeholder="password")
-          tr: td: input(type="password", name="password2", placeholder="confirm password")
+        //- username + password
+        tr: td: input(type="text", name="username", placeholder="company name")
+        tr: td: input(type="password", name="password", placeholder="password")
+        tr: td: input(type="password", name="password2", placeholder="confirm password")
 
-          //- space
-          tr(style='height:30px')
+        //- space
+        tr(style='height:30px')
 
       //- submit
       div.login-topbtm
