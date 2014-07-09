@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap TEST</title>
 
     <!-- ////// STYLESHEETS //////////////////////////////////////// -->
       <!-- Jquery ui css -->  <link rel="stylesheet" href="../public/stylesheets/jquery-ui.css" />
-      <!-- Bootstrap css -->  <link rel="stylesheet" href="../public/stylesheets/bootstrap.css"> 
-      <!-- BTSP heme css -->  <link rel="stylesheet" href="../public/stylesheets/bootstrap-theme.css" />
+      <!-- Bootstrap css -->  <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.css"> 
+      <!-- BTSP heme css -->  <link rel="stylesheet" href="../public/bootstrap/css/bootstrap-theme.css" />
       <!-- Datepicker css --> <link rel="stylesheet" href="../public/stylesheets/datepicker.css"> 
+      <!-- General css -->    <link rel="stylesheet" href="../public/stylesheets/style.css"> 
 
     <!-- ////// JAVASCRIPTS //////////////////////////////////////// -->
       <!-- Jquery js -->      <script src="../public/javascripts/jquery.min.js"></script>
@@ -35,22 +36,47 @@
       <div class="container">
         <div class="hero-unit">
           <form>
-            <input type="text" class='calendar_input' placeholder="Date of initial investment"  id="example1"/>
-            <!-- <input type="submit" class="calendar_btn"/> -->
+            <input type="text" class='calendar_input' placeholder="Date of initial investment"  id="datepicker"/>
           </form>
         </div>
       </div>
 
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12" style="background-color:#eee">
+            <h1>XS Columns</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 example-block" style="background-color:#cee">Hello!</div>
+          <div class="col-xs-6 example-block alt" style="background-color:#eec">Hi!</div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12" style="background-color:#eee">
+            <h4>Large Columns</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 example-block" style="background-color:#cee">Hello!</div>
+          <div class="col-lg-4 example-block alt" style="background-color:#eec">Hi!</div>
+          <div class="col-lg-6 example-block alt" style="background-color:#cce">Hi!</div>
+        </div>
+      </div>
+
+
+
+
+
       <script type="text/javascript">
         $(document).ready(function () {
-          $('#example1').datepicker({
+          $('#datepicker').datepicker({
             format: "dd/mm/yyyy"
           });  
         });
       </script>
 
-
-      <h1>Hello, world!</h1>
     </div>
   </body>
 </html>

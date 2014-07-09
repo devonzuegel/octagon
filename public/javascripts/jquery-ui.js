@@ -8338,7 +8338,7 @@ $.extend(Datepicker.prototype, {
 		offset = $.datepicker._checkOffset(inst, offset, isFixed);
 		inst.dpDiv.css({position: ($.datepicker._inDialog && $.blockUI ?
 			"static" : (isFixed ? "fixed" : "absolute")), display: "none",
-			left: offset.left + ($(input).width() - $(inst.dpDiv).width())/2 + "px", 
+			left: offset.left + (10 + $(input).width() - $(inst.dpDiv).width())/2 + "px", 
 			top: 	offset.top + 10 + "px"});
 
 		if (!inst.inline) {

@@ -89,7 +89,7 @@ router.get('/add_user', function(req, res) {
       if (err)    return done(err);
       // console.log('u.username= %s', u.username);
       UserModel.addUser(req.body.username, req.body.password);
-      res.redirect('../login');
+      res.redirect('/users/');
     });
   /*  UserModel.printAll(); // prints all User data
       // console.log('username_inuse(username)= ' + username_inuse(username));
