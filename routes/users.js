@@ -13,23 +13,20 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
   } else {
     if (include_msgs)   req.flash('error', 'You do not have permission to perform that action.');
     if (!req.isAuthenticated()) res.redirect('../login');
-    else {
-      console.log('asdfdsf');
-      user_fn(req, res);
-    }
+    else    user_fn(req, res);
   }
 }
 
 router.get('/', function(req, res) {
-  console.log("\nreq.isAuthenticated = %s", req.isAuthenticated());
-  console.log("           req.user = %j \n", req.user);
   require_privileges(req, res, true, 
                      function() {
                           UserDetails.find({}, function(err, all_users) {
                             if (err)    return done(err);
-                            res.render('all_users', { title: 'Portfolio companies:', 
+                            res.render('all_users', { title: 'Portfolio companies', 
                                                       errors: req.flash('error'),
-                                                      companies: all_users  });
+                                                      companies: all_users,
+                                                      tab: 'companies',
+                                                      is_admin: true  });
                           });
                       }, function() { 
                           res.redirect('/users/' + req.session.username); 
@@ -41,17 +38,9 @@ router.get('/', function(req, res) {
 // add_user methods
 router.get('/add_user', function(req, res) {
   require_privileges(req, res, true,
-                     function() {
-                            // res.render('all_users', { title: 'Portfolio companies:', 
-                            //                           errors: req.flash('error'),
-                            //                           companies: all_users  });
-                        // console.log('dsfkjal');
-                        return;
-                      },
-                      function() {
-                        console.log('ALDFKJSLDKJFALSFJ');
-                        return res.redirect('/users/' + req.session.username);
-                      });
+                     function() { return; },
+                      function() { return res.redirect('/users/' + req.session.username); }
+                    );
 
     // // only the admin may add a user
     // if (req.session.username != 'admin') {
@@ -61,7 +50,7 @@ router.get('/add_user', function(req, res) {
     // } else {
     //   res.render('add_user', {title:"Add user", errors: undefined});
     // }
-    res.render('add_user', { title:"Add user" });
+    res.render('add_user', { title:"New Company", is_admin: true, errors: undefined, tab: 'companies' });
   });
 
   function username_inuse(u) {
@@ -72,8 +61,6 @@ router.get('/add_user', function(req, res) {
   }
 
   router.post('/add_user', function(req, res) {
-    console.log("\nreq.isAuthenticated = %s", req.isAuthenticated());
-    console.log("           req.user = %j \n", req.user);
 
     if (req.body.password2 != req.body.password) {
       res.cookie('errors', ["Please make sure your passwords match."]);
@@ -87,7 +74,6 @@ router.get('/add_user', function(req, res) {
 
     UserDetails.find({'username': req.body.username }, function(err, u) {
       if (err)    return done(err);
-      // console.log('u.username= %s', u.username);
       UserModel.addUser(req.body.username, req.body.password);
       res.redirect('/users/');
     });
@@ -128,18 +114,19 @@ router.get('/add_user', function(req, res) {
   });
 
 router.get('/:username', function(req, res) {
-  console.log("req.user = %j \n", req.user);
   var u_param = req.params.username; // gets :username from the url
   if (u_param == 'add_user')    res.redirect('/users/add_user');
   var u_session = req.session.username;
-  console.log('u_session: %s,  u_param: %s -----------', u_session, u_param);
 
   require_privileges(req, res, false, 
                      function() {
                           UserDetails.findOne({ 'username': u_param, }, function(err, user) {
                             if (err)    return done(err);
                             if (user != null) {
-                              return res.render('users', {username: u_param, errors: req.flash('error')});
+                              return res.render('users', {username: u_param,
+                                                          errors: req.flash('error'),
+                                                          title: u_param,
+                                                          is_admin: true  });
                             } else {
                               req.flash('error', 'That company doesn\'t exist! Here are your options:.')
                               return res.redirect('/users');
@@ -153,7 +140,11 @@ router.get('/:username', function(req, res) {
                       }//, function() { // callback function, complete only after require_priv() is done
                      // }
   );
-  return res.render('users', {username: u_param, errors: req.flash('error')});  
+  return res.render('users', {username: u_param, 
+                              errors: req.flash('error'), 
+                              title: u_param,
+                              is_admin: (u_session == 'admin'),
+                              tab: (u_session == 'admin') ? 'companies' : ''});  
 });
 
 

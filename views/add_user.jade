@@ -1,32 +1,41 @@
-extends login_layout
+extends layout
 
 block mainContent
   div.loginbox
-    h1
-      div.login-topbtm #{title}
+    div.login-topbtm(style='height:30px')
+      //- h1 #{title}
     form(method="POST", action="/users/add_user")
-      table.loginbox
+      container
         //- space
-        tr(style='height:30px')
+        .div(style='height:30px')
 
-        tr.error #{error}
+        //- tr.error #{error}
 
         //- username + password
-        tr: td: input(type="text", name="username", placeholder="company name")
-        tr: td: input(type="password", name="password", placeholder="password")
-        tr: td: input(type="password", name="password2", placeholder="confirm password")
+        .row: .col-lg-12: input(type="text", name="username", placeholder="company name")
+        .row: .col-lg-12: input(type="password", name="password", placeholder="password")
+        .row: .col-lg-12: input(type="password", name="password2", placeholder="confirm password")
+        .row: .col-lg-12: input(type="text" class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
 
         //- space
-        tr(style='height:30px')
+        .div(style='height:30px')
 
       //- submit
       div.login-topbtm
-        table
-          tr
-            td(style='width:200px')
-              p.white Have an account?
+        .container: .row
+          .col-xs-9
+              //- td(style='width:200px')
+              p Have an account?
                 br
                 a(href="../login") Login here.
-            td
+            .col-xs-3
               input(type="submit", value="Submit").submit
+
+
+  script.
+    $(document).ready(function () {
+      $('#datepicker').datepicker({
+        format: "dd/mm/yyyy"
+      });  
+    });
 

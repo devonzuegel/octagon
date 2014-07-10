@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
+/*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);*/
 /*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 
@@ -11,23 +12,52 @@ body {
 }
 
 h1 {
-	font: 32pt 'Lato', serif;
-	font-weight: 300;
-	margin: 0;
-	color: #555;
+	font: 36pt 'Lato', serif;
+	font-weight: 400;
+	margin: 5px;
+	color: #444;
 	text-transform: uppercase;
 }
 
+h2 {
+	font: 18pt 'Lato', serif;
+	font-weight: 400;
+	margin: 0;
+	color: #555;
+	margin-bottom: 5px;
+}
+
+h3 {
+	display: inline;
+	font: 13pt 'Lato', serif;
+	/*font: 22pt 'Roboto Slab', serif;*/
+	font-weight: 300;
+	border-radius: 2px;
+	padding: 3px;
+	padding-left: 8px; padding-right: 8px;
+	color: white;
+	background-color: #999;
+}
+
 a {
-  color: #48D9B3;
+	color: #428bca;
+  /*color: #54BFA3;*/
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
+}
+
+a:hover {
+	color: #2a6496;
+	/*color: #5CD1B2;*/
 }
 
 p {
 	text-align: left;
 	margin: 0px;
-  font: 13pt "Source Sans Pro", Helvetica, Arial, sans-serif;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	font-size: 11pt;
+  /*font: 13pt "Source Sans Pro", Helvetica, Arial, sans-serif;*/
 	padding: 10px;
 }
 
@@ -64,12 +94,16 @@ div.loginbox {
 	overflow: auto;
 }
 
+.login-topbtm h1 { color: white; }
+
 input {
-	width: 90%;
+	width: 85%;
 	padding: 10px;
 	border-radius: 3px;
 	border: 1px solid #ccc;
-  font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	font-size: 13pt;
 }
 
 input[type="submit"] {
@@ -104,7 +138,6 @@ input[type="submit"]:hover{
 form {
 	margin: 0px;
 }
-
 /* ===================== */
 
 th.sort-header {
@@ -120,7 +153,7 @@ table th.sort-header:after {
   margin-top:7px;
   border-width:0 4px 4px;
   border-style:solid;
-  border-color:#404040 transparent;
+  /*border-color:#404040 transparent;*/
   visibility:hidden;
   }
 table th.sort-header:hover:after {

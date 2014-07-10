@@ -6,8 +6,7 @@ link(rel='stylesheet', href='/stylesheets/style.css')
 block mainContent
   //- h1 #{title}
   div.loginbox
-    h1
-      div.login-topbtm #{title}
+    div.login-topbtm: h1 #{title}
     form(method="POST", action="/login")
       table.loginbox
           //- space

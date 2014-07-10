@@ -119,7 +119,13 @@ textarea {
 }
 button {
   overflow: visible;
+  background-color: white;
+  /*border: 1px solid #ddd;*/
+  padding: 10px;
+  border: none;
+  /*border-radius: 2px;*/
 }
+
 button,
 select {
   text-transform: none;
@@ -912,12 +918,12 @@ textarea {
 a {
   color: #428bca;
   text-decoration: none;
-}
+}/*
 a:hover,
 a:focus {
   color: #2a6496;
   text-decoration: underline;
-}
+}*/
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -3574,50 +3580,55 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-btn:last-child > .btn-group {
   margin-left: -1px;
 }
-.nav {
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-}
-.nav > li {
-  position: relative;
-  display: block;
-}
-.nav > li > a {
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-}
-.nav > li > a:hover,
-.nav > li > a:focus {
-  text-decoration: none;
-  background-color: #eee;
-}
-.nav > li.disabled > a {
-  color: #777;
-}
-.nav > li.disabled > a:hover,
-.nav > li.disabled > a:focus {
-  color: #777;
-  text-decoration: none;
-  cursor: not-allowed;
-  background-color: transparent;
-}
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
-  background-color: #eee;
-  border-color: #428bca;
-}
-.nav .nav-divider {
-  height: 1px;
-  margin: 9px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
-}
-.nav > li > a > img {
-  max-width: none;
-}
+
+{ /* .nav stuff */ }
+  
+  .nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  .nav > li {
+    position: relative;
+    display: block;
+  }
+  .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eee;
+  }
+  .nav > li.disabled > a {
+    color: #777;
+  }
+  .nav > li.disabled > a:hover,
+  .nav > li.disabled > a:focus {
+    color: #777;
+    text-decoration: none;
+    cursor: not-allowed;
+    background-color: transparent;
+  }
+  .nav .open > a,
+  .nav .open > a:hover,
+  .nav .open > a:focus {
+    background-color: #eee;
+    border-color: #428bca;
+  }
+  .nav .nav-divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+  }
+  .nav > li > a > img {
+    max-width: none;
+  }
+{}
+
 .nav-tabs {
   border-bottom: 1px solid #ddd;
 }
@@ -3633,12 +3644,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs > li > a:hover {
   border-color: #eee #eee #ddd;
+  background-color: white;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555;
-  cursor: default;
+  cursor: pointer;
   background-color: #fff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
@@ -5502,7 +5514,7 @@ button.close {
   line-height: 1.4;
   visibility: visible;
   filter: alpha(opacity=0);
-  opacity: 0;
+  /*opacity: 0;*/
 }
 .tooltip.in {
   filter: alpha(opacity=90);
@@ -5526,7 +5538,7 @@ button.close {
 }
 .tooltip-inner {
   max-width: 200px;
-  padding: 3px 8px;
+  padding: 1px 3px;
   color: #fff;
   text-align: center;
   text-decoration: none;
@@ -6429,9 +6441,9 @@ textarea {
     box-shadow: none !important;
   }
   a,
-  a:visited {
+  /*a:visited {
     text-decoration: underline;
-  }
+  }*/
   a[href]:after {
     content: " (" attr(href) ")";
   }
@@ -6486,13 +6498,13 @@ a {
   color: #0088cc;
   text-decoration: none;
 }
-
+/*
 a:hover,
 a:focus {
   color: #005580;
   text-decoration: underline;
 }
-
+*/
 .img-rounded {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
@@ -6542,6 +6554,7 @@ a:focus {
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
   width: 940px;
+  max-width: 99%;
 }
 
 .span12 {
@@ -10875,6 +10888,11 @@ input[type="submit"].btn.btn-mini {
   text-shadow: 0 1px 0 #ffffff;
 }
 
+.nav > li > a:hover {
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
 }
@@ -11552,6 +11570,8 @@ input[type="submit"].btn.btn-mini {
   margin-left: 0;
 }
 
+/* TOOLTIP STUFF */
+
 .tooltip {
   position: absolute;
   z-index: 1030;
@@ -11590,7 +11610,7 @@ input[type="submit"].btn.btn-mini {
 
 .tooltip-inner {
   max-width: 200px;
-  padding: 8px;
+  padding: 5px 8px;
   color: #ffffff;
   text-align: center;
   text-decoration: none;

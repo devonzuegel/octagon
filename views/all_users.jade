@@ -1,23 +1,37 @@
 extends layout
 <link href='style2.css' rel='stylesheet'>
-//- style(type="text/css"): include ../public/stylesheets/style2.css
 
 block mainContent
+
+
+  //- .pull-right: a(href='../users/add_user')
+  //-   | New company 
+  //-   span.glyphicon.glyphicon-plus-sign
+  br
+  
   if (companies.length > 1)
-    table#sort
+    table#sort.table-striped
       thead: tr
         th #
         th Company Name
         th Password
-      each c, i in companies
-        if (c.username != 'admin')
-          tr(onclick="window.location = 'users/" + c.username + "'", style="cursor: pointer")
-            td: a #{i}
-            td: a #{c.username}
-            td: a #{c.password}
+        td(style='width:auto')
+          a(href='../users/add_user' data-toggle="tooltip" data-original-title="Log in")
+            span.glyphicon.glyphicon-plus-sign.text-center
+      tbody
+        each c, i in companies
+          if (c.username != 'admin')
+            tr(onclick="window.location = '../users/" + c.username + "'", style="cursor: pointer")
+              td: a #{i}
+              td: a #{c.username}
+              td: a #{c.password}
+              td
   else
     p.error There are no companies in the network!
 
+
+
+  //- tablesort javascript
   script(type='text/javascript' src='/../javascripts/tablesort.uncompressed.js')
   script.
     new Tablesort(document.getElementById('sort'));
