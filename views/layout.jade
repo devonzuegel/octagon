@@ -37,14 +37,17 @@ html
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
+  .toolbar: .row
+    .col-xs-1.pull-right
+    .col-xs-1.pull-right.tooltip_a
+      a(href='../login' data-toggle="tooltip" data-original-title="Log in").pull-right
+        span.glyphicon.glyphicon-log-in
+    .col-xs-2.pull-right: h5.text-right
+      | Hello 
+      a #{username}
+      | !
 
   .container
-    .row
-      .col-xs-3.pull-right.tooltip_a
-        //- if logged in
-        a(href='../login' data-toggle="tooltip" data-original-title="Log in").pull-right
-          span.glyphicon.glyphicon-log-in
-        //- else   
     .row
       if (is_admin == true)
         .col-lg-12: ul.nav.nav-tabs(role="tablist")

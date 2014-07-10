@@ -8,15 +8,16 @@ mongoose.connect('mongodb://localhost/test');
 var Schema = mongoose.Schema;
 var UserDetail = new Schema({
       username: String,
-      password: String
+      password: String,
+      init_investmt_date: 'object'
     }, {
       collection: 'userInfo'
     });
 var UserDetails = mongoose.model('userInfo', UserDetail);
 
-function addUser(username, password) {
+function addUser(username, password, init_investmt_date) {
   console.log('----------------------')
-  var a = new UserDetails({'username': username,'password': password});
+  var a = new UserDetails({ 'username': username,'password': password, 'init_investmt_date': init_investmt_date });
   a.save(function (err) {     if (err)  console.log('ERROR');     });
   console.log('user ' + a.username + ' has been added');
   console.log('----------------------')

@@ -7,7 +7,7 @@
 body {
 	background-color: white;
 	/*background: url("../images/lightt_wool.png") repeat;*/
-  padding: 50px;
+  /*padding: 50px;*/
   font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 
@@ -37,6 +37,25 @@ h3 {
 	padding-left: 8px; padding-right: 8px;
 	color: white;
 	background-color: #999;
+}
+
+.toolbar {
+	background-color: #eee;
+	padding: 4px;
+	width:100%;
+}
+
+.col-xs-1 {
+	padding-top: 2px;
+	/*margin-right: 15px;*/
+}
+
+h5 {
+	margin: 0px;
+	padding: 4px;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	font-size: 11pt;
 }
 
 a {

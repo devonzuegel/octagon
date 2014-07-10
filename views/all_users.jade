@@ -3,31 +3,28 @@ extends layout
 
 block mainContent
 
-
-  //- .pull-right: a(href='../users/add_user')
-  //-   | New company 
-  //-   span.glyphicon.glyphicon-plus-sign
   br
   
-  if (companies.length > 1)
-    table#sort.table-striped
-      thead: tr
-        th #
-        th Company Name
-        th Password
-        td(style="width:50px").tooltip_a
-          a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
-            span.glyphicon.glyphicon-plus-sign
-      tbody
-        each c, i in companies
+  table#sort.table-striped
+    thead: tr
+      th Initial Investment
+      th Company Name
+      th Password
+      td(style="width:45px").tooltip_a
+        a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
+          span.glyphicon.glyphicon-plus-sign
+    tbody
+      if (companies.length > 1)
+        each c in companies
           if (c.username != 'admin')
             tr(onclick="window.location = '../users/" + c.username + "'", style="cursor: pointer")
-              td: a #{i}
+              td: a #{c.init_investmt_date}
               td: a #{c.username}
               td: a #{c.password}
               td
-  else
-    p.error There are no companies in the network!
+
+  if (companies.length <= 1)
+    tr: p.error There are no companies in the network!
 
 
 

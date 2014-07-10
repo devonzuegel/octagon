@@ -26,6 +26,7 @@ router.get('/', function(req, res) {
                                                       errors: req.flash('error'),
                                                       companies: all_users,
                                                       tab: 'companies',
+                                                      username: req.session.username,
                                                       is_admin: true  });
                           });
                       }, function() { 
@@ -50,7 +51,11 @@ router.get('/add_user', function(req, res) {
     // } else {
     //   res.render('add_user', {title:"Add user", errors: undefined});
     // }
-    res.render('add_user', { title:"New Company", is_admin: true, errors: undefined, tab: 'companies' });
+    res.render('add_user', { title:"New Company", 
+                             is_admin: true, 
+                             errors: undefined,
+                             username: req.session.username,
+                             tab: 'companies' });
   });
 
   function username_inuse(u) {
@@ -74,7 +79,8 @@ router.get('/add_user', function(req, res) {
 
     UserDetails.find({'username': req.body.username }, function(err, u) {
       if (err)    return done(err);
-      UserModel.addUser(req.body.username, req.body.password);
+      console.log('req.body.init_investmt_date:  %j', req.body.init_investmt_date);
+      UserModel.addUser(req.body.username, req.body.password, req.body.init_investmt_date);
       res.redirect('/users/');
     });
   /*  UserModel.printAll(); // prints all User data
@@ -126,6 +132,7 @@ router.get('/:username', function(req, res) {
                               return res.render('users', {username: u_param,
                                                           errors: req.flash('error'),
                                                           title: u_param,
+                                                          username: req.session.username,
                                                           is_admin: true  });
                             } else {
                               req.flash('error', 'That company doesn\'t exist! Here are your options:.')
@@ -134,14 +141,14 @@ router.get('/:username', function(req, res) {
                           });
                       }, function() {
                           if (u_session != u_param) {
-                            req.flash('error', 'You do not have permission to perform that action.');
+                            // req.flash('error', 'You do not have permission to perform that action.');
                             res.redirect('/users/' + u_session);
                           }
-                      }//, function() { // callback function, complete only after require_priv() is done
-                     // }
+                      }
   );
   return res.render('users', {username: u_param, 
                               errors: req.flash('error'), 
+                              username: req.session.username,
                               title: u_param,
                               is_admin: (u_session == 'admin'),
                               tab: (u_session == 'admin') ? 'companies' : ''});  

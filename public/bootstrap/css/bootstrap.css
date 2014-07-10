@@ -12393,3 +12393,7 @@ a.badge:focus {
 .carousel-caption p {
   margin-bottom: 0;
 }
+
+.container {
+  max-width: 85%;
+}
