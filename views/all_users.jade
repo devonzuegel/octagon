@@ -1,6 +1,17 @@
 extends layout
 <link href='style2.css' rel='stylesheet'>
 
+block topRight
+  .tooltip_a
+    a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company" style='margin: 15px')
+      span.glyphicon.glyphicon-plus-sign
+  //- <div style="width:45px" class="tooltip_a sort-header">
+    //- <a href="../users/add_user" data-toggle="tooltip" data-original-title="New company" aria-describedby="tooltip952999">
+      //- <span class="glyphicon glyphicon-plus-sign"></span>
+    //- </a>
+  //- </div>  
+
+
 block mainContent
 
   br
@@ -10,7 +21,7 @@ block mainContent
       th Initial Investment
       th Company Name
       th Password
-      td(style="width:45px").tooltip_a
+      //- td(style="width:45px").tooltip_a
         a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
           span.glyphicon.glyphicon-plus-sign
     tbody
@@ -21,7 +32,7 @@ block mainContent
               td: a #{c.init_investmt_date}
               td: a #{c.username}
               td: a #{c.password}
-              td
+              //- td
 
   if (companies.length <= 1)
     tr: p.error There are no companies in the network!

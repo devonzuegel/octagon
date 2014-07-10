@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
                      function() {
                           UserDetails.find({}, function(err, all_users) {
                             if (err)    return done(err);
-                            res.render('all_users', { title: 'Portfolio companies', 
+                            res.render('all_users', { title: 'Portfolio', 
                                                       errors: req.flash('error'),
                                                       companies: all_users,
                                                       tab: 'companies',
@@ -125,33 +125,28 @@ router.get('/:username', function(req, res) {
   var u_session = req.session.username;
 
   require_privileges(req, res, false, 
+                     function() { return }, 
                      function() {
-                          UserDetails.findOne({ 'username': u_param, }, function(err, user) {
-                            if (err)    return done(err);
-                            if (user != null) {
-                              return res.render('users', {username: u_param,
-                                                          errors: req.flash('error'),
-                                                          title: u_param,
-                                                          username: req.session.username,
-                                                          is_admin: true  });
-                            } else {
-                              req.flash('error', 'That company doesn\'t exist! Here are your options:.')
-                              return res.redirect('/users');
-                            }
-                          });
-                      }, function() {
                           if (u_session != u_param) {
                             // req.flash('error', 'You do not have permission to perform that action.');
                             res.redirect('/users/' + u_session);
                           }
                       }
   );
-  return res.render('users', {username: u_param, 
-                              errors: req.flash('error'), 
-                              username: req.session.username,
-                              title: u_param,
-                              is_admin: (u_session == 'admin'),
-                              tab: (u_session == 'admin') ? 'companies' : ''});  
+
+  UserDetails.findOne({ 'username': u_param, }, function(err, user) {
+    if (err)    return done(err);
+    if (user == null) {
+      req.flash('error', 'That company doesn\'t exist! Here are your options:.')
+      return res.redirect('/users');
+    } else {
+      return res.render('users', {errors: req.flash('error'), 
+        username: req.session.username,
+        title: u_param,
+        is_admin: (u_session == 'admin'),
+        tab: (u_session == 'admin') ? 'companies' : ''});  
+    }
+  });
 });
 
 
