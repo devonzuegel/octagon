@@ -40,14 +40,15 @@ h3 {
 }
 
 .toolbar {
-	background-color: #eee;
-	padding: 4px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #ececec;
+	padding: 1px;
 	width:100%;
+	margin-bottom: 15px;
 }
 
-.col-xs-1 {
+.toolbar .col-xs-1 {
 	padding-top: 2px;
-	/*margin-right: 15px;*/
 }
 
 h5 {
