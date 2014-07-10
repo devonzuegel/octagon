@@ -2,7 +2,7 @@ doctype html
 <meta charset=”utf-8”> 
 html
   head
-    title= title
+    title #{title}
     link(rel='shortcut icon', href='http://formation8.com/wp-content/uploads/favicon.ico')
 
     //- STYLESHEETS -//////////////////////////////////////////////////////////
@@ -23,6 +23,7 @@ html
 
     //- JAVASCRIPTS -//////////////////////////////////////////////////////////
     script(type="text/javascript"): include ../public/javascripts/jquery.min.js
+    script(type="text/javascript"): include ../public/javascripts/jquery-ui.js
     script(type="text/javascript"): include ../public/bootstrap/js/bootstrap.min.js
 
     script.
@@ -42,7 +43,6 @@ html
       .col-xs-3.pull-right.tooltip_a
         //- if logged in
         a(href='../login' data-toggle="tooltip" data-original-title="Log in").pull-right
-          | Login 
           span.glyphicon.glyphicon-log-in
         //- else   
     .row

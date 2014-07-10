@@ -15,9 +15,9 @@ block mainContent
         th #
         th Company Name
         th Password
-        td(style='width:auto')
-          a(href='../users/add_user' data-toggle="tooltip" data-original-title="Log in")
-            span.glyphicon.glyphicon-plus-sign.text-center
+        td(style="width:50px").tooltip_a
+          a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
+            span.glyphicon.glyphicon-plus-sign
       tbody
         each c, i in companies
           if (c.username != 'admin')
