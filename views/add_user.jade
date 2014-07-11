@@ -4,7 +4,7 @@ block mainContent
   div.loginbox
     div.login-topbtm(style='height:30px')
       //- h1 #{title}
-    form(method="POST", action="/users/add_user")
+    form(method="POST"  action="/users/add_user"  enctype="multipart/form-data")
       container
         //- space
         .div(style='height:30px')
@@ -12,10 +12,11 @@ block mainContent
         //- tr.error #{error}
 
         //- username + password
-        .row: .col-lg-12: input(type="text", name="username", placeholder="company name")
-        .row: .col-lg-12: input(type="password", name="password", placeholder="password")
-        .row: .col-lg-12: input(type="password", name="password2", placeholder="confirm password")
-        .row: .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
+        .row: .col-lg-12: input(type="text"     name="username"           placeholder="company name")
+        .row: .col-lg-12: input(type="password" name="password"           placeholder="password")
+        .row: .col-lg-12: input(type="password" name="password2"          placeholder="confirm password")
+        .row: .col-lg-12: input(type="text"     name='init_investmt_date' placeholder="Date of initial investment"  class='calendar_input'   id="datepicker")
+        .row: .col-lg-12: input(type="file"     name="logo")
 
         //- space
         .div(style='height:30px')

@@ -8,7 +8,8 @@
   var flash = require('connect-flash')
   var session = require('express-session')
 
-
+  // var Dropzone = require("dropzone");
+  
   var routes = require('./routes/index');
   var users = require('./routes/users');
 
@@ -20,8 +21,9 @@
 
   app.use(favicon('./views/congruent_pentagon-DARK.png'));
   app.use(logger('dev'));
-  app.use(bodyParser.json());
+  app.use(bodyParser());
   app.use(bodyParser.urlencoded());
+  // app.user(app.router);
 
   app.use(cookieParser());
   // app.use(cookieParser('S3CRE7'));
