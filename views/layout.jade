@@ -24,7 +24,6 @@ html
     //- JAVASCRIPTS -//////////////////////////////////////////////////////////
     script(type="text/javascript"): include ../public/javascripts/jquery.min.js
     script(type="text/javascript"): include ../public/javascripts/jquery-ui.js
-    script(type="text/javascript"): include ../public/javascripts/dropzone.js
     script(type="text/javascript"): include ../public/bootstrap/js/bootstrap.min.js
 
     script.
@@ -55,10 +54,10 @@ html
           li(class=(tab=='companies') ? 'active' : ''): a(href='/users/')   Companies
           //- li(class=(tab=='events') ? 'active' : ''):    a(href='').test   Events
         //- br
-
+      
       .row(style="margin:auto; width:100%")
-        .col-xs-6: h1 #{title}
-        .col-xs-6: .pull-right: block topRight
+        .col-xs-11: h1 #{title}
+        .col-xs-1: .pull-right: block topRight
 
       if errors != '' && errors != undefined
         .col-lg-12

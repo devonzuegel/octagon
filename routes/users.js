@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
+// var formidable = require('formidable');
+
 
 // require (authentication stuff)
 var UserModel = require('../models/User.js'),
@@ -29,8 +30,8 @@ router.get('/', function(req, res) {
                                                       tab: 'companies',
                                                       username: req.session.username,
                                                       is_admin: true  });
-                          })
-;                      }, function() { 
+                          });
+                      }, function() { 
                           res.redirect('/users/' + req.session.username); 
                       }
   );
@@ -40,96 +41,85 @@ router.get('/', function(req, res) {
 // add_user methods
 router.get('/add_user', function(req, res) {
   require_privileges(req, res, true,
-   function() { return; },
-   function() { return res.redirect('/users/' + req.session.username); }
-   );
-  res.render('add_user', { title:"New Company", 
-   is_admin: true, 
-   errors: undefined,
-   username: req.session.username,
-   tab: 'companies' });
-});
+                     function() { return; },
+                      function() { return res.redirect('/users/' + req.session.username); }
+                    );
 
-function username_inuse(u) {
+    // // only the admin may add a user
+    // if (req.session.username != 'admin') {
+    //   req.flash('error', 'You do not have permission to perform that action.');
+    //   // require_privileges();
+    //   return res.redirect('../login');
+    // } else {
+    //   res.render('add_user', {title:"Add user", errors: undefined});
+    // }
+    res.render('add_user', { title:"New Company", 
+                             is_admin: true, 
+                             errors: undefined,
+                             username: req.session.username,
+                             tab: 'companies' });
+  });
+
+  function username_inuse(u) {
     return (u == 'add_user' ||  u == 'all');//  ||  
     // var u = UserDetails.findOne({ 'username': username, }, 
     //                             function(err, user) { return (!err  &&  user);  });
     // console.log("\n\nu= %j\n\n", u);
-}
-
-router.post('/add_user', function(req, res) {
-
-  if (req.body.password2 != req.body.password) {
-    res.cookie('errors', ["Please make sure your passwords match."]);
-    return res.redirect('/users/add_user');
   }
 
-  if (username_inuse(req.body.username)) {
-    res.cookie('errors', ["That username is already in use."]);
-    return res.redirect('/users/add_user');      
-  }
+  router.post('/add_user', function(req, res) {
 
-  UserDetails.find({'username': req.body.username }, function(err, u) {
-    if (err)    return done(err);
-    console.log('req.body.init_investmt_date:  %j', req.body.init_investmt_date);
-/*
-    fs.readFile(req.files.logo.path, function (err, data) {
-      var logo_name = req.files.logo.path;
+    if (req.body.password2 != req.body.password) {
+      res.cookie('errors', ["Please make sure your passwords match."]);
+      return res.redirect('/users/add_user');
+    }
 
-      // if there's an error...
-      if (!logo_name) {
-        console.log('Error!');
-        res.redirect('/');
-        res.end();
-      } else {
-        var new_path = __dirname + "/uploads/" + logo_name;
-        // write file to uploads folder
-        fs.writeFile(new_path, data, function(err) {
-          //let's see it
-          res.redirect("/uploads/fullsize/" + logo_name);
-        })
-      }
+    if (username_inuse(req.body.username)) {
+      res.cookie('errors', ["That username is already in use."]);
+      return res.redirect('/users/add_user');      
+    }
 
+    UserDetails.find({'username': req.body.username }, function(err, u) {
+      if (err)    return done(err);
+      console.log('req.body.init_investmt_date:  %j', req.body.init_investmt_date);
+      UserModel.addUser(req.body.username, req.body.password, req.body.init_investmt_date);
+      res.redirect('/users/');
     });
-*/
-    UserModel.addUser(req.body.username, req.body.password, req.body.init_investmt_date);
-    res.redirect('/users/');
-  });
-/*  UserModel.printAll(); // prints all User data
-    // console.log('username_inuse(username)= ' + username_inuse(username));
-    // if (username_inuse('a')) {
-    //  console.log('INUSE');
-    //  res.cookie('errors', ['That username has already been used, sorry!']);
-    //  return res.redirect('/register');
-    // } else {
-  
-        // bcrypt.genSalt(10, function(err, salt) {
-        // bcrypt.hash('k', salt, function(err, hash) {
-          // console.log('hash:' + hash);
+  /*  UserModel.printAll(); // prints all User data
+      // console.log('username_inuse(username)= ' + username_inuse(username));
+      // if (username_inuse('a')) {
+      //  console.log('INUSE');
+      //  res.cookie('errors', ['That username has already been used, sorry!']);
+      //  return res.redirect('/register');
+      // } else {
+    
+          // bcrypt.genSalt(10, function(err, salt) {
+          // bcrypt.hash('k', salt, function(err, hash) {
+            // console.log('hash:' + hash);
 
-          // var query = UserDetails.findOne({ 'username': 'Ghost' });
-          // // execute the query at a later time
-          // query.exec(function (err, u) {
-          //  if (err) return handleError(err);
-          //   console.log('%s %s is a %s.', u.name.first, u.name.last, u.occupation) // Space Ghost is a talk show host.
-          // })
-   */
+            // var query = UserDetails.findOne({ 'username': 'Ghost' });
+            // // execute the query at a later time
+            // query.exec(function (err, u) {
+            //  if (err) return handleError(err);
+            //   console.log('%s %s is a %s.', u.name.first, u.name.last, u.occupation) // Space Ghost is a talk show host.
+            // })
+     */
 
-            // var users = u; //JSON.stringify(eval("(" + u + ")"));
-            // console.log('---\nusers= %s\nreq.body.username= %s', u, req.body.username);
-      //       if (u !== '[]')  {
-              // console.log('users.username !== undefined');
-              // res.cookie('errors', ['That username has already been used, sorry!']);
-              // return res.redirect('/register');  
-            // } else {
-              // console.log('users.username === undefined');
-              // // UserModel.salt_fn(pw);
-            // }
+              // var users = u; //JSON.stringify(eval("(" + u + ")"));
+              // console.log('---\nusers= %s\nreq.body.username= %s', u, req.body.username);
+        //       if (u !== '[]')  {
+                // console.log('users.username !== undefined');
+                // res.cookie('errors', ['That username has already been used, sorry!']);
+                // return res.redirect('/register');  
+              // } else {
+                // console.log('users.username === undefined');
+                // // UserModel.salt_fn(pw);
+              // }
 
+        // });
       // });
-    // });
-  // }
-});
+    // }
+  });
 
 router.get('/:username', function(req, res) {
   var u_param = req.params.username; // gets :username from the url

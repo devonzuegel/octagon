@@ -278,9 +278,8 @@ th {
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   font-style: normal;
-  font-weight: light;
+  font-weight: normal;
   line-height: 1;
-  font-size: 105%;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2333,11 +2332,8 @@ input[type="checkbox"] {
   line-height: normal;
 }
 input[type="file"] {
-  width:225px;
-  font-size: 14px;
-  /*display: block;*/
+  display: block;
 }
-
 input[type="range"] {
   display: block;
   width: 100%;
@@ -5511,7 +5507,6 @@ button.close {
   }
 }
 .tooltip {
-  float:none;
   position: absolute;
   z-index: 1070;
   display: block;
@@ -5519,15 +5514,7 @@ button.close {
   line-height: 1.4;
   visibility: visible;
   filter: alpha(opacity=0);
-
-  /*Force one line*/
-  white-space:nowrap;
-  overflow:hidden;
-}
-.one_line {
-  /*Force one line*/
-  white-space:nowrap;
-  overflow:hidden;
+  /*opacity: 0;*/
 }
 .tooltip.in {
   filter: alpha(opacity=90);
@@ -7458,7 +7445,7 @@ input[type="checkbox"] {
 }
 
 input[type="submit"],
-/*input[type="file"],*/
+input[type="file"],
 input[type="image"],
 input[type="reset"],
 input[type="button"],
@@ -7469,13 +7456,13 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  /*height: 30px;*/
+  height: 30px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 
-  /**margin-top: 4px;*/
+  *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
 
-  /*line-height: 30px;*/
+  line-height: 30px;
 }
 
 select {

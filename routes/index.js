@@ -4,6 +4,8 @@
 			router = express.Router(),
 		 	app = require('../app.js');
 
+	var uploadManager = require('./uploadManager')(router);
+	
 	// hash/crypto stuff
 	var bcrypt = require('bcryptjs'),
 	    salt = bcrypt.genSaltSync(10),  
@@ -34,7 +36,12 @@
 						  	req.session.username = req.user.username;
 						  	if (req.session.is_admin) res.redirect('/');
 						  	else											res.redirect('/users/' + req.user.username);
-						  });	
+						  }
+	);	
+
+	router.get('/new_photo', function(req, res) {
+		res.render('new_photo', {title: 'New photo'});
+	});
 		/*
 			passport.authenticate('local', function(err, user, info) {
 				if (err)	return next(err);

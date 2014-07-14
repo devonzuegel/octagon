@@ -285,7 +285,7 @@
                 switch (cs[i].nodeType) {
                     case 1:
                         // ELEMENT_NODE
-                        str += that.getInnerText(cs[i]);
+                        // str += that.getInnerText(cs[i]);  // TODO put this back in
                     break;
                     case 3:
                         // TEXT_NODE
