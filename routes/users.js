@@ -66,11 +66,8 @@ router.post('/add_user', function(req, res) {
     return res.redirect('/users/add_user');      
   }
 
-  // console.log('res:  ' + JSON.stringify(req));
-
   UserDetails.find({'username': req.body.username }, function(err, u) {
     if (err)    return done(err);
-    console.log('req.body.init_investmt_date:  %j', req.body.init_investmt_date);
     UserModel.addUser(req.body.username, req.body.password, req.body.init_investmt_date);
     res.redirect('/users/');
   });
@@ -97,29 +94,19 @@ router.get('/:username', function(req, res) {
       req.flash('error', 'That company doesn\'t exist! Here are your options:.')
       return res.redirect('/users');
     } else {
-      // var options = { host: 'api.crunchbase.com/',
-      //                 port: 443,
-      //                 path: 'v/2/organization/Addepar?user_key=c7653c536c2266d0da1155557600c8a4"',
-      //                 method: 'GET',
-      //                 headers: { 'Content-Type': 'application/json' }
-      //               };
-      // api_mgr.getJSON(options, function(res) {
-        // I could work with the result html/json here.  I could also just return it
-        // console.log("onResult: (" + res.statusCode + ")" + JSON.stringify(result));
-        // res.statusCode = statusCode;
-        // res.send(result);
-        request("http://api.crunchbase.com/v/2/organization/Addepar?user_key=c7653c536c2266d0da1155557600c8a4", function(error, res, body) {
-          console.log(body);
-        });
-        return res.render('users', {errors: req.flash('error'), 
-                                    username: req.session.username,
-                                    c: user,
-                                    title: u_param,
-                                    is_admin: (u_session == 'admin'),
-                                    tab: (u_session == 'admin') ? 'companies' : ''
-                                    }
-                          );  
-      // });
+      var api_res;
+      request("http://api.crunchbase.com/v/2/organization/Addepar?user_key=c7653c536c2266d0da1155557600c8a4", function(error, response, body) {
+        api_res = JSON.parse(body).data.relationships.primary_image.items; // .data.relationships.primary_image.items.path
+        console.log('api_res: %j', api_res);
+        var details = { errors: req.flash('error'),
+                        username: req.session.username,
+                        c: user,
+                        title: u_param,
+                        is_admin: (u_session == 'admin'),
+                        tab: (u_session == 'admin') ? 'companies' : ''
+                      };
+        return res.render('users', details);
+      });  
     }
   });
 });
