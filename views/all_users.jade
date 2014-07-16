@@ -24,13 +24,13 @@ block mainContent
       th Password
       //- td(style="width:45px").tooltip_a
         a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
-          span.glyphicon.glyphicon-plus-sign
+          span.glyphicon.glyphicon-plus-sgn
     tbody
       if (companies.length > 1)
         each c in companies
           if (c.username != 'admin')
-            tr(onclick="window.location = '../users/" + c.username + "'"   style="cursor: pointer")
-              td
+            tr(onclick="window.location = '../users/" + c.username + "'").user
+              td(style='text-align:center')
                 if c.img_path != null
                   img(src="../uploaded/files/" + c.img_path   style="width:200px")
                 else
