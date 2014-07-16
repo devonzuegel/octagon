@@ -9,7 +9,8 @@ var Schema = mongoose.Schema;
 var UserDetail = new Schema({
       username: String,
       password: String,
-      init_investmt_date: 'object'
+      init_investmt_date: 'object',
+      img_path: String
     }, {
       collection: 'userInfo'
     });

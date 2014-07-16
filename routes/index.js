@@ -39,8 +39,8 @@
 						  }
 	);	
 
-	router.get('/new_photo', function(req, res) {
-		res.render('new_photo', {title: 'New photo'});
+	router.get('/new_photo/:c_id', function(req, res) {
+		res.render('new_photo', {title: 'New photo', c_id: c_id});
 	});
 
 // passport stuff

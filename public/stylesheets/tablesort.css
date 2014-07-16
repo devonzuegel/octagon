@@ -111,6 +111,7 @@ table {
           box-shadow:0 0 4px rgba(0,0,0,0.10);
 */  
 }
+
   table th,
   table td {
     padding:8px;
@@ -123,7 +124,7 @@ table {
     vertical-align:bottom;
     }
   table td {
-    vertical-align:top;
+    vertical-align:middle;
     }
   table thead:first-child tr th,
   table thead:first-child tr td {

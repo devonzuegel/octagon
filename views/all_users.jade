@@ -18,6 +18,7 @@ block mainContent
   
   table#sort.table-striped
     thead: tr
+      td
       th Initial Investment
       th Company Name
       th Password
@@ -28,7 +29,12 @@ block mainContent
       if (companies.length > 1)
         each c in companies
           if (c.username != 'admin')
-            tr(onclick="window.location = '../users/" + c.username + "'", style="cursor: pointer")
+            tr(onclick="window.location = '../users/" + c.username + "'"   style="cursor: pointer")
+              td
+                if c.img_path != null
+                  img(src="../uploaded/files/" + c.img_path   style="width:200px")
+                else
+                  a(href='../new_photo/' + c.id) Upload logo
               td: a #{c.init_investmt_date}
               td: a #{c.username}
               td: a #{c.password}

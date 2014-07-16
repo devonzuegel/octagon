@@ -65,7 +65,7 @@ router.post('/add_user', function(req, res) {
     return res.redirect('/users/add_user');      
   }
 
-  console.log('res:  ' + JSON.stringify(req));
+  // console.log('res:  ' + JSON.stringify(req));
 
   UserDetails.find({'username': req.body.username }, function(err, u) {
     if (err)    return done(err);
@@ -90,18 +90,20 @@ router.get('/:username', function(req, res) {
                           }
                       }
   );
-
   UserDetails.findOne({ 'username': u_param, }, function(err, user) {
     if (err)    return done(err);
-    if (user == null) {
+    if (user == null  ||  u_param == 'admin') {
       req.flash('error', 'That company doesn\'t exist! Here are your options:.')
       return res.redirect('/users');
     } else {
       return res.render('users', {errors: req.flash('error'), 
-        username: req.session.username,
-        title: u_param,
-        is_admin: (u_session == 'admin'),
-        tab: (u_session == 'admin') ? 'companies' : ''});  
+                                  username: req.session.username,
+                                  c: user,
+                                  title: u_param,
+                                  is_admin: (u_session == 'admin'),
+                                  tab: (u_session == 'admin') ? 'companies' : ''
+                                  }
+                        );  
     }
   });
 });
