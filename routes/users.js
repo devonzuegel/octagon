@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 // var formidable = require('formidable');
-
+var api_mgr = require('./apiManager');
+var request = require("request");
 
 // require (authentication stuff)
 var UserModel = require('../models/User.js'),
@@ -96,14 +97,29 @@ router.get('/:username', function(req, res) {
       req.flash('error', 'That company doesn\'t exist! Here are your options:.')
       return res.redirect('/users');
     } else {
-      return res.render('users', {errors: req.flash('error'), 
-                                  username: req.session.username,
-                                  c: user,
-                                  title: u_param,
-                                  is_admin: (u_session == 'admin'),
-                                  tab: (u_session == 'admin') ? 'companies' : ''
-                                  }
-                        );  
+      // var options = { host: 'api.crunchbase.com/',
+      //                 port: 443,
+      //                 path: 'v/2/organization/Addepar?user_key=c7653c536c2266d0da1155557600c8a4"',
+      //                 method: 'GET',
+      //                 headers: { 'Content-Type': 'application/json' }
+      //               };
+      // api_mgr.getJSON(options, function(res) {
+        // I could work with the result html/json here.  I could also just return it
+        // console.log("onResult: (" + res.statusCode + ")" + JSON.stringify(result));
+        // res.statusCode = statusCode;
+        // res.send(result);
+        request("http://api.crunchbase.com/v/2/organization/Addepar?user_key=c7653c536c2266d0da1155557600c8a4", function(error, res, body) {
+          console.log(body);
+        });
+        return res.render('users', {errors: req.flash('error'), 
+                                    username: req.session.username,
+                                    c: user,
+                                    title: u_param,
+                                    is_admin: (u_session == 'admin'),
+                                    tab: (u_session == 'admin') ? 'companies' : ''
+                                    }
+                          );  
+      // });
     }
   });
 });
