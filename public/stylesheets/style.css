@@ -130,8 +130,9 @@ h5 {
 	font-size: 11pt;
 }
 
-.toolbar a, h5 a { color: #ddd; }
-.toolbar a:hover, h5 a:hover { color: white; }
+
+.toolbar a { color: #ddd; }
+.toolbar a:hover { color: white; }
 
 img {
 	padding: 8px;
@@ -144,6 +145,7 @@ a {
 }
 
 a:hover {
+	cursor: pointer;
 	color: #428bca;
 }
 

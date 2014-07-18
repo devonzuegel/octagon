@@ -1,35 +1,63 @@
 extends layout
-block topRight	
-	//- .tooltip_a(style='margin-top: 15px')
-		a(href='../new_photo/'  data-toggle="tooltip" data-original-title="Update logo")
-			span.glyphicon.glyphicon-edit
+block topRight  
+  //- .tooltip_a(style='margin-top: 15px')
+    a(href='../new_photo/'  data-toggle="tooltip" data-original-title="Update logo")
+      span.glyphicon.glyphicon-edit
 
 block mainContent
-	.row.subheader
-		.col-xs-12
-			h3: a(href='#').selected Overview
-			h3: a(href='#') Financials
-			h3: a(href='#') Board Notes
-			h3: a(href='#') Communication
-			h3.sub: a(href='#') Edit
-	
-	.row
-		.col-xs-8
-			.card
-				h2 About
-				p #{description}
-				h6: p: a(href=homepage_url) <strong> #{homepage_url} </strong>
+  .row.subheader
+    .col-xs-12
+      h3: a(href='#').selected Overview
+      h3: a(href='#') Financials
+      h3: a(href='#') Board Notes
+      h3: a(href='#') Communication
+      h3.sub: a(href='#') Edit
+  
+  .row
+    .col-xs-8
+      .card
+        h2 About
 
-			.card: p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-			.card: p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
-		.col-xs-4
-			.card.text-center: img(src=img_path)
-			.blank
-				<h4>Founded:</h4> XXX
-				br
-				<h4>Founders:</h4> XXX
-				br
-				<h4>Funding:</h4> XXX
-				br
-				<h4>Categories:</h4> XXX
+        if (description == undefined)
+          h5: a
+            span.glyphicon.glyphicon-plus.loginout
+            .loginout Add description
+        else
+          a(href=homepage_url)
+            <strong> #{description} </strong>
+        
+
+        if (homepage_url == undefined) 
+          h5: a
+            span.glyphicon.glyphicon-plus.loginout
+            .loginout Add homepage url
+        else
+          a(href=homepage_url)
+            <strong> #{homepage_url} </strong>
+
+
+      .card: p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+
+      .card: p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+    .col-xs-4
+      .card.text-center
+
+        if (img_path == undefined)
+          .text-left: h5: a
+            span.glyphicon.glyphicon-plus.loginout
+            .loginout Add logo
+        else
+          img(src=img_path)
+        
+        
+      .blank
+        <h4>Founded:</h4> XXX
+        br
+        <h4>Founders:</h4> XXX
+        br
+        <h4>Funding:</h4> XXX
+        br
+        <h4>Categories:</h4> XXX

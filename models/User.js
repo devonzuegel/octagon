@@ -10,24 +10,21 @@ var UserDetail = new Schema({
       username: String,
       password: String,
       init_investmt_date: 'object',
-      img_path: String
+      img_path: String,
+      crunchbase_permalink: String
     }, {
       collection: 'userInfo'
     });
 var UserDetails = mongoose.model('userInfo', UserDetail);
 
-function addUser(username, password, init_investmt_date) {
-  // console.log('----------------------')
-  var a = new UserDetails({ 'username': username,'password': password, 'init_investmt_date': init_investmt_date });
+function addUser(username, password, init_investmt_date, crunchbase_permalink) {
+  var a = new UserDetails({ 'username': username,
+                            'password': password, 
+                            'init_investmt_date': init_investmt_date,
+                            'crunchbase_permalink': crunchbase_permalink });
   a.save(function (err) {     if (err)  console.log('ERROR');     });
-  // console.log('user ' + a.username + ' has been added');
-  // console.log('----------------------')
 }
 
-// function UserDetails.find(function (err, kittens) {
-//   if (err) return console.error(err);
-//   console.log(kittens)
-// })
 
 function printAll() {
   UserDetails.find(function (err, users) { console.log("users=  %j", users) });
