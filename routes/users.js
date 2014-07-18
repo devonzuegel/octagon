@@ -69,8 +69,12 @@ router.post('/add_user', function(req, res) {
 
   UserDetails.find({'username': form.username }, function(err, u) {
     if (err)    return done(err);
-    UserModel.addUser(form.username, form.password, form.init_investmt_date, form.crunchbase_permalink);
-    res.redirect('/users/');
+
+    UserModel.addUser(form.username, form.password, 
+                      form.init_investmt_date, 
+                      form.crunchbase_permalink, 
+                      function() { res.redirect('/users/'); }
+                     );  
   });
 
 });
@@ -91,38 +95,49 @@ router.get('/:username', function(req, res) {
   );
   UserDetails.findOne({ 'username': u_param, }, function(err, user) {
     if (err)    return done(err);
+
+
     if (user == null  ||  u_param == 'admin') {
+
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
         return res.redirect('/users');
+
     } else {
-        api_mgr.get_cmpny(user.crunchbase_permalink, function(body) {
 
-          if (!JSON.parse(body).data.response) return res.render('users', { errors: req.flash('error'),
-                                                                username: req.session.username,
-                                                                c: user,
-                                                                is_admin: (u_session == 'admin'),
-                                                                title: u_param });
-          else {
-            var img_path = JSON.parse(body).data.relationships.primary_image.items[0].path; // .data.relationships.primary_image.items.path
-            var short_descrptn = JSON.parse(body).data.properties.short_description;
-            var description = JSON.parse(body).data.properties.description;
-            var homepage_url = JSON.parse(body).data.properties.homepage_url.replace("http://","");
+      var body = user.crunchbase_prof;
 
-            var details = { errors: req.flash('error'),
-                            username: req.session.username,
-                            c: user,
-                            img_path: "http://images.crunchbase.com/" + img_path,
-                            short_descrptn: short_descrptn,
-                            description: description,
-                            homepage_url: homepage_url,
-                            title: u_param,
-                            is_admin: (u_session == 'admin'),
-                            tab: (u_session == 'admin') ? 'companies' : ''
-                          };
+      if (body.data.error) {
+          var details = { errors: req.flash('error'),
+                          username: req.session.username,
+                          c: user,
+                          is_admin: (u_session == 'admin'),
+                          title: u_param 
+                        };
+          return res.render('users',  details);
 
-            return res.render('users', details);
-          }
-        });
+      } else {
+          
+          var img_path = body.data.relationships.primary_image.items[0].path; // .data.relationships.primary_image.items.path
+          var short_descrptn = body.data.properties.short_description;
+          var description = body.data.properties.description;
+          var homepage_url = body.data.properties.homepage_url.replace("http://","");
+
+          var details = { errors: req.flash('error'),
+                          username: req.session.username,
+                          c: user,
+                          img_path: "http://images.crunchbase.com/" + img_path,
+                          short_descrptn: short_descrptn,
+                          description: description,
+                          homepage_url: homepage_url,
+                          title: u_param,
+                          is_admin: (u_session == 'admin'),
+                          tab: (u_session == 'admin') ? 'companies' : ''
+                        };
+          return res.render('users', details);
+
+      }
+
+
     }
   });
 });

@@ -40,37 +40,38 @@ h3 a {
 	margin: 0px 20px 3px 0px;
 	display: inline-block;
 	padding: 3px 11px 3px 11px;
-	/*border: 1px solid #f7f7f7;*/
+	border: 1px solid #f7f7f7;
 	color: #82B7E5;
 }
 
-h3 a:hover,
 h3 a.selected { 
 	/*border: 1px solid white;*/
 	border-radius: 6px;
 	color: white;
+	border: 1px solid #82B7E5;
 	background-color: #82B7E5;
-	/*background-color: #b3d3ef;*/
+}
+
+h3 a.selected:hover { 
+	border: 1px solid #529bda;
+	border-radius: 6px;
+	color: white;
 }
 
 h3.sub a {
 	margin: 0px;
 	font-size: 10pt;
-	/*opacity: .9;*/
 	border-radius: 6px;
 	border: 1px solid #82B7E5;
 	color: #82B7E5;
 	background: none;
-	/*background-color: #b3d3ef;*/
 }
 
+h3 a:hover,
 h3.sub a:hover {
-	/*background-color: #fdfdfd;*/
-	/*color: #529bda;*/
 	color: #529bda;
+	border-radius: 6px;
 	border: 1px solid #529bda;
-	/*opacity: 1;*/
-	/*border: 1px solid #82B7E5;*/
 }
 
 .sub { 

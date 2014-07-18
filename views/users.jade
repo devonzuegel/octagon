@@ -11,7 +11,7 @@ block mainContent
       h3: a(href='#') Financials
       h3: a(href='#') Board Notes
       h3: a(href='#') Communication
-      h3.sub: a(href='#') Edit
+      //- h3.sub: a(href='#') Edit
   
   .row
     .col-xs-8
@@ -24,8 +24,7 @@ block mainContent
             span.glyphicon.glyphicon-plus.loginout
             .loginout Add description
         else
-          a(href=homepage_url)
-            <strong> #{description} </strong>
+          p #{description}
         
 
         if (homepage_url == undefined) 
@@ -33,7 +32,7 @@ block mainContent
             span.glyphicon.glyphicon-plus.loginout
             .loginout Add homepage url
         else
-          a(href=homepage_url)
+          a(href=homepage_url).loginout
             <strong> #{homepage_url} </strong>
 
 

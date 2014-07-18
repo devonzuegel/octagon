@@ -2,6 +2,7 @@
 var passport = require('passport');
 var mongoose = require('mongoose/');
 mongoose.connect('mongodb://localhost/test');
+var api_mgr = require('../routes/apiManager');
 
 // var bcrypt = require('bcrypt');
 
@@ -11,19 +12,30 @@ var UserDetail = new Schema({
       password: String,
       init_investmt_date: 'object',
       img_path: String,
-      crunchbase_permalink: String
+      crunchbase_permalink: String,
+      crunchbase_prof: 'object'
     }, {
       collection: 'userInfo'
     });
 var UserDetails = mongoose.model('userInfo', UserDetail);
 
-function addUser(username, password, init_investmt_date, crunchbase_permalink) {
-  var a = new UserDetails({ 'username': username,
-                            'password': password, 
-                            'init_investmt_date': init_investmt_date,
-                            'crunchbase_permalink': crunchbase_permalink });
-  a.save(function (err) {     if (err)  console.log('ERROR');     });
+
+
+function addUser(username, password, init_investmt_date, crunchbase_permalink, callback) {
+  if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+  api_mgr.get_cmpny(crunchbase_permalink, function(body) {
+    var a = new UserDetails({ 'username': username,
+                              'password': password, 
+                              'init_investmt_date': init_investmt_date,
+                              'crunchbase_permalink': crunchbase_permalink,
+                              'crunchbase_prof': JSON.parse(body) 
+                            });
+    a.save(function (err) {     if (err)  console.log('ERROR');     });
+    callback();
+  });
 }
+
+
 
 
 function printAll() {
