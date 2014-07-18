@@ -2,7 +2,13 @@ extends layout
 <link href='style2.css' rel='stylesheet'>
 
 block topRight
-  .tooltip_a(style="padding-top:25px")
+  .row.subheader
+    .col-xs-12
+      h3.sub(style="margin-top:10px"): a(href='#') Edit
+  //- br
+  //- h3.sub: a(href='#') Add
+
+  //- .tooltip_a(style="padding-top:25px")
     a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
       span.glyphicon.glyphicon-plus-sign
   //- <div style="width:45px" class="tooltip_a sort-header">
@@ -14,7 +20,6 @@ block topRight
 
 block mainContent
 
-  br
   
   table#sort.table-striped
     thead: tr

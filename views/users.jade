@@ -1,6 +1,6 @@
 extends layout
-block topRight
-	.tooltip_a(style='margin-top: 15px')
+block topRight	
+	//- .tooltip_a(style='margin-top: 15px')
 		a(href='../new_photo/'  data-toggle="tooltip" data-original-title="Update logo")
 			span.glyphicon.glyphicon-edit
 
@@ -11,6 +11,7 @@ block mainContent
 			h3: a(href='#') Financials
 			h3: a(href='#') Board Notes
 			h3: a(href='#') Communication
+			h3.sub: a(href='#') Edit
 	
 	.row
 		.col-xs-8
@@ -22,7 +23,7 @@ block mainContent
 
 		.col-xs-4
 			.card.text-center: img(src=img_path)
-			.details
+			.blank
 				<h4>Founded:</h4> XXX
 				br
 				<h4>Founders:</h4> XXX

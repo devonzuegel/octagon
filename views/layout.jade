@@ -38,12 +38,16 @@ html
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
   .toolbar: .container: .row
-    .col-xs-3: h5: a(href='/users/') Portfolio
+    .col-xs-3: h5: a(href='/users/')
+      .pull-left: span.glyphicon.glyphicon-th 
+      .loginout Portfolio
+    //- Portfolio
     .col-xs-4.pull-right.tooltip_a
-      h5.text-right.a #{username}
-        .loginout
-          a(href='../login' data-toggle="tooltip" data-original-title="Log in").pull-right
-            span.glyphicon.glyphicon-log-in
+      h5: a(href='../login')
+        .text-right.a #{username}
+          .loginout
+            .pull-right
+              span.glyphicon.glyphicon-log-out
 
   .container
     //- if (is_admin == true)
@@ -54,8 +58,8 @@ html
       //- br
     
     .row
-      .col-xs-11: h1 #{title}
-      .col-xs-1.text-right: block topRight
+      .col-xs-10: h1 #{title}
+      .col-xs-2: block topRight
 
     if errors != '' && errors != undefined
       .col-lg-12
