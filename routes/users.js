@@ -96,11 +96,12 @@ router.get('/:username', function(req, res) {
     } else {
       var api_res;
       request("http://api.crunchbase.com/v/2/organization/Addepar?user_key=c7653c536c2266d0da1155557600c8a4", function(error, response, body) {
-        api_res = JSON.parse(body).data.relationships.primary_image.items; // .data.relationships.primary_image.items.path
+        api_res = JSON.parse(body).data.relationships.primary_image.items[0].path; // .data.relationships.primary_image.items.path
         console.log('api_res: %j', api_res);
         var details = { errors: req.flash('error'),
                         username: req.session.username,
                         c: user,
+                        img_path: "http://images.crunchbase.com/" + api_res,
                         title: u_param,
                         is_admin: (u_session == 'admin'),
                         tab: (u_session == 'admin') ? 'companies' : ''

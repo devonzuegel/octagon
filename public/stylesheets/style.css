@@ -5,9 +5,9 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 
 body {
-	background-color: white;
-	/*background: url("../images/lightt_wool.png") repeat;*/
-  /*padding: 50px;*/
+	margin-top: 40px;
+	line-height: 1.2;
+	background-color: #f7f7f7;
   font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 
@@ -20,6 +20,7 @@ h1 {
 }
 
 h2 {
+	padding: 8px;
 	font: 18pt 'Lato', serif;
 	font-weight: 400;
 	margin: 0;
@@ -29,28 +30,68 @@ h2 {
 
 h3 {
 	display: inline;
-	font: 13pt 'Lato', serif;
+	font: 12pt 'Lato', serif;
 	font-weight: 300;
-	border-radius: 2px;
-	padding: 3px;
-	padding-left: 8px; padding-right: 8px;
+	text-transform: uppercase;
+}
+
+h3 a {
+	margin: 0px 20px 3px 0px;
+	display: inline-block;
+	padding: 3px 11px 3px 11px;
+	/*border: 1px solid #f7f7f7;*/
+	color: #529bda;
+}
+
+h3 a:hover,
+h3 a.selected { 
+	/*border: 1px solid white;*/
+	border-radius: 6px;
 	color: white;
-	background-color: #999;
+	background-color: #82B7E5;
+}
+
+.details {
+	line-height: 1.7;
+	padding: 5px;
+}
+
+h4 {
+	display: inline;
+}
+
+.subheader {
+	margin-top:15px;
+	margin-bottom: 15px;
+}
+
+.card {
+	margin: 10px;
+	background-color: white;
+	border-radius: 4px;
+	padding: 5px;
+	width: 100%;
+	border: 1px solid #eee;
+	display: block;
 }
 
 .toolbar {
-	background-color: #f4f4f4;
-	border-bottom: 1px solid #ececec;
+	z-index: 10000;
+	top: 0px;
+	margin-top: -1px;
+	position: fixed;
+	background-color: #333;
+	border-bottom: 1px solid #222;
 	padding: 1px;
 	width:100%;
-	margin-bottom: 15px;
 }
 
 .toolbar .col-xs-1 {
 	padding-top: 2px;
-}
+}  
 
 h5 {
+	color: #d9d9d9;
 	margin: 0px;
 	padding: 4px;
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
@@ -58,23 +99,31 @@ h5 {
 	font-size: 11pt;
 }
 
+.toolbar a, h5 a { color: #ddd; }
+.toolbar a:hover, h5 a:hover { color: white; }
+
+img {
+	padding: 8px;
+}
+
 a {
-	color: #428bca;
+	color: #529bda;
   text-decoration: none;
   font-weight: 500;
 }
 
 a:hover {
-	color: #2a6496;
+	color: #428bca;
 }
 
 p {
+	line-height: 1.5;
 	text-align: left;
 	margin: 0px;
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	font-weight: 200;
-	font-size: 11pt;
-	padding: 10px;
+	font-size: 13pt;
+	padding: 8px;
 }
 
 .white { color: white; }
@@ -185,3 +234,18 @@ table th.sort-up:after {
   border-bottom:none;
   border-width:4px 4px 0;
   }
+
+.toolbar .container.row {
+	padding:0px;
+}
+
+.toolbar .container .row .col-xs-4,
+.toolbar .container .row .col-xs-1 {
+	/*padding: 0px;*/
+	/*margin: 0px;*/
+}
+
+.loginout {
+	margin-left:20px; 
+	display:inline;
+}
