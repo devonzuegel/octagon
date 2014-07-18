@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 // var formidable = require('formidable');
 var api_mgr = require('./apiManager');
-var request = require("request");
 
 // require (authentication stuff)
 var UserModel = require('../models/User.js'),
@@ -91,23 +90,29 @@ router.get('/:username', function(req, res) {
   UserDetails.findOne({ 'username': u_param, }, function(err, user) {
     if (err)    return done(err);
     if (user == null  ||  u_param == 'admin') {
-      req.flash('error', 'That company doesn\'t exist! Here are your options:.')
-      return res.redirect('/users');
+        req.flash('error', 'That company doesn\'t exist! Here are your options:.')
+        return res.redirect('/users');
     } else {
-      var api_res;
-      request("http://api.crunchbase.com/v/2/organization/Addepar?user_key=c7653c536c2266d0da1155557600c8a4", function(error, response, body) {
-        api_res = JSON.parse(body).data.relationships.primary_image.items[0].path; // .data.relationships.primary_image.items.path
-        console.log('api_res: %j', api_res);
-        var details = { errors: req.flash('error'),
-                        username: req.session.username,
-                        c: user,
-                        img_path: "http://images.crunchbase.com/" + api_res,
-                        title: u_param,
-                        is_admin: (u_session == 'admin'),
-                        tab: (u_session == 'admin') ? 'companies' : ''
-                      };
-        return res.render('users', details);
-      });  
+        api_mgr.get_cmpny(u_param, function(body) {
+          var img_path = JSON.parse(body).data.relationships.primary_image.items[0].path; // .data.relationships.primary_image.items.path
+          var short_descrptn = JSON.parse(body).data.properties.short_description;
+          var description = JSON.parse(body).data.properties.description;
+          var homepage_url = JSON.parse(body).data.properties.homepage_url.replace("http://","");
+
+          var details = { errors: req.flash('error'),
+                         username: req.session.username,
+                         c: user,
+                         img_path: "http://images.crunchbase.com/" + img_path,
+                         short_descrptn: short_descrptn,
+                         description: description,
+                         homepage_url: homepage_url,
+                         title: u_param,
+                         is_admin: (u_session == 'admin'),
+                         tab: (u_session == 'admin') ? 'companies' : ''
+                        };
+
+          return res.render('users', details);
+        });
     }
   });
 });
@@ -115,3 +120,8 @@ router.get('/:username', function(req, res) {
 
 module.exports = router;
 module.exports.require_privileges = require_privileges;
+
+// owner
+// monthly cash burn
+// cash balance
+// revenue

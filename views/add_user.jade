@@ -10,12 +10,11 @@ block mainContent
         div(style='height:30px')
 
         //- username + password
-        .row: .col-lg-12: input(type="text", name="username", placeholder="company name")
-        .row: .col-lg-12: input(type="password", name="password", placeholder="password")
-        .row: .col-lg-12: input(type="password", name="password2", placeholder="confirm password")
-        .row: .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
-        //- .row: .col-lg-12: input(type="file"    name="file"    id="file")
-        .row: .col-lg-12: input(type="file"    name="file"    id="file")
+        .col-lg-12: input(type="text", name="username", placeholder="company name")
+        .col-lg-12: input(type="password", name="password", placeholder="password")
+        .col-lg-12: input(type="password", name="password2", placeholder="confirm password")
+        .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
+        .col-lg-12: input(type='text' name='crunchbase_permalink', placeholder='CrunchBase permalink')
 
         //- space
         div(style='height:30px') 

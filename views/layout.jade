@@ -38,16 +38,16 @@ html
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
   .toolbar: .container: .row
-    .col-xs-3: h5: a(href='/users/')
-      .pull-left: span.glyphicon.glyphicon-th 
-      .loginout Portfolio
+    .col-xs-6: h5
+      a(href='/dashboard/'): .pull-left: span.glyphicon.glyphicon-dashboard
+      a(href='/users/'): .pull-left(style="margin-left:15px"): span.glyphicon.glyphicon-th 
+      //- .loginout Portfolio
     //- Portfolio
-    .col-xs-4.pull-right.tooltip_a
-      h5: a(href='../login')
-        .text-right.a #{username}
-          .loginout
-            .pull-right
-              span.glyphicon.glyphicon-log-out
+    .col-xs-6.pull-right.text-right.tooltip_a
+      h5.pull-right
+        | Hello, #{username}!
+        a(href='../login'): .pull-right(style="margin-left:15px"): span.glyphicon.glyphicon-log-out
+        a(href='../login'): .pull-right(style="margin-left:15px"): span.glyphicon.glyphicon-bell
 
   .container
     //- if (is_admin == true)
@@ -65,3 +65,4 @@ html
       .col-lg-12
         p.error #{errors}
     block mainContent
+    br

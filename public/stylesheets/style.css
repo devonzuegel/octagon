@@ -41,7 +41,7 @@ h3 a {
 	display: inline-block;
 	padding: 3px 11px 3px 11px;
 	/*border: 1px solid #f7f7f7;*/
-	color: #529bda;
+	color: #82B7E5;
 }
 
 h3 a:hover,
@@ -113,7 +113,7 @@ h4 {
 	position: fixed;
 	background-color: #333;
 	border-bottom: 1px solid #222;
-	padding: 1px;
+	padding: 3px;
 	width:100%;
 }
 

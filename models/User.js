@@ -17,11 +17,11 @@ var UserDetail = new Schema({
 var UserDetails = mongoose.model('userInfo', UserDetail);
 
 function addUser(username, password, init_investmt_date) {
-  console.log('----------------------')
+  // console.log('----------------------')
   var a = new UserDetails({ 'username': username,'password': password, 'init_investmt_date': init_investmt_date });
   a.save(function (err) {     if (err)  console.log('ERROR');     });
-  console.log('user ' + a.username + ' has been added');
-  console.log('----------------------')
+  // console.log('user ' + a.username + ' has been added');
+  // console.log('----------------------')
 }
 
 // function UserDetails.find(function (err, kittens) {
