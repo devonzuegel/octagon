@@ -36,8 +36,8 @@ block mainContent
           if (c.username != 'admin')
             tr(onclick="window.location = '../users/" + c.username + "'").user
               td(style='text-align:center')
-                if c.img_path != null
-                  img(src="../uploaded/files/" + c.img_path   style="width:200px")
+                if (c.crunchbase_prof.data.relationships)
+                  img(src= "http://images.crunchbase.com/" + c.crunchbase_prof.data.relationships.primary_image.items[0].path style="width:150px")
                 else
                   a(href='../new_photo/' + c.id) Upload logo
               td: a #{c.init_investmt_date}
