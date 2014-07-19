@@ -18,45 +18,73 @@ block mainContent
       .card
         h2 About
 
-
-        if (description == undefined)
-          h5: a
-            span.glyphicon.glyphicon-plus.loginout
-            .loginout Add description
+        if (c.description == undefined)
+            h5: a
+              span.glyphicon.glyphicon-plus.loginout
+              .loginout Add description
         else
-          p #{description}
+            p #{c.description}
         
-
-        if (homepage_url == undefined) 
-          h5: a
-            span.glyphicon.glyphicon-plus.loginout
-            .loginout Add homepage url
+        if (c.homepage_url == undefined) 
+            h5: a
+              span.glyphicon.glyphicon-plus.loginout
+              .loginout Add homepage url
         else
-          a(href=homepage_url).loginout
-            <strong> #{homepage_url} </strong>
+            a(href=homepage_url).loginout
+              <strong> #{c.homepage_url} </strong>
 
 
-      .card: p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+      .card
+        h2 Milestones
+        p Milestone 1
+        p Milestone 2
 
+      .card
+        h2 Team
+        p Joe Schmo
+        p Bilbo Baggins
 
       .card: p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
     .col-xs-4
       .card.text-center
 
-        if (img_path == undefined)
+        if (c.img_path == undefined)
           .text-left: h5: a
             span.glyphicon.glyphicon-plus.loginout
-            .loginout Add logo
+            .loginout add logo
         else
-          img(src=img_path)
+          img(src=c.img_path)
+          p.quote #{c.short_descrip}
+
         
         
-      .blank
-        <h4>Founded:</h4> XXX
+      .blank: p
+        h4 Founded: 
+        if (c.founded_on)
+          | #{c.founded_on}
+        else
+          h5: a  add date
         br
-        <h4>Founders:</h4> XXX
+
+        h4 Founders: 
+        if (c.founders)
+          | #{c.founders}
+          //- each f in c.founders
+          //- | #{f.name} 
+        else
+          h5: a add founders
         br
-        <h4>Funding:</h4> XXX
+
+        h4 Funding: 
+        if (c.total_funding)
+          | $#{c.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+        else
+          h5: a add funding info  
         br
-        <h4>Categories:</h4> XXX
+
+        h4 Categories: 
+        if (c.founders)
+          | #{c.founders}
+        else
+          h5: a add tags
