@@ -68,14 +68,18 @@ block mainContent
           h5: a  add date
         br
 
+
         h4 Founders: 
         if (p && p.founders)
-          | #{p.founders}
-          //- each f in p.founders
-          //- | #{f.name} 
+          each f,i in p.founders
+            if (i !=0)
+              | , 
+            a(href='http://api.crunchbase.com/v/2/' + f.path + '?user_key=c7653c536c2266d0da1155557600c8a4') #{f.name}
+            //- TODO hide our userkey
         else
           h5: a add founders
         br
+
 
         h4 Funding: 
         if (p && p.total_funding)
@@ -84,8 +88,12 @@ block mainContent
           h5: a add funding info  
         br
 
+
         h4 Categories: 
-        if (p && p.founders)
-          | #{p.founders}
+        if (p && p.categories)
+          each c,i in p.categories
+            if (i !=0)
+              | , 
+            a #{c.name}
         else
           h5: a add tags

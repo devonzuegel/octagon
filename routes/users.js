@@ -103,12 +103,12 @@ router.get('/:username', function(req, res) {
         return res.redirect('/users');
 
     } else {
+
       var details = { errors: req.flash('error'),
                       username: req.session.username,
                       title: u_param,
                       is_admin: (u_session == 'admin'),
-                      // c: c,
-                      p: user.profile
+                      p: user.profile,
                     };
       return res.render('users', details);
     }
