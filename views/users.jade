@@ -18,17 +18,17 @@ block mainContent
       .card
         h2 About
 
-        if (profile && profile.description)
-            p #{profile.description}
+        if (p && p.description)
+            p #{p.description}
         else
             h5: a
               span.glyphicon.glyphicon-plus.loginout
               .loginout Add description
         
 
-        if (profile && profile.homepage_url) 
+        if (p && p.homepage_url) 
             a(href=homepage_url).loginout
-              <strong> #{profile.homepage_url} </strong>
+              <strong> #{p.homepage_url} </strong>
         else
             h5: a
               span.glyphicon.glyphicon-plus.loginout
@@ -50,9 +50,9 @@ block mainContent
     .col-xs-4
       .card.text-center
 
-        if (profile && profile.img_path)
-          img(src=profile.img_path)
-          p.quote #{profile.short_descrip}
+        if (p && p.img_path)
+          img(src=p.img_path)
+          p.quote #{p.short_descrip}
         else
           .text-left: h5: a
             span.glyphicon.glyphicon-plus.loginout
@@ -62,30 +62,30 @@ block mainContent
         
       .blank: p
         h4 Founded: 
-        if (profile && profile.founded_on)
-          | #{profile.founded_on}
+        if (p && p.founded_on)
+          | #{p.founded_on}
         else
           h5: a  add date
         br
 
         h4 Founders: 
-        if (profile && profile.founders)
-          | #{profile.founders}
-          //- each f in profile.founders
+        if (p && p.founders)
+          | #{p.founders}
+          //- each f in p.founders
           //- | #{f.name} 
         else
           h5: a add founders
         br
 
         h4 Funding: 
-        if (profile && profile.total_funding)
-          | $#{profile.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+        if (p && p.total_funding)
+          | $#{p.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
         else
           h5: a add funding info  
         br
 
         h4 Categories: 
-        if (profile && profile.founders)
-          | #{profile.founders}
+        if (p && p.founders)
+          | #{p.founders}
         else
           h5: a add tags

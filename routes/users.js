@@ -103,26 +103,12 @@ router.get('/:username', function(req, res) {
         return res.redirect('/users');
 
     } else {
-
-      var profile = user.crunchbase_prof;
-
-      var c = {};
-      if (!profile.error) {
-        c = { img_path:       "http://images.crunchbase.com/" + profile.relationships.primary_image.items[0].path,
-              short_descrip:  profile.properties.short_description,
-              description:    profile.properties.description,
-              homepage_url:   profile.properties.homepage_url.replace("http://",""),
-              founded_on:     profile.properties.founded_on,
-              total_funding:  profile.properties.total_funding_usd,
-              // founders:       JSON.toString(profile.relationships.founders.items)
-            };
-      }
       var details = { errors: req.flash('error'),
                       username: req.session.username,
                       title: u_param,
                       is_admin: (u_session == 'admin'),
-                      c: c,
-                      profile: user.profile
+                      // c: c,
+                      p: user.profile
                     };
       return res.render('users', details);
     }

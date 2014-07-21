@@ -27,7 +27,9 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, c
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
     // TODO what if p or p.data is undefined?
     var p = JSON.parse(body).data;
-    var profile = { img_path:       "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path,
+    var profile;
+    if (p.response != false) {
+        profile = { img_path:       "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path,
                     short_descrip:  p.properties.short_description,
                     description:    p.properties.description,
                     homepage_url:   p.properties.homepage_url.replace("http://",""),
@@ -35,6 +37,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, c
                     total_funding:  p.properties.total_funding_usd,
                     // founders:       JSON.toString(p.relationships.founders.items)
                   };
+    }
     var a = new UserDetails({ 'username': username,
                               'password': password, 
                               'init_investmt_date': init_investmt_date,
