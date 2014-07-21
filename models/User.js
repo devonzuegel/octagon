@@ -13,7 +13,8 @@ var UserDetail = new Schema({
       init_investmt_date: 'object',
       img_path: String,
       crunchbase_permalink: String,
-      crunchbase_prof: 'object'
+      crunchbase_prof: 'object',
+      profile: 'object'
     }, {
       collection: 'userInfo'
     });
@@ -24,11 +25,22 @@ var UserDetails = mongoose.model('userInfo', UserDetail);
 function addUser(username, password, init_investmt_date, crunchbase_permalink, callback) {
   if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
+    // TODO what if p or p.data is undefined?
+    var p = JSON.parse(body).data;
+    var profile = { img_path:       "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path,
+                    short_descrip:  p.properties.short_description,
+                    description:    p.properties.description,
+                    homepage_url:   p.properties.homepage_url.replace("http://",""),
+                    founded_on:     p.properties.founded_on,
+                    total_funding:  p.properties.total_funding_usd,
+                    // founders:       JSON.toString(p.relationships.founders.items)
+                  };
     var a = new UserDetails({ 'username': username,
                               'password': password, 
                               'init_investmt_date': init_investmt_date,
                               'crunchbase_permalink': crunchbase_permalink,
-                              'crunchbase_prof': JSON.parse(body) 
+                              'crunchbase_prof': p,
+                              'profile': profile
                             });
     a.save(function (err) {     if (err)  console.log('ERROR');     });
     callback();

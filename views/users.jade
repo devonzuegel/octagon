@@ -18,20 +18,21 @@ block mainContent
       .card
         h2 About
 
-        if (c.description == undefined)
+        if (profile && profile.description)
+            p #{profile.description}
+        else
             h5: a
               span.glyphicon.glyphicon-plus.loginout
               .loginout Add description
-        else
-            p #{c.description}
         
-        if (c.homepage_url == undefined) 
+
+        if (profile && profile.homepage_url) 
+            a(href=homepage_url).loginout
+              <strong> #{profile.homepage_url} </strong>
+        else
             h5: a
               span.glyphicon.glyphicon-plus.loginout
               .loginout Add homepage url
-        else
-            a(href=homepage_url).loginout
-              <strong> #{c.homepage_url} </strong>
 
 
       .card
@@ -49,42 +50,42 @@ block mainContent
     .col-xs-4
       .card.text-center
 
-        if (c.img_path == undefined)
+        if (profile && profile.img_path)
+          img(src=profile.img_path)
+          p.quote #{profile.short_descrip}
+        else
           .text-left: h5: a
             span.glyphicon.glyphicon-plus.loginout
             .loginout add logo
-        else
-          img(src=c.img_path)
-          p.quote #{c.short_descrip}
 
         
         
       .blank: p
         h4 Founded: 
-        if (c.founded_on)
-          | #{c.founded_on}
+        if (profile && profile.founded_on)
+          | #{profile.founded_on}
         else
           h5: a  add date
         br
 
         h4 Founders: 
-        if (c.founders)
-          | #{c.founders}
-          //- each f in c.founders
+        if (profile && profile.founders)
+          | #{profile.founders}
+          //- each f in profile.founders
           //- | #{f.name} 
         else
           h5: a add founders
         br
 
         h4 Funding: 
-        if (c.total_funding)
-          | $#{c.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+        if (profile && profile.total_funding)
+          | $#{profile.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
         else
           h5: a add funding info  
         br
 
         h4 Categories: 
-        if (c.founders)
-          | #{c.founders}
+        if (profile && profile.founders)
+          | #{profile.founders}
         else
           h5: a add tags

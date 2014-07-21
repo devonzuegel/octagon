@@ -105,50 +105,24 @@ router.get('/:username', function(req, res) {
     } else {
 
       var profile = user.crunchbase_prof;
-/*
-      if (body.data.error) {
-          var details = { errors: req.flash('error'),
-                          username: req.session.username,
-                          c: user,
-                          is_admin: (u_session == 'admin'),
-                          title: u_param 
-                        };
-          return res.render('users',  details);
 
-      } else {
-          
-          var details = { errors: req.flash('error'),
-                          username: req.session.username,
-                          c: user,
-                          img_path: "http://images.crunchbase.com/" + img_path,
-                          short_descrptn: short_descrptn,
-                          description: description,
-                          homepage_url: homepage_url,
-                          title: u_param,
-                          is_admin: (u_session == 'admin'),
-                          tab: (u_session == 'admin') ? 'companies' : '',
-                          body: body
-                        };
-          return res.render('users', details);
-
-      }
-*/
       var c = {};
-      if (!profile.data.error) {
-        c = { img_path:       "http://images.crunchbase.com/" + profile.data.relationships.primary_image.items[0].path,
-              short_descrip:  profile.data.properties.short_description,
-              description:    profile.data.properties.description,
-              homepage_url:   profile.data.properties.homepage_url.replace("http://",""),
-              founded_on:     profile.data.properties.founded_on,
-              total_funding:  profile.data.properties.total_funding_usd,
-              // founders:       JSON.toString(profile.data.relationships.founders.items)
+      if (!profile.error) {
+        c = { img_path:       "http://images.crunchbase.com/" + profile.relationships.primary_image.items[0].path,
+              short_descrip:  profile.properties.short_description,
+              description:    profile.properties.description,
+              homepage_url:   profile.properties.homepage_url.replace("http://",""),
+              founded_on:     profile.properties.founded_on,
+              total_funding:  profile.properties.total_funding_usd,
+              // founders:       JSON.toString(profile.relationships.founders.items)
             };
       }
       var details = { errors: req.flash('error'),
                       username: req.session.username,
                       title: u_param,
                       is_admin: (u_session == 'admin'),
-                      c: c
+                      c: c,
+                      profile: user.profile
                     };
       return res.render('users', details);
     }
