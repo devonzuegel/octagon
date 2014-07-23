@@ -8412,7 +8412,7 @@ table {
 
 .table-striped tbody > tr:nth-child(odd) > td,
 .table-striped tbody > tr:nth-child(odd) > th {
-  background-color: #fdfdfd;
+  background-color: #fdfdff;
 }
 
 .table-hover tbody tr:hover > td,

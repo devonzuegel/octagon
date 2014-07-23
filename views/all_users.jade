@@ -1,56 +1,81 @@
 extends layout
-<link href='style2.css' rel='stylesheet'>
+
+block h
+  style(type="text/css"): include ../public/stylesheets/mixitup.css
 
 block topRight
   .row.subheader
     .col-xs-12
       h3.sub(style="margin-top:10px"): a(href='../users/add_user') Add
-  //- br
-  //- h3.sub: a(href='#') Add
-
-  //- .tooltip_a(style="padding-top:25px")
-    a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
-      span.glyphicon.glyphicon-plus-sign
-  //- <div style="width:45px" class="tooltip_a sort-header">
-    //- <a href="../users/add_user" data-toggle="tooltip" data-original-title="New company" aria-describedby="tooltip952999">
-      //- <span class="glyphicon glyphicon-plus-sign"></span>
-    //- </a>
-  //- </div>  
-
 
 block mainContent
 
+  //- - var test_sort = function(companies) {
+  //- //- -   console.log('BEFORE:');
+  //- //- -   for(var i = 0; i < companies.length; i++) {
+  //- //- -     console.log('%d  %s', i, companies[i].username);
+  //- //- -   }
+  //- -   companies.sort(function(a,b){
+  //- -     if (a.username.toLowerCase() > b.username.toLowerCase())  return 1;
+  //- -     if (a.username.toLowerCase() < b.username.toLowerCase())  return -1;
+  //- -     if (a.username.toLowerCase() == b.username.toLowerCase()) return 0;
+  //- -   });
+  //- //- -   console.log('AFTER:');
+  //- //- -   for(var i = 0; i < companies.length; i++) {
+  //- //- -     console.log('%d  %s', i, companies[i].username);
+  //- //- -   }
+  //- -   return companies;
+  //- - }
+
+  //- - var sorted = test_sort(companies)
+  //- - var extra = 4 - (companies.length-1)%4
+  //- if (companies.length > 1)
+  //-   .portfolio-row
+  //-     each c, i in sorted
+  //-       if (c.username != 'admin')
+  //-         if (i%5==0)
+  //-           div(style='height:0px; padding:0px; padding:0px')
+  //-         .portfolio-card(onclick="window.location = '../users/" + c.username + "'")
+  //-           div(style='display:inline')
+  //-             if (c.crunchbase_prof.relationships)
+  //-               img(src=c.profile.img_path)
+  //-             div: a <strong>#{c.username}</strong>
+  //-             div: a #{c.init_investmt_date}
+  //-     - for (var i = 0; i < extra; i++)
+  //-       .portfolio-card-empty
+
+
+  //- if (companies.length <= 1)
+  //-   p.error There are no companies in the network!
+
+  .controls
+    h4 Sort:
+    
+    button.filter(data-filter='all') All
+    button.filter(data-filter='.category-1') .category-1
+    button.filter(data-filter='.category-2') .category-2
+    
+    h4 Sort:
+
+    button.sort(data-sort='random') Random
+    button.sort(data-sort='name:asc') name:asc
+    button.sort(data-sort='name:dec') name:dec
+
+  #Container.container
+    .mix.category-1(data-name='Apple') Apple
+    .mix.category-2(data-name='Banana') Banana
+    .mix.category-2(data-name='Canteloupe') Canteloupe
+    .mix.category-1(data-name='Dried Apricot') Dried Apricot
+
+    //- <div class="gap"></div>
+    //- <div class="gap"></div>
+
   
-  table#sort.table-striped
-    thead: tr
-      td
-      th Initial Investment
-      th Company Name
-      th Password
-      //- td(style="width:45px").tooltip_a
-        a(href='../users/add_user' data-toggle="tooltip" data-original-title="New company")
-          span.glyphicon.glyphicon-plus-sgn
-    tbody
-      if (companies.length > 1)
-        each c in companies
-          if (c.username != 'admin')
-            tr(onclick="window.location = '../users/" + c.username + "'").user
-              td(style='text-align:center')
-                if (c.crunchbase_prof.relationships)
-                  img(src=c.profile.img_path  style="width:150px")
-                else
-                  a(href='../new_photo/' + c.id) Upload logo
-              td: a #{c.init_investmt_date}
-              td: a #{c.username}
-              td: a #{c.password}
-              //- td
-
-  if (companies.length <= 1)
-    tr: p.error There are no companies in the network!
-
-
-
-  //- tablesort javascript
-  script(type='text/javascript' src='/../javascripts/tablesort.uncompressed.js')
+  script(type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js')
+  script(type='text/javascript' src='http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js')
+  //- script(type='text/javascript' src='./jquery-1.11.0.js')
+  //- script(type='text/javascript' src='./jquery.mixitup.js')
   script.
-    new Tablesort(document.getElementById('sort'));
+    $(function(){
+      $('#Container').mixItUp();
+    });

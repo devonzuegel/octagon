@@ -1,8 +1,21 @@
 extends layout
 
+block h
+  style(type="text/css"): include ../public/stylesheets/dashboard.css
+
 block mainContent
-  h3: a Connect with company
   br
-  h3: a Respond
   br
-  h3: a View entire Portfolio
+  br
+  br
+  .dash-btn: a
+      h6 Connect
+      | Message a portfolio company
+
+  .dash-btn: a 
+      h6 Respond
+      | Manage company requests
+
+  .dash-btn: a(href='/users')
+    h6 Portfolio
+    | View portfolio companies

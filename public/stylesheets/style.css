@@ -7,6 +7,7 @@
 body {
 	margin-top: 40px;
 	line-height: 1.2;
+	/*background-color: #54369b;*/
 	background-color: #f7f7f7;
   font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
@@ -112,8 +113,9 @@ h4 {
 	top: 0px;
 	margin-top: -1px;
 	position: fixed;
-	background-color: #333;
-	border-bottom: 1px solid #222;
+	background-color: #45368b;
+	/*background-color: #333;*/
+	border-bottom: 1px solid  #25166b;
 	padding: 3px;
 	width:100%;
 }
@@ -145,14 +147,16 @@ img {
 }
 
 a {
-	color: #529bda;
+	/*color: #529bda;*/
   text-decoration: none;
   font-weight: 200;
+	color: #5c4ea3;
 }
 
 a:hover {
+	color: #45368b;
 	cursor: pointer;
-	color: #428bca;
+	/*color: #428bca;*/
 }
 
 td a {
@@ -296,4 +300,52 @@ table th.sort-up:after {
 .col-xs-4,
 .col-xs-8 {
 	margin: 0px;
+}
+
+.mix {
+	/*width: 200px;*/
+	/*height: 100px;*/
+	padding: 20px;
+	background-color: white;
+	border:1px solid #ddd;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+.filter, .sort {
+	display: inline;
+	border-radius: 5px;
+	width: 120px;
+	padding: 5px 15px 5px 15px;
+	background-color: #adf;
+	margin: 5px;
+}
+
+.portfolio-row {
+	/*border: 1px solid red;*/
+	width: auto;
+	margin: auto;
+	display: table-block;
+	border-spacing: 15px; /* For controlling spacing between cells... */
+}
+
+.portfolio-card {
+	text-align: center;
+	width: 20%;
+	border: 1px solid #ddd;
+	background: white;
+	padding: 10px;
+	display: table-cell;
+}
+
+.portfolio-card:hover {
+	cursor: pointer;
+	background-color: #fbfaff;
+	/*background-color: #fdfdfd;*/
+}
+
+.portfolio-card-empty {
+	width: 20%;
+	padding: 20px;
+	display: table-cell;
 }

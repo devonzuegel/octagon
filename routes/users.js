@@ -108,7 +108,7 @@ router.get('/:username', function(req, res) {
                       username: req.session.username,
                       title: u_param,
                       is_admin: (u_session == 'admin'),
-                      p: user.profile,
+                      p: user.profile
                     };
       return res.render('users', details);
     }

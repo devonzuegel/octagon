@@ -369,7 +369,7 @@ ol.linenums {
 .user:hover td a,
 .user:hover td,
 .user:hover {
-  background-color: #ecf3f9 !important;
+  background-color: #f6f6ff !important;
   /*border: 3px solid red;*/
   cursor: pointer;
 }

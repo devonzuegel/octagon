@@ -1,0 +1,111 @@
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, button{
+  font-family: 'Helvetica Neue', arial, sans-serif;
+}
+
+.controls{
+  padding: 2%;
+  background: #333;
+  color: #eee;
+}
+
+label{
+  font-weight: 300;
+  margin: 0 .4em 0 0;
+}
+
+button{
+  display: inline-block;
+  padding: .4em .8em;
+  background: #666;
+  border: 0;
+  color: #ddd;
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.active{
+  background: #68b8c4;
+}
+
+button:focus{
+  outline: 0 none;
+}
+
+button + label{
+  margin-left: 1em;
+}
+
+.mixitup-container{
+  padding: 2% 10% 2% 10%;
+  text-align: justify;
+  font-size: 0.1px;
+  background: #68b8c4;
+  
+  -webkit-backface-visibility: hidden;
+}
+
+.mixitup-container:after{
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.mixitup-container .mix,
+.mixitup-container .gap{
+  display: inline-block;
+  width: 49%;
+}
+
+.mixitup-container .mix{
+  text-align: left;
+  background: #03899c;
+  margin-bottom: 2%;
+  display: none;
+}
+
+.mixitup-container .mix.category-1{
+  border-top: 2px solid #aaa;
+}
+
+.mixitup-container .mix.category-2{
+  border-top: 2px solid yellow;
+}
+
+.mixitup-container .mix:after{
+  content: attr(data-myorder);
+  color: white;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 4% 6%;
+  font-weight: 700;
+}
+
+.mixitup-container .mix:before{
+  content: '';
+  display: inline-block;
+  padding-top: 60%;
+}
+
+@media all and (min-width: 420px){
+  .mixitup-container .mix,
+  .mixitup-container .gap{
+    width: 49%;
+  }
+}
+
+@media all and (min-width: 640px){
+  .mixitup-container .mix,
+  .mixitup-container .gap{
+    /*width: 23.5%;*/
+    width: 32%;
+  }
+}
