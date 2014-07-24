@@ -49,28 +49,28 @@ block mainContent
   //-   p.error There are no companies in the network!
 
   .controls
-    h4 Sort:
+    h3 Filter:
     
     button.filter(data-filter='all') All
     button.filter(data-filter='.category-1') .category-1
     button.filter(data-filter='.category-2') .category-2
     
-    h4 Sort:
+    h3 Sort:
 
     button.sort(data-sort='random') Random
     button.sort(data-sort='name:asc') name:asc
     button.sort(data-sort='name:dec') name:dec
 
-  #Container.container
-    .mix.category-1(data-name='Apple') Apple
-    .mix.category-2(data-name='Banana') Banana
-    .mix.category-2(data-name='Canteloupe') Canteloupe
-    .mix.category-1(data-name='Dried Apricot') Dried Apricot
-
-    //- <div class="gap"></div>
-    //- <div class="gap"></div>
-
-  
+  #Container
+    each c, i in companies
+      if (c.username != 'admin')
+          .mix.category-1(data-name=c.username  onclick="window.location = '../users/" + c.username + "'")
+            .v-center-container: .helper: .content.portfolio-card
+              if (c.crunchbase_prof.relationships)
+                img(src=c.profile.img_path style='max-width:100%; max-height:200px')
+              div: a <strong>#{c.username}</strong>
+              .small: a #{c.init_investmt_date}
+            
   script(type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js')
   script(type='text/javascript' src='http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js')
   //- script(type='text/javascript' src='./jquery-1.11.0.js')

@@ -7,7 +7,6 @@
 body {
 	margin-top: 40px;
 	line-height: 1.2;
-	/*background-color: #54369b;*/
 	background-color: #f7f7f7;
   font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
@@ -42,19 +41,19 @@ h3 a {
 	display: inline-block;
 	padding: 3px 11px 3px 11px;
 	border: 1px solid #f7f7f7;
-	color: #82B7E5;
+	color: #46379b;
 }
 
 h3 a.selected { 
 	/*border: 1px solid white;*/
 	border-radius: 6px;
 	color: white;
-	border: 1px solid #82B7E5;
-	background-color: #82B7E5;
+	border: 1px solid #46379b;
+	background-color: #46379b;
 }
 
 h3 a.selected:hover { 
-	border: 1px solid #529bda;
+	border: 1px solid #8a64d1;
 	border-radius: 6px;
 	color: white;
 }
@@ -63,16 +62,16 @@ h3.sub a {
 	margin: 0px;
 	font-size: 10pt;
 	border-radius: 6px;
-	border: 1px solid #82B7E5;
-	color: #82B7E5;
+	border: 1px solid #46379b;
+	color: #46379b;
 	background: none;
 }
 
 h3 a:hover,
 h3.sub a:hover {
-	color: #529bda;
+	color: #8a64d1;
 	border-radius: 6px;
-	border: 1px solid #529bda;
+	border: 1px solid #8a64d1;
 }
 
 .sub { 
@@ -113,16 +112,13 @@ h4 {
 	top: 0px;
 	margin-top: -1px;
 	position: fixed;
-	background-color: #45368b;
-	/*background-color: #333;*/
+	background-color: #45367C;
 	border-bottom: 1px solid  #25166b;
-	padding: 3px;
+	padding: 5px;
 	width:100%;
+	vertical-align: middle;
 }
 
-.toolbar .col-xs-1 {
-	padding-top: 2px;
-}  
 
 h5 {
 	display: inline;
@@ -150,11 +146,11 @@ a {
 	/*color: #529bda;*/
   text-decoration: none;
   font-weight: 200;
-	color: #5c4ea3;
+	color: #46379b;
 }
 
 a:hover {
-	color: #45368b;
+	color: #8a64d1;
 	cursor: pointer;
 	/*color: #428bca;*/
 }
@@ -300,52 +296,4 @@ table th.sort-up:after {
 .col-xs-4,
 .col-xs-8 {
 	margin: 0px;
-}
-
-.mix {
-	/*width: 200px;*/
-	/*height: 100px;*/
-	padding: 20px;
-	background-color: white;
-	border:1px solid #ddd;
-	border-radius: 3px;
-	margin: 10px;
-}
-
-.filter, .sort {
-	display: inline;
-	border-radius: 5px;
-	width: 120px;
-	padding: 5px 15px 5px 15px;
-	background-color: #adf;
-	margin: 5px;
-}
-
-.portfolio-row {
-	/*border: 1px solid red;*/
-	width: auto;
-	margin: auto;
-	display: table-block;
-	border-spacing: 15px; /* For controlling spacing between cells... */
-}
-
-.portfolio-card {
-	text-align: center;
-	width: 20%;
-	border: 1px solid #ddd;
-	background: white;
-	padding: 10px;
-	display: table-cell;
-}
-
-.portfolio-card:hover {
-	cursor: pointer;
-	background-color: #fbfaff;
-	/*background-color: #fdfdfd;*/
-}
-
-.portfolio-card-empty {
-	width: 20%;
-	padding: 20px;
-	display: table-cell;
 }
