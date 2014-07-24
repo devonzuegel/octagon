@@ -38,15 +38,17 @@
 				
 			animation: {
 				enable: true,
-				effects: 'fade scale',
-				duration: 600,
+
+				duration: 400,
+				effects: 'fade stagger(34ms)  scale(1.0)',
 				easing: 'ease',
+
 				perspectiveDistance: '3000',
 				perspectiveOrigin: '50% 50%',
 				queue: true,
 				queueLimit: 1,
 				animateChangeLayout: false,
-				animateResizeContainer: true,
+				animateResizeContainer: false,
 				animateResizeTargets: false,
 				staggerSequence: false,
 				reverseOut: false
@@ -77,7 +79,7 @@
 			
 			load: {
 				filter: 'all',
-				sort: false
+				sort: 'name:dec'
 			},
 			
 			/* Private Properties

@@ -14,6 +14,7 @@ var UserDetail = new Schema({
       img_path: String,
       crunchbase_permalink: String,
       crunchbase_prof: 'object',
+      owner: String,
       profile: 'object'
     }, {
       collection: 'userInfo'
@@ -22,14 +23,13 @@ var UserDetails = mongoose.model('userInfo', UserDetail);
 
 
 
-function addUser(username, password, init_investmt_date, crunchbase_permalink, callback) {
+function addUser(username, password, init_investmt_date, crunchbase_permalink, owner, callback) {
   if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
     // TODO what if p or p.data is undefined?
     var p = JSON.parse(body).data;
     var profile = undefined;
     if (p.response != false) {
-        // console.log(p.relationships);
         profile = { img_path:       "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path,
                     short_descrip:  p.properties.short_description,
                     description:    p.properties.description,
@@ -45,6 +45,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, c
                               'init_investmt_date': init_investmt_date,
                               'crunchbase_permalink': crunchbase_permalink,
                               'crunchbase_prof': p,
+                              'owner': owner,
                               'profile': profile
                             });
     a.save(function (err) {     if (err)  console.log('ERROR');     });

@@ -118,11 +118,11 @@ textarea {
   color: inherit;
 }
 button {
-  overflow: visible;
-  background-color: white;
+  /*overflow: visible;*/
+  /*background-color: white;*/
   /*border: 1px solid #ddd;*/
-  padding: 10px;
-  border: none;
+  /*padding: 10px;*/
+  /*border: none;*/
   /*border-radius: 2px;*/
 }
 
@@ -6553,7 +6553,7 @@ a:focus {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  width: 1040px;
   max-width: 99%;
 }
 
@@ -7341,7 +7341,6 @@ label {
   margin-bottom: 5px;
 }
 
-select,
 textarea,
 input[type="file"],
 input[type="text"],
@@ -7358,19 +7357,27 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
+select,
 .uneditable-input {
+  border-radius: 2px !important;
+  border: 1px solid #cccccc;
   display: inline-block;
-  height: 20px;
-  padding: 4px 6px;
-  margin-bottom: 10px;
-  width:225px;
-  font-size: 14px;
-  line-height: 20px;
+  height: 30px;
+  padding: 25px 20px 20px 20px;
+  margin-top: 15px;
+  width:340px;
+  font-size: 19px;
+  line-height: 100%;
   color: #555555;
   vertical-align: middle;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
+}
+
+select { 
+  height: auto;
+  padding: 10px 0px 10px 20px;
 }
 
 input,
@@ -7401,7 +7408,6 @@ input[type="color"],
 .uneditable-input {
   background-color: #ffffff;
   border: 1px solid #cccccc;
-  padding: 15px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -7427,14 +7433,15 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-color: rgba(82, 168, 236, 0.8);
+  border-color: rgba(31, 18, 83, 0.3);
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
+  box-shadow: 0 0 10px rgba(31, 18, 83, .3);
 
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
+     /*-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
+          /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
 }
 
 input[type="radio"],
@@ -7453,29 +7460,6 @@ input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
   margin-bottom: 10px;
-}
-
-select,
-input[type="file"] {
-  height: auto;
-  /* In IE7, the height of the select element cannot be changed by height, only font-size */
-
-  *margin-top: 4px;
-  /* For IE7, add top margin to align select with labels */
-
-  /*line-height: 30px;*/
-  padding: 8px;
-}
-
-select {
-  width: 220px;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-}
-
-select[multiple],
-select[size] {
-  height: auto;
 }
 
 select:focus,

@@ -20,7 +20,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 }
 
 router.get('/', function(req, res) {
-  require_privileges(req, res, true, 
+  require_privileges(req, res, false, 
                      function() {
                           UserDetails.find({}, function(err, all_users) {
                             if (err)    return done(err);
@@ -72,7 +72,8 @@ router.post('/add_user', function(req, res) {
 
     UserModel.addUser(form.username, form.password, 
                       form.init_investmt_date, 
-                      form.crunchbase_permalink, 
+                      form.crunchbase_permalink,
+                      form.owner,
                       function() { res.redirect('/users/'); }
                      );  
   });

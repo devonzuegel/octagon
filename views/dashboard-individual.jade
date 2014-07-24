@@ -1,8 +1,21 @@
 extends layout
 
+block h
+  style(type="text/css"): include ../public/stylesheets/dashboard.css
+
 block mainContent
-  h3: a Connect with Formation 8
   br
-  h3: a Respond from Formation 8
   br
-  h3: a View / edit profile
+  br
+  br
+  .dash-btn: a
+      h6 Connect
+      | Make a request Formation 8
+
+  .dash-btn: a 
+      h6 Respond
+      | Manage messages from Formation 8
+
+  .dash-btn: a(href='/users')
+    h6 Profile
+    | View / edit profile
