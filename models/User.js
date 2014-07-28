@@ -14,7 +14,7 @@ var UserDetail = new Schema({
       img_path: String,
       crunchbase_permalink: String,
       crunchbase_prof: 'object',
-      owner: String,
+      owners: 'object',
       profile: 'object'
     }, {
       collection: 'userInfo'
@@ -23,14 +23,14 @@ var UserDetails = mongoose.model('userInfo', UserDetail);
 
 
 
-function addUser(username, password, init_investmt_date, crunchbase_permalink, owner, callback) {
+function addUser(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
   if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
     // TODO what if p or p.data is undefined?
     var p = JSON.parse(body).data;
     var profile = undefined;
     if (p.response != false) {
-        profile = { img_path:       "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path,
+        profile = { img_path:       (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
                     short_descrip:  p.properties.short_description,
                     description:    p.properties.description,
                     homepage_url:   p.properties.homepage_url.replace("http://",""),
@@ -45,7 +45,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
                               'init_investmt_date': init_investmt_date,
                               'crunchbase_permalink': crunchbase_permalink,
                               'crunchbase_prof': p,
-                              'owner': owner,
+                              'owners': owners,
                               'profile': profile
                             });
     a.save(function (err) {     if (err)  console.log('ERROR');     });

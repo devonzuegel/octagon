@@ -13,6 +13,7 @@ block mainContent
     button.filter(data-filter='.Joe') Joe
     button.filter(data-filter='.Drew') Drew
     button.filter(data-filter='.Chris') Chris
+    button.filter(data-filter='.none') No Owner
     //- button.filter(data-filter='.none') No owner
 
     h3
@@ -25,7 +26,19 @@ block mainContent
   #Container
     each c, i in companies
       if (c.username != 'admin')
-          .mix(class=c.owner  data-name=c.username  onclick="window.location = '../users/" + c.username + "'")
+
+          //- build class(es) to tag each owner
+          - var owners_class = ''
+          if (c.owners == undefined)
+            - owners_class = 'none';
+          else
+            if (typeof c.owners === 'string')
+              - owners_class += c.owners
+            else
+              each o in c.owners
+                - owners_class += o + ' '
+
+          .mix(class=owners_class  data-name=c.username  onclick="window.location = '../users/" + c.username + "'")
             .v-center-container: .v-center-helper: .v-center-content.portfolio-card
               if (c.crunchbase_prof.relationships)
                 img(src=c.profile.img_path style='max-width:100%; max-height:215px')

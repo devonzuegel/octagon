@@ -57,23 +57,29 @@ router.post('/add_user', function(req, res) {
 
   var form = req.body;
 
-  if (form.password2 != form.password) {
-    res.cookie('errors', ["Please make sure your passwords match."]);
+  if (form.password == '') {
+    req.flash('error', 'Please enter a password.');
     return res.redirect('/users/add_user');
   }
 
-  if (false/*username_inuse(form.username)*/) {
-    res.cookie('errors', ["That username is already in use."]);
-    return res.redirect('/users/add_user');      
+  if (form.password2 != form.password) {
+    req.flash('error', 'Please make sure your passwords match.');
+    return res.redirect('/users/add_user');
   }
 
   UserDetails.find({'username': form.username }, function(err, u) {
     if (err)    return done(err);
 
+    // TODO ensure user hasn't yet been added
+    if (false/*username_inuse(form.username)*/) {
+      req.flash('error', 'That username is already in use.');
+      return res.redirect('/users/add_user');      
+    }
+
     UserModel.addUser(form.username, form.password, 
                       form.init_investmt_date, 
                       form.crunchbase_permalink,
-                      form.owner,
+                      form.owners,
                       function() { res.redirect('/users/'); }
                      );  
   });

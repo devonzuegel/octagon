@@ -189,7 +189,7 @@ br { margin: 0px; }
 	margin: auto;
 	background-color: #fffdfd;
 	text-align: center;
-	width: 400px;
+	width: 380px;
 
 	border-radius: 5px;
 	margin-top: 120px;
@@ -206,7 +206,7 @@ br { margin: 0px; }
 	overflow: auto;
 }
 
-.login-topbtm h1 { color: white; }
+.loginbox .col-xs-12 h1 { color: red; }
 
 input {
 	width: 85%;

@@ -5,27 +5,35 @@ block h
 
 block mainContent
   .loginbox
+    .col-lg-12: h1 Add Company
     form(method="post"  action="/users/add_user"  enctype='multipart/format-data')
       container
-        //- space
-        div(style='height:30px')
-
         //- username + password
         .col-lg-12: input(type="text", name="username", placeholder="company name")
         .col-lg-12: input(type="password", name="password", placeholder="password")
         .col-lg-12: input(type="password", name="password2", placeholder="confirm password")
         .col-lg-12
-          select(name='owner')
+          //- select(name='owner')
             option(value="" disabled selected style='color: #ccc') select owner
             option(value='Joe') Joe
             option(value='Drew') Drew
             option(value='Chris') Chris
             option(value='none') No owner
+          .checkbox
+            input(type='checkbox'  name='owners'  value='Joe')
+            | Joe
+          .checkbox
+            input(type='checkbox'  name='owners'  value='Chris')
+            | Chris
+          .checkbox
+            input(type='checkbox'  name='owners'  value='Drew')
+            | Drew
+
         //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
         .col-lg-12
           .tooltip_a: a(data-toggle="tooltip" data-original-title="A<b>"): input(type='text' name='crunchbase_permalink', placeholder='CrunchBase permalink')
-          br
-          h5 What's this?
+          //- br
+          //- h5 What's this?
 
       input(type="submit", value="Submit").submit
 
@@ -34,5 +42,4 @@ block mainContent
       $('#datepicker').datepicker({
         format: "dd/mm/yyyy"
       });  
-      $('[data-toggle="tooltip"]').tooltip_a({'placement': 'top'});
     });

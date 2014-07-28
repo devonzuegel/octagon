@@ -11,7 +11,10 @@ block mainContent
   
   .row
     .col-xs-8
-      .card
+      //- h5.pull-right: a
+        span.glyphicon.glyphicon-edit
+      .card#about
+        #edit
         h2 About
 
         if (p && p.description)
@@ -29,22 +32,38 @@ block mainContent
             h5: a
               span.glyphicon.glyphicon-plus.loginout
               .loginout Add homepage url
-
+        script.
+          $("#about").hover(function() {
+                              var edit = '<div class="h5 pull-right"><a><span class="glyphicon glyphicon-edit"></div></a></div>'
+                              $(this).find('#edit').append(edit)
+                            }, function(){
+                              $(this).find('#edit').children("div").remove();
+                            }
+          );
 
       .card
+        h5.pull-right: a
+          span.glyphicon.glyphicon-edit
         h2 Milestones
         p Milestone 1
         p Milestone 2
 
       .card
+        h5.pull-right: a
+          span.glyphicon.glyphicon-edit
         h2 Team
         p Joe Schmo
         p Bilbo Baggins
 
-      .card: p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+      .card
+        h5.pull-right: a
+          span.glyphicon.glyphicon-edit
+        p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
     .col-xs-4
       .card.text-center
+        h5.pull-right: a
+          span.glyphicon.glyphicon-edit
 
         if (p && p.img_path)
           img(src=p.img_path)
@@ -56,8 +75,11 @@ block mainContent
 
         
         
+      h5.pull-right: a
+        span.glyphicon.glyphicon-edit
+
       .blank: p
-        h4 Founded: 
+        h4 <strong>Founded:</strong> 
         if (p && p.founded_on)
           | #{p.founded_on}
         else
@@ -65,7 +87,7 @@ block mainContent
         br
 
 
-        h4 Founders: 
+        h4 <strong>Founders:</strong> 
         if (p && p.founders)
           each f,i in p.founders
             if (i !=0)
@@ -77,7 +99,7 @@ block mainContent
         br
 
 
-        h4 Funding: 
+        h4 <strong>Funding:</strong> 
         if (p && p.total_funding)
           | $#{p.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
         else
@@ -85,7 +107,7 @@ block mainContent
         br
 
 
-        h4 Categories: 
+        h4 <strong>Categories:</strong> 
         if (p && p.categories)
           each c,i in p.categories
             if (i !=0)
