@@ -14,9 +14,9 @@ body {
 h1 {
 	font: 36pt 'Lato', serif;
 	font-weight: 400;
-	margin: 20px;
+	margin: 20px 0px 10px 0px;
 	color: #444;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 }
 
 h2 {
@@ -116,7 +116,7 @@ h4 {
 	margin-top: -1px;
 	position: fixed;
 	background-color: #45367C;
-	border-bottom: 1px solid white;
+	/*border-bottom: 1px solid white;*/
 	padding: 5px;
 	width:100%;
 	vertical-align: middle;
@@ -125,6 +125,7 @@ h4 {
 
 h5 {
 	display: inline;
+	/*color: #A564D1;*/
 	color: #d9d9d9;
  	margin: 0px;
 	padding: 4px;
@@ -133,8 +134,25 @@ h5 {
 	font-size: 13pt;
 }
 
+.logobox {
+	height: 1%; 
+	overflow: hidden;
+}
+
+@media (max-width: 992px) {
+	img.logo {	margin-right: 20px; }
+}
+
+@media (min-width: 992px) {
+	img.logo { margin-bottom: 15px; }
+}
+
+img.logo {
+	width: 400px;
+	max-width: 100%;
+}
+
 .quote { 
-	padding-top: 10px;
 	font-size: 85%; 
 }
 
@@ -207,7 +225,9 @@ input:focus {
 	box-shadow: none;
 }
 
-input[type="submit"] {
+input[type="submit"],
+input[type="button"],
+.bordered-btn {
 
   text-transform: uppercase;
   padding: .4em .8em;
@@ -221,16 +241,22 @@ input[type="submit"] {
   border: 1px solid #cfcfcf; /* #786eaf; */
   background: none;
 
-  margin: 30px;
+  margin: 5px;
 
 	width: -moz-fit-content;
 	width: -webkit-fit-content;
 	width: fit-content;
 
+	display: inline-block;
+	/*float: left;*/
+
 }
 
 input[type="submit"]:hover,
-input[type="submit"]:focus {
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="button"]:focus
+ {
 	background-color: rgba(255,255,255,.03);
   color: white;  /*#46379b;*/
   border: 1px solid white; /*#46379b;*/
@@ -329,10 +355,18 @@ table th.sort-up:after {
 	background-color: #bbb;
 }
 
+.left-line {
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
 @media (min-width: 992px) {
 	.left-line {
+		float: right;
 		padding: 15px 0px 15px 30px;
 		border-left: 1px solid #ddd;
+		border-top: none;
 		margin-top: 5%;
 		right: 0;
 		padding-left: 30px;

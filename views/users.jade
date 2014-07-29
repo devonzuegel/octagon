@@ -3,21 +3,58 @@ block topRight
 
 block mainContent
   //- div(style='width:100%; height:300px; background-color:#ddd; position:absolute; z-index:30000')#test
-  .row.subheader
+
+  //- .row.subheader
     .col-xs-12
       h3: a(href='#').selected Overview
       h3: a(href='#') Financials
       h3: a(href='#') Board Notes
       h3: a(href='#') Communication
-  
+
+  include ./partials/test
+
   .row
-    .col-xs-9
+    .col-md-3.pull-right
+      .card.text-center#img
+        .logobox
+          a(href='URL_test').pull-right#edit(style='position:absolute').small edit
+
+          .pull-left
+            if (p && p.img_path)
+              img(src=p.img_path).logo
+            else
+              .text-left: h5 Add logo
+          div
+            if (p && p.short_descrip)
+              p.quote #{p.short_descrip}
+            else  
+              p.quote: h5 Add short description
+            
+      
+      .blank: p
+
+        h4 <strong>Categories:</strong> 
+        if (p && p.categories)
+          each c,i in p.categories
+            if (i !=0)
+              | , 
+            a #{c.name}
+        else
+          h5: a add tags
+
+    .col-md-9.pull-left
       .card#about
-        a(href='URL_test').pull-right#edit.small edit
+        a(data-toggle="modal" data-target="#edit_about").pull-right#edit.small edit
         h2 About
 
         .row
-          .col-md-4.pull-right
+          .col-md-8.right-of-line
+              if (p && p.description)
+                p #{p.description}
+              else
+                  h5 Add description
+          
+          .col-md-4
             .vcenter-helper: .vcenter-content.left-line
 
               div
@@ -29,7 +66,7 @@ block mainContent
                         a(href='http://api.crunchbase.com/v/2/' + f.path + '?user_key=c7653c536c2266d0da1155557600c8a4') #{f.name}
                       //- TODO hide our userkey
                   else
-                    h5: a add founders
+                    h5 Add founders
               
               div(style='height:10px')
 
@@ -38,7 +75,7 @@ block mainContent
                   if (p && p.founded_on)
                     | #{p.founded_on}
                   else
-                    h5: a  add date
+                    h5 Add date
                   br
 
               div(style='height:10px')                    
@@ -47,7 +84,7 @@ block mainContent
               if (p && p.total_funding)
                 | $#{p.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
               else
-                h5: a add funding info  
+                h5 Add funding info  
               br
 
               div(style='height:10px')                    
@@ -57,20 +94,8 @@ block mainContent
                     a(href=homepage_url)
                       <strong> #{p.homepage_url} </strong>
                 else
-                    h5: a
-                      span.glyphicon.glyphicon-plus
-                      .loginout Add homepage url
-
-          .col-md-8.right-of-line
-              if (p && p.description)
-                p #{p.description}
-              else
-                  h5: a
-                    span.glyphicon.glyphicon-plus.loginout
-                    .loginout Add description
-          
+                    h5 Add homepage url
           br
-
 
       .card#milestones
         a(href='URL_test').pull-right#edit.small edit
@@ -89,31 +114,8 @@ block mainContent
         h2 Test
         p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
-    .col-xs-3
-      .card.text-center#img
-        .pull-right(style='margin-right:15px')
-        a(href='URL_test').pull-right#edit(style='position:absolute').small edit
 
-        if (p && p.img_path)
-          img(src=p.img_path)
-          p.quote #{p.short_descrip}
-        else
-          .text-left: h5: a
-            span.glyphicon.glyphicon-plus.loginout
-            .loginout add logo
 
-        
-      
-      .blank: p
-
-        h4 <strong>Categories:</strong> 
-        if (p && p.categories)
-          each c,i in p.categories
-            if (i !=0)
-              | , 
-            a #{c.name}
-        else
-          h5: a add tags
 
 
   script.

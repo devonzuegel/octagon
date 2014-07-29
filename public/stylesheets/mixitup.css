@@ -9,13 +9,13 @@ body, button{
 }
 
 .controls {
+  margin: 5px -25px 5 25px;
   display: block;
-  padding-right: 20px;
 }
 
 .controls h3 {
   color: #786eaf;
-  padding: 10px;
+  /*padding: 10px;*/
   font-weight: 400;
 }
 
@@ -121,19 +121,19 @@ button + label{
 
 
 @media (max-width: 500px) {
-  .mix { width:95%; }
+  .mix { width:96%; }
 }
 
 @media (min-width: 500px) {
-  .mix { width:45%; }
+  .mix { width:46%; }
 }
 
 @media (min-width: 900px) {
-  .mix { width: 30%; }
+  .mix { width: 30.5%; }
 }
 
-@media (min-width: 1100px) {
-  .mix { width: 22%; }
+@media (min-width: 1000px) {
+  .mix { width: 22.5%; }
 }
 
 .mix {
@@ -159,9 +159,7 @@ button + label{
   perspective-origin: 50% 50%; 
   transition: height 600ms ease; 
   -webkit-transition: height 600ms ease;
-  width: 103%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px -25px 20px -10px;
   height: 100%;
 }
 
