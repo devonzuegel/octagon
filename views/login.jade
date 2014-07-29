@@ -7,6 +7,7 @@ style(type="text/css"): include ../public/stylesheets/dashboard.css
 
 .loginbox
   .col-lg-12: h1 Login
+  div(style='height:6%')
   form(method="POST", action="/login")
     container
       //- username + password
@@ -15,12 +16,14 @@ style(type="text/css"): include ../public/stylesheets/dashboard.css
           p.error #{error}
 
       .col-lg-12: input(type="text", name="username", placeholder="username")
+      br
       .col-lg-12: input(type="password", name="password", placeholder="password")
-
+      br
 
       //- submit
       .col-lg-12
         p(style='width:85%; margin: auto') Contact 
-          a(href="mailto:drew@formation8.com") Drew 
+          a(href="mailto:drew@formation8.com").white Drew Oettig 
           | for your company's login details.
+      div(style='height:6%')
       .col-lg-12: input(type="submit", value="Submit").submit

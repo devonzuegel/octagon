@@ -3,8 +3,10 @@ body {
 }
 
 h1 {
-	color: #25165C;
+	color: white; /*#444;*/
 }
+
+h1.notitle { display: none; }
 
 .toolbar {
 	background: none !important;

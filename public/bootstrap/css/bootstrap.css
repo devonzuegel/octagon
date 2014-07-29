@@ -7364,7 +7364,7 @@ input[type="color"],
 select,
 .uneditable-input {
   border-radius: 2px !important;
-  border: 1px solid #cccccc;
+  /*border: 1px solid #cccccc;*/
   display: inline-block;
   height: 30px;
   padding: 25px 20px 20px 20px;
@@ -7410,8 +7410,9 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
+  /*background-color: #ffffff;*/
+  color: white;
+  /*border: 1px solid #cccccc;*/
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -7437,11 +7438,11 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-color: rgba(31, 18, 83, 0.3);
-  outline: 0;
-  outline: thin dotted \9;
+  /*border-color: rgba(31, 18, 83, 0.3);*/
+  /*outline: 0;*/
+  /*outline: thin dotted \9;*/
   /* IE6-9 */
-  box-shadow: 0 0 10px rgba(31, 18, 83, .3);
+  /*box-shadow: 0 0 10px rgba(31, 18, 83, .3);*/
 
   /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
      /*-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/

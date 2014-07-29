@@ -20,7 +20,6 @@ h1 {
 }
 
 h2 {
-	/*padding: 8px;*/
 	font: 18pt 'Lato', serif;
 	font-weight: 400;
 	margin: 0;
@@ -45,7 +44,6 @@ h3 a {
 }
 
 h3 a.selected { 
-	/*border: 1px solid white;*/
 	border-radius: 6px;
 	color: white;
 	border: 1px solid #46379b;
@@ -145,7 +143,6 @@ h5 {
 
 
 a {
-	/*color: #529bda;*/
   text-decoration: none;
   font-weight: 200;
 	color: #8a64d1;
@@ -158,7 +155,6 @@ p.white a:hover {
 a:hover {
 	color: #46379b;
 	cursor: pointer;
-	/*color: #428bca;*/
 }
 
 td a {
@@ -172,52 +168,43 @@ p {
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	font-weight: 200;
 	font-size: 13pt;
-	/*padding: 8px;*/
 }
 
 .white { color: white; }
 
 br { margin: 0px; }
 
-/*
-.middle-tightbox {
-	padding: -1px;
-	display: inline-block;
-	border:1px solid #555;
-}*/
-
 .loginbox {
+	color: white;
 	font-size: 18pt;
 	margin: auto;
-	background-color: #fffdfd;
 	text-align: center;
 	width: 380px;
 
-	border-radius: 5px;
-	margin-top: 120px;
-	border: 1px solid #bbb;
-	box-shadow: 0 0 20px #1f1253;
+	margin-top: 105px;
 }
-
-.login-topbtm {
-	display: block;
-	background-color: #333;
-	color: white;
-	padding: 15px;
-	/*height: 100%;*/
-	overflow: auto;
-}
-
-.loginbox .col-xs-12 h1 { color: red; }
 
 input {
 	width: 85%;
 	padding: 10px;
-	border-radius: 3px;
-	border: 1px solid #ccc;
+
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	font-weight: 200;
-	font-size: 13pt;
+	font-size: 14pt;
+	color: white;
+
+	background: none;
+
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,.4);
+	border-radius: 3px;
+}
+
+input:focus { 
+	outline: none;
+	border:none; 
+	border-bottom: 1px solid white;
+	box-shadow: none;
 }
 
 input[type="submit"] {
@@ -227,14 +214,13 @@ input[type="submit"] {
 
   font-size: 22px;
   font-weight: 300;
-  color: #786eaf;
+  color: white;
   cursor: pointer;
 
   border-radius: 4px;
-  border: 1px solid #786eaf;
+  border: 1px solid #cfcfcf; /* #786eaf; */
   background: none;
 
-	/*margin: auto;*/
   margin: 30px;
 
 	width: -moz-fit-content;
@@ -243,27 +229,21 @@ input[type="submit"] {
 
 }
 
-input[type="submit"]:hover{
-	/*background-color: #ffc;*/
-	/*border: 2px solid white;*/
-/*
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-*/
-  background-color: white;
-  color: #46379b;
-
-  border-radius: 6px;
-  border: 1px solid #46379b;
-
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+	background-color: rgba(255,255,255,.03);
+  color: white;  /*#46379b;*/
+  border: 1px solid white; /*#46379b;*/
 }
 
-
-button{
+a.white {
+	color: #f0e9f9;
+	font-weight: 700;
 }
 
-button:hover, button:focus {
+a.white:hover,
+a.white:focus {
+	color: white;
 }
 
 .error {
@@ -271,7 +251,6 @@ button:hover, button:focus {
 	border-radius: 5px;
 	border: 1px solid #fbb;
 	background-color: #fcc;
-	/*padding: 10px;*/
 }
 
 form {
@@ -330,46 +309,36 @@ table th.sort-up:after {
 }
 
 #edit {
-	right: 20px;
-	opacity: .8;
+	background-color: #cfcfcf;
+	color: white;
+
+	border: 1px solid white;
+	border-radius: 5px;
+
+	padding: 2px 5px 2px 5px;
+
+	position: absolute;
+	right: 15px;
+	top: 15px;
+
 	display: none;
 }
 
-#edit:hover { cursor: pointer; }
+#edit:hover { 
+	cursor: pointer;
+	background-color: #bbb;
+}
 
 @media (min-width: 992px) {
 	.left-line {
+		padding: 15px 0px 15px 30px;
 		border-left: 1px solid #ddd;
-		position: absolute;		
-		/*height: 80%;*/
 		margin-top: 5%;
-		/*top: 0;*/
-		/*bottom: 0;*/
 		right: 0;
 		padding-left: 30px;
-		margin-left: 10px;
 	}
 
 	.right-of-line { padding-right: 20px; }
-
-	.vcenter-container {
-	  display: table;
-	  width: 100%;
-	  height: 100%;
-	  position: absolute;
-	}
-	.vcenter-helper {
-	  #position: absolute; /*a variation of an "lte ie7" hack*/
-	  #top: 50%;
-	  height: 100%;
-	  width: 100%;
-
-	  display: table-cell;
-	  vertical-align: middle;
-
-	  /*min-height: 265px;*/
-	  padding: 5px;
-	}
 
 	.vcenter-content {
 	  #position: relative;
