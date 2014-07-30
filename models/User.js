@@ -49,11 +49,44 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
                               'profile': profile
                             });
     a.save(function (err) {     if (err)  console.log('ERROR');     });
+    updateUser('Addepar', {});
     callback();
   });
 }
 
+function updateUser(username, details) {
+  // UserDetails.findAndModify(  {username: 'Addepar'}, // query
+  //                             [['_id','asc']],  // sort order
+  //                             {$set: {password: 'TESTTTTTTT'}}, // replacement, replaces only the field "hi"
+  //                             {}, // options
+  //                             function(err, object) {
+  //                               if (err)  console.warn(err.message);  // returns error if no matching object found
+  //                               else      console.dir(object);
+  //                             }
+  // );
 
+  UserDetails.findOne({ username: username, }, 
+                      function(err, u) {
+                        if (err)    return done(err);
+                        console.log("\n\nBEFORE:\nuser=  %j", u);
+                        u.password = 'TESTTTTTTTTTTTTTTTTTTTTTTTTT';
+                        u.save();
+                      });
+
+  UserDetails.findOne({ username: username, }, 
+                      function(err, u) {
+                        if (err)    return done(err);
+                        console.log("\n\nAFTER:\nuser=  %j", u);
+                      });
+
+  // UserDetails.find({ username: username }, function(err, u) {
+  //   console.log("AFTER:\nuser.password=  %j", u[0].password);
+  //   UserDetails.update( {_id:u[0]._id}, {password: 'TEST'} );
+  // });
+  // UserDetails.find({ username: username }, function(err, u) {
+  //   console.log("BEFORE:\nuser.password=  %j", u[0].password);
+  // });
+}
 
 
 function printAll() {
@@ -71,11 +104,12 @@ function salt_fn(pw) {
 }
 
 function find(username) {
-  UserDetails.findOne({ username: username, }, function(err, user) {
-          if (err)    return done(err);
-          if (!user)  done(null, false);     
-          return done(null, user);
-      });
+  UserDetails.findOne({ username: username, }, 
+                      function(err, user) {
+                        if (err)    return done(err);
+                        if (!user)  done(null, false);     
+                        return done(null, user);
+                      });
 
 }
 

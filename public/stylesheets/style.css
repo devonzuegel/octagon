@@ -154,7 +154,7 @@ h5 {
 }
 
 img.logo {
-	width: 350px;
+	width: 300px;
 	max-width: 100%;
 }
 
@@ -402,11 +402,10 @@ table th.sort-up:after {
   text-overflow: -o-ellipsis-lastline;
 }
 
-::-webkit-input-placeholder { color:#f00; }
-::-moz-placeholder { color:#f00; } /* firefox 19+ */
-:-ms-input-placeholder { color:#f00; } /* ie */
-input:-moz-placeholder { color:#f00; }
-
+/*::-webkit-input-placeholder { text-transform: uppercase; }*/
+/*::-moz-placeholder { text-transform: uppercase; }*/ /* firefox 19+ */
+/*:-ms-input-placeholder { text-transform: uppercase; } *//* ie */
+/*input:-moz-placeholder { text-transform: uppercase; } */
 .input-group {
 	padding-top: 20px;
 }
