@@ -1,11 +1,26 @@
 .modal.fade.modal-fullscreen.force-fullscreen#edit_about(tabindex="-1" role="dialog" aria-hidden="true")
   .modal-dialog
-    .modal-content
-      .modal-header
-        //- button(type="button" data-dismiss="modal" aria-hidden="true").close
-        h4.modal-title Title
-      .modal-body
-        p Body!
+    form(method="post"  action="/users/add_user"  enctype='multipart/format-data').modal-content
+      .col-lg-12
+        h1.white.text-center { #{header}}
+      container.loginbox
+        //- h3.small Company name
+        .col-lg-12: input(type="text", name="username", placeholder="company name")
+        .col-lg-12: input(type="password", name="password", placeholder="password")
+        .col-lg-12: input(type="password", name="password2", placeholder="confirm password")
+        .col-lg-12.input-group
+          div: h3.text-center Owner(s)
+          div.center
+            .checkbox
+              input(type='checkbox'  name='owners'  value='Joe')
+              | Joe
+            .checkbox
+              input(type='checkbox'  name='owners'  value='Chris')
+              | Chris
+            .checkbox
+              input(type='checkbox'  name='owners'  value='Drew')
+              | Drew
+
       .modal-footer
         input(type='button'  value='Cancel'  data-dismiss="modal")
         input(type='submit'  value='Save')

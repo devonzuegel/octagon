@@ -11,12 +11,14 @@ block mainContent
       h3: a(href='#') Board Notes
       h3: a(href='#') Communication
 
+  - var header = 'About'
   include ./partials/test
 
   .row
-    .col-md-3.pull-right
-      .card.text-center#img
-        .logobox
+    .col-md-3.logobox
+      //-.pull-right
+      .card.text-center.logobox#img
+        
           a(href='URL_test').pull-right#edit(style='position:absolute').small edit
 
           .pull-left
@@ -55,7 +57,7 @@ block mainContent
                   h5 Add description
           
           .col-md-4
-            .vcenter-helper: .vcenter-content.left-line
+            .vcenter-content.left-line
 
               div
                   h4 <strong>Founders:</strong> 
@@ -122,11 +124,32 @@ block mainContent
     //- $('#test').hide('slide', {direction: 'right'}, 5000);
 
     $(document).ready(function() {
-        var cards = [  '#about',  '#milestones',  '#team',  '#test',  '#img'  ];
+        var cards = [  { id: '#about',
+                         form: [  { name: 'description',  type: 'text',  placeholder: 'Company website'  },
+                                  { name: 'description',  type: 'text',  placeholder: 'description'      },
+                                  { name: 'founders',     type: 'text',  placeholder: 'founders'         },
+                                  { name: 'founded_on',   type: 'text', placeholder: "founding date",   classes: 'calendar_input',  id: "datepicker" },
+                                  { name: 'Funding',      type: 'text', placeholder: 'funding (amount)' },
+                                  { name: 'homepage_url', type: 'text', placeholder: 'company website'  }
+                               ]
+                       },  
+
+                       { id: '#milestones'
+                       },  
+
+                       {id: '#team'
+                       },  
+
+                       {id: '#test'
+                       },  
+
+                       {id: '#img'
+                       }  
+                    ];
 
         for (var i = 0; i < cards.length; i++) {
-            $(cards[i]).hover( function() {   $(this).find('#edit').fadeIn('fast');    }, 
-                               function() {   $(this).find('#edit').fadeOut('fast');   }
+            $(cards[i].id).hover( function() {   $(this).find('#edit').fadeIn('fast');    }, 
+                                  function() {   $(this).find('#edit').fadeOut('fast');   }
                              );
         }
     });
