@@ -119,6 +119,11 @@ router.get('/:username', function(req, res) {
   });
 });
 
+function get_type(thing){
+    if(thing===null)return "[object Null]"; // special case
+    return Object.prototype.toString.call(thing);
+}
+
 router.post('/:username/edit', function(req, res) {
   var u_param = req.params.username;    // gets :username from the url
   var u_session = req.session.username; // gets username from session (who's logged in?)
@@ -127,39 +132,19 @@ router.post('/:username/edit', function(req, res) {
     if (u_session != u_param)       res.redirect('/users/' + u_session);
   });
 
-  // UserDetails.findOne({ 'username': u_param, }, function(err, user) {
-  //   if (err)    return done(err);
-
-  //   if (user == null  ||  u_param == 'admin') {
-  //       req.flash('error', 'That company doesn\'t exist! Here are your options:.')
-  //       return res.redirect('/users');
-  //   } else {
-  //     console.log('before:  ' + JSON.stringify(user.profile.founded_on, null, 3));
-  //     // user.profile['founded_on'] = '2000-01-01';
-  //     // user.set({
-  //     //   profile: { founded_on: '1111-11-11' }
-  //     // });
-  //     user.update()
-  //     user.save(function() {
-  //       console.log('after:    ' + JSON.stringify(user.profile.founded_on, null, 3));
-  //       res.redirect('/users/' + u_param);
-  //     });
-  //   }
-  // });
-
-  // UserDetails.findOneAndUpdate({ 
-  //   'username': u_param
-  // }, {
-  //   profile: { founded_on: '1111-11-11' }
-  // }, null, res.redirect('/users/' + u_param));
-
   UserDetails.findOne({ username: u_param }, function (err, user) {
-    console.log(JSON.stringify(user, null, 3));
     if (err)  return done(err);
-    user.profile.founded_on = '1111-11-11';
-    user.save(function() {
-      res.redirect('/users/' + u_param);
-    });
+
+    var profile = {};
+    // populate profile with original user.profile
+    for (var k in user.profile)  profile[k] = user.profile[k];
+    // update the changes from the form
+    for (var k in req.body)      profile[k] = req.body[k];
+    // update profile
+    user['profile'] = profile;
+
+    // save & redirect to updated profile
+    user.save(function() { res.redirect('/users/' + u_param); });
   })
 
 });
