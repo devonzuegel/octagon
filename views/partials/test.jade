@@ -1,16 +1,22 @@
 .modal.fade.modal-fullscreen.force-fullscreen#edit_about(tabindex="-1" role="dialog" aria-hidden="true")
   .modal-dialog
-    form(method="post"  id='edit_user'  action='/users/' + title + "/edit"  enctype='multipart/format-data').modal-content
+    form(method="post"  id='edit_user'  action='/users/'+title+"/edit"  enctype='multipart/format-data').modal-content
       .col-lg-12
+        h5.white#form #{data}
         h1.white.text-center #{header}
       container.loginbox
+        //- script.
+          for (var f in form_fields) {
+            console.log(f);
+          }
+
         //- h3.small Company name
         //- .col-lg-12
           div: h3.text-center Company Name
           div: input(type="text"      name="name"   placeholder="required"     autocomplete="off"  value=title)
-        .col-lg-12
-          div: h3.text-center Description
-          div: textarea(form='edit_user' name='description' style='width:380px') #{p.description}
+        //- .col-lg-12
+          div: h3.text-center Description #{form_fields}
+          div: textarea(form='edit_user' name='description' style='width:340px') #{p.description}
         //- .col-lg-12: input(type="password"  name="password"   placeholder="update password"  autocomplete="off")
         //- .col-lg-12: input(type="password"  name="password2"  placeholder="confirm password" autocomplete="off")
         .col-lg-12: .input-group
@@ -28,27 +34,9 @@
         //- .col-lg-12
           div: h3.text-center Founders
           div: input(type="text"      name="founders"      placeholder=''  autocomplete="off"  value=JSON.stringify(p.founders))
-        .col-lg-12
+        //- .col-lg-12
           div: h3.text-center Date founded
           div: input(type="datetime"  name= 'founded_on'   placeholder=''  autocomplete='off'  value=p.founded_on)
       .modal-footer
         input(type='button'  value='Cancel' data-dismiss='modal')
         input(type='submit'  value='Save')
-
-script.
-  $('#edit_user').submit(function (e) {
-    e.preventDefault();
-    var fd = new FormData($(this)[0]);
-    $.ajax({
-      //- url: 'users/' + p.username,
-      url: '/users/Addepar',
-      data: fd,
-      processData: false,
-      contentType: false,
-      //- type: 'POST',
-      type: 'GET'
-      success: function(data){
-          console.log('data: ' + JSON.stringify(data));
-      }
-    });
-  });

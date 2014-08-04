@@ -49,7 +49,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
                               'profile': profile
                             });
     a.save(function (err) {     if (err)  console.log('ERROR');     });
-    updateUser('Addepar', {});
+    // updateUser('Addepar', {});
     callback();
   });
 }
@@ -65,19 +65,19 @@ function updateUser(username, details) {
   //                             }
   // );
 
-  UserDetails.findOne({ username: username, }, 
-                      function(err, u) {
-                        if (err)    return done(err);
-                        console.log("\n\nBEFORE:\nuser=  %j", u);
-                        u.password = 'TESTTTTTTTTTTTTTTTTTTTTTTTTT';
-                        u.save();
-                      });
+  // UserDetails.findOne({ username: username, }, 
+  //                     function(err, u) {
+  //                       if (err)    return done(err);
+  //                       console.log("\n\nBEFORE:\nuser=  %j", u);
+  //                       u.password = 'TESTTTTTTTTTTTTTTTTTTTTTTTTT';
+  //                       u.save();
+  //                     });
 
-  UserDetails.findOne({ username: username, }, 
-                      function(err, u) {
-                        if (err)    return done(err);
-                        console.log("\n\nAFTER:\nuser=  %j", u);
-                      });
+  // UserDetails.findOne({ username: username, }, 
+  //                     function(err, u) {
+  //                       if (err)    return done(err);
+  //                       console.log("\n\nAFTER:\nuser=  %j", u);
+  //                     });
 
   // UserDetails.find({ username: username }, function(err, u) {
   //   console.log("AFTER:\nuser.password=  %j", u[0].password);

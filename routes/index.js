@@ -65,6 +65,12 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 		else											res.redirect('/users/' + req.user.username);
 	});	
 
+
+	router.get('/test', function (req, res) {
+	    //compute data here
+		res.render('./partials/test', {title: 'Login', errors: req.flash('error')});
+	});
+
 // passport stuff
 	passport.serializeUser(function(user, done) {
 		// console.log('(serialize)      user= %j', user)
