@@ -28,6 +28,8 @@ h2 {
 }
 
 h3 {
+	padding: 0px;
+	margin: 0px;
 	display: inline;
 	font: 12pt 'Lato', serif;
 	font-weight: 300;

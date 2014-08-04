@@ -17,7 +17,6 @@
 	    LocalStrategy = require('passport-local').Strategy,
 			UserDetails = UserModel.UserDetails;
 
-
 function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
   if (req.isAuthenticated() && req.session.is_admin) {
     admin_fn(req, res);
@@ -34,24 +33,21 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 	});
 
 	router.get('/dashboard', function(req, res) {
-  require_privileges(req, res, false, 
-                     function() {
-	                        res.render('dashboard-f8', { title: 'Dashboard', 
-	                                                    errors: req.flash('error'),
-	                                                    username: req.session.username,
-	                                                    is_admin: true  
-	                                                  	}
-													);
-                      }, function() { 
-	                        res.render('dashboard-individual', 
-	                        													{ title: 'Dashboard', 
-	                                                    errors: req.flash('error'),
-	                                                    username: req.session.username,
-	                                                    is_admin: false  
-	                                                  }
-													);                      
-	                    }
-  );
+		require_privileges(req, res, false, function() {
+	      res.render('dashboard-f8', { 
+	      	title: 'Dashboard', 
+	      	errors: req.flash('error'),
+	      	username: req.session.username,
+	      	is_admin: true  
+	      });
+	   }, function() { 
+	   	res.render('dashboard-individual', { 
+	   		title: 'Dashboard', 
+	   		errors: req.flash('error'),
+	   		username: req.session.username,
+	   		is_admin: false  
+	   	});                      
+	   });
 	});
 
 // login methods

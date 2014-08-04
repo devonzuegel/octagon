@@ -76,12 +76,14 @@ router.post('/add_user', function(req, res) {
       return res.redirect('/users/add_user');      
     }
 
-    UserModel.addUser(form.username, form.password, 
-                      form.init_investmt_date, 
-                      form.crunchbase_permalink,
-                      form.owners,
-                      function() { res.redirect('/users/'); }
-                     );  
+    UserModel.addUser(
+      form.username,
+      form.password, 
+      form.init_investmt_date, 
+      form.crunchbase_permalink,
+      form.owners,
+      function() { res.redirect('/users/'); }
+    );  
   });
 
 });
@@ -91,35 +93,39 @@ router.get('/:username', function(req, res) {
   if (u_param == 'add_user')    res.redirect('/users/add_user');
   var u_session = req.session.username;
 
-  require_privileges(req, res, false, 
-                     function() { return }, 
-                     function() {
-                          if (u_session != u_param) {
-                            // req.flash('error', 'You do not have permission to perform that action.');
-                            res.redirect('/users/' + u_session);
-                          }
-                      }
-  );
+  require_privileges(req, res, false, function() { return }, function() {
+    if (u_session != u_param)     res.redirect('/users/' + u_session);
+  });
+
   UserDetails.findOne({ 'username': u_param, }, function(err, user) {
     if (err)    return done(err);
 
-
     if (user == null  ||  u_param == 'admin') {
-
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
         return res.redirect('/users');
-
     } else {
-
-      var details = { errors: req.flash('error'),
-                      username: req.session.username,
-                      title: u_param,
-                      is_admin: (u_session == 'admin'),
-                      p: user.profile
-                    };
+      var details = { 
+        errors: req.flash('error'),
+        username: req.session.username,
+        title: u_param,
+        is_admin: (u_session == 'admin'),
+        p: user.profile
+      };
       return res.render('users', details);
     }
   });
+});
+
+router.post('/:username/edit', function(req, res) {
+  var u_param = req.params.username;    // gets :username from the url
+  var u_session = req.session.username; // gets username from session (who's logged in?)
+
+  require_privileges(req, res, false, function() { return; }, function() {
+    if (u_session != u_param)       res.redirect('/users/' + u_session);
+  });
+
+  res.redirect('/users/' + u_param);
+
 });
 
 

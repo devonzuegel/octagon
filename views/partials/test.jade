@@ -1,14 +1,19 @@
 .modal.fade.modal-fullscreen.force-fullscreen#edit_about(tabindex="-1" role="dialog" aria-hidden="true")
   .modal-dialog
-    form(method="post"  action="/users/add_user"  enctype='multipart/format-data').modal-content
+    form(method="post"  id='edit_user'  action='/users/' + title + "/edit"  enctype='multipart/format-data').modal-content
       .col-lg-12
-        h1.white.text-center { #{header}}
+        h1.white.text-center #{header}
       container.loginbox
         //- h3.small Company name
-        .col-lg-12: input(type="text"      name="username"   placeholder="company name"     autocomplete="off")
-        .col-lg-12: input(type="password"  name="password"   placeholder="password"         autocomplete="off")
-        .col-lg-12: input(type="password"  name="password2"  placeholder="confirm password" autocomplete="off")
-        .col-lg-12.input-group
+        //- .col-lg-12
+          div: h3.text-center Company Name
+          div: input(type="text"      name="name"   placeholder="required"     autocomplete="off"  value=title)
+        //- .col-lg-12
+          div: h3.text-center Description
+          div: textarea(form='edit_user' style='width:340px') #{p.description}
+        //- .col-lg-12: input(type="password"  name="password"   placeholder="update password"  autocomplete="off")
+        //- .col-lg-12: input(type="password"  name="password2"  placeholder="confirm password" autocomplete="off")
+        //- .col-lg-12: .input-group
           div: h3.text-center Owner(s)
           div.center
             .checkbox
@@ -20,7 +25,31 @@
             .checkbox
               input(type='checkbox'  name='owners'  value='Drew')
               | Drew
-
+        //- .col-lg-12
+          div: h3.text-center Founders
+          div: input(type="text"      name="founders"      placeholder=''  autocomplete="off"  value=JSON.stringify(p.founders))
+        .col-lg-12
+          div: h3.text-center Date founded
+          div: input(type="datetime"  name= 'founded_on'   placeholder=''  autocomplete='off'  value=p.founded_on)
       .modal-footer
-        input(type='button'  value='Cancel'  data-dismiss="modal")
+        input(type='button'  value='Cancel' data-dismiss='modal')
         input(type='submit'  value='Save')
+    //- iframe(id="edit_user_iframe" name="edit_user_iframe" style="display: none;")
+
+script.
+  $('#edit_user').submit(function (e) {
+    e.preventDefault();
+    var fd = new FormData($(this)[0]);
+    $.ajax({
+      //- url: 'users/' + p.username,
+      url: '/users/Addepar',
+      data: fd,
+      processData: false,
+      contentType: false,
+      //- type: 'POST',
+      type: 'GET'
+      success: function(data){
+          console.log('data: ' + JSON.stringify(data));
+      }
+    });
+  });

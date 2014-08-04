@@ -16,7 +16,6 @@ block mainContent
 
   .row
     .col-md-3.logobox
-      //-.pull-right
       .card.text-center.logobox#img
         
           a(href='URL_test').pull-right#edit(style='position:absolute').small edit
@@ -65,7 +64,8 @@ block mainContent
                     each f,i in p.founders
                         if (i !=0)
                           | , 
-                        a(href='http://api.crunchbase.com/v/2/' + f.path + '?user_key=c7653c536c2266d0da1155557600c8a4') #{f.name}
+                        //- a(href='http://api.crunchbase.com/v/2/' + f.path + '?user_key=c7653c536c2266d0da1155557600c8a4') 
+                        | #{f.name}
                       //- TODO hide our userkey
                   else
                     h5 Add founders
