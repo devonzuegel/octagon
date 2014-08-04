@@ -55,20 +55,15 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 		res.render('login', {title: 'Login', errors: req.flash('error')});
 	});
 
-	router.post('/login',
-							passport.authenticate('local', { failureRedirect: '/login', 
-																							 failureFlash: 'Invalid username or password.' }),
-						  function(req, res) {
-						  	req.session.is_admin = (req.user.username == 'admin');
-						  	req.session.username = req.user.username;
-						  	if (req.session.is_admin) res.redirect('/');
-						  	else											res.redirect('/users/' + req.user.username);
-						  }
-	);	
-
-	router.get('/new_photo/:c_id', function(req, res) {
-		res.render('new_photo', {title: 'New photo', c_id: c_id});
-	});
+	router.post('/login', passport.authenticate('local', { 
+		failureRedirect: '/login', 
+		failureFlash: 'Invalid username or password.' 
+	}), function(req, res) {
+		req.session.is_admin = (req.user.username == 'admin');
+		req.session.username = req.user.username;
+		if (req.session.is_admin) res.redirect('/');
+		else											res.redirect('/users/' + req.user.username);
+	});	
 
 // passport stuff
 	passport.serializeUser(function(user, done) {

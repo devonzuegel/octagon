@@ -20,37 +20,40 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 }
 
 router.get('/', function(req, res) {
-  require_privileges(req, res, false, 
-                     function() {
-                          UserDetails.find({}, function(err, all_users) {
-                            if (err)    return done(err);
-                            res.render('all_users', { title: 'Portfolio', 
-                                                      errors: req.flash('error'),
-                                                      companies: all_users,
-                                                      tab: 'companies',
-                                                      username: req.session.username,
-                                                      is_admin: true  });
-                          });
-                      }, function() { 
-                          res.redirect('/users/' + req.session.username); 
-                      }
-  );
+
+  require_privileges(req, res, false, function() {
+    UserDetails.find({}, function(err, all_users) {
+      if (err)    return done(err);
+      res.render('all_users', { 
+        title: 'Portfolio', 
+        errors: req.flash('error'),
+        companies: all_users,
+        tab: 'companies',
+        username: req.session.username,
+        is_admin: true
+      });
+    });
+  }, function() { 
+    res.redirect('/users/' + req.session.username); 
+  });
+
 });
 
 
 // add_user methods
 router.get('/add_user', function(req, res) {
-  require_privileges(req, res, true,
-                     function() {  return;  },
-                     function() {  return res.redirect('/users/' + req.session.username);  }
-  );
+  require_privileges(req, res, true, function() {  return;  }, function() {  
+    return res.redirect('/users/' + req.session.username);  
+  });
 
-  res.render('add_user', { title:"New Company", 
-                           is_admin: true, 
-                           errors: undefined,
-                           username: req.session.username,
-                           tab: 'companies' }
-  );
+  res.render('add_user', { 
+    title:"New Company", 
+    is_admin: true, 
+    errors: undefined,
+    username: req.session.username,
+    tab: 'companies' 
+  });
+
 });
 
 router.post('/add_user', function(req, res) {
@@ -124,7 +127,40 @@ router.post('/:username/edit', function(req, res) {
     if (u_session != u_param)       res.redirect('/users/' + u_session);
   });
 
-  res.redirect('/users/' + u_param);
+  // UserDetails.findOne({ 'username': u_param, }, function(err, user) {
+  //   if (err)    return done(err);
+
+  //   if (user == null  ||  u_param == 'admin') {
+  //       req.flash('error', 'That company doesn\'t exist! Here are your options:.')
+  //       return res.redirect('/users');
+  //   } else {
+  //     console.log('before:  ' + JSON.stringify(user.profile.founded_on, null, 3));
+  //     // user.profile['founded_on'] = '2000-01-01';
+  //     // user.set({
+  //     //   profile: { founded_on: '1111-11-11' }
+  //     // });
+  //     user.update()
+  //     user.save(function() {
+  //       console.log('after:    ' + JSON.stringify(user.profile.founded_on, null, 3));
+  //       res.redirect('/users/' + u_param);
+  //     });
+  //   }
+  // });
+
+  // UserDetails.findOneAndUpdate({ 
+  //   'username': u_param
+  // }, {
+  //   profile: { founded_on: '1111-11-11' }
+  // }, null, res.redirect('/users/' + u_param));
+
+  UserDetails.findOne({ username: u_param }, function (err, user) {
+    console.log(JSON.stringify(user, null, 3));
+    if (err)  return done(err);
+    user.profile.founded_on = '1111-11-11';
+    user.save(function() {
+      res.redirect('/users/' + u_param);
+    });
+  })
 
 });
 

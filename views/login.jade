@@ -15,9 +15,9 @@ style(type="text/css"): include ../public/stylesheets/dashboard.css
         each error in errors
           p.error #{error}
 
-      .col-lg-12: input(type="text", name="username", placeholder="username")
+      .col-lg-12: input(type="text"     name="username"  placeholder="username"  autocomplete="off")
       br
-      .col-lg-12: input(type="password", name="password", placeholder="password")
+      .col-lg-12: input(type="password" name="password"  placeholder="password"  autocomplete="off")
       br
 
       //- submit
