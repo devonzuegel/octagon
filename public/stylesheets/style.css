@@ -8,7 +8,7 @@ body {
 	margin-top: 40px;
 	line-height: 1.2;
 	background-color: #f7f7f7;
-  font: 18px "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font: 18px 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -135,7 +135,7 @@ h5 {
 	color: #d9d9d9;
  	margin: 0px;
 	padding: 4px;
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
 	font-weight: 200;
 	font-size: 13pt;
 }
@@ -191,7 +191,7 @@ p {
 	line-height: 1.5;
 	text-align: left;
 	margin: 0px;
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
 	font-weight: 200;
 	font-size: 13pt;
 }
@@ -214,7 +214,7 @@ input {
 	width: 85%;
 	padding: 10px;
 
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
 	font-weight: 200;
 	font-size: 14pt;
 	color: white;
@@ -233,8 +233,8 @@ input:focus {
 	box-shadow: none;
 }
 
-input[type="submit"],
-input[type="button"],
+input[type='submit'],
+input[type='button'],
 .bordered-btn {
 
   text-transform: uppercase;
@@ -260,10 +260,10 @@ input[type="button"],
 
 }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-input[type="button"]:hover,
-input[type="button"]:focus
+input[type='submit']:hover,
+input[type='submit']:focus,
+input[type='button']:hover,
+input[type='button']:focus
  {
 	background-color: rgba(255,255,255,.03);
   color: white;  /*#46379b;*/

@@ -49,7 +49,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
                               'profile': profile
                             });
     a.save(function (err) {     if (err)  console.log('ERROR');     });
-    updateUser('Addepar', {});
+    // updateUser('Addepar', {});
     callback();
   });
 }
