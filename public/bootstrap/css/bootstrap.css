@@ -179,9 +179,6 @@ legend {
   padding: 0;
   border: 0;
 }
-textarea {
-  overflow: auto;
-}
 optgroup {
   font-weight: bold;
 }
@@ -7309,10 +7306,6 @@ textarea,
   background: none;
 }
 
-textarea {
-  height: auto;
-}
-
 textarea,
 input[type="text"],
 input[type="password"],
@@ -12295,4 +12288,39 @@ a.badge:focus {
 
 .container {
   max-width: 85%;
+}
+textarea {
+  border: none;
+  /*border-bottom: 1px solid #ccc; */
+  width: 380px;
+  height: 180px;
+  padding: 5px -50px 5px -50px;
+  overflow: auto;
+}
+textarea:focus{
+  /*border-bottom: 1px solid #fff;*/
+  outline: none;
+}
+
+textarea::-webkit-scrollbar {
+    width: 5px;
+    margin: 5px;
+}
+ 
+textarea::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+    border-radius: 2px;
+    background-color: #35266C;
+}
+ 
+textarea::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    /*border-radius: 10px;*/
+    width: 5px;
+    height: 10px;
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); */
+}
+
+textarea:focus textarea::-webkit-scrollbar-thumb {
+    background-color: white;
 }
