@@ -16,7 +16,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
     if (!req.isAuthenticated()) res.redirect('../login');
     else    user_fn(req, res);
   }
-}
+} 
 
 router.get('/', function(req, res) {
 
