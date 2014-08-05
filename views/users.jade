@@ -15,7 +15,7 @@ block mainContent
   .row
     .col-md-3.logobox
       .card.text-center.logobox#img
-          a(data-toggle="modal" data-target="#edit_about").pull-right#edit.small edit
+          a(data-toggle="modal" data-target="#edit_company").pull-right#edit.small edit
           .pull-left
             if (p && p.img_path)
               img(src=p.img_path).logo
@@ -39,7 +39,7 @@ block mainContent
 
     .col-md-9.pull-left
       .card#about
-        a(data-toggle="modal" data-target="#edit_about").pull-right#edit.small edit
+        a(data-toggle="modal" data-target="#edit_company").pull-right#edit.small edit
         h2 About
 
         .row
