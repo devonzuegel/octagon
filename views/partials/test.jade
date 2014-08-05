@@ -1,21 +1,14 @@
 .modal.fade.modal-fullscreen.force-fullscreen#edit_about(tabindex="-1" role="dialog" aria-hidden="true")
   .modal-dialog
-    form(method="post"  id='edit_user'  action='/users/'+title+"/edit"  enctype='multipart/format-data').modal-content
+    form(method="post"  id='edit_user'  action='/users/'+data.p.username+"/edit"  enctype='multipart/format-data').modal-content
       .col-lg-12
-        h1.white.text-center #{header}
-      container.loginbox
-        p xxxxxxxxx #{JSON.stringify(data.p)} xxxxxxxxxxx
+        h1.white.text-center #{data.header}
+      container.loginbox: .col-lg-12
         each f in data.form_fields
-          input(type=f.type  placeholder=f.placeholder  name=f.name  autocomplete='off' value='data.p.homepage_url')
-        //- h3.small Company name
-        //- .col-lg-12
-          div: h3.text-center Company Name
-          div: input(type="text"      name="name"   placeholder="required"     autocomplete="off"  value=title)
-        //- .col-lg-12
-          div: h3.text-center Description #{form_fields}
-          div: textarea(form='edit_user' name='description' style='width:340px') #{p.description}
-        //- .col-lg-12: input(type="password"  name="password"   placeholder="update password"  autocomplete="off")
-        //- .col-lg-12: input(type="password"  name="password2"  placeholder="confirm password" autocomplete="off")
+          if (f.type == 'textarea')
+            textarea(form='edit_user'  name=f.name  placeholder='description') #{data.p[f.name]}
+          else
+            input(type=f.type  placeholder=f.placeholder  name=f.name  autocomplete='off' value=data.p[f.name])
         .col-lg-12: .input-group
           div: h3.text-center Owner(s)
           div.center
@@ -28,12 +21,6 @@
             .checkbox
               input(type='checkbox'  name='owners'  value='Drew')
               | Drew
-        //- .col-lg-12
-          div: h3.text-center Founders
-          div: input(type="text"      name="founders"      placeholder=''  autocomplete="off"  value=JSON.stringify(p.founders))
-        //- .col-lg-12
-          div: h3.text-center Date founded
-          div: input(type="datetime"  name= 'founded_on'   placeholder=''  autocomplete='off'  value=p.founded_on)
       .modal-footer
         input(type='button'  value='Cancel' data-dismiss='modal')
         input(type='submit'  value='Save')

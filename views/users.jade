@@ -124,57 +124,57 @@ block mainContent
       var cards = [  
         { 
           id: '#about',
+          header: 'About',
           form: [  
             //- { name: 'username',  type: 'text',  placeholder: 'Company website'  },
-            { name: 'description',  type: 'text',  placeholder: 'description'      },
-            { name: 'founders',     type: 'text',  placeholder: 'founders'         },
-            { name: 'founded_on',   type: 'text', placeholder: "founding date",   classes: 'calendar_input',  id: "datepicker" },
-            { name: 'Funding',      type: 'text', placeholder: 'funding (amount)'  },
-            { name: 'homepage_url', type: 'text', placeholder: 'company website'   }
+            { name: 'description',  type: 'textarea', placeholder: 'description'      },
+            { name: 'founders',     type: 'text',     placeholder: 'founders'         },
+            { name: 'founded_on',   type: 'text',     placeholder: "founding date",   classes: 'calendar_input',  id: "datepicker" },
+            { name: 'Funding',      type: 'text',     placeholder: 'funding (amount)'  },
+            { name: 'homepage_url', type: 'text',     placeholder: 'company website'   }
           ]
         }, { 
           id: '#milestones',
+          header: 'Milestones',
           form: []
         },  
         { 
-          id: '#team'       
-        }, { 
-          id: '#test' 
+          id: '#team',
+          header: 'Team',      
         },  
         { 
-          id: '#img'
+          id: '#img',
+          header: 'Image',
         }  
       ];
 
+      var p = !{JSON.stringify(p)};
+
       for (var i = 0; i < cards.length; i++) {
         (function(i_copy){
+
           $(cards[i].id).hover( function() { // on hover in...
             $(this).find('#edit').fadeIn('fast');
-            form_fields = cards[i_copy].form;
+            //- form_fields = cards[i_copy].form;
 
-            var p = !{JSON.stringify(p)};
-
-            console.log(p);
             $.ajax({
-              url: '/test',
-              type: 'GET',
+              type: "GET",
+              url: "/test",
               data: { 
-               form_fields: form_fields,
-               p: p
-              },
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: function(response) {
-              $('#testpartial').html(response.responseText);
-              },
-              error: function(response) {
-              $('#testpartial').html(response.responseText);
+                form_fields: cards[i_copy].form, 
+                header: cards[i_copy].header,
+                username: p.username,
+                p: p
               }
+            }).done(function(msg) {
+                //- alert( "Data Saved: " + msg );
+                $('#testpartial').html(msg);
             });
 
           }, function() {  // on hover out...
             $(this).find('#edit').fadeOut('fast');   }
           );
+
         }(i));
       }
     });

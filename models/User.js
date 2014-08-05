@@ -28,17 +28,19 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
     // TODO what if p or p.data is undefined?
     var p = JSON.parse(body).data;
-    var profile = undefined;
+    var profile = {};
     if (p.response != false) {
-        profile = { img_path:       (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
-                    short_descrip:  p.properties.short_description,
-                    description:    p.properties.description,
-                    homepage_url:   p.properties.homepage_url.replace("http://",""),
-                    founded_on:     p.properties.founded_on,
-                    total_funding:  p.properties.total_funding_usd,
-                    founders:       (p.relationships.founders) ? p.relationships.founders.items : undefined,
-                    categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
-                  };
+        profile = { 
+          img_path:       (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
+          short_descrip:  p.properties.short_description,
+          description:    p.properties.description,
+          homepage_url:   p.properties.homepage_url.replace("http://",""),
+          founded_on:     p.properties.founded_on,
+          total_funding:  p.properties.total_funding_usd,
+          founders:       (p.relationships.founders) ? p.relationships.founders.items : undefined,
+          categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
+          username:       username
+        };
     }
     var a = new UserDetails({ 'username': username,
                               'password': password, 
