@@ -24,27 +24,21 @@
   app.use(bodyParser.urlencoded());
 
   app.use(cookieParser());
-  // app.use(cookieParser('S3CRE7'));
-  app.use(session({secret: 'twocubed', 
-                 saveUninitialized: true,
-                 resave: true}));
+  app.use(session({
+    secret: 'twocubed', 
+    saveUninitialized: true,
+    resave: true
+  }) );
 
 
   app.use(express.static(path.join(__dirname, 'public')));
-  // app.use(express.session({ secret: 'keyboard cat' }));
-  // app.use(session({
-  //   genid: function(req) {
-  //     return genuuid(); // use UUIDs for session IDs
-  //   },
-  //   secret: 'keyboard cat'
-  // }));
 
   app.use(flash());
   app.use(passport.initialize());
   app.use(passport.session());
 
   app.use('/', routes);
-  app.use('/users/', companies);
+  app.use('/portfolio', companies);
   app.set('view options', { layout: false });
 
 var server = app.listen(3030, function() {

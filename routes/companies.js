@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
       });
     });
   }, function() { 
-    res.redirect('/users/' + req.session.username); 
+    res.redirect('/portfolio/' + req.session.username); 
   });
 
 });
@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
 // add_user methods
 router.get('/add_user', function(req, res) {
   require_privileges(req, res, true, function() {  return;  }, function() {  
-    return res.redirect('/users/' + req.session.username);  
+    return res.redirect('/portfolio/' + req.session.username);  
   });
 
   res.render('add_company', { 
@@ -60,12 +60,12 @@ router.post('/add_user', function(req, res) {
 
   if (form.password == '') {
     req.flash('error', 'Please enter a password.');
-    return res.redirect('/users/add_user');
+    return res.redirect('/portfolio/add_user');
   }
 
   if (form.password2 != form.password) {
     req.flash('error', 'Please make sure your passwords match.');
-    return res.redirect('/users/add_user');
+    return res.redirect('/portfolio/add_user');
   }
 
   CompanyDetails.find({'username': form.username }, function(err, u) {
@@ -78,7 +78,7 @@ router.post('/add_user', function(req, res) {
       form.init_investmt_date, 
       form.crunchbase_permalink,
       form.owners,
-      function() { res.redirect('/users/'); }
+      function() { res.redirect('/portfolio/'); }
     );  
   });
 
@@ -86,11 +86,11 @@ router.post('/add_user', function(req, res) {
 
 router.get('/:username', function(req, res) {
   var u_param = req.params.username; // gets :username from the url
-  if (u_param == 'add_user')    res.redirect('/users/add_user');
+  if (u_param == 'add_user')    res.redirect('/portfolio/add_user');
   var u_session = req.session.username; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return }, function() {
-    if (u_session != u_param)     res.redirect('/users/' + u_session);
+    if (u_session != u_param)     res.redirect('/portfolio/' + u_session);
   });
 
   CompanyDetails.findOne({ 'username': u_param, }, function(err, user) {
@@ -98,7 +98,7 @@ router.get('/:username', function(req, res) {
 
     if (user == null  ||  u_param == 'admin') { // not a valid company >> doesn't have a profile
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
-        return res.redirect('/users');
+        return res.redirect('/portfolio');
     } else { // is a valid company with a profile
       var details = { 
         errors: req.flash('error'),
@@ -117,7 +117,7 @@ router.post('/:username/edit', function(req, res) {
   var u_session = req.session.username; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return; }, function() {
-    if (u_session != u_param)       res.redirect('/users/' + u_session);
+    if (u_session != u_param)       res.redirect('/portfolio/' + u_session);
   });
 
   CompanyDetails.findOne({ username: u_param }, function (err, user) {
@@ -132,7 +132,7 @@ router.post('/:username/edit', function(req, res) {
     user['profile'] = profile;
 
     // save & redirect to updated profile
-    user.save(function() { res.redirect('/users/' + u_param); });
+    user.save(function() { res.redirect('/portfolio/' + u_param); });
   })
 
 });
