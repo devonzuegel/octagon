@@ -1,17 +1,7 @@
 doctype html
 <meta charset=”utf-8”> 
 html
-  head
-    title #{title}
-    link(rel='shortcut icon', href='http://formation8.com/wp-content/uploads/favicon.ico')
-
-    //- STYLESHEETS -//////////////////////////////////////////////////////////
-
-    //- general css
-    style(type="text/css", media="screen"): include ../public/stylesheets/css/screen.css
-    style(type="text/css", media="print"): include ../public/stylesheets/css/print.css
-
-    block h
+  include includes/head.jade
 
   .toolbar: .container: .row
     

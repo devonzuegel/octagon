@@ -1,0 +1,26 @@
+.modal.fade.modal-fullscreen.force-fullscreen#edit_company(tabindex="-1" role="dialog" aria-hidden="true")
+  .modal-dialog
+    form(method="post"  id='edit_user'  action='/users/'+data.p.username+"/edit"  enctype='multipart/format-data').modal-content
+      .col-lg-12
+        h1.white.text-center #{data.header}
+      container.loginbox: .col-lg-12
+        each f in data.form_fields
+          if (f.type == 'textarea')
+            textarea(form='edit_user'  name=f.name  placeholder='description') #{data.p[f.name]}
+          else
+            input(type=f.type  placeholder=f.placeholder  name=f.name  autocomplete='off' value=data.p[f.name])
+        .col-lg-12: .input-group
+          div: h3.text-center Owner(s)
+          div.center
+            .checkbox
+              input(type='checkbox'  name='owners'  value='Joe')
+              | Joe
+            .checkbox
+              input(type='checkbox'  name='owners'  value='Chris')
+              | Chris
+            .checkbox
+              input(type='checkbox'  name='owners'  value='Drew')
+              | Drew
+      .modal-footer
+        input(type='button'  value='Cancel' data-dismiss='modal')
+        input(type='submit'  value='Save')
