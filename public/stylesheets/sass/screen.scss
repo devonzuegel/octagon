@@ -1,14 +1,23 @@
+// Vendors
+@import "vendors/tablesort";
+@import "vendors/jquery-ui";
+@import "vendors/datepicker";
+
 // Base
-@import "base/dashboard";
 @import "base/layout";
-@import "base/mixitup";
 @import "base/style";
 
 // Modules
 @import "modules/variables";
 @import "modules/mixins";
+@import "modules/helpers";
+@import "modules/functions";
+
+// Components
+@import "components/mixitup";
 
 // Sections
-@import "sections/base";
-@import "sections/navbar";
+@import "sections/auth";
 @import "sections/dashboard";
+@import "sections/portfolio";
+@import "sections/toolbar";
