@@ -10,10 +10,10 @@
 
 
   var routes = require('./routes/index');
-  var users = require('./routes/users');
+  var companies = require('./routes/companies');
 
   var app = express();
-  var passport = require('./models/User.js').passport;
+  var passport = require('./models/Company.js').passport;
 
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');
@@ -24,27 +24,21 @@
   app.use(bodyParser.urlencoded());
 
   app.use(cookieParser());
-  // app.use(cookieParser('S3CRE7'));
-  app.use(session({secret: 'twocubed', 
-                 saveUninitialized: true,
-                 resave: true}));
+  app.use(session({
+    secret: 'twocubed', 
+    saveUninitialized: true,
+    resave: true
+  }) );
 
 
   app.use(express.static(path.join(__dirname, 'public')));
-  // app.use(express.session({ secret: 'keyboard cat' }));
-  // app.use(session({
-  //   genid: function(req) {
-  //     return genuuid(); // use UUIDs for session IDs
-  //   },
-  //   secret: 'keyboard cat'
-  // }));
 
   app.use(flash());
   app.use(passport.initialize());
   app.use(passport.session());
 
   app.use('/', routes);
-  app.use('/users/', users);
+  app.use('/portfolio', companies);
   app.set('view options', { layout: false });
 
 var server = app.listen(3030, function() {

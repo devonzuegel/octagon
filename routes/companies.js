@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-// var formidable = require('formidable');
 var api_mgr = require('./apiManager');
 
 // require (authentication stuff)
-var CompanyModel = require('../models/User.js'),
+var CompanyModel = require('../models/Company.js'),
     passport = CompanyModel.passport,
     LocalStrategy = require('passport-local').Strategy,
 		CompanyDetails = CompanyModel.CompanyDetails;
@@ -34,16 +33,15 @@ router.get('/', function(req, res) {
       });
     });
   }, function() { 
-    res.redirect('/users/' + req.session.username); 
+    res.redirect('/portfolio/' + req.session.username); 
   });
 
 });
 
-
 // add_user methods
 router.get('/add_user', function(req, res) {
   require_privileges(req, res, true, function() {  return;  }, function() {  
-    return res.redirect('/users/' + req.session.username);  
+    return res.redirect('/portfolio/' + req.session.username);  
   });
 
   res.render('add_company', { 
@@ -62,30 +60,25 @@ router.post('/add_user', function(req, res) {
 
   if (form.password == '') {
     req.flash('error', 'Please enter a password.');
-    return res.redirect('/users/add_user');
+    return res.redirect('/portfolio/add_user');
   }
 
   if (form.password2 != form.password) {
     req.flash('error', 'Please make sure your passwords match.');
-    return res.redirect('/users/add_user');
+    return res.redirect('/portfolio/add_user');
   }
 
   CompanyDetails.find({'username': form.username }, function(err, u) {
     if (err)    return done(err);
-
     // TODO ensure user hasn't yet been added
-    if (false/*username_inuse(form.username)*/) {
-      req.flash('error', 'That username is already in use.');
-      return res.redirect('/users/add_user');      
-    }
 
-    CompanyModel.addUser(
+    CompanyModel.add(
       form.username,
       form.password, 
       form.init_investmt_date, 
       form.crunchbase_permalink,
       form.owners,
-      function() { res.redirect('/users/'); }
+      function() { res.redirect('/portfolio/'); }
     );  
   });
 
@@ -93,20 +86,20 @@ router.post('/add_user', function(req, res) {
 
 router.get('/:username', function(req, res) {
   var u_param = req.params.username; // gets :username from the url
-  if (u_param == 'add_user')    res.redirect('/users/add_user');
-  var u_session = req.session.username;
+  if (u_param == 'add_user')    res.redirect('/portfolio/add_user');
+  var u_session = req.session.username; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return }, function() {
-    if (u_session != u_param)     res.redirect('/users/' + u_session);
+    if (u_session != u_param)     res.redirect('/portfolio/' + u_session);
   });
 
   CompanyDetails.findOne({ 'username': u_param, }, function(err, user) {
     if (err)    return done(err);
 
-    if (user == null  ||  u_param == 'admin') {
+    if (user == null  ||  u_param == 'admin') { // not a valid company >> doesn't have a profile
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
-        return res.redirect('/users');
-    } else {
+        return res.redirect('/portfolio');
+    } else { // is a valid company with a profile
       var details = { 
         errors: req.flash('error'),
         username: req.session.username,
@@ -119,17 +112,12 @@ router.get('/:username', function(req, res) {
   });
 });
 
-function get_type(thing){
-    if(thing===null)return "[object Null]"; // special case
-    return Object.prototype.toString.call(thing);
-}
-
 router.post('/:username/edit', function(req, res) {
   var u_param = req.params.username;    // gets :username from the url
   var u_session = req.session.username; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return; }, function() {
-    if (u_session != u_param)       res.redirect('/users/' + u_session);
+    if (u_session != u_param)       res.redirect('/portfolio/' + u_session);
   });
 
   CompanyDetails.findOne({ username: u_param }, function (err, user) {
@@ -144,7 +132,7 @@ router.post('/:username/edit', function(req, res) {
     user['profile'] = profile;
 
     // save & redirect to updated profile
-    user.save(function() { res.redirect('/users/' + u_param); });
+    user.save(function() { res.redirect('/portfolio/' + u_param); });
   })
 
 });
@@ -152,8 +140,3 @@ router.post('/:username/edit', function(req, res) {
 
 module.exports = router;
 module.exports.require_privileges = require_privileges;
-
-// owner
-// monthly cash burn
-// cash balance
-// revenue

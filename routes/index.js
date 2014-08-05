@@ -12,7 +12,7 @@
 	    hash = bcrypt.hashSync("B4c0/\/", salt);
 
 	// require (authentication stuff)
-	var UserModel = require('../models/User.js'),
+	var UserModel = require('../models/Company.js'),
 	    passport = UserModel.passport,
 	    LocalStrategy = require('passport-local').Strategy,
 			CompanyDetails = UserModel.CompanyDetails;
@@ -62,7 +62,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 		req.session.is_admin = (req.user.username == 'admin');
 		req.session.username = req.user.username;
 		if (req.session.is_admin) res.redirect('/');
-		else											res.redirect('/users/' + req.user.username);
+		else											res.redirect('/portfolio/' + req.user.username);
 	});	
 
 
@@ -73,14 +73,12 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 
 // passport stuff
 	passport.serializeUser(function(user, done) {
-		// console.log('(serialize)      user= %j', user)
 	  done(null, user.id);
 	});
 	 
 	passport.deserializeUser(function(id, done) {
 		CompanyDetails.find({id: id}, function(err, user) {
 			if (err)    return done(err);
-			// console.log('(deserialize)  user= %j', user);
 			done(err, user);
 		});
 	});
