@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 /* ------------------------------------------
   Reset ♥
   http://meyerweb.com/eric/tools/css/reset/
@@ -2461,7 +2462,6 @@ abbr, acronym {
 
 html, body {
   background-color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   line-height: 18px;
   color: #52697E; }
@@ -2716,7 +2716,6 @@ input.inputDate {
 /*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);*/
 /*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
 body {
-  margin-top: 40px;
   line-height: 1.2;
   background-color: #f7f7f7;
   font: 18px 'Source Sans Pro', Helvetica, Arial, sans-serif; }
@@ -2827,7 +2826,7 @@ h5 {
   color: #d9d9d9;
   margin: 0px;
   padding: 4px;
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   font-weight: 200;
   font-size: 13pt; }
 
@@ -2891,9 +2890,9 @@ br {
   color: white;
   font-size: 18pt;
   margin: auto;
+  padding-top: 105px;
   text-align: center;
-  width: 380px;
-  margin-top: 105px; }
+  width: 380px; }
 
 input {
   width: 85%;
@@ -3071,16 +3070,12 @@ table th.sort-up:after {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-body, button {
-  font-family: 'Helvetica Neue', arial, sans-serif; }
-
 .controls {
   margin: 5px -25px 5 25px;
   display: block; }
 
 .controls h3 {
   color: #786eaf;
-  /*padding: 10px;*/
   font-weight: 400; }
 
 button {
@@ -3184,8 +3179,7 @@ button + label {
   height: 100%; }
 
 .mix:hover {
-  cursor: pointer;
-  /*background-color: #fbfaff;*/ }
+  cursor: pointer; }
 
 #Container {
   -webkit-perspective: 3000px;
@@ -3199,8 +3193,6 @@ button + label {
   height: 100%; }
 
 .portfolio-card {
-  /*height: 100%;*/
-  /*width: 100%;*/
   text-align: center;
   width: 20%;
   max-height: 90%;
@@ -3211,7 +3203,6 @@ button + label {
   width: 100%;
   height: 100%;
   position: absolute;
-  /*overflow: hidden;*/
   min-height: 265px; }
 
 .v-center-helper {
@@ -3230,13 +3221,9 @@ button + label {
 .v-center-helper:hover,
 .v-center-helper:hover a {
   color: #46379b !important;
-  /*background-color: #fbfaff;*/
-  /*border-color: #46379b;*/
   border-color: #c8badb; }
 
 .v-center-content {
-  /*height: 100%;*/
-  /*width: 100%;*/
   #position: relative;
   #top: -50%;
   margin: auto; }
@@ -3247,9 +3234,6 @@ body {
 h1 {
   color: white;
   /*#444;*/ }
-
-h1.notitle {
-  display: none; }
 
 .toolbar {
   background: none !important;
