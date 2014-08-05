@@ -47,7 +47,7 @@
   app.use('/users/', users);
   app.set('view options', { layout: false });
 
-var server = app.listen(3000, function() {
+var server = app.listen(3030, function() {
     console.log('Listening on port %d', server.address().port);
 });
 

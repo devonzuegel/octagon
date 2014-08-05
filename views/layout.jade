@@ -11,15 +11,19 @@ html
     style(type="text/css"): include ../public/bootstrap/css/bootstrap.css
 
     //- datepicker (w/ jquery-ui)
-    style(type="text/css"): include ../public/stylesheets/jquery-ui.css
-    style(type="text/css"): include ../public/stylesheets/datepicker.css
+    style(type="text/css"): include ../public/stylesheets/sass/vendors/jquery-ui.css
+    style(type="text/css"): include ../public/stylesheets/sass/vendors/datepicker.css
     
     //- //- tablesort CSS
     //- style(type="text/css"): include ../public/stylesheets/tablesort.css
 
     //- general css
-    style(type="text/css"): include ../public/stylesheets/style.css
-    style(type="text/css"): include ../public/stylesheets/mixitup.css
+    style(type="text/css"): include ../public/stylesheets/sass/base/style.css
+    style(type="text/css"): include ../public/stylesheets/sass/components/mixitup.css
+
+    //- general css
+    style(type="text/css", media="screen"): include ../public/stylesheets/css/screen.css
+    style(type="text/css", media="print"): include ../public/stylesheets/css/print.css
 
     block h
 
