@@ -7,7 +7,7 @@ var api_mgr = require('./apiManager');
 var UserModel = require('../models/User.js'),
     passport = UserModel.passport,
     LocalStrategy = require('passport-local').Strategy,
-		UserDetails = UserModel.UserDetails;
+		CompanyDetails = UserModel.CompanyDetails;
 
 function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
   if (req.isAuthenticated() && req.session.is_admin) {
@@ -22,7 +22,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 router.get('/', function(req, res) {
 
   require_privileges(req, res, false, function() {
-    UserDetails.find({}, function(err, all_users) {
+    CompanyDetails.find({}, function(err, all_users) {
       if (err)    return done(err);
       res.render('all_users', { 
         title: 'Portfolio', 
@@ -70,7 +70,7 @@ router.post('/add_user', function(req, res) {
     return res.redirect('/users/add_user');
   }
 
-  UserDetails.find({'username': form.username }, function(err, u) {
+  CompanyDetails.find({'username': form.username }, function(err, u) {
     if (err)    return done(err);
 
     // TODO ensure user hasn't yet been added
@@ -100,7 +100,7 @@ router.get('/:username', function(req, res) {
     if (u_session != u_param)     res.redirect('/users/' + u_session);
   });
 
-  UserDetails.findOne({ 'username': u_param, }, function(err, user) {
+  CompanyDetails.findOne({ 'username': u_param, }, function(err, user) {
     if (err)    return done(err);
 
     if (user == null  ||  u_param == 'admin') {
@@ -132,7 +132,7 @@ router.post('/:username/edit', function(req, res) {
     if (u_session != u_param)       res.redirect('/users/' + u_session);
   });
 
-  UserDetails.findOne({ username: u_param }, function (err, user) {
+  CompanyDetails.findOne({ username: u_param }, function (err, user) {
     if (err)  return done(err);
 
     var profile = {};
