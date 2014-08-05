@@ -1,40 +1,11 @@
 doctype html
 <meta charset=”utf-8”> 
 html
+
+  //- Include all head information
   include includes/head.jade
 
-  .toolbar: .container: .row
-    
-    .col-xs-6: h5.pull-left
-      a(href='/dashboard/'): .pull-left
-        i.fa.fa-home
-
-      if is_admin
-        a(href='/portfolio/'): .pull-left(style="margin-left:15px")
-          //- Portfolio
-          i.fa.fa-th 
-
-    .col-xs-6.pull-right.text-right.tooltip_a
-      h5.pull-right
-        | Hello, #{username}!
-        a(href='../login'): .pull-right(style="margin-left:15px")
-          //- | Log out
-          i.fa.fa-sign-out
-        a(href='../login'): .pull-right(style="margin-left:15px")
-          //- | Alerts
-          i.fa.fa-bell
-
-  .container
-
-    .row
-      .col-xs-10: h1.notitle #{title}
-      .col-xs-2: block topRight
-
-    if errors != '' && errors != undefined
-      .col-lg-12
-        p.error #{errors}
-    block mainContent
-    div(style='height:50px')
+  block sub_layout
 
   //- Include all JS Scripts
   include includes/scripts.jade

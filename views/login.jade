@@ -1,24 +1,26 @@
-style(type="text/css"): include ../public/stylesheets/css/screen.css
+extends layouts/auth_layout
 
-.loginbox
-  //- .col-lg-12: h1 Login
-  div(style='height:6%')
-  form(method="POST", action="/login")
-    container
-      //- username + password
-      .col-lg-12
-        each error in errors
-          p.error #{error}
+block content
 
-      .col-lg-12: input(type="text"     name="username"  placeholder="username"  autocomplete="off")
-      br
-      .col-lg-12: input(type="password" name="password"  placeholder="password"  autocomplete="off")
-      br
+  .loginbox
+    //- .col-lg-12: h1 Login
+    div(style='height:6%')
+    form(method="POST", action="/login")
+      container
+        //- username + password
+        .col-lg-12
+          each error in errors
+            p.error #{error}
 
-      //- submit
-      .col-lg-12
-        p(style='width:85%; margin: auto') Contact 
-          a(href="mailto:drew@formation8.com").white Drew Oettig 
-          | for your company's login details.
-      div(style='height:6%')
-      .col-lg-12: input(type="submit"  value="Login").submit
+        .col-lg-12: input(type="text"     name="username"  placeholder="username"  autocomplete="off")
+        br
+        .col-lg-12: input(type="password" name="password"  placeholder="password"  autocomplete="off")
+        br
+
+        //- submit
+        .col-lg-12
+          p(style='width:85%; margin: auto') Contact 
+            a(href="mailto:drew@formation8.com").white Drew Oettig 
+            | for your company's login details.
+        div(style='height:6%')
+        .col-lg-12: input(type="submit"  value="Login").submit

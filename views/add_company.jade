@@ -1,8 +1,6 @@
-extends layout
+extends layouts/portfolio_layout
 
-block h
-
-block mainContent
+block content
   .loginbox
     .col-lg-12
       h1.white.text-center Add company
@@ -30,10 +28,3 @@ block mainContent
           a(data-toggle="tooltip" data-original-title=tooltip_txt).tooltip-zone
             input(type='text' name='crunchbase_permalink', placeholder='CrunchBase permalink'  autocomplete="off")
       input(type="submit", value="Submit" style='margin-top:40px').submit
-
-  script.
-    $(document).ready(function () {
-      $('#datepicker').datepicker({
-        format: "dd/mm/yyyy"
-      });  
-    });
