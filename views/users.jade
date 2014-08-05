@@ -125,7 +125,7 @@ block mainContent
         { 
           id: '#about',
           form: [  
-            { name: 'description',  type: 'text',  placeholder: 'Company website'  },
+            //- { name: 'username',  type: 'text',  placeholder: 'Company website'  },
             { name: 'description',  type: 'text',  placeholder: 'description'      },
             { name: 'founders',     type: 'text',  placeholder: 'founders'         },
             { name: 'founded_on',   type: 'text', placeholder: "founding date",   classes: 'calendar_input',  id: "datepicker" },
@@ -152,10 +152,16 @@ block mainContent
             $(this).find('#edit').fadeIn('fast');
             form_fields = cards[i_copy].form;
 
+            var p = !{JSON.stringify(p)};
+
+            console.log(p);
             $.ajax({
               url: '/test',
               type: 'GET',
-              data: { form_fields: form_fields },
+              data: { 
+               form_fields: form_fields,
+               p: p
+              },
               contentType: "application/json; charset=utf-8",
               dataType: "json",
               success: function(response) {

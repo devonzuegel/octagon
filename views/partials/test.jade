@@ -2,10 +2,11 @@
   .modal-dialog
     form(method="post"  id='edit_user'  action='/users/'+title+"/edit"  enctype='multipart/format-data').modal-content
       .col-lg-12
-        h5.white#form #{data.form_fields}
         h1.white.text-center #{header}
       container.loginbox
-
+        p xxxxxxxxx #{JSON.stringify(data.p)} xxxxxxxxxxx
+        each f in data.form_fields
+          input(type=f.type  placeholder=f.placeholder  name=f.name  autocomplete='off' value='data.p.homepage_url')
         //- h3.small Company name
         //- .col-lg-12
           div: h3.text-center Company Name
