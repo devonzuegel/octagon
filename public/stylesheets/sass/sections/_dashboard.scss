@@ -1,14 +1,9 @@
 body {
-  background-color: #45367C;
+  background-color: $purple;
 }
 
 h1 {
   color: white; /*#444;*/
-}
-
-.toolbar {
-  background: none !important;
-  border: none !important;
 }
 
 .dash-btn {

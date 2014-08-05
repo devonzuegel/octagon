@@ -2525,17 +2525,6 @@ h4 {
   line-height: 1.7;
   padding: 10px; }
 
-.toolbar {
-  z-index: 10000;
-  top: 0px;
-  margin-top: -1px;
-  position: fixed;
-  background-color: #45367C;
-  /*border-bottom: 1px solid white;*/
-  padding: 5px;
-  width: 100%;
-  vertical-align: middle; }
-
 h5 {
   display: inline;
   /*color: #A564D1;*/
@@ -2945,15 +2934,11 @@ button + label {
   margin: auto; }
 
 body {
-  background-color: #45367C; }
+  background-color: #45367c; }
 
 h1 {
   color: white;
   /*#444;*/ }
-
-.toolbar {
-  background: none !important;
-  border: none !important; }
 
 .dash-btn {
   width: 35%;
@@ -2983,3 +2968,12 @@ h6 {
   font-weight: 600;
   font-size: 32pt;
   text-transform: uppercase; }
+
+.toolbar {
+  background-color: #fff;
+  position: fixed;
+  padding: 10px;
+  top: 0px;
+  vertical-align: middle;
+  width: 100%;
+  z-index: 10000; }
