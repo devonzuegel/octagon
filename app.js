@@ -13,7 +13,7 @@
   var users = require('./routes/users');
 
   var app = express();
-  var passport = require('./models/User.js').passport;
+  var passport = require('./models/Company.js').passport;
 
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');

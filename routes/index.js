@@ -12,7 +12,7 @@
 	    hash = bcrypt.hashSync("B4c0/\/", salt);
 
 	// require (authentication stuff)
-	var UserModel = require('../models/User.js'),
+	var UserModel = require('../models/Company.js'),
 	    passport = UserModel.passport,
 	    LocalStrategy = require('passport-local').Strategy,
 			CompanyDetails = UserModel.CompanyDetails;
