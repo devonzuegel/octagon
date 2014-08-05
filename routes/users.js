@@ -114,7 +114,7 @@ router.get('/:username', function(req, res) {
         is_admin: (u_session == 'admin'),
         p: user.profile
       };
-      return res.render('users', details);
+      return res.render('company', details);
     }
   });
 });
