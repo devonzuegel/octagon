@@ -66,9 +66,9 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 	});	
 
 
-	router.get('/test', function (req, res) {
+	router.get('/edit_modal', function (req, res) {
 		var data = req.query;
-		res.render('./sections/test', {data: data, errors: req.flash('error')});
+		res.render('./sections/edit_modal', {data: data, errors: req.flash('error')});
 	});
 
 // passport stuff

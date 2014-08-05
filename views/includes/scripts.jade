@@ -46,7 +46,9 @@ script.
         }, { 
           id: '#milestones',
           header: 'Milestones',
-          form: []
+          form: [
+            { name: 'milestone',  type: 'textarea', placeholder: 'milestone'      },
+          ]
         },  
         { 
           id: '#team',
@@ -77,7 +79,7 @@ script.
             console.log(JSON.stringify(cards[i_copy].form, null, 3));
             $.ajax({
               type: "GET",
-              url: "/test",
+              url: "/edit_modal",
               data: { 
                 form_fields: cards[i_copy].form, 
                 header: cards[i_copy].header,
