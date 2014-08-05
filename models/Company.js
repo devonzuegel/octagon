@@ -26,68 +26,43 @@ var CompanyDetails = mongoose.model('userInfo', CompanyDetail);
 function addUser(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
   if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
+    
     // TODO what if p or p.data is undefined?
     var p = JSON.parse(body).data;
     var profile = {};
     if (p.response != false) {
-        profile = { 
-          img_path:       (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
-          short_descrip:  p.properties.short_description,
-          description:    p.properties.description,
-          homepage_url:   p.properties.homepage_url.replace("http://",""),
-          founded_on:     p.properties.founded_on,
-          total_funding:  p.properties.total_funding_usd,
-          founders:       (p.relationships.founders) ? p.relationships.founders.items.toString() : undefined,
-          categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
-          username:       username
-        };
+      profile = { 
+        img_path:       (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
+        short_descrip:  p.properties.short_description,
+        description:    p.properties.description,
+        homepage_url:   p.properties.homepage_url.replace("http://",""),
+        founded_on:     p.properties.founded_on,
+        total_funding:  p.properties.total_funding_usd,
+        founders:       (p.relationships.founders) ? p.relationships.founders.items.toString() : undefined,
+        categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
+      };
     }
-    var a = new CompanyDetails({ 'username': username,
-                              'password': password, 
-                              'init_investmt_date': init_investmt_date,
-                              'crunchbase_permalink': crunchbase_permalink,
-                              'crunchbase_prof': p,
-                              'owners': owners,
-                              'profile': profile
-                            });
-    a.save(function (err) {     if (err)  console.log('ERROR');     });
-    // updateUser('Addepar', {});
-    callback();
+    profile.username = username;
+
+    var a = new CompanyDetails({ 
+      'username': username,
+      'password': password, 
+      'init_investmt_date': init_investmt_date,
+      'crunchbase_permalink': crunchbase_permalink,
+      'crunchbase_prof': p,
+      'owners': owners,
+      'profile': profile
+    });
+
+    a.save(function (err) {
+      if (err)  console.log('ERROR');
+      callback();
+    });
+
   });
 }
 
-function updateUser(username, details) {
-  // CompanyDetails.findAndModify(  {username: 'Addepar'}, // query
-  //                             [['_id','asc']],  // sort order
-  //                             {$set: {password: 'TESTTTTTTT'}}, // replacement, replaces only the field "hi"
-  //                             {}, // options
-  //                             function(err, object) {
-  //                               if (err)  console.warn(err.message);  // returns error if no matching object found
-  //                               else      console.dir(object);
-  //                             }
-  // );
-
-  // CompanyDetails.findOne({ username: username, }, 
-  //                     function(err, u) {
-  //                       if (err)    return done(err);
-  //                       console.log("\n\nBEFORE:\nuser=  %j", u);
-  //                       u.password = 'TESTTTTTTTTTTTTTTTTTTTTTTTTT';
-  //                       u.save();
-  //                     });
-
-  // CompanyDetails.findOne({ username: username, }, 
-  //                     function(err, u) {
-  //                       if (err)    return done(err);
-  //                       console.log("\n\nAFTER:\nuser=  %j", u);
-  //                     });
-
-  // CompanyDetails.find({ username: username }, function(err, u) {
-  //   console.log("AFTER:\nuser.password=  %j", u[0].password);
-  //   CompanyDetails.update( {_id:u[0]._id}, {password: 'TEST'} );
-  // });
-  // CompanyDetails.find({ username: username }, function(err, u) {
-  //   console.log("BEFORE:\nuser.password=  %j", u[0].password);
-  // });
+function updateCompany(username, details) {
 }
 
 
