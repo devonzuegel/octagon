@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
         tab: 'companies',
         username: req.session.username,
         is_admin: true
-      });
+      })
     });
   }, function() { 
     res.redirect('/portfolio/' + req.session.username); 
