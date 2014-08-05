@@ -4,14 +4,6 @@ block sub_layout
 
   include ../includes/toolbar.jade
 
-  .container
-
-    .row
-      .col-xs-10: h1.notitle #{title}
-      .col-xs-2: block topRight
-
-    if errors != '' && errors != undefined
-      .col-lg-12
-        p.error #{errors}
+  .container.content
 
     block content

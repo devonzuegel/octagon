@@ -14099,6 +14099,9 @@ body .ui-tooltip {
   background: url(../images/icon_cal--grey.png) no-repeat right;
   background-size: 30px 30px; }
 
+.content {
+  margin-top: 49px; }
+
 /*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);*/
 /*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
 body {
