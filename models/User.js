@@ -7,7 +7,7 @@ var api_mgr = require('../routes/apiManager');
 // var bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema;
-var UserDetail = new Schema({
+var CompanyDetail = new Schema({
       username: String,
       password: String,
       init_investmt_date: 'object',
@@ -19,7 +19,7 @@ var UserDetail = new Schema({
     }, {
       collection: 'userInfo'
     });
-var UserDetails = mongoose.model('userInfo', UserDetail);
+var CompanyDetails = mongoose.model('userInfo', CompanyDetail);
 
 
 
@@ -42,7 +42,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
           username:       username
         };
     }
-    var a = new UserDetails({ 'username': username,
+    var a = new CompanyDetails({ 'username': username,
                               'password': password, 
                               'init_investmt_date': init_investmt_date,
                               'crunchbase_permalink': crunchbase_permalink,
@@ -57,7 +57,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
 }
 
 function updateUser(username, details) {
-  // UserDetails.findAndModify(  {username: 'Addepar'}, // query
+  // CompanyDetails.findAndModify(  {username: 'Addepar'}, // query
   //                             [['_id','asc']],  // sort order
   //                             {$set: {password: 'TESTTTTTTT'}}, // replacement, replaces only the field "hi"
   //                             {}, // options
@@ -67,7 +67,7 @@ function updateUser(username, details) {
   //                             }
   // );
 
-  // UserDetails.findOne({ username: username, }, 
+  // CompanyDetails.findOne({ username: username, }, 
   //                     function(err, u) {
   //                       if (err)    return done(err);
   //                       console.log("\n\nBEFORE:\nuser=  %j", u);
@@ -75,28 +75,28 @@ function updateUser(username, details) {
   //                       u.save();
   //                     });
 
-  // UserDetails.findOne({ username: username, }, 
+  // CompanyDetails.findOne({ username: username, }, 
   //                     function(err, u) {
   //                       if (err)    return done(err);
   //                       console.log("\n\nAFTER:\nuser=  %j", u);
   //                     });
 
-  // UserDetails.find({ username: username }, function(err, u) {
+  // CompanyDetails.find({ username: username }, function(err, u) {
   //   console.log("AFTER:\nuser.password=  %j", u[0].password);
-  //   UserDetails.update( {_id:u[0]._id}, {password: 'TEST'} );
+  //   CompanyDetails.update( {_id:u[0]._id}, {password: 'TEST'} );
   // });
-  // UserDetails.find({ username: username }, function(err, u) {
+  // CompanyDetails.find({ username: username }, function(err, u) {
   //   console.log("BEFORE:\nuser.password=  %j", u[0].password);
   // });
 }
 
 
 function printAll() {
-  UserDetails.find(function (err, users) { console.log("users=  %j", users) });
+  CompanyDetails.find(function (err, users) { console.log("users=  %j", users) });
 }
 
 function username_inuse(u) {
-  UserDetails.find({ username: u }, function (err, users) { 
+  CompanyDetails.find({ username: u }, function (err, users) { 
     console.log("users=  %j", users) 
   });
 }
@@ -106,7 +106,7 @@ function salt_fn(pw) {
 }
 
 function find(username) {
-  UserDetails.findOne({ username: username, }, 
+  CompanyDetails.findOne({ username: username, }, 
                       function(err, user) {
                         if (err)    return done(err);
                         if (!user)  done(null, false);     
@@ -123,7 +123,7 @@ function has_privileges(req, admin_only){
 
 module.exports.addUser = addUser;
 module.exports.passport = passport;
-module.exports.UserDetails = UserDetails;
+module.exports.CompanyDetails = CompanyDetails;
 module.exports.printAll = printAll;
 module.exports.salt_fn = salt_fn;
 module.exports.has_privileges = has_privileges;

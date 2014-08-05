@@ -15,7 +15,7 @@
 	var UserModel = require('../models/User.js'),
 	    passport = UserModel.passport,
 	    LocalStrategy = require('passport-local').Strategy,
-			UserDetails = UserModel.UserDetails;
+			CompanyDetails = UserModel.CompanyDetails;
 
 function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
   if (req.isAuthenticated() && req.session.is_admin) {
@@ -68,7 +68,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 
 	router.get('/test', function (req, res) {
 		var data = req.query;
-		res.render('./partials/test', {title: 'Login', data: data, errors: req.flash('error')});
+		res.render('./partials/test', {data: data, errors: req.flash('error')});
 	});
 
 // passport stuff
@@ -78,7 +78,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 	});
 	 
 	passport.deserializeUser(function(id, done) {
-		UserDetails.find({id: id}, function(err, user) {
+		CompanyDetails.find({id: id}, function(err, user) {
 			if (err)    return done(err);
 			// console.log('(deserialize)  user= %j', user);
 			done(err, user);
@@ -87,7 +87,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 
 	passport.use(new LocalStrategy(function(username, password, done) {
 	  process.nextTick(function() {
-	    UserDetails.findOne({ 'username': username, }, function(err, user) {
+	    CompanyDetails.findOne({ 'username': username, }, function(err, user) {
 	      if (err)    	done(err);
 	      if (!user)  	return done(null, false);
 
