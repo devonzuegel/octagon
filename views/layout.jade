@@ -13,30 +13,6 @@ html
 
     block h
 
-    //- JAVASCRIPTS -//////////////////////////////////////////////////////////
-    script(type="text/javascript"): include ../public/javascripts/jquery.min.js
-    script(type="text/javascript"): include ../public/javascripts/jquery-ui.js
-    script(type="text/javascript"): include ../public/bootstrap/js/bootstrap.min.js
-
-
-    script.
-      $(document).ready(function() {
-          $(".tooltip_a a").tooltip({
-              placement : 'bottom',
-              html: true,
-              effect: 'slide',
-              content: 'loading...',
-              open: function (event, ui) {
-                  $(ui.tooltip).appendTo(this);
-              }
-          });
-      });
-
-    // [if IE 9]>       
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  
-
   .toolbar: .container: .row
     
     .col-xs-6: h5.pull-left
@@ -69,3 +45,6 @@ html
         p.error #{errors}
     block mainContent
     div(style='height:50px')
+
+  //- Include all JS Scripts
+  include includes/scripts.jade
