@@ -23,10 +23,10 @@ var CompanyDetails = mongoose.model('userInfo', CompanyDetail);
 
 
 
-function addUser(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
+function add(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
   if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
-    
+
     // TODO what if p or p.data is undefined?
     var p = JSON.parse(body).data;
     var profile = {};
@@ -35,7 +35,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
         img_path:       (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
         short_descrip:  p.properties.short_description,
         description:    p.properties.description,
-        homepage_url:   p.properties.homepage_url.replace("http://",""),
+        homepage_url:   p.properties.homepage_url.replace('http://', ''),
         founded_on:     p.properties.founded_on,
         total_funding:  p.properties.total_funding_usd,
         founders:       (p.relationships.founders) ? p.relationships.founders.items.toString() : undefined,
@@ -62,12 +62,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
   });
 }
 
-function updateCompany(username, details) {
-}
-
-
-function printAll() {
-  CompanyDetails.find(function (err, users) { console.log("users=  %j", users) });
+function update(username, details) {
 }
 
 function username_inuse(u) {
@@ -96,10 +91,9 @@ function has_privileges(req, admin_only){
   return req.session.is_admin;
 }
 
-module.exports.addUser = addUser;
+module.exports.add = add;
 module.exports.passport = passport;
 module.exports.CompanyDetails = CompanyDetails;
-module.exports.printAll = printAll;
 module.exports.salt_fn = salt_fn;
 module.exports.has_privileges = has_privileges;
 // module.exports.username_inuse = username_inuse;

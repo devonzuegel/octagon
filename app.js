@@ -10,7 +10,7 @@
 
 
   var routes = require('./routes/index');
-  var users = require('./routes/users');
+  var companies = require('./routes/companies');
 
   var app = express();
   var passport = require('./models/Company.js').passport;
@@ -44,7 +44,7 @@
   app.use(passport.session());
 
   app.use('/', routes);
-  app.use('/users/', users);
+  app.use('/users/', companies);
   app.set('view options', { layout: false });
 
 var server = app.listen(3030, function() {

@@ -72,7 +72,7 @@ router.post('/add_user', function(req, res) {
     if (err)    return done(err);
     // TODO ensure user hasn't yet been added
 
-    CompanyModel.addUser(
+    CompanyModel.add(
       form.username,
       form.password, 
       form.init_investmt_date, 
