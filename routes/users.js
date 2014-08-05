@@ -4,10 +4,10 @@ var router = express.Router();
 var api_mgr = require('./apiManager');
 
 // require (authentication stuff)
-var UserModel = require('../models/User.js'),
-    passport = UserModel.passport,
+var CompanyModel = require('../models/User.js'),
+    passport = CompanyModel.passport,
     LocalStrategy = require('passport-local').Strategy,
-		CompanyDetails = UserModel.CompanyDetails;
+		CompanyDetails = CompanyModel.CompanyDetails;
 
 function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
   if (req.isAuthenticated() && req.session.is_admin) {
@@ -22,12 +22,12 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 router.get('/', function(req, res) {
 
   require_privileges(req, res, false, function() {
-    CompanyDetails.find({}, function(err, all_users) {
+    CompanyDetails.find({}, function(err, all_companies) {
       if (err)    return done(err);
-      res.render('all_users', { 
+      res.render('portfolio', { 
         title: 'Portfolio', 
         errors: req.flash('error'),
-        companies: all_users,
+        companies: all_companies,
         tab: 'companies',
         username: req.session.username,
         is_admin: true
@@ -46,7 +46,7 @@ router.get('/add_user', function(req, res) {
     return res.redirect('/users/' + req.session.username);  
   });
 
-  res.render('add_user', { 
+  res.render('add_company', { 
     title:"New Company", 
     is_admin: true, 
     errors: undefined,
@@ -79,7 +79,7 @@ router.post('/add_user', function(req, res) {
       return res.redirect('/users/add_user');      
     }
 
-    UserModel.addUser(
+    CompanyModel.addUser(
       form.username,
       form.password, 
       form.init_investmt_date, 
