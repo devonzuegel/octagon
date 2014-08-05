@@ -10,16 +10,12 @@ block mainContent
       h3: a(href='#') Board Notes
       h3: a(href='#') Communication
 
-  script.
-    var header = 'About'
 
   #testpartial
   .row
     .col-md-3.logobox
       .card.text-center.logobox#img
-        
-          a(href='URL_test').pull-right#edit(style='position:absolute').small edit
-
+          a(data-toggle="modal" data-target="#edit_about").pull-right#edit.small edit
           .pull-left
             if (p && p.img_path)
               img(src=p.img_path).logo
@@ -31,9 +27,7 @@ block mainContent
             else  
               p.quote: h5 Add short description
             
-      
       .blank: p
-
         h4 <strong>Categories:</strong> 
         if (p && p.categories)
           each c,i in p.categories
@@ -115,9 +109,6 @@ block mainContent
         p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
 
-
-
-
   script.
     $(document).ready(function() {
       // TODO put all of this in users route
@@ -140,11 +131,18 @@ block mainContent
         },  
         { 
           id: '#team',
-          header: 'Team',      
+          header: 'Team',
+          form: [  
+            { name: 'team',  type: 'textarea', placeholder: 'team' },
+          ]
         },  
         { 
           id: '#img',
           header: 'Image',
+          form: [  
+            { name: 'img_path',          type: 'text',  placeholder: 'image'      },
+            { name: 'short_description', type: 'text',  placeholder: 'short description'         },
+          ]
         }  
       ];
 
@@ -157,6 +155,7 @@ block mainContent
             $(this).find('#edit').fadeIn('fast');
             //- form_fields = cards[i_copy].form;
 
+            console.log(JSON.stringify(cards[i_copy].form, null, 3));
             $.ajax({
               type: "GET",
               url: "/test",

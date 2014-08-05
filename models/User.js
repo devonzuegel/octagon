@@ -37,7 +37,7 @@ function addUser(username, password, init_investmt_date, crunchbase_permalink, o
           homepage_url:   p.properties.homepage_url.replace("http://",""),
           founded_on:     p.properties.founded_on,
           total_funding:  p.properties.total_funding_usd,
-          founders:       (p.relationships.founders) ? p.relationships.founders.items : undefined,
+          founders:       (p.relationships.founders) ? p.relationships.founders.items.toString() : undefined,
           categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
           username:       username
         };
