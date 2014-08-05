@@ -10,17 +10,6 @@ html
     style(type="text/css"): include ../public/bootstrap/css/bootstrap-theme.css
     style(type="text/css"): include ../public/bootstrap/css/bootstrap.css
 
-    //- datepicker (w/ jquery-ui)
-    //- style(type="text/css"): include ../public/stylesheets/sass/vendors/jquery-ui.css
-    //- style(type="text/css"): include ../public/stylesheets/sass/vendors/datepicker.css
-    
-    //- //- tablesort CSS
-    //- style(type="text/css"): include ../public/stylesheets/tablesort.css
-
-    //- general css
-    //- style(type="text/css"): include ../public/stylesheets/sass/base/style.css
-    //- style(type="text/css"): include ../public/stylesheets/sass/components/mixitup.css
-
     //- general css
     style(type="text/css", media="screen"): include ../public/stylesheets/css/screen.css
     style(type="text/css", media="print"): include ../public/stylesheets/css/print.css
@@ -55,22 +44,22 @@ html
     
     .col-xs-6: h5.pull-left
       a(href='/dashboard/'): .pull-left
-        span.glyphicon.glyphicon-home
+        i.fa.fa-home
 
       if is_admin
         a(href='/users/'): .pull-left(style="margin-left:15px")
           //- Portfolio
-          span.glyphicon.glyphicon-th 
+          i.fa.fa-th 
 
     .col-xs-6.pull-right.text-right.tooltip_a
       h5.pull-right
         | Hello, #{username}!
         a(href='../login'): .pull-right(style="margin-left:15px")
           //- | Log out
-          span.glyphicon.glyphicon-log-out
+          i.fa.fa-sign-out
         a(href='../login'): .pull-right(style="margin-left:15px")
           //- | Alerts
-          span.glyphicon.glyphicon-bell
+          i.fa.fa-bell
 
   .container
 

@@ -1,8 +1,6 @@
 extends layout
 
 block h
-  //- style(type="text/css"): include ../public/stylesheets/sass/components/mixitup.css
-  //- style(type="text/css"): include ../public/stylesheets/css/screen.css
 
 block topRight
   
@@ -20,8 +18,8 @@ block mainContent
     h3
 
     h3 Sort:
-    button.sort(data-sort='name:asc'): span.glyphicon.glyphicon-sort-by-alphabet
-    button.sort(data-sort='name:dec'): span.glyphicon.glyphicon-sort-by-alphabet-alt
+    button.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
+    button.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
     a(href='../users/add_user'): button(style='float:right; top:0') Add
 
   #Container
