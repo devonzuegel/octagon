@@ -2,13 +2,9 @@
   .modal-dialog
     form(method="post"  id='edit_user'  action='/users/'+title+"/edit"  enctype='multipart/format-data').modal-content
       .col-lg-12
-        h5.white#form #{data}
+        h5.white#form #{data.form_fields}
         h1.white.text-center #{header}
       container.loginbox
-        //- script.
-          for (var f in form_fields) {
-            console.log(f);
-          }
 
         //- h3.small Company name
         //- .col-lg-12

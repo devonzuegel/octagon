@@ -67,8 +67,8 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 
 
 	router.get('/test', function (req, res) {
-	    //compute data here
-		res.render('./partials/test', {title: 'Login', errors: req.flash('error')});
+		var data = req.query;
+		res.render('./partials/test', {title: 'Login', data: data, errors: req.flash('error')});
 	});
 
 // passport stuff

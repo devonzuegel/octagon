@@ -12,11 +12,8 @@ block mainContent
 
   script.
     var header = 'About'
-    var form_fields = {}
-  
-  div
-    //- include ./partials/test
 
+  #testpartial
   .row
     .col-md-3.logobox
       .card.text-center.logobox#img
@@ -67,9 +64,7 @@ block mainContent
                     each f,i in p.founders
                         if (i !=0)
                           | , 
-                        //- a(href='http://api.crunchbase.com/v/2/' + f.path + '?user_key=c7653c536c2266d0da1155557600c8a4') 
                         | #{f.name}
-                      //- TODO hide our userkey
                   else
                     h5 Add founders
               
@@ -119,7 +114,6 @@ block mainContent
         h2 Test
         p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
-    #testpartial
 
 
 
@@ -157,28 +151,24 @@ block mainContent
           $(cards[i].id).hover( function() { // on hover in...
             $(this).find('#edit').fadeIn('fast');
             form_fields = cards[i_copy].form;
-            //- console.log('%s', JSON.stringify(form_fields, null, 3));
 
-            var html = '<form';
-            for (var n in form_fields) {
-              var f = form_fields[n];
-              html+= '<input type=' + f.type + 
-                            'placeholder=' + f.placeholder +
-                            //- 'value=' + p[f.name] +
-                            'name=' + f.name + '/><br>'
-            }
-            $('#form').html(JSON.stringify(html));
+            $.ajax({
+              url: '/test',
+              type: 'GET',
+              data: { form_fields: form_fields },
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(response) {
+              $('#testpartial').html(response.responseText);
+              },
+              error: function(response) {
+              $('#testpartial').html(response.responseText);
+              }
+            });
+
           }, function() {  // on hover out...
             $(this).find('#edit').fadeOut('fast');   }
           );
         }(i));
       }
-
-      $.ajax({
-          url: '/test',
-          data: form_fields,
-          success: function(response) {
-            $('#testpartial').html(response);
-          }
-      });
     });
