@@ -1,6 +1,8 @@
 extends layouts/portfolio_layout
 
 block content
+  //- Include all edit_modal script
+  include ./includes/edit_modal.jade
 
   //- .row.subheader
     .col-xs-12
@@ -8,7 +10,6 @@ block content
       h3: a(href='#') Financials
       h3: a(href='#') Board Notes
       h3: a(href='#') Communication
-
 
   #testpartial
   .row

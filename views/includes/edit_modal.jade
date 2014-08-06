@@ -1,0 +1,74 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+script.
+  (function($){
+    $(document).ready(function() {
+      // TODO put all of this in users route
+      var cards = [  
+        { 
+          id: '#about',
+          header: 'About',
+          form: [  
+            //- { name: 'username',  type: 'text',  placeholder: 'Company website'  },
+            { name: 'description',  type: 'textarea', placeholder: 'description'      },
+            { name: 'founders',     type: 'text',     placeholder: 'founders'         },
+            { name: 'founded_on',   type: 'text',     placeholder: "founding date",   classes: 'calendar_input',  id: "datepicker" },
+            { name: 'Funding',      type: 'text',     placeholder: 'funding (amount)' },
+            { name: 'homepage_url', type: 'text',     placeholder: 'company website'  }
+          ]
+        }, { 
+          id: '#milestones',
+          header: 'Milestones',
+          form: [
+            { name: 'milestone',  type: 'textarea', placeholder: 'milestone'      },
+          ]
+        },  
+        { 
+          id: '#team',
+          header: 'Team',
+          form: [  
+            { name: 'team',  type: 'textarea', placeholder: 'team' },
+          ]
+        },  
+        { 
+          id: '#img',
+          header: 'Image',
+          form: [  
+            { name: 'img_path',          type: 'text',  placeholder: 'image'      },
+            { name: 'short_description', type: 'text',  placeholder: 'short description'         },
+          ]
+        }  
+      ];
+
+      var p = !{JSON.stringify(p)};
+
+      for (var i = 0; i < cards.length; i++) {
+        (function(i_copy){
+
+          $(cards[i].id).hover( function() { // on hover in...
+            $(this).find('#edit').fadeIn('fast');
+            //- form_fields = cards[i_copy].form;
+
+            console.log(JSON.stringify(cards[i_copy].form, null, 3));
+            $.ajax({
+              type: "GET",
+              url: "/edit_modal",
+              data: { 
+                form_fields: cards[i_copy].form, 
+                header: cards[i_copy].header,
+                username: p.username,
+                p: p
+              }
+            }).done(function(msg) {
+                //- alert( "Data Saved: " + msg );
+                $('#testpartial').html(msg);
+            });
+
+          }, function() {  // on hover out...
+            $(this).find('#edit').fadeOut('fast');   
+          }
+          );
+
+        }(i));
+      }
+    });
+  })(jQuery);
