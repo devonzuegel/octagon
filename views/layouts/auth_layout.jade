@@ -7,5 +7,5 @@ block sub_layout
       form(method="POST", action="/login")
         div
           each error in errors
-            p.error #{error}
+            p.auth-error #{error}
         block content

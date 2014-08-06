@@ -13588,10 +13588,7 @@ body .ui-tooltip {
   background-size: 30px 30px; }
 
 a {
-  color: #8a64d1;
   text-decoration: none; }
-  a:hover {
-    color: #a88bdd; }
 
 .content {
   margin-top: 49px; }
@@ -13736,12 +13733,6 @@ a.white {
 a.white:hover,
 a.white:focus {
   color: white; }
-
-.error {
-  margin: 0px 10px 10px 10px;
-  border-radius: 5px;
-  border: 1px solid #fbb;
-  background-color: #fcc; }
 
 /* ===================== */
 th.sort-header {
@@ -14030,6 +14021,11 @@ button + label {
   .auth-bkg .auth-logo {
     padding: 15px;
     width: 120px; }
+  .auth-bkg .auth-error {
+    color: #e06663;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 20px; }
   .auth-bkg .auth-container {
     height: 250px;
     left: 50%;
@@ -14056,6 +14052,10 @@ button + label {
       font-size: 16px;
       line-height: 22px;
       margin: 10px 0 20px 0; }
+      .auth-bkg .auth-container .auth-info a {
+        color: #8a64d1; }
+        .auth-bkg .auth-container .auth-info a:hover {
+          color: #a88bdd; }
     .auth-bkg .auth-container input[type=submit] {
       background-color: #999;
       border: none;
