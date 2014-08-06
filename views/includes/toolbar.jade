@@ -1,20 +1,18 @@
-.toolbar: .container: .row
-    
-  .col-xs-6: h5.pull-left
-    a(href='../dashboard/'): .pull-left
-      i.fa.fa-home
-
+.toolbar:.toolbar-nav
+  .pull-left
+    a(href='../dashboard/')
+      i.fa.fa-dashboard.fa-right
+      | Dashboard
     if is_admin
-      a(href='../portfolio/'): .pull-left
+      a(href='../portfolio/')
         //- Portfolio
-        i.fa.fa-th 
-
-  .col-xs-6.pull-right.text-right.tooltip_a
-    h5.pull-right
-      | Hello, #{username}!
-      a(href='../../login'): .pull-right
-        //- | Log out
-        i.fa.fa-sign-out
-      a(href='../../login'): .pull-right
-        //- | Alerts
-        i.fa.fa-bell
+        i.fa.fa-th.fa-right
+        | Portfolio
+  .pull-right
+      span #{username}
+      a(href='../../login')
+        i.fa.fa-bell.fa-right
+        | Notifications
+      a(href='../../login')
+        i.fa.fa-sign-out.fa-right
+        | Sign out

@@ -1,9 +1,43 @@
 .toolbar {
-  background-color: #fff;
+  background-color: $toolbar-bkg;
+  height: $toolbar-height;
+  line-height: $toolbar-height - 10;
   position: fixed;
-  padding: 10px;
   top: 0px;
   vertical-align: middle;
   width: 100%;
   z-index: 10000;
+
+  .toolbar-nav {
+    margin: 0 auto;
+    max-width: 1000px;
+    
+    .pull-left,
+    .pull-right {
+
+      > * {
+        margin: 0 15px;
+      }
+    }
+
+    span {
+      color: #ccc;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    a {
+      border-top: 5px solid transparent;
+      color: #999;
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      &:hover {
+        border-color: $light-purple;
+        color: #fff;
+      }
+    }
+  }
 }

@@ -1,11 +1,14 @@
 .auth-bkg {
   background-color: $auth-bkg;
 
+
+  // Formation 8 logo
   .auth-logo {
     padding: 15px;
     width: 120px;
   }
 
+  // Error message
   .auth-error {
     color: $red;
     font-size: 16px;
@@ -13,6 +16,7 @@
     margin-bottom: 20px;
   }
 
+  // Centered container for auth form
   .auth-container {
     height: $auth-container-height;
     left: 50%;
@@ -38,6 +42,7 @@
       }
     }
 
+    // Any text message inside of the form
     .auth-info {
       color: #666;
       font-size: 16px;
