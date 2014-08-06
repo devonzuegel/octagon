@@ -1,3 +1,14 @@
+.container {
+  min-height: 100%;
+
+  // Equal to footer height
+  margin-bottom: -1 * $footer-height;
+    :after {
+      content: '';
+      display: block;
+  }
+}
+
 .dashboard-bkg {
   background-color: $dashboard-bkg;
 }

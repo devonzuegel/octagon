@@ -1,4 +1,5 @@
 // Color palette
+$very-light-purple: #ffe6ff;
 $light-purple: #8a64d1;
 $purple: #45367c;
 $red: #e06663;
@@ -7,6 +8,10 @@ $red: #e06663;
 $auth-bkg: #222;
 $dashboard-bkg: #222;
 $portfolio-bkg: #fff;
+$footer-bkg: #111;
+
+// Overall Website
+$website-max-width: 1000px;
 
 // Auth section
 $auth-container-height: 250px;
@@ -15,3 +20,6 @@ $auth-container-width: 250px;
 // Toolbar section
 $toolbar-bkg: #222;
 $toolbar-height: 50px;
+
+// Footer section
+$footer-height: 73px; // Weird number is 20px padding + logo height of 33px

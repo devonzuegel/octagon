@@ -1,0 +1,40 @@
+.footer {
+  background-color: $footer-bkg;
+  height: $footer-height;
+  padding: 20px 0;
+  width: 100%;
+
+  .footer-nav {
+
+    margin: 0 auto;
+    width: $website-max-width;
+
+    .footer-logo {
+      display: inline-block;
+      @include opacity(0.5);
+      width: 120px;
+
+      &:hover {
+        @include opacity(1);
+      }
+    }
+
+    .footer-text {
+      color: #666;
+      font-size: 14px;
+      line-height: 33px;
+      margin-left: 50px;
+    }
+
+    .footer-links a {
+      color: #999;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 33px;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
