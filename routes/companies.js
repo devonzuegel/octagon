@@ -68,9 +68,9 @@ router.post('/add_user', function(req, res) {
     return res.redirect('/portfolio/add_user');
   }
 
-  CompanyDetails.find({'username': form.username }, function(err, u) {
-    if (err)    return done(err);
-    // TODO ensure user hasn't yet been added
+  // CompanyDetails.find({'username': form.username }, function(err, u) {
+  //   if (err)    return done(err);
+  //   // TODO ensure user hasn't yet been added
 
     CompanyModel.add(
       form.username,
@@ -80,7 +80,7 @@ router.post('/add_user', function(req, res) {
       form.owners,
       function() { res.redirect('/portfolio/'); }
     );  
-  });
+  // });
 
 });
 
@@ -93,10 +93,10 @@ router.get('/:username', function(req, res) {
     if (u_session != u_param)     res.redirect('/portfolio/' + u_session);
   });
 
-  CompanyDetails.findOne({ 'username': u_param, }, function(err, user) {
+  CompanyDetails.findOne({ 'username': u_param, }, function(err, company) {
     if (err)    return done(err);
 
-    if (user == null  ||  u_param == 'admin') { // not a valid company >> doesn't have a profile
+    if (company == null  ||  u_param == 'admin') { // not a valid company >> doesn't have a profile
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
         return res.redirect('/portfolio');
     } else { // is a valid company with a profile
@@ -105,7 +105,7 @@ router.get('/:username', function(req, res) {
         username: req.session.username,
         title: u_param,
         is_admin: (u_session == 'admin'),
-        p: user.profile
+        p: company.profile
       };
       return res.render('company', details);
     }
@@ -120,6 +120,8 @@ router.post('/:username/edit', function(req, res) {
     if (u_session != u_param)       res.redirect('/portfolio/' + u_session);
   });
 
+
+  // CompanyModel.update(u_param, user.profile, req.body);
   CompanyDetails.findOne({ username: u_param }, function (err, user) {
     if (err)  return done(err);
 
