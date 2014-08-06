@@ -13599,7 +13599,10 @@ body .ui-tooltip {
 .fa-red {
   color: #e06663 !important; }
 
-body {
+body,
+input,
+textarea,
+button {
   font-family: 'Roboto', Helvetica Neue, Helvetica, Arial, sans-serif; }
 
 a {
@@ -13612,14 +13615,14 @@ a {
 /*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);*/
 /*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
 h1 {
-  font: 36pt 'Lato', serif;
+  font-size: 36pt;
   font-weight: 400;
   margin: 20px 0px 10px 0px;
   color: #444;
   /*text-transform: uppercase;*/ }
 
 h2 {
-  font: 18pt 'Lato', serif;
+  font-size: 18px;
   font-weight: 400;
   margin: 0;
   color: #555;
@@ -13629,8 +13632,7 @@ h3 {
   padding: 0px;
   margin: 0px;
   display: inline;
-  font: 12pt 'Lato', serif;
-  font-weight: 300;
+  font-size: 13pt;
   text-transform: uppercase; }
 
 h3.text-center {
@@ -13706,7 +13708,6 @@ h5 {
   color: #d9d9d9;
   margin: 0px;
   padding: 4px;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
   font-weight: 200;
   font-size: 13pt; }
 
@@ -13861,8 +13862,7 @@ input[type=password] {
   background-clip: padding-box;
   -webkit-box-shadow: 0 0 0 0;
   -moz-box-shadow: 0 0 0 0;
-  box-shadow: 0 0 0 0;
-  font-family: 'Roboto', Helvetica Neue, Helvetica, Arial, sans-serif; }
+  box-shadow: 0 0 0 0; }
 
 * {
   -webkit-box-sizing: border-box;
@@ -14131,9 +14131,10 @@ h6 {
   .toolbar .toolbar-nav {
     margin: 0 auto;
     max-width: 1000px; }
-    .toolbar .toolbar-nav .pull-left > *,
+    .toolbar .toolbar-nav .pull-left > * {
+      margin-right: 30px; }
     .toolbar .toolbar-nav .pull-right > * {
-      margin: 0 15px; }
+      margin-left: 30px; }
     .toolbar .toolbar-nav span {
       color: #ccc;
       font-size: 14px;

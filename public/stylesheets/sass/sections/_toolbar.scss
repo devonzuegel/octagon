@@ -12,11 +12,17 @@
     margin: 0 auto;
     max-width: 1000px;
     
-    .pull-left,
+    .pull-left {
+
+      > * {
+        margin-right: 30px;
+      }
+    }
+
     .pull-right {
 
       > * {
-        margin: 0 15px;
+        margin-left: 30px;
       }
     }
 

@@ -4,7 +4,6 @@ input[type=password] {
   border: none;
   @include border-radius(0);
   @include box-shadow(0, 0, 0, 0);
-  font-family: 'Roboto', Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 input[type=button],
