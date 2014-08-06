@@ -7275,20 +7275,7 @@ input[type="tel"],
 input[type="color"],
 select,
 .uneditable-input {
-  border-radius: 2px !important;
-  /*border: 1px solid #cccccc;*/
   display: inline-block;
-  height: 25px;
-  padding: 15px 20px 20px 20px;
-  margin-bottom: 25px;
-  width:340px;
-  font-size: 19px;
-  line-height: 100%;
-  color: #555555;
-  vertical-align: middle;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
 }
 
 select { 
@@ -7299,8 +7286,6 @@ select {
 input,
 textarea,
 .uneditable-input {
-  width: 206px;
-  background: none;
 }
 
 textarea,
@@ -7319,16 +7304,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  /*background-color: #ffffff;*/
-  color: white;
-  /*border: 1px solid #cccccc;*/
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-          transition: border linear 0.2s, box-shadow linear 0.2s;
+
 }
 
 textarea:focus,
@@ -7347,15 +7323,7 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  /*border-color: rgba(31, 18, 83, 0.3);*/
-  /*outline: 0;*/
-  /*outline: thin dotted \9;*/
-  /* IE6-9 */
-  /*box-shadow: 0 0 10px rgba(31, 18, 83, .3);*/
 
-  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
-     /*-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
-          /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
 }
 
 input[type="radio"],

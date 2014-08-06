@@ -1,0 +1,54 @@
+.auth-bkg {
+  background-color: $auth-bkg;
+
+  .auth-container {
+    height: $auth-container-height;
+    left: 50%;
+    margin-top: -1/2 * $auth-container-height;
+    margin-left: -1/2 * $auth-container-width;
+    position: fixed;
+    top: 50%;
+    width: $auth-container-width;
+
+    input[type=text],
+    input[type=password] {
+      background-color: #333;
+      border-left: 5px solid $purple;
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      width: $auth-container-width;
+
+      &:focus {
+        background-color: #444;
+        border-color: $light-purple;
+      }
+    }
+
+    .auth-info {
+      color: #666;
+      font-size: 16px;
+      line-height: 22px;
+      margin: 10px 0 20px 0;
+    }
+
+    input[type=submit] {
+      background-color: #999;
+      border: none;
+      color: #222;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 10px;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: #ccc;
+      }
+
+      &:focus {
+        background-color: #eee;
+      }
+    }
+  }
+}

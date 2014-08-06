@@ -2,11 +2,12 @@ extends ../layout
 
 block sub_layout
 
-  include ../includes/toolbar.jade
+  body.portfolio-bkg
+    include ../includes/toolbar.jade
 
-  .container.content
+    .container.content
 
-    .row
-      .col-xs-12: h1 #{title}
+      .row
+        .col-xs-12: h1 #{title}
 
-    block content
+      block content

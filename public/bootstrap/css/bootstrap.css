@@ -7376,7 +7376,7 @@ input[type="reset"],
 input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
-  margin-bottom: 10px;
+  
 }
 
 select:focus,

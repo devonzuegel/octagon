@@ -1,0 +1,7 @@
+a {
+  color: $light-purple;
+  text-decoration: none;
+  &:hover {
+    color: lighten($light-purple, 10%);
+  }
+}

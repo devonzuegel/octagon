@@ -1,5 +1,9 @@
 extends ../layout
-
 block sub_layout
-  
-  block content
+  body.auth-bkg
+    div.auth-container
+      form(method="POST", action="/login")
+        .col-lg-12
+          each error in errors
+            p.error #{error}
+        block content

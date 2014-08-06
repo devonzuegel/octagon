@@ -3,15 +3,9 @@
 
 // Vendors
 @import "vendors/bootstrap";
-@import "vendors/bootstrap-theme";
 @import "vendors/tablesort";
 @import "vendors/jquery-ui";
 @import "vendors/datepicker";
-
-// Base
-@import "base/typography";
-@import "base/layout";
-@import "base/style";
 
 // Modules
 @import "modules/variables";
@@ -19,8 +13,13 @@
 @import "modules/helpers";
 @import "modules/functions";
 
+// Base
+@import "base/typography";
+@import "base/layout";
+@import "base/style";
+
 // Components
-@import "components/buttons";
+@import "components/inputs";
 @import "components/mixitup";
 
 // Sections

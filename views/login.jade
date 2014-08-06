@@ -1,26 +1,9 @@
 extends layouts/auth_layout
-
 block content
-
-  .loginbox
-    //- .col-lg-12: h1 Login
-    div(style='height:6%')
-    form(method="POST", action="/login")
-      container
-        //- username + password
-        .col-lg-12
-          each error in errors
-            p.error #{error}
-
-        .col-lg-12: input(type="text"     name="username"  placeholder="username"  autocomplete="off")
-        br
-        .col-lg-12: input(type="password" name="password"  placeholder="password"  autocomplete="off")
-        br
-
-        //- submit
-        .col-lg-12
-          p(style='width:85%; margin: auto') Contact 
-            a(href="mailto:drew@formation8.com").white Drew Oettig 
-            | for your company's login details.
-        div(style='height:6%')
-        .col-lg-12: input(type="submit"  value="Login").submit
+  .col-lg-12: input(type="text", name="username", placeholder="USERNAME", autocomplete="off")
+  .col-lg-12: input(type="password", name="password", placeholder="PASSWORD", autocomplete="off")
+  .col-lg-12
+    p.auth-info Contact 
+      a(href="mailto:drew@formation8.com") Drew Oetting 
+      | for your company's login details.
+  .col-lg-12: input(type="submit"  value="LOGIN").submit
