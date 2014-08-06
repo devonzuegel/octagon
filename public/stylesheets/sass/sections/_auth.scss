@@ -1,6 +1,11 @@
 .auth-bkg {
   background-color: $auth-bkg;
 
+  .auth-logo {
+    padding: 15px;
+    width: 120px;
+  }
+
   .auth-container {
     height: $auth-container-height;
     left: 50%;

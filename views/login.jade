@@ -1,9 +1,9 @@
 extends layouts/auth_layout
 block content
-  .col-lg-12: input(type="text", name="username", placeholder="USERNAME", autocomplete="off")
-  .col-lg-12: input(type="password", name="password", placeholder="PASSWORD", autocomplete="off")
-  .col-lg-12
+  div: input(type="text", name="username", placeholder="USERNAME", autocomplete="off")
+  div: input(type="password", name="password", placeholder="PASSWORD", autocomplete="off")
+  div
     p.auth-info Contact 
       a(href="mailto:drew@formation8.com") Drew Oetting 
       | for your company's login details.
-  .col-lg-12: input(type="submit"  value="LOGIN").submit
+  div: input(type="submit"  value="LOGIN").submit

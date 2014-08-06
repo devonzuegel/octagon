@@ -14027,6 +14027,9 @@ button + label {
 
 .auth-bkg {
   background-color: #222222; }
+  .auth-bkg .auth-logo {
+    padding: 15px;
+    width: 120px; }
   .auth-bkg .auth-container {
     height: 250px;
     left: 50%;
