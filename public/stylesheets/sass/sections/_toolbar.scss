@@ -1,7 +1,7 @@
 .toolbar {
   background-color: $toolbar-bkg;
   height: $toolbar-height;
-  line-height: $toolbar-height - 5;
+  line-height: $toolbar-height;
   position: fixed;
   top: 0px;
   vertical-align: middle;
@@ -27,21 +27,19 @@
     }
 
     span {
-      color: #ccc;
+      color: #999;
       font-size: 14px;
       font-weight: 500;
     }
 
     a {
-      border-top: 5px solid transparent;
       color: #777;
       display: inline-block;
       font-size: 14px;
       font-weight: 500;
 
       &:hover {
-        border-color: $light-purple;
-        color: #fff;
+        color: $light-purple;
       }
     }
   }

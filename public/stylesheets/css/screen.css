@@ -14094,7 +14094,7 @@ button + label {
 .dashboard-bkg {
   background-color: #222222; }
   .dashboard-bkg .toolbar-bkg-extension {
-    background-color: #2e2e2e;
+    background-color: #eeeeee;
     height: 280px;
     position: absolute;
     width: 100%;
@@ -14110,13 +14110,13 @@ button + label {
         margin: 0 20px;
         width: 160px; }
         .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-icon {
-          color: #ccc;
+          color: #8a64d1;
           font-size: 50px;
           line-height: 100%;
           text-align: center; }
         .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-title {
-          border-bottom: 10px solid #ccc;
-          color: #ccc;
+          border-bottom: 10px solid #8a64d1;
+          color: #8a64d1;
           font-size: 25px;
           font-weight: 400;
           line-height: 100%;
@@ -14128,14 +14128,18 @@ button + label {
           line-height: 24px;
           padding-top: 30px;
           text-align: center; }
+        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn:hover {
+          opacity: 0.5;
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+          filter: alpha(opacity=50); }
 
 .portfolio-bkg {
   background-color: white; }
 
 .toolbar {
-  background-color: #2e2e2e;
+  background-color: #eeeeee;
   height: 50px;
-  line-height: 45px;
+  line-height: 50px;
   position: fixed;
   top: 0px;
   vertical-align: middle;
@@ -14149,18 +14153,16 @@ button + label {
     .toolbar .toolbar-nav .pull-right > * {
       margin-left: 30px; }
     .toolbar .toolbar-nav span {
-      color: #ccc;
+      color: #999;
       font-size: 14px;
       font-weight: 500; }
     .toolbar .toolbar-nav a {
-      border-top: 5px solid transparent;
       color: #777;
       display: inline-block;
       font-size: 14px;
       font-weight: 500; }
       .toolbar .toolbar-nav a:hover {
-        border-color: #8a64d1;
-        color: #fff; }
+        color: #8a64d1; }
 
 .auth-footer,
 .footer {
