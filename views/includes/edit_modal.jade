@@ -43,7 +43,9 @@ script.
       for(var i = 0; i < cards.length; i++) {
         (function(i_copy){
 
-            $.ajax({
+          $(cards[i].id).hover( function() { // on hover in...
+            $(this).find('#edit').fadeIn('fast'); // fades in the 'edit' btn
+            $.ajax({ // retrieve edit_modal for that section
               type: "GET",
               url: "/edit_modal",
               data: { 
@@ -57,6 +59,10 @@ script.
               $('.edit-forms').html(msg);
             });
 
+          }, function() {  // on hover out...
+            $(this).find('#edit').fadeOut('fast'); // fades out the  'edit' btn
+          }
+          );
         }(i));
       }
     });
