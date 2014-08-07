@@ -8,27 +8,42 @@
     z-index: -100;
   }
 
-  .company-header-info {
-    margin-top: (($company-header-height - $company-header-info-height) / 2) - $toolbar-height;
-    text-align: center;
+  .company-header {
 
-    .company-logo {
-      height: 50px;
-    }
-
-    .company-name {
-      color: #ddd;
-      font-size: 35px;
-      font-weight: 400;
-      margin: 30px 0;
-    }
-
-    .company-description {
-      color: #999;
+    .company-header-edit {
+      color: #666;
+      cursor: pointer;
       font-size: 15px;
-      line-height: 22px;
-      margin: 0 auto;
-      width: 400px;
+      float: right;
+      margin-top: 20px;
+
+      &:hover {
+        color: $light-purple;
+      }
+    }
+
+    .company-header-info {
+      padding-top: (($company-header-height - $company-header-info-height) / 2) - $toolbar-height;
+      text-align: center;
+
+      .company-logo {
+        height: 50px;
+      }
+
+      .company-name {
+        color: #ddd;
+        font-size: 35px;
+        font-weight: 400;
+        margin: 30px 0;
+      }
+
+      .company-description {
+        color: #999;
+        font-size: 15px;
+        line-height: 22px;
+        margin: 0 auto;
+        width: 400px;
+      }
     }
   }
 }

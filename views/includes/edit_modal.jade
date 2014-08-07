@@ -40,14 +40,9 @@ script.
 
       var p = !{JSON.stringify(p)};
 
-      for (var i = 0; i < cards.length; i++) {
+      for(var i = 0; i < cards.length; i++) {
         (function(i_copy){
 
-          $(cards[i].id).hover( function() { // on hover in...
-            $(this).find('#edit').fadeIn('fast');
-            //- form_fields = cards[i_copy].form;
-
-            console.log(JSON.stringify(cards[i_copy].form, null, 3));
             $.ajax({
               type: "GET",
               url: "/edit_modal",
@@ -58,14 +53,8 @@ script.
                 p: p
               }
             }).done(function(msg) {
-                //- alert( "Data Saved: " + msg );
-                $('#testpartial').html(msg);
+              $('.edit-forms').html(msg);
             });
-
-          }, function() {  // on hover out...
-            $(this).find('#edit').fadeOut('fast');   
-          }
-          );
 
         }(i));
       }

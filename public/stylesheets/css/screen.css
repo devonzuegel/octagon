@@ -13878,17 +13878,25 @@ input:-webkit-autofill {
   position: absolute;
   width: 100%;
   z-index: -100; }
-.company-bkg .company-header-info {
-  margin-top: 62px;
+.company-bkg .company-header .company-header-edit {
+  color: #666;
+  cursor: pointer;
+  font-size: 15px;
+  float: right;
+  margin-top: 20px; }
+  .company-bkg .company-header .company-header-edit:hover {
+    color: #8a64d1; }
+.company-bkg .company-header .company-header-info {
+  padding-top: 62px;
   text-align: center; }
-  .company-bkg .company-header-info .company-logo {
+  .company-bkg .company-header .company-header-info .company-logo {
     height: 50px; }
-  .company-bkg .company-header-info .company-name {
+  .company-bkg .company-header .company-header-info .company-name {
     color: #ddd;
     font-size: 35px;
     font-weight: 400;
     margin: 30px 0; }
-  .company-bkg .company-header-info .company-description {
+  .company-bkg .company-header .company-header-info .company-description {
     color: #999;
     font-size: 15px;
     line-height: 22px;

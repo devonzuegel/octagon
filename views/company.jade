@@ -1,13 +1,19 @@
 extends layouts/company_layout
 
 block content
-  //- Include all edit_modal script
-  include ./includes/edit_modal.jade
 
-  .company-header
+  //- Include all edit_modal script
+  include includes/edit_modal.jade
+
+  //- Necessary for edit modal
+  .edit-forms
+
+  .company-header#img
 
     //- Edit
-    span(data-toggle="modal" data-target="#edit_company") edit
+    .company-header-edit#edit(data-toggle="modal" data-target="#edit_company") 
+      i.fa.fa-pencil.fa-right
+      | edit
 
     .company-header-info
 
@@ -29,4 +35,5 @@ block content
       else
         .company-description Add description
 
-
+  .company-content
+    .content-block
