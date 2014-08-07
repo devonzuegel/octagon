@@ -13872,12 +13872,28 @@ input:-webkit-autofill {
     position: absolute;
     width: 190px; }
 
-.company-header-bkg {
+.company-bkg .company-header-bkg {
   background-color: #222222;
-  height: 300px;
+  height: 400px;
   position: absolute;
   width: 100%;
   z-index: -100; }
+.company-bkg .company-header-info {
+  margin-top: 62px;
+  text-align: center; }
+  .company-bkg .company-header-info .company-logo {
+    height: 50px; }
+  .company-bkg .company-header-info .company-name {
+    color: #ddd;
+    font-size: 35px;
+    font-weight: 400;
+    margin: 30px 0; }
+  .company-bkg .company-header-info .company-description {
+    color: #999;
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0 auto;
+    width: 400px; }
 
 .toolbar {
   background-color: #eeeeee;

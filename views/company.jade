@@ -5,27 +5,28 @@ block content
   include ./includes/edit_modal.jade
 
   .company-header
+
+    //- Edit
+    span(data-toggle="modal" data-target="#edit_company") edit
+
     .company-header-info
 
-      //- Edit
-      span(data-toggle="modal" data-target="#edit_company") edit
-      
       //- Company logo
       if (p && p.img_path)
-        img(src=p.img_path).company-logo
+        img.company-logo(src=p.img_path)
       else
-        div Add logo
+        .company-logo Add logo
 
       //- Company name
       if (p && p.name)
         .company-name
       else
-        div Add name
+        .company-name Add name
 
       //- Company description
       if (p && p.short_descrip)
         .company-description #{p.short_descrip}
       else
-        div Add description
+        .company-description Add description
 
 

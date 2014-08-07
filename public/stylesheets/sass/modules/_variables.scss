@@ -4,27 +4,31 @@ $light-purple: #8a64d1;
 $purple: #45367c;
 $red: #e06663;
 
-// Website colors
-$auth-bkg: #222;
-$dashboard-bkg: #222;
-$portfolio-bkg: #ddd;
-$footer-bkg: #222;
-$toolbar-bkg: #eee;
-$company-header-bkg: #222;
-
 // Overall Website
 $website-max-width: 1000px;
 
 // Auth section
+$auth-bkg: #222;
 $auth-container-height: 250px;
 $auth-container-width: 250px;
 
 // Toolbar section
+$toolbar-bkg: #eee;
 $toolbar-height: 50px;
 $toolbar-extension-height: 280px;
 
+// Dashboard section
+$dashboard-bkg: #222;
+
+// Portfolio section
+$portfolio-bkg: #ddd;
+
 // Company section
-$company-header-height: 300px;
+$company-bkg: #ddd;
+$company-header-bkg: #222;
+$company-header-height: 400px;
+$company-header-info-height: 176px; // This is generated
 
 // Footer section
+$footer-bkg: #222;
 $footer-height: 73px; // Weird number is 20px padding + logo height of 33px
