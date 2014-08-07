@@ -30,9 +30,10 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
     // TODO what if p or p.data is undefined?
-    var p = JSON.parse(body).data;
-    var profile = {};
-    console.log(p.response);
+
+    var p = JSON.parse(body).data; // parse data from crunchbase response
+    var profile = {}; // create empty profile to be saved into the new company
+
     if (p.response != false) {
       permalink = crunchbase_permalink; // there is a valid crunchbase permalink
       profile = { 
@@ -45,12 +46,11 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
         founders:       (p.relationships.founders) ? p.relationships.founders.items.toString() : undefined,
         categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
       };
-    } else {
-      // with no crunchbase permalink, we have to make our own
+    } else { // with no crunchbase permalink, we have to make our own
       permalink = username.replace(/\s+/g, '-').toLowerCase();
     }
 
-    var a = new CompanyDetails({ 
+    var c = new CompanyDetails({ 
       'username': username,
       'password': password, 
       'init_investmt_date': init_investmt_date,
@@ -61,7 +61,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       'permalink': permalink
     });
 
-    a.save(function (err) {
+    c.save(function (err) {
       if (err)  console.log('ERROR');
       callback();
     });
@@ -69,22 +69,22 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
   });
 }
 
-function update(u_param, orig_profile, updates, callback) {
-  CompanyDetails.findOne({ username: u_param }, function (err, user) {
-    if (err)  return done(err);
+// function update(u_param, orig_profile, updates, callback) {
+//   CompanyDetails.findOne({ username: u_param }, function (err, user) {
+//     if (err)  return done(err);
 
-    var profile = {};
-    // populate profile with original user.profile
-    for (var k in orig_profile)  profile[k] = orig_profile[k];
-    // update the changes from the form
-    for (var k in updates)      profile[k] = updates[k];
+//     var profile = {};
+//     // populate profile with original user.profile
+//     for (var k in orig_profile)  profile[k] = orig_profile[k];
+//     // update the changes from the form
+//     for (var k in updates)      profile[k] = updates[k];
     
-    callback(profile);
+//     callback(profile);
 
-    // save & redirect to updated profile
-    user.save(function() { res.redirect('/portfolio/' + u_param); });
-  });
-}
+//     // save & redirect to updated profile
+//     user.save(function() { res.redirect('/portfolio/' + u_param); });
+//   });
+// }
 
 function username_inuse(u) {
   CompanyDetails.find({ username: u }, function (err, users) { 
@@ -117,7 +117,7 @@ function test(x) {
 }
 
 module.exports.add = add;
-module.exports.update = update;
+// module.exports.update = update;
 module.exports.test = test;
 module.exports.passport = passport;
 module.exports.CompanyDetails = CompanyDetails;
