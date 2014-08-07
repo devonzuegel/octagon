@@ -7,6 +7,7 @@
 
     .portfolio-controls {
       border-bottom: 3px solid #ccc;
+      margin: 0 0 20px 0;
       padding: 60px 0 0 0;
 
       .control-section {
@@ -49,6 +50,10 @@
 
       > .pull-left {
         margin-right: 40px;
+      }
+
+      .portfolio-table {
+
       }
     }
   }

@@ -9,7 +9,7 @@ block content
       button.filter(data-filter='.Joe') Joe
       button.filter(data-filter='.Drew') Drew
       button.filter(data-filter='.Chris') Chris
-      button.filter(data-filter='.none') No Owner
+      button.filter(data-filter='.none') No owner
 
     .control-section
       div Sort
@@ -18,9 +18,11 @@ block content
 
     .control-section.pull-right
       div Actions
-      a(href='../portfolio/add_user'): button Add
+      a(href='../portfolio/add_user'): button 
+        i.fa.fa-plus.fa-right
+        | Add
 
-  #Container
+  .portfolio-table
     each c, i in companies
       if (c.username != 'admin')
 
