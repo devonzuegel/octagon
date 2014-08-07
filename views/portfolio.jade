@@ -40,6 +40,6 @@ block content
           .mix(class=owners_class  data-name=c.username  onclick="window.location = '../portfolio/" + c.username + "'")
             .v-center-container: .v-center-helper: .v-center-content.portfolio-card
               if (c.crunchbase_prof.relationships)
-                img(src=c.profile.img_path style='max-width:100%; max-height:215px')
+                img(src=c.profile.img_path)
               .name #{c.username}
               .date #{c.init_investmt_date}

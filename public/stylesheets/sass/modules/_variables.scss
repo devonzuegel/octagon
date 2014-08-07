@@ -10,6 +10,7 @@ $dashboard-bkg: #222;
 $portfolio-bkg: #ddd;
 $footer-bkg: #222;
 $toolbar-bkg: #eee;
+$company-header-bkg: #222;
 
 // Overall Website
 $website-max-width: 1000px;
@@ -21,6 +22,9 @@ $auth-container-width: 250px;
 // Toolbar section
 $toolbar-height: 50px;
 $toolbar-extension-height: 280px;
+
+// Company section
+$company-header-height: 300px;
 
 // Footer section
 $footer-height: 73px; // Weird number is 20px padding + logo height of 33px

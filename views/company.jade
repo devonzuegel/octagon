@@ -1,109 +1,31 @@
-extends layouts/portfolio_layout
+extends layouts/company_layout
 
 block content
   //- Include all edit_modal script
   include ./includes/edit_modal.jade
 
-  //- .row.subheader
-    .col-xs-12
-      h3: a(href='#').selected Overview
-      h3: a(href='#') Financials
-      h3: a(href='#') Board Notes
-      h3: a(href='#') Communication
+  .company-header
+    .company-header-info
 
-  #testpartial
-  .row
-    .col-md-3.logobox
-      .card.text-center.logobox#img
-          a(data-toggle="modal" data-target="#edit_company").pull-right#edit.small edit
-          .pull-left
-            if (p && p.img_path)
-              img(src=p.img_path).logo
-            else
-              .text-left: h5 Add logo
-          div
-            if (p && p.short_descrip)
-              p.quote #{p.short_descrip}
-            else  
-              p.quote: h5 Add short description
-            
-      .blank: p
-        h4 <strong>Categories:</strong> 
-        if (p && p.categories)
-          each c,i in p.categories
-            if (i !=0)
-              | , 
-            a #{c.name}
-        else
-          h5: a add tags
+      //- Edit
+      span(data-toggle="modal" data-target="#edit_company") edit
+      
+      //- Company logo
+      if (p && p.img_path)
+        img(src=p.img_path).company-logo
+      else
+        div Add logo
 
-    .col-md-9.pull-left
-      .card#about
-        a(data-toggle="modal" data-target="#edit_company").pull-right#edit.small edit
-        h2 About
+      //- Company name
+      if (p && p.name)
+        .company-name
+      else
+        div Add name
 
-        .row
-          .col-md-8.right-of-line
-              if (p && p.description)
-                p #{p.description}
-              else
-                  h5 Add description
-          
-          .col-md-4
-            .vcenter-content.left-line
+      //- Company description
+      if (p && p.short_descrip)
+        .company-description #{p.short_descrip}
+      else
+        div Add description
 
-              div
-                  h4 <strong>Founders:</strong> 
-                  if (p && p.founders)
-                    each f,i in p.founders
-                        if (i !=0)
-                          | , 
-                        | #{f.name}
-                  else
-                    h5 Add founders
-              
-              div(style='height:10px')
 
-              div
-                h4 <strong>Founded:</strong> 
-                  if (p && p.founded_on)
-                    | #{p.founded_on}
-                  else
-                    h5 Add date
-                  br
-
-              div(style='height:10px')                    
-
-              h4 <strong>Funding:</strong> 
-              if (p && p.total_funding)
-                | $#{p.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
-              else
-                h5 Add funding info  
-              br
-
-              div(style='height:10px')                    
-
-              div
-                if (p && p.homepage_url) 
-                    a(href=homepage_url)
-                      <strong> #{p.homepage_url} </strong>
-                else
-                    h5 Add homepage url
-          br
-
-      .card#milestones
-        a(data-toggle="modal" data-target="#edit_company").pull-right#edit.small edit
-        h2 Milestones
-        p Milestone 1
-        p Milestone 2
-
-      .card#team
-        a(data-toggle="modal" data-target="#edit_company").pull-right#edit.small edit
-        h2 Team
-        p Joe Schmo
-        p Bilbo Baggins
-
-      .card#test
-        a(data-toggle="modal" data-target="#edit_company").pull-right#edit.small edit
-        h2 Test
-        p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi  in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"

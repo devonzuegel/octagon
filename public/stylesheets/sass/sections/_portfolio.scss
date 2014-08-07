@@ -45,6 +45,11 @@
         .active {
           border-color: $light-purple;
           color: $light-purple;
+
+          &:hover {
+            border-color: $light-purple;
+            color: $light-purple;
+          }
         }
       }
 

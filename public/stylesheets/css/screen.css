@@ -13612,7 +13612,8 @@ body {
   height: 100%; }
 
 .dashboard-container,
-.portfolio-container {
+.portfolio-container,
+.company-container {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: -73px;
@@ -13620,7 +13621,8 @@ body {
   min-height: 100%;
   padding-top: 50px; }
   .dashboard-container:after,
-  .portfolio-container:after {
+  .portfolio-container:after,
+  .company-container:after {
     content: '';
     display: block; }
 
@@ -13762,6 +13764,9 @@ input:-webkit-autofill {
         .portfolio-bkg .portfolio-container .portfolio-controls .control-section .active {
           border-color: #8a64d1;
           color: #8a64d1; }
+          .portfolio-bkg .portfolio-container .portfolio-controls .control-section .active:hover {
+            border-color: #8a64d1;
+            color: #8a64d1; }
       .portfolio-bkg .portfolio-container .portfolio-controls > .pull-left {
         margin-right: 40px; }
       .portfolio-bkg .portfolio-container .portfolio-controls > .pull-right {
@@ -13830,12 +13835,11 @@ input:-webkit-autofill {
   .mix {
     width: 22.5%; } }
 .mix {
-  position: relative;
   display: none;
-  float: left;
   background-color: #ccc;
-  width: 200px;
-  height: 200px; }
+  width: 190px;
+  height: 190px;
+  margin: 3px; }
 
 .mix:hover {
   background-color: #bbb;
@@ -13844,28 +13848,36 @@ input:-webkit-autofill {
 .v-center-container {
   display: table;
   position: absolute;
-  width: 200px;
-  height: 200px; }
+  width: 190px;
+  height: 190px; }
 
 .v-center-content,
 .v-center-helper {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   text-align: center; }
   .v-center-content img,
   .v-center-helper img {
-    height: 80px;
+    width: auto;
+    height: auto;
+    max-width: 140px;
+    max-height: 80px;
     margin-top: 50px; }
   .v-center-content .name,
   .v-center-helper .name {
-    bottom: 20px;
+    bottom: 30px;
     color: #777;
     font-size: 16px;
     position: absolute;
-    width: 200px;
-    text-transform: uppercase;
-    font-weight: 400; }
+    width: 190px; }
+
+.company-header-bkg {
+  background-color: #222222;
+  height: 300px;
+  position: absolute;
+  width: 100%;
+  z-index: -100; }
 
 .toolbar {
   background-color: #eeeeee;
