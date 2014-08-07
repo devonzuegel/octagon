@@ -13875,48 +13875,6 @@ input:-webkit-autofill {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-.controls {
-  margin: 5px -25px 5 25px;
-  display: block; }
-
-.controls h3 {
-  color: #786eaf;
-  font-weight: 400; }
-
-button {
-  text-transform: uppercase;
-  display: inline-block;
-  padding: .4em .8em;
-  background: none;
-  border: 0;
-  font-size: 14px;
-  font-weight: 300;
-  border-radius: 4px;
-  cursor: pointer;
-  border-radius: 6px;
-  border: 1px solid #786eaf;
-  color: #786eaf;
-  background: none;
-  margin: 5px; }
-
-button:hover, button:focus {
-  background-color: #fbfaff;
-  color: #46379b;
-  border-radius: 6px;
-  border: 1px solid #46379b; }
-
-button.active {
-  border-radius: 6px;
-  border: 1px solid #786eaf;
-  background-color: #786eaf;
-  color: white; }
-
-button.active:hover {
-  border-radius: 6px;
-  border: 1px solid #685ea0;
-  color: white;
-  background: #685ea0; }
-
 button + label {
   margin-left: 1em; }
 
@@ -14123,10 +14081,40 @@ button + label {
         filter: alpha(opacity=50); }
 
 .portfolio-bkg {
-  background-color: #222222; }
+  background-color: #dddddd; }
   .portfolio-bkg .portfolio-container {
     margin: 0 auto;
     max-width: 1000px; }
+    .portfolio-bkg .portfolio-container .portfolio-controls {
+      border-bottom: 3px solid #ccc;
+      padding: 60px 0 0 0; }
+      .portfolio-bkg .portfolio-container .portfolio-controls .control-section {
+        display: inline-block;
+        margin-bottom: -3px; }
+        .portfolio-bkg .portfolio-container .portfolio-controls .control-section > div {
+          color: #999;
+          font-size: 13px;
+          font-weight: 500;
+          text-transform: uppercase; }
+        .portfolio-bkg .portfolio-container .portfolio-controls .control-section button {
+          background: transparent;
+          border: none;
+          border-bottom: 3px solid transparent;
+          color: #999;
+          font-size: 14px;
+          margin: 10px 20px 0 0;
+          padding: 5px 10px; }
+          .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:hover {
+            border-color: #777;
+            color: #777; }
+          .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:focus, .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:active {
+            border-color: #8a64d1;
+            color: #8a64d1; }
+        .portfolio-bkg .portfolio-container .portfolio-controls .control-section .active {
+          border-color: #8a64d1;
+          color: #8a64d1; }
+      .portfolio-bkg .portfolio-container .portfolio-controls > .pull-left {
+        margin-right: 40px; }
 
 .toolbar {
   background-color: #eeeeee;

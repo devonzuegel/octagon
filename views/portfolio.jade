@@ -2,18 +2,23 @@ extends layouts/portfolio_layout
 
 block content
 
-  .controls
-    h3 Owner
-    button.filter(data-filter='all') All
-    button.filter(data-filter='.Joe') Joe
-    button.filter(data-filter='.Drew') Drew
-    button.filter(data-filter='.Chris') Chris
-    button.filter(data-filter='.none') No Owner
+  .portfolio-controls
+    .control-section.pull-left
+      div Owner
+      button.filter(data-filter='all') All
+      button.filter(data-filter='.Joe') Joe
+      button.filter(data-filter='.Drew') Drew
+      button.filter(data-filter='.Chris') Chris
+      button.filter(data-filter='.none') No Owner
 
-    h3 Sort
-    button.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
-    button.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
-    a(href='../portfolio/add_user'): button Add
+    .control-section
+      div Sort
+      button.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
+      button.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
+
+    .control-section.pull-right
+      div Actions
+      a(href='../portfolio/add_user'): button Add
 
   #Container
     each c, i in companies

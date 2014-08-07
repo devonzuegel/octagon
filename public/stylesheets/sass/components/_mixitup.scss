@@ -1,68 +1,14 @@
-*{
+* {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.controls {
-  margin: 5px -25px 5 25px;
-  display: block;
-}
-
-.controls h3 {
-  color: #786eaf;
-  font-weight: 400;
-}
-
-button{
-  text-transform: uppercase;
-  display: inline-block;
-  padding: .4em .8em;
-  background: none;
-  border: 0;
-
-  font-size: 14px;
-  font-weight: 300;
-  border-radius: 4px;
-  cursor: pointer;
-
-  border-radius: 6px;
-  
-  border: 1px solid #786eaf;
-  color: #786eaf;
-  
-  background: none;
-
-  margin: 5px;
-}
-
-button:hover, button:focus {
-  background-color: #fbfaff;
-  color: #46379b;
-
-  border-radius: 6px;
-  border: 1px solid #46379b;
-}
-
-button.active {
-  border-radius: 6px;
-  border: 1px solid #786eaf;
-  background-color: #786eaf;
-  color: white;
-}
-
-button.active:hover {
-  border-radius: 6px;
-  border: 1px solid #685ea0;
-  color: white;
-  background: #685ea0;
-}
-
-button + label{
+button + label {
   margin-left: 1em;
 }
 
-.mixitup-container{
+.mixitup-container {
   padding: 2% 10% 2% 10%;
   text-align: justify;
   font-size: 0.1px;
@@ -71,34 +17,34 @@ button + label{
   -webkit-backface-visibility: hidden;
 }
 
-.mixitup-container:after{
+.mixitup-container:after {
   content: '';
   display: inline-block;
   width: 100%;
 }
 
 .mixitup-container .mix,
-.mixitup-container .gap{
+.mixitup-container .gap {
   display: inline-block;
   width: 49%;
 }
 
-.mixitup-container .mix{
+.mixitup-container .mix {
   text-align: left;
   background: #03899c;
   margin-bottom: 2%;
   display: none;
 }
 
-.mixitup-container .mix.category-1{
+.mixitup-container .mix.category-1 {
   border-top: 2px solid #aaa;
 }
 
-.mixitup-container .mix.category-2{
+.mixitup-container .mix.category-2 {
   border-top: 2px solid yellow;
 }
 
-.mixitup-container .mix:after{
+.mixitup-container .mix:after {
   content: attr(data-myorder);
   color: white;
   font-size: 16px;
@@ -108,7 +54,7 @@ button + label{
   font-weight: 700;
 }
 
-.mixitup-container .mix:before{
+.mixitup-container .mix:before {
   content: '';
   display: inline-block;
   padding-top: 60%;
@@ -171,6 +117,7 @@ button + label{
   position: absolute;
   min-height: 265px;
 }
+
 .v-center-helper {
   #position: absolute; /*a variation of an "lte ie7" hack*/
   #top: 50%;
