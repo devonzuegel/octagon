@@ -13764,6 +13764,10 @@ input:-webkit-autofill {
           color: #8a64d1; }
       .portfolio-bkg .portfolio-container .portfolio-controls > .pull-left {
         margin-right: 40px; }
+      .portfolio-bkg .portfolio-container .portfolio-controls > .pull-right {
+        text-align: right; }
+        .portfolio-bkg .portfolio-container .portfolio-controls > .pull-right button {
+          margin: 10px 0 0 20px; }
 
 * {
   -webkit-box-sizing: border-box;
@@ -13829,17 +13833,13 @@ input:-webkit-autofill {
   position: relative;
   display: none;
   float: left;
+  background-color: #ccc;
   width: 200px;
   height: 200px; }
 
 .mix:hover {
+  background-color: #bbb;
   cursor: pointer; }
-
-.portfolio-card {
-  text-align: center;
-  width: 20%;
-  max-height: 90%;
-  display: table-cell; }
 
 .v-center-container {
   display: table;
@@ -13847,25 +13847,25 @@ input:-webkit-autofill {
   width: 200px;
   height: 200px; }
 
+.v-center-content,
 .v-center-helper {
-  #position: absolute;
-  /*a variation of an "lte ie7" hack*/
-  #top: 50%;
+  position: absolute;
   width: 200px;
   height: 200px;
-  display: table-cell;
-  vertical-align: middle;
-  background-color: #ccc;
-  padding: 5px; }
-
-.v-center-helper:hover,
-.v-center-helper:hover a {
-  background-color: #bbb; }
-
-.v-center-content {
-  #position: relative;
-  #top: -50%;
-  margin: auto; }
+  text-align: center; }
+  .v-center-content img,
+  .v-center-helper img {
+    height: 80px;
+    margin-top: 50px; }
+  .v-center-content .name,
+  .v-center-helper .name {
+    bottom: 20px;
+    color: #777;
+    font-size: 16px;
+    position: absolute;
+    width: 200px;
+    text-transform: uppercase;
+    font-weight: 400; }
 
 .toolbar {
   background-color: #eeeeee;

@@ -77,20 +77,14 @@
   position: relative;
   display: none;
   float: left;
-
+  background-color: #ccc;
   width: 200px;
   height: 200px;
 }
 
 .mix:hover {
+  background-color: #bbb;
   cursor: pointer;
-}
-
-.portfolio-card {
-  text-align: center;
-  width: 20%;
-  max-height: 90%;
-  display: table-cell;
 }
 
 .v-center-container {
@@ -100,24 +94,25 @@
   height: 200px;
 }
 
+.v-center-content,
 .v-center-helper {
-  #position: absolute; /*a variation of an "lte ie7" hack*/
-  #top: 50%;
+  position: absolute;
   width: 200px;
   height: 200px;
-  display: table-cell;
-  vertical-align: middle;
-  background-color: #ccc;
-  padding: 5px;
-}
+  text-align: center;
 
-.v-center-helper:hover,
-.v-center-helper:hover a {
-  background-color: #bbb;
-}
+  img {
+    height: 80px;
+    margin-top: 50px;
+  }
 
-.v-center-content {
-  #position: relative;
-  #top: -50%;
-  margin: auto;
+  .name {
+    bottom: 20px;
+    color: #777;
+    font-size: 16px;
+    position: absolute;
+    width: 200px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
 }
