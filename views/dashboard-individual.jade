@@ -1,15 +1,20 @@
 extends layouts/dashboard_layout
-
 block content
-
-  .dash-btn: a
-      h6 Connect
-      | Make a request Formation 8
-
-  .dash-btn: a 
-      h6 Respond
+  .dashboard-btn: a
+    .btn-icon: i.fa.fa-envelope
+    .btn-title
+      | Request
+    .btn-text
+      | Make a request to Formation 8
+  .dashboard-btn: a 
+    .btn-icon: i.fa.fa-comments
+    .btn-title
+      | Respond
+    .btn-text
       | Manage messages from Formation 8
-
-  .dash-btn: a(href='/users')
-    h6 Profile
-    | View / edit profile
+  .dashboard-btn: a(href="/portfolio")
+    .btn-icon: i.fa.fa-building
+    .btn-title
+      | Profile
+    .btn-text
+      | View/edit profile

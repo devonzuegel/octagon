@@ -13613,8 +13613,15 @@ html,
 body {
   height: 100%; }
 
-.content {
-  margin-top: 49px; }
+.dashboard-container,
+.portfolio-container {
+  margin-bottom: -73px;
+  min-height: 100%;
+  padding-top: 50px; }
+  .dashboard-container:after,
+  .portfolio-container:after {
+    content: '';
+    display: block; }
 
 /*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);*/
 /*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
@@ -14036,9 +14043,6 @@ button + label {
 
 .auth-bkg {
   background-color: #222222; }
-  .auth-bkg .auth-logo {
-    padding: 15px;
-    width: 120px; }
   .auth-bkg .auth-error {
     color: #e06663;
     font-size: 16px;
@@ -14087,56 +14091,51 @@ button + label {
       .auth-bkg .auth-container input[type=submit]:focus {
         background-color: #eee; }
 
-.container {
-  min-height: 100%;
-  margin-bottom: -73px; }
-  .container :after {
-    content: '';
-    display: block; }
-
 .dashboard-bkg {
   background-color: #222222; }
-
-h1 {
-  color: white;
-  /*#444;*/ }
-
-.dash-btn {
-  width: 35%;
-  min-width: 330px;
-  margin: auto;
-  margin-top: 30px;
-  text-align: center;
-  background-color: none;
-  padding: 10px;
-  border: 1px solid #bbb;
-  border-radius: 4px; }
-
-.dash-btn:hover {
-  cursor: pointer;
-  border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.03); }
-
-.dash-btn a {
-  color: #eee; }
-
-.dash-btn a:hover {
-  color: white; }
-
-h6 {
-  margin: 0px;
-  padding: 0px;
-  font-weight: 600;
-  font-size: 32pt;
-  text-transform: uppercase; }
+  .dashboard-bkg .toolbar-bkg-extension {
+    background-color: #2e2e2e;
+    height: 280px;
+    position: absolute;
+    width: 100%;
+    z-index: -100; }
+  .dashboard-bkg .dashboard-container {
+    padding-top: 153px; }
+    .dashboard-bkg .dashboard-container .dashboard-btns {
+      margin: 0 auto;
+      text-align: center;
+      width: 1000px; }
+      .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn {
+        display: inline-block;
+        margin: 0 20px;
+        width: 160px; }
+        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-icon {
+          color: #ccc;
+          font-size: 50px;
+          line-height: 100%;
+          text-align: center; }
+        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-title {
+          border-bottom: 10px solid #ccc;
+          color: #ccc;
+          font-size: 25px;
+          font-weight: 400;
+          line-height: 100%;
+          padding: 20px 0;
+          text-align: center; }
+        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-text {
+          color: #777;
+          font-size: 16px;
+          line-height: 24px;
+          padding-top: 30px;
+          text-align: center; }
 
 .portfolio-bkg {
   background-color: white; }
 
 .toolbar {
-  background-color: #222222;
+  background-color: #2e2e2e;
   height: 50px;
-  line-height: 40px;
+  line-height: 45px;
   position: fixed;
   top: 0px;
   vertical-align: middle;
@@ -14155,7 +14154,7 @@ h6 {
       font-weight: 500; }
     .toolbar .toolbar-nav a {
       border-top: 5px solid transparent;
-      color: #666;
+      color: #777;
       display: inline-block;
       font-size: 14px;
       font-weight: 500; }
@@ -14163,33 +14162,44 @@ h6 {
         border-color: #8a64d1;
         color: #fff; }
 
+.auth-footer,
 .footer {
-  background-color: #111111;
+  background-color: #222222;
   height: 73px;
   padding: 20px 0;
   width: 100%; }
+  .auth-footer .footer-nav,
   .footer .footer-nav {
     margin: 0 auto;
     width: 1000px; }
+    .auth-footer .footer-nav .footer-logo,
     .footer .footer-nav .footer-logo {
       display: inline-block;
       opacity: 0.5;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
       filter: alpha(opacity=50);
       width: 120px; }
+      .auth-footer .footer-nav .footer-logo:hover,
       .footer .footer-nav .footer-logo:hover {
         opacity: 1;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
         filter: alpha(opacity=100); }
+    .auth-footer .footer-nav .footer-text,
     .footer .footer-nav .footer-text {
       color: #666;
       font-size: 14px;
       line-height: 33px;
       margin-left: 50px; }
+    .auth-footer .footer-nav .footer-links a,
     .footer .footer-nav .footer-links a {
       color: #999;
       font-size: 14px;
       font-weight: 500;
       line-height: 33px; }
+      .auth-footer .footer-nav .footer-links a:hover,
       .footer .footer-nav .footer-links a:hover {
         color: #fff; }
+
+.auth-footer {
+  bottom: 0;
+  position: absolute; }

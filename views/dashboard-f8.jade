@@ -1,15 +1,20 @@
 extends layouts/dashboard_layout
-
 block content
-
-  .dash-btn: a
-      h6 Connect
+  a.dashboard-btn
+    .btn-icon: i.fa.fa-envelope
+    .btn-title
+      | Request
+    .btn-text
       | Message a portfolio company
-
-  .dash-btn: a 
-      h6 Respond
+  a.dashboard-btn
+    .btn-icon: i.fa.fa-comments
+    .btn-title
+      | Respond
+    .btn-text
       | Manage company requests
-
-  .dash-btn: a(href='/portfolio')
-    h6 Portfolio
-    | View portfolio companies
+  a(href="/portfolio").dashboard-btn
+    .btn-icon: i.fa.fa-th
+    .btn-title
+      | Potfolio
+    .btn-text
+      | View portfolio companies

@@ -1,7 +1,7 @@
 .toolbar {
   background-color: $toolbar-bkg;
   height: $toolbar-height;
-  line-height: $toolbar-height - 10;
+  line-height: $toolbar-height - 5;
   position: fixed;
   top: 0px;
   vertical-align: middle;
@@ -34,11 +34,10 @@
 
     a {
       border-top: 5px solid transparent;
-      color: #666;
+      color: #777;
       display: inline-block;
       font-size: 14px;
       font-weight: 500;
-      // text-transform: uppercase;
 
       &:hover {
         border-color: $light-purple;

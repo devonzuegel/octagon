@@ -8,7 +8,8 @@ $red: #e06663;
 $auth-bkg: #222;
 $dashboard-bkg: #222;
 $portfolio-bkg: #fff;
-$footer-bkg: #111;
+$footer-bkg: #222;
+$toolbar-bkg: #2e2e2e;
 
 // Overall Website
 $website-max-width: 1000px;
@@ -18,8 +19,8 @@ $auth-container-height: 250px;
 $auth-container-width: 250px;
 
 // Toolbar section
-$toolbar-bkg: #222;
 $toolbar-height: 50px;
+$toolbar-extension-height: 280px;
 
 // Footer section
 $footer-height: 73px; // Weird number is 20px padding + logo height of 33px

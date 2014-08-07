@@ -3,6 +3,16 @@ body {
   height: 100%;
 }
 
-.content {
-  margin-top: 49px;
+.dashboard-container,
+.portfolio-container {
+
+  // Equal to footer height
+  margin-bottom: -1 * $footer-height;
+  min-height: 100%;
+  padding-top: $toolbar-height;
+
+  &:after {
+    content: '';
+    display: block;
+  }
 }

@@ -1,48 +1,52 @@
-.container {
-  min-height: 100%;
-
-  // Equal to footer height
-  margin-bottom: -1 * $footer-height;
-    :after {
-      content: '';
-      display: block;
-  }
-}
-
 .dashboard-bkg {
   background-color: $dashboard-bkg;
-}
 
-h1 {
-  color: white; /*#444;*/
-}
+  .toolbar-bkg-extension {
+    background-color: $toolbar-bkg;
+    height: $toolbar-extension-height;
+    position: absolute;
+    width: 100%;
+    z-index: -100;
+  }
 
-.dash-btn {
-  width: 35%;
-  min-width: 330px;
-  margin: auto;
-  margin-top: 30px;
-  text-align: center;
-  background-color: none;
-  padding: 10px;
+  .dashboard-container {
+    padding-top: $toolbar-extension-height - 127px;
 
-  border: 1px solid #bbb;
-  border-radius: 4px;
-}
+    .dashboard-btns {
+      margin: 0 auto;
+      text-align: center;
+      width: $website-max-width;
 
-.dash-btn:hover {
-  cursor: pointer;
-  border: 1px solid white;
-  background-color: rgba(255,255,255,.03);
-}
+      a.dashboard-btn {
+        display: inline-block;
+        margin: 0 20px;
+        width: 160px;
 
-.dash-btn a { color: #eee; }
-.dash-btn a:hover { color: white; }
+        .btn-icon {
+          color: #ccc;
+          font-size: 50px;
+          line-height: 100%;
+          text-align: center;
+        }
 
-h6 {
-  margin: 0px;
-  padding: 0px;
-  font-weight: 600;
-  font-size: 32pt;
-  text-transform: uppercase;
+        .btn-title {
+          border-bottom: 10px solid #ccc;
+          color: #ccc;
+          font-size: 25px;
+          font-weight: 400;
+          line-height: 100%;
+          padding: 20px 0;
+          text-align: center;
+        }
+
+        .btn-text {
+          color: #777;
+          font-size: 16px;
+          line-height: 24px;
+          padding-top: 30px;
+          text-align: center;
+        }
+      }
+    }
+  }
 }

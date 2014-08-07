@@ -1,12 +1,9 @@
 extends ../layout
-
 block sub_layout
-
   body.dashboard-bkg
     include ../includes/toolbar.jade
-
-    .container.content
-
-      block content
-
+    .toolbar-bkg-extension
+    .dashboard-container
+      .dashboard-btns
+        block content
   include ../includes/footer.jade

@@ -1,11 +1,10 @@
 extends ../layout
 block sub_layout
   body.auth-bkg
-    .auth-logo
-      img(src="../../images/formation8logo.png")
     .auth-container
       form(method="POST", action="/login")
         div
           each error in errors
             p.auth-error #{error}
         block content
+  include ../includes/auth_footer.jade
