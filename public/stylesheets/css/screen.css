@@ -13836,13 +13836,16 @@ input:-webkit-autofill {
     width: 22.5%; } }
 .mix {
   display: none;
-  background-color: #ccc;
+  background-color: white;
   width: 190px;
   height: 190px;
-  margin: 3px; }
-
+  margin: 3px;
+  border: 1px solid #d6d6d6;
+  border-bottom: 3px solid #ccc;
+}
 .mix:hover {
-  background-color: #bbb;
+  /*background-color: #bbb;*/
+  border-bottom: 3px solid #8a64d1;
   cursor: pointer; }
 
 .v-center-container {
