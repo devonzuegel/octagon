@@ -49,7 +49,7 @@ script.
               data: { 
                 form_fields: cards[i_copy].form, 
                 header: cards[i_copy].header,
-                username: p.username,
+                username: !{JSON.stringify(title)},
                 p: p
               }
             }).done(function(msg) {

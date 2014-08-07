@@ -1,6 +1,6 @@
 .modal.fade.modal-fullscreen.force-fullscreen#edit_company(tabindex="-1" role="dialog" aria-hidden="true")
   .modal-dialog
-    form(method="post"  id='edit_user'  action='/portfolio/'+data.p.username+"/edit"  enctype='multipart/format-data').modal-content
+    form(method="post"  id='edit_user'  action='/portfolio/'+data.username+"/edit"  enctype='multipart/format-data').modal-content
       .col-lg-12
         h1.white.text-center #{data.header}
       container.loginbox: .col-lg-12
