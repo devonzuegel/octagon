@@ -12,45 +12,40 @@
 
   .dashboard-container {
     padding-top: $toolbar-extension-height - 127px;
+    text-align: center;
 
-    .dashboard-btns {
-      margin: 0 auto;
-      text-align: center;
-      width: $website-max-width;
+    a.dashboard-btn {
+      display: inline-block;
+      margin: 0 20px;
+      width: 160px;
 
-      a.dashboard-btn {
-        display: inline-block;
-        margin: 0 20px;
-        width: 160px;
+      .btn-icon {
+        color: $light-purple;
+        font-size: 50px;
+        line-height: 100%;
+        text-align: center;
+      }
 
-        .btn-icon {
-          color: $light-purple;
-          font-size: 50px;
-          line-height: 100%;
-          text-align: center;
-        }
+      .btn-title {
+        border-bottom: 10px solid $light-purple;
+        color: $light-purple;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 100%;
+        padding: 20px 0;
+        text-align: center;
+      }
 
-        .btn-title {
-          border-bottom: 10px solid $light-purple;
-          color: $light-purple;
-          font-size: 25px;
-          font-weight: 400;
-          line-height: 100%;
-          padding: 20px 0;
-          text-align: center;
-        }
+      .btn-text {
+        color: #777;
+        font-size: 16px;
+        line-height: 24px;
+        padding-top: 30px;
+        text-align: center;
+      }
 
-        .btn-text {
-          color: #777;
-          font-size: 16px;
-          line-height: 24px;
-          padding-top: 30px;
-          text-align: center;
-        }
-
-        &:hover {
-          @include opacity(0.5);
-        }
+      &:hover {
+        @include opacity(0.5);
       }
     }
   }

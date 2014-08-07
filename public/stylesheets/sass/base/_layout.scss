@@ -7,7 +7,10 @@ body {
 .portfolio-container {
 
   // Equal to footer height
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: -1 * $footer-height;
+  max-width: $website-max-width;
   min-height: 100%;
   padding-top: $toolbar-height;
 

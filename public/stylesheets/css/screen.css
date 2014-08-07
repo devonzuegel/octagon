@@ -10,8 +10,6 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
 @import url(http://fonts.googleapis.com/css?family=Lato:100,400);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -13615,22 +13613,16 @@ body {
 
 .dashboard-container,
 .portfolio-container {
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: -73px;
+  max-width: 1000px;
   min-height: 100%;
   padding-top: 50px; }
   .dashboard-container:after,
   .portfolio-container:after {
     content: '';
     display: block; }
-
-/*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);*/
-/*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
-h1 {
-  font-size: 36pt;
-  font-weight: 400;
-  margin: 20px 0px 10px 0px;
-  color: #444;
-  /*text-transform: uppercase;*/ }
 
 h2 {
   font-size: 18px;
@@ -14100,41 +14092,41 @@ button + label {
     width: 100%;
     z-index: -100; }
   .dashboard-bkg .dashboard-container {
-    padding-top: 153px; }
-    .dashboard-bkg .dashboard-container .dashboard-btns {
-      margin: 0 auto;
-      text-align: center;
-      width: 1000px; }
-      .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn {
-        display: inline-block;
-        margin: 0 20px;
-        width: 160px; }
-        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-icon {
-          color: #8a64d1;
-          font-size: 50px;
-          line-height: 100%;
-          text-align: center; }
-        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-title {
-          border-bottom: 10px solid #8a64d1;
-          color: #8a64d1;
-          font-size: 25px;
-          font-weight: 400;
-          line-height: 100%;
-          padding: 20px 0;
-          text-align: center; }
-        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn .btn-text {
-          color: #777;
-          font-size: 16px;
-          line-height: 24px;
-          padding-top: 30px;
-          text-align: center; }
-        .dashboard-bkg .dashboard-container .dashboard-btns a.dashboard-btn:hover {
-          opacity: 0.5;
-          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-          filter: alpha(opacity=50); }
+    padding-top: 153px;
+    text-align: center; }
+    .dashboard-bkg .dashboard-container a.dashboard-btn {
+      display: inline-block;
+      margin: 0 20px;
+      width: 160px; }
+      .dashboard-bkg .dashboard-container a.dashboard-btn .btn-icon {
+        color: #8a64d1;
+        font-size: 50px;
+        line-height: 100%;
+        text-align: center; }
+      .dashboard-bkg .dashboard-container a.dashboard-btn .btn-title {
+        border-bottom: 10px solid #8a64d1;
+        color: #8a64d1;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 100%;
+        padding: 20px 0;
+        text-align: center; }
+      .dashboard-bkg .dashboard-container a.dashboard-btn .btn-text {
+        color: #777;
+        font-size: 16px;
+        line-height: 24px;
+        padding-top: 30px;
+        text-align: center; }
+      .dashboard-bkg .dashboard-container a.dashboard-btn:hover {
+        opacity: 0.5;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        filter: alpha(opacity=50); }
 
 .portfolio-bkg {
-  background-color: white; }
+  background-color: #222222; }
+  .portfolio-bkg .portfolio-container {
+    margin: 0 auto;
+    max-width: 1000px; }
 
 .toolbar {
   background-color: #eeeeee;

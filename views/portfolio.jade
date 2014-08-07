@@ -3,20 +3,17 @@ extends layouts/portfolio_layout
 block content
 
   .controls
-    h3 OWNER:
+    h3 Owner
     button.filter(data-filter='all') All
     button.filter(data-filter='.Joe') Joe
     button.filter(data-filter='.Drew') Drew
     button.filter(data-filter='.Chris') Chris
     button.filter(data-filter='.none') No Owner
-    //- button.filter(data-filter='.none') No owner
 
-    h3
-
-    h3 Sort:
+    h3 Sort
     button.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
     button.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
-    a(href='../portfolio/add_user'): button(style='float:right; top:0') Add
+    a(href='../portfolio/add_user'): button Add
 
   #Container
     each c, i in companies
@@ -37,5 +34,5 @@ block content
             .v-center-container: .v-center-helper: .v-center-content.portfolio-card
               if (c.crunchbase_prof.relationships)
                 img(src=c.profile.img_path style='max-width:100%; max-height:215px')
-              div: a <strong>#{c.username}</strong>
+              div: a #{c.username}
               .small: a #{c.init_investmt_date}
