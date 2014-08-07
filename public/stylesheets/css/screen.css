@@ -13773,7 +13773,10 @@ input:-webkit-autofill {
         text-align: right; }
         .portfolio-bkg .portfolio-container .portfolio-controls > .pull-right button {
           margin: 10px 0 0 20px; }
-
+.portfolio-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -13914,7 +13917,8 @@ input:-webkit-autofill {
   top: 0px;
   vertical-align: middle;
   width: 100%;
-  z-index: 10000; }
+  z-index: 10000;
+  padding: 0px 20px 0px 20px; }
   .toolbar .toolbar-nav {
     margin: 0 auto;
     max-width: 1000px; }
