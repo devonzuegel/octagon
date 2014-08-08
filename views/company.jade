@@ -60,35 +60,35 @@ block content
       .block-content
 
         if (p && p.categories)
-          ul
-            each c,i in p.categories
-              if (i !=0)
-                | , 
-              li #{c.name}
+          h2 Categories
+          each c,i in p.categories
+            if (i !=0)
+              | , 
+            a #{c.name}
         else
           div Add categories
 
         if (p && p.founders)
-          div
-            each f,i in p.founders
-              if(i != 0)
-                | ,
-              | #{f.name}
+          h2 Founders
+          | #{p.founders}
         else
           div Add founders
 
         if (p && p.founded_on)
+          h2 Founding Date
           div #{p.founded_on}
         else
           div Add date
 
         if (p && p.total_funding)
+          h2 Total Funding
           div $#{p.total_funding.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
         else
           div Add funding info
 
-        if (p && p.homepage_url) 
-            div: a(href="http://" + "#{p.homepage_url}") #{p.homepage_url}
+        if (p && p.homepage_url)
+          h2 Company Website
+          a(href="http://" + "#{p.homepage_url}") #{p.homepage_url}
         else
             div Add homepage url 
 
