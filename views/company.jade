@@ -61,10 +61,7 @@ block content
 
         if (p && p.categories)
           h2 Categories
-          each c,i in p.categories
-            if (i !=0)
-              | , 
-            a #{c.name}
+          | #{p.categories}
         else
           div Add categories
 

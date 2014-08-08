@@ -22,7 +22,16 @@ var CompanyDetail = new Schema({
     });
 var CompanyDetails = mongoose.model('userInfo', CompanyDetail);
 
-
+function obj_arr_to_str(p, obj) {
+  if (p.relationships[obj]) {
+    var str = '';
+    for (var i = 0; i < p.relationships[obj].items.length; i++) {
+      if (i != 0) str += ', ';
+      str += p.relationships[obj].items[i].name;
+    }
+    return (str == '') ? undefined : str;
+  }
+}
 
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
   if (crunchbase_permalink == '')     crunchbase_permalink = 'NO_PERMALINK_SELECTED';
@@ -34,14 +43,11 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
     var p = JSON.parse(body).data; // parse data from crunchbase response
     var profile = {}; // create empty profile to be saved into the new company
 
-    if (p.relationships.founders) {
-      var founders_str = '';
-      for (var i = 0; i < p.relationships.founders.items.length; i++) {
-        if (i != 0) founders_str += ', ';
-        founders_str += p.relationships.founders.items[i].name;
-      }
-      console.log(founders_str);
-    }
+    // build comma-separated string of founders' names
+    var founders_str = obj_arr_to_str(p, 'founders');
+
+    // build comma-separated string of categories
+    var categories_str = obj_arr_to_str(p, 'categories');
 
     if (p.response != false) {
       permalink = crunchbase_permalink; // there is a valid crunchbase permalink
@@ -52,8 +58,8 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
         homepage_url:   p.properties.homepage_url.replace('http://', ''),
         founded_on:     p.properties.founded_on,
         total_funding:  p.properties.total_funding_usd,
-        founders:       founders_str,  // (p.relationships.founders) ? p.relationships.founders.items.toString() : undefined,
-        categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
+        founders:       founders_str,
+        categories:     categories_str
       };
     } else { // with no crunchbase permalink, we have to make our own
       permalink = username.replace(/\s+/g, '-').toLowerCase();
