@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "Windows-1252";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
@@ -13712,14 +13712,15 @@ input:-webkit-autofill {
   .mix {
     width: 22.5%; } }
 .mix {
+  border-bottom: 5px solid #dddddd;
   display: none;
   background-color: #fff;
   color: #777;
   width: 190px;
   height: 190px;
-  opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
   margin: 3px; }
 
 .mix:hover {

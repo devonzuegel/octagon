@@ -56,6 +56,7 @@ router.get('/add_user', function(req, res) {
 
 router.post('/add_user', function(req, res) {
 
+  console.log('SSSSSSSSSSS');
   var form = req.body;
 
   if (form.password == '') {
@@ -88,6 +89,7 @@ router.get('/:permalink', function(req, res) {
   var link = req.params.permalink; // gets :permalink from the url
   if (link == 'add_user')    res.redirect('/portfolio/add_user');
   var session = req.session.permalink; // gets username from session (who's logged in?)
+  console.log(link);
 
   require_privileges(req, res, false, function() { return }, function() {
     if (req.session.permalink != link)     res.redirect('/portfolio/' + session);

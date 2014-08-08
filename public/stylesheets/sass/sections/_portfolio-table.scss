@@ -79,12 +79,13 @@
 }
 
 .mix {
+  border-bottom: 5px solid $company-bkg;
   display: none;
   background-color: #fff;
   color: #777;
   width: 190px;
   height: 190px;
-  @include opacity(0.8);
+  @include opacity(0.9);
   margin: 3px;
 }
 
