@@ -13772,10 +13772,7 @@ input:-webkit-autofill {
         text-align: right; }
         .portfolio-bkg .portfolio-container .portfolio-controls > .pull-right button {
           margin: 10px 0 0 20px; }
-.portfolio-container {
-  padding-left: 20px;
-  padding-right: 20px;
-}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -13838,44 +13835,41 @@ input:-webkit-autofill {
     width: 22.5%; } }
 .mix {
   display: none;
-  background-color: white;
-  width: 230px;
-  height: 230px;
-  margin: 3px;
-  border: 1px solid #d6d6d6;
-  border-bottom: 3px solid #ccc;
-}
+  background-color: #ccc;
+  width: 190px;
+  height: 190px;
+  margin: 3px; }
+
 .mix:hover {
-  /*background-color: #bbb;*/
-  border-bottom: 3px solid #8a64d1;
+  background-color: #bbb;
   cursor: pointer; }
 
 .v-center-container {
   display: table;
   position: absolute;
-  width: 230px;
-  height: 230px; }
+  width: 190px;
+  height: 190px; }
 
 .v-center-content,
 .v-center-helper {
   position: absolute;
-  width: 230px;
-  height: 230px;
+  width: 190px;
+  height: 190px;
   text-align: center; }
   .v-center-content img,
   .v-center-helper img {
     width: auto;
     height: auto;
-    max-width: 88%;
-    max-height: 120px;
-    margin-top: 25px; }
+    max-width: 140px;
+    max-height: 80px;
+    margin-top: 50px; }
   .v-center-content .name,
   .v-center-helper .name {
-    bottom: 20px;
+    bottom: 30px;
     color: #777;
     font-size: 16px;
     position: absolute;
-    width: 230px; }
+    width: 190px; }
 
 .company-bkg .company-header-bkg {
   background-color: #222222;
@@ -13956,8 +13950,7 @@ input:-webkit-autofill {
   top: 0px;
   vertical-align: middle;
   width: 100%;
-  z-index: 10000;
-  padding: 0px 20px 0px 20px; }
+  z-index: 10000; }
   .toolbar .toolbar-nav {
     margin: 0 auto;
     max-width: 1000px; }
