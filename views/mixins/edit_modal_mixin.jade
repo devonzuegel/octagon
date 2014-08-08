@@ -1,0 +1,10 @@
+mixin edit_modal(modal_id, modal_title)
+  .modal.fade.modal-fullscreen.force-fullscreen(id=modal_id tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog
+      form.modal-content(method="post"  action="/portfolio/" + title + "/edit"  enctype="multipart/format-data")
+        .modal-title= modal_title
+        .modal-body
+          block
+        .modal-footer
+          input(type="button"  value="Cancel" data-dismiss="modal")
+          input(type="submit"  value="Save")

@@ -9,21 +9,16 @@
   }
 
   .company-header {
+    height: $company-header-height - $toolbar-height;
 
     .company-header-edit {
       color: #666;
-      cursor: pointer;
-      font-size: 15px;
       float: right;
       margin-top: 20px;
-
-      &:hover {
-        color: $light-purple;
-      }
     }
 
     .company-header-info {
-      padding-top: (($company-header-height - $company-header-info-height) / 2) - $toolbar-height;
+      padding-top: ((($company-header-height - $company-header-info-height) / 2) - $toolbar-height);
       text-align: center;
 
       .company-logo {
@@ -45,5 +40,65 @@
         width: 400px;
       }
     }
+  }
+
+  .company-content {
+    margin: 80px 0;
+
+    .content-block {
+      display: inline-table;
+      margin: 2%;
+      position: relative;
+      width: 46%;
+
+      .block-title {
+        color: #999;
+        display: inline-block;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 100%;
+        margin: 0 0 10px 0;
+      }
+
+      .block-edit {
+        color: #999;
+        line-height: 20px;
+        position: absolute;
+        right: 0;
+        top: 5px;
+      }
+
+      .block-content {
+        color: #333;
+        background-color: #eee;
+        font-size: 15px;
+        line-height: 30px;
+        padding: 20px;
+
+        li {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+.edit-btn {
+  cursor: pointer;
+  font-size: 15px;
+
+  &:hover {
+    color: $light-purple !important;
+  }
+}
+
+.edit-disabled {
+  color: #ccc !important;
+  cursor: not-allowed !important;
+
+  &:hover {
+    color: #ccc !important;
   }
 }

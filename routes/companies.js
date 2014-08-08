@@ -84,45 +84,46 @@ router.post('/add_user', function(req, res) {
 
 });
 
-router.get('/:username', function(req, res) {
-  var u_param = req.params.username; // gets :username from the url
-  if (u_param == 'add_user')    res.redirect('/portfolio/add_user');
+router.get('/:permalink', function(req, res) {
+  var link = req.params.permalink; // gets :permalink from the url
+  if (link == 'add_user')    res.redirect('/portfolio/add_user');
   var u_session = req.session.username; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return }, function() {
-    if (u_session != u_param)     res.redirect('/portfolio/' + u_session);
+    if (u_session != link)     res.redirect('/portfolio/' + u_session);
   });
 
-  CompanyDetails.findOne({ 'username': u_param, }, function(err, company) {
+  CompanyDetails.findOne({ 'permalink': link, }, function(err, company) {
     if (err)    return done(err);
 
-    if (company == null  ||  u_param == 'admin') { // not a valid company >> doesn't have a profile
+    if (company == null  ||  link == 'admin') { // not a valid company >> doesn't have a profile
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
         return res.redirect('/portfolio');
     } else { // is a valid company with a profile
       var details = { 
         errors: req.flash('error'),
         username: req.session.username,
-        title: u_param,
+        title: company.username,
         is_admin: (u_session == 'admin'),
-        p: company.profile
+        p: company.profile,
+        permalink: company.permalink,
       };
       return res.render('company', details);
     }
   });
 });
 
-router.post('/:username/edit', function(req, res) {
-  var u_param = req.params.username;    // gets :username from the url
+router.post('/:permalink/edit', function(req, res) {
+  var link = req.params.permalink; // gets :permalink from the url
   var u_session = req.session.username; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return; }, function() {
-    if (u_session != u_param)       res.redirect('/portfolio/' + u_session);
+    if (u_session != link)       res.redirect('/portfolio/' + u_session);
   });
 
 
-  // CompanyModel.update(u_param, user.profile, req.body);
-  CompanyDetails.findOne({ username: u_param }, function (err, user) {
+  // CompanyModel.update(link, user.profile, req.body);
+  CompanyDetails.findOne({ permalink: link }, function (err, user) {
     if (err)  return done(err);
 
     var profile = {};
@@ -134,7 +135,7 @@ router.post('/:username/edit', function(req, res) {
     user['profile'] = profile;
 
     // save & redirect to updated profile
-    user.save(function() { res.redirect('/portfolio/' + u_param); });
+    user.save(function() { res.redirect('/portfolio/' + link); });
   })
 
 });
