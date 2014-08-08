@@ -40,7 +40,6 @@ router.get('/', function(req, res) {
 
 // add_user methods
 router.get('/add_user', function(req, res) {
-  console.log('req.params:  ' + req.params);
   require_privileges(req, res, true, function() {  return;  }, function() {  
     return res.redirect('/portfolio/' + req.session.permalink);  
   });
@@ -49,7 +48,6 @@ router.get('/add_user', function(req, res) {
     title:"New Company", 
     is_admin: true, 
     errors: undefined,
-    p: {},
     username: req.session.username,
     tab: 'companies' 
   });
@@ -57,8 +55,6 @@ router.get('/add_user', function(req, res) {
 });
 
 router.post('/add_user', function(req, res) {
-
-  console.log('req.params:  ' + req.params);
   var form = req.body;
 
   if (form.password == '') {
@@ -88,11 +84,9 @@ router.post('/add_user', function(req, res) {
 });
 
 router.get('/:permalink', function(req, res) {
-  console.log('req.params:  ' + req.params);
   var link = req.params.permalink; // gets :permalink from the url
   // if (link == 'add_user')    res.redirect('/portfolio/add_user');
   var session = req.session.permalink; // gets username from session (who's logged in?)
-  console.log('session  ' + session);
 
   require_privileges(req, res, false, function() { return }, function() {
     if (req.session.permalink != link)     res.redirect('/portfolio/' + session);
@@ -127,8 +121,6 @@ router.post('/:permalink/edit', function(req, res) {
     if (session != link)       res.redirect('/portfolio/' + session);
   });
 
-
-  // CompanyModel.update(link, user.profile, req.body);
   CompanyDetails.findOne({ permalink: link }, function (err, user) {
     if (err)  return done(err);
 

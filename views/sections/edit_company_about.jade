@@ -2,5 +2,5 @@ include ../mixins/edit_modal_mixin
 
 +edit_modal("edit-about", "Edit About")
   div.small-label Company description
-  textarea(placeholder="Add company description"  name="description"  autocomplete="off" value="")
+  textarea(placeholder="Add company description"  name="description"  autocomplete="off") #{p.description}
   

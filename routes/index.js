@@ -61,11 +61,12 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 	}), function(req, res) {
 		req.session.is_admin = (req.user.username == 'admin');
 		req.session.username = req.user.username;
-		
+
 		// set session permalink to permalink saved in user profile
 		CompanyDetails.findOne({ username: req.session.username, }, function(err, company) {
 			if (err)    return done(err);
 			req.session.permalink = company.permalink;
+			console.log(req.session.permalink);
 			res.redirect('/');
 		});
 	});	
