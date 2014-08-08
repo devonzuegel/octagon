@@ -1,6 +1,12 @@
 extends ../layout
 block sub_layout
   body.company-bkg
+
+    //- Edit modals
+    include ../sections/edit_company_header
+    include ../sections/edit_company_about
+    include ../sections/edit_company_info
+
     include ../includes/toolbar.jade
     .company-header-bkg
     .company-container
