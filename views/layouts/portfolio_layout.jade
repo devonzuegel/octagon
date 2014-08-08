@@ -23,16 +23,16 @@ block sub_layout
       function updateToolbar() {
 
         // Save scroll condition
-        var scroll_condition = $(window).scrollTop() > 30;
+        var scroll_condition = $(window).scrollTop() > 60;
 
         // If distance is past 30
         if(scroll_condition) {
 
           // Add a light shadow
-          $(".toolbar").addClass("toolbar-light-shadow");
+          $(".toolbar").addClass("toolbar-dark-shadow");
         } else {
 
           // Remove the light shadow
-          $(".toolbar").removeClass("toolbar-light-shadow");
+          $(".toolbar").removeClass("toolbar-dark-shadow");
         }
       }

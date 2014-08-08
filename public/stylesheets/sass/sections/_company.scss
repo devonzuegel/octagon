@@ -2,6 +2,7 @@
 
   .company-header-bkg {
     background-color: $company-header-bkg;
+    @include box-shadow(0, 0, 2px, #000, inset);
     height: $company-header-height;
     position: absolute;
     width: 100%;

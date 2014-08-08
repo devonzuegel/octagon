@@ -13694,6 +13694,9 @@ input:-webkit-autofill {
   background-color: #222222; }
   .dashboard-bkg .toolbar-bkg-extension {
     background-color: #eeeeee;
+    -webkit-box-shadow: 0 0 2px black;
+    -moz-box-shadow: 0 0 2px black;
+    box-shadow: 0 0 2px black;
     height: 280px;
     position: absolute;
     width: 100%;
@@ -13730,33 +13733,33 @@ input:-webkit-autofill {
         filter: alpha(opacity=50); }
 
 .portfolio-bkg {
-  background-color: #dddddd; }
+  background-color: #222222; }
   .portfolio-bkg .portfolio-container {
     margin: 0 auto 80px auto;
     max-width: 1000px; }
     .portfolio-bkg .portfolio-container .portfolio-controls {
-      border-bottom: 3px solid #ccc;
-      margin: 0 0 20px 0;
+      border-bottom: 1px solid #444;
+      margin: 0 0 40px 0;
       padding: 60px 0 0 0; }
       .portfolio-bkg .portfolio-container .portfolio-controls .control-section {
         display: inline-block;
-        margin-bottom: -3px; }
+        margin-bottom: -1px; }
         .portfolio-bkg .portfolio-container .portfolio-controls .control-section > div {
-          color: #aaa;
-          font-size: 13px;
-          font-weight: 500;
+          color: #555;
+          font-size: 15px;
+          font-weight: 400;
           text-transform: uppercase; }
         .portfolio-bkg .portfolio-container .portfolio-controls .control-section button {
           background: transparent;
           border: none;
-          border-bottom: 3px solid transparent;
-          color: #999;
+          border-bottom: 1px solid transparent;
+          color: #777;
           font-size: 14px;
           margin: 10px 20px 0 0;
           padding: 5px 10px; }
           .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:hover {
-            border-color: #777;
-            color: #777; }
+            border-color: #999;
+            color: #999; }
           .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:focus, .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:active {
             border-color: #8a64d1;
             color: #8a64d1; }
@@ -13878,6 +13881,9 @@ input:-webkit-autofill {
 
 .company-bkg .company-header-bkg {
   background-color: #222222;
+  -webkit-box-shadow: inset 0 0 2px black;
+  -moz-box-shadow: inset 0 0 2px black;
+  box-shadow: inset 0 0 2px black;
   height: 400px;
   position: absolute;
   width: 100%;

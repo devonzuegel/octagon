@@ -3,12 +3,12 @@
 
   .toolbar-bkg-extension {
     background-color: $toolbar-bkg;
+    @include box-shadow(0, 0, 2px, #000);
     height: $toolbar-extension-height;
     position: absolute;
     width: 100%;
     z-index: -100;
   }
-
 
   .dashboard-container {
     padding-top: $toolbar-extension-height - 127px;
