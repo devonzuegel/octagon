@@ -37,7 +37,7 @@ block content
               each o in c.owners
                 - owners_class += o + ' '
 
-          .mix(class=owners_class  data-name=c.username  onclick="window.location = '../portfolio/" + c.permalink + "'")
+          a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.username}")
             .v-center-container: .v-center-helper: .v-center-content.portfolio-card
               if (c.crunchbase_prof.relationships)
                 img(src=c.profile.img_path)

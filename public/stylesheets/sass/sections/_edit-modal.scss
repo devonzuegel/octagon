@@ -12,14 +12,54 @@
         font-size: 30px;
         font-weight: 300;
         line-height: 100%;
+        margin-bottom: 40px;
       }
 
       .modal-body {
 
+        input {
+          border-bottom: 1px solid #ddd;
+          color: #999;
+          font-size: 15px;
+          height: 35px;
+          margin-bottom: 20px;
+          width: 100%;
+        }
+
+        textarea {
+          border-bottom: 1px solid #ddd;
+          color: #999;
+          font-size: 15px;
+          height: 35px;
+          resize: none;
+          margin-bottom: 20px;
+          width: 100%;
+        }
+
+        input,
+        textarea {
+          
+          &:hover {
+            border-color: #ccc;
+          }
+
+          &:focus {
+            border-bottom: 2px solid $light-purple;
+          }
+        }
       }
 
       .modal-footer {
+        margin-top: 40px;
 
+        input[type=button],
+        input[type=submit] {
+          border: none;
+          font-size: 13px;
+          margin-left: 10px;
+          padding: 5px 15px;
+          text-transform: uppercase;
+        }
       }
     }
   }

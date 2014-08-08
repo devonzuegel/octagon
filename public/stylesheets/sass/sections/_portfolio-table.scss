@@ -81,13 +81,16 @@
 .mix {
   display: none;
   background-color: #fff;
+  color: #777;
   width: 190px;
   height: 190px;
-  @include opacity(0.6);
+  @include opacity(0.8);
   margin: 3px;
 }
 
 .mix:hover {
+  border-bottom: 5px solid $light-purple;
+  color: #333;
   cursor: pointer;
   @include opacity(1);
 }
@@ -116,7 +119,6 @@
 
   .name {
     bottom: 30px;
-    color: #777;
     font-size: 16px;
     position: absolute;
     width: 190px;

@@ -5340,9 +5340,9 @@ button.close {
 .modal-content {
   position: relative;
   background-color: #ffffff;
-  -webkit-box-shadow: 0 0 2px #000;
-  box-shadow: 0 0 2px #000;
   background-clip: padding-box;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   outline: 0; }
 
 .modal-backdrop {
@@ -5363,7 +5363,6 @@ button.close {
   filter: alpha(opacity=50); }
 
 .modal-header {
-  padding: 15px;
   border-bottom: 1px solid #e5e5e5;
   min-height: 16.42857143px; }
 
@@ -5375,13 +5374,10 @@ button.close {
   line-height: 1.42857143; }
 
 .modal-body {
-  position: relative;
-  padding: 15px; }
+  position: relative; }
 
 .modal-footer {
-  padding: 15px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5; }
+  text-align: right; }
 
 .modal-footer .btn + .btn {
   margin-left: 5px;
@@ -5404,10 +5400,6 @@ button.close {
   .modal-dialog {
     width: 600px;
     margin: 30px auto; }
-
-  .modal-content {
-    -webkit-box-shadow: 0 1dp 3dp rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1dp 3dp rgba(0, 0, 0, 0.2); }
 
   .modal-sm {
     width: 300px; } }
@@ -10328,67 +10320,6 @@ input[type="submit"].btn.btn-mini {
   opacity: 0.8;
   filter: alpha(opacity=80); }
 
-.modal {
-  position: fixed;
-  background: none;
-  outline: none;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
-  background-clip: padding-box; }
-
-.modal-header {
-  padding: 9px 15px;
-  /*border-bottom: 1px solid #eee;*/ }
-
-.modal-header .close {
-  margin-top: 2px; }
-
-.modal-header h3 {
-  margin: 0;
-  line-height: 30px; }
-
-.modal-body {
-  position: relative;
-  max-height: 400px;
-  padding: 15px;
-  overflow-y: auto; }
-
-.modal-form {
-  margin-bottom: 0; }
-
-.modal-footer {
-  padding: 25px;
-  margin-bottom: 0;
-  /*background-color: #f5f5f5;*/
-  /*border-top: 1px solid #ddd;*/
-  /*  -webkit-border-radius: 0 0 6px 6px;
-       -moz-border-radius: 0 0 6px 6px;
-            border-radius: 0 0 6px 6px;
-    *zoom: 1;
-    -webkit-box-shadow: inset 0 1px 0 #ffffff;
-       -moz-box-shadow: inset 0 1px 0 #ffffff;
-            box-shadow: inset 0 1px 0 #ffffff;
-  */ }
-
-.modal-footer:before,
-.modal-footer:after {
-  display: table;
-  line-height: 0;
-  content: ""; }
-
-.modal-footer:after {
-  clear: both; }
-
-.modal-footer .btn + .btn {
-  margin-bottom: 0;
-  margin-left: 5px; }
-
-.modal-footer .btn-group .btn + .btn {
-  margin-left: -1px; }
-
-.modal-footer .btn-block + .btn-block {
-  margin-left: 0; }
-
 /* TOOLTIP STUFF */
 .tooltip {
   position: absolute;
@@ -13787,14 +13718,17 @@ input:-webkit-autofill {
 .mix {
   display: none;
   background-color: #fff;
+  color: #777;
   width: 190px;
   height: 190px;
-  opacity: 0.6;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-  filter: alpha(opacity=60);
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
   margin: 3px; }
 
 .mix:hover {
+  border-bottom: 5px solid #8a64d1;
+  color: #333;
   cursor: pointer;
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -13822,7 +13756,6 @@ input:-webkit-autofill {
   .v-center-content .name,
   .v-center-helper .name {
     bottom: 30px;
-    color: #777;
     font-size: 16px;
     position: absolute;
     width: 190px; }
@@ -13913,7 +13846,38 @@ input:-webkit-autofill {
       color: #999;
       font-size: 30px;
       font-weight: 300;
-      line-height: 100%; }
+      line-height: 100%;
+      margin-bottom: 40px; }
+    .modal .modal-dialog .modal-content .modal-body input {
+      border-bottom: 1px solid #ddd;
+      color: #999;
+      font-size: 15px;
+      height: 35px;
+      margin-bottom: 20px;
+      width: 100%; }
+    .modal .modal-dialog .modal-content .modal-body textarea {
+      border-bottom: 1px solid #ddd;
+      color: #999;
+      font-size: 15px;
+      height: 35px;
+      resize: none;
+      margin-bottom: 20px;
+      width: 100%; }
+    .modal .modal-dialog .modal-content .modal-body input:hover,
+    .modal .modal-dialog .modal-content .modal-body textarea:hover {
+      border-color: #ccc; }
+    .modal .modal-dialog .modal-content .modal-body input:focus,
+    .modal .modal-dialog .modal-content .modal-body textarea:focus {
+      border-bottom: 2px solid #8a64d1; }
+    .modal .modal-dialog .modal-content .modal-footer {
+      margin-top: 40px; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=button],
+      .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+        border: none;
+        font-size: 13px;
+        margin-left: 10px;
+        padding: 5px 15px;
+        text-transform: uppercase; }
 
 .toolbar {
   background-color: #eeeeee;
