@@ -106,7 +106,7 @@ router.get('/:permalink', function(req, res) {
         title: company.username,
         is_admin: (u_session == 'admin'),
         p: company.profile,
-        permalink: company.permalink,
+        permalink: company.permalink
       };
       return res.render('company', details);
     }
