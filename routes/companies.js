@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
       })
     });
   }, function() { 
-    res.redirect('/portfolio/' + req.session.username); 
+    res.redirect('/portfolio/' + req.session.permalink); 
   });
 
 });
@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
 // add_user methods
 router.get('/add_user', function(req, res) {
   require_privileges(req, res, true, function() {  return;  }, function() {  
-    return res.redirect('/portfolio/' + req.session.username);  
+    return res.redirect('/portfolio/' + req.session.permalink);  
   });
 
   res.render('add_company', { 
@@ -87,10 +87,10 @@ router.post('/add_user', function(req, res) {
 router.get('/:permalink', function(req, res) {
   var link = req.params.permalink; // gets :permalink from the url
   if (link == 'add_user')    res.redirect('/portfolio/add_user');
-  var u_session = req.session.username; // gets username from session (who's logged in?)
+  var session = req.session.permalink; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return }, function() {
-    if (u_session != link)     res.redirect('/portfolio/' + u_session);
+    if (req.session.permalink != link)     res.redirect('/portfolio/' + session);
   });
 
   CompanyDetails.findOne({ 'permalink': link, }, function(err, company) {
@@ -104,7 +104,8 @@ router.get('/:permalink', function(req, res) {
         errors: req.flash('error'),
         username: req.session.username,
         title: company.username,
-        is_admin: (u_session == 'admin'),
+        name: company.username,
+        is_admin: (session == 'admin'),
         p: company.profile,
         permalink: company.permalink
       };
@@ -115,10 +116,10 @@ router.get('/:permalink', function(req, res) {
 
 router.post('/:permalink/edit', function(req, res) {
   var link = req.params.permalink; // gets :permalink from the url
-  var u_session = req.session.username; // gets username from session (who's logged in?)
+  var session = req.session.permalink; // gets username from session (who's logged in?)
 
   require_privileges(req, res, false, function() { return; }, function() {
-    if (u_session != link)       res.redirect('/portfolio/' + u_session);
+    if (session != link)       res.redirect('/portfolio/' + session);
   });
 
 
