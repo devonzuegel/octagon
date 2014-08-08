@@ -43,10 +43,6 @@
         padding-top: 30px;
         text-align: center;
       }
-
-      &:hover {
-        @include opacity(0.5);
-      }
     }
   }
 }
