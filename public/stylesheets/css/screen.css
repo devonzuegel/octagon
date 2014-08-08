@@ -13865,7 +13865,7 @@ input:-webkit-autofill {
       border-color: #ccc; }
     .modal .modal-dialog .modal-content .modal-body input:focus,
     .modal .modal-dialog .modal-content .modal-body textarea:focus {
-      color: #666;
+      color: #333;
       border-bottom: 2px solid #8a64d1; }
   .modal .modal-dialog .modal-content .modal-footer {
     padding: 40px 20px 20px 20px; }
