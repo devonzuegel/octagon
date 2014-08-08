@@ -13835,14 +13835,19 @@ input:-webkit-autofill {
     width: 22.5%; } }
 .mix {
   display: none;
-  background-color: #ccc;
+  background-color: #fff;
   width: 190px;
   height: 190px;
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: alpha(opacity=60);
   margin: 3px; }
 
 .mix:hover {
-  background-color: #bbb;
-  cursor: pointer; }
+  cursor: pointer;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100); }
 
 .v-center-container {
   display: table;
