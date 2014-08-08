@@ -13836,7 +13836,7 @@ input:-webkit-autofill {
 
 .modal {
   margin: 0 auto;
-  top: 100px !important; }
+  top: 50px !important; }
   .modal .modal-dialog .modal-content .modal-title {
     background-color: #eee;
     color: #666;
@@ -13847,21 +13847,25 @@ input:-webkit-autofill {
     padding: 20px; }
   .modal .modal-dialog .modal-content .modal-body {
     padding: 0 20px; }
+    .modal .modal-dialog .modal-content .modal-body .small-label {
+      color: #999;
+      margin: 5px 0 10px 0; }
     .modal .modal-dialog .modal-content .modal-body input,
     .modal .modal-dialog .modal-content .modal-body textarea {
       border-bottom: 1px solid #ddd;
-      color: #333;
+      color: #666;
       font-size: 15px;
-      height: 35px;
-      resize: none;
+      height: 33px;
+      padding: 0;
       margin-bottom: 20px;
+      resize: none;
       width: 100%; }
     .modal .modal-dialog .modal-content .modal-body input:hover,
     .modal .modal-dialog .modal-content .modal-body textarea:hover {
       border-color: #ccc; }
     .modal .modal-dialog .modal-content .modal-body input:focus,
     .modal .modal-dialog .modal-content .modal-body textarea:focus {
-      color: #333;
+      color: #666;
       border-bottom: 2px solid #8a64d1; }
   .modal .modal-dialog .modal-content .modal-footer {
     padding: 40px 20px 20px 20px; }

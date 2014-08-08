@@ -1,6 +1,11 @@
 include ../mixins/edit_modal_mixin
 
 +edit_modal("edit-header", "Edit Header")
+  div.small-label Image path
   input(type="text"  placeholder="Add image path"  name="image"  autocomplete="off" value="")
+
+  div.small-label Company name
   input(type="text"  placeholder="Add company name"  name="name"  autocomplete="off" value="")
+
+  div.small-label Company description
   input(type="text"  placeholder="Add company description"  name="short_description"  autocomplete="off" value="")

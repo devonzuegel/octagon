@@ -1,6 +1,6 @@
 .modal {
   margin: 0 auto;
-  top: 100px !important;
+  top: 50px !important;
 
   .modal-dialog {
 
@@ -19,14 +19,20 @@
       .modal-body {
         padding: 0 20px;
 
+        .small-label {
+          color: #999;
+          margin: 5px 0 10px 0;
+        }
+
         input,
         textarea {
           border-bottom: 1px solid #ddd;
-          color: #333;
+          color: #666;
           font-size: 15px;
-          height: 35px;
-          resize: none;
+          height: 33px;
+          padding: 0;
           margin-bottom: 20px;
+          resize: none;
           width: 100%;
         }
 
@@ -38,7 +44,7 @@
           }
 
           &:focus {
-            color: #333;
+            color: #666;
             border-bottom: 2px solid $light-purple;
           }
         }
