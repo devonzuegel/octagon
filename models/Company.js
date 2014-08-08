@@ -22,7 +22,16 @@ var CompanyDetail = new Schema({
     });
 var CompanyDetails = mongoose.model('userInfo', CompanyDetail);
 
-
+function obj_arr_to_str(p, obj) {
+  if (p.relationships[obj]) {
+    var str = '';
+    for (var i = 0; i < p.relationships[obj].items.length; i++) {
+      if (i != 0) str += ', ';
+      str += p.relationships[obj].items[i].name;
+    }
+    return (str == '') ? undefined : str;
+  }
+}
 
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
   if (crunchbase_permalink == '')     crunchbase_permalink = 'NO_PERMALINK_SELECTED';
@@ -42,9 +51,9 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
         description:    p.properties.description,
         homepage_url:   p.properties.homepage_url.replace('http://', ''),
         founded_on:     p.properties.founded_on,
-        total_funding:  p.properties.total_funding_usd,
-        founders:       (p.relationships.founders) ? p.relationships.founders.items.toString() : undefined,
-        categories:     (p.relationships.categories) ? p.relationships.categories.items : undefined,
+        total_funding:  p.properties.total_funding_usd.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'),
+        founders:       obj_arr_to_str(p, 'founders'), // build comma-separated string of founders' names
+        categories:     obj_arr_to_str(p, 'categories') // build comma-separated string of categories
       };
     } else { // with no crunchbase permalink, we have to make our own
       permalink = username.replace(/\s+/g, '-').toLowerCase();

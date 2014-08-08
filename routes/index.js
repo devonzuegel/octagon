@@ -61,15 +61,14 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 	}), function(req, res) {
 		req.session.is_admin = (req.user.username == 'admin');
 		req.session.username = req.user.username;
-		if (req.session.is_admin) res.redirect('/');
-		else											res.redirect('/portfolio/' + req.user.username);
+		
+		// set session permalink to permalink saved in user profile
+		CompanyDetails.findOne({ username: req.session.username, }, function(err, company) {
+			if (err)    return done(err);
+			req.session.permalink = company.permalink;
+			res.redirect('/');
+		});
 	});	
-
-
-	router.get('/edit_modal', function (req, res) {
-		var data = req.query;
-		res.render('./sections/edit_modal', {data: data, errors: req.flash('error')});
-	});
 
 // passport stuff
 	passport.serializeUser(function(user, done) {
