@@ -13840,21 +13840,17 @@ input:-webkit-autofill {
 .modal {
   margin: 0 auto;
   top: 100px !important; }
-  .modal .modal-dialog .modal-content {
-    padding: 40px; }
-    .modal .modal-dialog .modal-content .modal-title {
-      color: #999;
-      font-size: 30px;
-      font-weight: 300;
-      line-height: 100%;
-      margin-bottom: 40px; }
-    .modal .modal-dialog .modal-content .modal-body input {
-      border-bottom: 1px solid #ddd;
-      color: #999;
-      font-size: 15px;
-      height: 35px;
-      margin-bottom: 20px;
-      width: 100%; }
+  .modal .modal-dialog .modal-content .modal-title {
+    background-color: #eee;
+    color: #666;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%;
+    margin-bottom: 40px;
+    padding: 20px; }
+  .modal .modal-dialog .modal-content .modal-body {
+    padding: 0 20px; }
+    .modal .modal-dialog .modal-content .modal-body input,
     .modal .modal-dialog .modal-content .modal-body textarea {
       border-bottom: 1px solid #ddd;
       color: #999;
@@ -13868,16 +13864,29 @@ input:-webkit-autofill {
       border-color: #ccc; }
     .modal .modal-dialog .modal-content .modal-body input:focus,
     .modal .modal-dialog .modal-content .modal-body textarea:focus {
+      color: #333;
       border-bottom: 2px solid #8a64d1; }
-    .modal .modal-dialog .modal-content .modal-footer {
-      margin-top: 40px; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=button],
-      .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-        border: none;
-        font-size: 13px;
-        margin-left: 10px;
-        padding: 5px 15px;
-        text-transform: uppercase; }
+  .modal .modal-dialog .modal-content .modal-footer {
+    padding: 40px 20px 20px 20px; }
+    .modal .modal-dialog .modal-content .modal-footer input[type=button],
+    .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+      border: none;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      margin: 0 0 0 10px;
+      padding: 5px 15px;
+      text-transform: uppercase; }
+    .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
+      background-color: #aaa; }
+    .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
+      background-color: #999; }
+    .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+      background-color: #8a64d1; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
+        background-color: #6c3dc5; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
+        background-color: #572fa0; }
 
 .toolbar {
   background-color: #eeeeee;

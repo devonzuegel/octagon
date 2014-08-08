@@ -5,27 +5,21 @@
   .modal-dialog {
 
     .modal-content {
-      padding: 40px;
 
       .modal-title {
-        color: #999;
-        font-size: 30px;
-        font-weight: 300;
+        background-color: #eee;
+        color: #666;
+        font-size: 18px;
+        font-weight: 500;
         line-height: 100%;
         margin-bottom: 40px;
+        padding: 20px;
       }
 
       .modal-body {
+        padding: 0 20px;
 
-        input {
-          border-bottom: 1px solid #ddd;
-          color: #999;
-          font-size: 15px;
-          height: 35px;
-          margin-bottom: 20px;
-          width: 100%;
-        }
-
+        input,
         textarea {
           border-bottom: 1px solid #ddd;
           color: #999;
@@ -38,27 +32,53 @@
 
         input,
         textarea {
-          
+
           &:hover {
             border-color: #ccc;
           }
 
           &:focus {
+            color: #333;
             border-bottom: 2px solid $light-purple;
           }
         }
       }
 
       .modal-footer {
-        margin-top: 40px;
+        padding: 40px 20px 20px 20px;
 
         input[type=button],
         input[type=submit] {
           border: none;
+          color: #fff;
           font-size: 13px;
-          margin-left: 10px;
+          font-weight: 500;
+          margin: 0 0 0 10px;
           padding: 5px 15px;
           text-transform: uppercase;
+        }
+
+        input[type=button] {
+
+          &:hover {
+            background-color: #aaa;
+          }
+
+          &:focus {
+            background-color: #999;
+          }
+        }
+
+        input[type=submit] {
+          background-color: $light-purple;
+
+          &:hover {
+            background-color: darken($light-purple, 10%);
+          }
+
+          &:focus {
+            background-color: darken($light-purple, 20%);
+          }
         }
       }
     }
