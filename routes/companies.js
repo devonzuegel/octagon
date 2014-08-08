@@ -40,6 +40,7 @@ router.get('/', function(req, res) {
 
 // add_user methods
 router.get('/add_user', function(req, res) {
+  console.log('req.params:  ' + req.params);
   require_privileges(req, res, true, function() {  return;  }, function() {  
     return res.redirect('/portfolio/' + req.session.permalink);  
   });
@@ -48,6 +49,7 @@ router.get('/add_user', function(req, res) {
     title:"New Company", 
     is_admin: true, 
     errors: undefined,
+    p: {},
     username: req.session.username,
     tab: 'companies' 
   });
@@ -56,7 +58,7 @@ router.get('/add_user', function(req, res) {
 
 router.post('/add_user', function(req, res) {
 
-  console.log('SSSSSSSSSSS');
+  console.log('req.params:  ' + req.params);
   var form = req.body;
 
   if (form.password == '') {
@@ -69,9 +71,9 @@ router.post('/add_user', function(req, res) {
     return res.redirect('/portfolio/add_user');
   }
 
-  // CompanyDetails.find({'username': form.username }, function(err, u) {
-  //   if (err)    return done(err);
-  //   // TODO ensure user hasn't yet been added
+  CompanyDetails.find({'username': form.username }, function(err, u) {
+    if (err)    return done(err);
+    // TODO ensure user hasn't yet been added
 
     CompanyModel.add(
       form.username,
@@ -81,15 +83,16 @@ router.post('/add_user', function(req, res) {
       form.owners,
       function() { res.redirect('/portfolio/'); }
     );  
-  // });
+  });
 
 });
 
 router.get('/:permalink', function(req, res) {
+  console.log('req.params:  ' + req.params);
   var link = req.params.permalink; // gets :permalink from the url
-  if (link == 'add_user')    res.redirect('/portfolio/add_user');
+  // if (link == 'add_user')    res.redirect('/portfolio/add_user');
   var session = req.session.permalink; // gets username from session (who's logged in?)
-  console.log(link);
+  console.log('session  ' + session);
 
   require_privileges(req, res, false, function() { return }, function() {
     if (req.session.permalink != link)     res.redirect('/portfolio/' + session);
