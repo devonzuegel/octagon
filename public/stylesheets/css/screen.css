@@ -1,4 +1,4 @@
-@charset "Windows-1252";
+@charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
@@ -13712,7 +13712,7 @@ input:-webkit-autofill {
   .mix {
     width: 22.5%; } }
 .mix {
-  border-bottom: 5px solid #dddddd;
+  border-bottom: 5px solid #ddd;
   display: none;
   background-color: #fff;
   color: #777;
