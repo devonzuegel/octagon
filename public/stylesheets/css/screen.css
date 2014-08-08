@@ -5410,8 +5410,8 @@ button.close {
     margin: 30px auto; }
 
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
 
   .modal-sm {
     width: 300px; } }
@@ -13945,6 +13945,13 @@ input:-webkit-autofill {
 .modal {
   margin: 0 auto;
   top: 100px !important; }
+  .modal .modal-dialog .modal-content {
+    padding: 40px; }
+    .modal .modal-dialog .modal-content .modal-title {
+      color: #999;
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 100%; }
 
 .toolbar {
   background-color: #eeeeee;
