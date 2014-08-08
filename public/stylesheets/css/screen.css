@@ -13955,6 +13955,11 @@ input:-webkit-autofill {
 
 .toolbar {
   background-color: #eeeeee;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   height: 50px;
   line-height: 50px;
   position: fixed;

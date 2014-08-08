@@ -1,5 +1,6 @@
 .toolbar {
   background-color: $toolbar-bkg;
+  @include transition(background-color, 0.2s, ease-in-out);
   height: $toolbar-height;
   line-height: $toolbar-height;
   position: fixed;
