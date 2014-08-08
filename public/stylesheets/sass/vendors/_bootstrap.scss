@@ -5389,64 +5389,45 @@ button.close {
   overflow: hidden;
 }
 .modal {
+  display: none;
+  overflow: hidden;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1050;
-  display: none;
-  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
 .modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform .4s ease-out;
-       -o-transition:      -o-transform .4s ease-out;
-          transition:         transform .4s ease-out;
-  -webkit-transform: translate3d(0, -100%, 0);
-       -o-transform: translate3d(0, -100%, 0);
-          transform: translate3d(0, -100%, 0);
+  -webkit-transform: translate3d(0, -25%, 0);
+  transform: translate3d(0, -25%, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
 }
 .modal.in .modal-dialog {
   -webkit-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
 }
 .modal-dialog {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  height: 100%;
-  background-color: #45367C;
-
   position: relative;
   width: auto;
+  margin: 10px;
 }
 .modal-content {
-  color: white;
-  margin: auto;
-  padding-top:6%;
-  width: 400px;
-  max-width: 80%;
   position: relative;
-/*
-  background-color: #fff;
-  -webkit-background-clip: padding-box;
-          background-clip: padding-box;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: 6px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 2px #000;
+  box-shadow: 0 0 2px #000;
+  background-clip: padding-box;
   outline: 0;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-*/         
 }
 .modal-backdrop {
   position: fixed;
@@ -5455,20 +5436,20 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000;
+  background-color: #000000;
 }
 .modal-backdrop.fade {
-  /*filter: alpha(opacity=0);*/
-  /*opacity: 0;*/
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-  /*filter: alpha(opacity=50);*/
-  /*opacity: .5;*/
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 .modal-header {
-  min-height: 16.42857143px;
   padding: 15px;
-  /*border-bottom: 1px solid #e5e5e5;*/
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 16.42857143px;
 }
 .modal-header .close {
   margin-top: -2px;
@@ -5482,13 +5463,13 @@ button.close {
   padding: 15px;
 }
 .modal-footer {
-  padding: 50px;
-  text-align: center;
-  /*border-top: 1px solid #e5e5e5;*/
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
 }
 .modal-footer .btn + .btn {
-  margin-bottom: 0;
   margin-left: 5px;
+  margin-bottom: 0;
 }
 .modal-footer .btn-group .btn + .btn {
   margin-left: -1px;
@@ -5504,13 +5485,14 @@ button.close {
   overflow: scroll;
 }
 @media (min-width: 768px) {
-/*  .modal-dialog {
-    margin: auto;
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
   }
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-  }*/
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
   .modal-sm {
     width: 300px;
   }
@@ -5520,6 +5502,7 @@ button.close {
     width: 900px;
   }
 }
+
 .popover {
   position: absolute;
   top: 0;
@@ -11330,13 +11313,13 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal-backdrop.fade {
-  /*opacity: 0;*/
+  opacity: 0;
 }
 
 .modal-backdrop,
 .modal-backdrop.fade.in {
-  /*opacity: 0.8;*/
-  /*filter: alpha(opacity=80);*/
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
 
 .modal {
@@ -11346,14 +11329,6 @@ input[type="submit"].btn.btn-mini {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
-}
-
-.modal.fade {
-  width: 100%;
-}
-
-.modal.fade.in {
-  top: 30px;
 }
 
 .modal-header {

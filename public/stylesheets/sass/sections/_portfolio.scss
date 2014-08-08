@@ -35,8 +35,7 @@
             color: #999;
           }
 
-          &:focus,
-          &:active {
+          &:focus {
             border-color: $light-purple;
             color: $light-purple;
           }
