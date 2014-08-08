@@ -13902,7 +13902,7 @@ input:-webkit-autofill {
   top: 0px;
   vertical-align: middle;
   width: 100%;
-  z-index: 10000; }
+  z-index: 50; }
   .toolbar .toolbar-nav {
     margin: 0 auto;
     max-width: 1000px; }
