@@ -43,12 +43,6 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
     var p = JSON.parse(body).data; // parse data from crunchbase response
     var profile = {}; // create empty profile to be saved into the new company
 
-    // build comma-separated string of founders' names
-    var founders_str = obj_arr_to_str(p, 'founders');
-
-    // build comma-separated string of categories
-    var categories_str = obj_arr_to_str(p, 'categories');
-
     if (p.response != false) {
       permalink = crunchbase_permalink; // there is a valid crunchbase permalink
       profile = { 
@@ -57,9 +51,9 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
         description:    p.properties.description,
         homepage_url:   p.properties.homepage_url.replace('http://', ''),
         founded_on:     p.properties.founded_on,
-        total_funding:  p.properties.total_funding_usd,
-        founders:       founders_str,
-        categories:     categories_str
+        total_funding:  p.properties.total_funding_usd.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'),
+        founders:       obj_arr_to_str(p, 'founders'), // build comma-separated string of founders' names
+        categories:     obj_arr_to_str(p, 'categories') // build comma-separated string of categories
       };
     } else { // with no crunchbase permalink, we have to make our own
       permalink = username.replace(/\s+/g, '-').toLowerCase();
