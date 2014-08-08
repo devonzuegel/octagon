@@ -4,4 +4,35 @@ block sub_layout
     include ../includes/toolbar.jade
     .portfolio-container
       block content
-  include ../includes/footer.jade
+    include ../includes/footer.jade
+
+    script.
+
+      // On page load
+      window.onload = function() {
+
+        // Run on load
+        updateToolbar();
+
+        // Fire when window scrols
+        $(window).scroll(function() {
+          updateToolbar();
+        });
+      };
+
+      function updateToolbar() {
+
+        // Save scroll condition
+        var scroll_condition = $(window).scrollTop() > 30;
+
+        // If distance is past 30
+        if(scroll_condition) {
+
+          // Add a light shadow
+          $(".toolbar").addClass("toolbar-light-shadow");
+        } else {
+
+          // Remove the light shadow
+          $(".toolbar").removeClass("toolbar-light-shadow");
+        }
+      }

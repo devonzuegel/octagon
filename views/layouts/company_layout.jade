@@ -5,4 +5,41 @@ block sub_layout
     .company-header-bkg
     .company-container
       block content
-  include ../includes/footer.jade
+    include ../includes/footer.jade
+
+    script.
+
+      // When page loads
+      window.onload = function() {
+
+        // Run on load
+        updateToolbar();
+
+        // Fire when window scrols
+        $(window).scroll(function() {
+          updateToolbar();
+        });
+      };
+
+      function updateToolbar() {
+
+        // Save scroll condition
+        var scroll_condition = $(window).scrollTop() > 350;
+
+        // If the distance is past 350
+        if(scroll_condition) {
+
+          // Darken the toolbar
+          $(".toolbar").addClass("toolbar-dark");
+
+          // Remove the dark shadow
+          $(".toolbar").removeClass("toolbar-dark-shadow");
+        } else {
+
+          // Lighten the toolbar
+          $(".toolbar").removeClass("toolbar-dark");
+
+          // Add the dark shadow
+          $(".toolbar").addClass("toolbar-dark-shadow");
+        }
+      }

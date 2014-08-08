@@ -44,3 +44,27 @@
     }
   }
 }
+
+.toolbar-light-shadow {
+  @include box-shadow(0, 0, 2px, #bbb);
+}
+
+.toolbar-dark-shadow {
+  @include box-shadow(0, 0, 2px, #000);
+}
+
+.toolbar-dark {
+  background-color: $toolbar-dark-bkg !important;
+
+  span {
+    color: #666 !important;
+  }
+
+  a {
+    color: #999 !important;
+
+    &:hover {
+      color: #fff !important;
+    }
+  }
+}

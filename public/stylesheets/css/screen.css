@@ -13732,7 +13732,7 @@ input:-webkit-autofill {
 .portfolio-bkg {
   background-color: #dddddd; }
   .portfolio-bkg .portfolio-container {
-    margin: 0 auto;
+    margin: 0 auto 80px auto;
     max-width: 1000px; }
     .portfolio-bkg .portfolio-container .portfolio-controls {
       border-bottom: 3px solid #ccc;
@@ -13974,6 +13974,25 @@ input:-webkit-autofill {
       font-weight: 500; }
       .toolbar .toolbar-nav a:hover {
         color: #8a64d1; }
+
+.toolbar-light-shadow {
+  -webkit-box-shadow: 0 0 2px #bbbbbb;
+  -moz-box-shadow: 0 0 2px #bbbbbb;
+  box-shadow: 0 0 2px #bbbbbb; }
+
+.toolbar-dark-shadow {
+  -webkit-box-shadow: 0 0 2px black;
+  -moz-box-shadow: 0 0 2px black;
+  box-shadow: 0 0 2px black; }
+
+.toolbar-dark {
+  background-color: #222222 !important; }
+  .toolbar-dark span {
+    color: #666 !important; }
+  .toolbar-dark a {
+    color: #999 !important; }
+    .toolbar-dark a:hover {
+      color: #fff !important; }
 
 .auth-footer,
 .footer {
