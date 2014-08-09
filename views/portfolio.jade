@@ -20,6 +20,15 @@ block content
           a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
             .v-center-container: .v-center-helper: .v-center-content.portfolio-card
               if (c.crunchbase_prof.relationships)
-                img(src=c.profile.img_path)
-              .name #{c.username}
-              .date #{c.init_investmt_date}
+
+                //- Commented out currently
+                //- img(src=c.profile.img_path)
+
+              .card-title #{c.username}
+              .card-body
+                div
+                  .small-label Cash
+                  .card-info $5,000,000
+                div
+                  .small-label Revenue
+                  .card-info $20,000

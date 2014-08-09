@@ -79,25 +79,22 @@
 }
 
 .mix {
-  border-bottom: 5px solid #ddd;
+  background-color: #ddd;
+  border-bottom: 5px solid #ccc;
+  cursor: pointer;
   display: none;
-  background-color: #fff;
   color: #777;
   width: 190px;
   height: 190px;
-  @include opacity(0.9);
   margin: 3px;
 }
 
 .mix:hover {
+  background-color: #eee;
   border-bottom: 5px solid $light-purple;
-  color: #333;
-  cursor: pointer;
-  @include opacity(1);
 }
 
 .v-center-container {
-  display: table;
   position: absolute;
   width: 190px;
   height: 190px;
@@ -105,23 +102,29 @@
 
 .v-center-content,
 .v-center-helper {
-  position: absolute;
-  width: 190px;
-  height: 190px;
-  text-align: center;
 
-  img {
-    width: auto;
-    height: auto;
-    max-width: 140px;
-    max-height: 80px;
-    margin-top: 50px;
+  .card-title {
+    background-color: #ccc;
+    color: #666;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding: 20px;
   }
 
-  .name {
-    bottom: 30px;
-    font-size: 16px;
-    position: absolute;
-    width: 190px;
+  .card-body {
+    padding: 0 20px 20px 20px;
+
+    > div {
+
+      .small-label {
+        margin: 12px 0 3px 0;
+      }
+
+      .card-info {
+        color: #333;
+        font-size: 16px;
+      }
+    }
   }
 }

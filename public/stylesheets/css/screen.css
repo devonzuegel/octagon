@@ -13721,50 +13721,42 @@ input:-webkit-autofill {
   .mix {
     width: 22.5%; } }
 .mix {
-  border-bottom: 5px solid #ddd;
+  background-color: #ddd;
+  border-bottom: 5px solid #ccc;
+  cursor: pointer;
   display: none;
-  background-color: #fff;
   color: #777;
   width: 190px;
   height: 190px;
-  opacity: 0.9;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-  filter: alpha(opacity=90);
   margin: 3px; }
 
 .mix:hover {
-  border-bottom: 5px solid #8a64d1;
-  color: #333;
-  cursor: pointer;
-  opacity: 1;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=100); }
+  background-color: #eee;
+  border-bottom: 5px solid #8a64d1; }
 
 .v-center-container {
-  display: table;
   position: absolute;
   width: 190px;
   height: 190px; }
 
-.v-center-content,
-.v-center-helper {
-  position: absolute;
-  width: 190px;
-  height: 190px;
-  text-align: center; }
-  .v-center-content img,
-  .v-center-helper img {
-    width: auto;
-    height: auto;
-    max-width: 140px;
-    max-height: 80px;
-    margin-top: 50px; }
-  .v-center-content .name,
-  .v-center-helper .name {
-    bottom: 30px;
-    font-size: 16px;
-    position: absolute;
-    width: 190px; }
+.v-center-content .card-title,
+.v-center-helper .card-title {
+  background-color: #ccc;
+  color: #666;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  padding: 20px; }
+.v-center-content .card-body,
+.v-center-helper .card-body {
+  padding: 0 20px 20px 20px; }
+  .v-center-content .card-body > div .small-label,
+  .v-center-helper .card-body > div .small-label {
+    margin: 12px 0 3px 0; }
+  .v-center-content .card-body > div .card-info,
+  .v-center-helper .card-body > div .card-info {
+    color: #333;
+    font-size: 16px; }
 
 .company-bkg .company-header-bkg {
   background-color: #222222;
