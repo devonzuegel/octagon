@@ -1,6 +1,6 @@
 .modal {
   margin: 0 auto;
-  top: 50px !important;
+  top: 10% !important;
 
   .modal-dialog {
 
@@ -89,4 +89,8 @@
       }
     }
   }
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
 }

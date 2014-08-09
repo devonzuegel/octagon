@@ -5310,8 +5310,8 @@ button.close {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0; }
@@ -5329,8 +5329,7 @@ button.close {
   transform: translate3d(0, 0, 0); }
 
 .modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-x: hidden; }
 
 .modal-dialog {
   position: relative;
@@ -5339,11 +5338,12 @@ button.close {
 
 .modal-content {
   position: relative;
-  background-color: #ffffff;
+  background-color: #fff;
   background-clip: padding-box;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-  outline: 0; }
+  outline: 0;
+  overflow-y: auto; }
 
 .modal-backdrop {
   position: fixed;
@@ -5352,7 +5352,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000000; }
+  background-color: #000; }
 
 .modal-backdrop.fade {
   opacity: 0;
@@ -5398,8 +5398,8 @@ button.close {
 
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
-    margin: 30px auto; }
+    margin: 0 auto;
+    width: 600px; }
 
   .modal-sm {
     width: 300px; } }
@@ -13500,6 +13500,13 @@ body {
   -o-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out; }
 
+.modal-backdrop {
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out; }
+
 input[type=email],
 input[type=text],
 input[type=password] {
@@ -13836,7 +13843,7 @@ input:-webkit-autofill {
 
 .modal {
   margin: 0 auto;
-  top: 50px !important; }
+  top: 10% !important; }
   .modal .modal-dialog .modal-content .modal-title {
     background-color: #eee;
     color: #666;
@@ -13888,6 +13895,9 @@ input:-webkit-autofill {
         background-color: #6c3dc5; }
       .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
         background-color: #572fa0; }
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.8); }
 
 .toolbar {
   background-color: #eeeeee;

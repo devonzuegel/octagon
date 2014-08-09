@@ -2,6 +2,7 @@ script(type="text/javascript"): include ../../public/scripts/jquery.min.js
 script(type="text/javascript"): include ../../public/scripts/jquery-ui.js
 script(type="text/javascript"): include ../../public/bootstrap/js/bootstrap.min.js
 script(type='text/javascript'): include ../../public/scripts/jquery.mixitup.js
+script(type='text/javascript'): include ../../public/scripts/jquery.autosize.min.js
 
 script.
 
@@ -12,7 +13,7 @@ script.
     $(document).ready(function() {
 
       // Settings for tooltip
-      $(".tooltip_a a").tooltip({
+      $('.tooltip_a a').tooltip({
           placement : 'bottom',
           html: true,
           effect: 'slide',
@@ -27,12 +28,14 @@ script.
 
       // Initialize datepicker
       $('#datepicker').datepicker({
-        format: "dd/mm/yyyy"
+        format: 'dd/mm/yyyy'
       });
 
+      // When modal loads
+      $('.modal-dialog').ready(function() {
+        
+        // Correctly determine the size of the textarea in the edit modal
+        $('.modal textarea').autosize();
+      });
     });
   })(jQuery);
-
-// [if IE 9]>       
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

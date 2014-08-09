@@ -5390,8 +5390,8 @@ button.close {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0;
@@ -5410,7 +5410,6 @@ button.close {
 }
 .modal-open .modal {
   overflow-x: hidden;
-  overflow-y: auto;
 }
 .modal-dialog {
   position: relative;
@@ -5419,11 +5418,12 @@ button.close {
 }
 .modal-content {
   position: relative;
-  background-color: #ffffff;
+  background-color: #fff;
   background-clip: padding-box;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   outline: 0;
+  overflow-y: auto;
 }
 .modal-backdrop {
   position: fixed;
@@ -5432,7 +5432,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000000;
+  background-color: #000;
 }
 .modal-backdrop.fade {
   opacity: 0;
@@ -5478,8 +5478,8 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
+    margin: 0 auto;
     width: 600px;
-    margin: 30px auto;
   }
   .modal-sm {
     width: 300px;
