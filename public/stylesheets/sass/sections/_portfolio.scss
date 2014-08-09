@@ -1,14 +1,13 @@
 .portfolio-bkg {
   background-color: $portfolio-bkg;
 
-  .portfolio-container {
-    margin: 0 auto 80px auto;
-    max-width: $website-max-width;
+  .portfolio-controls {
+    border-bottom: 1px solid #444;
+    padding: 100px 0 0 0;
 
-    .portfolio-controls {
-      border-bottom: 1px solid #444;
-      margin: 0 0 40px 0;
-      padding: 60px 0 0 0;
+    .controls-container {
+      margin: 0 auto;
+      width: 1000px;
 
       .control-section {
         display: inline-block;
@@ -63,10 +62,15 @@
           margin: 10px 0 0 20px; // Overwrite the left controls button margins
         }
       }
+    }
+  }
 
-      .portfolio-table {
+  .portfolio-container {
+    margin: 0 auto 80px auto;
+    max-width: $website-max-width;
 
-      }
+    .portfolio-table {
+
     }
   }
 }

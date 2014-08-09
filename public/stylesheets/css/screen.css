@@ -13612,22 +13612,21 @@ input:-webkit-autofill {
 
 .portfolio-bkg {
   background-color: #222222; }
-  .portfolio-bkg .portfolio-container {
-    margin: 0 auto 80px auto;
-    max-width: 1000px; }
-    .portfolio-bkg .portfolio-container .portfolio-controls {
-      border-bottom: 1px solid #444;
-      margin: 0 0 40px 0;
-      padding: 60px 0 0 0; }
-      .portfolio-bkg .portfolio-container .portfolio-controls .control-section {
+  .portfolio-bkg .portfolio-controls {
+    border-bottom: 1px solid #444;
+    padding: 100px 0 0 0; }
+    .portfolio-bkg .portfolio-controls .controls-container {
+      margin: 0 auto;
+      width: 1000px; }
+      .portfolio-bkg .portfolio-controls .controls-container .control-section {
         display: inline-block;
         margin-bottom: -1px; }
-        .portfolio-bkg .portfolio-container .portfolio-controls .control-section > div {
+        .portfolio-bkg .portfolio-controls .controls-container .control-section > div {
           color: #555;
           font-size: 15px;
           font-weight: 400;
           text-transform: uppercase; }
-        .portfolio-bkg .portfolio-container .portfolio-controls .control-section button {
+        .portfolio-bkg .portfolio-controls .controls-container .control-section button {
           background: transparent;
           border: none;
           border-bottom: 1px solid transparent;
@@ -13635,24 +13634,27 @@ input:-webkit-autofill {
           font-size: 14px;
           margin: 10px 20px 0 0;
           padding: 5px 10px; }
-          .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:hover {
+          .portfolio-bkg .portfolio-controls .controls-container .control-section button:hover {
             border-color: #999;
             color: #999; }
-          .portfolio-bkg .portfolio-container .portfolio-controls .control-section button:focus {
+          .portfolio-bkg .portfolio-controls .controls-container .control-section button:focus {
             border-color: #8a64d1;
             color: #8a64d1; }
-        .portfolio-bkg .portfolio-container .portfolio-controls .control-section .active {
+        .portfolio-bkg .portfolio-controls .controls-container .control-section .active {
           border-color: #8a64d1;
           color: #8a64d1; }
-          .portfolio-bkg .portfolio-container .portfolio-controls .control-section .active:hover {
+          .portfolio-bkg .portfolio-controls .controls-container .control-section .active:hover {
             border-color: #8a64d1;
             color: #8a64d1; }
-      .portfolio-bkg .portfolio-container .portfolio-controls > .pull-left {
+      .portfolio-bkg .portfolio-controls .controls-container > .pull-left {
         margin-right: 40px; }
-      .portfolio-bkg .portfolio-container .portfolio-controls > .pull-right {
+      .portfolio-bkg .portfolio-controls .controls-container > .pull-right {
         text-align: right; }
-        .portfolio-bkg .portfolio-container .portfolio-controls > .pull-right button {
+        .portfolio-bkg .portfolio-controls .controls-container > .pull-right button {
           margin: 10px 0 0 20px; }
+  .portfolio-bkg .portfolio-container {
+    margin: 0 auto 80px auto;
+    max-width: 1000px; }
 
 /* I have not been through this page to make it simpler through Sass.
  * Will be doing this over the next couple of days.  Wasn't sure which classes
