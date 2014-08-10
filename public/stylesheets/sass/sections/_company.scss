@@ -19,10 +19,12 @@
     }
 
     .company-header-info {
-      padding-top: ((($company-header-height - $company-header-info-height) / 2) - $toolbar-height);
-      text-align: center;
+      padding-top: ((($company-header-height - $company-header-info-height) - $toolbar-height) / 2);
 
       .company-logo {
+
+        // Temporarily hiding image
+        display: none;
         height: 50px;
       }
 
@@ -37,8 +39,7 @@
         color: #999;
         font-size: 15px;
         line-height: 22px;
-        margin: 0 auto;
-        width: 400px;
+        width: 50%;
       }
     }
   }

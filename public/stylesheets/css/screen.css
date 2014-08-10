@@ -13774,20 +13774,20 @@ input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 2px black;
   -moz-box-shadow: inset 0 0 2px black;
   box-shadow: inset 0 0 2px black;
-  height: 400px;
+  height: 300px;
   position: absolute;
   width: 100%;
   z-index: -100; }
 .company-bkg .company-header {
-  height: 350px; }
+  height: 250px; }
   .company-bkg .company-header .company-header-edit {
     color: #666;
     float: right;
     margin-top: 20px; }
   .company-bkg .company-header .company-header-info {
-    padding-top: 62px;
-    text-align: center; }
+    padding-top: 37px; }
     .company-bkg .company-header .company-header-info .company-logo {
+      display: none;
       height: 50px; }
     .company-bkg .company-header .company-header-info .company-name {
       color: #ddd;
@@ -13798,8 +13798,7 @@ input:-webkit-autofill {
       color: #999;
       font-size: 15px;
       line-height: 22px;
-      margin: 0 auto;
-      width: 400px; }
+      width: 50%; }
 .company-bkg .company-content {
   margin: 80px 0; }
   .company-bkg .company-content .content-block {
