@@ -887,7 +887,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       }
 
       that.$element
-        .show()
+        .fadeIn(200)
         .scrollTop(0)
 
       if (transition) {
@@ -964,7 +964,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
+        e.which == 27 && this.fadeOut(200)
       }, this))
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
@@ -973,7 +973,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
   Modal.prototype.hideModal = function () {
     var that = this
-    this.$element.hide()
+    this.$element.fadeOut(200)
     this.backdrop(function () {
       that.$element.trigger('hidden.bs.modal')
     })
