@@ -45,7 +45,7 @@
 
           &:focus {
             color: #333;
-            border-bottom: 2px solid $light-purple;
+            border-bottom: 2px solid $purple;
           }
         }
       }
@@ -76,14 +76,14 @@
         }
 
         input[type=submit] {
-          background-color: $light-purple;
+          background-color: $purple;
 
           &:hover {
-            background-color: darken($light-purple, 10%);
+            background-color: darken($purple, 10%);
           }
 
           &:focus {
-            background-color: darken($light-purple, 20%);
+            background-color: darken($purple, 20%);
           }
         }
       }

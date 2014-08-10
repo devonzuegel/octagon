@@ -35,18 +35,18 @@
           }
 
           &:focus {
-            border-color: $light-purple;
-            color: $light-purple;
+            border-color: $purple;
+            color: $purple;
           }
         }
 
         .active {
-          border-color: $light-purple;
-          color: $light-purple;
+          border-color: $purple;
+          color: $purple;
 
           &:hover {
-            border-color: $light-purple;
-            color: $light-purple;
+            border-color: $purple;
+            color: $purple;
           }
         }
       }
