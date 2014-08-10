@@ -1,17 +1,17 @@
 // FontAwesome
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 
-// Vendors
-@import "vendors/bootstrap";
-@import "vendors/tablesort";
-@import "vendors/jquery-ui";
-@import "vendors/datepicker";
-
 // Modules
 @import "modules/variables";
 @import "modules/mixins";
 @import "modules/helpers";
 @import "modules/functions";
+
+// Vendors
+@import "vendors/bootstrap";
+@import "vendors/tablesort";
+@import "vendors/jquery-ui";
+@import "vendors/datepicker";
 
 // Base
 @import "base/typography";

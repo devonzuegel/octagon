@@ -1,15 +1,27 @@
 @charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,400);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
+.hidden {
+  display: none; }
+
+.fa-right {
+  margin-right: 8px; }
+
+.fa-left {
+  margin-left: 8px; }
+
+.fa-red {
+  color: #e06663 !important; }
+
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
-@import url(http://fonts.googleapis.com/css?family=Lato:100,400);
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -5317,8 +5329,8 @@ button.close {
   outline: 0; }
 
 .modal.fade .modal-dialog {
-  -webkit-transform: translate3d(0, -25%, 0);
-  transform: translate3d(0, -25%, 0);
+  -webkit-transform: translate3d(0, 0%, 0);
+  transform: translate3d(0, 0%, 0);
   -webkit-transition: -webkit-transform 0.3s ease-out;
   -moz-transition: -moz-transform 0.3s ease-out;
   -o-transition: -o-transform 0.3s ease-out;
@@ -5356,11 +5368,21 @@ button.close {
 
 .modal-backdrop.fade {
   opacity: 0;
-  filter: alpha(opacity=0); }
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out; }
 
 .modal-backdrop.in {
   opacity: 0.5;
-  filter: alpha(opacity=50); }
+  filter: alpha(opacity=50);
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out; }
 
 .modal-header {
   border-bottom: 1px solid #e5e5e5;
@@ -13453,18 +13475,6 @@ body .ui-tooltip {
   background: url(../images/icon_cal--grey.png) no-repeat right;
   background-size: 30px 30px; }
 
-.hidden {
-  display: none; }
-
-.fa-right {
-  margin-right: 8px; }
-
-.fa-left {
-  margin-left: 8px; }
-
-.fa-red {
-  color: #e06663 !important; }
-
 body,
 input,
 textarea,
@@ -13827,7 +13837,7 @@ input:-webkit-autofill {
   cursor: pointer;
   font-size: 15px; }
   .edit-btn:hover {
-    color: #9b74e3 !important; }
+    color: #8a64d1 !important; }
 
 .edit-disabled {
   color: #ccc !important;
@@ -13891,7 +13901,7 @@ input:-webkit-autofill {
         background-color: #572fa0; }
 
 .modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.8); }
+  background-color: rgba(0, 0, 0, 0.9); }
 
 .toolbar {
   background-color: #eeeeee;

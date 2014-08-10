@@ -5397,8 +5397,8 @@ button.close {
   outline: 0;
 }
 .modal.fade .modal-dialog {
-  -webkit-transform: translate3d(0, -25%, 0);
-  transform: translate3d(0, -25%, 0);
+  -webkit-transform: translate3d(0, -0%, 0);
+  transform: translate3d(0, -0%, 0);
   -webkit-transition: -webkit-transform 0.3s ease-out;
   -moz-transition: -moz-transform 0.3s ease-out;
   -o-transition: -o-transform 0.3s ease-out;
@@ -5437,10 +5437,12 @@ button.close {
 .modal-backdrop.fade {
   opacity: 0;
   filter: alpha(opacity=0);
+  @include transition(opacity, 0.2s, ease-in-out);
 }
 .modal-backdrop.in {
   opacity: 0.5;
   filter: alpha(opacity=50);
+  @include transition(opacity, 0.2s, ease-in-out);
 }
 .modal-header {
   border-bottom: 1px solid #e5e5e5;
