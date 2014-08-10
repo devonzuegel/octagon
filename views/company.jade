@@ -46,7 +46,7 @@ block content
 
       .block-content
         if (p && p.description)
-          | #{p.description}
+          div #{p.description}
         else
           div Add description
 
@@ -61,13 +61,13 @@ block content
 
         if (p && p.categories)
           h2 Categories
-          | #{p.categories}
+          div #{p.categories}
         else
           div Add categories
 
         if (p && p.founders)
           h2 Founders
-          | #{p.founders}
+          div #{p.founders}
         else
           div Add founders
 
@@ -87,7 +87,7 @@ block content
           h2 Company Website
           a(href="http://" + "#{p.homepage_url}") #{p.homepage_url}
         else
-            div Add homepage url 
+          div Add homepage url 
 
     .content-block
       .block-title Milestones

@@ -13826,12 +13826,13 @@ input:-webkit-autofill {
       line-height: 30px;
       padding: 20px; }
       .company-bkg .company-content .content-block .block-content h2 {
-        font-weight: 600;
-        margin: 20px 0 0 0; }
+        font-weight: 500; }
       .company-bkg .company-content .content-block .block-content li {
         list-style-type: none;
         margin: 0;
         padding: 0; }
+      .company-bkg .company-content .content-block .block-content > div {
+        margin: 0 0 20px 0; }
 
 .edit-btn {
   cursor: pointer;
@@ -13858,7 +13859,7 @@ input:-webkit-autofill {
       margin-bottom: 40px;
       padding: 20px; }
     .modal .modal-dialog .modal-content .modal-body {
-      padding: 0 20px; }
+      padding: 0 0 0 20px; }
       .modal .modal-dialog .modal-content .modal-body .small-label {
         color: #999;
         margin: 5px 0 10px 0; }
@@ -13868,7 +13869,7 @@ input:-webkit-autofill {
         color: #666;
         font-size: 15px;
         height: 33px;
-        padding: 0;
+        padding: 0 20px 0 0;
         margin-bottom: 20px;
         resize: none;
         width: 100%; }
@@ -13883,23 +13884,25 @@ input:-webkit-autofill {
       padding: 40px 20px 20px 20px; }
       .modal .modal-dialog .modal-content .modal-footer input[type=button],
       .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+        background-color: transparent;
         border: none;
-        color: #fff;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 500;
         margin: 0 0 0 10px;
         padding: 5px 15px;
         text-transform: uppercase; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
-        background-color: #aaa; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
-        background-color: #999; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=button] {
+        color: #bbb; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
+          color: #aaa; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
+          color: #999; }
       .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-        background-color: #8a64d1; }
+        color: #8a64d1; }
         .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
-          background-color: #6c3dc5; }
+          color: #6c3dc5; }
         .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
-          background-color: #572fa0; }
+          color: #572fa0; }
 
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.9); }
@@ -13943,9 +13946,9 @@ input:-webkit-autofill {
   box-shadow: 0 0 2px #bbbbbb; }
 
 .toolbar-dark-shadow {
-  -webkit-box-shadow: 0 0 2px black;
-  -moz-box-shadow: 0 0 2px black;
-  box-shadow: 0 0 2px black; }
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
 
 .toolbar-dark {
   background-color: #222222 !important; }

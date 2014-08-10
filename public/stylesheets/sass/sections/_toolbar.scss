@@ -51,7 +51,7 @@
 }
 
 .toolbar-dark-shadow {
-  @include box-shadow(0, 0, 2px, #000);
+  @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.5));
 }
 
 .toolbar-dark {

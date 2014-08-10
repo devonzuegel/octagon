@@ -17,7 +17,7 @@
       }
 
       .modal-body {
-        padding: 0 20px;
+        padding: 0 0 0 20px;
 
         .small-label {
           color: #999;
@@ -30,7 +30,7 @@
           color: #666;
           font-size: 15px;
           height: 33px;
-          padding: 0;
+          padding: 0 20px 0 0;
           margin-bottom: 20px;
           resize: none;
           width: 100%;
@@ -55,9 +55,9 @@
 
         input[type=button],
         input[type=submit] {
+          background-color: transparent;
           border: none;
-          color: #fff;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 500;
           margin: 0 0 0 10px;
           padding: 5px 15px;
@@ -65,25 +65,26 @@
         }
 
         input[type=button] {
+          color: #bbb;
 
           &:hover {
-            background-color: #aaa;
+            color: #aaa;
           }
 
           &:focus {
-            background-color: #999;
+            color: #999;
           }
         }
 
         input[type=submit] {
-          background-color: $purple;
+          color: $purple;
 
           &:hover {
-            background-color: darken($purple, 10%);
+            color: darken($purple, 10%);
           }
 
           &:focus {
-            background-color: darken($purple, 20%);
+            color: darken($purple, 20%);
           }
         }
       }
