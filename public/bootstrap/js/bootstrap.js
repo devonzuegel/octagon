@@ -910,6 +910,15 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
           .emulateTransitionEnd(300) :
         that.$element.trigger('focus').trigger(e)
     })
+
+    // Added by Zack
+    // Add autogrow to the textarea
+    // Use setTimeout to wait for textarea to appear
+    setTimeout(function() {
+
+      // Apply autosize to textarea within modal
+      that.$element.find('textarea').autosize();
+    }, 200);
   }
 
   Modal.prototype.hide = function (e) {
@@ -1028,8 +1037,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   }
 
   Modal.prototype.setScrollbar = function () {
-    var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
-    if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    // var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
+    // if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
   }
 
   Modal.prototype.resetScrollbar = function () {

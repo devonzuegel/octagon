@@ -5,4 +5,4 @@ include ../mixins/edit_modal_mixin
   input(type="text"  placeholder="Add image path"  name="image"  autocomplete="off" value=p.img_path)
 
   div.small-label Company description
-  input(type="text"  placeholder="Add company description"  name="short_descrip"  autocomplete="off" value=p.short_descrip)
+  textarea(placeholder="Add company description"  name="short_descrip"  autocomplete="off") #{p.short_descrip}
