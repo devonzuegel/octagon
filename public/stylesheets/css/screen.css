@@ -5341,7 +5341,8 @@ button.close {
   transform: translate3d(0, 0, 0); }
 
 .modal-open .modal {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  overflow-y: auto; }
 
 .modal-dialog {
   position: relative;
@@ -13846,59 +13847,60 @@ input:-webkit-autofill {
     color: #ccc !important; }
 
 .modal {
-  margin: 0 auto;
-  top: 10% !important; }
-  .modal .modal-dialog .modal-content .modal-title {
-    background-color: #eee;
-    color: #666;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 100%;
-    margin-bottom: 40px;
-    padding: 20px; }
-  .modal .modal-dialog .modal-content .modal-body {
-    padding: 0 20px; }
-    .modal .modal-dialog .modal-content .modal-body .small-label {
-      color: #999;
-      margin: 5px 0 10px 0; }
-    .modal .modal-dialog .modal-content .modal-body input,
-    .modal .modal-dialog .modal-content .modal-body textarea {
-      border-bottom: 1px solid #ddd;
+  margin: 0 auto; }
+  .modal .modal-dialog {
+    margin-top: 5%; }
+    .modal .modal-dialog .modal-content .modal-title {
+      background-color: #eee;
       color: #666;
-      font-size: 15px;
-      height: 33px;
-      padding: 0;
-      margin-bottom: 20px;
-      resize: none;
-      width: 100%; }
-    .modal .modal-dialog .modal-content .modal-body input:hover,
-    .modal .modal-dialog .modal-content .modal-body textarea:hover {
-      border-color: #ccc; }
-    .modal .modal-dialog .modal-content .modal-body input:focus,
-    .modal .modal-dialog .modal-content .modal-body textarea:focus {
-      color: #333;
-      border-bottom: 2px solid #8a64d1; }
-  .modal .modal-dialog .modal-content .modal-footer {
-    padding: 40px 20px 20px 20px; }
-    .modal .modal-dialog .modal-content .modal-footer input[type=button],
-    .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-      border: none;
-      color: #fff;
-      font-size: 13px;
+      font-size: 18px;
       font-weight: 500;
-      margin: 0 0 0 10px;
-      padding: 5px 15px;
-      text-transform: uppercase; }
-    .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
-      background-color: #aaa; }
-    .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
-      background-color: #999; }
-    .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-      background-color: #8a64d1; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
-        background-color: #6c3dc5; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
-        background-color: #572fa0; }
+      line-height: 100%;
+      margin-bottom: 40px;
+      padding: 20px; }
+    .modal .modal-dialog .modal-content .modal-body {
+      padding: 0 20px; }
+      .modal .modal-dialog .modal-content .modal-body .small-label {
+        color: #999;
+        margin: 5px 0 10px 0; }
+      .modal .modal-dialog .modal-content .modal-body input,
+      .modal .modal-dialog .modal-content .modal-body textarea {
+        border-bottom: 1px solid #ddd;
+        color: #666;
+        font-size: 15px;
+        height: 33px;
+        padding: 0;
+        margin-bottom: 20px;
+        resize: none;
+        width: 100%; }
+      .modal .modal-dialog .modal-content .modal-body input:hover,
+      .modal .modal-dialog .modal-content .modal-body textarea:hover {
+        border-color: #ccc; }
+      .modal .modal-dialog .modal-content .modal-body input:focus,
+      .modal .modal-dialog .modal-content .modal-body textarea:focus {
+        color: #333;
+        border-bottom: 2px solid #8a64d1; }
+    .modal .modal-dialog .modal-content .modal-footer {
+      padding: 40px 20px 20px 20px; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=button],
+      .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+        border: none;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 0 0 10px;
+        padding: 5px 15px;
+        text-transform: uppercase; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
+        background-color: #aaa; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
+        background-color: #999; }
+      .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+        background-color: #8a64d1; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
+          background-color: #6c3dc5; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
+          background-color: #572fa0; }
 
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.9); }
