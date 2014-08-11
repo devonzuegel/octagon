@@ -74,6 +74,12 @@
 
         .error {
 
+          span {
+            color: $red;
+            display: block;
+            font-size: 14px;
+            margin: 10px 20px;
+          }
         }
       }
 
