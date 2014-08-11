@@ -13547,11 +13547,6 @@ select[multiple] {
   select[multiple]:focus {
     outline: none; }
 
-error {
-  color: #8a64d1;
-  font-style: italic;
-  font-weight: 100; }
-
 [type=checkbox] {
   display: none; }
 
@@ -13947,18 +13942,18 @@ error {
       .modal .modal-dialog .modal-content .modal-body textarea:focus {
         color: #333;
         border-bottom: 2px solid #8a64d1; }
-      .modal .modal-dialog .modal-content .checkbox-group {
+      .modal .modal-dialog .modal-content .modal-body .checkbox-group {
         margin: 20px 0 20px 20px;
         width: 100%; }
-        .modal .modal-dialog .modal-content .checkbox-group label {
+        .modal .modal-dialog .modal-content .modal-body .checkbox-group label {
           color: #999;
           display: inline-block;
           font-size: 14px;
           line-height: 22px; }
-          .modal .modal-dialog .modal-content .checkbox-group label:before {
+          .modal .modal-dialog .modal-content .modal-body .checkbox-group label:before {
             font-size: 16px;
             margin-right: 10px; }
-          .modal .modal-dialog .modal-content .checkbox-group label:hover {
+          .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
             color: #666; }
       .modal .modal-dialog .modal-content .modal-footer {
         padding: 40px 20px 20px 20px; }

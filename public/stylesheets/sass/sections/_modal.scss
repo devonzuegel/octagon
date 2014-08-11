@@ -50,26 +50,30 @@
             border-bottom: 2px solid $purple;
           }
         }
-      }
 
-      .checkbox-group {
-        margin: 20px 0 20px 20px;
-        width: 100%;
+        .checkbox-group {
+          margin: 20px 0 20px 20px;
+          width: 100%;
 
-        label {
-          color: #999;
-          display: inline-block;
-          font-size: 14px;
-          line-height: 22px;
+          label {
+            color: #999;
+            display: inline-block;
+            font-size: 14px;
+            line-height: 22px;
 
-          &:before {
-            font-size: 16px;
-            margin-right: 10px;
+            &:before {
+              font-size: 16px;
+              margin-right: 10px;
+            }
+
+            &:hover {
+              color: #666;
+            }
           }
+        }
 
-          &:hover {
-            color: #666;
-          }
+        .error {
+
         }
       }
 
