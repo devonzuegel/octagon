@@ -1,5 +1,5 @@
 .toolbar {
-  background-color: $toolbar-bkg;
+  background: $toolbar-bkg;
   @include transition(background-color, 0.2s, ease-in-out);
   height: $toolbar-height;
   line-height: $toolbar-height;
@@ -62,7 +62,7 @@
 }
 
 .toolbar-dark {
-  background-color: $toolbar-dark-bkg !important;
+  background: $toolbar-dark-bkg !important;
 
   span {
     color: #666 !important;

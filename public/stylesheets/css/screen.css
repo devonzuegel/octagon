@@ -13770,7 +13770,7 @@ input:-webkit-autofill {
     font-size: 16px; }
 
 .company-bkg .company-header {
-  background-color: #222222;
+  background: url(http://subtlepatterns.com/patterns/dark_geometric.png);
   -webkit-box-shadow: inset 0 0 2px black;
   -moz-box-shadow: inset 0 0 2px black;
   box-shadow: inset 0 0 2px black;
@@ -13820,6 +13820,8 @@ input:-webkit-autofill {
   .company-bkg .company-navbar .active-tab {
     border-color: #8a64d1;
     color: #8a64d1; }
+    .company-bkg .company-navbar .active-tab:hover {
+      color: #8a64d1; }
 .company-bkg .company-content {
   margin: 80px 0; }
   .company-bkg .company-content .content-block {
@@ -13933,7 +13935,7 @@ input:-webkit-autofill {
   background-color: rgba(0, 0, 0, 0.9); }
 
 .toolbar {
-  background-color: #eeeeee;
+  background: #eeeeee;
   -webkit-transition: background-color 0.2s ease-in-out;
   -moz-transition: background-color 0.2s ease-in-out;
   -ms-transition: background-color 0.2s ease-in-out;
@@ -13981,7 +13983,7 @@ input:-webkit-autofill {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
 
 .toolbar-dark {
-  background-color: #222222 !important; }
+  background: url(http://subtlepatterns.com/patterns/dark_geometric.png) !important; }
   .toolbar-dark span {
     color: #666 !important; }
   .toolbar-dark a {
