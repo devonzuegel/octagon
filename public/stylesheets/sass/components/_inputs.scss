@@ -19,12 +19,21 @@ input:-webkit-autofill {
 }
 
 select[multiple] {
-	width: 50%;
+	font-size: 13pt;
+	width: 100%;
 	border: none;
 	display:inline-block; 
 	vertical-align:top; 
-	overflow:hidden; 
+	overflow: hidden;
 	padding: 5px;
-	margin: -10px 0px 5px 0px; 
-	clip: rect(0px,60px,200px,0px);
+	margin: -10px 0px 5px 0px;
+	cursor: pointer;
+	
+	&:focus {
+		outline: none;
+	}
+}
+
+select option {
+	border: 1px solid #ff00ff;
 }

@@ -6,17 +6,17 @@ include ../mixins/edit_modal_mixin
   input(type="password" placeholder="password"  name="password"  autocomplete="off")
 
   input(type="password" placeholder="confirm password"  name="password2"  autocomplete="off")
-
-  div.small-label Owner(s)
-
-  select(multiple name='owners')
-    option(value='Joe') Joe
-    option(value='Chris') Chris
-    option(value='Drew') Drew
-      
+    
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
   
   - var tooltip_txt = "<h3>To find the permalink</h3><br><br>Visit <a href='http://www.crunchbase.com/'>CrunchBase</a> &amp; go to the company's profile. You will find the permalink at the end of the url: <a><i>crunchbase.com/organization/{PERMALINK}</i></a>. Most but not all companies will have a CrunchBase profile &amp; associated  permalink."
   .tooltip_a
     a(data-toggle="tooltip" data-original-title=tooltip_txt).tooltip-zone
       input(type='text' name='crunchbase_permalink', placeholder='CrunchBase permalink'  autocomplete="off")
+
+  div.small-label Owner(s)
+  select(multiple name='owners')
+    option(value='Joe') Joe
+    option(value='Chris') Chris
+    option(value='Drew') Drew
+  
