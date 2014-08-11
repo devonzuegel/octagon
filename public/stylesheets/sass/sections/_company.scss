@@ -47,6 +47,7 @@
 
   .company-navbar {
     background-color: #eee;
+    @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.3));
     height: 50px;
 
     .navbar-tab {
@@ -61,7 +62,6 @@
       text-transform: uppercase;
 
       &:hover {
-        border-color: #ddd;
         color: #666;
       }
     }
@@ -83,11 +83,10 @@
       .block-title {
         color: #999;
         display: inline-block;
-        font-size: 18px;
+        font-size: 22px;
         font-weight: 300;
         line-height: 30px;
         margin: 0 0 10px 0;
-        text-transform: uppercase;
       }
 
       .block-edit {

@@ -13801,6 +13801,9 @@ input:-webkit-autofill {
       width: 70%; }
 .company-bkg .company-navbar {
   background-color: #eee;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   height: 50px; }
   .company-bkg .company-navbar .navbar-tab {
     border-bottom: 3px solid transparent;
@@ -13813,7 +13816,6 @@ input:-webkit-autofill {
     padding: 0 20px;
     text-transform: uppercase; }
     .company-bkg .company-navbar .navbar-tab:hover {
-      border-color: #ddd;
       color: #666; }
   .company-bkg .company-navbar .active-tab {
     border-color: #8a64d1;
@@ -13827,11 +13829,10 @@ input:-webkit-autofill {
     .company-bkg .company-content .content-block .block-title {
       color: #999;
       display: inline-block;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 300;
       line-height: 30px;
-      margin: 0 0 10px 0;
-      text-transform: uppercase; }
+      margin: 0 0 10px 0; }
     .company-bkg .company-content .content-block .block-edit {
       color: #999;
       line-height: 20px;
