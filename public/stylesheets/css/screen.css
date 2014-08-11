@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "Windows-1252";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
@@ -13535,6 +13535,16 @@ input[type=password] {
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #ffe6ff inset; }
 
+select[multiple] {
+  width: 50%;
+  border: none;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  padding: 5px;
+  margin: -10px 0px 5px 0px;
+  clip: rect(0px, 60px, 200px, 0px); }
+
 .auth-bkg {
   background-color: #222222; }
   .auth-bkg .auth-error {
@@ -13883,60 +13893,62 @@ input:-webkit-autofill {
   margin: 0 auto; }
   .modal .modal-dialog {
     margin-top: 5%; }
-    .modal .modal-dialog .modal-content .modal-title {
-      background-color: #eee;
-      color: #666;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 100%;
-      margin-bottom: 40px;
-      padding: 20px; }
-    .modal .modal-dialog .modal-content .modal-body {
-      padding: 0 0 0 20px; }
-      .modal .modal-dialog .modal-content .modal-body .small-label {
-        color: #999;
-        margin: 5px 0 10px 0; }
-      .modal .modal-dialog .modal-content .modal-body input,
-      .modal .modal-dialog .modal-content .modal-body textarea {
-        border-bottom: 1px solid #ddd;
+    .modal .modal-dialog .modal-content {
+      overflow: hidden; }
+      .modal .modal-dialog .modal-content .modal-title {
+        background-color: #eee;
         color: #666;
-        height: 33px;
-        font-size: 14px;
-        line-height: 22px;
-        margin-bottom: 20px;
-        padding: 0 20px 0 0;
-        resize: none;
-        width: 100%; }
-      .modal .modal-dialog .modal-content .modal-body input:hover,
-      .modal .modal-dialog .modal-content .modal-body textarea:hover {
-        border-color: #ccc; }
-      .modal .modal-dialog .modal-content .modal-body input:focus,
-      .modal .modal-dialog .modal-content .modal-body textarea:focus {
-        color: #333;
-        border-bottom: 2px solid #8a64d1; }
-    .modal .modal-dialog .modal-content .modal-footer {
-      padding: 40px 20px 20px 20px; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=button],
-      .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-        background-color: transparent;
-        border: none;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 500;
-        margin: 0 0 0 10px;
-        padding: 5px 15px;
-        text-transform: uppercase; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=button] {
-        color: #bbb; }
-        .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
-          color: #aaa; }
-        .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
-          color: #999; }
-      .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-        color: #8a64d1; }
-        .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
-          color: #6c3dc5; }
-        .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
-          color: #572fa0; }
+        line-height: 100%;
+        margin-bottom: 40px;
+        padding: 20px; }
+      .modal .modal-dialog .modal-content .modal-body {
+        padding: 0 0 0 20px; }
+        .modal .modal-dialog .modal-content .modal-body .small-label {
+          color: #999;
+          margin: 5px 0 10px 0; }
+        .modal .modal-dialog .modal-content .modal-body input,
+        .modal .modal-dialog .modal-content .modal-body textarea {
+          border-bottom: 1px solid #ddd;
+          color: #666;
+          height: 33px;
+          font-size: 14px;
+          line-height: 22px;
+          margin-bottom: 20px;
+          padding: 0 20px 0 0;
+          resize: none;
+          width: 95%; }
+        .modal .modal-dialog .modal-content .modal-body input:hover,
+        .modal .modal-dialog .modal-content .modal-body textarea:hover {
+          border-color: #ccc; }
+        .modal .modal-dialog .modal-content .modal-body input:focus,
+        .modal .modal-dialog .modal-content .modal-body textarea:focus {
+          color: #333;
+          border-bottom: 2px solid #8a64d1; }
+      .modal .modal-dialog .modal-content .modal-footer {
+        padding: 40px 20px 20px 20px; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=button],
+        .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+          background-color: transparent;
+          border: none;
+          font-size: 14px;
+          font-weight: 500;
+          margin: 0 0 0 10px;
+          padding: 5px 15px;
+          text-transform: uppercase; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=button] {
+          color: #bbb; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
+            color: #aaa; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
+            color: #999; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+          color: #8a64d1; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
+            color: #6c3dc5; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
+            color: #572fa0; }
 
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.9); }

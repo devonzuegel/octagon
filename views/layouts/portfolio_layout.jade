@@ -1,10 +1,13 @@
 extends ../layout
 block sub_layout
   body.portfolio-bkg
-    .toolbar.toolbar-fixed
+   //- add company modal
+   include ../modals/add_company.jade
+
+   .toolbar.toolbar-fixed
       include ../includes/toolbar.jade
-    .portfolio-controls
+   .portfolio-controls
       include ../includes/portfolio_controls.jade
-    .portfolio-container
+   .portfolio-container
       block content
-    include ../includes/footer.jade
+   include ../includes/footer.jade
