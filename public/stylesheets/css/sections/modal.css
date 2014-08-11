@@ -1,0 +1,118 @@
+/*
+Syntax error: Undefined variable: "$purple".
+        on line 50 of sass/sections/modal.scss
+
+45:             border-color: #ccc;
+46:           }
+47: 
+48:           &:focus {
+49:             color: #333;
+50:             border-bottom: 2px solid $purple;
+51:           }
+52:         }
+53:       }
+54: 
+55:       .modal-footer {
+
+Backtrace:
+sass/sections/modal.scss:50
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/script/variable.rb:49:in `_perform'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/script/node.rb:40:in `perform'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/script/list.rb:71:in `block in _perform'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/script/list.rb:71:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/script/list.rb:71:in `_perform'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/script/node.rb:40:in `perform'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:298:in `visit_prop'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/tree/root_node.rb:20:in `render'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/engine.rb:315:in `_render'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/engine.rb:262:in `render'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `each'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:283:in `block in watch'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/vendor/listen/lib/listen/multi_listener.rb:108:in `call'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/vendor/listen/lib/listen/multi_listener.rb:108:in `on_change'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/vendor/listen/lib/listen/multi_listener.rb:117:in `block in initialize_adapter'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/vendor/listen/lib/listen/adapter.rb:198:in `call'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/vendor/listen/lib/listen/adapter.rb:198:in `report_changes'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/vendor/listen/lib/listen/adapter.rb:210:in `poll_changed_dirs'
+/Users/Zack/.rvm/gems/ruby-2.1.0/gems/sass-3.2.19/vendor/listen/lib/listen/adapters/darwin.rb:38:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined variable: \"$purple\".\A         on line 50 of sass/sections/modal.scss\A \A 45:             border-color: #ccc;\A 46:           }\A 47: \A 48:           &:focus {\A 49:             color: #333;\A 50:             border-bottom: 2px solid $purple;\A 51:           }\A 52:         }\A 53:       }\A 54: \A 55:       .modal-footer {"; }
