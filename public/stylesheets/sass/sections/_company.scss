@@ -4,7 +4,7 @@
     background: $company-header-bkg;
     @include box-shadow(0, 0, 2px, #000, inset);
     height: $company-header-height;
-    padding-top: $toolbar-height + 100px;
+    padding-top: $toolbar-height + 80px;
 
     .company-header-edit {
       color: #666;
@@ -40,6 +40,19 @@
           font-size: 15px;
           line-height: 22px;
           width: 70%;
+        }
+
+        .company-website {
+          font-size: 15px;
+          margin-top: 10px;
+
+          > a {
+            color: #666;
+
+            &:hover {
+              color: $purple;
+            }
+          }
         }
       }
     }

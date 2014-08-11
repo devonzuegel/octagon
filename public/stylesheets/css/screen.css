@@ -13536,20 +13536,16 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #ffe6ff inset; }
 
 select[multiple] {
-  font-size: 13pt;
-  width: 100%;
   border: none;
+  clip: rect(0px, 60px, 200px, 0px);
   display: inline-block;
-  vertical-align: top;
+  margin: -10px 0px 5px 0px;
   overflow: hidden;
   padding: 5px;
-  margin: -10px 0px 5px 0px;
-  cursor: pointer; }
+  width: 50%;
+  vertical-align: top; }
   select[multiple]:focus {
     outline: none; }
-
-select option {
-  border: 1px solid #ff00ff; }
 
 .auth-bkg {
   background-color: #222222; }
@@ -13788,7 +13784,7 @@ select option {
   -moz-box-shadow: inset 0 0 2px black;
   box-shadow: inset 0 0 2px black;
   height: 300px;
-  padding-top: 150px; }
+  padding-top: 130px; }
   .company-bkg .company-header .company-header-edit {
     color: #666;
     float: right; }
@@ -13812,6 +13808,13 @@ select option {
       font-size: 15px;
       line-height: 22px;
       width: 70%; }
+    .company-bkg .company-header .company-header-info .company-header-text .company-website {
+      font-size: 15px;
+      margin-top: 10px; }
+      .company-bkg .company-header .company-header-info .company-header-text .company-website > a {
+        color: #666; }
+        .company-bkg .company-header .company-header-info .company-header-text .company-website > a:hover {
+          color: #8a64d1; }
 .company-bkg .company-navbar {
   background-color: #eee;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
@@ -13904,7 +13907,7 @@ select option {
         margin-bottom: 40px;
         padding: 20px; }
       .modal .modal-dialog .modal-content .modal-body {
-        padding: 0 0 0 20px; }
+        padding: 0 20px; }
         .modal .modal-dialog .modal-content .modal-body .small-label {
           color: #999;
           margin: 5px 0 10px 0; }
@@ -13916,9 +13919,9 @@ select option {
           font-size: 14px;
           line-height: 22px;
           margin-bottom: 20px;
-          padding: 0 20px 0 0;
+          padding: 0;
           resize: none;
-          width: 95%; }
+          width: 100%; }
         .modal .modal-dialog .modal-content .modal-body input:hover,
         .modal .modal-dialog .modal-content .modal-body textarea:hover {
           border-color: #ccc; }
