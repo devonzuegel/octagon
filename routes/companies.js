@@ -30,28 +30,32 @@ router.get('/', function(req, res) {
 });
 
 router.post('/add_user', function(req, res) {
-  var form = req.body;
+  //// NOTE: validations happen onclick before submit/post is allowed to occur
+  var form = req.body;  // grab body of form
 
-  CompanyDetails.find({'username': form.username }, function(err, u) {
+  // search for company with same username
+  var case_insens_username = '/^'+form.username+'%/i';
+  CompanyDetails.find({'username': case_insens_username }, function(err, u) {
     if (err)    return done(err);
 
-    // TODO ensure user hasn't yet been added
-
-    CompanyModel.add(
-      form.username,
-      form.password, 
-      form.init_investmt_date, 
-      form.crunchbase_permalink,
-      form.owners,
-      function() { res.redirect('/portfolio/'); }
-    );  
+    if (u === []) {
+      CompanyModel.add(
+        form.username,
+        form.password, 
+        form.init_investmt_date, 
+        form.crunchbase_permalink,
+        form.owners,
+        function() { res.redirect('/portfolio/'); }
+      );  // add company to db & then redirect to main portfolio page
+    } else {
+      req.flash('error', 'That company already exists!')
+      res.redirect('/portfolio/');
+    }
   });
-
 });
 
 router.get('/:permalink', function(req, res) {
   var link = req.params.permalink; // gets :permalink from the url
-  // if (link == 'add_user')    res.redirect('/portfolio/add_user');
   var session = req.session.permalink; // gets username from session (who's logged in?)
 
   privileges.require_privileges(req, res, false, function() { return }, function() {

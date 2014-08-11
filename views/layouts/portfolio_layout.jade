@@ -6,8 +6,11 @@ block sub_layout
 
    .toolbar.toolbar-fixed
       include ../includes/toolbar.jade
+
    .portfolio-controls
       include ../includes/portfolio_controls.jade
    .portfolio-container
+      //- TODO-- FIX ME
+      div(style='color:white') #{errors}
       block content
    include ../includes/footer.jade
