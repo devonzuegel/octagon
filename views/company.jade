@@ -33,6 +33,12 @@ block header
           else
             | Add description
 
+        .company-website
+          if (p && p.homepage_url)
+            a(href="http://" + "#{p.homepage_url}") #{p.homepage_url}
+          else
+            | Add homepage url 
+
 block navbar
   .max-width
     .navbar-tab.active-tab Overview
@@ -102,12 +108,6 @@ block content
           div $#{p.total_funding}
         else
           div Add funding info
-
-        if (p && p.homepage_url)
-          h2 Company Website
-          a(href="http://" + "#{p.homepage_url}") #{p.homepage_url}
-        else
-          div Add homepage url 
 
     .content-block.block-margin-right
       .block-title Milestones
