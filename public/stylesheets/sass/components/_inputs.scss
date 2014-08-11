@@ -19,12 +19,12 @@ input:-webkit-autofill {
 }
 
 select[multiple] {
-	width: 50%;
-	border: none;
-	display:inline-block; 
-	vertical-align:top; 
-	overflow:hidden; 
-	padding: 5px;
-	margin: -10px 0px 5px 0px; 
-	clip: rect(0px,60px,200px,0px);
+  border: none;
+  clip: rect(0px,60px,200px,0px);
+  display: inline-block;
+	margin: -10px 0px 5px 0px;
+  overflow: hidden; 
+  padding: 5px;
+  width: 50%; 
+  vertical-align: top;  
 }

@@ -1,4 +1,4 @@
-@charset "Windows-1252";
+@charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
@@ -13536,14 +13536,14 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #ffe6ff inset; }
 
 select[multiple] {
-  width: 50%;
   border: none;
+  clip: rect(0px, 60px, 200px, 0px);
   display: inline-block;
-  vertical-align: top;
+  margin: -10px 0px 5px 0px;
   overflow: hidden;
   padding: 5px;
-  margin: -10px 0px 5px 0px;
-  clip: rect(0px, 60px, 200px, 0px); }
+  width: 50%;
+  vertical-align: top; }
 
 .auth-bkg {
   background-color: #222222; }
