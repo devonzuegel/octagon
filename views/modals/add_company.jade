@@ -1,15 +1,23 @@
+//- jquery needed for form validation
+script(type="text/javascript"): include ../../public/scripts/jquery.min.js
+
 include ../mixins/edit_modal_mixin
 
 +edit_modal("/portfolio/add_user", "add-company", "Add Company")
-  input(type="text"  placeholder="Company name"  name="username"  autocomplete="off")
-  input(type="password" placeholder="Password"  name="password"  autocomplete="off")
-  input(type="password" placeholder="Confirm password"  name="password2"  autocomplete="off")
+  #username-error.error
+  input(type="text"  placeholder="Username"  name="username"  id="username"  autocomplete="off").required
+
+  #password-error.error
+  input(type="password" placeholder="Password"  name="password"  id="password"  autocomplete="off")
+
+  #password2-error.error
+  input(type="password" placeholder="Confirm password"  name="password2"  id="password2"  autocomplete="off")
     
   //- Commented out calendar picker
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
-  
-  input(type='text' name='crunchbase_permalink', placeholder="Crunchbase permalink"  autocomplete="off")
 
+  input(type='text' name='crunchbase_permalink', placeholder='Crunchbase permalink'  autocomplete="off")
+    
   div.small-label Owner(s)
   div.checkbox-group
     input(type="checkbox" name="owners" id="Chris" value="Chris") 
@@ -20,16 +28,3 @@ include ../mixins/edit_modal_mixin
   div.checkbox-group
     input(type="checkbox" name="owners" id="Joe" value="Joe") 
     label(for="Joe") Joe
-
-script.
-  $('#button').click( function() {       
-    $("#form").validate({              
-      rules: {
-        phone: {
-          required: true,
-          number: true,
-          rangelength: [7, 14]
-        }
-      }
-    }).form(); 
-  });

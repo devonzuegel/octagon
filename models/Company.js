@@ -37,7 +37,6 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
   if (crunchbase_permalink == '')     crunchbase_permalink = 'NO_PERMALINK_SELECTED';
   var permalink = '';
 
-  console.log(username);
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
     // TODO what if p or p.data is undefined?
 

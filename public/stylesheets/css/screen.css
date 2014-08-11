@@ -13547,6 +13547,11 @@ select[multiple] {
   select[multiple]:focus {
     outline: none; }
 
+error {
+  color: #8a64d1;
+  font-style: italic;
+  font-weight: 100; }
+
 [type=checkbox] {
   display: none; }
 
