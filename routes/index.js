@@ -3,8 +3,6 @@
 	var express = require('express'),
 			router = express.Router(),
 		 	app = require('../app.js');
-
-	var uploadManager = require('./uploadManager')(router);
 	
 	// hash/crypto stuff
 	var bcrypt = require('bcryptjs'),
