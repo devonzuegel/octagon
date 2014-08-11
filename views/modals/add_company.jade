@@ -1,16 +1,23 @@
+//- jquery needed for form validation
+script(type="text/javascript"): include ../../public/scripts/jquery.min.js
+
 include ../mixins/edit_modal_mixin
 
 +edit_modal("/portfolio/add_user", "add-company", "Add Company")
   div.small-label Company name
-  input(type="text"  placeholder=""  name="username"  autocomplete="off")
+  #username-error
+  input(type="text"  placeholder=""  name="username"  id="username"  autocomplete="off").required
+
   div.small-label Password
-  input(type="password" placeholder=""  name="password"  autocomplete="off")
+  #password-error
+  input(type="password" placeholder=""  name="password"  id="password"  autocomplete="off")
+
   div.small-label Confirm password
-  input(type="password" placeholder=""  name="password2"  autocomplete="off")
+  #password2-error
+  input(type="password" placeholder=""  name="password2"  id="password2"  autocomplete="off")
     
   //- Commented out calendar picker
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
-  
 
   div.small-label Crunchbase permalink (e.g. crunchbase.com/organization/PERMALINK)
   input(type='text' name='crunchbase_permalink', placeholder=''  autocomplete="off")
@@ -20,16 +27,3 @@ include ../mixins/edit_modal_mixin
     option(value='Joe') Joe
     option(value='Chris') Chris
     option(value='Drew') Drew
-
-script.
-  $('#button').click( function() {       
-    $("#form").validate({              
-      rules: {
-        phone: {
-          required: true,
-          number: true,
-          rangelength: [7, 14]
-        }
-      }
-    }).form(); 
-  });

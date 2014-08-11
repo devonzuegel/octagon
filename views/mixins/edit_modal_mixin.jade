@@ -1,10 +1,30 @@
 mixin edit_modal(action, modal_id, modal_title)
   .modal.fade(id=modal_id tabindex="-1" role="dialog" aria-hidden="true")
     .modal-dialog
-      form(id=modal_title).modal-content(method="post"  action=action  enctype="multipart/format-data")
+      form.modal-content(id=modal_title method="post"  action=action  enctype="multipart/format-data")
         .modal-title= modal_title
         .modal-body
           block
         .modal-footer
           input(type="button"  value="Cancel" data-dismiss="modal")
-          input(type="submit"  value="Save")#button
+          input(type="submit"  value="Save")
+          #button(style='height:30px; width:100px; background-color:blue;')
+
+  script.
+    $('#button').click(function(e) {
+      var errors = {};
+
+      if ($("#username").val() == '')
+        errors['#username'] = 'You must include a name for the company.';
+
+      if ($('#password').val() == '')
+        errors['#password'] = 'You must include a password for the company.';
+
+      if ($('#password').val() != $('#password2').val())
+        errors['#password2'] = 'Your passwords don\'t match.';
+
+      for (var k in errors) {
+        console.log(k + ':    ' + errors[k]);
+        $(k+'-error').html('<error>'+errors[k]+'</error>');
+      }
+    });

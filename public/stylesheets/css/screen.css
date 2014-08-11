@@ -13547,6 +13547,11 @@ select[multiple] {
   select[multiple]:focus {
     outline: none; }
 
+error {
+  color: #8a64d1;
+  font-style: italic;
+  font-weight: 100; }
+
 .auth-bkg {
   background-color: #222222; }
   .auth-bkg .auth-error {
