@@ -28,3 +28,28 @@ include ../mixins/edit_modal_mixin
   div.checkbox-group
     input(type="checkbox" name="owners" id="Joe" value="Joe") 
     label(for="Joe") Joe
+
+
+  script.
+    $('#add-company').submit(function(e) {
+      
+      var errors = {};
+
+      $('.error').html('');
+
+      if ($("#username").val().trim() == '')
+        errors['#username'] = '<error>You must include a name for the company.</error>';
+
+      if ($('#password').val() == '')
+        errors['#password'] = '<error>You must include a password for the company.</error>';
+
+      if ($('#password').val() != $('#password2').val())
+        errors['#password2'] = '<error>Your passwords don\'t match.</error>';
+
+      var count = 0;
+      for (var k in errors) {
+        $(k+'-error').html(errors[k]);
+        count++;
+      }
+      return (count == 0);
+    });
