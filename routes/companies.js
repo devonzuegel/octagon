@@ -1,26 +1,17 @@
-var express = require('express');
-var router = express.Router();
-var api_mgr = require('./apiManager');
+var express = require('express'),
+    router = express.Router(),
+    api_mgr = require('./apiManager');
 
 // require (authentication stuff)
 var CompanyModel = require('../models/Company.js'),
     passport = CompanyModel.passport,
     LocalStrategy = require('passport-local').Strategy,
-		CompanyDetails = CompanyModel.CompanyDetails;
-
-function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
-  if (req.isAuthenticated() && req.session.is_admin) {
-    admin_fn(req, res);
-  } else {
-    if (include_msgs)   req.flash('error', 'You do not have permission to perform that action.');
-    if (!req.isAuthenticated()) res.redirect('../login');
-    else    user_fn(req, res);
-  }
-} 
+		CompanyDetails = CompanyModel.CompanyDetails,
+    privileges = require('./privileges.js');
 
 router.get('/', function(req, res) {
 
-  require_privileges(req, res, false, function() {
+  privileges.require_privileges(req, res, false, function() {
     CompanyDetails.find({}, function(err, all_companies) {
       if (err)    return done(err);
       res.render('portfolio', { 
@@ -40,7 +31,7 @@ router.get('/', function(req, res) {
 
 // add_user methods
 router.get('/add_user', function(req, res) {
-  require_privileges(req, res, true, function() {  return;  }, function() {  
+  privileges.require_privileges(req, res, true, function() {  return;  }, function() {  
     return res.redirect('/portfolio/' + req.session.permalink);  
   });
 
@@ -88,7 +79,7 @@ router.get('/:permalink', function(req, res) {
   // if (link == 'add_user')    res.redirect('/portfolio/add_user');
   var session = req.session.permalink; // gets username from session (who's logged in?)
 
-  require_privileges(req, res, false, function() { return }, function() {
+  privileges.require_privileges(req, res, false, function() { return }, function() {
     if (req.session.permalink != link)     res.redirect('/portfolio/' + session);
   });
 
@@ -117,7 +108,7 @@ router.post('/:permalink/edit', function(req, res) {
   var link = req.params.permalink; // gets :permalink from the url
   var session = req.session.permalink; // gets username from session (who's logged in?)
 
-  require_privileges(req, res, false, function() { return; }, function() {
+  privileges.require_privileges(req, res, false, function() { return; }, function() {
     if (session != link)       res.redirect('/portfolio/' + session);
   });
 
@@ -140,4 +131,3 @@ router.post('/:permalink/edit', function(req, res) {
 
 
 module.exports = router;
-module.exports.require_privileges = require_privileges;

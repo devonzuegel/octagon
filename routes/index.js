@@ -3,7 +3,7 @@
 	var express = require('express'),
 			router = express.Router(),
 		 	app = require('../app.js');
-	
+
 	// hash/crypto stuff
 	var bcrypt = require('bcryptjs'),
 	    salt = bcrypt.genSaltSync(10),  
@@ -13,17 +13,9 @@
 	var UserModel = require('../models/Company.js'),
 	    passport = UserModel.passport,
 	    LocalStrategy = require('passport-local').Strategy,
-			CompanyDetails = UserModel.CompanyDetails;
+		 CompanyDetails = UserModel.CompanyDetails,
+		 privileges = require('./privileges.js');
 
-function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
-  if (req.isAuthenticated() && req.session.is_admin) {
-    admin_fn(req, res);
-  } else {
-    if (include_msgs)   req.flash('error', 'You do not have permission to perform that action.');
-    if (!req.isAuthenticated()) res.redirect('../login');
-    else    user_fn(req, res);
-  }
-}
 
 // home page
 	router.get('/', function(req, res) {
@@ -31,7 +23,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 	});
 
 	router.get('/dashboard', function(req, res) {
-		require_privileges(req, res, false, function() {
+		privileges.require_privileges(req, res, false, function() {
 	      res.render('dashboard-f8', { 
 	      	title: 'Dashboard', 
 	      	errors: req.flash('error'),
@@ -71,7 +63,7 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 
 	router.get('/logout', function(req, res){
 	  req.logout();
-	  res.redirect('/');
+	  res.redirect('/login');
 	});
 
 // passport stuff
