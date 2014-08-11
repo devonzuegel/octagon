@@ -7,24 +7,28 @@ mixin edit_modal(action, modal_id, modal_title)
           block
         .modal-footer
           input(type="button"  value="Cancel" data-dismiss="modal")
-          input(type="submit"  value="Save")
-          #button(style='height:30px; width:100px; background-color:blue;')
+          input(type="submit"  value="Save")#btn
 
   script.
-    $('#button').click(function(e) {
+    $('#'+!{JSON.stringify(modal_id)}).submit(function(e) {
+      
       var errors = {};
 
-      if ($("#username").val() == '')
-        errors['#username'] = 'You must include a name for the company.';
+      $('.error').html('');
+
+      if ($("#username").val().trim() == '')
+        errors['#username'] = '<error>You must include a name for the company.</error>';
 
       if ($('#password').val() == '')
-        errors['#password'] = 'You must include a password for the company.';
+        errors['#password'] = '<error>You must include a password for the company.</error>';
 
       if ($('#password').val() != $('#password2').val())
-        errors['#password2'] = 'Your passwords don\'t match.';
+        errors['#password2'] = '<error>Your passwords don\'t match.</error>';
 
+      var count = 0;
       for (var k in errors) {
-        console.log(k + ':    ' + errors[k]);
-        $(k+'-error').html('<error>'+errors[k]+'</error>');
+        $(k+'-error').html(errors[k]);
+        count++;
       }
+      return (count == 0);
     });
