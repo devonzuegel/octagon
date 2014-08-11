@@ -20,3 +20,16 @@ include ../mixins/edit_modal_mixin
     option(value='Joe') Joe
     option(value='Chris') Chris
     option(value='Drew') Drew
+
+script.
+  $('#button').click( function() {       
+    $("#form").validate({              
+      rules: {
+        phone: {
+          required: true,
+          number: true,
+          rangelength: [7, 14]
+        }
+      }
+    }).form(); 
+  });
