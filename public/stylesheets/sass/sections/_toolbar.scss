@@ -3,7 +3,6 @@
   @include transition(background-color, 0.2s, ease-in-out);
   height: $toolbar-height;
   line-height: $toolbar-height;
-  position: fixed;
   top: 0px;
   vertical-align: middle;
   width: 100%;
@@ -44,6 +43,14 @@
       }
     }
   }
+}
+
+.toolbar-absolute {
+  position: absolute;
+}
+
+.toolbar-fixed {
+  position: fixed;
 }
 
 .toolbar-light-shadow {

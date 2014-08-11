@@ -1,13 +1,7 @@
 extends layouts/company_layout
 
-block content
-  
-  //- Edit modals
-  include sections/edit_company_header
-  include sections/edit_company_about
-  include sections/edit_company_info
-
-  .company-header
+block header
+  .max-width
 
     //- Edit
     .company-header-edit.edit-btn(data-toggle="modal" data-target="#edit-header") 
@@ -17,47 +11,59 @@ block content
     .company-header-info
 
       //- Company logo
-      if (p && p.img_path)
-        img.company-logo(src=p.img_path)
-      else
-        div.company-logo Add logo
-
-      //- Company name
-      .company-name
-        if (name)
-          | #{name}
+      .company-logo
+        if (p && p.img_path)
+          img(src=p.img_path)
         else
-          | Add name
+          Add logo
 
-      //- Company description
-      .company-description
-        if (p && p.short_descrip)
-          | #{p.short_descrip}
-        else
-          | Add description
+      .company-header-text
+        //- Company name
+        .company-name
+          if (name)
+            | #{name}
+          else
+            | Add name
 
-  .company-content
-    .content-block
+        //- Company description
+        .company-description
+          if (p && p.short_descrip)
+            | #{p.short_descrip}
+          else
+            | Add description
+
+block navbar
+  .max-width
+    .navbar-tab.active-tab Overview
+    .navbar-tab Financials
+    .navbar-tab Tab Three
+
+
+block content
+
+  .max-width
+
+    .content-block.block-margin-right.block-margin-bottom
       .block-title About
 
       .block-edit.edit-btn(data-toggle="modal" data-target="#edit-about")
         i.fa.fa-pencil.fa-right
         | edit
 
-      .block-content
+      .block-info
         if (p && p.description)
           div #{p.description}
         else
           div Add description
 
-    .content-block
+    .content-block.block-margin-bottom
       .block-title Info
 
       .block-edit.edit-btn(data-toggle="modal" data-target="#edit-info")
         i.fa.fa-pencil.fa-right
         | edit
 
-      .block-content
+      .block-info
 
         if (p && p.categories)
           h2 Categories
@@ -89,14 +95,14 @@ block content
         else
           div Add homepage url 
 
-    .content-block
+    .content-block.block-margin-right
       .block-title Milestones
 
       .block-edit.edit-btn.edit-disabled(data-toggle="modal" data-target="")
         i.fa.fa-pencil.fa-right
         | edit
 
-      .block-content
+      .block-info
         | N/A
 
     .content-block
@@ -106,7 +112,7 @@ block content
         i.fa.fa-pencil.fa-right
         | edit
 
-      .block-content
+      .block-info
         | N/A
 
 

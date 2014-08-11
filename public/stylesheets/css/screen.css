@@ -13493,9 +13493,6 @@ body {
 .dashboard-container,
 .portfolio-container,
 .company-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
   min-height: 100%;
   padding-top: 50px; }
   .dashboard-container:after,
@@ -13503,6 +13500,11 @@ body {
   .company-container:after {
     content: '';
     display: block; }
+
+.max-width {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px; }
 
 .footer-logo {
   -webkit-transition: opacity 0.2s ease-in-out;
@@ -13733,7 +13735,6 @@ input:-webkit-autofill {
     width: 22.5%; } }
 .mix {
   background-color: #ddd;
-  border-bottom: 5px solid #ccc;
   cursor: pointer;
   display: none;
   color: #777;
@@ -13742,8 +13743,7 @@ input:-webkit-autofill {
   margin: 3px; }
 
 .mix:hover {
-  background-color: #eee;
-  border-bottom: 5px solid #8a64d1; }
+  background-color: #eee; }
 
 .v-center-container {
   position: absolute;
@@ -13769,70 +13769,93 @@ input:-webkit-autofill {
     color: #333;
     font-size: 16px; }
 
-.company-bkg .company-header-bkg {
+.company-bkg .company-header {
   background-color: #222222;
   -webkit-box-shadow: inset 0 0 2px black;
   -moz-box-shadow: inset 0 0 2px black;
   box-shadow: inset 0 0 2px black;
   height: 300px;
-  position: absolute;
-  width: 100%;
-  z-index: -100; }
-.company-bkg .company-header {
-  height: 250px; }
+  padding-top: 150px; }
   .company-bkg .company-header .company-header-edit {
     color: #666;
-    float: right;
-    margin-top: 20px; }
-  .company-bkg .company-header .company-header-info {
-    padding-top: 37px; }
-    .company-bkg .company-header .company-header-info .company-logo {
-      display: none;
-      height: 50px; }
-    .company-bkg .company-header .company-header-info .company-name {
+    float: right; }
+  .company-bkg .company-header .company-header-info .company-logo {
+    background-color: #fff;
+    border-radius: 500px;
+    -moz-border-radius: 500px;
+    -webkit-border-radius: 500px;
+    background-clip: padding-box;
+    display: none; }
+  .company-bkg .company-header .company-header-info .company-header-text {
+    display: inline-block; }
+    .company-bkg .company-header .company-header-info .company-header-text .company-name {
       color: #ddd;
       font-size: 35px;
       font-weight: 400;
-      margin: 30px 0; }
-    .company-bkg .company-header .company-header-info .company-description {
+      line-height: 100%;
+      margin-bottom: 20px; }
+    .company-bkg .company-header .company-header-info .company-header-text .company-description {
       color: #999;
       font-size: 15px;
       line-height: 22px;
-      width: 50%; }
+      width: 70%; }
+.company-bkg .company-navbar {
+  background-color: #eee;
+  height: 50px; }
+  .company-bkg .company-navbar .navbar-tab {
+    border-bottom: 3px solid transparent;
+    color: #999;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 47px;
+    padding: 0 20px;
+    text-transform: uppercase; }
+    .company-bkg .company-navbar .navbar-tab:hover {
+      border-color: #ddd;
+      color: #666; }
+  .company-bkg .company-navbar .active-tab {
+    border-color: #8a64d1;
+    color: #8a64d1; }
 .company-bkg .company-content {
   margin: 80px 0; }
   .company-bkg .company-content .content-block {
     display: inline-table;
-    margin: 2%;
     position: relative;
-    width: 46%; }
+    width: 48%; }
     .company-bkg .company-content .content-block .block-title {
       color: #999;
       display: inline-block;
-      font-size: 30px;
+      font-size: 18px;
       font-weight: 300;
-      line-height: 100%;
-      margin: 0 0 10px 0; }
+      line-height: 30px;
+      margin: 0 0 10px 0;
+      text-transform: uppercase; }
     .company-bkg .company-content .content-block .block-edit {
       color: #999;
       line-height: 20px;
       position: absolute;
       right: 0;
       top: 5px; }
-    .company-bkg .company-content .content-block .block-content {
+    .company-bkg .company-content .content-block .block-info {
       color: #333;
       background-color: #eee;
       font-size: 15px;
       line-height: 30px;
       padding: 20px; }
-      .company-bkg .company-content .content-block .block-content h2 {
+      .company-bkg .company-content .content-block .block-info h2 {
         font-weight: 500; }
-      .company-bkg .company-content .content-block .block-content li {
+      .company-bkg .company-content .content-block .block-info li {
         list-style-type: none;
         margin: 0;
         padding: 0; }
-      .company-bkg .company-content .content-block .block-content > div {
+      .company-bkg .company-content .content-block .block-info > div {
         margin: 0 0 20px 0; }
+  .company-bkg .company-content .block-margin-right {
+    margin-right: 2%; }
+  .company-bkg .company-content .block-margin-bottom {
+    margin-bottom: 2%; }
 
 .edit-btn {
   cursor: pointer;
@@ -13867,10 +13890,11 @@ input:-webkit-autofill {
       .modal .modal-dialog .modal-content .modal-body textarea {
         border-bottom: 1px solid #ddd;
         color: #666;
-        font-size: 15px;
         height: 33px;
-        padding: 0 20px 0 0;
+        font-size: 14px;
+        line-height: 22px;
         margin-bottom: 20px;
+        padding: 0 20px 0 0;
         resize: none;
         width: 100%; }
       .modal .modal-dialog .modal-content .modal-body input:hover,
@@ -13916,7 +13940,6 @@ input:-webkit-autofill {
   transition: background-color 0.2s ease-in-out;
   height: 50px;
   line-height: 50px;
-  position: fixed;
   top: 0px;
   vertical-align: middle;
   width: 100%;
@@ -13939,6 +13962,12 @@ input:-webkit-autofill {
       font-weight: 500; }
       .toolbar .toolbar-nav a:hover {
         color: #8a64d1; }
+
+.toolbar-absolute {
+  position: absolute; }
+
+.toolbar-fixed {
+  position: fixed; }
 
 .toolbar-light-shadow {
   -webkit-box-shadow: 0 0 2px #bbbbbb;

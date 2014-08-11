@@ -1,11 +1,9 @@
 extends ../layout
 block sub_layout
   body.dashboard-bkg
-    include ../includes/toolbar.jade
+    .toolbar.toolbar-absolute
+      include ../includes/toolbar.jade
     .toolbar-bkg-extension
     .dashboard-container
       block content
     include ../includes/footer.jade
-
-    script.
-      // Unimplemented

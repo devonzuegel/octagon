@@ -1,46 +1,74 @@
 .company-bkg {
 
-  .company-header-bkg {
+  .company-header {
     background-color: $company-header-bkg;
     @include box-shadow(0, 0, 2px, #000, inset);
     height: $company-header-height;
-    position: absolute;
-    width: 100%;
-    z-index: -100;
-  }
-
-  .company-header {
-    height: $company-header-height - $toolbar-height;
+    padding-top: $toolbar-height + 100px;
 
     .company-header-edit {
       color: #666;
       float: right;
-      margin-top: 20px;
     }
 
     .company-header-info {
-      padding-top: ((($company-header-height - $company-header-info-height) - $toolbar-height) / 2);
 
       .company-logo {
-
-        // Temporarily hiding image
+        background-color: #fff;
+        @include border-radius(500px);
         display: none;
-        height: 50px;
+
+
+        img {
+          
+        }
       }
 
-      .company-name {
-        color: #ddd;
-        font-size: 35px;
-        font-weight: 400;
-        margin: 30px 0;
-      }
+      .company-header-text {
+        display: inline-block;
 
-      .company-description {
-        color: #999;
-        font-size: 15px;
-        line-height: 22px;
-        width: 50%;
+        .company-name {
+          color: #ddd;
+          font-size: 35px;
+          font-weight: 400;
+          line-height: 100%;
+          margin-bottom: 20px;
+        }
+
+        .company-description {
+          color: #999;
+          font-size: 15px;
+          line-height: 22px;
+          width: 70%;
+        }
       }
+    }
+  }
+
+  .company-navbar {
+    background-color: #eee;
+    height: 50px;
+
+    .navbar-tab {
+      border-bottom: 3px solid transparent;
+      color: #999;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 47px;
+      padding: 0 20px;
+      text-transform: uppercase;
+
+      &:hover {
+        border-color: #ddd;
+        color: #666;
+      }
+    }
+
+    .active-tab {
+      border-color: $purple;
+      color: $purple;
     }
   }
 
@@ -49,17 +77,17 @@
 
     .content-block {
       display: inline-table;
-      margin: 2%;
       position: relative;
-      width: 46%;
+      width: 48%;
 
       .block-title {
         color: #999;
         display: inline-block;
-        font-size: 30px;
+        font-size: 18px;
         font-weight: 300;
-        line-height: 100%;
+        line-height: 30px;
         margin: 0 0 10px 0;
+        text-transform: uppercase;
       }
 
       .block-edit {
@@ -70,7 +98,7 @@
         top: 5px;
       }
 
-      .block-content {
+      .block-info {
         color: #333;
         background-color: #eee;
         font-size: 15px;
@@ -91,6 +119,14 @@
           margin: 0 0 20px 0;
         }
       }
+    }
+
+    .block-margin-right {
+      margin-right: 2%;
+    }
+
+    .block-margin-bottom {
+      margin-bottom: 2%;
     }
   }
 }

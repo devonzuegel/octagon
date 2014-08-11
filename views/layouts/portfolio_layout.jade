@@ -1,58 +1,10 @@
 extends ../layout
 block sub_layout
   body.portfolio-bkg
-    include ../includes/toolbar.jade
+    .toolbar.toolbar-fixed
+      include ../includes/toolbar.jade
     .portfolio-controls
-      .controls-container
-        .control-section.pull-left
-          div Owner
-          button.filter(data-filter='all') All
-          button.filter(data-filter='.Joe') Joe
-          button.filter(data-filter='.Drew') Drew
-          button.filter(data-filter='.Chris') Chris
-          button.filter(data-filter='.none') No owner
-
-        .control-section
-          div Sort
-          button.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
-          button.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
-
-        .control-section.pull-right
-          div Actions
-          a(href='../portfolio/add_user'): button 
-            i.fa.fa-plus.fa-right
-            | Add
+      include ../includes/portfolio_controls.jade
     .portfolio-container
       block content
     include ../includes/footer.jade
-
-    script.
-
-      // On page load
-      window.onload = function() {
-
-        // Run on load
-        updateToolbar();
-
-        // Fire when window scrols
-        $(window).scroll(function() {
-          updateToolbar();
-        });
-      };
-
-      function updateToolbar() {
-
-        // Save scroll condition
-        var scroll_condition = $(window).scrollTop() > 60;
-
-        // If distance is past 30
-        if(scroll_condition) {
-
-          // Add a light shadow
-          $(".toolbar").addClass("toolbar-dark-shadow");
-        } else {
-
-          // Remove the light shadow
-          $(".toolbar").removeClass("toolbar-dark-shadow");
-        }
-      }
