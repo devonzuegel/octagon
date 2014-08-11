@@ -37,13 +37,13 @@ include ../mixins/edit_modal_mixin
 
       $('.error').html('');
 
-      if ($("#username").val().trim() === '')
+      if ($("#username").val().trim() == '')
         errors['#username'] = '<span>You must include a name for the company.</span>';
 
-      if ($('#password').val() === '')
+      if ($('#password').val() == '')
         errors['#password'] = '<span>You must include a password for the company.</span>';
 
-      if ($('#password').val() !== $('#password2').val())
+      if ($('#password').val() != $('#password2').val())
         errors['#password2'] = '<span>Your passwords don\'t match.</span>';
 
       var count = 0;
@@ -51,5 +51,5 @@ include ../mixins/edit_modal_mixin
         $(k+'-error').html(errors[k]);
         count++;
       }
-      return (count === 0);
+      return (count == 0);
     });
