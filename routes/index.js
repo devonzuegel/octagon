@@ -56,7 +56,6 @@
 		CompanyDetails.findOne({ username: req.session.username, }, function(err, company) {
 			if (err)    return done(err);
 			req.session.permalink = company.permalink;
-			console.log(req.session.permalink);
 			res.redirect('/');
 		});
 	});	

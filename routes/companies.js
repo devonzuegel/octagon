@@ -29,37 +29,12 @@ router.get('/', function(req, res) {
 
 });
 
-// add_user methods
-router.get('/add_user', function(req, res) {
-  privileges.require_privileges(req, res, true, function() {  return;  }, function() {  
-    return res.redirect('/portfolio/' + req.session.permalink);  
-  });
-
-  res.render('add_company', { 
-    title:"New Company", 
-    is_admin: true, 
-    errors: undefined,
-    username: req.session.username,
-    tab: 'companies' 
-  });
-
-});
-
 router.post('/add_user', function(req, res) {
   var form = req.body;
 
-  if (form.password == '') {
-    req.flash('error', 'Please enter a password.');
-    return res.redirect('/portfolio/add_user');
-  }
-
-  if (form.password2 != form.password) {
-    req.flash('error', 'Please make sure your passwords match.');
-    return res.redirect('/portfolio/add_user');
-  }
-
   CompanyDetails.find({'username': form.username }, function(err, u) {
     if (err)    return done(err);
+
     // TODO ensure user hasn't yet been added
 
     CompanyModel.add(
