@@ -1,4 +1,4 @@
-@charset "Windows-1252";
+@charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
@@ -13906,29 +13906,26 @@ select[multiple] {
         line-height: 100%;
         margin-bottom: 40px;
         padding: 20px; }
-      .modal .modal-dialog .modal-content .modal-body {
-        padding: 0 20px; }
-        .modal .modal-dialog .modal-content .modal-body .small-label {
-          color: #999;
-          margin: 5px 0 10px 0; }
-        .modal .modal-dialog .modal-content .modal-body input,
-        .modal .modal-dialog .modal-content .modal-body textarea {
-          border-bottom: 1px solid #ddd;
-          color: #666;
-          height: 33px;
-          font-size: 14px;
-          line-height: 22px;
-          margin-bottom: 20px;
-          padding: 0;
-          resize: none;
-          width: 100%; }
-        .modal .modal-dialog .modal-content .modal-body input:hover,
-        .modal .modal-dialog .modal-content .modal-body textarea:hover {
-          border-color: #ccc; }
-        .modal .modal-dialog .modal-content .modal-body input:focus,
-        .modal .modal-dialog .modal-content .modal-body textarea:focus {
-          color: #333;
-          border-bottom: 2px solid #8a64d1; }
+      .modal .modal-dialog .modal-content .modal-body .small-label {
+        color: #999;
+        margin: 20px 0 0 20px; }
+      .modal .modal-dialog .modal-content .modal-body input,
+      .modal .modal-dialog .modal-content .modal-body textarea {
+        border-bottom: 1px solid #ddd;
+        color: #666;
+        height: 33px;
+        font-size: 14px;
+        line-height: 22px;
+        padding: 25px 20px;
+        resize: none;
+        width: 100%; }
+      .modal .modal-dialog .modal-content .modal-body input:hover,
+      .modal .modal-dialog .modal-content .modal-body textarea:hover {
+        border-color: #ccc; }
+      .modal .modal-dialog .modal-content .modal-body input:focus,
+      .modal .modal-dialog .modal-content .modal-body textarea:focus {
+        color: #333;
+        border-bottom: 2px solid #8a64d1; }
       .modal .modal-dialog .modal-content .modal-footer {
         padding: 40px 20px 20px 20px; }
         .modal .modal-dialog .modal-content .modal-footer input[type=button],

@@ -1,19 +1,14 @@
 include ../mixins/edit_modal_mixin
 
 +edit_modal("/portfolio/add_user", "add-company", "Add Company")
-  div.small-label Company name
-  input(type="text"  placeholder=""  name="username"  autocomplete="off")
-  div.small-label Password
-  input(type="password" placeholder=""  name="password"  autocomplete="off")
-  div.small-label Confirm password
-  input(type="password" placeholder=""  name="password2"  autocomplete="off")
+  input(type="text"  placeholder="Company name"  name="username"  autocomplete="off")
+  input(type="password" placeholder="Password"  name="password"  autocomplete="off")
+  input(type="password" placeholder="Confirm password"  name="password2"  autocomplete="off")
     
   //- Commented out calendar picker
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
   
-
-  div.small-label Crunchbase permalink (e.g. crunchbase.com/organization/PERMALINK)
-  input(type='text' name='crunchbase_permalink', placeholder=''  autocomplete="off")
+  input(type='text' name='crunchbase_permalink', placeholder="Crunchbase permalink"  autocomplete="off")
 
   div.small-label Owner(s)
   select(multiple name='owners')
