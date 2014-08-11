@@ -69,6 +69,11 @@ function require_privileges(req, res, include_msgs, admin_fn, user_fn) {
 		});
 	});	
 
+	router.get('/logout', function(req, res){
+	  req.logout();
+	  res.redirect('/');
+	});
+
 // passport stuff
 	passport.serializeUser(function(user, done) {
 	  done(null, user.id);
