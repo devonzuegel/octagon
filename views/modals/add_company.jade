@@ -22,7 +22,13 @@ include ../mixins/edit_modal_mixin
   div.small-label Crunchbase permalink (e.g. crunchbase.com/organization/PERMALINK)
   input(type='text' name='crunchbase_permalink', placeholder=''  autocomplete="off")
 
+  //- Commented out calendar picker
+  //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
+  
+  input(type='text' name='crunchbase_permalink', placeholder="Crunchbase permalink"  autocomplete="off")
+
   div.small-label Owner(s)
+  br
   select(multiple name='owners')
     option(value='Joe') Joe
     option(value='Chris') Chris
