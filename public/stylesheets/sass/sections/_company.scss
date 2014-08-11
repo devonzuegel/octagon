@@ -108,6 +108,14 @@
         line-height: 30px;
         padding: 20px;
 
+        a {
+          color: $purple;
+
+          &:hover {
+            color: $dark-purple;
+          }
+        }
+
         h2 {
           font-weight: 500;
         }

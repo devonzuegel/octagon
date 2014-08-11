@@ -1,6 +1,7 @@
 extends layouts/company_layout
 
 block header
+
   .max-width
 
     //- Edit
@@ -51,8 +52,21 @@ block content
         | edit
 
       .block-info
+
+        //- Function to find + format links
+        - function findLinks(description) {
+        - 
+        -   // Regex to match onto the link syntax Crunchbase gives
+        -   var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
+        - 
+        -   // Replace all occurances with proper link format,
+        -   // and return the new description
+        -   return description.replace(link, '<a href=\'http://www.crunchbase.com$2\'>$1</a>');
+        - }
+
         if (p && p.description)
-          div #{p.description}
+          div
+            #{findLinks(p.description)}
         else
           div Add description
 

@@ -13844,6 +13844,10 @@ input:-webkit-autofill {
       font-size: 15px;
       line-height: 30px;
       padding: 20px; }
+      .company-bkg .company-content .content-block .block-info a {
+        color: #8a64d1; }
+        .company-bkg .company-content .content-block .block-info a:hover {
+          color: #45367c; }
       .company-bkg .company-content .content-block .block-info h2 {
         font-weight: 500; }
       .company-bkg .company-content .content-block .block-info li {
