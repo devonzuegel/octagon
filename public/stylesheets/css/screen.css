@@ -13807,11 +13807,12 @@ select[multiple] {
       line-height: 22px;
       width: 70%; }
     .company-bkg .company-header .company-header-info .company-header-text .company-website {
-      color: #666;
       font-size: 15px;
       margin-top: 10px; }
-      .company-bkg .company-header .company-header-info .company-header-text .company-website:hover {
-        color: #8a64d1; }
+      .company-bkg .company-header .company-header-info .company-header-text .company-website > a {
+        color: #666; }
+        .company-bkg .company-header .company-header-info .company-header-text .company-website > a:hover {
+          color: #8a64d1; }
 .company-bkg .company-navbar {
   background-color: #eee;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
