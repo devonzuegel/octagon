@@ -11,10 +11,15 @@ include ../mixins/edit_modal_mixin
   input(type='text' name='crunchbase_permalink', placeholder="Crunchbase permalink"  autocomplete="off")
 
   div.small-label Owner(s)
-  select(multiple name='owners')
-    option(value='Joe') Joe
-    option(value='Chris') Chris
-    option(value='Drew') Drew
+  div.checkbox-group
+    input(type="checkbox" name="owners" id="Chris" value="Chris") 
+    label(for="Chris") Chris
+  div.checkbox-group
+    input(type="checkbox" name="owners" id="Drew" value="Drew") 
+    label(for="Drew") Drew
+  div.checkbox-group
+    input(type="checkbox" name="owners" id="Joe" value="Joe") 
+    label(for="Joe") Joe
 
 script.
   $('#button').click( function() {       

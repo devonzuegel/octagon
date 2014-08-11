@@ -13547,6 +13547,19 @@ select[multiple] {
   select[multiple]:focus {
     outline: none; }
 
+[type=checkbox] {
+  display: none; }
+
+[type=checkbox] + label:before {
+  content: "\f096";
+  font-family: FontAwesome;
+  vertical-align: middle; }
+
+[type=checkbox]:checked + label:before {
+  content: "\f046";
+  font-family: FontAwesome;
+  vertical-align: middle; }
+
 .auth-bkg {
   background-color: #222222; }
   .auth-bkg .auth-error {
@@ -13902,14 +13915,15 @@ select[multiple] {
         background-color: #eee;
         color: #666;
         font-size: 18px;
-        font-weight: 500;
+        font-weight: 400;
         line-height: 100%;
         margin-bottom: 40px;
         padding: 20px; }
       .modal .modal-dialog .modal-content .modal-body .small-label {
         color: #999;
         margin: 20px 0 0 20px; }
-      .modal .modal-dialog .modal-content .modal-body input,
+      .modal .modal-dialog .modal-content .modal-body input[type=text],
+      .modal .modal-dialog .modal-content .modal-body input[type=password],
       .modal .modal-dialog .modal-content .modal-body textarea {
         border-bottom: 1px solid #ddd;
         color: #666;
@@ -13919,13 +13933,28 @@ select[multiple] {
         padding: 25px 20px;
         resize: none;
         width: 100%; }
-      .modal .modal-dialog .modal-content .modal-body input:hover,
+      .modal .modal-dialog .modal-content .modal-body input[type=text]:hover,
+      .modal .modal-dialog .modal-content .modal-body input[type=password]:hover,
       .modal .modal-dialog .modal-content .modal-body textarea:hover {
         border-color: #ccc; }
-      .modal .modal-dialog .modal-content .modal-body input:focus,
+      .modal .modal-dialog .modal-content .modal-body input[type=text]:focus,
+      .modal .modal-dialog .modal-content .modal-body input[type=password]:focus,
       .modal .modal-dialog .modal-content .modal-body textarea:focus {
         color: #333;
         border-bottom: 2px solid #8a64d1; }
+      .modal .modal-dialog .modal-content .checkbox-group {
+        margin: 20px 0 20px 20px;
+        width: 100%; }
+        .modal .modal-dialog .modal-content .checkbox-group label {
+          color: #999;
+          display: inline-block;
+          font-size: 14px;
+          line-height: 22px; }
+          .modal .modal-dialog .modal-content .checkbox-group label:before {
+            font-size: 16px;
+            margin-right: 10px; }
+          .modal .modal-dialog .modal-content .checkbox-group label:hover {
+            color: #666; }
       .modal .modal-dialog .modal-content .modal-footer {
         padding: 40px 20px 20px 20px; }
         .modal .modal-dialog .modal-content .modal-footer input[type=button],

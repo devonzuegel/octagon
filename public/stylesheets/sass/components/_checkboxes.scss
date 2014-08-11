@@ -1,0 +1,15 @@
+[type=checkbox] {
+  display: none; 
+}
+
+[type=checkbox] + label:before {
+  content: "\f096";
+  font-family: FontAwesome; 
+  vertical-align: middle;
+}
+
+[type=checkbox]:checked + label:before {
+  content: "\f046";
+  font-family: FontAwesome; 
+  vertical-align: middle;
+}

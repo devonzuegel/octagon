@@ -11,7 +11,7 @@
         background-color: #eee;
         color: #666;
         font-size: 18px;
-        font-weight: 500;
+        font-weight: 400;
         line-height: 100%;
         margin-bottom: 40px;
         padding: 20px;
@@ -24,7 +24,8 @@
           margin: 20px 0 0 20px;
         }
 
-        input,
+        input[type=text],
+        input[type=password],
         textarea {
           border-bottom: 1px solid #ddd;
           color: #666;
@@ -36,7 +37,8 @@
           width: 100%;
         }
 
-        input,
+        input[type=text],
+        input[type=password],
         textarea {
 
           &:hover {
@@ -46,6 +48,27 @@
           &:focus {
             color: #333;
             border-bottom: 2px solid $purple;
+          }
+        }
+      }
+
+      .checkbox-group {
+        margin: 20px 0 20px 20px;
+        width: 100%;
+
+        label {
+          color: #999;
+          display: inline-block;
+          font-size: 14px;
+          line-height: 22px;
+
+          &:before {
+            font-size: 16px;
+            margin-right: 10px;
+          }
+
+          &:hover {
+            color: #666;
           }
         }
       }
