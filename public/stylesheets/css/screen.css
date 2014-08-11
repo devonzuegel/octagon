@@ -13904,7 +13904,7 @@ select[multiple] {
         margin-bottom: 40px;
         padding: 20px; }
       .modal .modal-dialog .modal-content .modal-body {
-        padding: 0 0 0 20px; }
+        padding: 0 20px; }
         .modal .modal-dialog .modal-content .modal-body .small-label {
           color: #999;
           margin: 5px 0 10px 0; }
@@ -13916,9 +13916,9 @@ select[multiple] {
           font-size: 14px;
           line-height: 22px;
           margin-bottom: 20px;
-          padding: 0 20px 0 0;
+          padding: 0;
           resize: none;
-          width: 95%; }
+          width: 100%; }
         .modal .modal-dialog .modal-content .modal-body input:hover,
         .modal .modal-dialog .modal-content .modal-body textarea:hover {
           border-color: #ccc; }
