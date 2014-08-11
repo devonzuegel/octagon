@@ -5,6 +5,7 @@
     margin-top: 5%;
 
     .modal-content {
+      overflow:hidden; 
 
       .modal-title {
         background-color: #eee;
@@ -34,7 +35,7 @@
           margin-bottom: 20px;
           padding: 0 20px 0 0;
           resize: none;
-          width: 100%;
+          width: 95%;
         }
 
         input,
