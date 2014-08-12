@@ -5,6 +5,20 @@
   background-clip: padding-box;
 }
 
+@mixin border-top-right-radius($radius) {
+  border-top-right-radius: $radius;
+  -moz-border-top-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin border-bottom-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+  -moz-border-bottom-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  background-clip: padding-box;
+}
+
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
   @if $inset {
     -webkit-box-shadow:inset $top $left $blur $color;

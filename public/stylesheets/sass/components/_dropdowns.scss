@@ -1,5 +1,4 @@
 .dropdown {
-  @include border-radius(2px);
   display: inline-block;
 
   .dropdown-toggle {
@@ -18,7 +17,7 @@
   .dropdown-menu {
     background: #fff;
     border: none;
-    @include border-radius(0);
+    @include border-radius(2px);
     min-width: 120px;
     padding: 0;
 

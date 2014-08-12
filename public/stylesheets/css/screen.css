@@ -13549,10 +13549,6 @@ input:-webkit-autofill {
   vertical-align: middle; }
 
 .dropdown {
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  background-clip: padding-box;
   display: inline-block; }
   .dropdown .dropdown-toggle {
     background: none;
@@ -13566,9 +13562,9 @@ input:-webkit-autofill {
   .dropdown .dropdown-menu {
     background: #fff;
     border: none;
-    border-radius: 0;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
     background-clip: padding-box;
     min-width: 120px;
     padding: 0; }
@@ -13930,13 +13926,19 @@ input:-webkit-autofill {
 
 .modal {
   margin: 0 auto;
-  z-index: 3000000000; }
+  z-index: 10000; }
   .modal .modal-dialog {
+    background: #fff;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background-clip: padding-box;
     max-height: 85%;
     margin-top: 2%;
     overflow-x: hidden;
     overflow-y: auto; }
     .modal .modal-dialog .modal-content {
+      background: none;
       border-radius: 2px;
       -moz-border-radius: 2px;
       -webkit-border-radius: 2px;
@@ -14022,6 +14024,14 @@ input:-webkit-autofill {
             color: #572fa0; }
   .modal ::-webkit-scrollbar {
     background: #fff;
+    border-top-right-radius: 2px;
+    -moz-border-top-right-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    background-clip: padding-box;
+    border-bottom-right-radius: 2px;
+    -moz-border-bottom-right-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    background-clip: padding-box;
     height: 12px;
     width: 14px; }
   .modal ::-webkit-scrollbar-thumb {

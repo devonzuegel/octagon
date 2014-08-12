@@ -1,14 +1,17 @@
 .modal {
   margin: 0 auto;
-  z-index: 3000000000;
+  z-index: 10000;
 
   .modal-dialog {
+    background: #fff;
+    @include border-radius(2px);
     max-height: 85%;
     margin-top: 2%;
     overflow-x: hidden;
     overflow-y: auto;
 
     .modal-content {
+      background: none;
       @include border-radius(2px);
       margin-right: -1px;
       overflow: hidden; 
@@ -139,6 +142,8 @@
   // Stylize modal scrollbars
   ::-webkit-scrollbar {
     background: #fff;
+    @include border-top-right-radius(2px);
+    @include border-bottom-right-radius(2px);
     height: 12px;
     width: 14px;
   }
