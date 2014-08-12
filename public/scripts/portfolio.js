@@ -1,43 +1,49 @@
 $(function(){
 
-  var layout = 'list', // Store the current layout as a variable
-      $container = $('.portfolio-table'), // Cache the MixItUp container
-      $change_layout = $('#change-layout'); // Cache the changeLayout button
+  // Store elements / layout variable
+  var layout = 'list',
+      $container = $('.portfolio-table'),
+      $change_layout = $('#change-layout');
   
   // Instantiate MixItUp with some custom options:
-  
   $container.mixItUp({
     layout: {
-      containerClass: 'list' // Add the class 'list' to the container on load
+
+      // Add the class 'list' to the container on load
+      containerClass: 'list'
     }
   });
   
-  // MixItUp does not provide a default "change layout" button
-  // so we need to make our own and bind it with a click handler:
-  
-  $change_layout.on('click', function(){
+  // Make our own layout changing button and bind it with a click handler
+  $change_layout.on('click', function() {
     
-    // If the current layout is a list, change to grid:
-    
-    if(layout == 'list'){
+    // If the current layout is a list
+    if(layout == 'list') {
+
+      // Change to grid
       layout = 'grid';
       
-      $change_layout.html('<i class=\'fa fa-align-justify fa-right\'></i>Display as list'); // Update the button text
+      // Update the button text
+      $change_layout.html('<i class=\'fa fa-align-justify fa-right\'></i>Display as list');
       
+      // Update the container class
       $container.mixItUp('changeLayout', {
-        containerClass: layout // change the container class to "grid"
+        containerClass: layout
       });
       
-    // Else if the current layout is a grid, change to list:  
+    // If the current layout is a grid 
     } else {
+
+      // Change to list
       layout = 'list';
       
-      $change_layout.html('<i class=\'fa fa-th-large fa-right\'></i>Display as grid'); // Update the button text
+      // Update the button text
+      $change_layout.html('<i class=\'fa fa-th-large fa-right\'></i>Display as grid');
       
+      // Update the container class
       $container.mixItUp('changeLayout', {
-        containerClass: layout // Change the container class to 'list'
+        containerClass: layout
       });
     }
-  });
-  
+  }); 
 });
