@@ -1,7 +1,11 @@
 extends ../layout
 block sub_layout
   body.portfolio-bkg
-   //- add company modal
+
+   //- Settings modal
+   include ../modals/edit_settings.jade
+
+   //- Add company modal
    include ../modals/add_company.jade
 
    .toolbar.toolbar-absolute.toolbar-dark:.max-width
@@ -17,4 +21,5 @@ block sub_layout
 
       block content
 
-   include ../includes/footer.jade
+   .footer.footer-light
+      include ../includes/footer.jade

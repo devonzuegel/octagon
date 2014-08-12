@@ -1,10 +1,12 @@
 extends ../layout
 block sub_layout
   body.auth-bkg
+    include ../modals/edit_settings.jade
     .auth-container
       form(method="POST", action="/login")
         div
           each error in errors
             p.auth-error #{error}
         block content
-    include ../includes/auth_footer.jade
+    .auth-footer
+      include ../includes/auth_footer.jade
