@@ -4,13 +4,16 @@ script(type="text/javascript"): include ../../public/scripts/jquery.min.js
 include ../mixins/edit_modal_mixin
 
 +edit_modal("/portfolio/add_user", "add-company", "Add Company")
-  #username-error.error
+  .error#username-error
+    div You must include a name for the company.
   input(type="text"  placeholder="Username"  name="username"  id="username"  autocomplete="off").required
 
-  #password-error.error
+  .error#password-error
+    div You must include a password for the company.
   input(type="password" placeholder="Password"  name="password"  id="password"  autocomplete="off")
 
-  #password2-error.error
+  .error#password2-error
+    div Your passwords don't match.
   input(type="password" placeholder="Confirm password"  name="password2"  id="password2"  autocomplete="off")
     
   //- Commented out calendar picker
@@ -31,25 +34,37 @@ include ../mixins/edit_modal_mixin
 
 
   script.
-    $('#add-company').submit(function(e) {
+
+    // When add company form is submitted
+    $('#add-company').submit(function() {
+
+      // Initialize error tests
+      var noUsername = ($('#username').val().trim() == ''),
+          noPassword = ($('#password').val().trim() == ''),
+          differentPasswords = ($('#password2').val() != $('#password').val());
+
+      // Run handle error functions on error fields and tests
+      // Only submit if all three tests pass
+      return handleError($('#username-error div'), noUsername) &&
+             handleError($('#password-error div'), noPassword) &&
+             handleError($('#password2-error div'), differentPasswords);
       
-      var errors = {};
-
-      $('.error').html('');
-
-      if ($("#username").val().trim() == '')
-        errors['#username'] = '<span>You must include a name for the company.</span>';
-
-      if ($('#password').val() == '')
-        errors['#password'] = '<span>You must include a password for the company.</span>';
-
-      if ($('#password').val() != $('#password2').val())
-        errors['#password2'] = '<span>Your passwords don\'t match.</span>';
-
-      var count = 0;
-      for (var k in errors) {
-        $(k+'-error').html(errors[k]);
-        count++;
-      }
-      return (count == 0);
     });
+
+    // Given an error field and the potential error, decide whether or not
+    // to display the error message & submit the form
+    function handleError(error_field, error) {
+      if(error) {
+        error_field.show();
+        return false;
+      } else {
+        error_field.hide();
+        return true;
+      }
+    }
+
+
+
+
+
+

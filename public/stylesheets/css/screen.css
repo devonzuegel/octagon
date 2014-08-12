@@ -13955,9 +13955,9 @@ select[multiple] {
             margin-right: 10px; }
           .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
             color: #666; }
-      .modal .modal-dialog .modal-content .modal-body .error span {
+      .modal .modal-dialog .modal-content .modal-body .error div {
         color: #e06663;
-        display: block;
+        display: none;
         font-size: 14px;
         margin: 10px 20px; }
       .modal .modal-dialog .modal-content .modal-footer {
