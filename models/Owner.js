@@ -1,10 +1,6 @@
-// requires (auth)
 var passport = require('passport');
 var mongoose = require('mongoose/');
-mongoose.connect('mongodb://localhost/test');
-var api_mgr = require('../routes/apiManager');
-
-// var bcrypt = require('bcrypt');
+// mongoose.connect('mongodb://localhost/test');
 
 var Schema = mongoose.Schema;
 var OwnerSchema = new Schema({
@@ -21,7 +17,6 @@ var Owner = mongoose.model('owners', OwnerSchema);
 
 
 function add(name, companies) {
-
   // Create new company with profile info included
   var owner = new Owner({ 
     'name': name,
@@ -33,11 +28,9 @@ function add(name, companies) {
     if (err)  return done(err);
     cb();
   });
-
 }
 
 
 module.exports.add = add;
 // module.exports.update = update;
-module.exports.passport = passport;
-module.exports.OwnerDetails = Owner;
+module.exports.Owners = Owner;

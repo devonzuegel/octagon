@@ -11,11 +11,14 @@
 
 	// require (authentication stuff)
 	var UserModel = require('../models/Company.js'),
+		  Companies = UserModel.Companies,
 	    passport = UserModel.passport,
 	    LocalStrategy = require('passport-local').Strategy,
-		 CompanyDetails = UserModel.CompanyDetails,
-		 privileges = require('./privileges.js');
+		  privileges = require('./privileges.js');
 
+	// require (owner stuff)
+	var OwnerModel = require('../models/Owner.js'),
+		  Owners = OwnerModel.Owners;
 
 // home page
 router.get('/', function(req, res) {
@@ -49,23 +52,26 @@ router.get('/dashboard', function(req, res) {
 
 
 router.get('/settings', function(req, res) {
-	privileges.require_privileges(
-		req, res, 
-		false,  // Do not include flash error msgs
-		admin_fn = function() {
-			// Render settings view
-			res.render('settings', { 
-				title: 'Settings', 
-				errors: req.flash('error'),
-				username: req.session.username,
-				is_admin: true  
-			});
-		}, 
-		user_fn = function() { 
-	      // redirect to logged in company's page
-	      res.redirect('/portfolio/' + req.session.permalink); 
-		}
-	);
+	Owners.find({}, function(err, all_owners) {
+		privileges.require_privileges(
+			req, res, 
+			false,  // Do not include flash error msgs
+			admin_fn = function() {
+				// Render settings view
+				res.render('settings', { 
+					title: 'Settings', 
+					errors: req.flash('error'),
+					username: req.session.username,
+					all_owners: all_owners,
+					is_admin: true  
+				});
+			}, 
+			user_fn = function() { 
+		      // redirect to logged in company's page
+		      res.redirect('/portfolio/' + req.session.permalink); 
+			}
+		);
+	});
 });
 
 router.post('/settings', function(req, res) {
@@ -89,7 +95,7 @@ router.post('/login', passport.authenticate('local', {
 	req.session.username = req.user.username;
 
 	// set session permalink to permalink saved in user profile
-	CompanyDetails.findOne({ username: req.session.username, }, function(err, company) {
+	Companies.findOne({ username: req.session.username, }, function(err, company) {
 		if (err)    return done(err);
 		req.session.permalink = company.permalink;
 		res.redirect('/');
@@ -108,7 +114,7 @@ passport.serializeUser(function(user, done) {
 });
  
 passport.deserializeUser(function(id, done) {
-	CompanyDetails.find({id: id}, function(err, user) {
+	Companies.find({id: id}, function(err, user) {
 		if (err)    return done(err);
 		done(err, user);
 	});
@@ -116,7 +122,7 @@ passport.deserializeUser(function(id, done) {
 
 passport.use(new LocalStrategy(function(username, password, done) {
   process.nextTick(function() {
-    CompanyDetails.findOne({ 'username': username, }, function(err, user) {
+    Companies.findOne({ 'username': username, }, function(err, user) {
       if (err)    	done(err);
       if (!user)  	return done(null, false);
 

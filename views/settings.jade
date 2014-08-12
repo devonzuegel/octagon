@@ -8,6 +8,8 @@ block sub_layout
       include ./includes/toolbar.jade
 
     .portfolio-content:.max-width
+      p all_owners:  { #{all_owners} }
+
       include ./mixins/edit_page_mixin
 
       +edit_page("/portfolio/add", "add-company-form", "Add Company")
@@ -22,13 +24,6 @@ block sub_layout
         .checkbox-group
           input(type="checkbox" name="owners" id="Joe" value="Joe") 
           label(for="Joe") Joe
-
-
-      //- form(method="post"  action='/settings'  enctype="multipart/format-data")
-        .modal-title #{title}
-        .modal-footer
-          input(type="button"  value="Cancel" data-dismiss="modal")
-          input(type="submit"  value="Save")
 
       script.
         // Highlight label of input field on focus
