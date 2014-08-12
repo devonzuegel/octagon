@@ -38,7 +38,7 @@ router.get('/', function(req, res) {
 
 });
 
-router.post('/add_user', function(req, res) {
+router.post('/add_company', function(req, res) {
   //// NOTE: validations happen onclick before submit/post is allowed to occur
   var form = req.body;  // grab body of form
 
