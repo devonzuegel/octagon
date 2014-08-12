@@ -8,22 +8,6 @@ script.
   // When document has is ready
   $(document).ready(function() {
 
-    // Settings for tooltip
-    $('.tooltip_a a').tooltip({
-        placement : 'bottom',
-        html: true,
-        effect: 'slide',
-        content: 'loading...',
-        open: function (event, ui) {
-            $(ui.tooltip).appendTo(this);
-        }
-    });
-
-    // Initialize datepicker
-    $('#datepicker').datepicker({
-      format: 'dd/mm/yyyy'
-    });
-
     // Initialize addCompany
     addCompany.init();
   });
