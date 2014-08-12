@@ -17,18 +17,3 @@ button {
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px $very-light-purple inset;
 }
-
-select[multiple] {
-  border: none;
-  clip: rect(0px,60px,200px,0px);
-  display: inline-block;
-  margin: -10px 0px 5px 0px;
-  overflow: hidden; 
-  padding: 5px;
-  width: 50%; 
-  vertical-align: top;  
-
-	&:focus {
-		outline: none;
-	}
-}

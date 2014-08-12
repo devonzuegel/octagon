@@ -7,38 +7,35 @@
   vertical-align: middle;
   width: 100%;
   z-index: 50;
-
-  .max-width {
     
-    .pull-left {
+  .pull-left {
 
-      > * {
-        margin-right: 30px;
-      }
+    > * {
+      margin-right: 30px;
     }
+  }
 
-    .pull-right {
+  .pull-right {
 
-      > * {
-        margin-left: 30px;
-      }
+    > * {
+      margin-left: 30px;
     }
+  }
 
-    span {
-      color: #999;
-      font-size: 14px;
-      font-weight: 500;
-    }
+  span {
+    color: #999;
+    font-size: 14px;
+    font-weight: 500;
+  }
 
-    a {
-      color: #777;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 500;
+  a {
+    color: #777;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
 
-      &:hover {
-        color: $purple;
-      }
+    &:hover {
+      color: $purple;
     }
   }
 }

@@ -1,74 +1,49 @@
 .portfolio-bkg {
   background-color: $portfolio-bkg;
 
-  .portfolio-controls {
-    border-bottom: 1px solid #444;
-    padding: 100px 0 0 0;
+  .portfolio-toolbar {
+    background-color: $portfolio-toolbar-bkg;
+    height: $portfolio-toolbar-height;
+    margin-top: $toolbar-height;
+    position: fixed;
+    width: 100%;
+    z-index: 50;
 
-    .max-width {
+    .toolbar-section {
+      display: inline-block;
 
-      .control-section {
-        display: inline-block;
-        margin-bottom: -1px;
+      .menu {
+        color: #666;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: $portfolio-toolbar-height;
+        margin: 0 30px;
 
-        > div {
-          color: #555;
-          font-size: 15px;
-          font-weight: 400;
-          text-transform: uppercase;
-        }
-
-        button {
-          background: transparent;
-          border: none;
-          border-bottom: 1px solid transparent;
-          color: #777;
-          font-size: 14px;
-          margin: 10px 20px 0 0;
-          padding: 5px 10px;
-
-          &:hover {
-            border-color: #999;
-            color: #999;
-          }
-
-          &:focus {
-            border-color: $purple;
-            color: $purple;
-          }
-        }
-
-        .active {
-          border-color: $purple;
-          color: $purple;
-
-          &:hover {
-            border-color: $purple;
-            color: $purple;
-          }
+        &:hover {
+          color: #fff;
         }
       }
 
-      > .pull-left {
-        margin-right: 40px;
+      .dropdown {
+        display: none;
       }
 
-      > .pull-right {
-        text-align: right;
+      .toolbar-btn {
+        color: #666;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: $portfolio-toolbar-height;
+        margin: 0 30px;
 
-        button {
-          margin: 10px 0 0 20px; // Overwrite the left controls button margins
+        &:hover {
+          color: #fff;
         }
       }
     }
-  }
+  } 
 
-  .portfolio-container {
-    margin: 0 auto 80px auto;
-    max-width: $website-max-width;
-
-    .portfolio-table {
-
-    }
+  .portfolio-content {
+    padding: ($toolbar-height + $portfolio-toolbar-height + 40px) 0 40px 0;
   }
 }

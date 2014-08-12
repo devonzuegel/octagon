@@ -4,13 +4,17 @@ block sub_layout
    //- add company modal
    include ../modals/add_company.jade
 
-   .toolbar.toolbar-fixed
+   .toolbar.toolbar-fixed.toolbar-dark:.max-width
       include ../includes/toolbar.jade
 
-   .portfolio-controls
-      include ../includes/portfolio_controls.jade
-   .portfolio-container
+   .portfolio-toolbar:.max-width
+      block toolbar
+
+   .portfolio-content:.max-width
+
       //- TODO-- FIX ME
-      div(style='color:white') #{errors}
+      //- div(style='color:white') #{errors}
+
       block content
+
    include ../includes/footer.jade

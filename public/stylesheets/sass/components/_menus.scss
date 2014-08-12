@@ -1,0 +1,10 @@
+.menu {
+  cursor: pointer;
+
+  &:after {
+    content: "\f0d7";
+    font-family: FontAwesome;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}

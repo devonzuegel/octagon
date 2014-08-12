@@ -89,10 +89,11 @@
 }
 
 .mix:hover {
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .v-center-container {
+  @include box-shadow(0, 0, 1px, #999);
   position: absolute;
   width: 190px;
   height: 190px;
@@ -101,13 +102,16 @@
 .v-center-content,
 .v-center-helper {
 
-  .card-title {
-    background-color: #ccc;
-    color: #666;
-    font-size: 20px;
-    font-weight: 400;
+  .card-header {
+    background-color: #fff;
     margin-bottom: 10px;
+    min-height: 74px;
     padding: 20px;
+    text-align: center;
+
+    img {
+      height: 30px;
+    }
   }
 
   .card-body {

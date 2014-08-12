@@ -1,7 +1,28 @@
 extends layouts/portfolio_layout
 
-block content
+block toolbar
 
+  .toolbar-section
+    .menu Owner
+    .dropdown
+      button.filter(data-filter='all') All
+      button.filter(data-filter='.Joe') Joe
+      button.filter(data-filter='.Drew') Drew
+      button.filter(data-filter='.Chris') Chris
+      button.filter(data-filter='.none') No owner
+
+  .toolbar-section
+    .menu Sort
+    .dropdown
+      button.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
+      button.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
+
+  .toolbar-section.pull-right
+    .toolbar-btn(data-toggle="modal" data-target="#add-company") 
+      i.fa.fa-plus.fa-right
+      | Add
+
+block content
   .portfolio-table
     each c, i in companies
       if (c.username != 'admin')
@@ -21,10 +42,11 @@ block content
             .v-center-container: .v-center-helper: .v-center-content.portfolio-card
               if (c.crunchbase_prof.relationships)
 
-                //- Commented out currently
-                //- img(src=c.profile.img_path)
+              .card-header
+                if(c.profile != undefined)
+                  img(src=c.profile.img_path)
+                //- #{c.username}
 
-              .card-title #{c.username}
               .card-body
                 div
                   .small-label Cash

@@ -1,20 +1,18 @@
-.max-width
+//- Left toolbar navigation
+.pull-left
+  a(href='../dashboard/')
+    i.fa.fa-dashboard.fa-right
+    | Dashboard
+  if is_admin
+    a(href='../portfolio/')
+      i.fa.fa-th.fa-right
+      | Portfolio
 
-  //- Left toolbar navigation
-  .pull-left
-    a(href='../dashboard/')
-      i.fa.fa-dashboard.fa-right
-      | Dashboard
-    if is_admin
-      a(href='../portfolio/')
-        i.fa.fa-th.fa-right
-        | Portfolio
-
-  //- Right toolbar navigation
-  .pull-right
-      span #{username}
-      a(href='../../login')
-        i.fa.fa-bell.fa-right
-      a(href='../../logout')
-        i.fa.fa-sign-out.fa-right
-        | Sign out
+//- Right toolbar navigation
+.pull-right
+    span #{username}
+    a(href='../../login')
+      i.fa.fa-bell.fa-right
+    a(href='../../logout')
+      i.fa.fa-sign-out.fa-right
+      | Sign out
