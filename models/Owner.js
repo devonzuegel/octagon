@@ -5,18 +5,14 @@ mongoose.connect('mongodb://localhost/test');
 
 var Schema = mongoose.Schema;
 var OwnerDetail = new Schema({
-      username: String,
-      password: String,
-      init_investmt_date: 'object',
-      img_path: String,
-      crunchbase_permalink: String,
-      crunchbase_prof: 'object',
-      owners: 'object',
-      profile: 'object',
-      permalink: String
-    }, {
-      collection: 'userInfo'
-    });
+    name: {
+      first: String,
+      last: String
+    }
+    companies: 'object'
+  }, {
+    collection: 'ownerInfo'
+  });
 var OwnerDetails = mongoose.model('ownerInfo', OwnerDetail);
 
 function obj_arr_to_str(p, obj) {
