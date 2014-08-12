@@ -13548,13 +13548,29 @@ input:-webkit-autofill {
   font-family: FontAwesome;
   vertical-align: middle; }
 
-.menu {
-  cursor: pointer; }
-  .menu:after {
-    content: "\f0d7";
-    font-family: FontAwesome;
-    margin-left: 10px;
-    vertical-align: middle; }
+.dropdown {
+  display: inline-block; }
+  .dropdown .dropdown-toggle {
+    background: none;
+    border: none;
+    padding: 0; }
+    .dropdown .dropdown-toggle:after {
+      content: "\f0d7";
+      font-family: FontAwesome;
+      margin-left: 10px;
+      vertical-align: middle; }
+  .dropdown .dropdown-menu {
+    background: #eee;
+    border: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    background-clip: padding-box;
+    padding: 0; }
+    .dropdown .dropdown-menu li {
+      cursor: pointer; }
+      .dropdown .dropdown-menu li:hover {
+        color: #333; }
 
 .auth-bkg {
   background-color: #222222; }
@@ -13651,33 +13667,43 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    height: 56px;
+    height: 44px;
     margin-top: 56px;
-    position: fixed;
+    position: absolute;
     width: 100%;
     z-index: 50; }
     .portfolio-bkg .portfolio-toolbar .toolbar-section {
       display: inline-block; }
-      .portfolio-bkg .portfolio-toolbar .toolbar-section .menu {
-        color: #999;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 56px;
-        margin: 0 60px 0 0; }
-        .portfolio-bkg .portfolio-toolbar .toolbar-section .menu:hover {
-          color: #333; }
       .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown {
-        display: none; }
+        margin-right: 100px; }
+        .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-toggle {
+          color: #999;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 44px;
+          text-transform: uppercase; }
+          .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-toggle:hover {
+            color: #333; }
+        .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-menu {
+          margin-top: -44px; }
+          .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-menu li:first-child {
+            border-bottom: 1px solid #ddd; }
+          .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-menu li {
+            color: #999;
+            font-size: 14px;
+            line-height: 43px;
+            padding: 0 10px; }
       .portfolio-bkg .portfolio-toolbar .toolbar-section .toolbar-btn {
         color: #999;
         cursor: pointer;
         font-size: 14px;
         font-weight: 500;
-        line-height: 56px; }
+        line-height: 44px;
+        text-transform: uppercase; }
         .portfolio-bkg .portfolio-toolbar .toolbar-section .toolbar-btn:hover {
           color: #333; }
   .portfolio-bkg .portfolio-content {
-    padding: 152px 0 40px 0; }
+    padding: 140px 0 40px 0; }
 
 /* I have not been through this page to make it simpler through Sass.
  * Will be doing this over the next couple of days.  Wasn't sure which classes

@@ -20,16 +20,16 @@ include ../mixins/edit_modal_mixin
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
 
   .small-label Link to Crunchbase
-  input(type="text" name="crunchbase_permalink", placeholder="Crunchbase permalink"  autocomplete="off")
+  input(type="text" name="crunchbase_permalink", placeholder="Crunchbase permalink" id="permalink"  autocomplete="off")
     
-  div.small-label Owner(s)
-  div.checkbox-group
+  .small-label Owner(s)
+  .checkbox-group
     input(type="checkbox" name="owners" id="Chris" value="Chris") 
     label(for="Chris") Chris
-  div.checkbox-group
+  .checkbox-group
     input(type="checkbox" name="owners" id="Drew" value="Drew") 
     label(for="Drew") Drew
-  div.checkbox-group
+  .checkbox-group
     input(type="checkbox" name="owners" id="Joe" value="Joe") 
     label(for="Joe") Joe
 

@@ -6,27 +6,42 @@
     @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2));
     height: $portfolio-toolbar-height;
     margin-top: $toolbar-height;
-    position: fixed;
+    position: absolute;
     width: 100%;
     z-index: 50;
 
     .toolbar-section {
       display: inline-block;
 
-      .menu {
-        color: #999;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: $portfolio-toolbar-height;
-        margin: 0 60px 0 0;
-
-        &:hover {
-          color: #333;
-        }
-      }
-
       .dropdown {
-        display: none;
+        margin-right: 100px;
+
+        .dropdown-toggle {
+          color: #999;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: $portfolio-toolbar-height;
+          text-transform: uppercase;
+
+          &:hover {
+            color: #333;
+          }
+        }
+
+        .dropdown-menu {
+          margin-top: -1 * $portfolio-toolbar-height;
+
+          li:first-child {
+            border-bottom: 1px solid #ddd;
+          }
+
+          li {
+            color: #999;
+            font-size: 14px;
+            line-height: $portfolio-toolbar-height - 1px;
+            padding: 0 10px;
+          }
+        }
       }
 
       .toolbar-btn {
@@ -35,6 +50,7 @@
         font-size: 14px;
         font-weight: 500;
         line-height: $portfolio-toolbar-height;
+        text-transform: uppercase;
 
         &:hover {
           color: #333;

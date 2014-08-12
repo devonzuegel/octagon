@@ -3,19 +3,21 @@ extends layouts/portfolio_layout
 block toolbar
 
   .toolbar-section
-    .menu Owner
-    .dropdown
-      button.filter(data-filter='all') All
-      button.filter(data-filter='.Joe') Joe
-      button.filter(data-filter='.Drew') Drew
-      button.filter(data-filter='.Chris') Chris
-      button.filter(data-filter='.none') No owner
+    .dropdown 
+      button.dropdown-toggle(type="button", data-toggle="dropdown") Owner
+      ul.dropdown-menu
+        li.filter(data-filter='all') All
+        li.filter(data-filter='.Joe') Joe
+        li.filter(data-filter='.Drew') Drew
+        li.filter(data-filter='.Chris') Chris
+        li.filter(data-filter='.none') No owner
 
   .toolbar-section
-    .menu Sort
-    .dropdown
-      button.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
-      button.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
+    .dropdown 
+      button.dropdown-toggle(type="button", data-toggle="dropdown") Sort
+      ul.dropdown-menu
+        li.filter(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
+        li.filter(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
 
   .toolbar-section.pull-right
     .toolbar-btn(data-toggle="modal" data-target="#add-company") 
