@@ -7,7 +7,7 @@ var api_mgr = require('../routes/apiManager');
 // var bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema;
-var CompanyDetail = new Schema({
+var CompanySchema = new Schema({
       username: String,
       password: String,
       init_investmt_date: 'object',
@@ -18,19 +18,19 @@ var CompanyDetail = new Schema({
       profile: 'object',
       permalink: String
     }, {
-      collection: 'userInfo'
+      collection: 'companies'
     });
-var CompanyDetails = mongoose.model('userInfo', CompanyDetail);
+var Companies = mongoose.model('companies', CompanySchema);
 
 function obj_arr_to_str(p, obj) {
-  if (p.relationships[obj]) {
-    var str = '';
+  var str = '';  // start with empty string
+  if (p.relationships[obj]) {  // check the obj is defined
     for (var i = 0; i < p.relationships[obj].items.length; i++) {
-      if (i != 0) str += ', ';
-      str += p.relationships[obj].items[i].name;
+      if (i != 0) str += ', ';  // concat comma to front unless it's 0th
+      str += p.relationships[obj].items[i].name;  // concat name
     }
-    return (str == '') ? undefined : str;
   }
+  return (str == '') ? undefined : str;
 }
 
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
@@ -59,7 +59,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       if (username)   permalink = username.replace(/\s+/g, '-').toLowerCase();
     }
 
-    var c = new CompanyDetails({ 
+    var c = new Companies({ 
       'username': username,
       'password': password, 
       'init_investmt_date': init_investmt_date,
@@ -79,7 +79,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 }
 
 // function update(u_param, orig_profile, updates, callback) {
-//   CompanyDetails.findOne({ username: u_param }, function (err, user) {
+//   Companies.findOne({ username: u_param }, function (err, user) {
 //     if (err)  return done(err);
 
 //     var profile = {};
@@ -96,7 +96,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 // }
 
 function username_inuse(u) {
-  CompanyDetails.find({ username: u }, function (err, users) { 
+  Companies.find({ username: u }, function (err, users) { 
     console.log("users=  %j", users) 
   });
 }
@@ -106,7 +106,7 @@ function salt_fn(pw) {
 }
 
 function find(username) {
-  CompanyDetails.findOne({ username: username, }, 
+  Companies.findOne({ username: username, }, 
                       function(err, user) {
                         if (err)    return done(err);
                         if (!user)  done(null, false);     
@@ -129,7 +129,7 @@ module.exports.add = add;
 // module.exports.update = update;
 module.exports.test = test;
 module.exports.passport = passport;
-module.exports.CompanyDetails = CompanyDetails;
+module.exports.CompanyDetails = Companies;
 module.exports.salt_fn = salt_fn;
 module.exports.has_privileges = has_privileges;
 // module.exports.username_inuse = username_inuse;
