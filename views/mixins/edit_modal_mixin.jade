@@ -10,7 +10,6 @@ mixin edit_modal(action, modal_id, modal_title)
           input(type="submit"  value="Save")
 
 script.
-
   // Highlight label of input field on focus
   $('input[type=text], input[type=password], textarea').on('blur', function() {
     $(this).prev('.small-label').removeClass('small-label-focused');

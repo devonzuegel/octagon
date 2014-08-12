@@ -1,6 +1,6 @@
 include ../mixins/edit_modal_mixin
 
-+edit_modal("/portfolio/add_user", "add-company-form", "Add Company")
++edit_modal("/portfolio/add", "add-company-form", "Add Company")
   .small-label Add company name
   .error#username-error
     div You must include a name for the company.
@@ -19,8 +19,8 @@ include ../mixins/edit_modal_mixin
   //- Commented out calendar picker
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
 
-  .small-label Crunchbase permalink
-  input(type="text" name="crunchbase_permalink", placeholder="" id="permalink"  autocomplete="off")
+  .small-label Link to Crunchbase (e.g. http://www.crunchbase.com/organization/PERMALINK)
+  input(type="text" name="crunchbase_permalink", placeholder="Crunchbase permalink" id="permalink"  autocomplete="off")
     
   .small-label Owner(s)
   .checkbox-group

@@ -1,5 +1,6 @@
 .modal {
   margin: 0 auto;
+  z-index: 3000000000;
 
   .modal-dialog {
     max-height: 85%;
@@ -56,7 +57,7 @@
 
           &:focus {
             color: $purple;
-            border-bottom: 2px solid $purple;
+            border-bottom: 1px solid $purple;
           }
         }
 

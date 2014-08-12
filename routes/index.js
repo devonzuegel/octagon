@@ -47,6 +47,30 @@ router.get('/dashboard', function(req, res) {
 	);
 });
 
+
+/*
+router.get('/settings', function(req, res) {
+	privileges.require_privileges(
+		req, res, 
+		false,  // Do not include flash error msgs
+		admin_fn = function() {
+			// Render F8's dashboard
+			res.render('settings', { 
+				title: 'Settings', 
+				errors: req.flash('error'),
+				username: req.session.username,
+				is_admin: true  
+			});
+		}, 
+		user_fn = function() { 
+	      // redirect to logged in company's page
+	      res.redirect('/portfolio/' + req.session.permalink); 
+		}
+	);
+});
+*/
+
+
 // login methods
 router.get('/login', function(req, res) {
 	res.render('login', {title: 'Login', errors: req.flash('error')});
