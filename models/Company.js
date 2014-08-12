@@ -24,13 +24,23 @@ var Companies = mongoose.model('companies', CompanySchema);
 
 function obj_arr_to_str(p, obj) {
   var str = '';  // start with empty string
-  if (p.relationships[obj]) {  // check the obj is defined
+
+  // if the obj is defined, concatenate each of its children's names
+  if (p.relationships[obj]) {
+
     for (var i = 0; i < p.relationships[obj].items.length; i++) {
-      if (i != 0) str += ', ';  // concat comma to front unless it's 0th
-      str += p.relationships[obj].items[i].name;  // concat name
+      // concatenate comma to front unless it's 0th
+      if (i != 0) str += ', ';
+      // concatenate name
+      str += p.relationships[obj].items[i].name;
     }
+    // return resulting string
+    return str; 
+
+  // if obj is not defined, return 'undefined'
+  } else {
+    return undefined;
   }
-  return (str == '') ? undefined : str;
 }
 
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, callback) {
@@ -95,11 +105,6 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 //   });
 // }
 
-function username_inuse(u) {
-  Companies.find({ username: u }, function (err, users) { 
-    console.log("users=  %j", users) 
-  });
-}
 
 function salt_fn(pw) {
   console.log(pw + '----');

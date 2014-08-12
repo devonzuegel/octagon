@@ -42,38 +42,32 @@ router.post('/add', function(req, res) {
   //// NOTE: validations happen onclick before submit/post is allowed to occur
   var form = req.body;  // grab body of form
 
+  // Case-insensitive query
+  var query = { 'username': { $regex: '^'+form.username+'$', $options: '-i' } };
   // search for company with same username (case insensitive query)
-  CompanyDetails.find(
-    
-    // Case-insensitive query:
-    { 'username': { $regex: '^'+form.username+'$', $options: '-i' } }, 
-    
-    // Callback fn:
-    cb = function(err, u) {
-      if (err)    return done(err);
+  CompanyDetails.find(query, cb = function(err, u) {
+    if (err)    return done(err);
 
-      // search returns empty
-      if (u.length == 0) {
-        // only add a company if the search returns empty
-        CompanyModel.add(
-          form.username,
-          form.password, 
-          form.init_investmt_date, 
-          form.crunchbase_permalink,
-          form.owners,
-          // after company is added to db, redirect to main portfolio page
-          function() { res.redirect('/portfolio/'); }
-        );
+    // search returns empty
+    if (u.length == 0) {
+      // only add a company if the search returns empty
+      CompanyModel.add(
+        form.username,
+        form.password, 
+        form.init_investmt_date, 
+        form.crunchbase_permalink,
+        form.owners,
+        // after company is added to db, redirect to main portfolio page
+        function() { res.redirect('/portfolio/'); }
+      );
 
-      // search doesn't return empty
-      } else {
-        // if search doesn't return empty, return us to portfolio page
-        req.flash('error', 'That company already exists!');
-        res.redirect('/portfolio/');
-      }
-    } // End of cb()
-
-  ); // End of CompanyDetails.find()
+    // search doesn't return empty
+    } else {
+      // return us to portfolio page
+      req.flash('error', 'That company already exists!');
+      res.redirect('/portfolio/');
+    }
+  }); // End of CompanyDetails.find()
   
 });
 
