@@ -13753,7 +13753,7 @@ input:-webkit-autofill {
 .grid .mix {
   width: 190px;
   height: 190px;
-  margin: 0 0 1px 0; }
+  margin: 3px; }
   .grid .mix .card-header {
     margin-bottom: 10px;
     min-height: 74px;
