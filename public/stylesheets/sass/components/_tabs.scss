@@ -1,0 +1,42 @@
+.nav-tabs {
+  border: none;
+  height: 100%;
+
+  .navbar-tab {
+
+    a {
+      background: none;
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: 3px solid transparent;
+      color: #999;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 47px;
+      margin: 0;
+      padding: 0 20px;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: transparent !important;
+        border: none !important;
+        color: #666;
+      }
+    }
+  }
+
+  .active {
+
+    a {
+      background-color: transparent !important;
+      border-bottom: 3px solid $purple !important;
+      color: $purple !important;
+
+      &:hover {
+        border-bottom: 3px solid $purple !important;
+      }
+    }
+  }
+}

@@ -13576,6 +13576,34 @@ input:-webkit-autofill {
       .dropdown .dropdown-menu li:hover {
         color: #333; }
 
+.nav-tabs {
+  border: none;
+  height: 100%; }
+  .nav-tabs .navbar-tab a {
+    background: none;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 3px solid transparent;
+    color: #999;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 47px;
+    margin: 0;
+    padding: 0 20px;
+    text-transform: uppercase; }
+    .nav-tabs .navbar-tab a:hover {
+      background-color: transparent !important;
+      border: none !important;
+      color: #666; }
+  .nav-tabs .active a {
+    background-color: transparent !important;
+    border-bottom: 3px solid #8a64d1 !important;
+    color: #8a64d1 !important; }
+    .nav-tabs .active a:hover {
+      border-bottom: 3px solid #8a64d1 !important; }
+
 .auth-bkg {
   background-color: #222222; }
   .auth-bkg .auth-error {
@@ -13852,8 +13880,9 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    height: 50px; }
-    .company-bkg .company-navbar .navbar-tab {
+    height: 50px;
+    /*
+    .navbar-tab {
       border-bottom: 3px solid transparent;
       color: #999;
       cursor: pointer;
@@ -13862,14 +13891,21 @@ input:-webkit-autofill {
       font-weight: 500;
       line-height: 47px;
       padding: 0 20px;
-      text-transform: uppercase; }
-      .company-bkg .company-navbar .navbar-tab:hover {
-        color: #666; }
-    .company-bkg .company-navbar .active-tab {
-      border-color: #8a64d1;
-      color: #8a64d1; }
-      .company-bkg .company-navbar .active-tab:hover {
-        color: #8a64d1; }
+      text-transform: uppercase;
+
+      &:hover {
+        color: #666;
+      }
+    }
+
+    .active-tab {
+      border-color: $purple;
+      color: $purple;
+
+      &:hover {
+        color: $purple;
+      }
+    }*/ }
   .company-bkg .company-content {
     margin: 80px 0; }
     .company-bkg .company-content .content-block {

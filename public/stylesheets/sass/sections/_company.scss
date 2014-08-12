@@ -64,6 +64,7 @@
     @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2));
     height: 50px;
 
+    /*
     .navbar-tab {
       border-bottom: 3px solid transparent;
       color: #999;
@@ -87,7 +88,7 @@
       &:hover {
         color: $purple;
       }
-    }
+    }*/
   }
 
   .company-content {
