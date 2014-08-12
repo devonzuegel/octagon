@@ -1,134 +1,14 @@
 extends layouts/company_layout
 
 block header
-
-  .max-width
-
-    //- Edit
-    .company-header-edit.edit-btn(data-toggle="modal" data-target="#edit-header") 
-      i.fa.fa-pencil.fa-right
-      | edit
-
-    .company-header-info
-
-      //- Company logo
-      .company-logo
-        if (p && p.img_path)
-          img(src=p.img_path)
-        else
-          Add logo
-
-      .company-header-text
-        //- Company name
-        .company-name
-          if (name)
-            | #{name}
-          else
-            | Add name
-
-        //- Company description
-        .company-description
-          if (p && p.short_descrip)
-            | #{p.short_descrip}
-          else
-            | Add description
-
-        .company-website
-          if (p && p.homepage_url)
-            a(href="http://" + "#{p.homepage_url}") #{p.homepage_url}
-          else
-            | Add homepage url 
-
+  include sections/company/header.jade
 block navbar
-    ul.max-width.nav-tabs(role="tablist")
-      li.navbar-tab.active: a(href="#overview" role="tab" data-toggle="tab") Overview
-      li.navbar-tab: a(href="#financials" role="tab" data-toggle="tab") Financials
-
+  include sections/company/navbar.jade
 block content
-
   .max-width.tab-content
-
-    .tab-pane.active#overview
-      .content-block.block-margin-right.block-margin-bottom
-        .block-title About
-
-        .block-edit.edit-btn(data-toggle="modal" data-target="#edit-about")
-          i.fa.fa-pencil.fa-right
-          | edit
-
-        .block-info
-
-          //- Function to find + format links
-          - function findLinks(description) {
-          - 
-          -   // Regex to match onto the link syntax Crunchbase gives
-          -   var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
-          - 
-          -   // Replace all occurances with proper link format,
-          -   // and return the new description
-          -   return description.replace(link, '<a href=\'http://www.crunchbase.com$2\'>$1</a>');
-          - }
-
-          if (p && p.description)
-            div 
-              #{findLinks(p.description)}
-          else
-            div Add description
-
-      .content-block.block-margin-bottom
-        .block-title Info
-
-        .block-edit.edit-btn(data-toggle="modal" data-target="#edit-info")
-          i.fa.fa-pencil.fa-right
-          | edit
-
-        .block-info
-
-          if (p && p.categories)
-            h2 Categories
-            div #{p.categories}
-          else
-            div Add categories
-
-          if (p && p.founders)
-            h2 Founders
-            div #{p.founders}
-          else
-            div Add founders
-
-          if (p && p.founded_on)
-            h2 Founding Date
-            div #{p.founded_on}
-          else
-            div Add date
-
-          if (p && p.total_funding)
-            h2 Total Funding
-            div $#{p.total_funding}
-          else
-            div Add funding info
-
-      .content-block.block-margin-right
-        .block-title Milestones
-
-        .block-edit.edit-btn.edit-disabled(data-toggle="modal" data-target="")
-          i.fa.fa-pencil.fa-right
-          | edit
-
-        .block-info
-          | N/A
-
-      .content-block
-        .block-title Team
-
-        .block-edit.edit-btn.edit-disabled(data-toggle="modal" data-target="#")
-          i.fa.fa-pencil.fa-right
-          | edit
-
-        .block-info
-          | N/A
-
-    .tab-pane#financials
+    include sections/company/overview.jade
+    include sections/company/financials.jade
+    include sections/company/documents.jade
 
 
 

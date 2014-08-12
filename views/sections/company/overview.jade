@@ -1,0 +1,79 @@
+.tab-pane.active#overview
+  .content-block.block-margin-right.block-margin-bottom
+    .block-title About
+
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-about")
+      i.fa.fa-pencil.fa-right
+      | edit
+
+    .block-info
+
+      //- Function to find + format links
+      - function findLinks(description) {
+      - 
+      -   // Regex to match onto the link syntax Crunchbase gives
+      -   var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
+      - 
+      -   // Replace all occurances with proper link format,
+      -   // and return the new description
+      -   return description.replace(link, '<a href=\'http://www.crunchbase.com$2\'>$1</a>');
+      - }
+
+      if (p && p.description)
+        div 
+          #{findLinks(p.description)}
+      else
+        div Add description
+
+  .content-block.block-margin-bottom
+    .block-title Info
+
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-info")
+      i.fa.fa-pencil.fa-right
+      | edit
+
+    .block-info
+
+      if (p && p.categories)
+        h2 Categories
+        div #{p.categories}
+      else
+        div Add categories
+
+      if (p && p.founders)
+        h2 Founders
+        div #{p.founders}
+      else
+        div Add founders
+
+      if (p && p.founded_on)
+        h2 Founding Date
+        div #{p.founded_on}
+      else
+        div Add date
+
+      if (p && p.total_funding)
+        h2 Total Funding
+        div $#{p.total_funding}
+      else
+        div Add funding info
+
+  .content-block.block-margin-right
+    .block-title Milestones
+
+    .block-edit.edit-btn.edit-disabled(data-toggle="modal" data-target="")
+      i.fa.fa-pencil.fa-right
+      | edit
+
+    .block-info
+      | N/A
+
+  .content-block
+    .block-title Team
+
+    .block-edit.edit-btn.edit-disabled(data-toggle="modal" data-target="#")
+      i.fa.fa-pencil.fa-right
+      | edit
+
+    .block-info
+      | N/A
