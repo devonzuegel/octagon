@@ -63,32 +63,6 @@
     background-color: #eee;
     @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2));
     height: 50px;
-
-    /*
-    .navbar-tab {
-      border-bottom: 3px solid transparent;
-      color: #999;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 47px;
-      padding: 0 20px;
-      text-transform: uppercase;
-
-      &:hover {
-        color: #666;
-      }
-    }
-
-    .active-tab {
-      border-color: $purple;
-      color: $purple;
-
-      &:hover {
-        color: $purple;
-      }
-    }*/
   }
 
   .company-content {
@@ -97,7 +71,7 @@
     .content-block {
       display: inline-table;
       position: relative;
-      width: 49%;
+      width: 48%;
 
       .block-title {
         color: #999;
@@ -148,11 +122,11 @@
     }
 
     .block-margin-right {
-      margin-right: 2%;
+      margin-right: 4%;
     }
 
     .block-margin-bottom {
-      margin-bottom: 2%;
+      margin-bottom: 4%;
     }
   }
 }

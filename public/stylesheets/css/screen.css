@@ -13880,38 +13880,13 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    height: 50px;
-    /*
-    .navbar-tab {
-      border-bottom: 3px solid transparent;
-      color: #999;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 47px;
-      padding: 0 20px;
-      text-transform: uppercase;
-
-      &:hover {
-        color: #666;
-      }
-    }
-
-    .active-tab {
-      border-color: $purple;
-      color: $purple;
-
-      &:hover {
-        color: $purple;
-      }
-    }*/ }
+    height: 50px; }
   .company-bkg .company-content {
     margin: 80px 0; }
     .company-bkg .company-content .content-block {
       display: inline-table;
       position: relative;
-      width: 49%; }
+      width: 48%; }
       .company-bkg .company-content .content-block .block-title {
         color: #999;
         display: inline-block;
@@ -13944,9 +13919,9 @@ input:-webkit-autofill {
         .company-bkg .company-content .content-block .block-info > div {
           margin: 0 0 20px 0; }
     .company-bkg .company-content .block-margin-right {
-      margin-right: 2%; }
+      margin-right: 4%; }
     .company-bkg .company-content .block-margin-bottom {
-      margin-bottom: 2%; }
+      margin-bottom: 4%; }
 
 .edit-btn {
   cursor: pointer;
