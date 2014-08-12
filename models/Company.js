@@ -128,4 +128,4 @@ function update(u_param, orig_profile, updates, callback) {
 module.exports.add = add;
 // module.exports.update = update;
 module.exports.passport = passport;
-module.exports.CompanyDetails = Company;
+module.exports.Companies = Company;

@@ -1,18 +1,34 @@
-include mixins/edit_modal_mixin
+extends ./layout
 
-+edit_modal("/portfolio/settings", "edit-settings", "Settings")
-  .small-label Owners
-  .checkbox-group
-    input(type="checkbox" name="owners" id="Chris" value="Chris") 
-    label(for="Chris") Chris
-  .checkbox-group
-    input(type="checkbox" name="owners" id="Drew" value="Drew") 
-    label(for="Drew") Drew
-  .checkbox-group
-    input(type="checkbox" name="owners" id="Joe" value="Joe") 
-    label(for="Joe") Joe
+block sub_layout
 
+  body.portfolio-bkg
 
+    .toolbar.toolbar-absolute.toolbar-dark:.max-width
+      include ./includes/toolbar.jade
 
+    .portfolio-content:.max-width
+      p all_owners:  { #{all_owners} }
 
+      include ./mixins/edit_page_mixin
 
+      +edit_page("/portfolio/add", "add-company-form", "Add Company")
+        //- Owners  
+        .small-label Owner(s)
+        .checkbox-group
+          input(type="checkbox" name="owners" id="Chris" value="Chris") 
+          label(for="Chris") Chris
+        .checkbox-group
+          input(type="checkbox" name="owners" id="Drew" value="Drew") 
+          label(for="Drew") Drew
+        .checkbox-group
+          input(type="checkbox" name="owners" id="Joe" value="Joe") 
+          label(for="Joe") Joe
+
+      script.
+        // Highlight label of input field on focus
+        $('input[type=text], input[type=password], textarea').on('blur', function() {
+          $(this).prevAll('.small-label:first').removeClass('small-label-focused');
+        }).on('focus', function() {
+          $(this).prevAll('.small-label:first').addClass('small-label-focused');
+        });

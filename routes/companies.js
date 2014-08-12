@@ -5,9 +5,9 @@ var express = require('express'),
 
 // require (authentication stuff)
 var CompanyModel = require('../models/Company.js'),
+    Companies = CompanyModel.Companies,
     passport = CompanyModel.passport,
     LocalStrategy = require('passport-local').Strategy,
-		CompanyDetails = CompanyModel.CompanyDetails,
     privileges = require('./privileges.js');
 
 router.get('/', function(req, res) {
@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
     false,  // don't include flash error messages
     admin_fn = function() {
       // grab all companies from db for access by 'portfolio' view
-      CompanyDetails.find({}, function(err, all_companies) {
+      Companies.find({}, function(err, all_companies) {
         if (err)    return done(err);
 
         // render portfolio view
@@ -45,7 +45,7 @@ router.post('/add', function(req, res) {
   // Case-insensitive query
   var query = { 'username': { $regex: '^'+form.username+'$', $options: '-i' } };
   // search for company with same username (case insensitive query)
-  CompanyDetails.find(query, cb = function(err, u) {
+  Companies.find(query, cb = function(err, u) {
     if (err)    return done(err);
 
     // search returns empty
@@ -67,7 +67,7 @@ router.post('/add', function(req, res) {
       req.flash('error', 'That company already exists!');
       res.redirect('/portfolio/');
     }
-  }); // End of CompanyDetails.find()
+  }); // End of Companies.find()
   
 });
 
@@ -86,7 +86,7 @@ router.get('/:permalink', function(req, res) {
     }
   );
 
-  CompanyDetails.findOne({ 'permalink': link, }, function(err, company) {
+  Companies.findOne({ 'permalink': link, }, function(err, company) {
     if (err)    return done(err);
     
     // not a valid company >> doesn't have a profile
@@ -131,7 +131,7 @@ router.post('/:permalink/edit', function(req, res) {
     }
   );
 
-  CompanyDetails.findOne({ permalink: link }, function (err, user) {
+  Companies.findOne({ permalink: link }, function (err, user) {
     if (err)  return done(err);
 
     var profile = {};
