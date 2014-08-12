@@ -14,14 +14,13 @@
       display: inline-block;
 
       .dropdown {
-        margin-right: 100px;
+        margin-right: 80px;
 
         .dropdown-toggle {
           color: #999;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: $portfolio-toolbar-height;
-          text-transform: uppercase;
 
           &:hover {
             color: #333;
@@ -36,7 +35,6 @@
           }
 
           li {
-            color: #999;
             font-size: 14px;
             line-height: $portfolio-toolbar-height - 1px;
             padding: 0 10px;
@@ -50,7 +48,6 @@
         font-size: 14px;
         font-weight: 500;
         line-height: $portfolio-toolbar-height;
-        text-transform: uppercase;
 
         &:hover {
           color: #333;

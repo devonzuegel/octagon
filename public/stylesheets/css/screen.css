@@ -13549,6 +13549,10 @@ input:-webkit-autofill {
   vertical-align: middle; }
 
 .dropdown {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-clip: padding-box;
   display: inline-block; }
   .dropdown .dropdown-toggle {
     background: none;
@@ -13566,8 +13570,10 @@ input:-webkit-autofill {
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     background-clip: padding-box;
+    min-width: 120px;
     padding: 0; }
     .dropdown .dropdown-menu li {
+      color: #999;
       cursor: pointer; }
       .dropdown .dropdown-menu li:hover {
         color: #333; }
@@ -13675,13 +13681,12 @@ input:-webkit-autofill {
     .portfolio-bkg .portfolio-toolbar .toolbar-section {
       display: inline-block; }
       .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown {
-        margin-right: 100px; }
+        margin-right: 80px; }
         .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-toggle {
           color: #999;
           font-size: 14px;
-          font-weight: 500;
-          line-height: 44px;
-          text-transform: uppercase; }
+          font-weight: 400;
+          line-height: 44px; }
           .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-toggle:hover {
             color: #333; }
         .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-menu {
@@ -13689,7 +13694,6 @@ input:-webkit-autofill {
           .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-menu li:first-child {
             border-bottom: 1px solid #ddd; }
           .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown .dropdown-menu li {
-            color: #999;
             font-size: 14px;
             line-height: 43px;
             padding: 0 10px; }
@@ -13698,8 +13702,7 @@ input:-webkit-autofill {
         cursor: pointer;
         font-size: 14px;
         font-weight: 500;
-        line-height: 44px;
-        text-transform: uppercase; }
+        line-height: 44px; }
         .portfolio-bkg .portfolio-toolbar .toolbar-section .toolbar-btn:hover {
           color: #333; }
   .portfolio-bkg .portfolio-content {

@@ -1,30 +1,31 @@
 script(type='text/javascript'): include ../../public/scripts/filters.js
+script(type='text/javascript'): include ../../public/scripts/add-company.js
+
 
 script.
 
-  // JQuery closure
-  (function($){
+  // When document has is ready
+  $(document).ready(function() {
 
-    // When document has is ready
-    $(document).ready(function() {
-
-      // Settings for tooltip
-      $('.tooltip_a a').tooltip({
-          placement : 'bottom',
-          html: true,
-          effect: 'slide',
-          content: 'loading...',
-          open: function (event, ui) {
-              $(ui.tooltip).appendTo(this);
-          }
-      });
-
-      // Initialize mixItUp
-      $('.portfolio-table').mixItUp();
-
-      // Initialize datepicker
-      $('#datepicker').datepicker({
-        format: 'dd/mm/yyyy'
-      });
+    // Settings for tooltip
+    $('.tooltip_a a').tooltip({
+        placement : 'bottom',
+        html: true,
+        effect: 'slide',
+        content: 'loading...',
+        open: function (event, ui) {
+            $(ui.tooltip).appendTo(this);
+        }
     });
-  })(jQuery);
+
+    // Initialize mixItUp
+    $('.portfolio-table').mixItUp();
+
+    // Initialize datepicker
+    $('#datepicker').datepicker({
+      format: 'dd/mm/yyyy'
+    });
+
+    // Initialize addCompany
+    addCompany.init();
+  });

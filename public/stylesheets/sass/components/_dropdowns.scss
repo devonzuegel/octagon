@@ -1,4 +1,5 @@
 .dropdown {
+  @include border-radius(2px);
   display: inline-block;
 
   .dropdown-toggle {
@@ -18,9 +19,11 @@
     background: #eee;
     border: none;
     @include border-radius(0);
+    min-width: 120px;
     padding: 0;
 
     li {
+      color: #999;
       cursor: pointer;
 
       &:hover {
