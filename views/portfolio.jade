@@ -19,6 +19,12 @@ block toolbar
         li.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
         li.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
 
+  .toolbar-section
+    .toolbar-btn#change-layout
+      i.fa.fa-th-large.fa-right 
+      | Display as grid
+
+
   .toolbar-section.pull-right
     .toolbar-btn#add-company-btn(data-toggle="modal" data-target="#add-company-form") 
       i.fa.fa-plus.fa-right
@@ -41,7 +47,7 @@ block content
                 - owners_class += o + ' '
 
           a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
-            .v-center-container: .v-center-helper: .v-center-content.portfolio-card
+            .portfolio-card
               if (c.crunchbase_prof.relationships)
 
               .card-header

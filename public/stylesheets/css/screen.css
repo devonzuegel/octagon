@@ -13732,107 +13732,31 @@ input:-webkit-autofill {
   .portfolio-bkg .portfolio-content {
     padding: 140px 0 40px 0; }
 
-/* I have not been through this page to make it simpler through Sass.
- * Will be doing this over the next couple of days.  Wasn't sure which classes
- * were 100% necessary.
- */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.mixitup-container {
-  padding: 2% 10% 2% 10%;
-  text-align: justify;
-  font-size: 0.1px;
-  background: #68b8c4;
-  -webkit-backface-visibility: hidden; }
-
-.mixitup-container:after {
-  content: '';
-  display: inline-block;
-  width: 100%; }
-
-.mixitup-container .mix,
-.mixitup-container .gap {
-  display: inline-block;
-  width: 49%; }
-
-.mixitup-container .mix {
-  text-align: left;
-  background: #03899c;
-  margin-bottom: 2%;
-  display: none; }
-
-.mixitup-container .mix.category-1 {
-  border-top: 2px solid #aaa; }
-
-.mixitup-container .mix.category-2 {
-  border-top: 2px solid yellow; }
-
-.mixitup-container .mix:after {
-  content: attr(data-myorder);
-  color: white;
-  font-size: 16px;
-  display: inline-block;
-  vertical-align: top;
-  padding: 4% 6%;
-  font-weight: 700; }
-
-.mixitup-container .mix:before {
-  content: '';
-  display: inline-block;
-  padding-top: 60%; }
-
-@media (max-width: 500px) {
-  .mix {
-    width: 96%; } }
-@media (min-width: 500px) {
-  .mix {
-    width: 46%; } }
-@media (min-width: 900px) {
-  .mix {
-    width: 30.5%; } }
-@media (min-width: 1000px) {
-  .mix {
-    width: 22.5%; } }
-.mix {
+.list .mix {
   background-color: #fff;
   cursor: pointer;
   display: none;
-  color: #999;
   width: 190px;
   height: 190px;
-  margin: 3px; }
-
-.mix:hover {
+  margin: 0; }
+.list .mix:hover {
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
-
-.v-center-container {
-  position: absolute;
-  width: 190px;
-  height: 190px; }
-
-.v-center-content .card-header,
-.v-center-helper .card-header {
+.list .portfolio-card .card-header {
   background-color: #fff;
   margin-bottom: 10px;
   min-height: 74px;
   padding: 20px;
   text-align: center; }
-  .v-center-content .card-header img,
-  .v-center-helper .card-header img {
+  .list .portfolio-card .card-header img {
     height: 30px; }
-.v-center-content .card-body,
-.v-center-helper .card-body {
+.list .portfolio-card .card-body {
   padding: 0 20px 20px 20px; }
-  .v-center-content .card-body > div .small-label,
-  .v-center-helper .card-body > div .small-label {
+  .list .portfolio-card .card-body > div .small-label {
+    color: #999;
     margin: 12px 0 3px 0; }
-  .v-center-content .card-body > div .card-info,
-  .v-center-helper .card-body > div .card-info {
+  .list .portfolio-card .card-body > div .card-info {
     color: #666;
     font-size: 16px; }
 

@@ -1,5 +1,6 @@
 script(type='text/javascript'): include ../../public/scripts/filters.js
 script(type='text/javascript'): include ../../public/scripts/add-company.js
+script(type='text/javascript'): include ../../public/scripts/portfolio.js
 
 
 script.
@@ -17,9 +18,6 @@ script.
             $(ui.tooltip).appendTo(this);
         }
     });
-
-    // Initialize mixItUp
-    $('.portfolio-table').mixItUp();
 
     // Initialize datepicker
     $('#datepicker').datepicker({
