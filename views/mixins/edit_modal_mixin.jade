@@ -12,7 +12,7 @@ mixin edit_modal(action, modal_id, modal_title)
 script.
   // Highlight label of input field on focus
   $('input[type=text], input[type=password], textarea').on('blur', function() {
-    $(this).prev('.small-label').removeClass('small-label-focused');
+    $(this).prevAll('.small-label:first').removeClass('small-label-focused');
   }).on('focus', function() {
-    $(this).prev('.small-label').addClass('small-label-focused');
+    $(this).prevAll('.small-label:first').addClass('small-label-focused');
   });
