@@ -16,11 +16,15 @@
   }
 
   .dropdown-menu {
-    background: #eee;
+    background: #fff;
     border: none;
     @include border-radius(0);
     min-width: 120px;
     padding: 0;
+
+    li:first-child {
+      border-bottom: 1px solid #eee;
+    }
 
     li {
       color: #999;

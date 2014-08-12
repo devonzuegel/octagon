@@ -79,17 +79,17 @@
 }
 
 .mix {
-  background-color: #eee;
+  background-color: #fff;
   cursor: pointer;
   display: none;
-  color: #777;
+  color: #999;
   width: 190px;
   height: 190px;
   margin: 3px;
 }
 
 .mix:hover {
-  background-color: #fff;
+  @include box-shadow(0, 0, 5px, rgba(0, 0, 0, 0.2)); 
 }
 
 .v-center-container {
@@ -123,7 +123,7 @@
       }
 
       .card-info {
-        color: #333;
+        color: #666;
         font-size: 16px;
       }
     }
