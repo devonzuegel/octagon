@@ -1,3 +1,4 @@
+// require (basic app stuff)
 var express = require('express'),
     router = express.Router(),
     api_mgr = require('./apiManager');
@@ -11,21 +12,29 @@ var CompanyModel = require('../models/Company.js'),
 
 router.get('/', function(req, res) {
 
-  privileges.require_privileges(req, res, false, function() {
-    CompanyDetails.find({}, function(err, all_companies) {
-      if (err)    return done(err);
-      res.render('portfolio', { 
-        title: 'Portfolio', 
-        errors: req.flash('error'),
-        companies: all_companies,
-        tab: 'companies',
-        username: req.session.username,
-        is_admin: true
-      })
+  privileges.require_privileges(
+    req, res, 
+    false,  // don't include flash error messages
+    admin_fn = function() {
+      // grab all companies from db for access by 'portfolio' view
+      CompanyDetails.find({}, function(err, all_companies) {
+        if (err)    return done(err);
+
+        // render portfolio view
+        res.render('portfolio', { 
+          title: 'Portfolio', 
+          errors: req.flash('error'),
+          companies: all_companies,
+          tab: 'companies',
+          username: req.session.username,
+          is_admin: true
+        })
+      });
+    }, 
+    user_fn = function() { 
+      // redirect to logged in company's page
+      res.redirect('/portfolio/' + req.session.permalink); 
     });
-  }, function() { 
-    res.redirect('/portfolio/' + req.session.permalink); 
-  });
 
 });
 
@@ -39,16 +48,19 @@ router.post('/add_user', function(req, res) {
     if (err)    return done(err);
 
     if (u === []) {
+      // only add a company if the search returns empty
       CompanyModel.add(
         form.username,
         form.password, 
         form.init_investmt_date, 
         form.crunchbase_permalink,
         form.owners,
+        // after company is added to db, redirect to main portfolio page
         function() { res.redirect('/portfolio/'); }
-      );  // add company to db & then redirect to main portfolio page
+      );
     } else {
-      req.flash('error', 'That company already exists!')
+      // if search doesn't return empty, return us to portfolio page
+      req.flash('error', 'That company already exists!');
       res.redirect('/portfolio/');
     }
   });
@@ -56,19 +68,31 @@ router.post('/add_user', function(req, res) {
 
 router.get('/:permalink', function(req, res) {
   var link = req.params.permalink; // gets :permalink from the url
-  var session = req.session.permalink; // gets username from session (who's logged in?)
+  var session_link = req.session.permalink; // gets username from session (who's logged in?)
 
-  privileges.require_privileges(req, res, false, function() { return }, function() {
-    if (req.session.permalink != link)     res.redirect('/portfolio/' + session);
-  });
+  privileges.require_privileges(
+    req, res, 
+    false, // don't include flash error messages
+    admin_fn = function() { return }, // if admin, pass & continue on
+    user_fn = function() {
+      // if authenticated as different user, don't allow access ...
+      if (session_link != link)  res.redirect('/portfolio/' + session_link);
+      // ... otherwise, pass & continue
+    }
+  );
 
   CompanyDetails.findOne({ 'permalink': link, }, function(err, company) {
     if (err)    return done(err);
-
-    if (company == null  ||  link == 'admin') { // not a valid company >> doesn't have a profile
+    
+    // not a valid company >> doesn't have a profile
+    if (company == null  ||  link == 'admin') {
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
         return res.redirect('/portfolio');
-    } else { // is a valid company with a profile
+
+    // is a valid company with a profile
+    } else {
+
+      // populate details to pass into 'company' view
       var details = { 
         errors: req.flash('error'),
         username: req.session.username,
@@ -78,18 +102,29 @@ router.get('/:permalink', function(req, res) {
         p: company.profile,
         permalink: company.permalink
       };
+
+      // render company view with details passed in
       return res.render('company', details);
     }
+
   });
 });
 
 router.post('/:permalink/edit', function(req, res) {
   var link = req.params.permalink; // gets :permalink from the url
-  var session = req.session.permalink; // gets username from session (who's logged in?)
+  var session_link = req.session.permalink; // gets permalink from session (who's logged in?)
 
-  privileges.require_privileges(req, res, false, function() { return; }, function() {
-    if (session != link)       res.redirect('/portfolio/' + session);
-  });
+
+  privileges.require_privileges(
+    req, res, 
+    false, // don't include flash error messages
+    admin_fn = function() { return }, // if admin, pass & continue on
+    user_fn = function() {
+      // if authenticated as different user, don't allow access ...
+      if (session_link != link)  res.redirect('/portfolio/' + session_link);
+      // ... otherwise, pass & continue
+    }
+  );
 
   CompanyDetails.findOne({ permalink: link }, function (err, user) {
     if (err)  return done(err);
