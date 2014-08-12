@@ -1,22 +1,33 @@
+.grid,
 .list {
-
   .mix {
     background-color: #fff;
     cursor: pointer;
     display: none;
+
+    &:hover {
+      @include box-shadow(0, 0, 5px, rgba(0, 0, 0, 0.2));
+    }
+
+    .small-label {
+      color: #999;
+    }
+
+    .card-info {
+      color: #666;
+      font-size: 16px;
+    }
+  }
+}
+
+.grid {
+
+  .mix {
     width: 190px;
     height: 190px;
-    margin: 0;
-  }
-
-  .mix:hover {
-    @include box-shadow(0, 0, 5px, rgba(0, 0, 0, 0.2)); 
-  }
-
-  .portfolio-card {
+    margin: 0 0 1px 0;
 
     .card-header {
-      background-color: #fff;
       margin-bottom: 10px;
       min-height: 74px;
       padding: 20px;
@@ -33,13 +44,42 @@
       > div {
 
         .small-label {
-          color: #999;
           margin: 12px 0 3px 0;
         }
+      }
 
-        .card-info {
-          color: #666;
-          font-size: 16px;
+      .hidden-on-grid {
+        display: none;
+      }
+    }
+  }
+}
+
+.list {
+
+  .mix {
+    height: 64px;
+    margin: 0 0 5px 0;
+    width: 100%;
+
+    .card-header {
+      float: left;
+      padding: 20px;
+
+      img {
+        height: 20px;
+      }
+    }
+
+    .card-body {
+      float: left;
+
+      > div {
+        float: left;
+        margin-left: 40px;
+
+        .small-label {
+          padding: 10px 0 5px 0;
         }
       }
     }

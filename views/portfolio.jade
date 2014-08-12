@@ -21,8 +21,8 @@ block toolbar
 
   .toolbar-section
     .toolbar-btn#change-layout
-      i.fa.fa-th-large.fa-right 
-      | Display as grid
+      i.fa.fa-align-justify.fa-right 
+      | Display as list
 
 
   .toolbar-section.pull-right
@@ -47,18 +47,22 @@ block content
                 - owners_class += o + ' '
 
           a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
-            .portfolio-card
-              if (c.crunchbase_prof.relationships)
+            if (c.crunchbase_prof.relationships)
 
-              .card-header
-                if(c.profile != undefined)
-                  img(src=c.profile.img_path)
-                //- #{c.username}
+            .card-header
+              if(c.profile != undefined)
+                img(src=c.profile.img_path)
 
-              .card-body
-                div
-                  .small-label Cash
-                  .card-info $5,000,000
-                div
-                  .small-label Revenue
-                  .card-info $20,000
+            .card-body
+              div.hidden-on-grid
+                .small-label Name
+                .card-info #{c.username}
+              div
+                .small-label Cash
+                .card-info $5,000,000
+              div
+                .small-label Revenue
+                .card-info $20,000
+              div.hidden-on-grid
+                .small-label Days of burn
+                .card-info 15 days

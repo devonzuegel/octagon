@@ -13732,33 +13732,58 @@ input:-webkit-autofill {
   .portfolio-bkg .portfolio-content {
     padding: 140px 0 40px 0; }
 
+.grid .mix,
 .list .mix {
   background-color: #fff;
   cursor: pointer;
-  display: none;
-  width: 190px;
-  height: 190px;
-  margin: 0; }
-.list .mix:hover {
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
-.list .portfolio-card .card-header {
-  background-color: #fff;
-  margin-bottom: 10px;
-  min-height: 74px;
-  padding: 20px;
-  text-align: center; }
-  .list .portfolio-card .card-header img {
-    height: 30px; }
-.list .portfolio-card .card-body {
-  padding: 0 20px 20px 20px; }
-  .list .portfolio-card .card-body > div .small-label {
-    color: #999;
-    margin: 12px 0 3px 0; }
-  .list .portfolio-card .card-body > div .card-info {
+  display: none; }
+  .grid .mix:hover,
+  .list .mix:hover {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+  .grid .mix .small-label,
+  .list .mix .small-label {
+    color: #999; }
+  .grid .mix .card-info,
+  .list .mix .card-info {
     color: #666;
     font-size: 16px; }
+
+.grid .mix {
+  width: 190px;
+  height: 190px;
+  margin: 0 0 1px 0; }
+  .grid .mix .card-header {
+    margin-bottom: 10px;
+    min-height: 74px;
+    padding: 20px;
+    text-align: center; }
+    .grid .mix .card-header img {
+      height: 30px; }
+  .grid .mix .card-body {
+    padding: 0 20px 20px 20px; }
+    .grid .mix .card-body > div .small-label {
+      margin: 12px 0 3px 0; }
+    .grid .mix .card-body .hidden-on-grid {
+      display: none; }
+
+.list .mix {
+  height: 64px;
+  margin: 0 0 5px 0;
+  width: 100%; }
+  .list .mix .card-header {
+    float: left;
+    padding: 20px; }
+    .list .mix .card-header img {
+      height: 20px; }
+  .list .mix .card-body {
+    float: left; }
+    .list .mix .card-body > div {
+      float: left;
+      margin-left: 40px; }
+      .list .mix .card-body > div .small-label {
+        padding: 10px 0 5px 0; }
 
 .company-bkg {
   background: #dddddd; }

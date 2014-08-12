@@ -1,7 +1,7 @@
 $(function(){
 
   // Store elements / layout variable
-  var layout = 'list',
+  var layout = 'grid',
       $container = $('.portfolio-table'),
       $change_layout = $('#change-layout');
   
@@ -10,7 +10,7 @@ $(function(){
     layout: {
 
       // Add the class 'list' to the container on load
-      containerClass: 'list'
+      containerClass: 'grid'
     }
   });
   
