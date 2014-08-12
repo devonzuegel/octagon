@@ -38,16 +38,17 @@ router.get('/', function(req, res) {
 
 });
 
-router.post('/add_company', function(req, res) {
+router.post('/add', function(req, res) {
   //// NOTE: validations happen onclick before submit/post is allowed to occur
   var form = req.body;  // grab body of form
 
-  // search for company with same username
+  // search for company with same username (case insensitive query)
   CompanyDetails.find(
-    {  
-      // case insensitive query
-      'username': { $regex: '^'+form.username+'$', $options: '-i' } 
-    }, 
+    
+    // Case-insensitive query:
+    { 'username': { $regex: '^'+form.username+'$', $options: '-i' } }, 
+    
+    // Callback fn:
     cb = function(err, u) {
       if (err)    return done(err);
 
@@ -70,9 +71,10 @@ router.post('/add_company', function(req, res) {
         req.flash('error', 'That company already exists!');
         res.redirect('/portfolio/');
       }
-    }
+    } // End of cb()
 
-  );
+  ); // End of CompanyDetails.find()
+  
 });
 
 router.get('/:permalink', function(req, res) {
