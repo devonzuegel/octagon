@@ -1,6 +1,3 @@
-//- edit settings modal
-include ../modals/edit_settings.jade
-
 //- Left toolbar navigation
 .pull-left
   a(href='../dashboard/')
@@ -13,11 +10,9 @@ include ../modals/edit_settings.jade
 
 //- Right toolbar navigation
 .pull-right
-  span(data-toggle="modal" data-target="#edit-settings"): a 
+  a(href='../../settings') 
     i.fa.fa-gear.fa-right
     | #{username}
-    //- the #edit-settings modal is in footer.jade so that it is in front
-    //- TODO  this is messy, but z-index wasn't working to bring it fwd
   a(href='../../login')
     i.fa.fa-bell.fa-right
   a(href='../../logout')

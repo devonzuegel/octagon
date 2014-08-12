@@ -48,13 +48,12 @@ router.get('/dashboard', function(req, res) {
 });
 
 
-/*
 router.get('/settings', function(req, res) {
 	privileges.require_privileges(
 		req, res, 
 		false,  // Do not include flash error msgs
 		admin_fn = function() {
-			// Render F8's dashboard
+			// Render settings view
 			res.render('settings', { 
 				title: 'Settings', 
 				errors: req.flash('error'),
@@ -68,7 +67,10 @@ router.get('/settings', function(req, res) {
 		}
 	);
 });
-*/
+
+router.post('/settings', function(req, res) {
+// ...
+});
 
 
 // login methods
@@ -76,31 +78,23 @@ router.get('/login', function(req, res) {
 	res.render('login', {title: 'Login', errors: req.flash('error')});
 });
 
-router.post(
-	/* '/login' route */
-	'/login', 
+router.post('/login', passport.authenticate('local', { 
+/* on failure */
+	failureRedirect: '/login',  // redirect to '/login' on failure 
+	failureFlash: 'Invalid username or password.'  // flash msg
+}), function(req, res) {
+/* on success */
+	// set session info
+	req.session.is_admin = (req.user.username == 'admin');
+	req.session.username = req.user.username;
 
-	/* on failure */
-	passport.authenticate('local', { 
-		failureRedirect: '/login',  // redirect to '/login' on failure 
-		failureFlash: 'Invalid username or password.'  // flash msg
-	}), 
-
-	/* on success */
-	function(req, res) {
-		// set session info
-		req.session.is_admin = (req.user.username == 'admin');
-		req.session.username = req.user.username;
-
-		// set session permalink to permalink saved in user profile
-		CompanyDetails.findOne({ username: req.session.username, }, function(err, company) {
-			if (err)    return done(err);
-			req.session.permalink = company.permalink;
-			res.redirect('/');
-		});
-	}
-
-);	
+	// set session permalink to permalink saved in user profile
+	CompanyDetails.findOne({ username: req.session.username, }, function(err, company) {
+		if (err)    return done(err);
+		req.session.permalink = company.permalink;
+		res.redirect('/');
+	});
+});	
 
 router.get('/logout', function(req, res){
 	// clear session (using passport)

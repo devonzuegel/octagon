@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
 router.post('/add', function(req, res) {
   //// NOTE: validations happen onclick before submit/post is allowed to occur
   var form = req.body;  // grab body of form
-
+  console.log(form, null, 3);
   // Case-insensitive query
   var query = { 'username': { $regex: '^'+form.username+'$', $options: '-i' } };
   // search for company with same username (case insensitive query)
