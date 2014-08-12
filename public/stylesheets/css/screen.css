@@ -13900,15 +13900,15 @@ input:-webkit-autofill {
 .modal {
   margin: 0 auto; }
   .modal .modal-dialog {
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    background-clip: padding-box;
-    max-height: 80%;
-    margin-top: 5%;
+    max-height: 85%;
+    margin-top: 2%;
     overflow-x: hidden;
     overflow-y: auto; }
     .modal .modal-dialog .modal-content {
+      border-radius: 2px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      background-clip: padding-box;
       margin-right: -1px;
       overflow: hidden; }
       .modal .modal-dialog .modal-content .modal-title {
@@ -13916,54 +13916,55 @@ input:-webkit-autofill {
         font-size: 18px;
         font-weight: 500;
         line-height: 100%;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         padding: 20px; }
-      .modal .modal-dialog .modal-content .modal-body .small-label {
-        color: #999;
-        margin: 20px 0 0 20px; }
-      .modal .modal-dialog .modal-content .modal-body .small-label-focused {
-        color: #8a64d1; }
-      .modal .modal-dialog .modal-content .modal-body input[type=text],
-      .modal .modal-dialog .modal-content .modal-body input[type=password],
-      .modal .modal-dialog .modal-content .modal-body textarea {
-        border-bottom: 1px solid #ddd;
-        color: #666;
-        height: 33px;
-        font-size: 14px;
-        line-height: 22px;
-        padding: 25px 20px;
-        resize: none;
-        width: 100%; }
-      .modal .modal-dialog .modal-content .modal-body input[type=text]:hover,
-      .modal .modal-dialog .modal-content .modal-body input[type=password]:hover,
-      .modal .modal-dialog .modal-content .modal-body textarea:hover {
-        border-color: #ccc; }
-      .modal .modal-dialog .modal-content .modal-body input[type=text]:focus,
-      .modal .modal-dialog .modal-content .modal-body input[type=password]:focus,
-      .modal .modal-dialog .modal-content .modal-body textarea:focus {
-        color: #8a64d1;
-        border-bottom: 2px solid #8a64d1; }
-      .modal .modal-dialog .modal-content .modal-body .checkbox-group {
-        margin: 20px 0 20px 20px;
-        width: 100%; }
-        .modal .modal-dialog .modal-content .modal-body .checkbox-group label {
+      .modal .modal-dialog .modal-content .modal-body {
+        padding: 0 20px; }
+        .modal .modal-dialog .modal-content .modal-body .small-label {
+          color: #999;
+          margin: 20px 0 0 0; }
+        .modal .modal-dialog .modal-content .modal-body .small-label-focused {
+          color: #8a64d1; }
+        .modal .modal-dialog .modal-content .modal-body input[type=text],
+        .modal .modal-dialog .modal-content .modal-body input[type=password],
+        .modal .modal-dialog .modal-content .modal-body textarea {
+          border-bottom: 1px solid #ddd;
           color: #666;
-          display: inline-block;
-          font-size: 16px;
-          line-height: 22px; }
-          .modal .modal-dialog .modal-content .modal-body .checkbox-group label:before {
+          height: 33px;
+          font-size: 15px;
+          line-height: 22px;
+          padding: 30px 0 15px 0;
+          resize: none;
+          width: 100%; }
+        .modal .modal-dialog .modal-content .modal-body input[type=text]:hover,
+        .modal .modal-dialog .modal-content .modal-body input[type=password]:hover,
+        .modal .modal-dialog .modal-content .modal-body textarea:hover {
+          border-color: #ccc; }
+        .modal .modal-dialog .modal-content .modal-body input[type=text]:focus,
+        .modal .modal-dialog .modal-content .modal-body input[type=password]:focus,
+        .modal .modal-dialog .modal-content .modal-body textarea:focus {
+          color: #8a64d1;
+          border-bottom: 2px solid #8a64d1; }
+        .modal .modal-dialog .modal-content .modal-body .checkbox-group {
+          margin: 20px 0 20px 0;
+          width: 100%; }
+          .modal .modal-dialog .modal-content .modal-body .checkbox-group label {
             color: #999;
-            font-size: 18px;
-            margin-right: 10px; }
-          .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
-            color: #666; }
-      .modal .modal-dialog .modal-content .modal-body .error div {
-        color: #e06663;
-        display: none;
-        font-size: 14px;
-        margin: 10px 20px; }
+            display: inline-block;
+            font-size: 15px;
+            line-height: 22px; }
+            .modal .modal-dialog .modal-content .modal-body .checkbox-group label:before {
+              color: #999;
+              font-size: 18px;
+              margin-right: 10px; }
+            .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
+              color: #666; }
+        .modal .modal-dialog .modal-content .modal-body .error div {
+          color: #e06663;
+          display: none;
+          font-size: 14px;
+          margin: 20px 0; }
       .modal .modal-dialog .modal-content .modal-footer {
-        border-top: 1px solid #ddd;
         margin-top: -1px;
         padding: 20px; }
         .modal .modal-dialog .modal-content .modal-footer input[type=button],

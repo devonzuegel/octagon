@@ -1,14 +1,17 @@
 include ../mixins/edit_modal_mixin
 
 +edit_modal("/portfolio/add_user", "add-company", "Add Company")
+  .small-label Add company name
   .error#username-error
     div You must include a name for the company.
-  input(type="text"  placeholder="Username"  name="username"  id="username"  autocomplete="off")
+  input(type="text"  placeholder="Company name"  name="username"  id="username"  autocomplete="off")
 
+  .small-label Enter your password
   .error#password-error
     div You must include a password for the company.
   input(type="password" placeholder="Password"  name="password"  id="password"  autocomplete="off")
 
+  .small-label Confirm your password
   .error#password2-error
     div Your passwords don't match.
   input(type="password" placeholder="Confirm password"  name="password2"  id="password2"  autocomplete="off")
@@ -16,6 +19,7 @@ include ../mixins/edit_modal_mixin
   //- Commented out calendar picker
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
 
+  .small-label Link to Crunchbase
   input(type="text" name="crunchbase_permalink", placeholder="Crunchbase permalink"  autocomplete="off")
     
   div.small-label Owner(s)
@@ -41,10 +45,13 @@ include ../mixins/edit_modal_mixin
           differentPasswords = ($('#password2').val() != $('#password').val());
 
       // Run handle error functions on error fields and tests
-      // Only submit if all three tests pass
-      return handleError($('#username-error div'), noUsername) &&
-             handleError($('#password-error div'), noPassword) &&
-             handleError($('#password2-error div'), differentPasswords);
+      // Store result in isValid variable
+      var isValid = handleError($('#username-error div'), noUsername) &&
+                    handleError($('#password-error div'), noPassword) &&
+                    handleError($('#password2-error div'), differentPasswords);
+
+      // Submit if form is valid
+      return isValid;
       
     });
 
