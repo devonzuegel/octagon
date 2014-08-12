@@ -20,7 +20,8 @@ var CompanySchema = new Schema({
     }, {
       collection: 'companies'
     });
-var Companies = mongoose.model('companies', CompanySchema);
+var Company = mongoose.model('companies', CompanySchema);
+
 
 function obj_arr_to_str(p, obj) {
   var str = '';  // start with empty string
@@ -43,9 +44,11 @@ function obj_arr_to_str(p, obj) {
   }
 }
 
+
 function usd(num) {
   return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
+
 
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
   if (crunchbase_permalink == '')     crunchbase_permalink = 'NO_PERMALINK_SELECTED';
@@ -59,16 +62,19 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 
     // Crunchbase request returns successfully with complete profile
     if (p.response) {
-      permalink = crunchbase_permalink; // there is a valid crunchbase permalink
+      // there is a valid crunchbase permalink, so use that
+      permalink = crunchbase_permalink;
+
+      // build profile to be saved
       profile = { 
-        img_path:       (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
-        short_descrip:  p.properties.short_description,
-        description:    p.properties.description,
-        homepage_url:   (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
-        founded_on:     p.properties.founded_on,
-        total_funding:  (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
-        founders:       obj_arr_to_str(p, 'founders'), // comma-separated string of founders' names
-        categories:     obj_arr_to_str(p, 'categories') // comma-separated string of categories
+        img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
+        short_descrip: p.properties.short_description,
+        description:   p.properties.description,
+        homepage_url:  (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
+        founded_on:    p.properties.founded_on,
+        total_funding: (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
+        founders:      obj_arr_to_str(p, 'founders'), // comma-separated string of founders' names
+        categories:    obj_arr_to_str(p, 'categories') // comma-separated string of categories
       };
 
     // Crunchbase request returned empty
@@ -77,7 +83,8 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       if (username)   permalink = username.replace(/\s+/g, '-').toLowerCase();
     }
 
-    var c = new Companies({ 
+    // Create new company with profile info included
+    var company = new Company({ 
       'username': username,
       'password': password, 
       'init_investmt_date': init_investmt_date,
@@ -88,7 +95,8 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       'permalink': permalink
     });
 
-    c.save(function (err) {
+    // Save that company & execute callback
+    company.save(function (err) {
       if (err)  return done(err);
       cb();
     });
@@ -96,9 +104,10 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
   });
 }
 
+
 /*
 function update(u_param, orig_profile, updates, callback) {
-  Companies.findOne({ username: u_param }, function (err, user) {
+  Company.findOne({ username: u_param }, function (err, user) {
     if (err)  return done(err);
 
     var profile = {};
@@ -115,12 +124,8 @@ function update(u_param, orig_profile, updates, callback) {
 }
 */
 
-function salt_fn(pw) {
-  console.log(pw + '----');
-}
 
 module.exports.add = add;
 // module.exports.update = update;
 module.exports.passport = passport;
-module.exports.CompanyDetails = Companies;
-module.exports.salt_fn = salt_fn;
+module.exports.CompanyDetails = Company;
