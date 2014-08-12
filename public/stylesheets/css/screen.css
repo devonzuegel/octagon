@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "Windows-1252";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
@@ -13924,7 +13924,8 @@ input:-webkit-autofill {
     color: #ccc !important; }
 
 .modal {
-  margin: 0 auto; }
+  margin: 0 auto;
+  z-index: 3000000000; }
   .modal .modal-dialog {
     max-height: 85%;
     margin-top: 2%;
@@ -13970,7 +13971,7 @@ input:-webkit-autofill {
         .modal .modal-dialog .modal-content .modal-body input[type=password]:focus,
         .modal .modal-dialog .modal-content .modal-body textarea:focus {
           color: #8a64d1;
-          border-bottom: 2px solid #8a64d1; }
+          border-bottom: 1px solid #8a64d1; }
         .modal .modal-dialog .modal-content .modal-body .checkbox-group {
           margin: 20px 0 20px 0;
           width: 100%; }

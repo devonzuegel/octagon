@@ -10,9 +10,11 @@
 
 //- Right toolbar navigation
 .pull-right
-    span #{username}
-    a(href='../../login')
-      i.fa.fa-bell.fa-right
-    a(href='../../logout')
-      i.fa.fa-sign-out.fa-right
-      | Sign out
+  span(data-toggle="modal" data-target="#edit-settings"): a #{username}
+    //- the #edit-settings modal is in footer.jade so that it is in front
+    //- TODO  this is messy, but z-index wasn't working to bring it fwd
+  a(href='../../login')
+    i.fa.fa-bell.fa-right
+  a(href='../../logout')
+    i.fa.fa-sign-out.fa-right
+    | Sign out
