@@ -6,7 +6,7 @@ include ../mixins/edit_modal_mixin
 +edit_modal("/portfolio/add_user", "add-company", "Add Company")
   .error#username-error
     div You must include a name for the company.
-  input(type="text"  placeholder="Username"  name="username"  id="username"  autocomplete="off").required
+  input(type="text"  placeholder="Username"  name="username"  id="username"  autocomplete="off")
 
   .error#password-error
     div You must include a password for the company.
@@ -19,7 +19,7 @@ include ../mixins/edit_modal_mixin
   //- Commented out calendar picker
   //- .col-lg-12: input(type="text" name='init_investmt_date' class='calendar_input' placeholder="Date of initial investment"  id="datepicker")
 
-  input(type='text' name='crunchbase_permalink', placeholder='Crunchbase permalink'  autocomplete="off")
+  input(type="text" name="crunchbase_permalink", placeholder="Crunchbase permalink"  autocomplete="off")
     
   div.small-label Owner(s)
   div.checkbox-group
