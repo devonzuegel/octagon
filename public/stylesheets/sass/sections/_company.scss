@@ -1,4 +1,5 @@
 .company-bkg {
+  background: $company-bkg;
 
   .company-header {
     background: $company-header-bkg;
@@ -60,7 +61,7 @@
 
   .company-navbar {
     background-color: #eee;
-    @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.3));
+    @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2));
     height: 50px;
 
     .navbar-tab {

@@ -2,16 +2,20 @@
   margin: 0 auto;
 
   .modal-dialog {
+    @include border-radius(2px);
+    max-height: 80%;
     margin-top: 5%;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     .modal-content {
-      overflow:hidden; 
+      margin-right: -1px;
+      overflow: hidden; 
 
       .modal-title {
-        background-color: #eee;
         color: #666;
         font-size: 18px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 100%;
         margin-bottom: 40px;
         padding: 20px;
@@ -22,6 +26,10 @@
         .small-label {
           color: #999;
           margin: 20px 0 0 20px;
+        }
+
+        .small-label-focused {
+          color: $purple;
         }
 
         input[type=text],
@@ -46,7 +54,7 @@
           }
 
           &:focus {
-            color: #333;
+            color: $purple;
             border-bottom: 2px solid $purple;
           }
         }
@@ -56,13 +64,14 @@
           width: 100%;
 
           label {
-            color: #999;
+            color: #666;
             display: inline-block;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 22px;
 
             &:before {
-              font-size: 16px;
+              color: #999;
+              font-size: 18px;
               margin-right: 10px;
             }
 
@@ -84,7 +93,9 @@
       }
 
       .modal-footer {
-        padding: 40px 20px 20px 20px;
+        border-top: 1px solid #ddd;
+        margin-top: -1px;
+        padding: 20px;
 
         input[type=button],
         input[type=submit] {
@@ -123,6 +134,25 @@
       }
     }
   }
+
+  // Stylize modal scrollbars
+  ::-webkit-scrollbar {
+    background: #fff;
+    height: 12px;
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: #ccc;
+      @include border-radius(2px);
+      border: 5px solid #fff;
+      margin: 4px;
+  }
+
+  ::-webkit-scrollbar-corner {
+      background: #000;
+  }
+
 }
 
 .modal-backdrop {

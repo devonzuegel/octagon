@@ -5422,7 +5422,7 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     margin: 0 auto;
-    width: 600px; }
+    width: 500px; }
 
   .modal-sm {
     width: 300px; } }
@@ -13494,7 +13494,7 @@ body {
 .portfolio-container,
 .company-container {
   min-height: 100%;
-  padding-top: 50px; }
+  padding-top: 56px; }
   .dashboard-container:after,
   .portfolio-container:after,
   .company-container:after {
@@ -13645,37 +13645,39 @@ input:-webkit-autofill {
         text-align: center; }
 
 .portfolio-bkg {
-  background-color: #eeeeee; }
+  background-color: #dddddd; }
   .portfolio-bkg .portfolio-toolbar {
-    background-color: #222222;
-    height: 50px;
-    margin-top: 50px;
+    background-color: #eeeeee;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    height: 56px;
+    margin-top: 56px;
     position: fixed;
     width: 100%;
     z-index: 50; }
     .portfolio-bkg .portfolio-toolbar .toolbar-section {
       display: inline-block; }
       .portfolio-bkg .portfolio-toolbar .toolbar-section .menu {
-        color: #666;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 50px;
-        margin: 0 30px; }
+        color: #999;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 56px;
+        margin: 0 60px 0 0; }
         .portfolio-bkg .portfolio-toolbar .toolbar-section .menu:hover {
-          color: #fff; }
+          color: #333; }
       .portfolio-bkg .portfolio-toolbar .toolbar-section .dropdown {
         display: none; }
       .portfolio-bkg .portfolio-toolbar .toolbar-section .toolbar-btn {
-        color: #666;
+        color: #999;
         cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 50px;
-        margin: 0 30px; }
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 56px; }
         .portfolio-bkg .portfolio-toolbar .toolbar-section .toolbar-btn:hover {
-          color: #fff; }
+          color: #333; }
   .portfolio-bkg .portfolio-content {
-    padding: 140px 0 40px 0; }
+    padding: 152px 0 40px 0; }
 
 /* I have not been through this page to make it simpler through Sass.
  * Will be doing this over the next couple of days.  Wasn't sure which classes
@@ -13742,7 +13744,7 @@ input:-webkit-autofill {
   .mix {
     width: 22.5%; } }
 .mix {
-  background-color: #ddd;
+  background-color: #eee;
   cursor: pointer;
   display: none;
   color: #777;
@@ -13754,9 +13756,6 @@ input:-webkit-autofill {
   background-color: #fff; }
 
 .v-center-container {
-  -webkit-box-shadow: 0 0 1px #999999;
-  -moz-box-shadow: 0 0 1px #999999;
-  box-shadow: 0 0 1px #999999;
   position: absolute;
   width: 190px;
   height: 190px; }
@@ -13782,107 +13781,109 @@ input:-webkit-autofill {
     color: #333;
     font-size: 16px; }
 
-.company-bkg .company-header {
-  background: #222222;
-  -webkit-box-shadow: inset 0 0 2px black;
-  -moz-box-shadow: inset 0 0 2px black;
-  box-shadow: inset 0 0 2px black;
-  height: 300px;
-  padding-top: 130px; }
-  .company-bkg .company-header .company-header-edit {
-    color: #666;
-    float: right; }
-  .company-bkg .company-header .company-header-info .company-logo {
-    background-color: #fff;
-    border-radius: 500px;
-    -moz-border-radius: 500px;
-    -webkit-border-radius: 500px;
-    background-clip: padding-box;
-    display: none; }
-  .company-bkg .company-header .company-header-info .company-header-text {
-    display: inline-block; }
-    .company-bkg .company-header .company-header-info .company-header-text .company-name {
-      color: #ddd;
-      font-size: 35px;
-      font-weight: 400;
-      line-height: 100%;
-      margin-bottom: 20px; }
-    .company-bkg .company-header .company-header-info .company-header-text .company-description {
+.company-bkg {
+  background: #dddddd; }
+  .company-bkg .company-header {
+    background: #222222;
+    -webkit-box-shadow: inset 0 0 2px black;
+    -moz-box-shadow: inset 0 0 2px black;
+    box-shadow: inset 0 0 2px black;
+    height: 300px;
+    padding-top: 136px; }
+    .company-bkg .company-header .company-header-edit {
+      color: #666;
+      float: right; }
+    .company-bkg .company-header .company-header-info .company-logo {
+      background-color: #fff;
+      border-radius: 500px;
+      -moz-border-radius: 500px;
+      -webkit-border-radius: 500px;
+      background-clip: padding-box;
+      display: none; }
+    .company-bkg .company-header .company-header-info .company-header-text {
+      display: inline-block; }
+      .company-bkg .company-header .company-header-info .company-header-text .company-name {
+        color: #ddd;
+        font-size: 35px;
+        font-weight: 400;
+        line-height: 100%;
+        margin-bottom: 20px; }
+      .company-bkg .company-header .company-header-info .company-header-text .company-description {
+        color: #999;
+        font-size: 15px;
+        line-height: 22px;
+        width: 70%; }
+      .company-bkg .company-header .company-header-info .company-header-text .company-website {
+        font-size: 15px;
+        margin-top: 10px; }
+        .company-bkg .company-header .company-header-info .company-header-text .company-website > a {
+          color: #666; }
+          .company-bkg .company-header .company-header-info .company-header-text .company-website > a:hover {
+            color: #8a64d1; }
+  .company-bkg .company-navbar {
+    background-color: #eee;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    height: 50px; }
+    .company-bkg .company-navbar .navbar-tab {
+      border-bottom: 3px solid transparent;
       color: #999;
-      font-size: 15px;
-      line-height: 22px;
-      width: 70%; }
-    .company-bkg .company-header .company-header-info .company-header-text .company-website {
-      font-size: 15px;
-      margin-top: 10px; }
-      .company-bkg .company-header .company-header-info .company-header-text .company-website > a {
-        color: #666; }
-        .company-bkg .company-header .company-header-info .company-header-text .company-website > a:hover {
-          color: #8a64d1; }
-.company-bkg .company-navbar {
-  background-color: #eee;
-  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  height: 50px; }
-  .company-bkg .company-navbar .navbar-tab {
-    border-bottom: 3px solid transparent;
-    color: #999;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 47px;
-    padding: 0 20px;
-    text-transform: uppercase; }
-    .company-bkg .company-navbar .navbar-tab:hover {
-      color: #666; }
-  .company-bkg .company-navbar .active-tab {
-    border-color: #8a64d1;
-    color: #8a64d1; }
-    .company-bkg .company-navbar .active-tab:hover {
-      color: #8a64d1; }
-.company-bkg .company-content {
-  margin: 80px 0; }
-  .company-bkg .company-content .content-block {
-    display: inline-table;
-    position: relative;
-    width: 49%; }
-    .company-bkg .company-content .content-block .block-title {
-      color: #999;
+      cursor: pointer;
       display: inline-block;
-      font-size: 22px;
-      font-weight: 300;
-      line-height: 30px;
-      margin: 0 0 10px 0; }
-    .company-bkg .company-content .content-block .block-edit {
-      color: #999;
-      line-height: 20px;
-      position: absolute;
-      right: 0;
-      top: 5px; }
-    .company-bkg .company-content .content-block .block-info {
-      color: #333;
-      background-color: #eee;
-      font-size: 15px;
-      line-height: 30px;
-      padding: 20px; }
-      .company-bkg .company-content .content-block .block-info a {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 47px;
+      padding: 0 20px;
+      text-transform: uppercase; }
+      .company-bkg .company-navbar .navbar-tab:hover {
+        color: #666; }
+    .company-bkg .company-navbar .active-tab {
+      border-color: #8a64d1;
+      color: #8a64d1; }
+      .company-bkg .company-navbar .active-tab:hover {
         color: #8a64d1; }
-        .company-bkg .company-content .content-block .block-info a:hover {
-          color: #45367c; }
-      .company-bkg .company-content .content-block .block-info h2 {
-        font-weight: 500; }
-      .company-bkg .company-content .content-block .block-info li {
-        list-style-type: none;
-        margin: 0;
-        padding: 0; }
-      .company-bkg .company-content .content-block .block-info > div {
-        margin: 0 0 20px 0; }
-  .company-bkg .company-content .block-margin-right {
-    margin-right: 2%; }
-  .company-bkg .company-content .block-margin-bottom {
-    margin-bottom: 2%; }
+  .company-bkg .company-content {
+    margin: 80px 0; }
+    .company-bkg .company-content .content-block {
+      display: inline-table;
+      position: relative;
+      width: 49%; }
+      .company-bkg .company-content .content-block .block-title {
+        color: #999;
+        display: inline-block;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 30px;
+        margin: 0 0 10px 0; }
+      .company-bkg .company-content .content-block .block-edit {
+        color: #999;
+        line-height: 20px;
+        position: absolute;
+        right: 0;
+        top: 5px; }
+      .company-bkg .company-content .content-block .block-info {
+        color: #333;
+        background-color: #eee;
+        font-size: 15px;
+        line-height: 30px;
+        padding: 20px; }
+        .company-bkg .company-content .content-block .block-info a {
+          color: #8a64d1; }
+          .company-bkg .company-content .content-block .block-info a:hover {
+            color: #45367c; }
+        .company-bkg .company-content .content-block .block-info h2 {
+          font-weight: 500; }
+        .company-bkg .company-content .content-block .block-info li {
+          list-style-type: none;
+          margin: 0;
+          padding: 0; }
+        .company-bkg .company-content .content-block .block-info > div {
+          margin: 0 0 20px 0; }
+    .company-bkg .company-content .block-margin-right {
+      margin-right: 2%; }
+    .company-bkg .company-content .block-margin-bottom {
+      margin-bottom: 2%; }
 
 .edit-btn {
   cursor: pointer;
@@ -13899,20 +13900,29 @@ input:-webkit-autofill {
 .modal {
   margin: 0 auto; }
   .modal .modal-dialog {
-    margin-top: 5%; }
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background-clip: padding-box;
+    max-height: 80%;
+    margin-top: 5%;
+    overflow-x: hidden;
+    overflow-y: auto; }
     .modal .modal-dialog .modal-content {
+      margin-right: -1px;
       overflow: hidden; }
       .modal .modal-dialog .modal-content .modal-title {
-        background-color: #eee;
         color: #666;
         font-size: 18px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 100%;
         margin-bottom: 40px;
         padding: 20px; }
       .modal .modal-dialog .modal-content .modal-body .small-label {
         color: #999;
         margin: 20px 0 0 20px; }
+      .modal .modal-dialog .modal-content .modal-body .small-label-focused {
+        color: #8a64d1; }
       .modal .modal-dialog .modal-content .modal-body input[type=text],
       .modal .modal-dialog .modal-content .modal-body input[type=password],
       .modal .modal-dialog .modal-content .modal-body textarea {
@@ -13931,18 +13941,19 @@ input:-webkit-autofill {
       .modal .modal-dialog .modal-content .modal-body input[type=text]:focus,
       .modal .modal-dialog .modal-content .modal-body input[type=password]:focus,
       .modal .modal-dialog .modal-content .modal-body textarea:focus {
-        color: #333;
+        color: #8a64d1;
         border-bottom: 2px solid #8a64d1; }
       .modal .modal-dialog .modal-content .modal-body .checkbox-group {
         margin: 20px 0 20px 20px;
         width: 100%; }
         .modal .modal-dialog .modal-content .modal-body .checkbox-group label {
-          color: #999;
+          color: #666;
           display: inline-block;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 22px; }
           .modal .modal-dialog .modal-content .modal-body .checkbox-group label:before {
-            font-size: 16px;
+            color: #999;
+            font-size: 18px;
             margin-right: 10px; }
           .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
             color: #666; }
@@ -13952,7 +13963,9 @@ input:-webkit-autofill {
         font-size: 14px;
         margin: 10px 20px; }
       .modal .modal-dialog .modal-content .modal-footer {
-        padding: 40px 20px 20px 20px; }
+        border-top: 1px solid #ddd;
+        margin-top: -1px;
+        padding: 20px; }
         .modal .modal-dialog .modal-content .modal-footer input[type=button],
         .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
           background-color: transparent;
@@ -13974,6 +13987,20 @@ input:-webkit-autofill {
             color: #6c3dc5; }
           .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
             color: #572fa0; }
+  .modal ::-webkit-scrollbar {
+    background: #fff;
+    height: 12px;
+    width: 14px; }
+  .modal ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background-clip: padding-box;
+    border: 5px solid #fff;
+    margin: 4px; }
+  .modal ::-webkit-scrollbar-corner {
+    background: #000; }
 
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.9); }
@@ -13985,8 +14012,8 @@ input:-webkit-autofill {
   -ms-transition: background-color 0.2s ease-in-out;
   -o-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
-  height: 50px;
-  line-height: 50px;
+  height: 56px;
+  line-height: 56px;
   top: 0px;
   vertical-align: middle;
   width: 100%;
