@@ -19,4 +19,12 @@ script.
     // Creating Dropdowns
     // Dropdown.create('#owner-dropdown');
     // Dropdown.create('#sort-dropdown');
+
+    // Highlight label of input field on focus
+    $('input[type=text], input[type=password], textarea').on('blur', function() {
+      $(this).prevAll('.small-label:first').removeClass('small-label-focused');
+    }).on('focus', function() {
+      $(this).prevAll('.small-label:first').addClass('small-label-focused');
+    });
+
   });
