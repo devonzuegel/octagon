@@ -964,7 +964,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.fadeOut(200)
+        e.which == 27 && this.hide()
       }, this))
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
