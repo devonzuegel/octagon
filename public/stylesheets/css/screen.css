@@ -13768,6 +13768,8 @@ input:-webkit-autofill {
         content: "|"; }
   .portfolio-bkg .portfolio-content {
     padding: 140px 0 40px 0; }
+    .portfolio-bkg .portfolio-content .portfolio-sub-toolbar {
+      display: none; }
 
 .grid .mix,
 .list .mix {

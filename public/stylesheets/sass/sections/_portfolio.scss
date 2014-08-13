@@ -86,5 +86,9 @@
 
   .portfolio-content {
     padding: ($toolbar-height + $portfolio-toolbar-height + 40px) 0 40px 0;
+
+    .portfolio-sub-toolbar {
+      display: none;
+    }
   }
 }

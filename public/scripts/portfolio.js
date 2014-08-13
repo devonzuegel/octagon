@@ -6,6 +6,7 @@ var Portfolio = {
 
     // Save element references
     this.elements = {
+      // subToolbar: $('.portfolio-sub-toolbar'),
       container: $('.portfolio-table'),
       layoutGridBtn: $('#layout-grid-btn'),
       layoutListBtn: $('#layout-list-btn')
@@ -29,6 +30,9 @@ var Portfolio = {
   // Change to grid layout
   changeToGrid: function() {
 
+    // Hide sub toolbar
+    // Portfolio.elements.subToolbar.hide();
+
     // Change current layout
     Portfolio.layout = 'grid';
 
@@ -44,6 +48,9 @@ var Portfolio = {
 
   // Change to list layout
   changeToList: function() {
+
+    // Show sub toolbar
+    // Portfolio.elements.subToolbar.show();
 
     // Change current layout
     Portfolio.layout = 'list';
