@@ -16,6 +16,11 @@
 .fa-red {
   color: #e06663 !important; }
 
+.top-fixed {
+  margin: 0 !important;
+  position: fixed !important;
+  top: 0; }
+
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -13856,7 +13861,10 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    height: 50px; }
+    height: 50px;
+    position: absolute;
+    width: 100%;
+    z-index: 50; }
   .company-bkg .company-content {
     margin: 80px 0; }
     .company-bkg .company-content .content-block {

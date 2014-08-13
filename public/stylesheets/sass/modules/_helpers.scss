@@ -13,3 +13,9 @@
 .fa-red {
   color: $red !important; 
 }
+
+.top-fixed {
+  margin: 0 !important;
+  position: fixed !important;
+  top: 0;
+}

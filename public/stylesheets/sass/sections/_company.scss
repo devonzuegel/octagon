@@ -63,6 +63,9 @@
     background-color: #eee;
     @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2));
     height: 50px;
+    position: absolute;
+    width: 100%;
+    z-index: 50;
   }
 
   .company-content {
