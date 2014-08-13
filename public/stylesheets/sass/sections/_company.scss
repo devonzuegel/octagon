@@ -18,7 +18,7 @@
         background-color: #fff;
         @include border-radius(500px);
         @include box-shadow(0, 0, 3px, #000);
-        display: inline-flex;
+        @include inline-flex;
         float: left;
         height: 100px;
         overflow: hidden;

@@ -11520,6 +11520,10 @@ input:-webkit-autofill {
       -webkit-box-shadow: 0 0 3px black;
       -moz-box-shadow: 0 0 3px black;
       box-shadow: 0 0 3px black;
+      display: -webkit-inline-box;
+      display: -webkit-inline-flex;
+      display: -moz-inline-flex;
+      display: -ms-inline-flexbox;
       display: inline-flex;
       float: left;
       height: 100px;
