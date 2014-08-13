@@ -1,20 +1,20 @@
 extends layouts/dashboard_layout
 block content
-  .dashboard-btn: a
+  a.dashboard-btn
     .btn-icon: i.fa.fa-envelope
     .btn-title
       | Request
     .btn-text
       | Make a request to Formation 8
-  .dashboard-btn: a 
+  a.dashboard-btn
     .btn-icon: i.fa.fa-comments
     .btn-title
       | Respond
     .btn-text
       | Manage messages from Formation 8
-  .dashboard-btn: a(href="/portfolio")
+  a(href="/portfolio").dashboard-btn
     .btn-icon: i.fa.fa-building
     .btn-title
       | Profile
     .btn-text
-      | View/edit profile
+      | View or edit company profile
