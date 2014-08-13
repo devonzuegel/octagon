@@ -32,7 +32,7 @@
       if (p && p.description)
         div 
           | #{shorten(findLinks(p.description))}
-          a(href="http://www.crunchbase.com/organization/#{title}") read more on Crunchbase
+          a(href="http://www.crunchbase.com/organization/#{permalink}") read more on Crunchbase
       else
         div Add description
 
