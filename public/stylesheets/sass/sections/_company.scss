@@ -17,16 +17,24 @@
       .company-logo {
         background-color: #fff;
         @include border-radius(500px);
-        display: none;
-
+        @include box-shadow(0, 0, 3px, #000);
+        display: inline-flex;
+        float: left;
+        height: 100px;
+        overflow: hidden;
+        text-align: center;
+        width: 100px;
 
         img {
-          
+          margin: auto;
+          width: 50px;
         }
       }
 
       .company-header-text {
         display: inline-block;
+        margin-left: 40px;
+        width: 600px;
 
         .company-name {
           color: #ddd;
@@ -40,7 +48,7 @@
           color: #999;
           font-size: 15px;
           line-height: 22px;
-          width: 70%;
+          width: 100%;
         }
 
         .company-website {

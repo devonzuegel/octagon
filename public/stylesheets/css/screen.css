@@ -11517,9 +11517,22 @@ input:-webkit-autofill {
       -moz-border-radius: 500px;
       -webkit-border-radius: 500px;
       background-clip: padding-box;
-      display: none; }
+      -webkit-box-shadow: 0 0 3px black;
+      -moz-box-shadow: 0 0 3px black;
+      box-shadow: 0 0 3px black;
+      display: inline-flex;
+      float: left;
+      height: 100px;
+      overflow: hidden;
+      text-align: center;
+      width: 100px; }
+      .company-bkg .company-header .company-header-info .company-logo img {
+        margin: auto;
+        width: 50px; }
     .company-bkg .company-header .company-header-info .company-header-text {
-      display: inline-block; }
+      display: inline-block;
+      margin-left: 40px;
+      width: 600px; }
       .company-bkg .company-header .company-header-info .company-header-text .company-name {
         color: #ddd;
         font-size: 35px;
@@ -11530,7 +11543,7 @@ input:-webkit-autofill {
         color: #999;
         font-size: 15px;
         line-height: 22px;
-        width: 70%; }
+        width: 100%; }
       .company-bkg .company-header .company-header-info .company-header-text .company-website {
         font-size: 15px;
         margin-top: 10px; }
