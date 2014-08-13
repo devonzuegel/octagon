@@ -80,6 +80,37 @@ router.get('/settings', function(req, res) {
 });
 
 router.post('/owners/add', function(req, res) {
+  // grab body of form
+  var form = req.body; 
+  // case-insensitive query
+  var query = { 'name': { $regex: '^'+form.name+'$', $options: '-i' } };
+
+  console.log('BEFORE QUERY');
+  // search for owner with same name (case insensitive query)
+  Owners.find(query, cb = function(err, o) {
+    if (err)    return done(err);
+
+    // if search returns empty ...
+    if (o.length == 0) {
+    	console.log('o.length == 0');
+      // only add a company if the search returns empty
+      OwnerModel.add(
+      	form.name,
+      	form.email,
+      	form.companies,
+        // after company is added to db, redirect to main portfolio page
+        function() { res.redirect('/settings/'); }
+      );
+
+    // search doesn't return empty
+    } else {
+    	console.log('o.length != 0');
+      // return us to portfolio page
+      req.flash('error', 'An owner with that name aleady exists!');
+      res.redirect('/settings/');
+    }
+  }); // END OF Owners.find()
+  
 });
 
 router.post('/owners/edit', function(req, res) {

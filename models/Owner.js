@@ -14,10 +14,11 @@ var OwnerSchema = new Schema({
 var Owner = mongoose.model('owners', OwnerSchema);
 
 
-function add(name, companies) {
+function add(name, email, companies, cb) {
   // Create new company with profile info included
   var owner = new Owner({ 
     'name': name,
+    'email': email,
     'companies': companies
   });
 
