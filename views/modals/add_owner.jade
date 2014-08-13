@@ -23,8 +23,9 @@ include ../mixins/edit_modal_mixin
   if (all_companies.length <= 1)
     p There are no companies in the system
   else
+    div
     for c in all_companies
       if (c.username != 'admin')
         .checkbox-group
-          input(type="checkbox" name="companies" id=c.id value=c.id) 
-          label(for=c.id) #{c.username}
+          input(type="checkbox" name="companies" id=c.username value=c.username) 
+          label(for=c.username) #{c.username}

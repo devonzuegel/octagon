@@ -15,6 +15,12 @@ var Owner = mongoose.model('owners', OwnerSchema);
 
 
 function add(name, email, companies, cb) {
+
+  /* In the case that there is only one company selected, the form
+   * returns us a string rather than an array. This line converts it
+   * into an array of length 1. */
+  if (typeof companies === 'string')  companies = [companies];
+  
   // Create new company with profile info included
   var owner = new Owner({ 
     'name': name,

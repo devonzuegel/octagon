@@ -9,20 +9,20 @@ block sub_layout
 
     .portfolio-content:.max-width
 
-      include ./modals/edit_owner.jade
-      include ./modals/add_owner.jade
+      - var to_edit = {}
+      - var owner_to_edit = function(o) {
+      -   to_edit = o;
+      -   console.log(to_edit);
+      - }
 
       .small-label OWNERS
         for o in all_owners
           p #{o.name} 
-            a: i.fa.fa-edit#edit-owner-btn(data-toggle="modal" data-target="#edit-owner-form")
-      a(style='border:1px solid red' data-toggle="modal" data-target="#add-owner-form")
-        i.fa.fa-plus#add-owner-btn  Add owner
+            a(onclick='to_edit = "asdfklj"; console.log(to_edit)')
+              i.fa.fa-edit#edit-owner-btn(data-toggle="modal" data-target="#edit-owner-form")
 
-      script.
-        // Highlight label of input field on focus
-        $('input[type=text], input[type=password], textarea').on('blur', function() {
-          $(this).prevAll('.small-label:first').removeClass('small-label-focused');
-        }).on('focus', function() {
-          $(this).prevAll('.small-label:first').addClass('small-label-focused');
-        });
+      include ./modals/edit_owner.jade
+      include ./modals/add_owner.jade
+
+      a(data-toggle="modal" data-target="#add-owner-form")
+        i.fa.fa-plus#add-owner-btn  Add owner

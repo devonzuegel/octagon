@@ -1,5 +1,5 @@
 mixin edit_modal(action, modal_id, modal_title)
-  .modal.fade(id=modal_id tabindex="-1" role="dialog" aria-hidden="true")
+  .modal(id=modal_id tabindex="-1" role="dialog" data-keyboard="true" aria-hidden="true")
     .modal-dialog
       form.modal-content(id=modal_title method="post"  action=action  enctype="multipart/format-data")
         .modal-title= modal_title
