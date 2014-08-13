@@ -8,20 +8,31 @@
 
     .block-info
 
+      //- Function to shorten description
+      - function shorten(description) {
+      - 
+      -   // Description char limit
+      -   var limit = 600;
+      - 
+      -   // Return shortened description with ellipsis
+      -   return description.substring(0, limit) + '... ';
+      - }
+
       //- Function to find + format links
       - function findLinks(description) {
       - 
       -   // Regex to match onto the link syntax Crunchbase gives
       -   var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
       - 
-      -   // Replace all occurances with proper link format,
+      -   // Replace all occurances with text format,
       -   // and return the new description
-      -   return description.replace(link, '<a href=\'http://www.crunchbase.com$2\'>$1</a>');
+      -   return description.replace(link, '$1');
       - }
 
       if (p && p.description)
         div 
-          #{findLinks(p.description)}
+          | #{shorten(findLinks(p.description))}
+          a(href="http://www.crunchbase.com/organization/#{title}") read more on Crunchbase
       else
         div Add description
 

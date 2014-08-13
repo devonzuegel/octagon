@@ -13799,7 +13799,9 @@ input:-webkit-autofill {
   width: 100%; }
   .list .mix .card-header {
     float: left;
-    padding: 20px; }
+    padding: 20px;
+    text-align: center;
+    width: 140px; }
     .list .mix .card-header img {
       height: 20px; }
   .list .mix .card-body {
