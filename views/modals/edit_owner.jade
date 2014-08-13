@@ -8,7 +8,7 @@ include ../mixins/edit_modal_mixin
   //- This is a fake input field to stop Chrome from autocompleting
   input(type="text" name="name" id="name_fake" class="hidden" autocomplete="off" style="display: none;" disabled)
   //- This is the real input field
-  input(type="text" name="name"  id="name"  autocomplete="off" autofocus)
+  input(type="text" name="name"  id="name"  autocomplete="off" value='#{JSON.stringify(to_edit)}' autofocus)
 
 
   //- Email

@@ -1,9 +1,0 @@
-mixin edit_page(action, modal_id, modal_title)
-  .modal-dialog
-    form.modal-content(id=modal_title method="post"  action=action  enctype="multipart/format-data")
-      .modal-title= modal_title
-      .modal-body
-        block
-      .modal-footer
-        input(type="button"  value="Cancel" data-dismiss="modal")
-        input(type="submit"  value="Save")
