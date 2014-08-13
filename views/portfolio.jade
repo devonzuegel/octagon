@@ -3,26 +3,31 @@ extends layouts/portfolio_layout
 block toolbar
 
   .toolbar-section
-    .dropdown 
+    .dropdown#owner-dropdown
       button.dropdown-toggle(type="button", data-toggle="dropdown") Owner
       ul.dropdown-menu
-        li.filter(data-filter='all') All
+        .dropdown-header Owner
+        li.filter(data-filter='all').active All
         li.filter(data-filter='.Joe') Joe
         li.filter(data-filter='.Drew') Drew
         li.filter(data-filter='.Chris') Chris
         li.filter(data-filter='.none') No owner
 
   .toolbar-section
-    .dropdown 
+    .dropdown#sort-dropdown
       button.dropdown-toggle(type="button", data-toggle="dropdown") Sort
       ul.dropdown-menu
-        li.sort(data-sort='name:asc'): i.fa.fa-sort-alpha-asc
+        .dropdown-header Sort
+        li.sort(data-sort='name:asc').active: i.fa.fa-sort-alpha-asc
         li.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
 
   .toolbar-section
-    .toolbar-btn#change-layout
+    .toolbar-btn.active#layout-grid-btn
+      i.fa.fa-th-large.fa-right 
+      | Grid
+    .toolbar-btn#layout-list-btn
       i.fa.fa-align-justify.fa-right 
-      | Display as list
+      | List
 
 
   .toolbar-section.pull-right

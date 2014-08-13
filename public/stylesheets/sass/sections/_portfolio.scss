@@ -30,10 +30,14 @@
         .dropdown-menu {
           margin-top: -1 * $portfolio-toolbar-height;
 
+          .dropdown-header {
+            font-size: 14px;
+            line-height: $portfolio-toolbar-height - 2px;
+          }
+
           li {
             font-size: 14px;
-            line-height: $portfolio-toolbar-height - 1px;
-            padding: 0 10px;
+            line-height: $portfolio-toolbar-height;
           }
         }
       }
@@ -41,12 +45,22 @@
       .toolbar-btn {
         color: #999;
         cursor: pointer;
+        display: inline-block;
         font-size: 14px;
         font-weight: 500;
         line-height: $portfolio-toolbar-height;
+        margin-left: 20px;
 
         &:hover {
           color: #333;
+        }
+      }
+
+      > .active {
+        color: $purple;
+
+        &:hover {
+          color: $purple;
         }
       }
     }

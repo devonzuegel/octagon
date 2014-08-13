@@ -21,16 +21,35 @@
     min-width: 120px;
     padding: 0;
 
-    li:first-child {
+    .dropdown-header {
       border-bottom: 1px solid #eee;
+      color: #999;
+      padding: 0 10px;
     }
 
     li {
       color: #999;
       cursor: pointer;
+      padding: 0 10px;
 
       &:hover {
         color: #333;
+      }
+    }
+
+    .active {
+      color: $purple;
+
+      &:hover {
+        color: $purple;
+      }
+
+      &:after {
+        content: "\f111";
+        float: right;
+        font-family: FontAwesome;
+        font-size: 13px;
+        vertical-align: middle;
       }
     }
   }
