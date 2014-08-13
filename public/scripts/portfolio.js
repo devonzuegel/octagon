@@ -1,49 +1,47 @@
-$(function(){
+// Object literal for handling a portfolio
+var Portfolio = {
 
-  // Store elements / layout variable
-  var layout = 'grid',
-      $container = $('.portfolio-table'),
-      $change_layout = $('#change-layout');
-  
-  // Instantiate MixItUp with some custom options:
-  $container.mixItUp({
-    layout: {
+  // Initialize object
+  init: function() {
 
-      // Add the class 'list' to the container on load
-      containerClass: 'grid'
-    }
-  });
-  
-  // Make our own layout changing button and bind it with a click handler
-  $change_layout.on('click', function() {
-    
-    // If the current layout is a list
-    if(layout == 'list') {
+    this.elements = {
+      container: $('.portfolio-table'),
+      layoutGridBtn: $('#layout-grid-btn'),
+      layoutListBtn: $('#layout-list-btn')
+    };
 
-      // Change to grid
-      layout = 'grid';
-      
-      // Update the button text
-      $change_layout.html('<i class=\'fa fa-align-justify fa-right\'></i>Display as list');
-      
-      // Update the container class
-      $container.mixItUp('changeLayout', {
-        containerClass: layout
-      });
-      
-    // If the current layout is a grid 
-    } else {
+    this.layout = 'grid';
 
-      // Change to list
-      layout = 'list';
-      
-      // Update the button text
-      $change_layout.html('<i class=\'fa fa-th-large fa-right\'></i>Display as grid');
-      
-      // Update the container class
-      $container.mixItUp('changeLayout', {
-        containerClass: layout
-      });
-    }
-  }); 
-});
+    this.elements.container.mixItUp({
+      layout: {
+        containerClass: Portfolio.layout
+      }
+    });
+
+    this.elements.layoutGridBtn.on('click', this.changeToGrid);
+
+    this.elements.layoutListBtn.on('click', this.changeToList);
+  },
+
+  changeToGrid: function() {
+    Portfolio.layout = 'grid';
+
+    Portfolio.elements.layoutGridBtn.addClass('active');
+    Portfolio.elements.layoutListBtn.removeClass('active'); 
+
+    Portfolio.elements.container.mixItUp('changeLayout', {
+      containerClass: Portfolio.layout
+    });
+  },
+
+  changeToList: function() {
+    Portfolio.layout = 'list';
+
+    Portfolio.elements.layoutGridBtn.removeClass('active');
+    Portfolio.elements.layoutListBtn.addClass('active'); 
+
+    Portfolio.elements.container.mixItUp('changeLayout', {
+      containerClass: Portfolio.layout
+    });
+  }
+};

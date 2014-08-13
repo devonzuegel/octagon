@@ -41,12 +41,22 @@
       .toolbar-btn {
         color: #999;
         cursor: pointer;
+        display: inline-block;
         font-size: 14px;
         font-weight: 500;
         line-height: $portfolio-toolbar-height;
+        margin-left: 20px;
 
         &:hover {
           color: #333;
+        }
+      }
+
+      > .active {
+        color: $purple;
+
+        &:hover {
+          color: $purple;
         }
       }
     }

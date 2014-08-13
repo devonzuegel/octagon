@@ -13724,11 +13724,17 @@ input:-webkit-autofill {
       .portfolio-bkg .portfolio-toolbar .toolbar-section .toolbar-btn {
         color: #999;
         cursor: pointer;
+        display: inline-block;
         font-size: 14px;
         font-weight: 500;
-        line-height: 44px; }
+        line-height: 44px;
+        margin-left: 20px; }
         .portfolio-bkg .portfolio-toolbar .toolbar-section .toolbar-btn:hover {
           color: #333; }
+      .portfolio-bkg .portfolio-toolbar .toolbar-section > .active {
+        color: #8a64d1; }
+        .portfolio-bkg .portfolio-toolbar .toolbar-section > .active:hover {
+          color: #8a64d1; }
   .portfolio-bkg .portfolio-content {
     padding: 140px 0 40px 0; }
 

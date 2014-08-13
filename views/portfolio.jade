@@ -20,9 +20,12 @@ block toolbar
         li.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
 
   .toolbar-section
-    .toolbar-btn#change-layout
+    .toolbar-btn.active#layout-grid-btn
+      i.fa.fa-th-large.fa-right 
+      | Grid
+    .toolbar-btn#layout-list-btn
       i.fa.fa-align-justify.fa-right 
-      | Display as list
+      | List
 
 
   .toolbar-section.pull-right
