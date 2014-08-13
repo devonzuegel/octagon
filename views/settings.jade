@@ -8,22 +8,16 @@ block sub_layout
       include ./includes/toolbar.jade
 
     .portfolio-content:.max-width
-      p all_owners:  { #{all_owners} }
 
-      include ./mixins/edit_page_mixin
+      include ./modals/edit_owner.jade
+      include ./modals/add_owner.jade
 
-      +edit_page("/portfolio/add", "add-company-form", "Add Company")
-        //- Owners  
-        .small-label Owner(s)
-        .checkbox-group
-          input(type="checkbox" name="owners" id="Chris" value="Chris") 
-          label(for="Chris") Chris
-        .checkbox-group
-          input(type="checkbox" name="owners" id="Drew" value="Drew") 
-          label(for="Drew") Drew
-        .checkbox-group
-          input(type="checkbox" name="owners" id="Joe" value="Joe") 
-          label(for="Joe") Joe
+      .small-label OWNERS
+        for o in all_owners
+          p #{o.name} 
+            a: i.fa.fa-edit#edit-owner-btn(data-toggle="modal" data-target="#edit-owner-form")
+      a(style='border:1px solid red' data-toggle="modal" data-target="#add-owner-form")
+        i.fa.fa-plus#add-owner-btn  Add owner
 
       script.
         // Highlight label of input field on focus

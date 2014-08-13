@@ -52,32 +52,39 @@ router.get('/dashboard', function(req, res) {
 
 
 router.get('/settings', function(req, res) {
-	Owners.find({}, function(err, all_owners) {
-		privileges.require_privileges(
-			req, res, 
-			false,  // Do not include flash error msgs
-			admin_fn = function() {
-				// Render settings view
-				res.render('settings', { 
-					title: 'Settings', 
-					errors: req.flash('error'),
-					username: req.session.username,
-					all_owners: all_owners,
-					is_admin: true  
-				});
-			}, 
-			user_fn = function() { 
-		      // redirect to logged in company's page
-		      res.redirect('/portfolio/' + req.session.permalink); 
-			}
-		);
-	});
+	privileges.require_privileges(
+		req, res, 
+		false,  // Do not include flash error msgs
+		admin_fn = function() {
+			Companies.find({}, function(err, all_companies) {
+				Owners.find({}, function(err, all_owners) {
+
+					// Render settings view
+					res.render('settings', { 
+						title: 'Settings', 
+						errors: req.flash('error'),
+						username: req.session.username,
+						all_owners: all_owners,
+						all_companies: all_companies.sort(),
+						is_admin: true  
+					});
+
+				}); // End of Owners.find
+			}); // End of Companies.find
+		}, 
+		user_fn = function() { 
+	      // redirect to logged in company's page
+	      res.redirect('/portfolio/' + req.session.permalink); 
+		}
+	);
 });
 
-router.post('/settings', function(req, res) {
+router.post('/owners/add', function(req, res) {
+});
+
+router.post('/owners/edit', function(req, res) {
 // ...
 });
-
 
 // login methods
 router.get('/login', function(req, res) {

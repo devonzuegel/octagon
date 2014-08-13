@@ -1,0 +1,30 @@
+include ../mixins/edit_modal_mixin
+
++edit_modal("/owner/edit", "edit-owner-form", "Edit Owner")
+
+  //- First name
+  .small-label Name
+  .error#name-error: div You must include a name for the owner.
+  //- This is a fake input field to stop Chrome from autocompleting
+  input(type="text" name="name" id="name_fake" class="hidden" autocomplete="off" style="display: none;" disabled)
+  //- This is the real input field
+  input(type="text" name="name"  id="name"  autocomplete="off" autofocus)
+
+
+  //- Email
+  .small-label Email
+  .error#email-error
+    div You must include an email address for the owner.
+  input(type="text" name="email"  id="email"  autocomplete="off")
+
+
+  //- Companies
+  .small-label Companies
+  if (all_companies.length <= 1)
+    p There are no companies in the system
+  else
+    for c in all_companies
+      if (c.username != 'admin')
+        .checkbox-group
+          input(type="checkbox" name="companies" id=c.id value=c.id) 
+          label(for=c.id) #{c.username}

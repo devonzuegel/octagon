@@ -1,14 +1,12 @@
 var passport = require('passport');
 var mongoose = require('mongoose/');
-// mongoose.connect('mongodb://localhost/test');
 
 var Schema = mongoose.Schema;
 var OwnerSchema = new Schema({
-    name: {
-      first: String,
-      last: String
-    },
-    companies: 'object'
+    name: String,
+    companies: 'object',
+    email: String,
+    img_path: String
   }, 
   {
     collection: 'owners'

@@ -60,8 +60,9 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
     var p = JSON.parse(body).data;  // parse data from crunchbase response
     var profile = {};  // create empty profile to be saved into the new company
 
-    // Crunchbase request returns successfully with complete profile
-    if (p.response) {
+    // Check that crunchbase request returns successfully with complete profile
+    // not equivalent to saying p.response == true (b/c need to ensure existence too)
+    if (p.response != false) {
       // there is a valid crunchbase permalink, so use that
       permalink = crunchbase_permalink;
 
