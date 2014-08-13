@@ -14,7 +14,13 @@
   color: #e06663 !important; }
 
 .top-fixed {
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.6) !important;
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.6) !important;
   margin: 0 !important;
+  opacity: 0.95;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  filter: alpha(opacity=95);
   position: fixed !important;
   top: 0; }
 

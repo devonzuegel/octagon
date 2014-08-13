@@ -14,8 +14,13 @@
   color: $red !important; 
 }
 
+// Special helper class that is used across the app
+// in order to transform headers into an awesome
+// fixed form
 .top-fixed {
+  @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.6) !important);
   margin: 0 !important;
+  @include opacity(0.95);
   position: fixed !important;
   top: 0;
 }
