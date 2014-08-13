@@ -14,26 +14,25 @@ block toolbar
         li.filter(data-filter='.none') No owner
 
   .toolbar-section
-    .dropdown#sort-dropdown
-      button.dropdown-toggle(type="button", data-toggle="dropdown") Sort
+    .dropdown#order-dropdown
+      button.dropdown-toggle(type="button", data-toggle="dropdown") Order
       ul.dropdown-menu
-        .dropdown-header Sort
+        .dropdown-header Order
         li.sort(data-sort='name:asc').active: i.fa.fa-sort-alpha-asc
         li.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
-
-  .toolbar-section
-    .toolbar-btn.active#layout-grid-btn
-      i.fa.fa-th-large.fa-right 
-      | Grid
-    .toolbar-btn#layout-list-btn
-      i.fa.fa-align-justify.fa-right 
-      | List
-
 
   .toolbar-section.pull-right
     .toolbar-btn#add-company-btn(data-toggle="modal" data-target="#add-company-form") 
       i.fa.fa-plus.fa-right
       | Add
+
+  .toolbar-separator.pull-right
+
+  .toolbar-section.pull-right
+    .toolbar-switch.active#layout-grid-btn
+      i.fa.fa-th-large 
+    .toolbar-switch#layout-list-btn
+      i.fa.fa-align-justify
 
 block content
   .portfolio-table
