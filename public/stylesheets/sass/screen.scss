@@ -9,9 +9,10 @@
 
 // Vendors
 @import "vendors/bootstrap";
-@import "vendors/tablesort";
-@import "vendors/jquery-ui";
-@import "vendors/datepicker";
+@import "vendors/reset";
+
+// Currently not using
+// @import "vendors/datepicker";
 
 // Base
 @import "base/typography";
