@@ -2,6 +2,7 @@
 .list {
   .mix {
     background-color: #fff;
+    @include border-radius(2px);
     cursor: pointer;
     display: none;
 

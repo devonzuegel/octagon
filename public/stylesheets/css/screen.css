@@ -13735,6 +13735,10 @@ input:-webkit-autofill {
 .grid .mix,
 .list .mix {
   background-color: #fff;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-clip: padding-box;
   cursor: pointer;
   display: none; }
   .grid .mix:hover,
