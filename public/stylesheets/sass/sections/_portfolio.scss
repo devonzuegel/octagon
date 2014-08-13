@@ -30,10 +30,14 @@
         .dropdown-menu {
           margin-top: -1 * $portfolio-toolbar-height;
 
+          .dropdown-header {
+            font-size: 14px;
+            line-height: $portfolio-toolbar-height - 2px;
+          }
+
           li {
             font-size: 14px;
-            line-height: $portfolio-toolbar-height - 1px;
-            padding: 0 10px;
+            line-height: $portfolio-toolbar-height;
           }
         }
       }
