@@ -16,7 +16,7 @@
         if (c.owners == undefined  ||  c.owners == [])
           - owners_class = 'none';
         else
-          each o in JSON.parse(c.owners)
+          each o in JSON.stringify(c.owners)
             - owners_class += o + ' '
 
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
