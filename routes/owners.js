@@ -84,21 +84,30 @@ router.post('/edit', function(req, res) {
       var owners_companies = o.companies;
 
       Companies.find({}, function(error, all_companies) {
-        console.log(owners_companies);
+        console.log('owners_companies: ' + owners_companies);
+
         for (var i = 0; i < all_companies.length; i++) {
           var c = all_companies[i];
+
+
           if (owners_companies == c.username || owners_companies.indexOf(c.username) != -1){
+            console.log('YES >> %s', c.username);
             var companys_owners = (c.owners) ? JSON.parse(c.owners) : [];
+            console.log('\ncompanys_owners BEFORE  ' + companys_owners);
             if (JSON.parse(c.owners).indexOf(o.id) == -1) {
               companys_owners.push(o.id);
               c['owners'] = JSON.stringify(companys_owners);
-              c.save();
+              c.save(function(company){
+                console.log('companys_owners AFTER   ' + company.owners);
+              });
             }
-            console.log('YES >> %s', c.username);
+
           } else {
             console.log('NO  >> %s', c.username);
           }
+
         }
+        
       });
 
       // ///////////////////////////////////////////////////////////////////
