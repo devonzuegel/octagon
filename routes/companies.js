@@ -91,7 +91,7 @@ router.get('/:permalink', function(req, res) {
     // not a valid company >> doesn't have a profile
     if (company == null  ||  link == 'admin') {
         req.flash('error', 'That company doesn\'t exist! Here are your options:.')
-        return res.redirect('/portfolio');
+        return res.redirect('/portfolio/');
 
     // is a valid company with a profile
     } else {

@@ -2,25 +2,28 @@ include ../mixins/edit_modal_mixin
 
 +edit_modal("/owners/edit", "edit-owner-form", "Edit Owner")
 
-  //------ NAME ------------------------
-  .small-label Name
+  //- Name section
+  .small-label Full name
   .error#name-error: div You must include a name for the owner.
+
   //- This is a fake input field to stop Chrome from autocompleting
   input(type="text" name="name" id="name_fake" autocomplete="off" disabled).hidden
+
   //- This is the real input field
   //- Name value set by javascript in settings.jade based on owner selected
   input(type="text" name="name"  id="name"  autocomplete="off" autofocus)
 
 
-  //------ EMAIL -----------------------
+  //- Email section
   .small-label Email
   .error#email-error
     div You must include an email address for the owner.
+
   //- Name value set by javascript in settings.jade based on owner selected
   input(type="text" name="email"  id="email"  autocomplete="off")
 
 
-  //------ COMPANIES (checkboxes) ------
+  //- Companies section
   .small-label Companies
   if (all_companies.length <= 1)
     p There are no companies in the system

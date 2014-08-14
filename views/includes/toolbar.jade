@@ -1,16 +1,16 @@
 //- Left toolbar navigation
 .pull-left
-  a(href='../dashboard/')
+  a(href='../dashboard/' data-path='dashboard')
     i.fa.fa-dashboard.fa-right
     | Dashboard
   if is_admin
-    a(href='../portfolio/')
+    a(href='../portfolio/' data-path='portfolio')
       i.fa.fa-th.fa-right
       | Portfolio
 
 //- Right toolbar navigation
 .pull-right
-  a(href='../../settings') 
+  a(href='../../settings' data-path='settings') 
     i.fa.fa-gear.fa-right
     | #{username}
   a(href='../../login')

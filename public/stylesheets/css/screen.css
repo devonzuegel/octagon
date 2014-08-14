@@ -11756,7 +11756,7 @@ input:-webkit-autofill {
   -o-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
   height: 56px;
-  line-height: 56px;
+  line-height: 50px;
   top: 0px;
   vertical-align: middle;
   width: 100%;
@@ -11766,16 +11766,21 @@ input:-webkit-autofill {
   .toolbar .pull-right > * {
     margin-left: 30px; }
   .toolbar span {
+    border-top: 3px solid transparent;
     color: #999;
     font-size: 14px;
     font-weight: 500; }
   .toolbar a {
+    border-top: 3px solid transparent;
     color: #777;
     display: inline-block;
     font-size: 14px;
     font-weight: 500; }
     .toolbar a:hover {
       color: #8a64d1; }
+  .toolbar .active {
+    border-color: #8a64d1;
+    color: #8a64d1; }
 
 .toolbar-absolute {
   position: absolute; }
@@ -11801,6 +11806,9 @@ input:-webkit-autofill {
     color: #999 !important; }
     .toolbar-dark a:hover {
       color: #fff !important; }
+  .toolbar-dark .active {
+    border-color: #fff;
+    color: #fff !important; }
 
 .auth-footer,
 .footer {

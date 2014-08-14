@@ -22,9 +22,27 @@ script.
 
     // Highlight label of input field on focus
     $('input[type=text], input[type=password], textarea').on('blur', function() {
-      $(this).prevAll('.small-label:first').removeClass('small-label-focused');
+      $(this).prevAll('.small-label:first')
+        .removeClass('small-label-focused');
     }).on('focus', function() {
-      $(this).prevAll('.small-label:first').addClass('small-label-focused');
+      $(this).prevAll('.small-label:first')
+        .addClass('small-label-focused');
     });
 
+    // Highlight active toolbar link
+    // For each toolbar link 
+    $('.toolbar a').each(function() {
+
+      // Grab the path data and the window location
+      var nav_path = $(this).data('path'),
+          window_path = window.location.pathname;
+
+      // Remove '/' characters
+      window_path = window_path.replace(/\//g, '');
+
+      // If the nav path matches the window path, highlight the link
+      if (nav_path === window_path) {
+        $(this).addClass('active');
+      }
+    });
   });
