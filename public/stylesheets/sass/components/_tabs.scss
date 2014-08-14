@@ -13,6 +13,7 @@
 
       &:hover {
         background-color: transparent !important;
+        border-color: #bbb;
         color: #666;
       }
     }
@@ -25,7 +26,7 @@
       border-bottom: 3px solid transparent;
       display: inline-block;
       line-height: 47px;
-      margin: 0;
+      margin: 0 15px 0 0;
     }
   }
 

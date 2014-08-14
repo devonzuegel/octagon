@@ -11139,6 +11139,12 @@ a {
   text-decoration: none;
   cursor: pointer; }
 
+h1 {
+  color: #ddd;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 100%; }
+
 html,
 body {
   height: 100%; }
@@ -11254,6 +11260,7 @@ input:-webkit-autofill {
     padding: 0 20px; }
     .nav-tabs .navbar-tab a:hover {
       background-color: transparent !important;
+      border-color: #bbb;
       color: #666; }
   .nav-tabs .horizontal-tab {
     display: inline-block; }
@@ -11261,7 +11268,7 @@ input:-webkit-autofill {
       border-bottom: 3px solid transparent;
       display: inline-block;
       line-height: 47px;
-      margin: 0; }
+      margin: 0 15px 0 0; }
   .nav-tabs .vertical-tab {
     display: block;
     text-align: right; }
@@ -11649,10 +11656,6 @@ input:-webkit-autofill {
       margin-left: 40px;
       width: 600px; }
       .company-bkg .company-header .company-header-info .company-header-text .company-name {
-        color: #ddd;
-        font-size: 35px;
-        font-weight: 400;
-        line-height: 100%;
         margin-bottom: 20px; }
       .company-bkg .company-header .company-header-info .company-header-text .company-description {
         color: #999;
@@ -11835,10 +11838,6 @@ input:-webkit-autofill {
     height: 100px;
     margin-top: 56px; }
     .settings-bkg .settings-container .settings-header .header-title {
-      color: #ddd;
-      font-size: 35px;
-      font-weight: 400;
-      line-height: 100%;
       padding-top: 35px; }
   .settings-bkg .settings-container .settings-content-wrapper .settings-sidebar {
     background-color: transparent;
