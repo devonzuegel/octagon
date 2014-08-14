@@ -11263,7 +11263,7 @@ input:-webkit-autofill {
     color: #999;
     font-size: 16px;
     font-weight: 400;
-    padding: 0 20px; }
+    padding: 0 15px; }
     .nav-tabs .navbar-tab a:hover {
       background-color: transparent !important;
       border-color: #bbb;
