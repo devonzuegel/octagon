@@ -8,9 +8,8 @@ block toolbar
       ul.dropdown-menu
         .dropdown-header Owner
         li.filter(data-filter='all').active All
-        li.filter(data-filter='.Joe') Joe
-        li.filter(data-filter='.Drew') Drew
-        li.filter(data-filter='.Chris') Chris
+        for o in owners
+          li.filter(data-filter='.#{o.name}') #{o.name}
         li.filter(data-filter='.none') No owner
 
   .toolbar-section
