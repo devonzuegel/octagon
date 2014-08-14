@@ -88,6 +88,12 @@ router.post('/edit', function(req, res) {
         for (var i = 0; i < all_companies.length; i++) {
           var c = all_companies[i];
           if (owners_companies == c.username || owners_companies.indexOf(c.username) != -1){
+            var companys_owners = (c.owners) ? JSON.parse(c.owners) : [];
+            if (JSON.parse(c.owners).indexOf(o.id) == -1) {
+              companys_owners.push(o.id);
+              c['owners'] = JSON.stringify(companys_owners);
+              c.save();
+            }
             console.log('YES >> %s', c.username);
           } else {
             console.log('NO  >> %s', c.username);
