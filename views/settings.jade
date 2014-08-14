@@ -4,21 +4,24 @@ block header
   .header-title Settings
 
 block sidebar
-  .sidebar-content
-    .sidebar-tab Account
-    .sidebar-tab Portfolio
-    .sidebar-tab Changes
+  ul.nav-tabs
+    li.navbar-tab.active: a(href="#account" role="tab" data-toggle="tab") Account
+    li.navbar-tab: a(href="#portfolio" role="tab" data-toggle="tab") Portfolio
+    li.navbar-tab: a(href="#log" role="tab" data-toggle="tab") Log
 
 block content
+  .tab-content
+    .tab-pane.active#account
 
-  .small-label OWNERS
-    for o in all_owners
-      p #{o.name} 
-        a: i.fa.fa-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id)
-      br
+      for o in all_owners
+        p #{o.name} 
+          a: i.fa.fa-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id)
 
-  a(data-toggle="modal" data-target="#add-owner-form")
-    i.fa.fa-plus#add-owner-btn  Add owner
+      a(data-toggle="modal" data-target="#add-owner-form")
+        i.fa.fa-plus#add-owner-btn  Add owner
+
+    .tab-pane#portfolio
+    .tab-pane#log
 
 script.
   // grabs all_owners from routes & puts it into owners var

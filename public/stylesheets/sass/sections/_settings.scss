@@ -2,16 +2,28 @@
   background-color: $settings-bkg;
 
   .settings-header {
+    background-color: $settings-header-bkg;
+    height: $settings-header-height;
+    margin-top: $toolbar-height;
 
+    .header-title {
+      color: #ddd;
+      font-size: 35px;
+      font-weight: 400;
+      line-height: 100%;
+      padding-top: 35px;
+    }
   }
 
   .settings-sidebar {
-    background-color: $sidebar-bkg;
+    background-color: $settings-sidebar-bkg;
+    @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2), inset);
+    display: inline-block;
     height: 100vh;
-    width: $sidebar-width;
+    width: $settings-sidebar-width;
   }
 
   .settings-content {
-
+    display: inline-block;
   }
 }
