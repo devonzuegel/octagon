@@ -11325,6 +11325,10 @@ input:-webkit-autofill {
           margin: 20px 0 0 0; }
         .modal .modal-dialog .modal-content .modal-body .small-label-focused {
           color: #8a64d1; }
+        .modal .modal-dialog .modal-content .modal-body .info-label {
+          color: #666;
+          font-size: 14px;
+          margin-top: 10px; }
         .modal .modal-dialog .modal-content .modal-body input[type=text],
         .modal .modal-dialog .modal-content .modal-body input[type=password],
         .modal .modal-dialog .modal-content .modal-body textarea {
