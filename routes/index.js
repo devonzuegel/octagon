@@ -95,18 +95,21 @@ router.post('/owners/add', function(req, res) {
   Owners.find(query, cb = function(err, o) {
     if (err)    return done(err);
 
-    // if search returns empty ...
+    // if (search returns empty) ...
     if (o.length == 0) {
       // only add a company if the search returns empty
       OwnerModel.add(
       	form.name,
       	form.email,
       	form.companies,
-        // after company is added to db, redirect to main portfolio page
-        function() { res.redirect('/settings/'); }
+        /* after owner is added to db, update the selected companies to indicate 
+         * (s)he is one of their owners & then redirect to settings page */
+        function() { 
+        	res.redirect('/settings/'); 
+        }
       );
 
-    // search doesn't return empty
+    // ... else (search doesn't return empty)
     } else {
       // return us to portfolio page
       req.flash('error', 'An owner with that name aleady exists!');
@@ -132,8 +135,11 @@ router.post('/owners/edit', function(req, res) {
   Owners.findOne({ _id: form.id }, function (err, owner) {
     // update fields
     for (var k in form)  	owner[k] = form[k];
-    // save & redirect to updated profile
-    owner.save(function() { res.redirect('/settings/'); });
+	/* after owner is added to db, update the selected companies to indicate 
+	 * (s)he is one of their owners & then redirect to settings page */
+    owner.save(function() {
+    	res.redirect('/settings/');
+    });
   })
 
 });
