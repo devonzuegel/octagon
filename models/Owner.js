@@ -25,12 +25,15 @@ function add(name, email, companies, cb) {
    * into an array of length 1. */
   if (typeof companies === 'string')  companies = [companies];
   
-  // Create new company with profile info included
-  Owner.create({ 
+  // build up owner hash with details from above
+  var owner = { 
     'name': name,
     'email': email,
     'companies': companies
-  }, function (err, o) {
+  };
+
+  // Create new company with info from owner hash
+  Owner.create(owner, function (err, o) {
     if (err)  return done(err);
 
     /* after owner is added to db, update the selected companies to indicate 

@@ -72,13 +72,44 @@ router.post('/edit', function(req, res) {
   if (!form.companies)	form.companies = [];
 
   // search for owner to update (based on id, found in hidden input element)
-  Owners.findOne({ _id: form.id }, function (err, owner) {
+  Owners.findOne({ _id: form.id }, function (err, o) {
     // update fields
-    for (var k in form)  	owner[k] = form[k];
+    for (var k in form)  	o[k] = form[k];
 
-	/* after owner is added to db, update the selected companies to indicate 
-	 * (s)he is one of their owners & then redirect to settings page */
-    owner.save(function() {
+    o.save(function() {
+      
+      /* after owner's companies list is updated, update companies to indicate 
+       * person is(n't) one of their owners & then redirect to settings page */
+
+      var owners_companies = o.companies;
+
+      Companies.find({}, function(error, all_companies) {
+        console.log(owners_companies);
+        for (var i = 0; i < all_companies.length; i++) {
+          var c = all_companies[i];
+          if (owners_companies == c.username || owners_companies.indexOf(c.username) != -1){
+            console.log('YES >> %s', c.username);
+          } else {
+            console.log('NO  >> %s', c.username);
+          }
+        }
+      });
+
+      // ///////////////////////////////////////////////////////////////////
+      // ///////////////////////////////////////////////////////////////////
+      // for (var i = 0; i < o.companies.length; i++) {
+      //   var username = o.companies[i];
+
+      //   Companies.findOne({username: username}, function(err, c) {
+      //     var owners = (c.owners) ? JSON.parse(c.owners) : [];
+      //     owners.push(o.id);
+      //     c['owners'] = JSON.stringify(owners);
+      //     c.save();
+      //   });
+      // }
+      // ///////////////////////////////////////////////////////////////////
+      // ///////////////////////////////////////////////////////////////////
+
     	res.redirect('/settings/');
     });
   })

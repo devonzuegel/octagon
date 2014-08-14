@@ -33,10 +33,11 @@ include ../mixins/edit_modal_mixin
   
   //- Owners  
   .small-label Owner(s)
-  for o in owners
-    .checkbox-group
-      input(type="checkbox" name="owners" id="#{o.id}" value="#{o.name}") 
-      label(for="#{o.id}") #{o.name}
+  if owners
+    for o in owners
+      .checkbox-group
+        input(type="checkbox" name="owners" id="#{o.id}" value="#{o.name}") 
+        label(for="#{o.id}") #{o.name}
 
 
 
