@@ -5,11 +5,11 @@ body {
 
 .dashboard-container,
 .portfolio-content,
-.company-content {
+.company-content,
+.settings-content {
 
   // Equal to footer height
   min-height: 100%;
-  // padding-top: $toolbar-height;
 
   &:after {
     content: '';

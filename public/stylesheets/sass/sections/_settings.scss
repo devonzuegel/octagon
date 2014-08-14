@@ -1,0 +1,17 @@
+.settings-bkg {
+  background-color: $settings-bkg;
+
+  .settings-header {
+
+  }
+
+  .settings-sidebar {
+    background-color: $sidebar-bkg;
+    height: 100vh;
+    width: $sidebar-width;
+  }
+
+  .settings-content {
+
+  }
+}

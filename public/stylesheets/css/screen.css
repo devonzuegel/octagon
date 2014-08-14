@@ -11172,11 +11172,13 @@ body {
 
 .dashboard-container,
 .portfolio-content,
-.company-content {
+.company-content,
+.settings-content {
   min-height: 100%; }
   .dashboard-container:after,
   .portfolio-content:after,
-  .company-content:after {
+  .company-content:after,
+  .settings-content:after {
     content: '';
     display: block; }
 
@@ -11295,6 +11297,130 @@ input:-webkit-autofill {
     color: #8a64d1 !important; }
     .nav-tabs .active a:hover {
       border-bottom: 3px solid #8a64d1 !important; }
+
+.modal {
+  margin: 0 auto;
+  z-index: 10000; }
+  .modal .modal-dialog {
+    background: #fff;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background-clip: padding-box;
+    max-height: 85%;
+    margin-top: 2%;
+    overflow-x: hidden;
+    overflow-y: auto; }
+    .modal .modal-dialog .modal-content {
+      background: none;
+      border-radius: 2px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      background-clip: padding-box;
+      margin-right: -1px;
+      overflow: hidden; }
+      .modal .modal-dialog .modal-content .modal-title {
+        color: #666;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 100%;
+        margin-bottom: 20px;
+        padding: 20px; }
+      .modal .modal-dialog .modal-content .modal-body {
+        padding: 0 20px; }
+        .modal .modal-dialog .modal-content .modal-body .small-label {
+          color: #999;
+          margin: 20px 0 0 0; }
+        .modal .modal-dialog .modal-content .modal-body .small-label-focused {
+          color: #8a64d1; }
+        .modal .modal-dialog .modal-content .modal-body input[type=text],
+        .modal .modal-dialog .modal-content .modal-body input[type=password],
+        .modal .modal-dialog .modal-content .modal-body textarea {
+          border-bottom: 1px solid #ddd;
+          color: #666;
+          height: 33px;
+          font-size: 15px;
+          line-height: 22px;
+          padding: 30px 0 15px 0;
+          resize: none;
+          width: 100%; }
+        .modal .modal-dialog .modal-content .modal-body input[type=text]:hover,
+        .modal .modal-dialog .modal-content .modal-body input[type=password]:hover,
+        .modal .modal-dialog .modal-content .modal-body textarea:hover {
+          border-color: #ccc; }
+        .modal .modal-dialog .modal-content .modal-body input[type=text]:focus,
+        .modal .modal-dialog .modal-content .modal-body input[type=password]:focus,
+        .modal .modal-dialog .modal-content .modal-body textarea:focus {
+          color: #8a64d1;
+          border-bottom: 1px solid #8a64d1; }
+        .modal .modal-dialog .modal-content .modal-body .checkbox-group {
+          margin: 20px 0 20px 0;
+          width: 100%; }
+          .modal .modal-dialog .modal-content .modal-body .checkbox-group label {
+            color: #999;
+            display: inline-block;
+            font-size: 15px;
+            line-height: 22px; }
+            .modal .modal-dialog .modal-content .modal-body .checkbox-group label:before {
+              color: #999;
+              font-size: 18px;
+              margin-right: 10px; }
+            .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
+              color: #666; }
+        .modal .modal-dialog .modal-content .modal-body .error div {
+          color: #e06663;
+          display: none;
+          font-size: 14px;
+          margin: 20px 0; }
+      .modal .modal-dialog .modal-content .modal-footer {
+        margin-top: -1px;
+        padding: 20px; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=button],
+        .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+          background-color: transparent;
+          border: none;
+          font-size: 14px;
+          font-weight: 500;
+          margin: 0 0 0 10px;
+          padding: 5px 15px;
+          text-transform: uppercase; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=button] {
+          color: #bbb; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
+            color: #aaa; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
+            color: #999; }
+        .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
+          color: #8a64d1; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
+            color: #6c3dc5; }
+          .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
+            color: #572fa0; }
+  .modal ::-webkit-scrollbar {
+    background: #fff;
+    border-top-right-radius: 2px;
+    -moz-border-top-right-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    background-clip: padding-box;
+    border-bottom-right-radius: 2px;
+    -moz-border-bottom-right-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    background-clip: padding-box;
+    height: 12px;
+    width: 14px; }
+  .modal ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background-clip: padding-box;
+    border: 5px solid #fff;
+    margin: 4px; }
+  .modal ::-webkit-scrollbar-corner {
+    background: #000; }
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.9); }
 
 .auth-bkg {
   background-color: #222222; }
@@ -11624,130 +11750,6 @@ input:-webkit-autofill {
   .edit-disabled:hover {
     color: #ccc !important; }
 
-.modal {
-  margin: 0 auto;
-  z-index: 10000; }
-  .modal .modal-dialog {
-    background: #fff;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    background-clip: padding-box;
-    max-height: 85%;
-    margin-top: 2%;
-    overflow-x: hidden;
-    overflow-y: auto; }
-    .modal .modal-dialog .modal-content {
-      background: none;
-      border-radius: 2px;
-      -moz-border-radius: 2px;
-      -webkit-border-radius: 2px;
-      background-clip: padding-box;
-      margin-right: -1px;
-      overflow: hidden; }
-      .modal .modal-dialog .modal-content .modal-title {
-        color: #666;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 100%;
-        margin-bottom: 20px;
-        padding: 20px; }
-      .modal .modal-dialog .modal-content .modal-body {
-        padding: 0 20px; }
-        .modal .modal-dialog .modal-content .modal-body .small-label {
-          color: #999;
-          margin: 20px 0 0 0; }
-        .modal .modal-dialog .modal-content .modal-body .small-label-focused {
-          color: #8a64d1; }
-        .modal .modal-dialog .modal-content .modal-body input[type=text],
-        .modal .modal-dialog .modal-content .modal-body input[type=password],
-        .modal .modal-dialog .modal-content .modal-body textarea {
-          border-bottom: 1px solid #ddd;
-          color: #666;
-          height: 33px;
-          font-size: 15px;
-          line-height: 22px;
-          padding: 30px 0 15px 0;
-          resize: none;
-          width: 100%; }
-        .modal .modal-dialog .modal-content .modal-body input[type=text]:hover,
-        .modal .modal-dialog .modal-content .modal-body input[type=password]:hover,
-        .modal .modal-dialog .modal-content .modal-body textarea:hover {
-          border-color: #ccc; }
-        .modal .modal-dialog .modal-content .modal-body input[type=text]:focus,
-        .modal .modal-dialog .modal-content .modal-body input[type=password]:focus,
-        .modal .modal-dialog .modal-content .modal-body textarea:focus {
-          color: #8a64d1;
-          border-bottom: 1px solid #8a64d1; }
-        .modal .modal-dialog .modal-content .modal-body .checkbox-group {
-          margin: 20px 0 20px 0;
-          width: 100%; }
-          .modal .modal-dialog .modal-content .modal-body .checkbox-group label {
-            color: #999;
-            display: inline-block;
-            font-size: 15px;
-            line-height: 22px; }
-            .modal .modal-dialog .modal-content .modal-body .checkbox-group label:before {
-              color: #999;
-              font-size: 18px;
-              margin-right: 10px; }
-            .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
-              color: #666; }
-        .modal .modal-dialog .modal-content .modal-body .error div {
-          color: #e06663;
-          display: none;
-          font-size: 14px;
-          margin: 20px 0; }
-      .modal .modal-dialog .modal-content .modal-footer {
-        margin-top: -1px;
-        padding: 20px; }
-        .modal .modal-dialog .modal-content .modal-footer input[type=button],
-        .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-          background-color: transparent;
-          border: none;
-          font-size: 14px;
-          font-weight: 500;
-          margin: 0 0 0 10px;
-          padding: 5px 15px;
-          text-transform: uppercase; }
-        .modal .modal-dialog .modal-content .modal-footer input[type=button] {
-          color: #bbb; }
-          .modal .modal-dialog .modal-content .modal-footer input[type=button]:hover {
-            color: #aaa; }
-          .modal .modal-dialog .modal-content .modal-footer input[type=button]:focus {
-            color: #999; }
-        .modal .modal-dialog .modal-content .modal-footer input[type=submit] {
-          color: #8a64d1; }
-          .modal .modal-dialog .modal-content .modal-footer input[type=submit]:hover {
-            color: #6c3dc5; }
-          .modal .modal-dialog .modal-content .modal-footer input[type=submit]:focus {
-            color: #572fa0; }
-  .modal ::-webkit-scrollbar {
-    background: #fff;
-    border-top-right-radius: 2px;
-    -moz-border-top-right-radius: 2px;
-    -webkit-border-top-right-radius: 2px;
-    background-clip: padding-box;
-    border-bottom-right-radius: 2px;
-    -moz-border-bottom-right-radius: 2px;
-    -webkit-border-bottom-right-radius: 2px;
-    background-clip: padding-box;
-    height: 12px;
-    width: 14px; }
-  .modal ::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    background-clip: padding-box;
-    border: 5px solid #fff;
-    margin: 4px; }
-  .modal ::-webkit-scrollbar-corner {
-    background: #000; }
-
-.modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.9); }
-
 .toolbar {
   background: #eeeeee;
   -webkit-transition: background-color 0.2s ease-in-out;
@@ -11846,3 +11848,10 @@ input:-webkit-autofill {
 .auth-footer {
   bottom: 0;
   position: absolute; }
+
+.settings-bkg {
+  background-color: #dddddd; }
+  .settings-bkg .settings-sidebar {
+    background-color: #eeeeee;
+    height: 100vh;
+    width: 150px; }

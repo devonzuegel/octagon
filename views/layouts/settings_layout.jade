@@ -1,0 +1,18 @@
+extends ../layout
+block sub_layout
+  body.settings-bkg
+    
+    //- Edit modals
+    include ../modals/edit_owner.jade
+    include ../modals/add_owner.jade
+
+    .toolbar.toolbar-absolute.toolbar-dark:.max-width
+      include ../includes/toolbar.jade
+    .settings-header
+      block header
+    .settings-sidebar
+      block sidebar
+    .settings-content
+      block content
+    .footer
+      include ../includes/footer.jade
