@@ -81,11 +81,7 @@
       width: 48%;
 
       .block-title {
-        color: #999;
         display: inline-block;
-        font-size: 26px;
-        font-weight: 300;
-        line-height: 30px;
         margin: 0 0 10px 0;
       }
 
@@ -112,14 +108,8 @@
           }
         }
 
-        h2 {
+        h4 {
           font-weight: 500;
-        }
-
-        li {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
         }
 
         > div {

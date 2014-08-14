@@ -11145,6 +11145,12 @@ h1 {
   font-weight: 400;
   line-height: 100%; }
 
+h2 {
+  color: #999;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 100%; }
+
 html,
 body {
   height: 100%; }
@@ -11685,11 +11691,7 @@ input:-webkit-autofill {
       position: relative;
       width: 48%; }
       .company-bkg .company-content .content-block .block-title {
-        color: #999;
         display: inline-block;
-        font-size: 26px;
-        font-weight: 300;
-        line-height: 30px;
         margin: 0 0 10px 0; }
       .company-bkg .company-content .content-block .block-edit {
         color: #999;
@@ -11707,12 +11709,8 @@ input:-webkit-autofill {
           color: #8a64d1; }
           .company-bkg .company-content .content-block .block-info a:hover {
             color: #45367c; }
-        .company-bkg .company-content .content-block .block-info h2 {
+        .company-bkg .company-content .content-block .block-info h4 {
           font-weight: 500; }
-        .company-bkg .company-content .content-block .block-info li {
-          list-style-type: none;
-          margin: 0;
-          padding: 0; }
         .company-bkg .company-content .content-block .block-info > div {
           margin: 0 0 20px 0; }
     .company-bkg .company-content .block-margin-right {
@@ -11855,11 +11853,6 @@ input:-webkit-autofill {
     .settings-bkg .settings-container .settings-content-wrapper .settings-content .tab-content {
       min-height: 100vh;
       overflow: visible; }
-      .settings-bkg .settings-container .settings-content-wrapper .settings-content .tab-content .tab-pane .content-title {
-        color: #999;
-        font-size: 26px;
-        font-weight: 300;
-        line-height: 100%; }
       .settings-bkg .settings-container .settings-content-wrapper .settings-content .tab-content .tab-pane .owner {
         padding: 20px 0 0 0; }
         .settings-bkg .settings-container .settings-content-wrapper .settings-content .tab-content .tab-pane .owner .owner-info {
