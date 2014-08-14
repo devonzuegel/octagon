@@ -4,7 +4,7 @@
     ul.dropdown-menu
       .dropdown-header Owner
       li.filter(data-filter='all').active All
-      for o in owners
+      for o in owners.sort(function(a, b) { return a.name - b.name; })
         li.filter(data-filter='.#{o.id}') #{o.name}
       li.filter(data-filter='.none') No owner
 

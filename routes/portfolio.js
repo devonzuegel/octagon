@@ -13,6 +13,15 @@ var CompanyModel = require('../models/Company.js'),
 var OwnerModel = require('../models/Owner.js'),
     Owners = OwnerModel.Owners;
 
+
+var sort_by_name = function(a, b) {
+  if (!a.name  ||  !b.name)  return 0;
+  var x = a.name.toLowerCase(),
+      y = b.name.toLowerCase();
+  return (x < y) ? -1 : ((x > y) ? 1 : 0);  
+}
+
+
 router.get('/', function(req, res) {
 
   privileges.require_privileges(
@@ -29,7 +38,7 @@ router.get('/', function(req, res) {
             title: 'Portfolio', 
             errors: req.flash('error'),
             companies: all_companies,
-            owners: all_owners,
+            owners: all_owners.sort(sort_by_name),
             tab: 'companies',
             username: req.session.username,
             is_admin: true
