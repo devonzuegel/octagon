@@ -11765,11 +11765,6 @@ input:-webkit-autofill {
     margin-right: 30px; }
   .toolbar .pull-right > * {
     margin-left: 30px; }
-  .toolbar span {
-    border-top: 3px solid transparent;
-    color: #999;
-    font-size: 14px;
-    font-weight: 500; }
   .toolbar a {
     border-top: 3px solid transparent;
     color: #777;
