@@ -37,6 +37,19 @@ function add(name, email, companies, cb) {
   owner.save(function (err, o) {
     if (err)  return done(err);
 
+    /* after owner is added to db, update the selected companies to indicate 
+     * (s)he is one of their owners & then redirect to settings page */
+    for (var i = 0; i < o.companies.length; i++) {
+      var username = o.companies[i];
+
+      Companies.findOne({username: username}, function(err, c) {
+        var owners = (c.owners) ? JSON.parse(c.owners) : [];
+        owners.push(o.id);
+        c['owners'] = JSON.stringify(owners);
+        c.save();
+      });
+    }
+
     cb(o);
   });
 }
