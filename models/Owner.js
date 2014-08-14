@@ -1,10 +1,14 @@
 var passport = require('passport');
 var mongoose = require('mongoose/');
 
+var CompanyModel = require('../models/Company.js'),
+    Companies = CompanyModel.Companies;
+
 var Schema = mongoose.Schema;
 var OwnerSchema = new Schema({
     name: String,
     companies: 'object',
+    class_name: String,
     email: String,
     img_path: String
   }, 
@@ -25,13 +29,15 @@ function add(name, email, companies, cb) {
   var owner = new Owner({ 
     'name': name,
     'email': email,
+    // 'class_name': class_name,
     'companies': companies
   });
 
   // Save that company & execute callback
-  owner.save(function (err) {
+  owner.save(function (err, o) {
     if (err)  return done(err);
-    cb();
+
+    cb(o);
   });
 }
 

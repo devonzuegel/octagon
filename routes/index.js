@@ -10,10 +10,10 @@
 	    hash = bcrypt.hashSync("B4c0/\/", salt);
 
 	// require (authentication stuff)
-	var UserModel = require('../models/Company.js'),
-		  Companies = UserModel.Companies,
-	    passport = UserModel.passport,
-	    LocalStrategy = require('passport-local').Strategy,
+	var CompanyModel = require('../models/Company.js'),
+		  Companies = CompanyModel.Companies,
+	     passport = CompanyModel.passport,
+	     LocalStrategy = require('passport-local').Strategy,
 		  privileges = require('./privileges.js');
 
 	// require (owner stuff)
@@ -102,11 +102,21 @@ router.post('/owners/add', function(req, res) {
       	form.name,
       	form.email,
       	form.companies,
-        /* after owner is added to db, update the selected companies to indicate 
-         * (s)he is one of their owners & then redirect to settings page */
-        function() { 
-        	res.redirect('/settings/'); 
-        }
+      	function(o) { 
+	      	/* after owner is added to db, update the selected companies to indicate 
+	         * (s)he is one of their owners & then redirect to settings page */
+      		for (var i = 0; i < o.companies.length; i++) {
+      			var username = o.companies[i];
+
+      			Companies.findOne({username: username}, function(err, c) {
+      				var owners = (c.owners) ? JSON.parse(c.owners) : [];
+      				owners.push(o.id);
+      				c['owners'] = JSON.stringify(owners);
+      				c.save();
+      			});
+      		}
+	    		res.redirect('/settings/');
+      	}
       );
 
     // ... else (search doesn't return empty)
@@ -135,6 +145,7 @@ router.post('/owners/edit', function(req, res) {
   Owners.findOne({ _id: form.id }, function (err, owner) {
     // update fields
     for (var k in form)  	owner[k] = form[k];
+
 	/* after owner is added to db, update the selected companies to indicate 
 	 * (s)he is one of their owners & then redirect to settings page */
     owner.save(function() {
