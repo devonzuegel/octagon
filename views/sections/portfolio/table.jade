@@ -1,0 +1,43 @@
+//- Currently not implemented,
+//- and thus commented out
+//- portfolio-sub-toolbar
+//-   .sort-btn Cash
+//-   .sort-btn Revenue
+//-   .sort-btn Days of burn
+//-   .sort-btn Total funding
+
+.portfolio-table
+  each c, i in companies
+    if (c.username != 'admin')
+
+        //- Build class(es) to tag each owner
+        - var owners_class = ''
+        if (c.owners == undefined  ||  c.owners == [])
+          - owners_class = 'none';
+        else
+          each o in JSON.parse(c.owners)
+            - owners_class += o + ' '
+
+        a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
+          if (c.crunchbase_prof.relationships)
+
+          .card-header
+            if(c.profile != undefined)
+              img(src=c.profile.img_path)
+
+          .card-body
+            div.hidden-on-grid
+              .small-label Name
+              .card-info #{c.username}
+            div
+              .small-label Cash
+              .card-info $5,000,000
+            div
+              .small-label Revenue
+              .card-info $20,000
+            div.hidden-on-grid
+              .small-label Days of burn
+              .card-info 15 days
+            div.hidden-on-grid
+              .small-label Total funding
+              .card-info $1000

@@ -4,30 +4,13 @@ block header
   h1.header-title Settings
 
 block sidebar
-  ul.nav-tabs
-    li.navbar-tab.vertical-tab.active: a(href="#account" role="tab" data-toggle="tab") Account
-    li.navbar-tab.vertical-tab: a(href="#portfolio" role="tab" data-toggle="tab") Portfolio
-    li.navbar-tab.vertical-tab: a(href="#log" role="tab" data-toggle="tab") Log
+  include sections/settings/sidebar.jade
 
 block content
   .tab-content
-    .tab-pane.active#account
-      h2 Owners
-
-      for o in all_owners
-        .owner
-          .owner-info
-            .name #{o.name} 
-            .email #{o.email}
-          a.owner-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id)
-            i.fa.fa-pencil
-
-      a.add-owner(data-toggle="modal" data-target="#add-owner-form")
-        i.fa.fa-plus.fa-right#add-owner-btn
-        | Add owner
-
-    .tab-pane#portfolio
-    .tab-pane#log
+    include sections/settings/owners.jade
+    include sections/settings/portfolio.jade
+    include sections/settings/log.jade
 
 script.
   // grabs all_owners from routes & puts it into owners var

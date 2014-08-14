@@ -1,0 +1,14 @@
+.tab-pane.active#owners
+  h2 Owners
+
+  for o in all_owners
+    .owner
+      .owner-info
+        .name #{o.name} 
+        .email #{o.email}
+      a.owner-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id)
+        i.fa.fa-pencil
+
+  a.add-owner(data-toggle="modal" data-target="#add-owner-form")
+    i.fa.fa-plus.fa-right#add-owner-btn
+    | Add owner
