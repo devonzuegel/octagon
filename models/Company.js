@@ -49,6 +49,19 @@ function usd(num) {
   return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
+function simplify_crunchbase_prof(p) {
+  return simplified_p = { 
+    img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
+    short_descrip: p.properties.short_description,
+    description:   p.properties.description,
+    homepage_url:  (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
+    founded_on:    p.properties.founded_on,
+    total_funding: (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
+    founders:      obj_arr_to_str(p, 'founders'), // comma-separated string of founders' names
+    categories:    obj_arr_to_str(p, 'categories') // comma-separated string of categories
+  };
+}
+
 
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
   if (crunchbase_permalink == '')     crunchbase_permalink = 'NO_PERMALINK_SELECTED';
@@ -60,32 +73,21 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
     var p = JSON.parse(body).data;  // parse data from crunchbase response
     var profile = {};  // create empty profile to be saved into the new company
 
+
     // Check that crunchbase request returns successfully with complete profile
     // not equivalent to saying p.response == true (b/c need to ensure existence too)
     if (p.response != false) {
-      // there is a valid crunchbase permalink, so use that
-      permalink = crunchbase_permalink;
-
-      // build profile to be saved
-      profile = { 
-        img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
-        short_descrip: p.properties.short_description,
-        description:   p.properties.description,
-        homepage_url:  (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
-        founded_on:    p.properties.founded_on,
-        total_funding: (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
-        founders:      obj_arr_to_str(p, 'founders'), // comma-separated string of founders' names
-        categories:    obj_arr_to_str(p, 'categories') // comma-separated string of categories
-      };
+      permalink = crunchbase_permalink; // there is a valid crunchbase permalink, so use that
+      profile = simplify_crunchbase_prof(p); // build profile based on crunchbase to be saved
 
     // Crunchbase request returned empty
-    } else {
+    } else if (username) { 
       // with no crunchbase permalink, we have to make our own
-      if (username)   permalink = username.replace(/\s+/g, '-').toLowerCase();
+      permalink = username.replace(/\s+/g, '-').toLowerCase();
     }
 
-    // Create new company with profile info included
-    Company.create({ 
+    // build up company hash with details from above
+    var company = { 
       'username': username,
       'password': password, 
       'init_investmt_date': init_investmt_date,
@@ -94,12 +96,18 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       'owners': owners,
       'profile': profile,
       'permalink': permalink
-    }, function (err) {
+    };
+
+    // Create new company with profile info included
+    Company.create(company, function (err) {
       if (err)  return done(err);
       cb();
     });
 
-  });
+
+  }); // END OF api_mgr.get_cmpny(...)
+
+
 }
 
 
