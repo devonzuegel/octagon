@@ -80,6 +80,12 @@ router.get('/settings', function(req, res) {
 });
 
 router.post('/owners/add', function(req, res) {
+	//////////////////////////////////////
+	//////////////////////////////////////
+	// TODO-- REQUIRE PRIVILEGES
+	/////////////////////////////////////
+	//////////////////////////////////////
+
   // grab body of form
   var form = req.body; 
   // case-insensitive query
@@ -111,7 +117,25 @@ router.post('/owners/add', function(req, res) {
 });
 
 router.post('/owners/edit', function(req, res) {
-// ...
+	//////////////////////////////////////
+	//////////////////////////////////////
+	// TODO-- REQUIRE PRIVILEGES
+	//////////////////////////////////////
+	/////////////////////////////////////
+
+  // grab body of form
+  var form = req.body;
+  // if form.companies is undefined, that means none were checked, so empty array
+  if (!form.companies)	form.companies = [];
+
+  // search for owner to update (based on id, found in hidden input element)
+  Owners.findOne({ _id: form.id }, function (err, owner) {
+    // update fields
+    for (var k in form)  	owner[k] = form[k];
+    // save & redirect to updated profile
+    owner.save(function() { res.redirect('/settings/'); });
+  })
+
 });
 
 // login methods

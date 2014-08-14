@@ -9,20 +9,40 @@ block sub_layout
 
     .portfolio-content:.max-width
 
-      - var to_edit = {}
-      - var owner_to_edit = function(o) {
-      -   to_edit = o;
-      -   console.log(to_edit);
-      - }
+      p #{errors}
 
       .small-label OWNERS
         for o in all_owners
           p #{o.name} 
-            a(onclick='to_edit = "asdfklj"; console.log(to_edit)')
-              i.fa.fa-edit#edit-owner-btn(data-toggle="modal" data-target="#edit-owner-form")
+            a: i.fa.fa-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id)
+          br
 
       include ./modals/edit_owner.jade
       include ./modals/add_owner.jade
 
       a(data-toggle="modal" data-target="#add-owner-form")
         i.fa.fa-plus#add-owner-btn  Add owner
+
+      script.
+        // grabs all_owners from routes & puts it into owners var
+        var owners = !{JSON.stringify(all_owners)};
+
+        /* iterate thru owners' edit btns so that onclick, the form is
+         * populated with that owner's info */
+        for (var i = 0; i < owners.length; i++) {
+          (function(n) {
+            var o = owners[i];
+            $('#edit-'+o._id).click(function() {
+
+              $('#name').val(o.name);
+              $('#email').val(o.email);
+              $("input.edit:checkbox").each(function(){
+                if (o.companies.indexOf($(this).val()) != -1){
+                  $(this).prop('checked', true);
+                }
+              });
+              console.log(o._id);
+              $('#id').val(o._id);
+            });
+          }(i))
+        }
