@@ -12,26 +12,3 @@ block content
     include sections/settings/portfolio.jade
     include sections/settings/log.jade
 
-script.
-  // grabs all_owners from routes & puts it into owners var
-  var owners = !{JSON.stringify(all_owners)};
-
-  /* iterate through owners' edit btns so that onclick, the form is
-   * populated with that owner's info */
-  for (var i = 0; i < owners.length; i++) {
-    (function(n) {
-      var o = owners[i];
-      $('#edit-'+o._id).click(function() {
-
-        $('#name').val(o.name);
-        $('#email').val(o.email);
-        $("input.edit:checkbox").each(function(){
-          if (o.companies.indexOf($(this).val()) != -1){
-            $(this).prop('checked', true);
-          }
-        });
-        console.log(o._id);
-        $('#id').val(o._id);
-      });
-    }(i))
-  }
