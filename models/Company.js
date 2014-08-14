@@ -85,7 +85,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
     }
 
     // Create new company with profile info included
-    var company = new Company({ 
+    Company.create({ 
       'username': username,
       'password': password, 
       'init_investmt_date': init_investmt_date,
@@ -94,10 +94,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       'owners': owners,
       'profile': profile,
       'permalink': permalink
-    });
-
-    // Save that company & execute callback
-    company.save(function (err) {
+    }, function (err) {
       if (err)  return done(err);
       cb();
     });

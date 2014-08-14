@@ -26,15 +26,11 @@ function add(name, email, companies, cb) {
   if (typeof companies === 'string')  companies = [companies];
   
   // Create new company with profile info included
-  var owner = new Owner({ 
+  Owner.create({ 
     'name': name,
     'email': email,
-    // 'class_name': class_name,
     'companies': companies
-  });
-
-  // Save that company & execute callback
-  owner.save(function (err, o) {
+  }, function (err, o) {
     if (err)  return done(err);
 
     /* after owner is added to db, update the selected companies to indicate 
