@@ -10,6 +10,9 @@ var CompanyModel = require('../models/Company.js'),
     LocalStrategy = require('passport-local').Strategy,
     privileges = require('./privileges.js');
 
+var OwnerModel = require('../models/Owner.js'),
+    Owners = OwnerModel.Owners;
+
 router.get('/', function(req, res) {
 
   privileges.require_privileges(
@@ -18,17 +21,20 @@ router.get('/', function(req, res) {
     admin_fn = function() {
       // grab all companies from db for access by 'portfolio' view
       Companies.find({}, function(err, all_companies) {
-        if (err)    return done(err);
+        Owners.find({}, function(err, all_owners) {
+          if (err)    return done(err);
 
-        // render portfolio view
-        res.render('portfolio', { 
-          title: 'Portfolio', 
-          errors: req.flash('error'),
-          companies: all_companies,
-          tab: 'companies',
-          username: req.session.username,
-          is_admin: true
-        })
+          // render portfolio view
+          res.render('portfolio', { 
+            title: 'Portfolio', 
+            errors: req.flash('error'),
+            companies: all_companies,
+            owners: all_owners,
+            tab: 'companies',
+            username: req.session.username,
+            is_admin: true
+          })
+        });
       });
     }, 
     user_fn = function() { 

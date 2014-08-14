@@ -10,7 +10,7 @@
 
 
   var routes = require('./routes/index');
-  var companies = require('./routes/companies');
+  var portfolio = require('./routes/portfolio');
 
   var app = express();
   var passport = require('./models/Company.js').passport;
@@ -18,7 +18,7 @@
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');
 
-  app.use(favicon('./views/congruent_pentagon-DARK.png'));
+  app.use(favicon('./views/conruent_pentagon-DARK.png'));
   app.use(logger('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded());
@@ -38,7 +38,7 @@
   app.use(passport.session());
 
   app.use('/', routes);
-  app.use('/portfolio', companies);
+  app.use('/portfolio', portfolio);
   app.set('view options', { layout: false });
 
 var server = app.listen(3030, function() {
