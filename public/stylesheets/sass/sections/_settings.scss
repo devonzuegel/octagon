@@ -19,31 +19,31 @@
     }
 
     .settings-content-wrapper {
-      margin-top: 40px;
 
       .settings-sidebar {
         background-color: $settings-sidebar-bkg;
         float: left;
+        margin-top: 40px;
         width: $settings-sidebar-width;
       }
 
       .settings-content {
         background-color: $settings-content-bkg;
-        // @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2));
-        float: left;
-        padding: 20px;
+        @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.1));
+        margin-left: $settings-sidebar-width;
+        padding: 40px 40px 0 40px;
         width: $settings-content-width;
 
         .tab-content {
-          min-height: 400px;
+          min-height: 100vh;
           overflow: visible;
 
           .tab-pane {
 
             .content-title {
               color: #999;
-              font-size: 14px;
-              font-weight: 500;
+              font-size: 26px;
+              font-weight: 300;
               line-height: 100%;
             }
 
@@ -88,6 +88,7 @@
               font-size: 15px;
               font-weight: 500;
               margin-top: 20px;
+              max-width: 200px;
 
               &:hover {
                 color: $purple;
