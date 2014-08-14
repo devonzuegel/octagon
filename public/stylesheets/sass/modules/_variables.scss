@@ -36,11 +36,13 @@ $company-header-bkg: #222;
 $company-header-height: 300px;
 
 // Settings section
-$settings-bkg: #eee;
+$settings-bkg: #ddd;
 $settings-header-bkg: #222;
 $settings-header-height: 100px;
-$settings-sidebar-bkg: #ddd;
-$settings-sidebar-width: 25%;
+$settings-sidebar-bkg: transparent;
+$settings-sidebar-width: 100px;
+$settings-content-bkg: #eee;
+$settings-content-width: 900px;
 
 // Footer section
 $footer-bkg: #222;

@@ -1,29 +1,101 @@
 .settings-bkg {
   background-color: $settings-bkg;
 
-  .settings-header {
-    background-color: $settings-header-bkg;
-    height: $settings-header-height;
-    margin-top: $toolbar-height;
+  .settings-container {
 
-    .header-title {
-      color: #ddd;
-      font-size: 35px;
-      font-weight: 400;
-      line-height: 100%;
-      padding-top: 35px;
+
+    .settings-header {
+      background-color: $settings-header-bkg;
+      height: $settings-header-height;
+      margin-top: $toolbar-height;
+
+      .header-title {
+        color: #ddd;
+        font-size: 35px;
+        font-weight: 400;
+        line-height: 100%;
+        padding-top: 35px;
+      }
     }
-  }
 
-  .settings-sidebar {
-    background-color: $settings-sidebar-bkg;
-    @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2), inset);
-    display: inline-block;
-    height: 100vh;
-    width: $settings-sidebar-width;
-  }
+    .settings-content-wrapper {
+      margin-top: 40px;
 
-  .settings-content {
-    display: inline-block;
+      .settings-sidebar {
+        background-color: $settings-sidebar-bkg;
+        float: left;
+        width: $settings-sidebar-width;
+      }
+
+      .settings-content {
+        background-color: $settings-content-bkg;
+        // @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2));
+        float: left;
+        padding: 20px;
+        width: $settings-content-width;
+
+        .tab-content {
+          min-height: 400px;
+          overflow: visible;
+
+          .tab-pane {
+
+            .content-title {
+              color: #999;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 100%;
+            }
+
+            .owner {
+              padding: 20px 0 0 0;
+
+              .owner-info {
+                display: inline-table;
+                min-width: 200px;
+
+                .name {
+                  color: #666;
+                  font-size: 15px;
+                  margin-bottom: 3px;
+                }
+
+                .email {
+                  color: #999;
+                  font-size: 13px;
+
+                }
+              }
+
+              .owner-edit {
+                color: #999;
+                display: inline-table;
+                font-size: 16px;
+                line-height: 39px;
+                margin-top: 5px;
+                padding: 0 10px;
+                vertical-align: middle;
+
+                &:hover {
+                  color: $purple;
+                }
+              }
+            }
+
+            .add-owner {
+              color: #999;
+              display: block;
+              font-size: 15px;
+              font-weight: 500;
+              margin-top: 20px;
+
+              &:hover {
+                color: $purple;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

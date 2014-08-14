@@ -5,20 +5,25 @@ block header
 
 block sidebar
   ul.nav-tabs
-    li.navbar-tab.active: a(href="#account" role="tab" data-toggle="tab") Account
-    li.navbar-tab: a(href="#portfolio" role="tab" data-toggle="tab") Portfolio
-    li.navbar-tab: a(href="#log" role="tab" data-toggle="tab") Log
+    li.navbar-tab.vertical-tab.active: a(href="#account" role="tab" data-toggle="tab") Account
+    li.navbar-tab.vertical-tab: a(href="#portfolio" role="tab" data-toggle="tab") Portfolio
+    li.navbar-tab.vertical-tab: a(href="#log" role="tab" data-toggle="tab") Log
 
 block content
   .tab-content
     .tab-pane.active#account
+      .content-title Owners
 
       for o in all_owners
-        p #{o.name} 
-          a: i.fa.fa-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id)
+        .owner
+          .owner-info
+            .name #{o.name} 
+            .email #{o.email}
+          a.owner-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id): i.fa.fa-pencil
 
-      a(data-toggle="modal" data-target="#add-owner-form")
-        i.fa.fa-plus#add-owner-btn  Add owner
+      a.add-owner(data-toggle="modal" data-target="#add-owner-form")
+        i.fa.fa-plus.fa-right#add-owner-btn
+        | Add owner
 
     .tab-pane#portfolio
     .tab-pane#log

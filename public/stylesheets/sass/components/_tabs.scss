@@ -6,24 +6,38 @@
 
     a {
       background: none;
-      border-top: none !important;
-      border-left: none !important;
-      border-right: none !important;
-      border-bottom: 3px solid transparent;
       color: #999;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 47px;
-      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
       padding: 0 20px;
-      text-transform: uppercase;
 
       &:hover {
         background-color: transparent !important;
-        border: none !important;
         color: #666;
       }
+    }
+  }
+
+  .horizontal-tab {
+    display: inline-block;
+
+    a {
+      border-bottom: 3px solid transparent;
+      display: inline-block;
+      line-height: 47px;
+      margin: 0;
+    }
+  }
+
+  .vertical-tab {
+    display: block;
+    text-align: right;
+
+    a {
+      border-right: 3px solid transparent;
+      display: block;
+      margin: 15px 0;
+      padding: 5px 20px;
     }
   }
 
@@ -31,11 +45,11 @@
 
     a {
       background-color: transparent !important;
-      border-bottom: 3px solid $purple !important;
+      border-color: $purple !important;
       color: $purple !important;
 
       &:hover {
-        border-bottom: 3px solid $purple !important;
+        border-color: $purple;
       }
     }
   }
