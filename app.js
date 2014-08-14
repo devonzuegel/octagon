@@ -9,8 +9,9 @@
   var session = require('express-session')
 
 
-  var routes = require('./routes/index');
-  var portfolio = require('./routes/portfolio');
+  var index = require('./routes/index'),
+      portfolio = require('./routes/portfolio'),
+      owners = require('./routes/owners');
 
   var app = express();
   var passport = require('./models/Company.js').passport;
@@ -37,8 +38,9 @@
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use('/', routes);
+  app.use('/', index);
   app.use('/portfolio', portfolio);
+  app.use('/owners', owners);
   app.set('view options', { layout: false });
 
 var server = app.listen(3030, function() {
