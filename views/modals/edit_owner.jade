@@ -25,8 +25,8 @@ include ../mixins/edit_modal_mixin
 
   //- Companies section
   .small-label Companies
-  if (all_companies.length <= 1)
-    .info-label There are no companies in the system
+  if (all_companies.length == 0 || (all_companies.length == 1  &&  all_companies[0].username == 'admin'))
+    .info-label (all_companies.length == 1 AND all_companies[0].username == 'admin')
   else
     for c in all_companies
       if (c.username != 'admin')
