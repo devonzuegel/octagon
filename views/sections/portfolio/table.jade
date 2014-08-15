@@ -16,8 +16,11 @@
         if (c.owners == undefined  ||  c.owners == []  ||  c.owners == '[]')
           - owners_class = 'none';
         else
-          each o in JSON.parse(c.owners)
-            - owners_class += o + ' '
+          if (typeof c.owners == 'string')
+            - owners_class = c.owners.replace('"', '')
+          else
+            each o in JSON.parse(c.owners)
+              - owners_class += o + ' '
 
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
           if (c.crunchbase_prof.relationships)

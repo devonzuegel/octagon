@@ -36,7 +36,7 @@ include ../mixins/edit_modal_mixin
   if owners
     for o in owners
       .checkbox-group
-        input(type="checkbox" name="owners" id="#{o.id}" value="#{o.name}") 
+        input(type="checkbox" name="owners" id="#{o.id}" value="#{o.id}") 
         label(for="#{o.id}") #{o.name}
 
 
