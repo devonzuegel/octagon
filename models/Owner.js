@@ -77,21 +77,28 @@ function edit (id, form, cb) {
           // if the list is undefined, create an empty array
           var companys_owners = (c.owners && c.owners!='') ? JSON.parse(c.owners) : [];
 
+          /** info about existence/locatn of owner in list of company's owners **/
           // retrieve index of this owner in the list of c's owners
           var i_owner = companys_owners.indexOf(o.id);
+          // true if owner is in list of company's owners, else false
+          var o_in_list = (i_owner != -1  ||  companys_owners == o.name);
+
+          /** info about existence/locatn of c in list of owner's companies **/
           // retrieve index of this company in the list of this owner's companies
           var i_company = owners_companies.indexOf(c.username);
+          // true if company is in list of owner's company, else false
+          var c_in_list = (i_company != -1  ||  owners_companies == c.username);
 
-          var in_owners_companies = ((i_company != -1  ||  owners_companies == c.username) 
-            && i_owner == -1);
 
           /* if (the company can be found in the list of the owner's companies)
            * AND if the owner isn't in the list of its company's owners, add it */
-          if (in_owners_companies)    companys_owners.push(o.id);
+          if (c_in_list  &&  !o_in_list)    companys_owners.push(o.id);
           /* else (the company can't be found in the list of the owner's companies)
            * ... if the owner is in the list of its company's owners, remove it */
-          else if (i_owner != -1)     companys_owners.splice(i_owner, 1);
+          if (o_in_list  &&  !c_in_list)    companys_owners.splice(i_owner, 1);
 
+          console.log('companys_owners:  %s', companys_owners);
+          // update c.owners to reflect changes
           c['owners'] = JSON.stringify(companys_owners);
           c.save();
         }
