@@ -73,8 +73,8 @@ function edit (id, form, cb) {
           // retrieve ith company from all_companies array for inspection
           var c = all_companies[i];
 
-          // get & parse the stringified list of c's owners
-          // if the list is undefined, create an empty array
+          /* get & parse the stringified list of c's owners
+           * if the list is undefined, create an empty array */
           var companys_owners = (c.owners && c.owners!='') ? JSON.parse(c.owners) : [];
 
           /** info about existence/locatn of owner in list of company's owners **/
@@ -97,7 +97,6 @@ function edit (id, form, cb) {
            * ... if the owner is in the list of its company's owners, remove it */
           if (o_in_list  &&  !c_in_list)    companys_owners.splice(i_owner, 1);
 
-          console.log('companys_owners:  %s', companys_owners);
           // update c.owners to reflect changes
           c['owners'] = JSON.stringify(companys_owners);
           c.save();
