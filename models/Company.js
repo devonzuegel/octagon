@@ -110,6 +110,22 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 
 }
 
+function edit (link, form, cb) {
+  Company.findOne({ permalink: link }, function (err, user) {
+    if (err)  return done(err);
+
+    var profile = {};
+    // populate profile with original user.profile
+    for (var k in user.profile)  profile[k] = user.profile[k];
+    // update the changes from the form
+    for (var k in form)      profile[k] = form[k];
+    // update profile
+    user['profile'] = profile;
+
+    // save & redirect to updated profile
+    user.save(cb());
+  })
+}
 
 /*
 function update(u_param, orig_profile, updates, callback) {
@@ -132,6 +148,6 @@ function update(u_param, orig_profile, updates, callback) {
 
 
 module.exports.add = add;
-// module.exports.update = update;
+module.exports.edit = edit;
 module.exports.passport = passport;
 module.exports.Companies = Company;
