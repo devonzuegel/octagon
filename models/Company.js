@@ -23,40 +23,32 @@ var Schema = mongoose.Schema,
     }),
     Companies = mongoose.model('companies', CompanySchema);
 
-// Function to shorten description
+/* Function to shorten description */
 function shorten(description) {
-
   // Description char limit
   var limit = 600;
-
   // Return shortened description with ellipsis
   return description.substring(0, limit) + '... ';
 }
 
-// Function to remove unwanted link formatting
+/* Function to remove unwanted link formatting */
 function findLinks(description) {
-
   // Regex to match onto the link syntax Crunchbase gives
   var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
-
-  // Replace all occurances with text format,
-  // and return the new description
+  // Replace all occurances of links with text format & return the new description
   return description.replace(link, '$1');
 }
 
-// Function for transforming object arrays to strings
+/* Function for transforming object arrays to strings */
 function obj_arr_to_str(p, obj) {
-
   // Initialize an empty string
   var str = '';
 
   // If the obj is defined, concatenate each of its children's names
   if (p.relationships[obj]) {
     for (var i = 0; i < p.relationships[obj].items.length; i++) {
-
       // Concatenate comma to front unless it's 0th
       if (i != 0) str += ', ';
-
       // Concatenate name
       str += p.relationships[obj].items[i].name;
     }
@@ -70,12 +62,12 @@ function obj_arr_to_str(p, obj) {
   }
 }
 
-// Convert number to USD format
+/* Convert number to USD format */
 function usd(num) {
   return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
-// Simplify crunchbase profile object
+/* Simplify crunchbase profile object */
 function simplify_crunchbase_prof(p) {
   return simplified_p = { 
     img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
@@ -93,7 +85,7 @@ function simplify_crunchbase_prof(p) {
   };
 }
 
-// Add a new company
+/* Add a new company */
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
   if (crunchbase_permalink == '') {
     crunchbase_permalink = 'NO_PERMALINK_SELECTED';
@@ -103,32 +95,26 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
 
-    // TODO what if p or p.data is undefined?
-
     // Parse data from crunchbase response
     var p = JSON.parse(body).data;
-
     // Create empty profile to be saved into the new company
     var profile = {};
 
 
-    // Check that crunchbase request returns successfully with complete profile
-    // Not equivalent to saying p.response == true
-    // (b/c need to ensure existence too)
+    /* Check that crunchbase request returns successfully with complete profile.
+     * Not equivalent to (p.response == true) b/c need to ensure existence too */
     if (p.response != false) {
-
       // There is a valid crunchbase permalink, so use that
       permalink = crunchbase_permalink;
-
       // Build profile based on crunchbase to be saved
       profile = simplify_crunchbase_prof(p);
 
-    // Crunchbase request returned empty
+    /* Else (crunchbase request returned empty) */
     } else if (username) { 
-
       // With no crunchbase permalink, we have to make our own
       permalink = username.replace(/\s+/g, '-').toLowerCase();
     }
+
 
     // Build up company hash with details from above
     var company = { 
@@ -142,6 +128,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       'permalink': permalink
     };
 
+
     // Create new company with profile info included
     Companies.create(company, function (err) {
       if (err)  return done(err);
@@ -150,7 +137,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
   });
 }
 
-// Edit company information
+/* Edit company information */
 function edit (link, form, cb) {
   Companies.findOne({ permalink: link }, function (err, user) {
     if (err)  return done(err);
