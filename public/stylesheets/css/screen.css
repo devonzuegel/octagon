@@ -11170,7 +11170,7 @@ body {
 .max-width {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1000px; }
+  max-width: 90%; }
 
 .footer-logo {
   -webkit-transition: opacity 0.2s ease-in-out;
@@ -11690,37 +11690,33 @@ input:-webkit-autofill {
     z-index: 50; }
   .company-bkg .company-content {
     margin: 120px 0; }
-    .company-bkg .company-content .content-block {
-      display: inline-table;
-      position: relative;
-      width: 48%; }
-      .company-bkg .company-content .content-block .block-title {
+    .company-bkg .company-content .tab-pane > div {
+      margin-bottom: 20px;
+      position: relative; }
+      .company-bkg .company-content .tab-pane > div .block-title {
         display: inline-block;
         margin: 0 0 10px 0; }
-      .company-bkg .company-content .content-block .block-edit {
+      .company-bkg .company-content .tab-pane > div .block-edit {
         color: #999;
         line-height: 20px;
         position: absolute;
-        right: 0;
+        right: 10px;
         top: 5px; }
-      .company-bkg .company-content .content-block .block-info {
+      .company-bkg .company-content .tab-pane > div .block-info {
         color: #333;
         background-color: #fff;
         font-size: 15px;
         line-height: 30px;
-        padding: 20px; }
-        .company-bkg .company-content .content-block .block-info a {
+        padding: 20px;
+        width: 100%; }
+        .company-bkg .company-content .tab-pane > div .block-info a {
           color: #8a64d1; }
-          .company-bkg .company-content .content-block .block-info a:hover {
+          .company-bkg .company-content .tab-pane > div .block-info a:hover {
             color: #45367c; }
-        .company-bkg .company-content .content-block .block-info h4 {
+        .company-bkg .company-content .tab-pane > div .block-info h4 {
           font-weight: 500; }
-        .company-bkg .company-content .content-block .block-info > div {
+        .company-bkg .company-content .tab-pane > div .block-info > div {
           margin: 0 0 20px 0; }
-    .company-bkg .company-content .block-margin-right {
-      margin-right: 4%; }
-    .company-bkg .company-content .block-margin-bottom {
-      margin-bottom: 4%; }
 
 .edit-btn {
   cursor: pointer;
@@ -11800,7 +11796,7 @@ input:-webkit-autofill {
   .auth-footer .footer-nav,
   .footer .footer-nav {
     margin: 0 auto;
-    width: 1000px; }
+    width: 90%; }
     .auth-footer .footer-nav .footer-logo,
     .footer .footer-nav .footer-logo {
       display: inline-block;
@@ -11853,7 +11849,7 @@ input:-webkit-autofill {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     margin-left: 100px;
     padding: 40px 40px 0 40px;
-    width: 900px; }
+    width: calc(100% - $settings-sidebar-width); }
     .settings-bkg .settings-container .settings-content-wrapper .settings-content .tab-content {
       min-height: 100vh;
       overflow: visible; }

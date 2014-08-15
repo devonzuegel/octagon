@@ -75,10 +75,9 @@
   .company-content {
     margin: 120px 0;
 
-    .content-block {
-      display: inline-table;
+    .tab-pane > div {
+      margin-bottom: 20px;
       position: relative;
-      width: 48%;
 
       .block-title {
         display: inline-block;
@@ -89,7 +88,7 @@
         color: #999;
         line-height: 20px;
         position: absolute;
-        right: 0;
+        right: 10px;
         top: 5px;
       }
 
@@ -99,6 +98,7 @@
         font-size: 15px;
         line-height: 30px;
         padding: 20px;
+        width: 100%;
 
         a {
           color: $purple;
@@ -116,14 +116,6 @@
           margin: 0 0 20px 0;
         }
       }
-    }
-
-    .block-margin-right {
-      margin-right: 4%;
-    }
-
-    .block-margin-bottom {
-      margin-bottom: 4%;
     }
   }
 }

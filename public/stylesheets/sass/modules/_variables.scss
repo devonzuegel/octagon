@@ -6,7 +6,7 @@ $dark-purple: #45367c;
 $red: #e06663;
 
 // Overall Website
-$website-max-width: 1000px;
+$website-max-width: 90%;
 
 // Auth section
 $auth-bkg: #222;
@@ -42,7 +42,7 @@ $settings-header-height: 100px;
 $settings-sidebar-bkg: transparent;
 $settings-sidebar-width: 100px;
 $settings-content-bkg: #fff;
-$settings-content-width: 900px;
+$settings-content-width: calc(100% - $settings-sidebar-width);
 
 // Footer section
 $footer-bkg: #222;
