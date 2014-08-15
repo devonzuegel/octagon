@@ -135,7 +135,8 @@ router.post('/:permalink/edit', function(req, res) {
 
 
   privileges.require_privileges(
-    req, res, 
+    req, 
+    res, 
     false, // don't include flash error messages
     admin_fn = function() { return }, // if admin, pass & continue on
     user_fn = function() {
@@ -145,20 +146,9 @@ router.post('/:permalink/edit', function(req, res) {
     }
   );
 
-  Companies.findOne({ permalink: link }, function (err, user) {
-    if (err)  return done(err);
-
-    var profile = {};
-    // populate profile with original user.profile
-    for (var k in user.profile)  profile[k] = user.profile[k];
-    // update the changes from the form
-    for (var k in req.body)      profile[k] = req.body[k];
-    // update profile
-    user['profile'] = profile;
-
-    // save & redirect to updated profile
-    user.save(function() { res.redirect('/portfolio/' + link); });
-  })
+  CompanyModel.edit(link, req.body, cb = function() { 
+    res.redirect('/portfolio/' + link); 
+  });
 
 });
 
