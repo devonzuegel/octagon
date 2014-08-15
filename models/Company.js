@@ -3,6 +3,8 @@ var passport = require('passport'),
     mongoose = require('mongoose/'),
     api_mgr = require('../routes/apiManager');
 
+// var Owners = require('../models/Owner.js').Owners;
+
 mongoose.connect('mongodb://localhost/test');
 
 // var bcrypt = require('bcrypt');
@@ -133,23 +135,7 @@ module.exports = {
       // Create new company with profile info included
       Companies.create(company, function (err, c) {
         if (err)  return done(err);
-          var companys_owners = (c.owners) ? c.owners : [];
-          /* Iterate through each owner the company is assigned to & add company
-           * to the owner's list of companies. */
-          for (var i = 0; i < companys_owners.length; i++) {
-            var owner_id = companys_owners[i];
-
-          //   Owners.findOne({id: owner_id}, function(err, o) {
-          //     var owners_companies = (o.companies) ? o.companies : [];
-          //     owners_companies.push(c.username);
-          //     o['companies'] = owners_companies;
-          //     o.save(cb());
-          //   });
-
-          }
-          console.log(companys_owners);
-          cb();
-
+        cb(c);
       });
     });
   },
