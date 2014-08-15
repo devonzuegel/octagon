@@ -16,6 +16,9 @@
         if (c.owners == undefined  ||  c.owners == []  ||  c.owners == '[]')
           - owners_class = 'none';
         else
+          //- if (typeof c.owners == 'string')
+            - owners_class = c.owners.replace('"', '')
+          //- else
           each o in JSON.parse(c.owners)
             - owners_class += o + ' '
 
