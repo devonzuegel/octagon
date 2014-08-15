@@ -146,11 +146,9 @@ router.post('/:permalink/edit', function(req, res) {
     }
   );
 
-  CompanyModel.edit(
-    link, 
-    req.body, 
-    cb = function() { res.redirect('/portfolio/' + link); }
-  );
+  CompanyModel.edit(link, req.body, cb = function() { 
+    res.redirect('/portfolio/' + link); 
+  });
 
 });
 

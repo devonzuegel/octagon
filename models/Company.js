@@ -20,7 +20,7 @@ var CompanySchema = new Schema({
     }, {
       collection: 'companies'
     });
-var Company = mongoose.model('companies', CompanySchema);
+var Companies = mongoose.model('companies', CompanySchema);
 
 
 function obj_arr_to_str(p, obj) {
@@ -99,7 +99,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
     };
 
     // Create new company with profile info included
-    Company.create(company, function (err) {
+    Companies.create(company, function (err) {
       if (err)  return done(err);
       cb();
     });
@@ -111,7 +111,7 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
 }
 
 function edit (link, form, cb) {
-  Company.findOne({ permalink: link }, function (err, user) {
+  Companies.findOne({ permalink: link }, function (err, user) {
     if (err)  return done(err);
 
     var profile = {};
@@ -127,27 +127,8 @@ function edit (link, form, cb) {
   })
 }
 
-/*
-function update(u_param, orig_profile, updates, callback) {
-  Company.findOne({ username: u_param }, function (err, user) {
-    if (err)  return done(err);
-
-    var profile = {};
-    // populate profile with original user.profile
-    for (var k in orig_profile)  profile[k] = orig_profile[k];
-    // update the changes from the form
-    for (var k in updates)      profile[k] = updates[k];
-    
-    callback(profile);
-
-    // save & redirect to updated profile
-    user.save(function() { res.redirect('/portfolio/' + u_param); });
-  });
-}
-*/
-
 
 module.exports.add = add;
 module.exports.edit = edit;
 module.exports.passport = passport;
-module.exports.Companies = Company;
+module.exports.Companies = Companies;
