@@ -18,48 +18,6 @@ var OwnerSchema = new Schema({
 var Owners = mongoose.model('owners', OwnerSchema);
 
 
-function add(name, email, companies, cb) {
-
-  /* In the case that there is only one company selected, the form
-   * returns us a string rather than an array. This line converts it
-   * into an array of length 1. */
-  if (typeof companies === 'string')  companies = [companies];
-  if (companies == undefined)         companies = [];
-  
-  // build up owner hash with details from above
-  var owner = { 
-    'name': name,
-    'email': email,
-    'companies': companies
-  };
-
-  // Create new company with info from owner hash
-  Owners.create(owner, function (err, o) {
-    if (err)  return done(err);
-
-    /* after owner is added to db, update the selected companies to indicate 
-     * (s)he is one of their owners & then redirect to settings page */
-    if (o.companies) {
-      /* Iterate through each company assigned to the owner and add the owner
-       * to the company's list of owners.
-       * NOTE: Could have used update_companies_owners() fn here,  but it would
-       * have done unecessary checks */
-      for (var i = 0; i < o.companies.length; i++) {
-        var username = o.companies[i];
-
-        Companies.findOne({username: username}, function(err, c) {
-          var owners = (c.owners) ? JSON.parse(c.owners) : [];
-          owners.push(o.id);
-          c['owners'] = JSON.stringify(owners);
-          c.save();
-        });
-      }
- 
-      cb(o);
-    }
-  });
-}
-
 /* Given an owner, this function iterates through each company & checks if they
  * are on the owner's list of companies. If a company IS on the owner's list but the
  * owner IS NOT on the company's list, it adds the owner to the list. If the company
@@ -106,22 +64,67 @@ function update_companies_owners(o) {
   });
 }
 
-function edit (id, form, cb) {
-  // search for owner to update (based on id, found in hidden input element)
-  Owners.findOne({ _id: id }, function (err, o) {
-    // update fields
-    for (var k in form)   o[k] = form[k];
+module.exports = {
 
-    /* after owner's companies list is updated, update companies to indicate 
-     * person is(n't) one of their owners & then redirect to settings page */
-    o.save(function() { 
-      update_companies_owners(o);    
-      cb();
-    }); // END OF o.save(..)
-  }); // END OF Owner.findOne(..)
+  add: function(name, email, companies, cb) {
+
+    /* In the case that there is only one company selected, the form
+     * returns us a string rather than an array. This line converts it
+     * into an array of length 1. */
+    if (typeof companies === 'string')  companies = [companies];
+    if (companies == undefined)         companies = [];
+    
+    // build up owner hash with details from above
+    var owner = { 
+      'name': name,
+      'email': email,
+      'companies': companies
+    };
+
+    // Create new company with info from owner hash
+    Owners.create(owner, function (err, o) {
+      if (err)  return done(err);
+
+      /* after owner is added to db, update the selected companies to indicate 
+       * (s)he is one of their owners & then redirect to settings page */
+      if (o.companies) {
+        /* Iterate through each company assigned to the owner and add the owner
+         * to the company's list of owners.
+         * NOTE: Could have used update_companies_owners() fn here,  but it would
+         * have done unecessary checks */
+        for (var i = 0; i < o.companies.length; i++) {
+          var username = o.companies[i];
+
+          Companies.findOne({username: username}, function(err, c) {
+            var owners = (c.owners) ? JSON.parse(c.owners) : [];
+            owners.push(o.id);
+            c['owners'] = JSON.stringify(owners);
+            c.save();
+          });
+        }
+   
+        cb(o);
+      }
+    });
+  },
+
+
+  edit: function(id, form, cb) {
+    // search for owner to update (based on id, found in hidden input element)
+    Owners.findOne({ _id: id }, function (err, o) {
+      // update fields
+      for (var k in form)   o[k] = form[k];
+
+      /* after owner's companies list is updated, update companies to indicate 
+       * person is(n't) one of their owners & then redirect to settings page */
+      o.save(function() { 
+        update_companies_owners(o);    
+        cb();
+      }); // END OF o.save(..)
+    }); // END OF Owner.findOne(..)
+  },
+
+
+  Owners: Owners
+
 }
-
-
-module.exports.add = add;
-module.exports.edit = edit;
-module.exports.Owners = Owners;

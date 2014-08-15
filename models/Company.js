@@ -85,88 +85,88 @@ function simplify_crunchbase_prof(p) {
   };
 }
 
-/* Add a new company */
-function add(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
-  if (crunchbase_permalink == '') {
-    crunchbase_permalink = 'NO_PERMALINK_SELECTED';
-  }
 
-  var permalink = '';
+module.exports = {
 
-  api_mgr.get_cmpny(crunchbase_permalink, function(body) {
+  /* Add a new company */
+  add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
+    
+    if (crunchbase_permalink == '')    crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    var permalink = '';
 
-    // Parse data from crunchbase response
-    var p = JSON.parse(body).data;
-    // Create empty profile to be saved into the new company
-    var profile = {};
+    api_mgr.get_cmpny(crunchbase_permalink, function(body) {
 
-
-    /* Check that crunchbase request returns successfully with complete profile.
-     * Not equivalent to (p.response == true) b/c need to ensure existence too */
-    if (p.response != false) {
-      // There is a valid crunchbase permalink, so use that
-      permalink = crunchbase_permalink;
-      // Build profile based on crunchbase to be saved
-      profile = simplify_crunchbase_prof(p);
-
-    /* Else (crunchbase request returned empty) */
-    } else if (username) { 
-      // With no crunchbase permalink, we have to make our own
-      permalink = username.replace(/\s+/g, '-').toLowerCase();
-    }
+      // Parse data from crunchbase response
+      var p = JSON.parse(body).data;
+      // Create empty profile to be saved into the new company
+      var profile = {};
 
 
-    // Build up company hash with details from above
-    var company = { 
-      'username': username,
-      'password': password, 
-      'init_investmt_date': init_investmt_date,
-      'crunchbase_permalink': crunchbase_permalink,
-      'crunchbase_prof': p,
-      'owners': owners,
-      'profile': profile,
-      'permalink': permalink
-    };
+      /* Check that crunchbase request returns successfully with complete profile.
+       * Not equivalent to (p.response == true) b/c need to ensure existence too */
+      if (p.response != false) {
+        // There is a valid crunchbase permalink, so use that
+        permalink = crunchbase_permalink;
+        // Build profile based on crunchbase to be saved
+        profile = simplify_crunchbase_prof(p);
+
+      /* Else (crunchbase request returned empty) */
+      } else if (username) { 
+        // With no crunchbase permalink, we have to make our own
+        permalink = username.replace(/\s+/g, '-').toLowerCase();
+      }
 
 
-    // Create new company with profile info included
-    Companies.create(company, function (err) {
+      // Build up company hash with details from above
+      var company = { 
+        'username': username,
+        'password': password, 
+        'init_investmt_date': init_investmt_date,
+        'crunchbase_permalink': crunchbase_permalink,
+        'crunchbase_prof': p,
+        'owners': owners,
+        'profile': profile,
+        'permalink': permalink
+      };
+
+
+      // Create new company with profile info included
+      Companies.create(company, function (err) {
+        if (err)  return done(err);
+
+        // TODO update owners' companies here
+
+        cb();
+      });
+    });
+  },
+
+  /* Edit company information */
+  edit: function(link, form, cb) {
+    Companies.findOne({ permalink: link }, function (err, user) {
       if (err)  return done(err);
 
-      // TODO update owners' companies here
+      var profile = {};
 
-      cb();
-    });
-  });
+      // Populate profile with original user.profile
+      for (var k in user.profile) {
+        profile[k] = user.profile[k];
+      }
+
+      // Update the changes from the form
+      for (var k in form) {
+        profile[k] = form[k];
+      }
+
+      // Update profile
+      user['profile'] = profile;
+
+      // Save & redirect to updated profile
+      user.save(cb());
+    })
+  },
+
+  Companies: Companies,
+
+  passport: passport
 }
-
-/* Edit company information */
-function edit (link, form, cb) {
-  Companies.findOne({ permalink: link }, function (err, user) {
-    if (err)  return done(err);
-
-    var profile = {};
-
-    // Populate profile with original user.profile
-    for (var k in user.profile) {
-      profile[k] = user.profile[k];
-    }
-
-    // Update the changes from the form
-    for (var k in form) {
-      profile[k] = form[k];
-    }
-
-    // Update profile
-    user['profile'] = profile;
-
-    // Save & redirect to updated profile
-    user.save(cb());
-  })
-}
-
-
-module.exports.add = add;
-module.exports.edit = edit;
-module.exports.passport = passport;
-module.exports.Companies = Companies;
