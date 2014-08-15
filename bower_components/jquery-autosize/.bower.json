@@ -33,7 +33,6 @@
     "commit": "717e97c5c3447dc738e1975d1ba3455903ca63b1"
   },
   "_source": "git://github.com/jackmoore/autosize.git",
-  "_target": "~1.18.9",
-  "_originalSource": "jquery-autosize",
-  "_direct": true
+  "_target": "1.18.9",
+  "_originalSource": "jquery-autosize"
 }
