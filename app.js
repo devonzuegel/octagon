@@ -1,69 +1,65 @@
-// requires (general)
-  var express = require('express');
-  var path = require('path');
-  var favicon = require('static-favicon');
-  var logger = require('morgan');
-  var cookieParser = require('cookie-parser');
-  var bodyParser = require('body-parser');
-  var flash = require('connect-flash')
-  var session = require('express-session')
+// App dependencies
+var express = require('express'),
+    path = require('path'),
+    favicon = require('static-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    flash = require('connect-flash'),
+    session = require('express-session'),
+    index = require('./routes/index'),
+    portfolio = require('./routes/portfolio'),
+    owners = require('./routes/owners'),
+    passport = require('./models/Company.js').passport;
 
+var app = express();
 
-  var index = require('./routes/index'),
-      portfolio = require('./routes/portfolio'),
-      owners = require('./routes/owners');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
+app.use(session({
+  secret: 'twocubed', 
+  saveUninitialized: true,
+  resave: true
+}) );
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
-  var app = express();
-  var passport = require('./models/Company.js').passport;
-
-  app.set('views', path.join(__dirname, 'views'));
-  app.set('view engine', 'jade');
-
-  app.use(favicon('./views/conruent_pentagon-DARK.png'));
-  app.use(logger('dev'));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded());
-
-  app.use(cookieParser());
-  app.use(session({
-    secret: 'twocubed', 
-    saveUninitialized: true,
-    resave: true
-  }) );
-
-
-  app.use(express.static(path.join(__dirname, 'public')));
-
-  app.use(flash());
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  app.use('/', index);
-  app.use('/portfolio', portfolio);
-  app.use('/owners', owners);
-  app.set('view options', { layout: false });
+app.use('/', index);
+app.use('/portfolio', portfolio);
+app.use('/owners', owners);
+app.set('view options', { layout: false });
 
 var server = app.listen(3030, function() {
     console.log('Listening on port %d', server.address().port);
 });
 
 
-/// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.status(404);
-  if (req.accepts('html')) {  // respond with html page
+  if(req.accepts('html')) {
+
+    // Respond with html page
     res.render('404', { title: '404: not found', url: req.url });
-  } else if (req.accepts('json')) {  // respond with json
+  } else if(req.accepts('json')) { 
+
+    // Respond with json
     res.send({ error: 'Not found' });
     return;
   } else
-    // default to plain-text. send()
+
+    // Default to plain-text. send()
     res.type('txt').send('Not found');
 });
 
-/// error handler
-// development error handler, prints stacktrace
-if (app.get('env') === 'development') {
+// Development error handler, prints stacktrace
+if(app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
       res.status(err.status || 500);
       res.render('error', {
@@ -73,7 +69,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler, no stacktraces leaked to user
+// Production error handler, no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
