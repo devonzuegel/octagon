@@ -11,6 +11,7 @@ var express = require('express'),
     portfolio = require('./routes/portfolio'),
     owners = require('./routes/owners'),
     passport = require('./models/Company.js').passport;
+    
 
 var app = express();
 
