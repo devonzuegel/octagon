@@ -1,4 +1,4 @@
-@charset "IBM437";
+@charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
 .hidden {
@@ -11072,7 +11072,7 @@ textarea:focus textarea::-webkit-scrollbar-thumb {
   background-color: white; }
 
 /* ------------------------------------------
-  Reset â™¥
+  Reset ♥
   http://meyerweb.com/eric/tools/css/reset/
   v2.0 | 20110126
   License: none (public domain)
@@ -11150,6 +11150,13 @@ h2 {
   font-size: 26px;
   font-weight: 300;
   line-height: 100%; }
+
+h3 {
+  color: #999;
+  font-size: 14px;
+  font-weight: 400;
+  height: 36px;
+  line-height: 18px; }
 
 html,
 body {
@@ -11693,9 +11700,13 @@ input:-webkit-autofill {
     .company-bkg .company-content .tab-pane > div {
       margin-bottom: 20px;
       position: relative; }
-      .company-bkg .company-content .tab-pane > div .block-title {
+      .company-bkg .company-content .tab-pane > div h2 {
         display: inline-block;
         margin: 0 0 10px 0; }
+      .company-bkg .company-content .tab-pane > div h3 {
+        display: inline-block;
+        margin: 0 0 10px 0;
+        width: 100px; }
       .company-bkg .company-content .tab-pane > div .block-edit {
         color: #999;
         line-height: 20px;

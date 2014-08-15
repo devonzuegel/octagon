@@ -79,9 +79,15 @@
       margin-bottom: 20px;
       position: relative;
 
-      .block-title {
+      h2 {
         display: inline-block;
         margin: 0 0 10px 0;
+      }
+
+      h3 {
+        display: inline-block;
+        margin: 0 0 10px 0;
+        width: 100px;
       }
 
       .block-edit {
