@@ -132,6 +132,9 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
     // Create new company with profile info included
     Companies.create(company, function (err) {
       if (err)  return done(err);
+
+      // TODO update owners' companies here
+
       cb();
     });
   });

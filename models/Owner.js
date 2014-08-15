@@ -40,6 +40,10 @@ function add(name, email, companies, cb) {
     /* after owner is added to db, update the selected companies to indicate 
      * (s)he is one of their owners & then redirect to settings page */
     if (o.companies) {
+      /* Iterate through each company assigned to the owner and add the owner
+       * to the company's list of owners.
+       * NOTE: Could have used update_companies_owners() fn here,  but it would
+       * have done unecessary checks */
       for (var i = 0; i < o.companies.length; i++) {
         var username = o.companies[i];
 
@@ -50,9 +54,55 @@ function add(name, email, companies, cb) {
           c.save();
         });
       }
-
+ 
       cb(o);
     }
+  });
+}
+
+/* Given an owner, this function iterates through each company & checks if they
+ * are on the owner's list of companies. If a company IS on the owner's list but the
+ * owner IS NOT on the company's list, it adds the owner to the list. If the company
+ * IS NOT on the owner's list but the owner IS on the company's, the owner is removed
+ * from the company's list. */
+function update_companies_owners(o) {
+  var owners_companies = o.companies;
+
+  Companies.find({}, function(err, all_companies) {
+
+    for (var i = 0; i < all_companies.length; i++) {
+      // retrieve ith company from all_companies array for inspection
+      var c = all_companies[i];
+
+      /* get & parse the stringified list of c's owners
+       * if the list is undefined, create an empty array */
+      var companys_owners = (c.owners && c.owners!='') ? JSON.parse(c.owners) : [];
+
+      /** info about existence/locatn of owner in list of company's owners **/
+      // retrieve index of this owner in the list of c's owners
+      var i_owner = companys_owners.indexOf(o.id);
+      // true if owner is in list of company's owners, else false
+      var o_in_list = (i_owner != -1  ||  companys_owners == o.name);
+
+      /** info about existence/locatn of c in list of owner's companies **/
+      // retrieve index of this company in the list of this owner's companies
+      var i_company = owners_companies.indexOf(c.username);
+      // true if company is in list of owner's company, else false
+      var c_in_list = (i_company != -1  ||  owners_companies == c.username);
+
+
+      /* if (the company can be found in the list of the owner's companies)
+       * AND if the owner isn't in the list of its company's owners, add it */
+      if (c_in_list  &&  !o_in_list)    companys_owners.push(o.id);
+      /* else (the company can't be found in the list of the owner's companies)
+       * ... if the owner is in the list of its company's owners, remove it */
+      if (o_in_list  &&  !c_in_list)    companys_owners.splice(i_owner, 1);
+
+      // update c.owners to reflect changes
+      c['owners'] = JSON.stringify(companys_owners);
+      c.save();
+    }
+    
   });
 }
 
@@ -64,46 +114,8 @@ function edit (id, form, cb) {
 
     /* after owner's companies list is updated, update companies to indicate 
      * person is(n't) one of their owners & then redirect to settings page */
-    o.save(function() {     
-      var owners_companies = o.companies;
-
-      Companies.find({}, function(err, all_companies) {
-
-        for (var i = 0; i < all_companies.length; i++) {
-          // retrieve ith company from all_companies array for inspection
-          var c = all_companies[i];
-
-          /* get & parse the stringified list of c's owners
-           * if the list is undefined, create an empty array */
-          var companys_owners = (c.owners && c.owners!='') ? JSON.parse(c.owners) : [];
-
-          /** info about existence/locatn of owner in list of company's owners **/
-          // retrieve index of this owner in the list of c's owners
-          var i_owner = companys_owners.indexOf(o.id);
-          // true if owner is in list of company's owners, else false
-          var o_in_list = (i_owner != -1  ||  companys_owners == o.name);
-
-          /** info about existence/locatn of c in list of owner's companies **/
-          // retrieve index of this company in the list of this owner's companies
-          var i_company = owners_companies.indexOf(c.username);
-          // true if company is in list of owner's company, else false
-          var c_in_list = (i_company != -1  ||  owners_companies == c.username);
-
-
-          /* if (the company can be found in the list of the owner's companies)
-           * AND if the owner isn't in the list of its company's owners, add it */
-          if (c_in_list  &&  !o_in_list)    companys_owners.push(o.id);
-          /* else (the company can't be found in the list of the owner's companies)
-           * ... if the owner is in the list of its company's owners, remove it */
-          if (o_in_list  &&  !c_in_list)    companys_owners.splice(i_owner, 1);
-
-          // update c.owners to reflect changes
-          c['owners'] = JSON.stringify(companys_owners);
-          c.save();
-        }
-        
-      });
-
+    o.save(function() { 
+      update_companies_owners(o);    
       cb();
     }); // END OF o.save(..)
   }); // END OF Owner.findOne(..)
