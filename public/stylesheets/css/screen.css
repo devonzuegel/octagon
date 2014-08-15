@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM437";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
 .hidden {
@@ -11072,7 +11072,7 @@ textarea:focus textarea::-webkit-scrollbar-thumb {
   background-color: white; }
 
 /* ------------------------------------------
-  Reset ♥
+  Reset â™¥
   http://meyerweb.com/eric/tools/css/reset/
   v2.0 | 20110126
   License: none (public domain)
