@@ -23,6 +23,27 @@ var Schema = mongoose.Schema,
     }),
     Companies = mongoose.model('companies', CompanySchema);
 
+// Function to shorten description
+function shorten(description) {
+
+  // Description char limit
+  var limit = 600;
+
+  // Return shortened description with ellipsis
+  return description.substring(0, limit) + '... ';
+}
+
+// Function to remove unwanted link formatting
+function findLinks(description) {
+
+  // Regex to match onto the link syntax Crunchbase gives
+  var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
+
+  // Replace all occurances with text format,
+  // and return the new description
+  return description.replace(link, '$1');
+}
+
 // Function for transforming object arrays to strings
 function obj_arr_to_str(p, obj) {
 
@@ -59,7 +80,7 @@ function simplify_crunchbase_prof(p) {
   return simplified_p = { 
     img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
     short_descrip: p.properties.short_description,
-    description:   p.properties.description,
+    description:   shorten(findLinks(p.properties.description)),
     homepage_url:  (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
     founded_on:    p.properties.founded_on,
     total_funding: (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
