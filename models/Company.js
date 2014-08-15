@@ -1,13 +1,14 @@
-// requires (auth)
-var passport = require('passport');
-var mongoose = require('mongoose/');
+// Requires
+var passport = require('passport'),
+    mongoose = require('mongoose/'),
+    api_mgr = require('../routes/apiManager');
+
 mongoose.connect('mongodb://localhost/test');
-var api_mgr = require('../routes/apiManager');
 
 // var bcrypt = require('bcrypt');
 
-var Schema = mongoose.Schema;
-var CompanySchema = new Schema({
+var Schema = mongoose.Schema,
+    CompanySchema = new Schema({
       username: String,
       password: String,
       init_investmt_date: 'object',
@@ -19,36 +20,41 @@ var CompanySchema = new Schema({
       permalink: String
     }, {
       collection: 'companies'
-    });
-var Companies = mongoose.model('companies', CompanySchema);
+    }),
+    Companies = mongoose.model('companies', CompanySchema);
 
-
+// Function for transforming object arrays to strings
 function obj_arr_to_str(p, obj) {
-  var str = '';  // start with empty string
 
-  // if the obj is defined, concatenate each of its children's names
+  // Initialize an empty string
+  var str = '';
+
+  // If the obj is defined, concatenate each of its children's names
   if (p.relationships[obj]) {
-
     for (var i = 0; i < p.relationships[obj].items.length; i++) {
-      // concatenate comma to front unless it's 0th
+
+      // Concatenate comma to front unless it's 0th
       if (i != 0) str += ', ';
-      // concatenate name
+
+      // Concatenate name
       str += p.relationships[obj].items[i].name;
     }
-    // return resulting string
+
+    // Return resulting string
     return str; 
 
-  // if obj is not defined, return 'undefined'
+  // If obj is not defined
   } else {
     return undefined;
   }
 }
 
-
+// Convert number to USD format
 function usd(num) {
   return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
+// Simplify crunchbase profile object
 function simplify_crunchbase_prof(p) {
   return simplified_p = { 
     img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
@@ -57,36 +63,53 @@ function simplify_crunchbase_prof(p) {
     homepage_url:  (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
     founded_on:    p.properties.founded_on,
     total_funding: (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
-    founders:      obj_arr_to_str(p, 'founders'), // comma-separated string of founders' names
-    categories:    obj_arr_to_str(p, 'categories') // comma-separated string of categories
+
+    // Comma-separated string of founders' names
+    founders:      obj_arr_to_str(p, 'founders'),
+
+    // Comma-separated string of categories
+    categories:    obj_arr_to_str(p, 'categories')
   };
 }
 
-
+// Add a new company
 function add(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
-  if (crunchbase_permalink == '')     crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+  if (crunchbase_permalink == '') {
+    crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+  }
+
   var permalink = '';
 
   api_mgr.get_cmpny(crunchbase_permalink, function(body) {
+
     // TODO what if p or p.data is undefined?
 
-    var p = JSON.parse(body).data;  // parse data from crunchbase response
-    var profile = {};  // create empty profile to be saved into the new company
+    // Parse data from crunchbase response
+    var p = JSON.parse(body).data;
+
+    // Create empty profile to be saved into the new company
+    var profile = {};
 
 
     // Check that crunchbase request returns successfully with complete profile
-    // not equivalent to saying p.response == true (b/c need to ensure existence too)
+    // Not equivalent to saying p.response == true
+    // (b/c need to ensure existence too)
     if (p.response != false) {
-      permalink = crunchbase_permalink; // there is a valid crunchbase permalink, so use that
-      profile = simplify_crunchbase_prof(p); // build profile based on crunchbase to be saved
+
+      // There is a valid crunchbase permalink, so use that
+      permalink = crunchbase_permalink;
+
+      // Build profile based on crunchbase to be saved
+      profile = simplify_crunchbase_prof(p);
 
     // Crunchbase request returned empty
     } else if (username) { 
-      // with no crunchbase permalink, we have to make our own
+
+      // With no crunchbase permalink, we have to make our own
       permalink = username.replace(/\s+/g, '-').toLowerCase();
     }
 
-    // build up company hash with details from above
+    // Build up company hash with details from above
     var company = { 
       'username': username,
       'password': password, 
@@ -103,26 +126,30 @@ function add(username, password, init_investmt_date, crunchbase_permalink, owner
       if (err)  return done(err);
       cb();
     });
-
-
-  }); // END OF api_mgr.get_cmpny(...)
-
-
+  });
 }
 
+// Edit company information
 function edit (link, form, cb) {
   Companies.findOne({ permalink: link }, function (err, user) {
     if (err)  return done(err);
 
     var profile = {};
-    // populate profile with original user.profile
-    for (var k in user.profile)  profile[k] = user.profile[k];
-    // update the changes from the form
-    for (var k in form)      profile[k] = form[k];
-    // update profile
+
+    // Populate profile with original user.profile
+    for (var k in user.profile) {
+      profile[k] = user.profile[k];
+    }
+
+    // Update the changes from the form
+    for (var k in form) {
+      profile[k] = form[k];
+    }
+
+    // Update profile
     user['profile'] = profile;
 
-    // save & redirect to updated profile
+    // Save & redirect to updated profile
     user.save(cb());
   })
 }
