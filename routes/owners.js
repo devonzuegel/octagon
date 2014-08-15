@@ -87,23 +87,46 @@ router.post('/edit', function(req, res) {
         console.log('owners_companies: ' + owners_companies);
 
         for (var i = 0; i < all_companies.length; i++) {
+          // retrieve ith company from all_companies array for inspection
           var c = all_companies[i];
 
+          // get & parse the stringified list of c's owners
+          // if the list is undefined, create an empty array
+          var companys_owners = (c.owners && c.owners!='') ? JSON.parse(c.owners) : [];
 
-          if (owners_companies == c.username || owners_companies.indexOf(c.username) != -1){
-            console.log('YES >> %s', c.username);
-            var companys_owners = (c.owners) ? JSON.parse(c.owners) : [];
-            console.log('\ncompanys_owners BEFORE  ' + companys_owners);
-            if (JSON.parse(c.owners).indexOf(o.id) == -1) {
+          // retrieve index of this owner in the list of c's owners
+          var i_owner = companys_owners.indexOf(o.id);
+
+          // retrieve index of this company in the list of this owner's companies
+          var i_company = owners_companies.indexOf(c.username);
+
+          // if (the company can be found in the list of the owner's companies)
+          if (i_company != -1  ||  owners_companies == c.username){
+            console.log('\nYES >> %s', c.username);
+            console.log('companys_owners BEFORE  ' + companys_owners);
+
+            // if the owner isn't in the list of its company's owners, add it
+            if (i_owner == -1) {
               companys_owners.push(o.id);
               c['owners'] = JSON.stringify(companys_owners);
-              c.save(function(company){
+              c.save(function(err, company) {
                 console.log('companys_owners AFTER   ' + company.owners);
               });
             }
 
+          // else (the company can't be found in the list of the owner's companies)
           } else {
-            console.log('NO  >> %s', c.username);
+            console.log('\nNO  >> %s', c.username);
+            console.log('companys_owners BEFORE  ' + companys_owners);
+
+            // if the owner is in the list of its company's owners, remove it
+            if (i_owner != -1) {
+              companys_owners.splice(i_owner, 1);
+              c['owners'] = JSON.stringify(companys_owners);
+              c.save(function(err, company) {
+                console.log('companys_owners AFTER   ' + company.owners);
+              });
+            }
           }
 
         }
