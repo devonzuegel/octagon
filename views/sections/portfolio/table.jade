@@ -13,10 +13,10 @@
 
         //- Build class(es) to tag each owner
         - var owners_class = ''
-        if (c.owners == undefined  ||  c.owners == [])
+        if (c.owners == undefined  ||  c.owners == []  ||  c.owners == '[]')
           - owners_class = 'none';
         else
-          each o in JSON.stringify(c.owners)
+          each o in JSON.parse(c.owners)
             - owners_class += o + ' '
 
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
