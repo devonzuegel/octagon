@@ -19,9 +19,9 @@
           //- if (typeof c.owners == 'string')
             - owners_class = c.owners.replace('"', '')
           //- else
-          - console.log('\n'+c.username+':')
-          - console.log('c.owners:  '+c.owners + '  ' + typeof c.owners)
-          //- each o in JSON.parse(c.owners)
+          //- - console.log('\n'+c.username+':')
+          //- - console.log('c.owners:  '+c.owners + '  ' + typeof c.owners)
+          each o in JSON.parse(c.owners)
             - owners_class += o + ' '
 
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
