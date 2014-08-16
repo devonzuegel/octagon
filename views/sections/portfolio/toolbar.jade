@@ -3,19 +3,19 @@
     button.dropdown-toggle(type="button", data-toggle="dropdown") Owner
     ul.dropdown-menu
       .dropdown-header Owner
-      li.filter(data-filter='all').active All
+      li.filter(data-filter="all").active All
       if owners
         for o in owners
-          li.filter(data-filter='.#{o.id}') #{o.name}
-      li.filter(data-filter='.none') No owner
+          li.filter(data-filter=".#{o.id}") #{o.name}
+      li.filter(data-filter=".none") No owner
 
 .toolbar-section
   .dropdown#order-dropdown
     button.dropdown-toggle(type="button", data-toggle="dropdown") Order
     ul.dropdown-menu
       .dropdown-header Order
-      li.sort(data-sort='name:asc').active: i.fa.fa-sort-alpha-asc
-      li.sort(data-sort='name:dec'): i.fa.fa-sort-alpha-desc
+      li.sort(data-sort="name:asc").active: i.fa.fa-sort-alpha-asc
+      li.sort(data-sort="name:dec"): i.fa.fa-sort-alpha-desc
 
 .toolbar-section.pull-right
   .toolbar-btn#add-company-btn(data-toggle="modal" data-target="#add-company-form") 
