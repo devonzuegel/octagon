@@ -74,7 +74,7 @@ function simplify_crunchbase_prof(p) {
   return simplified_p = { 
     img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
     short_descrip: p.properties.short_description,
-    description:   shorten(findLinks(p.properties.description)),
+    description:   (p.properties.description) ? shorten(findLinks(p.properties.description)) : undefined,
     homepage_url:  (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
     founded_on:    p.properties.founded_on,
     total_funding: (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
