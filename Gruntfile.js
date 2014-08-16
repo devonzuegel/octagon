@@ -2,7 +2,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
     sass: {
       dist: {
         files: {
@@ -13,15 +12,27 @@ module.exports = function(grunt) {
     watch: {
       files: '**/*.scss',
       tasks: 'default'
+    },
+    jshint: {
+      files: ['Gruntfile.js', 'public/js/**/*.js', 'test/**/*.js'],
+      options: {
+        globals: {
+          jQuery: true,
+          console: true,
+          module: true
+        }
+      }
     }
   });
 
   // Dependencies
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task.
   grunt.registerTask('default', 'sass');
-  grunt.registerTask('deploy', ['watch']);
+  grunt.registerTask('deploy', 'watch');
+  grunt.registerTask('js', 'jshint');
 
 };
