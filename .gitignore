@@ -1,4 +1,5 @@
 .DS_Store
-data
+.git-attributes
 .sass-cache
+data
 node_modules

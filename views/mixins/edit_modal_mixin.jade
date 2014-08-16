@@ -8,11 +8,3 @@ mixin edit_modal(action, modal_id, modal_title)
         .modal-footer
           input(type="button"  value="Cancel" data-dismiss="modal")
           input(type="submit"  value="Save")
-
-script.
-  // Highlight label of input field on focus
-  $('input[type=text], input[type=password], textarea').on('blur', function() {
-    $(this).prevAll('.small-label:first').removeClass('small-label-focused');
-  }).on('focus', function() {
-    $(this).prevAll('.small-label:first').addClass('small-label-focused');
-  });

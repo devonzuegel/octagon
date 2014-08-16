@@ -16,23 +16,27 @@
 
   script.
 
+    // TODO: This needs to be factored out
+    // ---
     // Grabs all_owners from routes & puts it into owners var
-    var owners = !{JSON.stringify(all_owners)};
+    window.onload = function() {
+      var owners = !{JSON.stringify(all_owners)};
 
-    // Iterate through owners' edit btns so that onclick, the form is
-    // populated with that owner's info
-    for (var i = 0; i < owners.length; i++) {
-      (function(n) {
-        var o = owners[i];
-        $('#edit-'+o._id).click(function() {
-          $('#name').val(o.name);
-          $('#email').val(o.email);
-          $("input.edit:checkbox").each(function(){
-            if (o.companies.indexOf($(this).val()) != -1){
-              $(this).prop('checked', true);
-            }
+      // Iterate through owners' edit btns so that onclick, the form is
+      // populated with that owner's info
+      for (var i = 0; i < owners.length; i++) {
+        (function(n) {
+          var o = owners[i];
+          $('#edit-'+o._id).click(function() {
+            $('#name').val(o.name);
+            $('#email').val(o.email);
+            $("input.edit:checkbox").each(function(){
+              if (o.companies.indexOf($(this).val()) != -1){
+                $(this).prop('checked', true);
+              }
+            });
+            $('#id').val(o._id);
           });
-          $('#id').val(o._id);
-        });
-      }(i))
-    }
+        }(i))
+      }
+    };
