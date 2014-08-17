@@ -1401,17 +1401,17 @@ pre code {
 }
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    // width: 750px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    // width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    // width: 1170px;
   }
 }
 .container-fluid {
@@ -6432,8 +6432,7 @@ a:focus {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 1040px;
-  max-width: 99%;
+  
 }
 
 .span12 {
@@ -10327,10 +10326,6 @@ input[type="submit"].btn.btn-mini {
   clear: both;
 }
 
-.tab-content {
-  overflow: auto;
-}
-
 .tabs-below > .nav-tabs,
 .tabs-right > .nav-tabs,
 .tabs-left > .nav-tabs {
@@ -10654,7 +10649,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  
 }
 
 .navbar-fixed-top {
@@ -12118,7 +12113,7 @@ a.badge:focus {
 }
 
 .container {
-  max-width: 85%;
+  
 }
 textarea {
   border: none;

@@ -1,5 +1,15 @@
 .tab-pane#economics
-  .col-md-2
+  .col-md-12.pane-header
+    .current-quarter
+      i.fa.fa-clock-o.fa-right
+      | Current Quarter
+      strong Q1 2013
+
+    .block-edit.edit-btn(data-toggle="modal" data-target="")
+      i.fa.fa-pencil.fa-right
+      | edit all
+
+  .col-md-3
     h3 Q1 2013 LTV
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -7,12 +17,12 @@
 
     .block-info.block-num $1,000
 
-  .col-md-10
+  .col-md-9
     h3 LTV By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 Lifetime Est.
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -20,12 +30,12 @@
 
     .block-info.block-num $20,000
 
-  .col-md-10
+  .col-md-9
     h3 Lifetime Est. By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 CAC
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -33,12 +43,12 @@
 
     .block-info.block-num $100
 
-  .col-md-10
+  .col-md-9
     h3 CAC By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 ASP
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -46,12 +56,12 @@
 
     .block-info.block-num $100
 
-  .col-md-10
+  .col-md-9
     h3 ASP By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 GM %
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -59,7 +69,7 @@
 
     .block-info.block-num 15%
 
-  .col-md-10
+  .col-md-9
     h3 GM % By Quarter
 
     .block-info Graph

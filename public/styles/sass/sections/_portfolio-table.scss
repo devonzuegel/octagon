@@ -3,11 +3,12 @@
   .mix {
     background-color: #fff;
     @include border-radius(2px);
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
     display: none;
 
     &:hover {
-      @include box-shadow(0, 0, 5px, rgba(0, 0, 0, 0.2));
+      @include box-shadow(0, 0, 4px, rgba(0, 0, 0, 0.2));
     }
 
     .small-label {

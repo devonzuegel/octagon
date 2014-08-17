@@ -18,9 +18,9 @@
         background-color: #fff;
         @include border-radius(500px);
         @include box-shadow(0, 0, 3px, #000);
-        @include inline-flex;
         float: left;
         height: 100px;
+        @include inline-flex;
         overflow: hidden;
         text-align: center;
         width: 100px;
@@ -73,56 +73,87 @@
   }
 
   .company-content {
-    margin: 120px 0;
+    margin: 120px 0 40px 0;
 
     .tab-content {
-      overflow: visible;
 
-      .tab-pane > div {
-        margin-bottom: 20px;
-        position: relative;
+      .tab-pane {
 
-        h2 {
-          display: inline-block;
-          margin: 0 0 10px 0;
+        .pane-header {
+          border-bottom: 1px solid #ccc;
+          margin-bottom: 30px;
+          padding-bottom: 30px;
+
+          .quarter-info {
+            display: inline-block;
+            font-size: 14px;
+
+            .quarter-label {
+              color: #666;
+              display: inline-block;
+            }
+
+            .quarter-value {
+              color: $green;
+              display: inline-block;
+              font-weight: 500;
+              margin: 0 5px;
+            }
+          }
         }
 
-        h3 {
-          display: inline-block;
-          margin: 0 0 10px 0;
-          width: 100px;
-        }
+        > div {
+          margin-bottom: 40px;
+          position: relative;
 
-        .block-edit {
-          color: #999;
-          line-height: 20px;
-          position: absolute;
-          right: 10px;
-          top: 5px;
-        }
+          h2 {
+            display: inline-block;
+            margin: 0 0 10px 0;
+          }
 
-        .block-info {
-          color: #333;
-          background-color: #fff;
-          font-size: 15px;
-          line-height: 30px;
-          padding: 20px;
-          width: 100%;
+          h3 {
+            display: inline-block;
+            margin: 0 0 10px 0;
+          }
 
-          a {
-            color: $purple;
+          .block-edit {
+            color: #999;
+            line-height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 0;
+          }
 
-            &:hover {
-              color: $dark-purple;
+          .block-info {
+            background-color: #fff;
+            @include border-radius(2px);
+            border-bottom: 1px solid #ccc;
+            color: #666;
+            font-size: 15px;
+            line-height: 30px;
+            padding: 20px;
+            width: 100%;
+
+            a {
+              color: $purple;
+
+              &:hover {
+                color: $dark-purple;
+              }
+            }
+
+            h4 {
+              font-weight: 500;
+            }
+
+            > div {
+              margin: 0 0 20px 0;
             }
           }
 
-          h4 {
-            font-weight: 500;
-          }
-
-          > div {
-            margin: 0 0 20px 0;
+          .block-num {
+            font-size: 18px;
+            text-align: center;
           }
         }
       }
@@ -132,7 +163,7 @@
 
 .edit-btn {
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
 
   &:hover {
     color: $purple !important;

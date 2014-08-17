@@ -1414,15 +1414,6 @@ pre code {
   margin-right: auto;
   margin-left: auto; }
 
-@media (min-width: 768px) {
-  .container {
-    width: 750px; } }
-@media (min-width: 992px) {
-  .container {
-    width: 970px; } }
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px; } }
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;
@@ -6269,13 +6260,6 @@ a:focus {
   min-height: 1px;
   margin-left: 20px; }
 
-.container,
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-  width: 1040px;
-  max-width: 99%; }
-
 .span12 {
   width: 940px; }
 
@@ -9502,9 +9486,6 @@ input[type="submit"].btn.btn-mini {
 .tabbable:after {
   clear: both; }
 
-.tab-content {
-  overflow: auto; }
-
 .tabs-below > .nav-tabs,
 .tabs-right > .nav-tabs,
 .tabs-left > .nav-tabs {
@@ -9774,11 +9755,6 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0; }
-
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-  width: 940px; }
 
 .navbar-fixed-top {
   top: 0; }
@@ -11037,9 +11013,6 @@ a.badge:focus {
 .carousel-caption p {
   margin-bottom: 0; }
 
-.container {
-  max-width: 85%; }
-
 textarea {
   border: none;
   /*border-bottom: 1px solid #ccc; */
@@ -11153,10 +11126,10 @@ h2 {
 
 h3 {
   color: #999;
-  font-size: 14px;
-  font-weight: 400;
-  height: 36px;
-  line-height: 18px; }
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase; }
 
 html,
 body {
@@ -11164,12 +11137,10 @@ body {
 
 .dashboard-container,
 .portfolio-content,
-.company-content,
 .settings-container {
   min-height: 100%; }
   .dashboard-container:after,
   .portfolio-content:after,
-  .company-content:after,
   .settings-container:after {
     content: '';
     display: block; }
@@ -11268,12 +11239,12 @@ input:-webkit-autofill {
   .nav-tabs .navbar-tab a {
     background: none;
     color: #999;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 0 15px; }
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0 15px;
+    text-transform: uppercase; }
     .nav-tabs .navbar-tab a:hover {
       background-color: transparent !important;
-      border-color: #bbb;
       color: #666; }
   .nav-tabs .horizontal-tab {
     display: inline-block; }
@@ -11581,13 +11552,14 @@ input:-webkit-autofill {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   background-clip: padding-box;
+  border-bottom: 1px solid #ccc;
   cursor: pointer;
   display: none; }
   .grid .mix:hover,
   .list .mix:hover {
-    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); }
   .grid .mix .small-label,
   .list .mix .small-label {
     color: #999; }
@@ -11655,13 +11627,13 @@ input:-webkit-autofill {
       -webkit-box-shadow: 0 0 3px black;
       -moz-box-shadow: 0 0 3px black;
       box-shadow: 0 0 3px black;
+      float: left;
+      height: 100px;
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
       display: -moz-inline-flex;
       display: -ms-inline-flexbox;
       display: inline-flex;
-      float: left;
-      height: 100px;
       overflow: hidden;
       text-align: center;
       width: 100px; }
@@ -11696,44 +11668,64 @@ input:-webkit-autofill {
     width: 100%;
     z-index: 50; }
   .company-bkg .company-content {
-    margin: 120px 0; }
-    .company-bkg .company-content .tab-content {
-      overflow: visible; }
-      .company-bkg .company-content .tab-content .tab-pane > div {
-        margin-bottom: 20px;
-        position: relative; }
-        .company-bkg .company-content .tab-content .tab-pane > div h2 {
+    margin: 120px 0 40px 0; }
+    .company-bkg .company-content .tab-content .tab-pane .pane-header {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 30px;
+      padding-bottom: 30px; }
+      .company-bkg .company-content .tab-content .tab-pane .pane-header .quarter-info {
+        display: inline-block;
+        font-size: 14px; }
+        .company-bkg .company-content .tab-content .tab-pane .pane-header .quarter-info .quarter-label {
+          color: #666;
+          display: inline-block; }
+        .company-bkg .company-content .tab-content .tab-pane .pane-header .quarter-info .quarter-value {
+          color: #1ebba6;
           display: inline-block;
-          margin: 0 0 10px 0; }
-        .company-bkg .company-content .tab-content .tab-pane > div h3 {
-          display: inline-block;
-          margin: 0 0 10px 0;
-          width: 100px; }
-        .company-bkg .company-content .tab-content .tab-pane > div .block-edit {
-          color: #999;
-          line-height: 20px;
-          position: absolute;
-          right: 10px;
-          top: 5px; }
-        .company-bkg .company-content .tab-content .tab-pane > div .block-info {
-          color: #333;
-          background-color: #fff;
-          font-size: 15px;
-          line-height: 30px;
-          padding: 20px;
-          width: 100%; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-info a {
-            color: #8a64d1; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info a:hover {
-              color: #45367c; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-info h4 {
-            font-weight: 500; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-info > div {
-            margin: 0 0 20px 0; }
+          font-weight: 500;
+          margin: 0 5px; }
+    .company-bkg .company-content .tab-content .tab-pane > div {
+      margin-bottom: 40px;
+      position: relative; }
+      .company-bkg .company-content .tab-content .tab-pane > div h2 {
+        display: inline-block;
+        margin: 0 0 10px 0; }
+      .company-bkg .company-content .tab-content .tab-pane > div h3 {
+        display: inline-block;
+        margin: 0 0 10px 0; }
+      .company-bkg .company-content .tab-content .tab-pane > div .block-edit {
+        color: #999;
+        line-height: 20px;
+        position: absolute;
+        right: 10px;
+        top: 0; }
+      .company-bkg .company-content .tab-content .tab-pane > div .block-info {
+        background-color: #fff;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        background-clip: padding-box;
+        border-bottom: 1px solid #ccc;
+        color: #666;
+        font-size: 15px;
+        line-height: 30px;
+        padding: 20px;
+        width: 100%; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-info a {
+          color: #8a64d1; }
+          .company-bkg .company-content .tab-content .tab-pane > div .block-info a:hover {
+            color: #45367c; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-info h4 {
+          font-weight: 500; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-info > div {
+          margin: 0 0 20px 0; }
+      .company-bkg .company-content .tab-content .tab-pane > div .block-num {
+        font-size: 18px;
+        text-align: center; }
 
 .edit-btn {
   cursor: pointer;
-  font-size: 15px; }
+  font-size: 14px; }
   .edit-btn:hover {
     color: #8a64d1 !important; }
 
@@ -11854,13 +11846,13 @@ input:-webkit-autofill {
     background-color: transparent;
     float: left;
     margin-top: 40px;
-    width: 100px; }
+    width: 120px; }
   .settings-bkg .settings-container .settings-content-wrapper .settings-content {
     background-color: white;
     -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-    margin-left: 100px;
+    margin-left: 120px;
     padding: 40px 40px 0 40px;
     width: calc(100% - $settings-sidebar-width); }
     .settings-bkg .settings-container .settings-content-wrapper .settings-content .tab-content {

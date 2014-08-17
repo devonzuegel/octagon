@@ -1,5 +1,19 @@
 .tab-pane#operational
-  .col-md-2
+  .col-md-12.pane-header
+    .quarter-info
+      .quarter-label
+        i.fa.fa-clock-o.fa-right
+        | Current quarter is
+      .quarter-value Q1 2013
+    .quarter-info
+      .quarter-label and the next quarter starts in
+      .quarter-value 26 days
+
+    .block-edit.edit-btn(data-toggle="modal" data-target="")
+      i.fa.fa-pencil.fa-right
+      | edit all
+
+  .col-md-3
     h3 Q1 2013 Gross Monthly Burn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -7,7 +21,7 @@
 
     .block-info.block-num $200,000
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 Net Monthly Burn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -15,12 +29,12 @@
 
     .block-info.block-num $150,000
 
-  .col-md-8
+  .col-md-6
     h3 Monthly Burn By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 Revenue
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -28,12 +42,12 @@
 
     .block-info.block-num $100,000
 
-  .col-md-10
+  .col-md-9
     h3 Revenue By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 Head Count
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -41,7 +55,7 @@
 
     .block-info.block-num 40
 
-  .col-md-10
+  .col-md-9
     h3 Head Count By Quarter
 
     .block-info Graph

@@ -1,5 +1,15 @@
 .tab-pane#user
-  .col-md-2
+  .col-md-12.pane-header
+    .current-quarter
+      i.fa.fa-clock-o.fa-right
+      | Current Quarter
+      strong Q1 2013
+
+    .block-edit.edit-btn(data-toggle="modal" data-target="")
+      i.fa.fa-pencil.fa-right
+      | edit all
+
+  .col-md-3
     h3 Q1 2013 AVG DAU
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -7,12 +17,12 @@
 
     .block-info.block-num 1,000
 
-  .col-md-10
+  .col-md-9
     h3 AVG DAU By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 AVG MAU
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -20,12 +30,12 @@
 
     .block-info.block-num 30,000
 
-  .col-md-10
+  .col-md-9
     h3 AVG MAU By Quarter
 
     .block-info Graph
 
-  .col-md-2
+  .col-md-3
     h3 Q1 2013 Churn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="")
@@ -33,7 +43,7 @@
 
     .block-info.block-num 5%
 
-  .col-md-10
+  .col-md-9
     h3 Churn By Quarter
 
     .block-info Graph
