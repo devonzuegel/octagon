@@ -75,51 +75,55 @@
   .company-content {
     margin: 120px 0;
 
-    .tab-pane > div {
-      margin-bottom: 20px;
-      position: relative;
+    .tab-content {
+      overflow: visible;
 
-      h2 {
-        display: inline-block;
-        margin: 0 0 10px 0;
-      }
+      .tab-pane > div {
+        margin-bottom: 20px;
+        position: relative;
 
-      h3 {
-        display: inline-block;
-        margin: 0 0 10px 0;
-        width: 100px;
-      }
+        h2 {
+          display: inline-block;
+          margin: 0 0 10px 0;
+        }
 
-      .block-edit {
-        color: #999;
-        line-height: 20px;
-        position: absolute;
-        right: 10px;
-        top: 5px;
-      }
+        h3 {
+          display: inline-block;
+          margin: 0 0 10px 0;
+          width: 100px;
+        }
 
-      .block-info {
-        color: #333;
-        background-color: #fff;
-        font-size: 15px;
-        line-height: 30px;
-        padding: 20px;
-        width: 100%;
+        .block-edit {
+          color: #999;
+          line-height: 20px;
+          position: absolute;
+          right: 10px;
+          top: 5px;
+        }
 
-        a {
-          color: $purple;
+        .block-info {
+          color: #333;
+          background-color: #fff;
+          font-size: 15px;
+          line-height: 30px;
+          padding: 20px;
+          width: 100%;
 
-          &:hover {
-            color: $dark-purple;
+          a {
+            color: $purple;
+
+            &:hover {
+              color: $dark-purple;
+            }
           }
-        }
 
-        h4 {
-          font-weight: 500;
-        }
+          h4 {
+            font-weight: 500;
+          }
 
-        > div {
-          margin: 0 0 20px 0;
+          > div {
+            margin: 0 0 20px 0;
+          }
         }
       }
     }
