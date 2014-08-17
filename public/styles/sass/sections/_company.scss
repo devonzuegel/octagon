@@ -153,9 +153,16 @@
           }
 
           .block-num {
-            font-size: 18px;
+            font-size: 22px;
             text-align: center;
           }
+        }
+      }
+
+      #overview {
+
+        > div .block-info {
+          min-height: 400px;
         }
       }
     }
@@ -172,10 +179,10 @@
 }
 
 .edit-disabled {
-  color: #ccc !important;
+  color: #bbb !important;
   cursor: not-allowed !important;
 
   &:hover {
-    color: #ccc !important;
+    color: #bbb !important;
   }
 }

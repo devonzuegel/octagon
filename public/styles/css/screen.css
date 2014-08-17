@@ -11721,8 +11721,10 @@ input:-webkit-autofill {
         .company-bkg .company-content .tab-content .tab-pane > div .block-info > div {
           margin: 0 0 20px 0; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-num {
-        font-size: 18px;
+        font-size: 22px;
         text-align: center; }
+    .company-bkg .company-content .tab-content #overview > div .block-info {
+      min-height: 400px; }
 
 .edit-btn {
   cursor: pointer;
@@ -11731,10 +11733,10 @@ input:-webkit-autofill {
     color: #8a64d1 !important; }
 
 .edit-disabled {
-  color: #ccc !important;
+  color: #bbb !important;
   cursor: not-allowed !important; }
   .edit-disabled:hover {
-    color: #ccc !important; }
+    color: #bbb !important; }
 
 .toolbar {
   background: #eeeeee;
