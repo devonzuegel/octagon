@@ -11675,7 +11675,8 @@ input:-webkit-autofill {
       padding-bottom: 30px; }
       .company-bkg .company-content .tab-content .tab-pane .pane-header .quarter-info {
         display: inline-block;
-        font-size: 14px; }
+        font-size: 18px;
+        font-weight: 300; }
         .company-bkg .company-content .tab-content .tab-pane .pane-header .quarter-info .quarter-label {
           color: #666;
           display: inline-block; }
