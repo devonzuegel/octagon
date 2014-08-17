@@ -1,0 +1,11 @@
+include ../mixins/edit_modal_mixin
+
++edit_modal("/portfolio/"+permalink+"/edit", "edit-user", "Edit User Metrics")
+  div.small-label Q1 2013 AVG DAU
+  input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off" value="")
+
+  div.small-label Q1 2013 AVG MAU
+  input(type="text"  placeholder="Add AVG MAU"  name="avg_mau"  autocomplete="off" value="")
+
+  div.small-label Q1 2013 Churn
+  input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off" value="")
