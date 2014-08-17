@@ -9,3 +9,15 @@ include ../mixins/edit_modal_mixin
 
   div.small-label Q1 2013 Churn
   input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off" value="")
+
++edit_modal("/portfolio/"+permalink+"/edit", "edit-user-dau", "Edit AVG DAU")
+  div.small-label Q1 2013 AVG DAU
+  input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off" value="")
+
++edit_modal("/portfolio/"+permalink+"/edit", "edit-user-mau", "Edit AVG MAU")
+  div.small-label Q1 2013 AVG MAU
+  input(type="text"  placeholder="Add AVG MAU"  name="avg_mau"  autocomplete="off" value="")
+
++edit_modal("/portfolio/"+permalink+"/edit", "edit-user-churn", "Edit Churn")
+  div.small-label Q1 2013 Churn
+  input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off" value="")
