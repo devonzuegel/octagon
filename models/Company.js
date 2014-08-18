@@ -169,7 +169,6 @@ module.exports = {
         'economics': economics
       };
 
-
       // Create new company with profile info included
       Companies.create(company, function (err, c) {
         if (err)  return done(err);
