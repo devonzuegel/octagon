@@ -1,6 +1,9 @@
 include ../mixins/edit_modal_mixin
 
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics", "Edit Unit Economics")
+  input(type="hidden" name="form_name" value="economics")
+
   div.small-label LTV
   input(type="text"  placeholder="Add LTV"  name="ltv"  autocomplete="off" value="")
 
@@ -16,22 +19,42 @@ include ../mixins/edit_modal_mixin
   div.small-label GM %
   input(type="text"  placeholder="Add GM %"  name="gm_percentage"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-ltv", "Edit LTV")
+  input(type="hidden" name="form_name" value="economics")
+
   div.small-label LTV
   input(type="text"  placeholder="Add LTV"  name="ltv"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-lifetime-est", "Edit Lifetime Est.")
+  input(type="hidden" name="form_name" value="economics")
+
   div.small-label Lifetime Estimate
   input(type="text"  placeholder="Add lifetime est."  name="lifetime_est"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-cac", "Edit CAC")
+  input(type="hidden" name="form_name" value="economics")
+
   div.small-label CAC
   input(type="text"  placeholder="Add CAC"  name="cac"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-asp", "Edit ASP")
+  input(type="hidden" name="form_name" value="economics")
+
   div.small-label ASP
   input(type="text"  placeholder="Add ASP"  name="asp"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-gm", "Edit GM %")
+  input(type="hidden" name="form_name" value="economics")
+
   div.small-label GM %
   input(type="text"  placeholder="Add GM %"  name="gm_percentage"  autocomplete="off" value="")

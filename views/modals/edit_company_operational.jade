@@ -1,6 +1,8 @@
 include ../mixins/edit_modal_mixin
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational", "Edit User Metrics")
+  input(type="hidden" name="form_name" value="operational")
+
   div.small-label Gross Burn
   input(type="text"  placeholder="Add gross burn"  name="gross_burn"  autocomplete="off" value="")
 
@@ -13,18 +15,34 @@ include ../mixins/edit_modal_mixin
   div.small-label Head Count
   input(type="text"  placeholder="Add head count"  name="head_count"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-gross-burn", "Edit Gross Burn")
+  input(type="hidden" name="form_name" value="operational")
+
   div.small-label Gross Burn
   input(type="text"  placeholder="Add gross burn"  name="gross_burn"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-net-burn", "Edit Net Burn")
+  input(type="hidden" name="form_name" value="operational")
+
   div.small-label Net Burn
   input(type="text"  placeholder="Add net burn"  name="net_burn"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-revenue", "Edit Revenue")
+  input(type="hidden" name="form_name" value="operational")
+
   div.small-label Revenue
   input(type="text"  placeholder="Add revenue"  name="revenue"  autocomplete="off" value="")
 
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-head-count", "Edit Head Count")
+  input(type="hidden" name="form_name" value="operational")
+
   div.small-label Head Count
   input(type="text"  placeholder="Add head count"  name="head_count"  autocomplete="off" value="")
