@@ -1,4 +1,3 @@
-// Object literal for handling a portfolio
 var Portfolio = {
 
   // Initialize object

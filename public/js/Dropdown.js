@@ -1,4 +1,3 @@
-// Object literal for handling all dropdowns
 var Dropdown = {
 
   // Creating the dropdown

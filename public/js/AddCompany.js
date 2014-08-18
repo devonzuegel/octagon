@@ -1,4 +1,3 @@
-// Object literal for handling all aspects of adding a company
 var AddCompany = {
 
   // Initialize object
