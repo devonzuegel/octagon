@@ -3,8 +3,6 @@
       mongoose = require('mongoose/'),
       api_mgr = require('../routes/apiManager');
 
-// var Owners = require('../models/Owner.js').Owners;
-
 mongoose.connect('mongodb://localhost/test');
 
 var Schema = mongoose.Schema,
@@ -18,13 +16,29 @@ var Schema = mongoose.Schema,
       owners: 'object',
       profile: 'object',
       permalink: String,
-      operational: 'object',
-      user_metrics: 'object',
-      economics: 'object'
+      operational: {
+        gross_burn: 'object',
+        net_burn: 'object',
+        revenue: 'object',
+        head_count: 'object'
+      },
+      user_metrics: {
+        avg_dau: 'object',
+        avg_mau: 'object',
+        churn: 'object'
+      },
+      economics: {
+        ltv: 'object',
+        lifetime_est: 'object',
+        cac: 'object',
+        asp: 'object',
+        gm_percentage: 'object'
+      }
     }, {
       collection: 'companies'
     }),
     Companies = mongoose.model('companies', CompanySchema);
+
 
 /* Function to shorten description */
 function shorten(description) {
@@ -91,23 +105,25 @@ function simplify_crunchbase_prof(p) {
 /* Given the contents of a form (including a field called 'form_name'), this function
  * updates the corresponding field in company (access by: company[form.form_name]) 
  * with the contents of the form. */
-function edit_metrics_by_form_name(form, company, cb) {
+function edit_metrics_by_form_name(form_name, form, company, cb) {
   var updated = {};
 
   // Populate 'updated' with old values
-  for (var field in company[form.form_name]) {
-    updated[field] = company[form.form_name][field];
+  for (var field in company[form_name]) {
+    updated[field] = company[form_name][field];
   }
 
   // Update fields of 'updated' with data from form
   for (var field in form) {
-    if (field != 'form_name') { 
-      updated[field] = form[field];
+    if (field != 'form_name') {
+      if (updated[field] == undefined)    updated[field] = 'object';
+      updated[field].unshift(form[field]);
     }
   }
 
   // Update 'company[for.form_name]' to reflect changes from 'updated'
-  company[form.form_name] = updated;
+  company[form_name] = updated;
+  console.log('company[form_name]: ' + JSON.stringify(company[form_name], null, 3));
 
   // save 'company' to db and call callback function
   company.save(cb);
@@ -150,29 +166,25 @@ module.exports = {
         permalink = username.replace(/\s+/g, '-').toLowerCase();
       }
 
-      // Create object of operational metrics
       var operational = {
         gross_burn: [],
         net_burn: [],
         revenue: [],
         head_count: []
-      };
-
-      // Create object of user metrics
-      var user_metrics = {
+      },
+      user_metrics = {
         avg_dau: [],
         avg_mau: [],
         churn: []
-      };
-
-      // Create object of unit economics
-      var economics = {
+      },
+      economics = {
         ltv: [],
         lifetime_est: [],
         cac: [],
         asp: [],
         gm_percentage: []
       };
+
 
       // Build up company hash with details from above
       var company = { 
@@ -230,8 +242,9 @@ module.exports = {
     Companies.findOne({ permalink: link }, function (err, company) {
       if (err)  return done(err);
 
-      edit_metrics_by_form_name(form, company, cb);
+      edit_metrics_by_form_name(form.form_name, form, company, cb);
     });
+
   },
 
   Companies: Companies,
