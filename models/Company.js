@@ -202,7 +202,7 @@ module.exports = {
 
       // Save & redirect to updated profile
       company.save(cb());
-    })
+    });
   },
 
   // Edit company metric information
@@ -212,24 +212,23 @@ module.exports = {
 
       // Iterate through form fields
       for(var field in form) {
-
         if(typeof(company.operational[field]) !== 'undefined') {
           company.operational[field].unshift({
-            time: new Date(),
+            timestamp: new Date(),
             value: form[field]
           });
         }
 
         if(typeof(company.user_metrics[field]) !== 'undefined') {
           company.user_metrics[field].unshift({
-            time: new Date(),
+            timestamp: new Date(),
             value: form[field]
           });
         }
 
         if(typeof(company.economics[field]) !== 'undefined') {
           company.economics[field].unshift({
-            time: new Date(),
+            timestamp: new Date(),
             value: form[field]
           }); 
         }      

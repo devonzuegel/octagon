@@ -74,7 +74,6 @@ router.post('/edit', function(req, res) {
   OwnerModel.edit(form.id, form, function() {
     res.redirect('/settings/');
   });
-
 });
 
 module.exports = router;
