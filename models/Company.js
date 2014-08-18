@@ -1,7 +1,7 @@
 // Requires
-  var passport = require('passport'),
-      mongoose = require('mongoose/'),
-      api_mgr = require('../routes/apiManager');
+var passport = require('passport'),
+    mongoose = require('mongoose/'),
+    api_mgr = require('../routes/apiManager');
 
 mongoose.connect('mongodb://localhost/test');
 
@@ -57,7 +57,7 @@ function findLinks(description) {
 }
 
 /* Function for transforming object arrays to strings */
-function obj_arr_to_str(p, obj) {
+function objArrayToString(p, obj) {
   // Initialize an empty string
   var str = '';
 
@@ -85,27 +85,35 @@ function usd(num) {
 }
 
 /* Simplify crunchbase profile object */
-function simplify_crunchbase_prof(p) {
+function simplifyCrunchbaseProf(p) {
   return simplified_p = { 
-    img_path:      (p.relationships.primary_image) ? "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path : undefined,
+    img_path:      (p.relationships.primary_image) ?
+                   "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path :
+                   undefined,
     short_descrip: p.properties.short_description,
-    description:   (p.properties.description) ? shorten(findLinks(p.properties.description)) : undefined,
-    homepage_url:  (p.properties.homepage_url) ? p.properties.homepage_url.replace('http://', '') : undefined,
+    description:   (p.properties.description) ? 
+                   shorten(findLinks(p.properties.description)) :
+                   undefined,
+    homepage_url:  (p.properties.homepage_url) ?
+                   p.properties.homepage_url.replace('http://', '') :
+                   undefined,
     founded_on:    p.properties.founded_on,
-    total_funding: (p.properties.total_funding_usd) ? usd(p.properties.total_funding_usd) : undefined,
+    total_funding: (p.properties.total_funding_usd) ?
+                   usd(p.properties.total_funding_usd) :
+                   undefined,
 
     // Comma-separated string of founders' names
-    founders:      obj_arr_to_str(p, 'founders'),
+    founders:      objArrayToString(p, 'founders'),
 
     // Comma-separated string of categories
-    categories:    obj_arr_to_str(p, 'categories')
+    categories:    objArrayToString(p, 'categories')
   };
 }
 
 /* Given the contents of a form (including a field called 'form_name'), this function
  * updates the corresponding field in company (access by: company[form.form_name]) 
  * with the contents of the form. */
-function edit_metrics_by_form_name(form_name, form, company, cb) {
+function editMetricsByForm(form_name, form, company, cb) {
   var updated = {};
 
   // Populate 'updated' with old values
@@ -158,7 +166,7 @@ module.exports = {
         permalink = crunchbase_permalink;
 
         // Build profile based on crunchbase to be saved
-        profile = simplify_crunchbase_prof(p);
+        profile = simplifyCrunchbaseProf(p);
 
       // Else if crunchbase request returned empty
       } else if (username) { 
@@ -212,9 +220,7 @@ module.exports = {
   // Edit company profile information
   editProfile: function(link, form, cb) {
     Companies.findOne({ permalink: link }, function (err, company) {
-      if (err) {
-        return done(err);
-      }
+      if (err)  return done(err);
 
       // Initialize empty profile object
       var profile = {};
@@ -242,7 +248,7 @@ module.exports = {
     Companies.findOne({ permalink: link }, function (err, company) {
       if (err)  return done(err);
 
-      edit_metrics_by_form_name(form.form_name, form, company, cb);
+      editMetricsByForm(form.form_name, form, company, cb);
     });
 
   },
