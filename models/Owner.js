@@ -110,7 +110,6 @@ module.exports = {
     });
   },
 
-
   edit: function(id, form, cb) {
     // Search for owner to update (based on id, found in hidden input element)
     Owners.findOne({ _id: id }, function (err, o) {

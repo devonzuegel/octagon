@@ -1,4 +1,3 @@
-// Object literal for handling changing elements on scroll
 var Scroll = {
 
   // Initialize scroll object
