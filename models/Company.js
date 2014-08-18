@@ -17,22 +17,22 @@ var Schema = mongoose.Schema,
       profile: 'object',
       permalink: String,
       operational: {
-        gross_burn: 'object',
-        net_burn: 'object',
-        revenue: 'object',
-        head_count: 'object'
+        gross_burn: ['object'],
+        net_burn: ['object'],
+        revenue: ['object'],
+        head_count: ['object']
       },
       user_metrics: {
-        avg_dau: 'object',
-        avg_mau: 'object',
-        churn: 'object'
+        avg_dau: ['object'],
+        avg_mau: ['object'],
+        churn: ['object']
       },
       economics: {
-        ltv: 'object',
-        lifetime_est: 'object',
-        cac: 'object',
-        asp: 'object',
-        gm_percentage: 'object'
+        ltv: ['object'],
+        lifetime_est: ['object'],
+        cac: ['object'],
+        asp: ['object'],
+        gm_percentage: ['object']
       }
     }, {
       collection: 'companies'
@@ -110,10 +110,12 @@ function simplifyCrunchbaseProf(p) {
   };
 }
 
-/* Given the contents of a form (including a field called 'form_name'), this function
- * updates the corresponding field in company (access by: company[form.form_name]) 
- * with the contents of the form. */
+/* Given the contents of a form (including a field called 'form_name'), 
+ * this function updates the corresponding field in company
+ * (access by: company[form.form_name]) with the contents of the form. */
 function editMetricsByForm(form_name, form, company, cb) {
+
+  // Initialize empty obj
   var updated = {};
 
   // Populate 'updated' with old values
@@ -124,14 +126,18 @@ function editMetricsByForm(form_name, form, company, cb) {
   // Update fields of 'updated' with data from form
   for (var field in form) {
     if (field != 'form_name') {
-      if (updated[field] == undefined)    updated[field] = 'object';
-      updated[field].unshift(form[field]);
+      if (updated[field] == undefined) {
+        updated[field] = 'object';
+      }
+      updated[field].unshift({
+        timestamp: new Date(),
+        value: form[field]
+      });
     }
   }
 
   // Update 'company[for.form_name]' to reflect changes from 'updated'
   company[form_name] = updated;
-  console.log('company[form_name]: ' + JSON.stringify(company[form_name], null, 3));
 
   // save 'company' to db and call callback function
   company.save(cb);
@@ -143,7 +149,9 @@ module.exports = {
   // Add a new company
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
     
-    if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    if (crunchbase_permalink == '') {
+      crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    }
 
     // Create empty permalink string
     var permalink = '';
@@ -250,7 +258,6 @@ module.exports = {
 
       editMetricsByForm(form.form_name, form, company, cb);
     });
-
   },
 
   Companies: Companies,
