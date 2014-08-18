@@ -5,8 +5,8 @@ var Company = {
 
     // Stores important elements
     this.elements = {
-      currentQuarter: $('#current-quarter'),
-      daysRemaining: $('#days-remaining') 
+      currentQuarter: $('.current-quarter'),
+      daysRemaining: $('.days-remaining') 
     };
 
     // Calls the fn that calculates the quarter statistics
