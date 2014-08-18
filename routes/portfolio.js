@@ -137,7 +137,10 @@ router.get('/:permalink', function(req, res) {
         name: company.username,
         is_admin: (req.session.username == 'admin'),
         p: company.profile,
-        permalink: company.permalink
+        permalink: company.permalink,
+        operational: company.operational,
+        user_metrics: company.user_metrics,
+        economics: company.economics
       };
 
       // render company view with details passed in
