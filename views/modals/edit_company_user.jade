@@ -1,8 +1,8 @@
 include ../mixins/edit_modal_mixin
 
-+edit_modal("/portfolio/"+permalink+"/edit", "edit-user", "Edit User Metrics")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user", "Edit User Metrics")
   div.small-label AVG DAU
-  input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off" value=user_metrics.avg_dau)
+  input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off" value= (user_metrics.avg_dau.length > 0) ? user_metrics.avg_dau[0].value : undefined)
 
   div.small-label AVG MAU
   input(type="text"  placeholder="Add AVG MAU"  name="avg_mau"  autocomplete="off" value=user_metrics.avg_mau)
@@ -10,14 +10,14 @@ include ../mixins/edit_modal_mixin
   div.small-label Churn
   input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off" value=user_metrics.churn)
 
-+edit_modal("/portfolio/"+permalink+"/edit", "edit-user-dau", "Edit AVG DAU")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-dau", "Edit AVG DAU")
   div.small-label AVG DAU
   input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off" value=user_metrics.avg_dau)
 
-+edit_modal("/portfolio/"+permalink+"/edit", "edit-user-mau", "Edit AVG MAU")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-mau", "Edit AVG MAU")
   div.small-label AVG MAU
   input(type="text"  placeholder="Add AVG MAU"  name="avg_mau"  autocomplete="off" value=user_metrics.avg_mau)
 
-+edit_modal("/portfolio/"+permalink+"/edit", "edit-user-churn", "Edit Churn")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-churn", "Edit Churn")
   div.small-label Churn
   input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off" value=user_metrics.churn)

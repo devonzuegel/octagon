@@ -167,11 +167,30 @@ router.post('/:permalink/edit', function(req, res) {
     }
   );
 
-  CompanyModel.edit(link, req.body, cb = function() { 
+  CompanyModel.editProfile(link, req.body, cb = function() { 
     res.redirect('/portfolio/' + link); 
   });
-
 });
 
+router.post('/:permalink/editMetrics', function(req, res) {
+  var link = req.params.permalink, // gets :permalink from the url
+      session_link = req.session.permalink; // gets permalink from session (who's logged in?)
 
+
+  privileges.require_privileges(
+    req, 
+    res, 
+    false, // don't include flash error messages
+    admin_fn = function() { return }, // if admin, pass & continue on
+    user_fn = function() {
+      // if authenticated as different user, don't allow access ...
+      if (session_link != link)  res.redirect('/portfolio/' + session_link);
+      // ... otherwise, pass & continue
+    }
+  );
+
+  CompanyModel.editMetrics(link, req.body, cb = function() { 
+    res.redirect('/portfolio/' + link); 
+  });
+});
 module.exports = router;

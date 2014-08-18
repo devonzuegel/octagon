@@ -93,7 +93,7 @@ function simplify_crunchbase_prof(p) {
 
 module.exports = {
 
-  /* Add a new company */
+  // Add a new company
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
     
     if (crunchbase_permalink == '') {
@@ -177,16 +177,19 @@ module.exports = {
     });
   },
 
-  /* Edit company information */
-  edit: function(link, form, cb) {
-    Companies.findOne({ permalink: link }, function (err, user) {
-      if (err)  return done(err);
+  // Edit company profile information
+  editProfile: function(link, form, cb) {
+    Companies.findOne({ permalink: link }, function (err, company) {
+      if (err) {
+        return done(err);
+      }
 
+      // Initialize empty profile object
       var profile = {};
 
       // Populate profile with original user.profile
-      for (var k in user.profile) {
-        profile[k] = user.profile[k];
+      for (var k in company.profile) {
+        profile[k] = company.profile[k];
       }
 
       // Update the changes from the form
@@ -195,11 +198,46 @@ module.exports = {
       }
 
       // Update profile
-      user['profile'] = profile;
+      company.profile = profile;
 
       // Save & redirect to updated profile
-      user.save(cb());
+      company.save(cb());
     })
+  },
+
+  // Edit company metric information
+  editMetrics: function(link, form, cb) {
+    Companies.findOne({ permalink: link }, function (err, company) {
+      if (err)  return done(err);
+
+      // Iterate through form fields
+      for(var field in form) {
+
+        if(typeof(company.operational[field]) !== 'undefined') {
+          company.operational[field].unshift({
+            time: new Date(),
+            value: form[field]
+          });
+        }
+
+        if(typeof(company.user_metrics[field]) !== 'undefined') {
+          company.user_metrics[field].unshift({
+            time: new Date(),
+            value: form[field]
+          });
+        }
+
+        if(typeof(company.economics[field]) !== 'undefined') {
+          company.economics[field].unshift({
+            time: new Date(),
+            value: form[field]
+          }); 
+        }      
+      }
+
+      // Save & redirect to updated profile
+      company.save(cb());
+    });
   },
 
   Companies: Companies,
