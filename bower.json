@@ -12,7 +12,9 @@
     "jquery-autosize": "1.18.9",
     "jquery-ui": "1.11.1",
     "mixitup": "2.1.6",
-    "lodash": "2.4.1"
+    "lodash": "2.4.1",
+    "moment": "~2.8.1"
   },
+  "directory": "public",
   "private": true
 }

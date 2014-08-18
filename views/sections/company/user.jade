@@ -1,11 +1,6 @@
 .tab-pane#user
   .col-md-12.pane-header
-    .quarter-info
-      .quarter-label Current quarter is
-      .quarter-value Q1 2013
-    .quarter-info
-      .quarter-label and the next quarter starts in
-      .quarter-value 26 days
+    include quarter_info.jade
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user")
       i.fa.fa-pencil.fa-right

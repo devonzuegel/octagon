@@ -3,18 +3,20 @@ script(type="text/javascript", src="../../bower_components/jquery/jquery.min.js"
 script(type="text/javascript", src="../../bower_components/jquery-ui/jquery-ui.min.js")
 script(type='text/javascript', src="../../bower_components/jquery-autosize/jquery.autosize.min.js")
 script(type='text/javascript', src="../../bower_components/mixitup/build/jquery.mixitup.min.js")
-script(type="text/javascript", src="../../bower_components/bootstrap/dist/js/bootstrap.diff.js")
+script(type="text/javascript", src="../../bower_components/bootstrap/dist/js/bootstrap.custom.js")
 script(type='text/javascript', src="../../bower_components/handlebars/handlebars.min.js")
 script(type='text/javascript', src="../../bower_components/ember/ember.min.js")
 script(type='text/javascript', src="../../bower_components/ember-data/ember-data.min.js")
 script(type='text/javascript', src="../../bower_components/d3/d3.min.js")
 script(type='text/javascript', src="../../bower_components/lodash/dist/lodash.min.js")
 script(type='text/javascript', src="../../bower_components/ember-charts/dist/ember-charts.js")
+script(type='text/javascript', src="../../bower_components/moment/min/moment.min.js")
 
 
 //- Application JS
 script(type='text/javascript', src="../../js/Scroll.js")
 script(type='text/javascript', src="../../js/AddCompany.js")
+script(type='text/javascript', src="../../js/Company.js")
 script(type='text/javascript', src="../../js/Portfolio.js")
 script(type='text/javascript', src="../../js/Dropdown.js")
 script(type='text/javascript', src="../../js/Tab.js")
@@ -34,6 +36,9 @@ script.
 
     // Initalize all tabs
     Tab.init();
+
+    // Initialize Company
+    Company.init();
 
     // Creating Dropdowns
     Dropdown.create('#owner-dropdown');
