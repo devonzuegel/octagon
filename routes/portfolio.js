@@ -1,9 +1,9 @@
-// require (basic app stuff)
+// Require basic app stuff
 var express = require('express'),
     router = express.Router(),
     api_mgr = require('./apiManager');
 
-// require (authentication stuff)
+// Require authentication stuff
 var CompanyModel = require('../models/Company.js'),
     Companies = CompanyModel.Companies,
     passport = CompanyModel.passport,
@@ -13,7 +13,7 @@ var CompanyModel = require('../models/Company.js'),
 var OwnerModel = require('../models/Owner.js'),
     Owners = OwnerModel.Owners;
 
-
+// Function to sort params by name
 var sort_by_name = function(a, b) {
   if (!a.name  ||  !b.name)  return 0;
   var x = a.name.toLowerCase(),
@@ -62,9 +62,9 @@ router.post('/add', function(req, res) {
   Companies.find(query, cb = function(err, c) {
     if (err)    return done(err);
 
-    // search returns empty
+    // Search returns empty
     if (c.length == 0) {
-      // only add a company if the search returns empty
+      // Only add a company if the search returns empty
       CompanyModel.add(
         form.username,
         form.password, 
@@ -82,10 +82,10 @@ router.post('/add', function(req, res) {
             console.log('owner_id: ' + owner_id);
 
             // Owners.findOne({id: owner_id}, function(err, o) {
-          //     var owners_companies = (o.companies) ? o.companies : [];
-          //     owners_companies.push(c.username);
-          //     o['companies'] = owners_companies;
-          //     o.save(cb());
+            //   var owners_companies = (o.companies) ? o.companies : [];
+            //   owners_companies.push(c.username);
+            //   o['companies'] = owners_companies;
+            //   o.save(cb());
             // });
 
           }
@@ -123,7 +123,7 @@ router.get('/:permalink', function(req, res) {
     
     // not a valid company >> doesn't have a profile
     if (company == null  ||  link == 'admin') {
-        req.flash('error', 'That company doesn\'t exist! Here are your options:.')
+        req.flash('error', 'That company doesn\'t exist! Here are your options:')
         return res.redirect('/portfolio/');
 
     // is a valid company with a profile
@@ -148,8 +148,8 @@ router.get('/:permalink', function(req, res) {
 });
 
 router.post('/:permalink/edit', function(req, res) {
-  var link = req.params.permalink; // gets :permalink from the url
-  var session_link = req.session.permalink; // gets permalink from session (who's logged in?)
+  var link = req.params.permalink, // gets :permalink from the url
+      session_link = req.session.permalink; // gets permalink from session (who's logged in?)
 
 
   privileges.require_privileges(

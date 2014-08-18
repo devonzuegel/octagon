@@ -19,7 +19,10 @@ var Schema = mongoose.Schema,
       crunchbase_prof: 'object',
       owners: 'object',
       profile: 'object',
-      permalink: String
+      permalink: String,
+      operational: 'object',
+      user_metrics: 'object',
+      economics: 'object'
     }, {
       collection: 'companies'
     }),
@@ -93,31 +96,63 @@ module.exports = {
   /* Add a new company */
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
     
-    if (crunchbase_permalink == '')    crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    if (crunchbase_permalink == '') {
+      crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    }
+
+    // Create empty permalink string
     var permalink = '';
 
+    // Use the Crunchbase API to get the company data
     api_mgr.get_cmpny(crunchbase_permalink, function(body) {
 
       // Parse data from crunchbase response
       var p = JSON.parse(body).data;
+
       // Create empty profile to be saved into the new company
       var profile = {};
 
-
-      /* Check that crunchbase request returns successfully with complete profile.
-       * Not equivalent to (p.response == true) b/c need to ensure existence too */
+      /* Check that crunchbase request returns successfully with 
+       * complete profile. Not equivalent to (p.response == true)
+       * because need to ensure existence too */
       if (p.response != false) {
+
         // There is a valid crunchbase permalink, so use that
         permalink = crunchbase_permalink;
+
         // Build profile based on crunchbase to be saved
         profile = simplify_crunchbase_prof(p);
 
-      /* Else (crunchbase request returned empty) */
+      // Else if crunchbase request returned empty
       } else if (username) { 
-        // With no crunchbase permalink, we have to make our own
+
+        // Create own permalink
         permalink = username.replace(/\s+/g, '-').toLowerCase();
       }
 
+      // Create object of operational metrics
+      var operational = {
+        gross_burn: [],
+        net_burn: [],
+        revenue: [],
+        head_count: []
+      };
+
+      // Create object of user metrics
+      var user_metrics = {
+        avg_dau: [],
+        avg_mau: [],
+        churn: []
+      };
+
+      // Create object of unit economics
+      var economics = {
+        ltv: [],
+        lifetime_est: [],
+        cac: [],
+        asp: [],
+        gm_percentage: []
+      };
 
       // Build up company hash with details from above
       var company = { 
@@ -128,7 +163,10 @@ module.exports = {
         'crunchbase_prof': p,
         'owners': owners,
         'profile': profile,
-        'permalink': permalink
+        'permalink': permalink,
+        'operational': operational,
+        'user_metrics': user_metrics,
+        'economics': economics
       };
 
 
@@ -166,6 +204,5 @@ module.exports = {
   },
 
   Companies: Companies,
-
   passport: passport
 }
