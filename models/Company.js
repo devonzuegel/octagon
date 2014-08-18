@@ -88,19 +88,28 @@ function simplify_crunchbase_prof(p) {
   };
 }
 
+/* Given the contents of a form (including a field called 'form_name'), this function
+ * updates the corresponding field in company (access by: company[form.form_name]) 
+ * with the contents of the form. */
 function edit_metrics_by_form_name(form, company, cb) {
   var updated = {};
 
+  // Populate 'updated' with old values
   for (var field in company[form.form_name]) {
     updated[field] = company[form.form_name][field];
   }
 
+  // Update fields of 'updated' with data from form
   for (var field in form) {
     if (field != 'form_name') { 
       updated[field] = form[field];
     }
   }
+
+  // Update 'company[for.form_name]' to reflect changes from 'updated'
   company[form.form_name] = updated;
+
+  // save 'company' to db and call callback function
   company.save(cb);
 }
 
@@ -221,43 +230,7 @@ module.exports = {
     Companies.findOne({ permalink: link }, function (err, company) {
       if (err)  return done(err);
 
-
       edit_metrics_by_form_name(form, company, cb);
-
-      // } else if (form.form_name == 'user_metrics') {
-
-      // } else if (form.form_name == 'economics') {
-
-      // }
-
-
-      // // Iterate through form fields
-      // for(var field in form) {
-      //   if(typeof(company.operational[field]) !== 'undefined') {
-      //     var updated = company.operational;
-      //     console.log(JSON.stringify(updated, null, 3));
-      //     company.operational[field].unshift({
-      //       timestamp: new Date(),
-      //       value: form[field]
-      //     });
-      //   }
-
-      //   if(typeof(company.user_metrics[field]) !== 'undefined') {
-      //     company.user_metrics[field].unshift({
-      //       timestamp: new Date(),
-      //       value: form[field]
-      //     });
-      //   }
-
-      //   if(typeof(company.economics[field]) !== 'undefined') {
-      //     company.economics[field].unshift({
-      //       timestamp: new Date(),
-      //       value: form[field]
-      //     }); 
-      //   }      
-      // }
-
-      // Save & redirect to updated profile
     });
   },
 
