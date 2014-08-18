@@ -1,13 +1,11 @@
 // Requires
-var passport = require('passport'),
-    mongoose = require('mongoose/'),
-    api_mgr = require('../routes/apiManager');
+  var passport = require('passport'),
+      mongoose = require('mongoose/'),
+      api_mgr = require('../routes/apiManager');
 
 // var Owners = require('../models/Owner.js').Owners;
 
 mongoose.connect('mongodb://localhost/test');
-
-// var bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema,
     CompanySchema = new Schema({
@@ -96,9 +94,7 @@ module.exports = {
   // Add a new company
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
     
-    if (crunchbase_permalink == '') {
-      crunchbase_permalink = 'NO_PERMALINK_SELECTED';
-    }
+    if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
 
     // Create empty permalink string
     var permalink = '';
@@ -125,7 +121,6 @@ module.exports = {
 
       // Else if crunchbase request returned empty
       } else if (username) { 
-
         // Create own permalink
         permalink = username.replace(/\s+/g, '-').toLowerCase();
       }
@@ -213,6 +208,8 @@ module.exports = {
       // Iterate through form fields
       for(var field in form) {
         if(typeof(company.operational[field]) !== 'undefined') {
+          var updated = company.operational;
+          console.log(JSON.stringify(updated, null, 3));
           company.operational[field].unshift({
             timestamp: new Date(),
             value: form[field]
