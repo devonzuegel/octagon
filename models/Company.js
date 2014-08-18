@@ -88,6 +88,22 @@ function simplify_crunchbase_prof(p) {
   };
 }
 
+function edit_metrics_by_form_name(form, company, cb) {
+  var updated = {};
+
+  for (var field in company[form.form_name]) {
+    updated[field] = company[form.form_name][field];
+  }
+
+  for (var field in form) {
+    if (field != 'form_name') { 
+      updated[field] = form[field];
+    }
+  }
+  company[form.form_name] = updated;
+  company.save(cb);
+}
+
 
 module.exports = {
 
@@ -205,34 +221,43 @@ module.exports = {
     Companies.findOne({ permalink: link }, function (err, company) {
       if (err)  return done(err);
 
-      // Iterate through form fields
-      for(var field in form) {
-        if(typeof(company.operational[field]) !== 'undefined') {
-          var updated = company.operational;
-          console.log(JSON.stringify(updated, null, 3));
-          company.operational[field].unshift({
-            timestamp: new Date(),
-            value: form[field]
-          });
-        }
 
-        if(typeof(company.user_metrics[field]) !== 'undefined') {
-          company.user_metrics[field].unshift({
-            timestamp: new Date(),
-            value: form[field]
-          });
-        }
+      edit_metrics_by_form_name(form, company, cb);
 
-        if(typeof(company.economics[field]) !== 'undefined') {
-          company.economics[field].unshift({
-            timestamp: new Date(),
-            value: form[field]
-          }); 
-        }      
-      }
+      // } else if (form.form_name == 'user_metrics') {
+
+      // } else if (form.form_name == 'economics') {
+
+      // }
+
+
+      // // Iterate through form fields
+      // for(var field in form) {
+      //   if(typeof(company.operational[field]) !== 'undefined') {
+      //     var updated = company.operational;
+      //     console.log(JSON.stringify(updated, null, 3));
+      //     company.operational[field].unshift({
+      //       timestamp: new Date(),
+      //       value: form[field]
+      //     });
+      //   }
+
+      //   if(typeof(company.user_metrics[field]) !== 'undefined') {
+      //     company.user_metrics[field].unshift({
+      //       timestamp: new Date(),
+      //       value: form[field]
+      //     });
+      //   }
+
+      //   if(typeof(company.economics[field]) !== 'undefined') {
+      //     company.economics[field].unshift({
+      //       timestamp: new Date(),
+      //       value: form[field]
+      //     }); 
+      //   }      
+      // }
 
       // Save & redirect to updated profile
-      company.save(cb());
     });
   },
 
