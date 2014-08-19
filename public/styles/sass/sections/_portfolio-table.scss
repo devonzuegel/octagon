@@ -31,21 +31,25 @@
 
     .card-header {
       min-height: 74px;
-      padding: 20px 20px 0 20px;
+      padding: 20px;
       text-align: center;
 
       img {
-        max-height: 40px;
+        height: 30px;
       }
     }
 
     .card-body {
-      padding: 0 20px 20px 20px;
+      padding: 0 20px;
 
       > div {
 
         .small-label {
-          margin: 12px 0 3px 0;
+          margin: 0 0 3px 0;
+        }
+
+        .card-info {
+          margin-bottom: 12px;
         }
       }
 
@@ -65,12 +69,12 @@
 
     .card-header {
       float: left;
-      padding: 10px 20px 10px 20px;
+      padding: 15px 20px;
       text-align: center;
-      width: 180px;
+      width: 200px;
 
       img {
-        max-height: 45px;
+        height: 30px;
       }
     }
 
