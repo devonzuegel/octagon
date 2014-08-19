@@ -1,3 +1,12 @@
+
+-  /* Function to shorten description */
+-  function shorten(description) {
+-    // Description char limit
+-    var limit = 600;
+-    // Return shortened description with ellipsis
+-    return description.substring(0, limit) + '... ';
+-  }
+
 .tab-pane.active#overview
   .col-md-6
     h3 About
@@ -8,7 +17,7 @@
     .block-info
       if (p && p.description)
         div 
-          | #{p.description}
+          | #{shorten(p.description)}
           a(href="http://www.crunchbase.com/organization/#{permalink}") read more on Crunchbase
       else
         div Add description
@@ -48,26 +57,20 @@
   .col-md-6
     h3 Milestones
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="")
+    .block-edit.edit-btn(data-toggle="modal" data-target="#add-milestone")
       i.fa.fa-plus.fa-right
       | Add milestone
 
     .block-info
       ul.milestone-list
-        li.milestone
-          .milestone-info
-            .title Milestone title
-            .date 10/7/2014
-            .description Milestone description
-          a.milestone-edit
-            i.fa.fa-pencil
-        li.milestone
-          .milestone-info
-            .title Milestone title
-            .date 10/7/2014
-            .description Milestone description
-          a.milestone-edit
-            i.fa.fa-pencil
+        for m in c.milestones
+          li.milestone
+            .milestone-info
+              .title #{m.title}
+              .date #{m.date}
+              .description #{m.description}
+            a.milestone-edit
+              i.fa.fa-pencil
 
   .col-md-6
     h3 Team

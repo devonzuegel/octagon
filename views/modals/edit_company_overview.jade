@@ -1,0 +1,62 @@
+include ../mixins/edit_modal_mixin
+
+- var edit_link = "/portfolio/"+permalink+"/edit"
+
+//- EDIT ABOUT: description & link to unabridged description on Crunchbase
++edit_modal(edit_link, "edit-about", "Edit About")
+  div.small-label Company description
+  textarea(placeholder="Add company description"  name="description"  autocomplete="off")
+   if (p)
+      | #{p.description}
+  
+
+//- EDIT HEADER: company's name, site url, logo, & short description
++edit_modal(edit_link, "edit-header", "Edit Header")
+  div.small-label Image path
+  input(type="text"  placeholder="Add image path"  name="image"  autocomplete="off" value=(p) ? p.img_path : undefined)
+
+  div.small-label Company description
+  textarea(placeholder="Add company description"  name="short_descrip"  autocomplete="off") 
+      if (p)
+        | #{p.short_descrip}
+
+  div.small-label Homepage url
+  input(type="text"  placeholder="Add homepage url"  name="homepage_url"  autocomplete="off" value=(p) ? p.homepage_url : undefined)
+
+
+//- EDIT INFO: basic info, including categories, founders, founding date, & total funding
++edit_modal(edit_link, "edit-info", "Edit Info")
+  div.small-label Categories
+  input(type="text"  placeholder="Add categories"  name="categories"  autocomplete="off" value=(p) ? p.categories : undefined)
+
+  div.small-label Founders
+  input(type="text"  placeholder="Add founders"  name="founders"  autocomplete="off" value=(p) ? p.founders : undefined)
+
+  div.small-label Date founded
+  input(type="text"  placeholder="Add date founded"  name="founded_on"  autocomplete="off" value=(p) ? p.founded_on : undefined)
+
+  div.small-label Funding
+  input(type="text"  placeholder="Add total funding"  name="total_funding"  autocomplete="off" value=(p) ? p.total_funding : undefined)
+
+
+
+//- EDIT MILESTONES:
++edit_modal(edit_link, "edit-milestones", "Edit Milestones")
+
+
+
+//- ADD MILESTONE:
++edit_modal(edit_link, "add-milestone", "Add Milestone")
+  //- * This field tells the route (in Company.js) that this data should go into
+  //- * a single object to be pushed onto the milestones array inside of the
+  //- * company rather than separate fields directly inside of company
+  input(type="hidden" name="array" value="milestones")
+
+  div.small-label Title
+  input(type="text"  placeholder="Add title"  name="title"  autocomplete="off")
+
+  div.small-label Date
+  input(type="text"  placeholder="Add date"  name="date"  autocomplete="off" value=moment(Date.now()).format('MM-DD-YYYY'))
+
+  div.small-label Funding
+  textarea(placeholder="Add description"  name="description"  autocomplete="off") 

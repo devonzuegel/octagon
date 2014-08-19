@@ -72,25 +72,7 @@ router.post('/add', function(req, res) {
         form.crunchbase_permalink,
         form.owners,
         // after company is added to db, redirect to main portfolio page
-        function(c) { 
-          // var companys_owners = (c.owners) ? ((typeof c.owners == 'string') ? JSON.parse(c.owners) : c.owners ) : [];
-          // console.log('companys_owners: ' + companys_owners);
-          // /* Iterate through each owner the company is assigned to & add company
-          //  * to the owner's list of companies. */
-          // for (var i = 0; i < companys_owners.length; i++) {
-          //   var owner_id = companys_owners[i];
-          //   console.log('owner_id: ' + owner_id);
-
-          //   // Owners.findOne({id: owner_id}, function(err, o) {
-          //   //   var owners_companies = (o.companies) ? o.companies : [];
-          //   //   owners_companies.push(c.username);
-          //   //   o['companies'] = owners_companies;
-          //   //   o.save(cb());
-          //   // });
-
-          // }
-          res.redirect('/portfolio/'); 
-        }
+        function(c) { res.redirect('/portfolio/'); }
       );
 
     // search doesn't return empty
@@ -136,6 +118,7 @@ router.get('/:permalink', function(req, res) {
         title: company.username,
         name: company.username,
         is_admin: (req.session.username == 'admin'),
+        c: company,
         p: company.profile,
         permalink: company.permalink,
         operational: company.operational,
