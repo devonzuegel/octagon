@@ -25,15 +25,11 @@ function convertData(data, field, label) {
 }
 
 
-// Graphs
+// Operational Graphs
 var burnGraph = c3.generate({
   bindto: '#burnGraph',
   color: { pattern: ['#38AEC3', '#459BD3'] },
-  data: {
-    xs: {
-      'Gross burn': 'x1',
-      'Net burn': 'x2'
-    },
+  data: { xs: { 'Gross burn': 'x1', 'Net burn': 'x2' },
     columns: [
       convertData(gross_burn_data, 'timestamp', 'x1'),
       convertData(net_burn_data, 'timestamp', 'x2'),
@@ -52,10 +48,7 @@ var burnGraph = c3.generate({
 var revenueGraph = c3.generate({
   bindto: '#revenueGraph',
   color: { pattern: ['#38AEC3', '#459BD3'] },
-  data: {
-    xs: {
-      'Revenue': 'x1'
-    },
+  data: { xs: { 'Revenue': 'x1' },
     columns: [
       convertData(revenue_data, 'timestamp', 'x1'),
       convertData(revenue_data, 'value', 'Revenue')
@@ -72,13 +65,96 @@ var revenueGraph = c3.generate({
 var headCountGraph = c3.generate({
   bindto: '#headCountGraph',
   color: { pattern: ['#38AEC3', '#459BD3'] },
-  data: {
-    xs: {
-      'Head count': 'x1'
-    },
+  data: { xs: { 'Head count': 'x1' },
     columns: [
       convertData(head_count_data, 'timestamp', 'x1'),
       convertData(head_count_data, 'value', 'Head count')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
+// Economics Graphs
+var ltvGraph = c3.generate({
+  bindto: '#ltvGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'LTV': 'x1' },
+    columns: [
+      convertData(ltv_data, 'timestamp', 'x1'),
+      convertData(ltv_data, 'value', 'LTV')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
+var lifetimeEstGraph = c3.generate({
+  bindto: '#lifetimeEstGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'Lifetime est.': 'x1' },
+    columns: [
+      convertData(lifetime_est_data, 'timestamp', 'x1'),
+      convertData(lifetime_est_data, 'value', 'Lifetime est.')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
+var cacGraph = c3.generate({
+  bindto: '#cacGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'CAC': 'x1' },
+    columns: [
+      convertData(cac_data, 'timestamp', 'x1'),
+      convertData(cac_data, 'value', 'CAC')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
+var aspGraph = c3.generate({
+  bindto: '#aspGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'ASP': 'x1' },
+    columns: [
+      convertData(asp_data, 'timestamp', 'x1'),
+      convertData(asp_data, 'value', 'ASP')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
+var gmPercentageGraph = c3.generate({
+  bindto: '#gmPercentageGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'GM %': 'x1' },
+    columns: [
+      convertData(gm_percentage_data, 'timestamp', 'x1'),
+      convertData(gm_percentage_data, 'value', 'GM %')
     ],
     type: 'bar'
   },
