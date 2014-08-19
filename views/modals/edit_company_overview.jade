@@ -47,13 +47,13 @@ include ../mixins/edit_modal_mixin
   input(type='hidden' name='array' value='milestones') 
 
   div.small-label Title
-  input(type='text'  placeholder='Add title'  name='title'  id='title'  autocomplete='off')
+  input(type='text'  placeholder='Add title'  name='title'  autocomplete='off')
 
   div.small-label Date
-  input(type='text'  placeholder='Add date'  name='date'  id='date'  autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY'))
+  input(type='text'  placeholder='Add date'  name='date'  autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY'))
 
   div.small-label Description
-  textarea(placeholder='Add description'  name='description'  id='description'  autocomplete='off') 
+  textarea(placeholder='Add description'  name='description'  autocomplete='off') 
 
 
 //- EDIT MILESTONES:
