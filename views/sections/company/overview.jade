@@ -113,4 +113,20 @@
       | Add team member
 
     .block-info
-      | N/A
+      ul.team-list
+        //- TODO sort by date (most recent first)
+        for m in c.team.sort(chronological).reverse()
+          li.milestone
+            .team-member-info
+              if m.img_path
+                .pull-left: img(src=m.img_path)
+              .pull-left
+                .full_name #{m.full_name}
+                .role #{m.role}
+                .date_joined Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
+                .email: a(href='mailto:'+m.email) #{m.email}
+              a.team-member-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
+                i.fa.fa-pencil
+
+
+
