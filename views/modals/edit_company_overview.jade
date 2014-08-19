@@ -51,7 +51,12 @@ include ../mixins/edit_modal_mixin
   input(type="text"  placeholder="Add title"  name="title"  autocomplete="off")
 
   div.small-label Date
-  input(type="text"  placeholder="Add date"  name="date"  autocomplete="off" value=Date.now())
+  input(type="text"  placeholder="Add date"  name="date"  autocomplete="off" value=moment(Date.now()).format('MM-DD-YYYY'))
 
   div.small-label Funding
   textarea(placeholder="Add description"  name="description"  autocomplete="off") 
+
+
+
+
+  

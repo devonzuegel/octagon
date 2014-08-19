@@ -116,7 +116,7 @@ function simplifyCrunchbaseProf(p) {
   };
 }
 
-k
+
 //// EXPORTS /////
 
 module.exports = {
