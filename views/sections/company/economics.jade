@@ -12,7 +12,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
       i.fa.fa-pencil
 
-    .block-info.block-num $1,000
+    .block-info.block-num
+      if economics.ltv
+        | #{usd(economics.ltv[0].value)}
+      else
+        | Add
 
   .col-md-9
     h3 LTV By Quarter
@@ -25,7 +29,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
       i.fa.fa-pencil
 
-    .block-info.block-num $20,000
+    .block-info.block-num
+      if economics.lifetime_est
+        | #{usd(economics.lifetime_est[0].value)}
+      else
+        | Add
 
   .col-md-9
     h3 Lifetime Est. By Quarter
@@ -38,7 +46,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
       i.fa.fa-pencil
 
-    .block-info.block-num $100
+    .block-info.block-num
+      if economics.cac
+        | #{usd(economics.cac[0].value)}
+      else
+        | Add
 
   .col-md-9
     h3 CAC By Quarter
@@ -51,7 +63,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
       i.fa.fa-pencil
 
-    .block-info.block-num $100
+    .block-info.block-num
+      if economics.asp
+        | #{usd(economics.asp[0].value)}
+      else
+        | Add
 
   .col-md-9
     h3 ASP By Quarter
@@ -64,7 +80,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
       i.fa.fa-pencil
 
-    .block-info.block-num 15%
+    .block-info.block-num
+      if economics.gm_percentage
+        | #{economics.gm_percentage[0].value}%
+      else
+        | Add
 
   .col-md-9
     h3 GM % By Quarter
