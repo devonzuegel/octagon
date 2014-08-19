@@ -26,7 +26,7 @@ var Schema = mongoose.Schema,
       owners: 'object',
       profile: 'object',
       permalink: String,
-      milestones: ['object'],
+      milestones: [{}],
       operational: {
         gross_burn: ['object'],
         net_burn: ['object'],
