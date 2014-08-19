@@ -79,6 +79,58 @@ var headCountGraph = c3.generate({
   legend: { show: false }
 });
 
+// User Metrics Graphs
+var avgDauGraph = c3.generate({
+  bindto: '#avgDauGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'AVG DAU': 'x1' },
+    columns: [
+      convertData(avg_dau_data, 'timestamp', 'x1'),
+      convertData(avg_dau_data, 'value', 'AVG DAU')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
+var avgMauGraph = c3.generate({
+  bindto: '#avgMauGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'AVG MAU': 'x1' },
+    columns: [
+      convertData(avg_mau_data, 'timestamp', 'x1'),
+      convertData(avg_mau_data, 'value', 'AVG MAU')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
+var churnGraph = c3.generate({
+  bindto: '#churnGraph',
+  color: { pattern: ['#38AEC3', '#459BD3'] },
+  data: { xs: { 'Churn': 'x1' },
+    columns: [
+      convertData(churn_data, 'timestamp', 'x1'),
+      convertData(churn_data, 'value', 'Churn')
+    ],
+    type: 'bar'
+  },
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
+});
+
 // Economics Graphs
 var ltvGraph = c3.generate({
   bindto: '#ltvGraph',

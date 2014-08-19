@@ -21,7 +21,10 @@
   .col-md-9
     h3 AVG DAU By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var avg_dau_data = !{JSON.stringify(user_metrics.avg_dau)};
+    .block-info.block-graph:.graph-padding#avgDauGraph
 
   .col-md-3
     h3 AVG MAU
@@ -38,7 +41,10 @@
   .col-md-9
     h3 AVG MAU By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var avg_mau_data = !{JSON.stringify(user_metrics.avg_mau)};
+    .block-info.block-graph:.graph-padding#avgMauGraph
 
   .col-md-3
     h3 Churn
@@ -55,4 +61,7 @@
   .col-md-9
     h3 Churn By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var churn_data = !{JSON.stringify(user_metrics.churn)};
+    .block-info.block-graph:.graph-padding#churnGraph
