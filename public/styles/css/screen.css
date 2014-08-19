@@ -11156,7 +11156,8 @@ body {
 
 input[type=email],
 input[type=text],
-input[type=password] {
+input[type=password],
+input {
   border: none;
   border-radius: 0;
   -moz-border-radius: 0;
@@ -11743,7 +11744,7 @@ input:-webkit-autofill {
         height: 300px;
         padding: 20px; }
     .company-bkg .company-content .tab-content #overview > div .block-info {
-      min-height: 400px; }
+      min-height: 330px; }
 
 .col-md-6 > .edit-btn {
   opacity: 0;

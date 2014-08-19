@@ -1,6 +1,9 @@
+
 include ../mixins/edit_modal_mixin
 
 - var edit_link = '/portfolio/'+permalink+'/edit'
+
+
 
 //- EDIT ABOUT: description & link to unabridged description on Crunchbase
 +edit_modal(edit_link, 'edit-about', 'Edit About')
@@ -10,33 +13,39 @@ include ../mixins/edit_modal_mixin
       | #{p.description}
   
 
+
+
 //- EDIT HEADER: company's name, site url, logo, & short description
 +edit_modal(edit_link, 'edit-header', 'Edit Header')
   div.small-label Image path
-  input(type='text'  placeholder='Add image path'  name='image'  autocomplete='off' value=(p) ? p.img_path : undefined)
+  input(name='image' placeholder='Add image path'  value=(p) ? p.img_path : undefined autofocus  autocomplete='off' type='text')
 
   div.small-label Company description
-  textarea(placeholder='Add company description'  name='short_descrip'  autocomplete='off') 
+  textarea(name='short_descrip'  placeholder='Add company description'  autocomplete='off') 
       if (p)
         | #{p.short_descrip}
 
   div.small-label Homepage url
-  input(type='text'  placeholder='Add homepage url'  name='homepage_url'  autocomplete='off' value=(p) ? p.homepage_url : undefined)
+  input(name='homepage_url'  placeholder='Add homepage url'  autocomplete='off' value=(p) ? p.homepage_url : undefined  type='text')
+
+
 
 
 //- EDIT INFO: basic info, including categories, founders, founding date, & total funding
 +edit_modal(edit_link, 'edit-info', 'Edit Info')
   div.small-label Categories
-  input(type='text'  placeholder='Add categories'  name='categories'  autocomplete='off' value=(p) ? p.categories : undefined)
+  input(name='categories'  placeholder='Add categories'  autocomplete='off' value=(p) ? p.categories : undefined  type='text')
 
   div.small-label Founders
-  input(type='text'  placeholder='Add founders'  name='founders'  autocomplete='off' value=(p) ? p.founders : undefined)
+  input(name='founders'  placeholder='Add founders'  autocomplete='off' value=(p) ? p.founders : undefined  type='text')
 
   div.small-label Date founded
-  input(type='text'  placeholder='Add date founded'  name='founded_on'  autocomplete='off' value=(p) ? p.founded_on : undefined)
+  input(name='founded_on'  placeholder='Add date founded'  autocomplete='off' value=(p) ? p.founded_on : undefined  type='text')
 
   div.small-label Funding
-  input(type='text'  placeholder='Add total funding'  name='total_funding'  autocomplete='off' value=(p) ? p.total_funding : undefined)
+  input(name='total_funding'  placeholder='Add total funding'  autocomplete='off' value=(p) ? p.total_funding : undefined  type='text')
+
+
 
 
 //- ADD MILESTONE:
@@ -47,13 +56,15 @@ include ../mixins/edit_modal_mixin
   input(type='hidden' name='array' value='milestones') 
 
   div.small-label Title
-  input(type='text'  placeholder='Add title'  name='title'  autocomplete='off')
+  input(name='title'  placeholder='Add title'  autocomplete='off'  type='text')
 
   div.small-label Date
-  input(type='text'  placeholder='Add date'  name='date'  autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY'))
+  input(name='date'  placeholder='Add date'  autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY')  type='text')
 
   div.small-label Description
-  textarea(placeholder='Add description'  name='description'  autocomplete='off') 
+  textarea(name='description'  placeholder='Add description'  autocomplete='off') 
+
+
 
 
 //- EDIT MILESTONES:
@@ -66,13 +77,15 @@ include ../mixins/edit_modal_mixin
   input(type='hidden' name='_id' id='_id')
 
   div.small-label Title
-  input(type='text'  placeholder='Add title'  name='title'  id='title'  autocomplete='off')
+  input(placeholder='Add title'  name='title'  id='title'  autocomplete='off'  type='text')
 
   div.small-label Date
-  input(type='text'  placeholder='Add date'  name='date'  id='date'  autocomplete='off')
+  input(placeholder='Add date'  name='date'  id='date'  autocomplete='off'  type='text')
 
   div.small-label Description
   textarea(placeholder='Add description'  name='description'  id='description'  autocomplete='off') 
+
+
 
 
 //- ADD MILESTONE:
@@ -83,19 +96,19 @@ include ../mixins/edit_modal_mixin
   input(type='hidden' name='array' value='team') 
 
   div.small-label Full name
-  input(type='text'  placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off')
+  input(placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off'  type='text')
 
   div.small-label Image path
-  input(type='text'  placeholder='Add date'  name='img_path'  id='img_path' autocomplete='off')
+  input(placeholder='Add date'  name='img_path'  id='img_path' autocomplete='off'  type='text')
 
   div.small-label Role
-  input(type='text'  placeholder='Add role'  name='role'  id='role' autocomplete='off')
+  input(placeholder='Add role'  name='role'  id='role' autocomplete='off'  type='text')
 
   div.small-label Email
-  input(type='text'  placeholder='Email'  name='email'  id='email' autocomplete='off')
+  input(placeholder='Email'  name='email'  id='email' autocomplete='off'  type='text')
 
   div.small-label Date Joined
-  input(type='text'  placeholder='Add date'  name='date_joined'  id='date_joined' autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY'))
+  input(placeholder='Add date'  name='date_joined'  id='date_joined' autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY')  type='text')
 
 
 
