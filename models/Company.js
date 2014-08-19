@@ -26,6 +26,7 @@ var Schema = mongoose.Schema,
       owners: 'object',
       profile: 'object',
       permalink: String,
+      milestones: ['object'],
       operational: {
         gross_burn: ['object'],
         net_burn: ['object'],
@@ -173,6 +174,7 @@ module.exports = {
           'owners': owners,
           'profile': profile,
           'permalink': permalink,
+          'milestones': [],
           'operational': { 
             gross_burn: [], 
             net_burn: [], 

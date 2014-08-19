@@ -1,9 +1,5 @@
 App = Ember.Application.create();
 
-App.IndexRoute = Ember.Route.extend({
-  controllerName: 'application'
-});
-
 App.ApplicationController = Ember.Controller.extend({
   content: [
   {

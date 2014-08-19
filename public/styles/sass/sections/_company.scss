@@ -150,6 +150,47 @@
             > div {
               margin: 0 0 20px 0;
             }
+
+            ul.milestone-list {
+
+              .milestone {
+                margin-bottom: 20px;
+                position: relative;
+
+                .milestone-info {
+                  display: inline-block;
+                  min-width: 400px;
+
+                  .title {
+
+                  }
+
+                  .date {
+                    color: #999;
+                    font-size: 12px;
+                    line-height: 100%;
+                  }
+
+                  .description {
+                    font-size: 13px;
+                  }
+                }
+
+                .milestone-edit {
+                  color: #999;
+                  font-size: 16px;
+                  padding: 0 10px;
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  vertical-align: middle;
+
+                  &:hover {
+                    color: $purple;
+                  }
+                }
+              }
+            }
           }
 
           .block-num {
