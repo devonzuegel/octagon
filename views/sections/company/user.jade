@@ -12,7 +12,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-dau")
       i.fa.fa-pencil
 
-    .block-info.block-num 1,000
+    .block-info.block-num
+      if user_metrics.avg_dau
+        | #{user_metrics.avg_dau[0].value}
+      else
+        | Add
 
   .col-md-9
     h3 AVG DAU By Quarter
@@ -25,7 +29,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-mau")
       i.fa.fa-pencil
 
-    .block-info.block-num 30,000
+    .block-info.block-num
+      if user_metrics.avg_mau
+        | #{user_metrics.avg_mau[0].value}
+      else
+        | Add
 
   .col-md-9
     h3 AVG MAU By Quarter
@@ -38,7 +46,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-churn")
       i.fa.fa-pencil
 
-    .block-info.block-num 5%
+    .block-info.block-num
+      if user_metrics.churn
+        | #{user_metrics.churn[0].value}%
+      else
+        | Add
 
   .col-md-9
     h3 Churn By Quarter
