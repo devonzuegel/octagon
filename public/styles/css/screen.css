@@ -289,6 +289,7 @@ th {
   font-family: 'Glyphicons Halflings';
   src: url("../fonts/glyphicons-halflings-regular.eot");
   src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+
 .glyphicon {
   position: relative;
   top: 2px;
@@ -913,7 +914,7 @@ th {
 
 html {
   font-size: 10px;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -4623,18 +4624,21 @@ a.thumbnail.active {
 
   to {
     background-position: 0 0; } }
+
 @-o-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0; }
 
   to {
     background-position: 0 0; } }
+
 @keyframes progress-bar-stripes {
   from {
     background-position: 40px 0; }
 
   to {
     background-position: 0 0; } }
+
 .progress {
   height: 20px;
   margin-bottom: 20px;
@@ -5671,7 +5675,7 @@ button.close {
   text-indent: -999px;
   cursor: pointer;
   background-color: #000 \9;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   border: 1px solid #fff;
   border-radius: 10px; }
 
@@ -5810,6 +5814,7 @@ button.close {
 
 @-ms-viewport {
   width: device-width; }
+
 .visible-xs,
 .visible-sm,
 .visible-md,
@@ -6190,6 +6195,7 @@ textarea {
 
   @page {
     margin: 0.5cm; }
+
   p,
   h2,
   h3 {
@@ -10679,30 +10685,35 @@ a.badge:focus {
 
   to {
     background-position: 0 0; } }
+
 @-moz-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0; }
 
   to {
     background-position: 0 0; } }
+
 @-ms-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0; }
 
   to {
     background-position: 0 0; } }
+
 @-o-keyframes progress-bar-stripes {
   from {
     background-position: 0 0; }
 
   to {
     background-position: 40px 0; } }
+
 @keyframes progress-bar-stripes {
   from {
     background-position: 40px 0; }
 
   to {
     background-position: 0 0; } }
+
 .progress {
   height: 20px;
   margin-bottom: 20px;
@@ -11564,14 +11575,16 @@ input:-webkit-autofill {
   margin: 3px; }
   .grid .mix .card-header {
     min-height: 74px;
-    padding: 20px 20px 0 20px;
+    padding: 20px;
     text-align: center; }
     .grid .mix .card-header img {
-      max-height: 40px; }
+      height: 30px; }
   .grid .mix .card-body {
-    padding: 0 20px 20px 20px; }
+    padding: 0 20px; }
     .grid .mix .card-body > div .small-label {
-      margin: 12px 0 3px 0; }
+      margin: 0 0 3px 0; }
+    .grid .mix .card-body > div .card-info {
+      margin-bottom: 12px; }
     .grid .mix .card-body .hidden-on-grid {
       display: none; }
 
@@ -11581,11 +11594,11 @@ input:-webkit-autofill {
   width: 100%; }
   .list .mix .card-header {
     float: left;
-    padding: 10px 20px 10px 20px;
+    padding: 15px 20px;
     text-align: center;
-    width: 180px; }
+    width: 200px; }
     .list .mix .card-header img {
-      max-height: 45px; }
+      height: 30px; }
   .list .mix .card-body {
     float: left; }
     .list .mix .card-body > div {

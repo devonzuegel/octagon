@@ -47,7 +47,7 @@
 
     .block-info.block-num
       if operational.revenue.length > 0
-        | $#{operational.revenue[0].value}
+        | #{usd(operational.revenue[0].value)}
       else
         | Add
 
