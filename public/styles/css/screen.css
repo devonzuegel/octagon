@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
-@import url(../../bower_components/ember-charts/dist/ember-charts.css);
+@import url(../../bower_components/c3/c3.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
 .hidden {
   display: none; }
@@ -11746,6 +11746,9 @@ input:-webkit-autofill {
       .company-bkg .company-content .tab-content .tab-pane > div .block-num {
         font-size: 22px;
         text-align: center; }
+      .company-bkg .company-content .tab-content .tab-pane > div .block-graph {
+        height: 300px;
+        padding: 20px; }
     .company-bkg .company-content .tab-content #overview > div .block-info {
       min-height: 400px; }
 
