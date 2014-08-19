@@ -33,6 +33,10 @@
   .col-md-6
     h3 Burn By Quarter
 
+    //- Grab the data
+    script(type="text/javascript").
+      var gross_burn_data = !{JSON.stringify(operational.gross_burn)},
+          net_burn_data = !{JSON.stringify(operational.net_burn)};
     .block-info.block-graph:.graph-padding#burnGraph
 
   .col-md-3
@@ -50,6 +54,9 @@
   .col-md-9
     h3 Revenue By Quarter
 
+    //- Grab the data
+    script(type="text/javascript").
+      var revenue_data = !{JSON.stringify(operational.revenue)};
     .block-info.block-graph:.graph-padding#revenueGraph
 
   .col-md-3
@@ -67,4 +74,7 @@
   .col-md-9
     h3 Head Count By Quarter
 
-    .block-info.block-graph:.graph-padding Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var head_count_data = !{JSON.stringify(operational.head_count)};
+    .block-info.block-graph:.graph-padding#headCountGraph
