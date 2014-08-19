@@ -41,8 +41,19 @@ include ../mixins/edit_modal_mixin
 
 
 //- EDIT MILESTONES:
-+edit_modal(edit_link, "edit-milestones", "Edit Milestones")
++edit_modal(edit_link, "edit-milestone", "Edit Milestone")
+  input(type="hidden" name="edit_obj_in_array" value="milestones")
 
+  input(type="hidden" name="_id" id="_id")
+
+  div.small-label Title
+  input(type="text"  placeholder="Add title"  name="title"  id="title"  autocomplete="off")
+
+  div.small-label Date
+  input(type="text"  placeholder="Add date"  name="date"  id="date"  autocomplete="off")
+
+  div.small-label Funding
+  textarea(placeholder="Add description"  name="description"  id="description"  autocomplete="off") 
 
 
 //- ADD MILESTONE:
@@ -53,10 +64,10 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="array" value="milestones")
 
   div.small-label Title
-  input(type="text"  placeholder="Add title"  name="title"  autocomplete="off")
+  input(type="text"  placeholder="Add title"  name="title"  id="title"  autocomplete="off")
 
   div.small-label Date
-  input(type="text"  placeholder="Add date"  name="date"  autocomplete="off" value=moment(Date.now()).format('MM-DD-YYYY'))
+  input(type="text"  placeholder="Add date"  name="date"  id="date"  autocomplete="off" value=moment(Date.now()).format('YYYY-MM-DD'))
 
   div.small-label Funding
-  textarea(placeholder="Add description"  name="description"  autocomplete="off") 
+  textarea(placeholder="Add description"  name="description"  id="description"  autocomplete="off") 
