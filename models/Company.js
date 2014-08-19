@@ -1,7 +1,8 @@
 // Requires
 var passport = require('passport'),
     mongoose = require('mongoose/'),
-    api_mgr = require('../routes/apiManager');
+    api_mgr = require('../routes/apiManager'),
+    moment = require('moment');
 
 // Bcrypt / password hashing stuff
 var bcrypt = require('bcrypt'),
@@ -103,7 +104,7 @@ function simplifyCrunchbaseProf(p) {
     homepage_url:  (p.properties.homepage_url) ?
                    p.properties.homepage_url.replace('http://', '') :
                    undefined,
-    founded_on:    p.properties.founded_on,
+    founded_on:    moment(Date.parse(p.properties.founded_on)).format('DD MMMM YYYY'),
     total_funding: (p.properties.total_funding_usd) ?
                    usd(p.properties.total_funding_usd) :
                    undefined,
@@ -204,25 +205,35 @@ module.exports = {
     Companies.findOne({ permalink: link }, function (err, company) {
       if (err)  return done(err);
 
-      /* If the form CONTAINS an 'array' field, we create an object containing
+      /* CONTAINS FORM.ARRAY
+       * If the form CONTAINS an 'array' field, we create an object containing
        * the values from each field. We then push that object onto the array
        * indicated by form['array']. */
       if (form.array) {        
         var obj = {};  // initialize empty obj to be filled with form data
+        obj['_id'] = 'id' + (new Date()).getTime();  // create unique id for the obj
 
         // populate obj with form data (except the value of the array field)
         for (field in form) {
-          if (field != 'array') {
-           obj[field] = form[field]; 
-          }
+          if (field != 'array')     obj[field] = form[field]; 
         }
 
         // push obj to end of array defined by form.array, into company db document
         company[form.array].push(obj);
         company.save(cb());
 
-      /* If the form DOES NOT CONTAIN an 'array' field, we add each field
-       * directly to the profile object. */
+      /* CONTAINS FORM.EDIT_OBJ_IN_ARRAY
+       * If the form CONTAINS an 'edit_obj_in_array' field, we create an object
+       * containing the values from each field. We then push that object onto
+       * the array indicated by form['array']. */
+      } else if (form.edit_obj_in_array) {
+
+        console.log(form.edit_obj_in_array);
+        cb();
+
+      /* UPDATE PROFILE OBJECT
+       * If the form DOES NOT CONTAIN an 'array' or 'edit_obj_in_array' field,
+       * we add each field directly to the profile object. */
       } else {
         // Initialize empty profile object
         // and counting variable 'field'

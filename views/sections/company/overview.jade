@@ -8,6 +8,7 @@
 -  }
 
 .tab-pane.active#overview
+  //- ABOUT
   .col-md-6
     h3 About
 
@@ -22,6 +23,7 @@
       else
         div Add description
 
+  //- INFO
   .col-md-6
     h3 Info
 
@@ -54,6 +56,7 @@
       else
         div Add funding info
 
+  //- MILESTONES
   .col-md-6
     h3 Milestones
 
@@ -63,15 +66,41 @@
 
     .block-info
       ul.milestone-list
-        for m in c.milestones
+        for m,i in c.milestones
           li.milestone
             .milestone-info
               .title #{m.title}
               .date #{m.date}
               .description #{m.description}
-            a.milestone-edit
+            a.milestone-edit(data-toggle="modal" data-target="#edit-milestone" id='edit-'+i)
               i.fa.fa-pencil
 
+
+
+    script.
+
+      // TODO: This needs to be factored out
+      // ---
+      // Grabs all_owners from routes & puts it into owners var
+      window.onload = function() {
+        var milestones = !{JSON.stringify(c.milestones)};
+
+        // Iterate through milestones' edit btns so that onclick, the form is
+        // populated with that owner's info
+        for (var i = 0; i < milestones.length; i++) {
+          (function(n) {
+            var m = milestones[i];
+            $('#edit-'+i).click(function() {
+              $('#title').val(m.title);
+              $('#date').val(m.date);
+              $('#description').val(m.description);
+              $('#id').val(m._id);
+            });
+          }(i))
+        }
+      };
+
+  //- TEAM
   .col-md-6
     h3 Team
 
