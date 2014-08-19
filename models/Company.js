@@ -1,7 +1,8 @@
 // Requires
 var passport = require('passport'),
     mongoose = require('mongoose/'),
-    api_mgr = require('../routes/apiManager');
+    api_mgr = require('../routes/apiManager'),
+    moment = require('moment');
 
 // Bcrypt / password hashing stuff
 var bcrypt = require('bcrypt'),
@@ -103,7 +104,7 @@ function simplifyCrunchbaseProf(p) {
     homepage_url:  (p.properties.homepage_url) ?
                    p.properties.homepage_url.replace('http://', '') :
                    undefined,
-    founded_on:    p.properties.founded_on,
+    founded_on:    moment(Date.parse(p.properties.founded_on)).format('DD MMMM YYYY'),
     total_funding: (p.properties.total_funding_usd) ?
                    usd(p.properties.total_funding_usd) :
                    undefined,
