@@ -131,7 +131,8 @@ function editMetricsByForm(form_name, form, company, cb) {
       }
       updated[field].unshift({
         timestamp: new Date(),
-        value: form[field]
+        value: form[field],
+        label: field
       });
     }
   }
