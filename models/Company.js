@@ -27,7 +27,14 @@ var Schema = mongoose.Schema,
       owners: 'object',
       profile: 'object',
       permalink: String,
-      milestones: [{}],
+      milestones: [
+        {
+          _id: String,
+          title: String,
+          date: Date,
+          description: String,
+        }
+      ],
       operational: {
         gross_burn: ['object'],
         net_burn: ['object'],
@@ -228,8 +235,17 @@ module.exports = {
        * the array indicated by form['array']. */
       } else if (form.edit_obj_in_array) {
 
-        console.log(form.edit_obj_in_array);
-        cb();
+        // Find obj_array[i] that has _id indicated in form, replace it with obj
+        for (var i = 0; i < company[form.edit_obj_in_array].length; i++) {
+          if (form._id == company[form.edit_obj_in_array][i]._id) {
+            console.log(JSON.stringify(company[form.edit_obj_in_array][i], null, 3));
+            for (field in form) {
+              if (field != 'edit_obj_in_array')
+                company[form.edit_obj_in_array][i][field] = form[field];
+            }
+          }
+        }
+        company.save(cb());
 
       /* UPDATE PROFILE OBJECT
        * If the form DOES NOT CONTAIN an 'array' or 'edit_obj_in_array' field,
