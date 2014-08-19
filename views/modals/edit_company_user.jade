@@ -5,13 +5,28 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="user_metrics")
 
   div.small-label AVG DAU
-  input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off" value= (user_metrics.avg_dau.length > 0) ? user_metrics.avg_dau[0].value : undefined)
+  input(
+    type="text"
+    placeholder="Add AVG DAU"
+    name="avg_dau"
+    autocomplete="off"
+    value= (user_metrics.avg_dau.length > 0) ? user_metrics.avg_dau[0].value : undefined)
 
   div.small-label AVG MAU
-  input(type="text"  placeholder="Add AVG MAU"  name="avg_mau"  autocomplete="off" value=user_metrics.avg_mau)
+  input(
+    type="text"
+    placeholder="Add AVG MAU"
+    name="avg_mau"
+    autocomplete="off"
+    value=(user_metrics.avg_mau.length > 0) ? user_metrics.avg_mau[0].value : undefined)
 
   div.small-label Churn
-  input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off" value=user_metrics.churn)
+  input(
+    type="text"
+    placeholder="Add churn"
+    name="churn"
+    autocomplete="off"
+    value=(user_metrics.churn.length > 0) ? user_metrics.churn[0].value : undefined)
 
 
 
@@ -19,7 +34,12 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="user_metrics")
 
   div.small-label AVG DAU
-  input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off" value=user_metrics.avg_dau)
+  input(
+    type="text"
+    placeholder="Add AVG DAU"
+    name="avg_dau"
+    autocomplete="off"
+    value= (user_metrics.avg_dau.length > 0) ? user_metrics.avg_dau[0].value : undefined)
 
 
 
@@ -27,7 +47,12 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="user_metrics")
 
   div.small-label AVG MAU
-  input(type="text"  placeholder="Add AVG MAU"  name="avg_mau"  autocomplete="off" value=user_metrics.avg_mau)
+  input(
+    type="text"
+    placeholder="Add AVG MAU"
+    name="avg_mau"
+    autocomplete="off"
+    value=(user_metrics.avg_mau.length > 0) ? user_metrics.avg_mau[0].value : undefined)
 
 
 
@@ -35,4 +60,9 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="user_metrics")
 
   div.small-label Churn
-  input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off" value=user_metrics.churn)
+  input(
+    type="text"
+    placeholder="Add churn"
+    name="churn"
+    autocomplete="off"
+    value=(user_metrics.churn.length > 0) ? user_metrics.churn[0].value : undefined)
