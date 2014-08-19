@@ -1,12 +1,14 @@
 // Requires
-  var passport = require('passport'),
-      mongoose = require('mongoose/'),
-      api_mgr = require('../routes/apiManager');
+var passport = require('passport'),
+    mongoose = require('mongoose/'),
+    api_mgr = require('../routes/apiManager');
 
-// bcrypt / password hashing stuff
-  var bcrypt = require('bcrypt'), // Load the bcrypt module
-      salt = bcrypt.genSaltSync(10), // Generate a salt
-      hash = bcrypt.hashSync("my password", salt); // Hash the password with the salt
+// Bcrypt / password hashing stuff
+var bcrypt = require('bcrypt'),
+    // Generate a salt
+    salt = bcrypt.genSaltSync(10),
+    // Hash the password with the salt
+    hash = bcrypt.hashSync("my password", salt);
 
   // Finally just store the hash in your DB
   // .. code to store in Redis/Mongo/Mysql/Sqlite/Postgres/etc.
@@ -47,79 +49,78 @@ var Schema = mongoose.Schema,
     }),
     Companies = mongoose.model('companies', CompanySchema);
 
+//// Helper functions /////
 
-//// HELPERS /////
+/* Function to shorten description */
+function shorten(description) {
+  // Description char limit
+  var limit = 600;
+  // Return shortened description with ellipsis
+  return description.substring(0, limit) + '... ';
+}
 
-  /* Function to shorten description */
-  function shorten(description) {
-    // Description char limit
-    var limit = 600;
-    // Return shortened description with ellipsis
-    return description.substring(0, limit) + '... ';
-  }
+/* Function to remove unwanted link formatting */
+function findLinks(description) {
+  // Regex to match onto the link syntax Crunchbase gives
+  var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
+  // Replace all occurances of links with text format & return new description
+  return description.replace(link, '$1');
+}
 
-  /* Function to remove unwanted link formatting */
-  function findLinks(description) {
-    // Regex to match onto the link syntax Crunchbase gives
-    var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
-    // Replace all occurances of links with text format & return the new description
-    return description.replace(link, '$1');
-  }
+/* Function for transforming object arrays to strings */
+function objArrayToString(p, obj) {
+  // Initialize an empty string
+  var str = '';
 
-  /* Function for transforming object arrays to strings */
-  function objArrayToString(p, obj) {
-    // Initialize an empty string
-    var str = '';
-
-    // If the obj is defined, concatenate each of its children's names
-    if (p.relationships[obj]) {
-      for (var i = 0; i < p.relationships[obj].items.length; i++) {
-        // Concatenate comma to front unless it's 0th
-        if (i != 0) str += ', ';
-        // Concatenate name
-        str += p.relationships[obj].items[i].name;
-      }
-
-      // Return resulting string
-      return str; 
-
-    // If obj is not defined
-    } else {
-      return undefined;
+  // If the obj is defined, concatenate each of its children's names
+  if (p.relationships[obj]) {
+    for (var i = 0; i < p.relationships[obj].items.length; i++) {
+      // Concatenate comma to front unless it's 0th
+      if (i !== 0) str += ', ';
+      // Concatenate name
+      str += p.relationships[obj].items[i].name;
     }
+
+    // Return resulting string
+    return str; 
+
+  // If obj is not defined
+  } else {
+    return undefined;
   }
+}
 
-  /* Convert number to USD format */
-  function usd(num) {
-    return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-  }
+/* Convert number to USD format */
+function usd(num) {
+  return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 
-  /* Simplify crunchbase profile object */
-  function simplifyCrunchbaseProf(p) {
-    return simplified_p = { 
-      img_path:      (p.relationships.primary_image) ?
-                     "http://images.crunchbase.com/" + p.relationships.primary_image.items[0].path :
-                     undefined,
-      short_descrip: p.properties.short_description,
-      description:   (p.properties.description) ? 
-                     shorten(findLinks(p.properties.description)) :
-                     undefined,
-      homepage_url:  (p.properties.homepage_url) ?
-                     p.properties.homepage_url.replace('http://', '') :
-                     undefined,
-      founded_on:    p.properties.founded_on,
-      total_funding: (p.properties.total_funding_usd) ?
-                     usd(p.properties.total_funding_usd) :
-                     undefined,
+/* Simplify crunchbase profile object */
+function simplifyCrunchbaseProf(p) {
+  return { 
+    img_path:      (p.relationships.primary_image) ?
+                   "http://images.crunchbase.com/" + 
+                   p.relationships.primary_image.items[0].path :
+                   undefined,
+    short_descrip: p.properties.short_description,
+    description:   (p.properties.description) ? 
+                   shorten(findLinks(p.properties.description)) :
+                   undefined,
+    homepage_url:  (p.properties.homepage_url) ?
+                   p.properties.homepage_url.replace('http://', '') :
+                   undefined,
+    founded_on:    p.properties.founded_on,
+    total_funding: (p.properties.total_funding_usd) ?
+                   usd(p.properties.total_funding_usd) :
+                   undefined,
 
-      // Comma-separated string of founders' names
-      founders:      objArrayToString(p, 'founders'),
+    // Comma-separated string of founders' names
+    founders:      objArrayToString(p, 'founders'),
 
-      // Comma-separated string of categories
-      categories:    objArrayToString(p, 'categories')
-    };
-  }
-
+    // Comma-separated string of categories
+    categories:    objArrayToString(p, 'categories')
+  };
+}
 
 //// EXPORTS /////
 
@@ -128,7 +129,9 @@ module.exports = {
   // Add a new company
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
     
-    if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    if (crunchbase_permalink === '') {
+      crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    }
 
     // Create empty permalink string
     var permalink = '';
@@ -145,7 +148,7 @@ module.exports = {
       /* Check that crunchbase request returns successfully with 
        * complete profile. Not equivalent to (p.response == true)
        * because need to ensure existence too */
-      if (p.response != false) {
+      if (p.response !== false) {
 
         // There is a valid crunchbase permalink, so use that
         permalink = crunchbase_permalink;
@@ -170,10 +173,25 @@ module.exports = {
           'owners': owners,
           'profile': profile,
           'permalink': permalink,
-          'operational': { gross_burn: [], net_burn: [], revenue: [], head_count: [] },
-          'user_metrics': { avg_dau: [], avg_mau: [], churn: [] },
-          'economics': { ltv: [], lifetime_est: [], cac: [], asp: [], gm_percentage: [] }
-        }
+          'operational': { 
+            gross_burn: [], 
+            net_burn: [], 
+            revenue: [], 
+            head_count: []
+          },
+          'user_metrics': { 
+            avg_dau: [], 
+            avg_mau: [], 
+            churn: []
+          },
+          'economics': { 
+            ltv: [], 
+            lifetime_est: [], 
+            cac: [], 
+            asp: [], 
+            gm_percentage: []
+          }
+        };
 
         // Create new company with profile info included
         Companies.create(company, function (err, c) {
@@ -191,12 +209,14 @@ module.exports = {
       if (err)  return done(err);
 
       // Initialize empty profile object
-      var profile = {};
+      // and counting variable 'field'
+      var profile = {},
+          field;
 
       // Populate profile with original user.profile
-      for (var k in company.profile)  profile[k] = company.profile[k];
+      for (field in company.profile)  profile[field] = company.profile[field];
       // Update the changes from the form
-      for (var k in form)             profile[k] = form[k];
+      for (field in form)             profile[field] = form[field];
       
       // Update profile
       company.profile = profile;
@@ -214,25 +234,28 @@ module.exports = {
 
       if (err)  return done(err);
 
-      // Initialize empty obj
-      var updated = {};
+      // Initialize empty obj and
+      // counting variable 'field'
+      var updated = {},
+          field;
 
       // Populate 'updated' with old values
-      for (var field in company[form.form_name]) {
+      for (field in company[form.form_name]) {
         updated[field] = company[form.form_name][field];
       }
 
       // Update fields of 'updated' with data from form
-      for (var field in form) {
-        // form_name is the only input from the form that we don't want to include
+      for (field in form) {
+        // Form_name is the only input from the form that we don't include
         if (field != 'form_name') {
           // If the field doesn't exist in updated (or in the db) yet, create it
-          if (updated[field] == undefined)   updated[field] = 'object';
+          if (updated[field] === undefined)   updated[field] = 'object';
 
           // Inserts obj (with timestamp & value) to beginning of array obj
           updated[field].unshift({
             timestamp: new Date(),
-            value: form[field]
+            value: form[field],
+            label: field
           });
         }
       }
@@ -245,10 +268,7 @@ module.exports = {
     });
   },
 
-
   Companies: Companies,
-
   passport: passport,
-
   bcrypt: bcrypt
-}
+};

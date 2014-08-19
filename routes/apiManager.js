@@ -6,4 +6,4 @@ exports.get_cmpny = function(permalink, callback) {
    request(domain + permalink + crunchbase_api_key, function(error, response, body) {
       callback(body);
    });  
-}
+};
