@@ -11567,7 +11567,7 @@ input:-webkit-autofill {
     padding: 20px 20px 0 20px;
     text-align: center; }
     .grid .mix .card-header img {
-      height: 40px; }
+      max-height: 40px; }
   .grid .mix .card-body {
     padding: 0 20px 20px 20px; }
     .grid .mix .card-body > div .small-label {
@@ -11581,11 +11581,11 @@ input:-webkit-autofill {
   width: 100%; }
   .list .mix .card-header {
     float: left;
-    padding: 20px;
+    padding: 10px 20px 10px 20px;
     text-align: center;
-    width: 140px; }
+    width: 180px; }
     .list .mix .card-header img {
-      height: 20px; }
+      max-height: 45px; }
   .list .mix .card-body {
     float: left; }
     .list .mix .card-body > div {

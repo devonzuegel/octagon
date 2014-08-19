@@ -35,7 +35,7 @@
       text-align: center;
 
       img {
-        height: 40px;
+        max-height: 40px;
       }
     }
 
@@ -65,12 +65,12 @@
 
     .card-header {
       float: left;
-      padding: 20px;
+      padding: 10px 20px 10px 20px;
       text-align: center;
-      width: 140px;
+      width: 180px;
 
       img {
-        height: 20px;
+        max-height: 45px;
       }
     }
 
