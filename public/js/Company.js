@@ -11,7 +11,10 @@ var Company = {
     };
 
     // Calls the fn that calculates the quarter statistics
-    this.calcQuarter(this.elements.currentQuarter, this.elements.daysRemaining, this.elements.blockHeaders);
+    this.calcQuarter(
+      this.elements.currentQuarter,
+      this.elements.daysRemaining,
+      this.elements.blockHeaders);
   },
 
   // Calculates quarter time

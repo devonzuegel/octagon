@@ -49,7 +49,6 @@ var Schema = mongoose.Schema,
     }),
     Companies = mongoose.model('companies', CompanySchema);
 
-
 //// Helper functions /////
 
 /* Function to shorten description */
@@ -77,7 +76,7 @@ function objArrayToString(p, obj) {
   if (p.relationships[obj]) {
     for (var i = 0; i < p.relationships[obj].items.length; i++) {
       // Concatenate comma to front unless it's 0th
-      if (i != 0) str += ', ';
+      if (i !== 0) str += ', ';
       // Concatenate name
       str += p.relationships[obj].items[i].name;
     }
@@ -98,7 +97,7 @@ function usd(num) {
 
 /* Simplify crunchbase profile object */
 function simplifyCrunchbaseProf(p) {
-  return simplified_p = { 
+  return { 
     img_path:      (p.relationships.primary_image) ?
                    "http://images.crunchbase.com/" + 
                    p.relationships.primary_image.items[0].path :
@@ -123,7 +122,6 @@ function simplifyCrunchbaseProf(p) {
   };
 }
 
-
 //// EXPORTS /////
 
 module.exports = {
@@ -131,7 +129,7 @@ module.exports = {
   // Add a new company
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
     
-    if (crunchbase_permalink == '') {
+    if (crunchbase_permalink === '') {
       crunchbase_permalink = 'NO_PERMALINK_SELECTED';
     }
 
@@ -150,7 +148,7 @@ module.exports = {
       /* Check that crunchbase request returns successfully with 
        * complete profile. Not equivalent to (p.response == true)
        * because need to ensure existence too */
-      if (p.response != false) {
+      if (p.response !== false) {
 
         // There is a valid crunchbase permalink, so use that
         permalink = crunchbase_permalink;
@@ -193,7 +191,7 @@ module.exports = {
             asp: [], 
             gm_percentage: []
           }
-        }
+        };
 
         // Create new company with profile info included
         Companies.create(company, function (err, c) {
@@ -211,12 +209,14 @@ module.exports = {
       if (err)  return done(err);
 
       // Initialize empty profile object
-      var profile = {};
+      // and counting variable 'i'
+      var profile = {},
+          i;
 
       // Populate profile with original user.profile
-      for (var k in company.profile)  profile[k] = company.profile[k];
+      for (i in company.profile)  profile[i] = company.profile[i];
       // Update the changes from the form
-      for (var k in form)             profile[k] = form[k];
+      for (i in form)             profile[i] = form[i];
       
       // Update profile
       company.profile = profile;
@@ -234,20 +234,22 @@ module.exports = {
 
       if (err)  return done(err);
 
-      // Initialize empty obj
-      var updated = {};
+      // Initialize empty obj and
+      // counting variable 'i'
+      var updated = {},
+          field;
 
       // Populate 'updated' with old values
-      for (var field in company[form.form_name]) {
+      for (field in company[form.form_name]) {
         updated[field] = company[form.form_name][field];
       }
 
       // Update fields of 'updated' with data from form
-      for (var field in form) {
+      for (field in form) {
         // Form_name is the only input from the form that we don't include
         if (field != 'form_name') {
           // If the field doesn't exist in updated (or in the db) yet, create it
-          if (updated[field] == undefined)   updated[field] = 'object';
+          if (updated[field] === undefined)   updated[field] = 'object';
 
           // Inserts obj (with timestamp & value) to beginning of array obj
           updated[field].unshift({
@@ -266,10 +268,7 @@ module.exports = {
     });
   },
 
-
   Companies: Companies,
-
   passport: passport,
-
   bcrypt: bcrypt
-}
+};
