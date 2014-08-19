@@ -97,6 +97,15 @@ function usd(num) {
   return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
+/* Given an id & an array, returns the index of the object
+ * within the array that has the same id. */
+function index_from_id (id, obj_array) {
+  for (var i = 0; i < obj_array.length; i++) {
+    if (id == obj_array[i]._id)     return i;
+  }
+}
+
+
 /* Simplify crunchbase profile object */
 function simplifyCrunchbaseProf(p) {
   return { 
@@ -234,17 +243,15 @@ module.exports = {
        * containing the values from each field. We then push that object onto
        * the array indicated by form['array']. */
       } else if (form.edit_obj_in_array) {
+        var array_name = form.edit_obj_in_array;
+        var index = index_from_id(form._id, company[array_name]);
 
         // Find obj_array[i] that has _id indicated in form, replace it with obj
-        for (var i = 0; i < company[form.edit_obj_in_array].length; i++) {
-          if (form._id == company[form.edit_obj_in_array][i]._id) {
-            console.log(JSON.stringify(company[form.edit_obj_in_array][i], null, 3));
-            for (field in form) {
-              if (field != 'edit_obj_in_array')
-                company[form.edit_obj_in_array][i][field] = form[field];
-            }
-          }
+        for (field in form) {
+          if (field != 'edit_obj_in_array')
+            company[array_name][index][field] = form[field];
         }
+
         company.save(cb());
 
       /* UPDATE PROFILE OBJECT

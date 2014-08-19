@@ -71,7 +71,7 @@
           li.milestone
             .milestone-info
               .title #{m.title}
-              .date #{m.date}
+              .date #{moment(m.date).format('DD MMMM YYYY')}
               .description #{m.description}
             a.milestone-edit(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
               i.fa.fa-pencil
@@ -93,7 +93,7 @@
             var m = milestones[i];
             $('#edit-'+m._id).click(function() {
               $('#title').val(m.title);
-              $('#date').val(m.date);
+              $('#date').val(moment(m.date).format('DD MMMM YYYY'));
               $('#description').val(m.description);
               $('#_id').val(m._id);
             });
