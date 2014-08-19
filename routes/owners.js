@@ -38,7 +38,7 @@ router.post('/add', function(req, res) {
     if (err)    return done(err);
 
     // if (search returns empty) ...
-    if (o.length == 0) {
+    if (o.length === 0) {
       // only add a company if the search returns empty
       OwnerModel.add(
       	form.name,

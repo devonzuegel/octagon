@@ -209,14 +209,14 @@ module.exports = {
       if (err)  return done(err);
 
       // Initialize empty profile object
-      // and counting variable 'i'
+      // and counting variable 'field'
       var profile = {},
-          i;
+          field;
 
       // Populate profile with original user.profile
-      for (i in company.profile)  profile[i] = company.profile[i];
+      for (field in company.profile)  profile[field] = company.profile[field];
       // Update the changes from the form
-      for (i in form)             profile[i] = form[i];
+      for (field in form)             profile[field] = form[field];
       
       // Update profile
       company.profile = profile;
@@ -235,7 +235,7 @@ module.exports = {
       if (err)  return done(err);
 
       // Initialize empty obj and
-      // counting variable 'i'
+      // counting variable 'field'
       var updated = {},
           field;
 

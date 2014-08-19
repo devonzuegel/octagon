@@ -8,13 +8,16 @@ exports.require_privileges = function(req, res, include_msgs, admin_fn, user_fn)
   // Not authenticated as ADMIN
   } else {
 
-    if (include_msgs) // If include_msgs, flash an error
+    // If include_msgs, flash an error
+    if (include_msgs)
       req.flash('error', 'You do not have permission to perform that action.');
     
-    if (!req.isAuthenticated())  // If not authenticated at all, redirect to login
+    // If not authenticated at all, redirect to login
+    if (!req.isAuthenticated())
       res.redirect('../login');
-    else  // If authenticated as a general user (not ADMIN), call user fn
+    // If authenticated as a general user (not ADMIN), call user fn
+    else
       user_fn(req, res);
 
   }
-}
+};

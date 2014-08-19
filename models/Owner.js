@@ -34,7 +34,9 @@ function update_companies_owners(o) {
 
       /* Get & parse the stringified list of c's owners
        * If the list is undefined, create an empty array */
-      var companys_owners = (c.owners && c.owners!='') ? JSON.parse(c.owners) : [];
+      var companys_owners = (c.owners && c.owners !== '') ?
+                            JSON.parse(c.owners) : 
+                            [];
 
       /* Info about existence/location of owner in list of company's owners
        * retrieve index of this owner in the list of c's owners */
@@ -60,7 +62,7 @@ function update_companies_owners(o) {
       if (o_in_list  &&  !c_in_list)    companys_owners.splice(i_owner, 1);
 
       // Update c.owners to reflect changes
-      c['owners'] = JSON.stringify(companys_owners);
+      c.owners = JSON.stringify(companys_owners);
       c.save();
     }
     
@@ -74,7 +76,7 @@ module.exports = {
      * returns us a string rather than an array. This line converts it
      * into an array of length 1. */
     if (typeof companies === 'string')  companies = [companies];
-    if (companies == undefined)         companies = [];
+    if (companies === undefined)         companies = [];
     
     // Build up owner hash with details from above
     var owner = { 
@@ -101,7 +103,7 @@ module.exports = {
           Companies.findOne({username: username}, function(err, c) {
             var owners = (c.owners) ? JSON.parse(c.owners) : [];
             owners.push(o.id);
-            c['owners'] = JSON.stringify(owners);
+            c.owners = JSON.stringify(owners);
             c.save();
           });
         }
@@ -126,4 +128,4 @@ module.exports = {
   },
 
   Owners: Owners
-}
+};
