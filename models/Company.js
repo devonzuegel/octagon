@@ -29,7 +29,7 @@ var Schema = mongoose.Schema,
           _id: String,
           title: String,
           date: Date,
-          description: String,
+          description: String
         }
       ],
       team: [
@@ -38,7 +38,8 @@ var Schema = mongoose.Schema,
           full_name: String,
           img_path: String,
           role: String,
-          email: String
+          email: String,
+          date_joined: Date
         }
       ],
       operational: {

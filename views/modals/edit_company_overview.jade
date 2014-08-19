@@ -89,12 +89,13 @@ include ../mixins/edit_modal_mixin
   input(type='text'  placeholder='Add date'  name='img_path'  id='img_path' autocomplete='off')
 
   div.small-label Role
-  textarea(placeholder='Add description'  name='role'  id='role'  autocomplete='off') 
+  input(type='text'  placeholder='Add role'  name='role'  id='role' autocomplete='off')
 
-  div.small-label Email address
-  textarea(placeholder='Add description'  name='email'  id='email'  autocomplete='off') 
+  div.small-label Email
+  input(type='text'  placeholder='Email'  name='email'  id='email' autocomplete='off')
 
-
+  div.small-label Date Joined
+  input(type='text'  placeholder='Add date'  name='date_joined'  id='date_joined' autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY'))
 
 
 

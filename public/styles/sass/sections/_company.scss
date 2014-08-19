@@ -123,6 +123,11 @@
             position: absolute;
             right: 10px;
             top: 0;
+            cursor: pointer;
+
+            &:hover {
+              color: $purple;
+            }
           }
 
           .block-info {
@@ -217,6 +222,16 @@
       }
     }
   }
+}
+
+.col-md-6 {
+  > .edit-btn {  @include fade-out;  }
+  &:hover .edit-btn.block-edit {  @include fade-in;  }
+}
+
+.milestone, .company-header {
+  .edit-btn {  @include fade-out;  }
+  &:hover .edit-btn {  @include fade-in;  }
 }
 
 .edit-btn {
