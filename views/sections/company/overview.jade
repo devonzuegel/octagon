@@ -7,6 +7,13 @@
 -    return description.substring(0, limit) + '... ';
 -  }
 
+
+-  function chronological(a, b) {
+-    if (a.date && b.date)    return (a.date - b.date);
+-    else                     return 0;
+- }
+
+
 .tab-pane.active#overview
   //- ABOUT
   .col-md-6
@@ -67,7 +74,7 @@
     .block-info
       ul.milestone-list
         //- TODO sort by date (most recent first)
-        for m in c.milestones.reverse()
+        for m in c.milestones.sort(chronological).reverse()
           li.milestone
             .milestone-info
               .title #{m.title}
@@ -82,10 +89,10 @@
       window.onload = function() {
         var milestones = !{JSON.stringify(c.milestones)};
 
-        // Iterate through milestones' edit btns so that onclick, the form is
-        // populated with that owner's info
         for (var i = 0; i < milestones.length; i++) {
-          (function(n) {
+          /* Iterate through milestones' edit btns: onclick, the form is
+           * populated with that owner's info */
+          (function(n) { // variable binding
             var m = milestones[i];
             $('#edit-'+m._id).click(function() {
               $('#title').val(m.title);
@@ -93,7 +100,7 @@
               $('#description').val(m.description);
               $('#_id').val(m._id);
             });
-          }(i))
+          }(i)) // end of variable binding
         }
       };
 
