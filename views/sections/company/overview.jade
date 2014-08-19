@@ -66,13 +66,14 @@
 
     .block-info
       ul.milestone-list
-        for m,i in c.milestones
+        //- TODO sort by date (most recent first)
+        for m in c.milestones.reverse()
           li.milestone
             .milestone-info
               .title #{m.title}
-              .date #{m.date}
+              .date #{moment(m.date).format('DD MMMM YYYY')}
               .description #{m.description}
-            a.milestone-edit(data-toggle="modal" data-target="#edit-milestone" id='edit-'+i)
+            a.milestone-edit(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
               i.fa.fa-pencil
 
 
@@ -90,11 +91,11 @@
         for (var i = 0; i < milestones.length; i++) {
           (function(n) {
             var m = milestones[i];
-            $('#edit-'+i).click(function() {
+            $('#edit-'+m._id).click(function() {
               $('#title').val(m.title);
-              $('#date').val(m.date);
+              $('#date').val(moment(m.date).format('DD MMMM YYYY'));
               $('#description').val(m.description);
-              $('#id').val(m._id);
+              $('#_id').val(m._id);
             });
           }(i))
         }
