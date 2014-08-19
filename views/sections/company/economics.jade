@@ -14,7 +14,7 @@
 
     .block-info.block-num
       if economics.ltv.length > 0
-        | $#{economics.ltv[0].value}
+        | #{usd(economics.ltv[0].value)}
       else
         | Add
 
@@ -31,7 +31,7 @@
 
     .block-info.block-num
       if economics.lifetime_est.length > 0
-        | $#{economics.lifetime_est[0].value}
+        | #{usd(economics.lifetime_est[0].value)}
       else
         | Add
 
@@ -48,7 +48,7 @@
 
     .block-info.block-num
       if economics.cac.length > 0
-        | $#{economics.cac[0].value}
+        | #{usd(economics.cac[0].value)}
       else
         | Add
 
@@ -65,7 +65,7 @@
 
     .block-info.block-num
       if economics.asp.length > 0
-        | $#{economics.asp[0].value}
+        | #{usd(economics.asp[0].value)}
       else
         | Add
 

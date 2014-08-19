@@ -14,7 +14,12 @@ var express = require('express'),
     
 
 var app = express();
+
+// App locals
 app.locals.moment = require('moment');
+app.locals.usd = function(num) {
+  return '$' + (+num).toFixed(2);
+}
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
