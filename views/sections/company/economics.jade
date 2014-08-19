@@ -14,14 +14,17 @@
 
     .block-info.block-num
       if economics.ltv.length > 0
-        | $#{economics.ltv[0].value}
+        | #{usd(economics.ltv[0].value)}
       else
         | Add
 
   .col-md-9
     h3 LTV By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var ltv_data = !{JSON.stringify(economics.ltv)};
+    .block-info.block-graph:.graph-padding#ltvGraph
 
   .col-md-3
     h3 Lifetime Est.
@@ -31,14 +34,17 @@
 
     .block-info.block-num
       if economics.lifetime_est.length > 0
-        | $#{economics.lifetime_est[0].value}
+        | #{usd(economics.lifetime_est[0].value)}
       else
         | Add
 
   .col-md-9
     h3 Lifetime Est. By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var lifetime_est_data = !{JSON.stringify(economics.lifetime_est)};
+    .block-info.block-graph:.graph-padding#lifetimeEstGraph
 
   .col-md-3
     h3 CAC
@@ -48,14 +54,17 @@
 
     .block-info.block-num
       if economics.cac.length > 0
-        | $#{economics.cac[0].value}
+        | #{usd(economics.cac[0].value)}
       else
         | Add
 
   .col-md-9
     h3 CAC By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var cac_data = !{JSON.stringify(economics.cac)};
+    .block-info.block-graph:.graph-padding#cacGraph
 
   .col-md-3
     h3 ASP
@@ -65,14 +74,17 @@
 
     .block-info.block-num
       if economics.asp.length > 0
-        | $#{economics.asp[0].value}
+        | #{usd(economics.asp[0].value)}
       else
         | Add
 
   .col-md-9
     h3 ASP By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var asp_data = !{JSON.stringify(economics.asp)};
+    .block-info.block-graph:.graph-padding#aspGraph
 
   .col-md-3
     h3 GM %
@@ -89,4 +101,7 @@
   .col-md-9
     h3 GM % By Quarter
 
-    .block-info Graph
+    //- Grab the data
+    script(type="text/javascript").
+      var gm_percentage_data = !{JSON.stringify(economics.gm_percentage)};
+    .block-info.block-graph:.graph-padding#gmPercentageGraph
