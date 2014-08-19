@@ -120,39 +120,6 @@ var Schema = mongoose.Schema,
     };
   }
 
-  /* Given the contents of a form (including a field called 'form_name'), 
-   * this function updates the corresponding field in company
-   * (access by: company[form.form_name]) with the contents of the form. */
-  function editMetricsByForm(form_name, form, company, cb) {
-
-    // Initialize empty obj
-    var updated = {};
-
-    // Populate 'updated' with old values
-    for (var field in company[form_name]) {
-      updated[field] = company[form_name][field];
-    }
-
-    // Update fields of 'updated' with data from form
-    for (var field in form) {
-      if (field != 'form_name') {
-        if (updated[field] == undefined) {
-          updated[field] = 'object';
-        }
-        updated[field].unshift({
-          timestamp: new Date(),
-          value: form[field]
-        });
-      }
-    }
-
-    // Update 'company[for.form_name]' to reflect changes from 'updated'
-    company[form_name] = updated;
-
-    // save 'company' to db and call callback function
-    company.save(cb);
-  }
-
 
 //// EXPORTS /////
 
@@ -240,14 +207,48 @@ module.exports = {
 
   // Edit company metric information
   editMetrics: function(link, form, cb) {
+    /* Given the contents of a form (including a field called 'form.form_name'), 
+     * this update the corresponding field in company (access by calling:
+     * company[form.form.form_name]) with the contents of the form. */
     Companies.findOne({ permalink: link }, function (err, company) {
+
       if (err)  return done(err);
 
-      editMetricsByForm(form.form_name, form, company, cb);
+      // Initialize empty obj
+      var updated = {};
+
+      // Populate 'updated' with old values
+      for (var field in company[form.form_name]) {
+        updated[field] = company[form.form_name][field];
+      }
+
+      // Update fields of 'updated' with data from form
+      for (var field in form) {
+        // form_name is the only input from the form that we don't want to include
+        if (field != 'form_name') {
+          // If the field doesn't exist in updated (or in the db) yet, create it
+          if (updated[field] == undefined)   updated[field] = 'object';
+
+          // Inserts obj (with timestamp & value) to beginning of array obj
+          updated[field].unshift({
+            timestamp: new Date(),
+            value: form[field]
+          });
+        }
+      }
+
+      // Update 'company[for.form.form_name]' to reflect changes from 'updated'
+      company[form.form_name] = updated;
+      // Save 'company' to db and call callback function
+      company.save(cb);
+
     });
   },
 
+
   Companies: Companies,
+
   passport: passport,
+
   bcrypt: bcrypt
 }
