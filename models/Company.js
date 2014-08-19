@@ -1,12 +1,14 @@
 // Requires
-  var passport = require('passport'),
-      mongoose = require('mongoose/'),
-      api_mgr = require('../routes/apiManager');
+var passport = require('passport'),
+    mongoose = require('mongoose/'),
+    api_mgr = require('../routes/apiManager');
 
-// bcrypt / password hashing stuff
-  var bcrypt = require('bcrypt'), // Load the bcrypt module
-      salt = bcrypt.genSaltSync(10), // Generate a salt
-      hash = bcrypt.hashSync("my password", salt); // Hash the password with the salt
+// Bcrypt / password hashing stuff
+var bcrypt = require('bcrypt'),
+    // Generate a salt
+    salt = bcrypt.genSaltSync(10),
+    // Hash the password with the salt
+    hash = bcrypt.hashSync("my password", salt);
 
   // Finally just store the hash in your DB
   // .. code to store in Redis/Mongo/Mysql/Sqlite/Postgres/etc.
