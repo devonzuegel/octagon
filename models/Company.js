@@ -225,15 +225,15 @@ module.exports = {
        * If the form CONTAINS an 'array' field, we create an object containing
        * the values from each field. We then push that object onto the array
        * indicated by form['array']. */
-      if (form.array) {        
-        var obj = {};  // initialize empty obj to be filled with form data
-        obj['_id'] = 'id' + (new Date()).getTime();  // create unique id for the obj
-
+      if (form.array) {
+        // initialize obj to be filled w/ form data (w/ unique id for the obj)
+        var obj = {  
+          _id: (new Date()).getTime()  
+        };
         // populate obj with form data (except the value of the array field)
         for (field in form) {
           if (field != 'array')     obj[field] = form[field]; 
         }
-
         // push obj to end of array defined by form.array, into company db document
         company[form.array].push(obj);
         company.save(cb());
@@ -243,15 +243,15 @@ module.exports = {
        * containing the values from each field. We then push that object onto
        * the array indicated by form['array']. */
       } else if (form.edit_obj_in_array) {
+        // save name of array to edit in shorter variable
         var array_name = form.edit_obj_in_array;
-        var index = index_from_id(form._id, company[array_name]);
-
-        // Find obj_array[i] that has _id indicated in form, replace it with obj
-        for (field in form) {
-          if (field != 'edit_obj_in_array')
-            company[array_name][index][field] = form[field];
+        // Find index of obj in company[array_name] with _id from form
+        var i = index_from_id(form._id, company[array_name]);
+        
+        // Replace obj at company[array_name][i] with new data from form
+        for (f in form) {
+          if (f != 'edit_obj_in_array')   company[array_name][i][f] = form[f];
         }
-
         company.save(cb());
 
       /* UPDATE PROFILE OBJECT
