@@ -231,12 +231,11 @@ module.exports = {
           _id: (new Date()).getTime()  
         };
         // populate obj with form data (except the value of the array field)
-        for (field in form) {
+        for (var field in form) {
           if (field != 'array')     obj[field] = form[field]; 
         }
         // push obj to end of array defined by form.array, into company db document
         company[form.array].push(obj);
-        company.save(cb());
 
       /* CONTAINS FORM.EDIT_OBJ_IN_ARRAY
        * If the form CONTAINS an 'edit_obj_in_array' field, we create an object
@@ -247,32 +246,29 @@ module.exports = {
         var array_name = form.edit_obj_in_array;
         // Find index of obj in company[array_name] with _id from form
         var i = index_from_id(form._id, company[array_name]);
-        
+
         // Replace obj at company[array_name][i] with new data from form
-        for (f in form) {
+        for (var f in form) {
           if (f != 'edit_obj_in_array')   company[array_name][i][f] = form[f];
         }
-        company.save(cb());
 
       /* UPDATE PROFILE OBJECT
        * If the form DOES NOT CONTAIN an 'array' or 'edit_obj_in_array' field,
        * we add each field directly to the profile object. */
       } else {
-        // Initialize empty profile object
-        // and counting variable 'field'
-        var profile = {},
-        field;
+        var profile = {}; // Initialize empty profile object
 
         // Populate profile with original user.profile
-        for (field in company.profile)  profile[field] = company.profile[field];
+        for (var field in company.profile)  profile[field] = company.profile[field];
         // Update the changes from the form
         for (field in form)             profile[field] = form[field];
 
-        // Update profile
-        company.profile = profile;
-        // Save & redirect to updated profile
-        company.save(cb());}
-      });
+        company.profile = profile; // Update profile
+      }
+
+      // Save updated profile, execute callback
+      company.save(cb());
+    });
 
   },
 
