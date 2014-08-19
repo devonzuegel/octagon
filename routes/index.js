@@ -23,32 +23,61 @@
 
 // home page
 router.get('/', function(req, res) {
-	return res.redirect('/dashboard');
+	return res.redirect('/portfolio');
 });
 
-router.get('/dashboard', function(req, res) {
-	privileges.require_privileges(
+// support page
+router.get('/support', function(req, res) {
+
+		privileges.require_privileges(
 		req, res, 
 		false,  // Do not include flash error msgs
 		admin_fn = function() {
-			// Render F8's dashboard
-			res.render('dashboard-f8', { 
-				title: 'Dashboard', 
+			res.render('support', {
+				title: 'Support', 
 				errors: req.flash('error'),
 				username: req.session.username,
-				is_admin: true  
+				is_admin: true
 			});
 		}, 
 		user_fn = function() { 
-			// Render company's individual dashboard
-			res.render('dashboard-individual', { 
-				title: 'Dashboard', 
+			res.render('support', {
+				title: 'Support', 
 				errors: req.flash('error'),
 				username: req.session.username,
-				is_admin: false  
-			});                      
-		}
+				is_admin: false
+			});
+    }
+  );
+
+});
+
+router.get('/dashboard', function(req, res) {
+	return res.redirect('/portfolio');
+	/*
+		privileges.require_privileges(
+			req, res, 
+			false,  // Do not include flash error msgs
+			admin_fn = function() {
+				// Render F8's dashboard
+				res.render('dashboard-f8', { 
+					title: 'Dashboard', 
+					errors: req.flash('error'),
+					username: req.session.username,
+					is_admin: true  
+				});
+			}, 
+			user_fn = function() { 
+				// Render company's individual dashboard
+				res.render('dashboard-individual', { 
+					title: 'Dashboard', 
+					errors: req.flash('error'),
+					username: req.session.username,
+					is_admin: false  
+				});                      
+			}
 		);
+	*/
 });
 
 
@@ -74,10 +103,10 @@ router.get('/settings', function(req, res) {
 			}); // End of Companies.find
 		}, 
 		user_fn = function() { 
-	      // redirect to logged in company's page
-	      res.redirect('/portfolio/' + req.session.permalink); 
-	    }
-	    );
+			// redirect to logged in company's page
+      res.redirect('/portfolio/' + req.session.permalink); 
+    }
+  );
 });
 
 
