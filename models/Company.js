@@ -192,26 +192,29 @@ module.exports = {
         permalink = username.replace(/\s+/g, '-').toLowerCase();
       }
 
-      // Build up company hash with details from above
-      var company = { 
-        'username': username,
-        'password': password, 
-        'init_investmt_date': init_investmt_date,
-        'crunchbase_permalink': crunchbase_permalink,
-        'crunchbase_prof': p,
-        'owners': owners,
-        'profile': profile,
-        'permalink': permalink,
-        'operational': { gross_burn: [], net_burn: [], revenue: [], head_count: [] },
-        'user_metrics': { avg_dau: [], avg_mau: [], churn: [] },
-        'economics': { ltv: [], lifetime_est: [], cac: [], asp: [], gm_percentage: [] }
-      }
+      bcrypt.hash(password, 10, function(err, hash) {
+        // Build up company hash with details from above
+        var company = { 
+          'username': username,
+          'password': hash, 
+          'init_investmt_date': init_investmt_date,
+          'crunchbase_permalink': crunchbase_permalink,
+          'crunchbase_prof': p,
+          'owners': owners,
+          'profile': profile,
+          'permalink': permalink,
+          'operational': { gross_burn: [], net_burn: [], revenue: [], head_count: [] },
+          'user_metrics': { avg_dau: [], avg_mau: [], churn: [] },
+          'economics': { ltv: [], lifetime_est: [], cac: [], asp: [], gm_percentage: [] }
+        }
 
-      // Create new company with profile info included
-      Companies.create(company, function (err, c) {
-        if (err)  return done(err);
-        cb(c);
+        // Create new company with profile info included
+        Companies.create(company, function (err, c) {
+          if (err)  return done(err);
+          cb(c);
+        });
       });
+
     });
   },
 

@@ -129,7 +129,8 @@ passport.use(new LocalStrategy(function(username, password, done) {
 			if (!user)  	return done(null, false);
 
 			bcrypt.compare(password, user.password, function(err, result) {
-				if (result || username == 'admin') 	
+				if (err)    	done(err);
+				if (result  ||  username=='admin') 	
 					return done(null, user);
 				else	 				
 					return done(null, false);
