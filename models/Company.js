@@ -192,27 +192,6 @@ module.exports = {
         permalink = username.replace(/\s+/g, '-').toLowerCase();
       }
 
-      var operational = {
-        gross_burn: [],
-        net_burn: [],
-        revenue: [],
-        head_count: []
-      },
-      user_metrics = {
-        avg_dau: [],
-        avg_mau: [],
-        churn: []
-      },
-      economics = {
-        ltv: [],
-        lifetime_est: [],
-        cac: [],
-        asp: [],
-        gm_percentage: []
-      };
-
-
-
       // Build up company hash with details from above
       var company = { 
         'username': username,
@@ -223,10 +202,25 @@ module.exports = {
         'owners': owners,
         'profile': profile,
         'permalink': permalink,
-        'operational': operational,
-        'user_metrics': user_metrics,
-        'economics': economics
-      };
+        'operational': {
+          gross_burn: [],
+          net_burn: [],
+          revenue: [],
+          head_count: []
+        },
+        'user_metrics': {
+          avg_dau: [],
+          avg_mau: [],
+          churn: []
+        },
+        'economics': {
+          ltv: [],
+          lifetime_est: [],
+          cac: [],
+          asp: [],
+          gm_percentage: []
+        }
+      }
 
       // Create new company with profile info included
       Companies.create(company, function (err, c) {
@@ -245,18 +239,12 @@ module.exports = {
       var profile = {};
 
       // Populate profile with original user.profile
-      for (var k in company.profile) {
-        profile[k] = company.profile[k];
-      }
-
+      for (var k in company.profile)  profile[k] = company.profile[k];
       // Update the changes from the form
-      for (var k in form) {
-        profile[k] = form[k];
-      }
-
+      for (var k in form)             profile[k] = form[k];
+      
       // Update profile
       company.profile = profile;
-
       // Save & redirect to updated profile
       company.save(cb());
     });
