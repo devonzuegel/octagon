@@ -1,7 +1,15 @@
 // Requires
-var passport = require('passport'),
-    mongoose = require('mongoose/'),
-    api_mgr = require('../routes/apiManager');
+  var passport = require('passport'),
+      mongoose = require('mongoose/'),
+      api_mgr = require('../routes/apiManager');
+
+// bcrypt / password hashing stuff
+  var bcrypt = require('bcrypt'), // Load the bcrypt module
+      salt = bcrypt.genSaltSync(10), // Generate a salt
+      hash = bcrypt.hashSync("my password", salt); // Hash the password with the salt
+
+  // Finally just store the hash in your DB
+  // .. code to store in Redis/Mongo/Mysql/Sqlite/Postgres/etc.
 
 mongoose.connect('mongodb://localhost/test');
 
@@ -194,6 +202,7 @@ module.exports = {
       };
 
 
+
       // Build up company hash with details from above
       var company = { 
         'username': username,
@@ -254,5 +263,6 @@ module.exports = {
   },
 
   Companies: Companies,
-  passport: passport
+  passport: passport,
+  bcrypt: bcrypt
 }

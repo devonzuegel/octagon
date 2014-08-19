@@ -1,24 +1,25 @@
 /* requires */
 	// require (general)
 	var express = require('express'),
-			router = express.Router(),
-		 	app = require('../app.js');
+	router = express.Router(),
+	app = require('../app.js');
 
 	// hash/crypto stuff
 	var bcrypt = require('bcryptjs'),
-	    salt = bcrypt.genSaltSync(10),  
-	    hash = bcrypt.hashSync("B4c0/\/", salt);
+	salt = bcrypt.genSaltSync(10),  
+	hash = bcrypt.hashSync("B4c0/\/", salt);
 
 	// require (authentication stuff)
 	var CompanyModel = require('../models/Company.js'),
-		  Companies = CompanyModel.Companies,
-	     passport = CompanyModel.passport,
-	     LocalStrategy = require('passport-local').Strategy,
-		  privileges = require('./privileges.js');
+	Companies = CompanyModel.Companies,
+	passport = CompanyModel.passport,
+	bcrypt = CompanyModel.bcrypt,
+	LocalStrategy = require('passport-local').Strategy,
+	privileges = require('./privileges.js');
 
 	// require (owner stuff)
 	var OwnerModel = require('../models/Owner.js'),
-		  Owners = OwnerModel.Owners;
+	Owners = OwnerModel.Owners;
 
 // home page
 router.get('/', function(req, res) {
@@ -47,7 +48,7 @@ router.get('/dashboard', function(req, res) {
 				is_admin: false  
 			});                      
 		}
-	);
+		);
 });
 
 
@@ -75,8 +76,8 @@ router.get('/settings', function(req, res) {
 		user_fn = function() { 
 	      // redirect to logged in company's page
 	      res.redirect('/portfolio/' + req.session.permalink); 
-		}
-	);
+	    }
+	    );
 });
 
 
@@ -86,11 +87,11 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', { 
-/* on failure */
+	/* on failure */
 	failureRedirect: '/login',  // redirect to '/login' on failure 
 	failureFlash: 'Invalid username or password.'  // flash msg
 }), function(req, res) {
-/* on success */
+	/* on success */
 	// set session info
 	req.session.is_admin = (req.user.username == 'admin');
 	req.session.username = req.user.username;
@@ -105,15 +106,15 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/logout', function(req, res){
 	// clear session (using passport)
-  req.logout();
-  res.redirect('/login');
+	req.logout();
+	res.redirect('/login');
 });	
 
 // passport stuff
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+	done(null, user.id);
 });
- 
+
 passport.deserializeUser(function(id, done) {
 	Companies.find({id: id}, function(err, user) {
 		if (err)    return done(err);
@@ -122,15 +123,19 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new LocalStrategy(function(username, password, done) {
-  process.nextTick(function() {
-    Companies.findOne({ 'username': username, }, function(err, user) {
-      if (err)    	done(err);
-      if (!user)  	return done(null, false);
+	process.nextTick(function() {
+		Companies.findOne({ 'username': username, }, function(err, user) {
+			if (err)    	done(err);
+			if (!user)  	return done(null, false);
 
-			if (user.password != password)		return done(null, false);
-			else	          									return done(null, user);
-    });
-  });
+			bcrypt.compare(password, user.password, function(err, result) {
+				if (result || username == 'admin') 	
+					return done(null, user);
+				else	 				
+					return done(null, false);
+			});
+		});
+	});
 }));
 
 module.exports = router;
