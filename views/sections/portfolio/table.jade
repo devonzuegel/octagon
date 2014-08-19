@@ -24,7 +24,7 @@
             - owners_class += o + ' '
 
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
-          if (c.crunchbase_prof.relationships)
+          //- if (c.crunchbase_prof && c.crunchbase_prof.relationships)
 
           .card-header
             if (c.profile != undefined)
