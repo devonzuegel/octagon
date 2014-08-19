@@ -13,8 +13,8 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if economics.ltv
-        | #{usd(economics.ltv[0].value)}
+      if economics.ltv.length > 0
+        | $#{economics.ltv[0].value}
       else
         | Add
 
@@ -30,8 +30,8 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if economics.lifetime_est
-        | #{usd(economics.lifetime_est[0].value)}
+      if economics.lifetime_est.length > 0
+        | $#{economics.lifetime_est[0].value}
       else
         | Add
 
@@ -47,8 +47,8 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if economics.cac
-        | #{usd(economics.cac[0].value)}
+      if economics.cac.length > 0
+        | $#{economics.cac[0].value}
       else
         | Add
 
@@ -64,8 +64,8 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if economics.asp
-        | #{usd(economics.asp[0].value)}
+      if economics.asp.length > 0
+        | $#{economics.asp[0].value}
       else
         | Add
 
@@ -81,7 +81,7 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if economics.gm_percentage
+      if economics.gm_percentage.length > 0
         | #{economics.gm_percentage[0].value}%
       else
         | Add

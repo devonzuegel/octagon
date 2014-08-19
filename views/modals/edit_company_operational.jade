@@ -4,16 +4,39 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Gross Burn
-  input(type="text"  placeholder="Add gross burn"  name="gross_burn"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add gross burn"
+    name="gross_burn"
+    autocomplete="off"
+    value= (operational.gross_burn.length > 0) ? operational.gross_burn[0].value : undefined)
 
   div.small-label Net Burn
-  input(type="text"  placeholder="Add net burn"  name="net_burn"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add net burn"
+    name="net_burn"
+    autocomplete="off"
+    value= (operational.net_burn.length > 0) ? operational.net_burn[0].value : undefined)
+
 
   div.small-label Revenue
-  input(type="text"  placeholder="Add revenue"  name="revenue"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add revenue"
+    name="revenue"
+    autocomplete="off"
+    value= (operational.revenue.length > 0) ? operational.revenue[0].value : undefined)
+
 
   div.small-label Head Count
-  input(type="text"  placeholder="Add head count"  name="head_count"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add head count"
+    name="head_count"
+    autocomplete="off"
+    value= (operational.head_count.length > 0) ? operational.head_count[0].value : undefined)
+
 
 
 
@@ -21,7 +44,12 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Gross Burn
-  input(type="text"  placeholder="Add gross burn"  name="gross_burn"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add gross burn"
+    name="gross_burn"
+    autocomplete="off"
+    value= (operational.gross_burn.length > 0) ? operational.gross_burn[0].value : undefined)
 
 
 
@@ -29,7 +57,12 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Net Burn
-  input(type="text"  placeholder="Add net burn"  name="net_burn"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add net burn"
+    name="net_burn"
+    autocomplete="off"
+    value= (operational.net_burn.length > 0) ? operational.net_burn[0].value : undefined)
 
 
 
@@ -37,7 +70,12 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Revenue
-  input(type="text"  placeholder="Add revenue"  name="revenue"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add revenue"
+    name="revenue"
+    autocomplete="off"
+    value= (operational.revenue.length > 0) ? operational.revenue[0].value : undefined)
 
 
 
@@ -45,4 +83,9 @@ include ../mixins/edit_modal_mixin
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Head Count
-  input(type="text"  placeholder="Add head count"  name="head_count"  autocomplete="off" value="")
+  input(
+    type="text"
+    placeholder="Add head count"
+    name="head_count"
+    autocomplete="off"
+    value= (operational.head_count.length > 0) ? operational.head_count[0].value : undefined)

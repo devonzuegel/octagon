@@ -12,7 +12,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
       i.fa.fa-pencil
 
-    .block-info.block-num $200,000
+    .block-info.block-num
+      if operational.gross_burn.length > 0
+        | $#{operational.gross_burn[0].value}
+      else
+        | Add
 
   .col-md-3
     h3 Net Burn
@@ -20,7 +24,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
       i.fa.fa-pencil
 
-    .block-info.block-num $150,000
+    .block-info.block-num
+      if operational.net_burn.length > 0
+        | $#{operational.net_burn[0].value}
+      else
+        | Add
 
   .col-md-6
     h3 Burn By Quarter
@@ -33,7 +41,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
       i.fa.fa-pencil
 
-    .block-info.block-num $100,000
+    .block-info.block-num
+      if operational.revenue.length > 0
+        | $#{operational.revenue[0].value}
+      else
+        | Add
 
   .col-md-9
     h3 Revenue By Quarter
@@ -46,7 +58,11 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
       i.fa.fa-pencil
 
-    .block-info.block-num 40
+    .block-info.block-num
+      if operational.head_count.length > 0
+        | #{operational.head_count[0].value}
+      else
+        | Add
 
   .col-md-9
     h3 Head Count By Quarter

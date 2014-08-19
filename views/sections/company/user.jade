@@ -13,7 +13,7 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if user_metrics.avg_dau
+      if user_metrics.avg_dau.length > 0
         | #{user_metrics.avg_dau[0].value}
       else
         | Add
@@ -30,7 +30,7 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if user_metrics.avg_mau
+      if user_metrics.avg_mau.length > 0
         | #{user_metrics.avg_mau[0].value}
       else
         | Add
@@ -47,7 +47,7 @@
       i.fa.fa-pencil
 
     .block-info.block-num
-      if user_metrics.churn
+      if user_metrics.churn.length > 0
         | #{user_metrics.churn[0].value}%
       else
         | Add
