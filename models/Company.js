@@ -105,7 +105,7 @@ function simplifyCrunchbaseProf(p) {
                    undefined,
     short_descrip: p.properties.short_description,
     description:   (p.properties.description) ? 
-                   shorten(findLinks(p.properties.description)) :
+                   findLinks(p.properties.description) :
                    undefined,
     homepage_url:  (p.properties.homepage_url) ?
                    p.properties.homepage_url.replace('http://', '') :
@@ -123,6 +123,7 @@ function simplifyCrunchbaseProf(p) {
   };
 }
 
+k
 //// EXPORTS /////
 
 module.exports = {
