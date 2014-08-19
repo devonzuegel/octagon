@@ -204,21 +204,42 @@ module.exports = {
     Companies.findOne({ permalink: link }, function (err, company) {
       if (err)  return done(err);
 
-      // Initialize empty profile object
-      // and counting variable 'field'
-      var profile = {},
-          field;
+      /* If the form CONTAINS an 'array' field, we create an object containing
+       * the values from each field. We then push that object onto the array
+       * indicated by form['array']. */
+      if (form.array) {        
+        var obj = {};  // initialize empty obj to be filled with form data
 
-      // Populate profile with original user.profile
-      for (field in company.profile)  profile[field] = company.profile[field];
-      // Update the changes from the form
-      for (field in form)             profile[field] = form[field];
-      
-      // Update profile
-      company.profile = profile;
-      // Save & redirect to updated profile
-      company.save(cb());
-    });
+        // populate obj with form data (except the value of the array field)
+        for (field in form) {
+          if (field != 'array') {
+           obj[field] = form[field]; 
+          }
+        }
+
+        // push obj to end of array defined by form.array, into company db document
+        company[form.array].push(obj);
+        company.save(cb());
+
+      /* If the form DOES NOT CONTAIN an 'array' field, we add each field
+       * directly to the profile object. */
+      } else {
+        // Initialize empty profile object
+        // and counting variable 'field'
+        var profile = {},
+        field;
+
+        // Populate profile with original user.profile
+        for (field in company.profile)  profile[field] = company.profile[field];
+        // Update the changes from the form
+        for (field in form)             profile[field] = form[field];
+
+        // Update profile
+        company.profile = profile;
+        // Save & redirect to updated profile
+        company.save(cb());}
+      });
+
   },
 
   // Edit company metric information

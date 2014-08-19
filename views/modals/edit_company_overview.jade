@@ -47,10 +47,10 @@ include ../mixins/edit_modal_mixin
 
 //- ADD MILESTONE:
 +edit_modal(edit_link, "add-milestone", "Add Milestone")
-	//- * This field tells the route (in Company.js) that this data should go into
-	//- * a single object to be pushed onto the milestones array inside of the
-	//- * company rather than separate fields directly inside of company
-	input(type="hidden"	name="array" value="milestones")
+  //- * This field tells the route (in Company.js) that this data should go into
+  //- * a single object to be pushed onto the milestones array inside of the
+  //- * company rather than separate fields directly inside of company
+  input(type="hidden" name="array" value="milestones")
 
   div.small-label Title
   input(type="text"  placeholder="Add title"  name="title"  autocomplete="off")
@@ -60,7 +60,3 @@ include ../mixins/edit_modal_mixin
 
   div.small-label Funding
   textarea(placeholder="Add description"  name="description"  autocomplete="off") 
-
-
-
-
