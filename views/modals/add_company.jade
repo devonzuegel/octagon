@@ -30,14 +30,3 @@ include ../mixins/edit_modal_mixin
   //- Crunchbase link
   .small-label Link to Crunchbase (e.g. www.crunchbase.com/organization/PERMALINK)
   input(type="text" name="crunchbase_permalink", placeholder="Crunchbase permalink" id="permalink"  autocomplete="off")
-  
-  //- Owners  
-  .small-label Owner(s)
-  if owners
-    for o in owners
-      .checkbox-group
-        input(type="checkbox" name="owners" id="#{o.id}" value="#{o.id}") 
-        label(for="#{o.id}") #{o.name}
-
-
-
