@@ -12,7 +12,7 @@ function convertData(data, field, label) {
     if(field === 'timestamp') {
 
       // Convert it to a nice format before pushing into the array
-      new_data.push(moment(data[i][field]).format('YYYY-MM-DD'));
+      new_data.push('Q' + moment(data[i][field]).quarter() + ' ' + moment().year());
     } else {
 
       // Push the data into the array
@@ -27,18 +27,18 @@ function convertData(data, field, label) {
 var burnGraph = c3.generate({
   bindto: '#burnGraph',
   color: { 
-    pattern: ['#9b74e3', '#8a64d1', '#45367c'] 
+    pattern: ['#38AEC3', '#459BD3'] 
   },
   data: {
     xs: {
-      'data1': 'x1',
-      'data2': 'x2'
+      'Gross burn': 'x1',
+      'Net burn': 'x2'
     },
     columns: [
       convertData(gross_burn_data, 'timestamp', 'x1'),
       convertData(net_burn_data, 'timestamp', 'x2'),
-      convertData(gross_burn_data, 'value', 'data1'),
-      convertData(net_burn_data, 'value', 'data2')
+      convertData(gross_burn_data, 'value', 'Gross burn'),
+      convertData(net_burn_data, 'value', 'Net burn')
     ],
     type: 'bar'
   },
@@ -49,10 +49,10 @@ var burnGraph = c3.generate({
   },
   axis: {
     x: {
-      type: 'timeseries',
-      tick: {
-        format: '%Y-%m-%d'
-      }
+      type: 'category', // timeseries
+      // tick: {
+      //   format: '%Y-%m-%d'
+      // }
     }
   },
   size: {
@@ -71,15 +71,15 @@ var burnGraph = c3.generate({
 var revenueGraph = c3.generate({
   bindto: '#revenueGraph',
   color: { 
-    pattern: ['#9b74e3', '#8a64d1', '#45367c'] 
+    pattern: ['#38AEC3', '#459BD3'] 
   },
   data: {
     xs: {
-      'data1': 'x1'
+      'Revenue': 'x1'
     },
     columns: [
       convertData(revenue_data, 'timestamp', 'x1'),
-      convertData(revenue_data, 'value', 'data1')
+      convertData(revenue_data, 'value', 'Revenue')
     ],
     type: 'bar'
   },
@@ -90,10 +90,7 @@ var revenueGraph = c3.generate({
   },
   axis: {
     x: {
-      type: 'timeseries',
-      tick: {
-        format: '%Y-%m-%d'
-      }
+      type: 'category'
     }
   },
   size: {
@@ -112,15 +109,15 @@ var revenueGraph = c3.generate({
 var headCountGraph = c3.generate({
   bindto: '#headCountGraph',
   color: { 
-    pattern: ['#9b74e3', '#8a64d1', '#45367c'] 
+    pattern: ['#38AEC3', '#459BD3'] 
   },
   data: {
     xs: {
-      'data1': 'x1'
+      'Head count': 'x1'
     },
     columns: [
       convertData(head_count_data, 'timestamp', 'x1'),
-      convertData(head_count_data, 'value', 'data1')
+      convertData(head_count_data, 'value', 'Head count')
     ],
     type: 'bar'
   },
@@ -131,10 +128,7 @@ var headCountGraph = c3.generate({
   },
   axis: {
     x: {
-      type: 'timeseries',
-      tick: {
-        format: '%Y-%m-%d'
-      }
+      type: 'category'
     }
   },
   size: {

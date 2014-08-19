@@ -11764,6 +11764,21 @@ input:-webkit-autofill {
   .edit-disabled:hover {
     color: #bbb !important; }
 
+.c3-tooltip {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+
+.c3-tooltip td > span {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-clip: padding-box; }
+
 .toolbar {
   background: #eeeeee;
   -webkit-transition: background-color 0.2s ease-in-out;

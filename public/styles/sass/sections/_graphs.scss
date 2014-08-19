@@ -1,0 +1,8 @@
+.c3-tooltip {
+  @include border-radius(2px);
+  @include box-shadow(0, 0, 10px, rgba(0, 0, 0, 0.2));
+}
+
+.c3-tooltip td > span {
+  @include border-radius(2px);
+}
