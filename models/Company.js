@@ -50,78 +50,78 @@ var Schema = mongoose.Schema,
     Companies = mongoose.model('companies', CompanySchema);
 
 
-//// HELPERS /////
+//// Helper functions /////
 
-  /* Function to shorten description */
-  function shorten(description) {
-    // Description char limit
-    var limit = 600;
-    // Return shortened description with ellipsis
-    return description.substring(0, limit) + '... ';
-  }
+/* Function to shorten description */
+function shorten(description) {
+  // Description char limit
+  var limit = 600;
+  // Return shortened description with ellipsis
+  return description.substring(0, limit) + '... ';
+}
 
-  /* Function to remove unwanted link formatting */
-  function findLinks(description) {
-    // Regex to match onto the link syntax Crunchbase gives
-    var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
-    // Replace all occurances of links with text format & return new description
-    return description.replace(link, '$1');
-  }
+/* Function to remove unwanted link formatting */
+function findLinks(description) {
+  // Regex to match onto the link syntax Crunchbase gives
+  var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
+  // Replace all occurances of links with text format & return new description
+  return description.replace(link, '$1');
+}
 
-  /* Function for transforming object arrays to strings */
-  function objArrayToString(p, obj) {
-    // Initialize an empty string
-    var str = '';
+/* Function for transforming object arrays to strings */
+function objArrayToString(p, obj) {
+  // Initialize an empty string
+  var str = '';
 
-    // If the obj is defined, concatenate each of its children's names
-    if (p.relationships[obj]) {
-      for (var i = 0; i < p.relationships[obj].items.length; i++) {
-        // Concatenate comma to front unless it's 0th
-        if (i != 0) str += ', ';
-        // Concatenate name
-        str += p.relationships[obj].items[i].name;
-      }
-
-      // Return resulting string
-      return str; 
-
-    // If obj is not defined
-    } else {
-      return undefined;
+  // If the obj is defined, concatenate each of its children's names
+  if (p.relationships[obj]) {
+    for (var i = 0; i < p.relationships[obj].items.length; i++) {
+      // Concatenate comma to front unless it's 0th
+      if (i != 0) str += ', ';
+      // Concatenate name
+      str += p.relationships[obj].items[i].name;
     }
+
+    // Return resulting string
+    return str; 
+
+  // If obj is not defined
+  } else {
+    return undefined;
   }
+}
 
-  /* Convert number to USD format */
-  function usd(num) {
-    return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-  }
+/* Convert number to USD format */
+function usd(num) {
+  return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 
-  /* Simplify crunchbase profile object */
-  function simplifyCrunchbaseProf(p) {
-    return simplified_p = { 
-      img_path:      (p.relationships.primary_image) ?
-                     "http://images.crunchbase.com/" + 
-                     p.relationships.primary_image.items[0].path :
-                     undefined,
-      short_descrip: p.properties.short_description,
-      description:   (p.properties.description) ? 
-                     shorten(findLinks(p.properties.description)) :
-                     undefined,
-      homepage_url:  (p.properties.homepage_url) ?
-                     p.properties.homepage_url.replace('http://', '') :
-                     undefined,
-      founded_on:    p.properties.founded_on,
-      total_funding: (p.properties.total_funding_usd) ?
-                     usd(p.properties.total_funding_usd) :
-                     undefined,
+/* Simplify crunchbase profile object */
+function simplifyCrunchbaseProf(p) {
+  return simplified_p = { 
+    img_path:      (p.relationships.primary_image) ?
+                   "http://images.crunchbase.com/" + 
+                   p.relationships.primary_image.items[0].path :
+                   undefined,
+    short_descrip: p.properties.short_description,
+    description:   (p.properties.description) ? 
+                   shorten(findLinks(p.properties.description)) :
+                   undefined,
+    homepage_url:  (p.properties.homepage_url) ?
+                   p.properties.homepage_url.replace('http://', '') :
+                   undefined,
+    founded_on:    p.properties.founded_on,
+    total_funding: (p.properties.total_funding_usd) ?
+                   usd(p.properties.total_funding_usd) :
+                   undefined,
 
-      // Comma-separated string of founders' names
-      founders:      objArrayToString(p, 'founders'),
+    // Comma-separated string of founders' names
+    founders:      objArrayToString(p, 'founders'),
 
-      // Comma-separated string of categories
-      categories:    objArrayToString(p, 'categories')
-    };
-  }
+    // Comma-separated string of categories
+    categories:    objArrayToString(p, 'categories')
+  };
+}
 
 
 //// EXPORTS /////
