@@ -1,11 +1,11 @@
 /*-- Chart --*/
 
 .c3 svg {
-  font: 10px sans-serif;
+  font-size: 10px;
 }
 .c3 path, .c3 line {
   fill: none;
-  stroke: #000;
+  stroke: #666;
 }
 .c3 text {
   -webkit-user-select: none;
@@ -146,26 +146,18 @@
   border-spacing:0;
   background-color:#fff;
   empty-cells:show;
-  -webkit-box-shadow: 7px 7px 12px -9px rgb(119,119,119);
-     -moz-box-shadow: 7px 7px 12px -9px rgb(119,119,119);
-          box-shadow: 7px 7px 12px -9px rgb(119,119,119);
   opacity: 0.9;
-}
-.c3-tooltip tr {
-  border:1px solid #CCC;
+  color: #666;
 }
 .c3-tooltip th {
-  background-color: #aaa;
-  font-size:14px;
-  padding:2px 5px;
+  font-size:12px;
+  padding:0px 5px;
   text-align:left;
-  color:#FFF;
+  font-weight: 500;
 }
 .c3-tooltip td {
-  font-size:13px;
-  padding: 3px 6px;
-  background-color:#fff;
-  border-left:1px dotted #999;
+  font-size:12px;
+  padding: 3px 10px;
 }
 .c3-tooltip td > span {
   display: inline-block;

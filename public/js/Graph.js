@@ -27,7 +27,7 @@ function convertData(data, field, label) {
 var burnGraph = c3.generate({
   bindto: '#burnGraph',
   color: { 
-    pattern: ['#9b74e3', '#8a64d1', '#45367c'] 
+    pattern: ['#38AEC3', '#459BD3'] 
   },
   data: {
     xs: {
@@ -71,7 +71,7 @@ var burnGraph = c3.generate({
 var revenueGraph = c3.generate({
   bindto: '#revenueGraph',
   color: { 
-    pattern: ['#9b74e3', '#8a64d1', '#45367c'] 
+    pattern: ['#38AEC3', '#459BD3'] 
   },
   data: {
     xs: {
@@ -112,7 +112,7 @@ var revenueGraph = c3.generate({
 var headCountGraph = c3.generate({
   bindto: '#headCountGraph',
   color: { 
-    pattern: ['#9b74e3', '#8a64d1', '#45367c'] 
+    pattern: ['#38AEC3', '#459BD3'] 
   },
   data: {
     xs: {
