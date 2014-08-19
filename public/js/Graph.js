@@ -24,11 +24,11 @@ function convertData(data, field, label) {
   return new_data;
 }
 
+
+// Graphs
 var burnGraph = c3.generate({
   bindto: '#burnGraph',
-  color: { 
-    pattern: ['#38AEC3', '#459BD3'] 
-  },
+  color: { pattern: ['#38AEC3', '#459BD3'] },
   data: {
     xs: {
       'Gross burn': 'x1',
@@ -42,37 +42,16 @@ var burnGraph = c3.generate({
     ],
     type: 'bar'
   },
-  bar: {
-    width: {
-      ratio: 0.5
-    }
-  },
-  axis: {
-    x: {
-      type: 'category', // timeseries
-      // tick: {
-      //   format: '%Y-%m-%d'
-      // }
-    }
-  },
-  size: {
-    height: 260,
-    width: (window.innerWidth * 0.9 * 0.5) - 60
-  },
-  padding: {
-    right: 10,
-    left: 10
-  },
-  legend: {
-    show: false
-  }
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.5) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
 });
 
 var revenueGraph = c3.generate({
   bindto: '#revenueGraph',
-  color: { 
-    pattern: ['#38AEC3', '#459BD3'] 
-  },
+  color: { pattern: ['#38AEC3', '#459BD3'] },
   data: {
     xs: {
       'Revenue': 'x1'
@@ -83,34 +62,16 @@ var revenueGraph = c3.generate({
     ],
     type: 'bar'
   },
-  bar: {
-    width: {
-      ratio: 0.5
-    }
-  },
-  axis: {
-    x: {
-      type: 'category'
-    }
-  },
-  size: {
-    height: 260,
-    width: (window.innerWidth * 0.9 * 0.75) - 60
-  },
-  padding: {
-    right: 10,
-    left: 10
-  },
-  legend: {
-    show: false
-  }
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
 });
 
 var headCountGraph = c3.generate({
   bindto: '#headCountGraph',
-  color: { 
-    pattern: ['#38AEC3', '#459BD3'] 
-  },
+  color: { pattern: ['#38AEC3', '#459BD3'] },
   data: {
     xs: {
       'Head count': 'x1'
@@ -121,25 +82,9 @@ var headCountGraph = c3.generate({
     ],
     type: 'bar'
   },
-  bar: {
-    width: {
-      ratio: 0.5
-    }
-  },
-  axis: {
-    x: {
-      type: 'category'
-    }
-  },
-  size: {
-    height: 260,
-    width: (window.innerWidth * 0.9 * 0.75) - 60
-  },
-  padding: {
-    right: 10,
-    left: 10
-  },
-  legend: {
-    show: false
-  }
+  bar: { width: { ratio: 0.5 } },
+  axis: { x: { type: 'category' } },
+  size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
+  padding: { right: 10, left: 10 },
+  legend: { show: false }
 });
