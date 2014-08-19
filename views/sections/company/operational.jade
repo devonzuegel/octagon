@@ -1,19 +1,35 @@
+- function dataEntered(data) {
+-   return data.length !== 0 &&
+-          moment(data[0].timestamp).quarter() === moment().quarter() &&
+-          moment(data[0].timestamp).year() === moment.year();
+- }
+
+
 .tab-pane#operational
   .col-md-12.pane-header
     include quarter_info.jade
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational")
-      i.fa.fa-pencil.fa-right
-      | edit all
+    if dataEntered(operational.gross_burn) || dataEntered(operational.net_burn) || dataEntered(operational.revenue) || dataEntered(operational.head_count)
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational")
+        i.fa.fa-pencil.fa-right
+        | edit all
+    else
+      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational")
+        i.fa.fa-plus.fa-right
+        | add all
 
   .col-md-3
     h3 Gross Burn
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
-      i.fa.fa-pencil
+    if dataEntered(operational.gross_burn)
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
+        i.fa.fa-pencil
+    else
+      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-gross-burn")
+        i.fa.fa-plus
 
     .block-info.block-num
-      if operational.gross_burn.length > 0
+      if dataEntered(operational.gross_burn)
         | #{usd(operational.gross_burn[0].value)}
       else
         | Add
@@ -21,11 +37,15 @@
   .col-md-3
     h3 Net Burn
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
-      i.fa.fa-pencil
+    if dataEntered(operational.net_burn)
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
+        i.fa.fa-pencil
+    else
+      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-net-burn")
+        i.fa.fa-plus
 
     .block-info.block-num
-      if operational.net_burn.length > 0
+      if dataEntered(operational.net_burn)
         | #{usd(operational.net_burn[0].value)}
       else
         | Add
@@ -42,14 +62,18 @@
   .col-md-3
     h3 Revenue
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
-      i.fa.fa-pencil
+    if dataEntered(operational.revenue)
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
+        i.fa.fa-pencil
+    else
+      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-revenue")
+        i.fa.fa-plus
 
     .block-info.block-num
-      //- if operational.revenue.length > 0
+      if dataEntered(operational.revenue)
         | #{usd(operational.revenue[0].value)}
-      //- else
-      | Add 
+      else
+        | Add 
 
   .col-md-9
     h3 Revenue By Quarter
@@ -62,11 +86,15 @@
   .col-md-3
     h3 Head Count
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
-      i.fa.fa-pencil
+    if dataEntered(operational.head_count)
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
+        i.fa.fa-pencil
+    else
+      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-head-count")
+        i.fa.fa-plus
 
     .block-info.block-num
-      if operational.head_count.length > 0
+      if dataEntered(operational.head_count)
         | #{operational.head_count[0].value}
       else
         | Add
