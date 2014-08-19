@@ -81,7 +81,7 @@
               .date #{moment(m.date).format('DD MMMM YYYY')}
               .description #{m.description}
             a.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
-              i.fa.fa-pencil
+              i.fa.fa-pencil edit
 
 
 
@@ -119,14 +119,33 @@
           li.milestone
             .team-member-info
               if m.img_path
-                .pull-left: img(src=m.img_path)
-              .pull-left
-                .full_name #{m.full_name}
-                .role #{m.role}
-                .date_joined Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
-                .email: a(href='mailto:'+m.email) #{m.email}
-              a.team-member-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
-                i.fa.fa-pencil
+                img(src=m.img_path)
+              .full_name #{m.full_name}
+              .role #{m.role}
+              .date_joined Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
+              .email: a(href='mailto:'+m.email) #{m.email}
+              a.team-member-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-'+m._id)
+                i.fa.fa-pencil edit
 
+    script.
+      window.onload = function() {
+        var team = !{JSON.stringify(c.team)};
 
+        for (var i = 0; i < team.length; i++) {
+          /* Iterate through team member edit btns: onclick, the form is
+           * populated with that owner's info */
+          (function(n) { // variable binding
+            var m = team[i];
+            $('#edit-'+m._id).click(function() {
+              console.log(m.full_name);
+              $('#img_path').val(m.img_path);
+              $('#date_joined').val(moment(m.date_joined).format('DD MMMM YYYY'));
+              $('#role').val(m.role);
+              $('#email').val(m.email);
+              $('#full_name').val(m.full_name);
+              $('#_id').val(m._id);
+            });
+          }(i)) // end of variable binding
+        }
+      };
 
