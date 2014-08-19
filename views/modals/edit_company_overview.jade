@@ -1,0 +1,37 @@
+include ../mixins/edit_modal_mixin
+
+
++edit_modal("/portfolio/"+permalink+"/edit", "edit-about", "Edit About")
+  div.small-label Company description
+  textarea(placeholder="Add company description"  name="description"  autocomplete="off")
+   if (p)
+      | #{p.description}
+  
+
+
++edit_modal("/portfolio/"+permalink+"/edit", "edit-header", "Edit Header")
+  div.small-label Image path
+  input(type="text"  placeholder="Add image path"  name="image"  autocomplete="off" value=(p) ? p.img_path : undefined)
+
+  div.small-label Company description
+  textarea(placeholder="Add company description"  name="short_descrip"  autocomplete="off") 
+      if (p)
+        | #{p.short_descrip}
+
+  div.small-label Homepage url
+  input(type="text"  placeholder="Add homepage url"  name="homepage_url"  autocomplete="off" value=(p) ? p.homepage_url : undefined)
+
+
+
++edit_modal("/portfolio/"+permalink+"/edit", "edit-info", "Edit Info")
+  div.small-label Categories
+  input(type="text"  placeholder="Add categories"  name="categories"  autocomplete="off" value=(p) ? p.categories : undefined)
+
+  div.small-label Founders
+  input(type="text"  placeholder="Add founders"  name="founders"  autocomplete="off" value=(p) ? p.founders : undefined)
+
+  div.small-label Date founded
+  input(type="text"  placeholder="Add date founded"  name="founded_on"  autocomplete="off" value=(p) ? p.founded_on : undefined)
+
+  div.small-label Funding
+  input(type="text"  placeholder="Add total funding"  name="total_funding"  autocomplete="off" value=(p) ? p.total_funding : undefined)

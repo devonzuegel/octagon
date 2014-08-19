@@ -50,15 +50,8 @@ var Schema = mongoose.Schema,
     }),
     Companies = mongoose.model('companies', CompanySchema);
 
-//// Helper functions /////
 
-/* Function to shorten description */
-function shorten(description) {
-  // Description char limit
-  var limit = 600;
-  // Return shortened description with ellipsis
-  return description.substring(0, limit) + '... ';
-}
+//// Helper functions /////
 
 /* Function to remove unwanted link formatting */
 function findLinks(description) {

@@ -1,3 +1,12 @@
+
+-  /* Function to shorten description */
+-  function shorten(description) {
+-    // Description char limit
+-    var limit = 600;
+-    // Return shortened description with ellipsis
+-    return description.substring(0, limit) + '... ';
+-  }
+
 .tab-pane.active#overview
   .col-md-6
     h3 About
@@ -8,7 +17,7 @@
     .block-info
       if (p && p.description)
         div 
-          | #{p.description}
+          | #{shorten(p.description)}
           a(href="http://www.crunchbase.com/organization/#{permalink}") read more on Crunchbase
       else
         div Add description
