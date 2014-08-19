@@ -67,20 +67,14 @@
         //- {{pie-chart data=content}}
 
       ul.milestone-list
-        li.milestone
-          .milestone-info
-            .title Milestone title
-            .date 10/7/2014
-            .description Milestone description
-          a.milestone-edit
-            i.fa.fa-pencil
-        li.milestone
-          .milestone-info
-            .title Milestone title
-            .date 10/7/2014
-            .description Milestone description
-          a.milestone-edit
-            i.fa.fa-pencil
+        for m in c.milestones
+          li.milestone
+            .milestone-info
+              .title #{m.title}
+              .date #{m.date}
+              .description #{m.description}
+            a.milestone-edit
+              i.fa.fa-pencil
 
   .col-md-6
     h3 Team
