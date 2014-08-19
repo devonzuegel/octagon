@@ -11,9 +11,6 @@ var bcrypt = require('bcrypt'),
     // Hash the password with the salt
     hash = bcrypt.hashSync("my password", salt);
 
-  // Finally just store the hash in your DB
-  // .. code to store in Redis/Mongo/Mysql/Sqlite/Postgres/etc.
-
 mongoose.connect('mongodb://localhost/test');
 
 var Schema = mongoose.Schema,
@@ -33,6 +30,15 @@ var Schema = mongoose.Schema,
           title: String,
           date: Date,
           description: String,
+        }
+      ],
+      team: [
+        {
+          _id: String,
+          full_name: String,
+          img_path: String,
+          role: String,
+          email: String
         }
       ],
       operational: {
