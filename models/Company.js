@@ -202,24 +202,9 @@ module.exports = {
         'owners': owners,
         'profile': profile,
         'permalink': permalink,
-        'operational': {
-          gross_burn: [],
-          net_burn: [],
-          revenue: [],
-          head_count: []
-        },
-        'user_metrics': {
-          avg_dau: [],
-          avg_mau: [],
-          churn: []
-        },
-        'economics': {
-          ltv: [],
-          lifetime_est: [],
-          cac: [],
-          asp: [],
-          gm_percentage: []
-        }
+        'operational': { gross_burn: [], net_burn: [], revenue: [], head_count: [] },
+        'user_metrics': { avg_dau: [], avg_mau: [], churn: [] },
+        'economics': { ltv: [], lifetime_est: [], cac: [], asp: [], gm_percentage: [] }
       }
 
       // Create new company with profile info included
