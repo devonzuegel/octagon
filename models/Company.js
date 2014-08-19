@@ -64,7 +64,7 @@ var Schema = mongoose.Schema,
   function findLinks(description) {
     // Regex to match onto the link syntax Crunchbase gives
     var link = /\[([^\[\]\(\)]+)+\]\(([^\[\]\(\)]+)+\)/g;
-    // Replace all occurances of links with text format & return the new description
+    // Replace all occurances of links with text format & return new description
     return description.replace(link, '$1');
   }
 
@@ -131,7 +131,9 @@ module.exports = {
   // Add a new company
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
     
-    if (crunchbase_permalink == '')   crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    if (crunchbase_permalink == '') {
+      crunchbase_permalink = 'NO_PERMALINK_SELECTED';
+    }
 
     // Create empty permalink string
     var permalink = '';
@@ -173,9 +175,24 @@ module.exports = {
           'owners': owners,
           'profile': profile,
           'permalink': permalink,
-          'operational': { gross_burn: [], net_burn: [], revenue: [], head_count: [] },
-          'user_metrics': { avg_dau: [], avg_mau: [], churn: [] },
-          'economics': { ltv: [], lifetime_est: [], cac: [], asp: [], gm_percentage: [] }
+          'operational': { 
+            gross_burn: [], 
+            net_burn: [], 
+            revenue: [], 
+            head_count: []
+          },
+          'user_metrics': { 
+            avg_dau: [], 
+            avg_mau: [], 
+            churn: []
+          },
+          'economics': { 
+            ltv: [], 
+            lifetime_est: [], 
+            cac: [], 
+            asp: [], 
+            gm_percentage: []
+          }
         }
 
         // Create new company with profile info included
@@ -227,7 +244,7 @@ module.exports = {
 
       // Update fields of 'updated' with data from form
       for (var field in form) {
-        // form_name is the only input from the form that we don't want to include
+        // Form_name is the only input from the form that we don't include
         if (field != 'form_name') {
           // If the field doesn't exist in updated (or in the db) yet, create it
           if (updated[field] == undefined)   updated[field] = 'object';
