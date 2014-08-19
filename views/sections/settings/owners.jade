@@ -5,7 +5,7 @@
     .owner
       .owner-info
         .name #{o.name} 
-        .email #{o.email}
+        .email: a(href='mailto:#{o.email}') #{o.email}
       a.owner-edit(data-toggle="modal" data-target="#edit-owner-form" id='edit-'+o.id)
         i.fa.fa-pencil
 
