@@ -8,19 +8,8 @@ function convertData(data, field, label) {
   // Loop through the data object
   for(var i = 0; i < data.length; i++) {
 
-    // If it is a quarter field
-    if(field === 'quarter') {
-
-      // Convert it to a nice format before pushing into the array
-      new_data.push('Q' + 
-                    moment(data[i][field]).quarter() +
-                    ' ' +
-                    moment(data[i][field]).year());
-    } else {
-
       // Push the data into the array
       new_data.push(data[i][field]);
-    }
   }
 
   // Return the new array
@@ -31,7 +20,8 @@ function convertData(data, field, label) {
 var burnGraph = c3.generate({
   bindto: '#burnGraph',
   color: { pattern: ['#38AEC3', '#459BD3'] },
-  data: { xs: { 'Gross burn': 'x1', 'Net burn': 'x2' },
+  data: { 
+    xs: { 'Gross burn': 'x1', 'Net burn': 'x2' },
     columns: [
       convertData(gross_burn_data, 'quarter', 'x1'),
       convertData(net_burn_data, 'quarter', 'x2'),
@@ -41,10 +31,19 @@ var burnGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.5) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var revenueGraph = c3.generate({
@@ -58,10 +57,19 @@ var revenueGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var headCountGraph = c3.generate({
@@ -75,10 +83,19 @@ var headCountGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 // User Metrics Graphs
@@ -93,10 +110,19 @@ var avgDauGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var avgMauGraph = c3.generate({
@@ -110,10 +136,19 @@ var avgMauGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var churnGraph = c3.generate({
@@ -127,10 +162,19 @@ var churnGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 // Economics Graphs
@@ -145,10 +189,19 @@ var ltvGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var lifetimeEstGraph = c3.generate({
@@ -162,10 +215,19 @@ var lifetimeEstGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var cacGraph = c3.generate({
@@ -179,10 +241,19 @@ var cacGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var aspGraph = c3.generate({
@@ -196,10 +267,19 @@ var aspGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });
 
 var gmPercentageGraph = c3.generate({
@@ -213,8 +293,17 @@ var gmPercentageGraph = c3.generate({
     type: 'bar'
   },
   bar: { width: { ratio: 0.5 } },
-  axis: { x: { type: 'category' } },
+  axis: { 
+    x: { 
+      type: 'timeseries',
+      tick: {
+        format: function (x) { 
+          return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
+        }
+      }
+    }
+  },
   size: { height: 260, width: (window.innerWidth * 0.9 * 0.75) - 60 },
-  padding: { right: 10, left: 10 },
-  legend: { show: false }
+  padding: { right: 20, left: 40 },
+  legend: { show: true }
 });

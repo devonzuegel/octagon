@@ -25,11 +25,16 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
       i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(operational.net_burn)
-        | #{usd(operational.net_burn[0].value)}
+        for data in operational.net_burn.sort(chronological).reverse()
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
       else
-        | Add
+        | Add data
 
   .col-md-6
     h3 Burn By Quarter
@@ -46,11 +51,16 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
       i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(operational.revenue)
-        | #{usd(operational.revenue[0].value)}
+        for data in operational.revenue.sort(chronological).reverse()
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
       else
-        | Add 
+        | Add data
 
   .col-md-9
     h3 Revenue By Quarter
@@ -66,11 +76,16 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
       i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(operational.head_count)
-        | #{operational.head_count[0].value}
+        for data in operational.head_count.sort(chronological).reverse()
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
       else
-        | Add
+        | Add data
 
   .col-md-9
     h3 Head Count By Quarter
