@@ -10,7 +10,7 @@
 
     .block-info.block-table
       if dataEntered(user_metrics.avg_dau)
-        for data in user_metrics.avg_dau.sort(chronological)
+        for data in user_metrics.avg_dau.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -35,7 +35,7 @@
 
     .block-info.block-table
       if dataEntered(user_metrics.avg_mau)
-        for data in user_metrics.avg_mau.sort(chronological)
+        for data in user_metrics.avg_mau.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -60,7 +60,7 @@
 
     .block-info.block-table
       if dataEntered(user_metrics.churn)
-        for data in user_metrics.churn.sort(chronological)
+        for data in user_metrics.churn.sort(chronological).reverse()
           .table-section
             .value #{data.value}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}

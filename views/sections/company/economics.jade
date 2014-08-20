@@ -10,7 +10,7 @@
 
     .block-info.block-table
       if dataEntered(economics.ltv)
-        for data in economics.ltv.sort(chronological)
+        for data in economics.ltv.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -35,7 +35,7 @@
 
     .block-info.block-table
       if dataEntered(economics.lifetime_est)
-        for data in economics.lifetime_est.sort(chronological)
+        for data in economics.lifetime_est.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -60,7 +60,7 @@
 
     .block-info.block-table
       if dataEntered(economics.cac)
-        for data in economics.cac.sort(chronological)
+        for data in economics.cac.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -85,7 +85,7 @@
 
      .block-info.block-table
       if dataEntered(economics.asp)
-        for data in economics.asp.sort(chronological)
+        for data in economics.asp.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -110,7 +110,7 @@
 
     .block-info.block-table
       if dataEntered(economics.gm_percentage)
-        for data in economics.gm_percentage.sort(chronological)
+        for data in economics.gm_percentage.sort(chronological).reverse()
           .table-section
             .value #{data.value}%
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}

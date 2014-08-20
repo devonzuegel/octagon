@@ -10,7 +10,7 @@
 
     .block-info.block-table
       if dataEntered(operational.gross_burn)
-        for data in operational.gross_burn.sort(chronological)
+        for data in operational.gross_burn.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -27,7 +27,7 @@
 
     .block-info.block-table
       if dataEntered(operational.net_burn)
-        for data in operational.net_burn.sort(chronological)
+        for data in operational.net_burn.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -53,7 +53,7 @@
 
     .block-info.block-table
       if dataEntered(operational.revenue)
-        for data in operational.revenue.sort(chronological)
+        for data in operational.revenue.sort(chronological).reverse()
           .table-section
             .value #{usd(data.value)}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
@@ -78,7 +78,7 @@
 
     .block-info.block-table
       if dataEntered(operational.head_count)
-        for data in operational.head_count.sort(chronological)
+        for data in operational.head_count.sort(chronological).reverse()
           .table-section
             .value #{data.value}
             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
