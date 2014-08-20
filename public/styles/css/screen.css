@@ -11737,6 +11737,8 @@ input:-webkit-autofill {
           font-weight: 500; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-info > div {
           margin: 0 0 20px 0; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-info > div:last-child {
+          margin-bottom: 0px; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone {
           margin-bottom: 20px;
           position: relative; }

@@ -26,8 +26,13 @@ var Company = {
 
   // Clears preloaded edit values from the form
   clearFormValues: function() {
-    var modal_id = $(this).attr('data-target');
+    var modal_id = $(this).attr('data-target'),
+        title = $(modal_id).find('.modal-title');
+
     $(modal_id + ' input[type=text]').val('').prop('readonly', false);
+
+    // Change title to 'Add'...
+    title.text('Add');
   },
 
   // Preloads default values into the edit form
@@ -36,6 +41,7 @@ var Company = {
     // Saves important values from edit region
     var modal_id = $(this).attr('data-target'),
         parent = $(this).parent(),
+        title = $(modal_id).find('.modal-title'),
         value = parent.find('.value')
                   .text()
                   .substring(1, parent.find('.value').text().length - 3),
@@ -51,6 +57,9 @@ var Company = {
     $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
     $(modal_id + ' input[name=quarter]').val(quarter).prop('readonly', true);
     $(modal_id + ' input[name=year]').val(year).prop('readonly', true);
+
+    // Change title to 'Edit'...
+    title.text('Edit');
   },
 
   // Returns the current quarter
