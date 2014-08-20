@@ -262,16 +262,6 @@
   }
 }
 
-.col-md-6 {
-  > .edit-btn {  @include fade-out;  }
-  &:hover .edit-btn.block-edit {  @include fade-in;  }
-}
-
-.milestone, .company-header {
-  .edit-btn {  @include fade-out;  }
-  &:hover .edit-btn {  @include fade-in;  }
-}
-
 .edit-btn {
   cursor: pointer;
   font-size: 14px;

@@ -772,28 +772,6 @@ input:-webkit-autofill {
     .company-bkg .company-content .tab-content .graph-pane .col-md-9 {
       height: 350px; }
 
-.col-md-6 > .edit-btn {
-  opacity: 0;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
-.col-md-6:hover .edit-btn.block-edit {
-  opacity: 1;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
-
-.milestone .edit-btn, .company-header .edit-btn {
-  opacity: 0;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
-.milestone:hover .edit-btn, .company-header:hover .edit-btn {
-  opacity: 1;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
-
 .edit-btn {
   cursor: pointer;
   font-size: 14px; }
