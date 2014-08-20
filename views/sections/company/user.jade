@@ -3,17 +3,24 @@
     include quarter_info.jade
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user")
-      i.fa.fa-pencil.fa-right
-      | edit all
+      if dataEntered(user_metrics.avg_dau) || dataEntered(user_metrics.avg_mau) || dataEntered(user_metrics.churn)
+        i.fa.fa-pencil
+        | edit all
+      else
+        i.fa.fa-plus
+        | add all
 
   .col-md-3
     h3 AVG DAU
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-dau")
-      i.fa.fa-pencil
+      if dataEntered(user_metrics.avg_dau)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if user_metrics.avg_dau.length > 0
+      if dataEntered(user_metrics.avg_dau)
         | #{user_metrics.avg_dau[0].value}
       else
         | Add
@@ -30,10 +37,13 @@
     h3 AVG MAU
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-mau")
-      i.fa.fa-pencil
+      if dataEntered(user_metrics.avg_mau)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if user_metrics.avg_mau.length > 0
+      if dataEntered(user_metrics.avg_mau)
         | #{user_metrics.avg_mau[0].value}
       else
         | Add
@@ -50,11 +60,14 @@
     h3 Churn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-churn")
-      i.fa.fa-pencil
+      if dataEntered(user_metrics.churn)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if user_metrics.churn.length > 0
-        | #{user_metrics.churn[0].value}%
+      if dataEntered(user_metrics.churn)
+        | #{user_metrics.churn[0].value}
       else
         | Add
 

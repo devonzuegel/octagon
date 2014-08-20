@@ -3,18 +3,25 @@
     include quarter_info.jade
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics")
-      i.fa.fa-pencil.fa-right
-      | edit all
+      if dataEntered(economics.ltv) || dataEntered(economics.lifetime_est) || dataEntered(economics.cac) || dataEntered(economics.asp) || dataEntered(economics.gm_percentage)
+        i.fa.fa-pencil
+        | edit all
+      else
+        i.fa.fa-plus
+        | add all
 
   .col-md-3
     h3 LTV
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
-      i.fa.fa-pencil
+      if dataEntered(economics.ltv)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if economics.ltv.length > 0
-        | #{usd(economics.ltv[0].value)}
+      if dataEntered(economics.ltv)
+        | #{economics.ltv[0].value}
       else
         | Add
 
@@ -30,11 +37,14 @@
     h3 Lifetime Est.
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
-      i.fa.fa-pencil
+      if dataEntered(economics.lifetime_est)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if economics.lifetime_est.length > 0
-        | #{usd(economics.lifetime_est[0].value)}
+      if dataEntered(economics.lifetime_est)
+        | #{economics.lifetime_est[0].value}
       else
         | Add
 
@@ -50,11 +60,14 @@
     h3 CAC
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
-      i.fa.fa-pencil
+      if dataEntered(economics.cac)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if economics.cac.length > 0
-        | #{usd(economics.cac[0].value)}
+      if dataEntered(economics.cac)
+        | #{economics.cac[0].value}
       else
         | Add
 
@@ -70,11 +83,14 @@
     h3 ASP
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
-      i.fa.fa-pencil
+      if dataEntered(economics.asp)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if economics.asp.length > 0
-        | #{usd(economics.asp[0].value)}
+      if dataEntered(economics.asp)
+        | #{economics.asp[0].value}
       else
         | Add
 
@@ -90,11 +106,14 @@
     h3 GM %
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
-      i.fa.fa-pencil
+      if dataEntered(economics.gm_percentage)
+        i.fa.fa-pencil
+      else
+        i.fa.fa-plus
 
     .block-info.block-num
-      if economics.gm_percentage.length > 0
-        | #{economics.gm_percentage[0].value}%
+      if dataEntered(economics.gm_percentage)
+        | #{economics.gm_percentage[0].value}
       else
         | Add
 
