@@ -10,7 +10,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add AVG DAU"
     name="avg_dau"
     autocomplete="off"
-    value= (user_metrics.avg_dau.length > 0) ? user_metrics.avg_dau[0].value : undefined)
+    value=dataEntered(user_metrics.avg_dau) ? user_metrics.avg_dau[0].value : undefined)
 
   div.small-label AVG MAU
   input(
@@ -18,7 +18,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add AVG MAU"
     name="avg_mau"
     autocomplete="off"
-    value=(user_metrics.avg_mau.length > 0) ? user_metrics.avg_mau[0].value : undefined)
+    value=dataEntered(user_metrics.avg_mau) ? user_metrics.avg_mau[0].value : undefined)
 
   div.small-label Churn
   input(
@@ -26,7 +26,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add churn"
     name="churn"
     autocomplete="off"
-    value=(user_metrics.churn.length > 0) ? user_metrics.churn[0].value : undefined)
+    value=dataEntered(user_metrics.churn) ? user_metrics.churn[0].value : undefined)
 
 
 
@@ -39,7 +39,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add AVG DAU"
     name="avg_dau"
     autocomplete="off"
-    value= (user_metrics.avg_dau.length > 0) ? user_metrics.avg_dau[0].value : undefined)
+    value=dataEntered(user_metrics.avg_dau) ? user_metrics.avg_dau[0].value : undefined)
 
 
 
@@ -52,7 +52,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add AVG MAU"
     name="avg_mau"
     autocomplete="off"
-    value=(user_metrics.avg_mau.length > 0) ? user_metrics.avg_mau[0].value : undefined)
+    value=dataEntered(user_metrics.avg_mau) ? user_metrics.avg_mau[0].value : undefined)
 
 
 
@@ -65,4 +65,4 @@ include ../mixins/edit_modal_mixin
     placeholder="Add churn"
     name="churn"
     autocomplete="off"
-    value=(user_metrics.churn.length > 0) ? user_metrics.churn[0].value : undefined)
+    value=dataEntered(user_metrics.churn) ? user_metrics.churn[0].value : undefined)

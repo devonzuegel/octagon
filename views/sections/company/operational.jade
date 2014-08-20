@@ -1,31 +1,22 @@
-- function dataEntered(data) {
--   return data.length !== 0 &&
--          moment(data[0].timestamp).quarter() === moment().quarter() &&
--          moment(data[0].timestamp).year() === moment.year();
-- }
-
-
 .tab-pane#operational
   .col-md-12.pane-header
     include quarter_info.jade
 
-    if dataEntered(operational.gross_burn) || dataEntered(operational.net_burn) || dataEntered(operational.revenue) || dataEntered(operational.head_count)
-      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational")
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational")
+      if dataEntered(operational.gross_burn) || dataEntered(operational.net_burn) || dataEntered(operational.revenue) || dataEntered(operational.head_count)
         i.fa.fa-pencil.fa-right
         | edit all
-    else
-      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational")
+      else
         i.fa.fa-plus.fa-right
         | add all
 
   .col-md-3
     h3 Gross Burn
 
-    if dataEntered(operational.gross_burn)
-      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
+      if dataEntered(operational.gross_burn)
         i.fa.fa-pencil
-    else
-      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-gross-burn")
+      else
         i.fa.fa-plus
 
     .block-info.block-num
@@ -37,11 +28,10 @@
   .col-md-3
     h3 Net Burn
 
-    if dataEntered(operational.net_burn)
-      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
+      if dataEntered(operational.net_burn)
         i.fa.fa-pencil
-    else
-      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-net-burn")
+      else
         i.fa.fa-plus
 
     .block-info.block-num
@@ -62,11 +52,10 @@
   .col-md-3
     h3 Revenue
 
-    if dataEntered(operational.revenue)
-      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
+      if dataEntered(operational.revenue)
         i.fa.fa-pencil
-    else
-      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-revenue")
+      else
         i.fa.fa-plus
 
     .block-info.block-num
@@ -86,11 +75,10 @@
   .col-md-3
     h3 Head Count
 
-    if dataEntered(operational.head_count)
-      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
+      if dataEntered(operational.head_count)
         i.fa.fa-pencil
-    else
-      .block-edit.edit-btn(data-toggle="modal" data-target="#add-operational-head-count")
+      else
         i.fa.fa-plus
 
     .block-info.block-num

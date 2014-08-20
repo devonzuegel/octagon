@@ -106,7 +106,7 @@ function usd(num) {
 
 /* Given an id & an array, returns the index of the object
  * within the array that has the same id. */
-function index_from_id (id, obj_array) {
+function indeFromId (id, obj_array) {
   for (var i = 0; i < obj_array.length; i++) {
     if (id == obj_array[i]._id)     return i;
   }
@@ -252,7 +252,7 @@ module.exports = {
         // save name of array to edit in shorter variable
         var array_name = form.edit_obj_in_array;
         // Find index of obj in company[array_name] with _id from form
-        var i = index_from_id(form._id, company[array_name]);
+        var i = indexFromId(form._id, company[array_name]);
 
         // Replace obj at company[array_name][i] with new data from form
         for (var f in form) {

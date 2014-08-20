@@ -10,7 +10,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add LTV"
     name="ltv"
     autocomplete="off"
-    value= (economics.ltv.length > 0) ? economics.ltv[0].value : undefined)
+    value= dataEntered(economics.ltv) ? economics.ltv[0].value : undefined)
 
   div.small-label Lifetime Estimate
   input(
@@ -18,7 +18,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add lifetime est."
     name="lifetime_est"
     autocomplete="off"
-    value= (economics.lifetime_est.length > 0) ? economics.lifetime_est[0].value : undefined)
+    value= dataEntered(economics.lifetime_est) ? economics.lifetime_est[0].value : undefined)
 
   div.small-label CAC
   input(
@@ -26,7 +26,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add CAC"
     name="cac"
     autocomplete="off"
-    value= (economics.cac.length > 0) ? economics.cac[0].value : undefined)
+    value= dataEntered(economics.cac) ? economics.cac[0].value : undefined)
 
   div.small-label ASP
   input(
@@ -34,7 +34,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add ASP"
     name="asp"
     autocomplete="off"
-    value= (economics.asp.length > 0) ? economics.asp[0].value : undefined)
+    value= dataEntered(economics.asp) ? economics.asp[0].value : undefined)
 
   div.small-label GM %
   input(
@@ -42,7 +42,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add GM %"
     name="gm_percentage"
     autocomplete="off"
-    value= (economics.gm_percentage.length > 0) ? economics.gm_percentage[0].value : undefined)
+    value= dataEntered(economics.gm_percentage) ? economics.gm_percentage[0].value : undefined)
 
 
 
@@ -55,7 +55,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add LTV"
     name="ltv"
     autocomplete="off"
-    value= (economics.ltv.length > 0) ? economics.ltv[0].value : undefined)
+    value= dataEntered(economics.ltv) ? economics.ltv[0].value : undefined)
 
 
 
@@ -68,7 +68,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add lifetime est."
     name="lifetime_est"
     autocomplete="off"
-    value= (economics.lifetime_est.length > 0) ? economics.lifetime_est[0].value : undefined)
+    value= dataEntered(economics.lifetime_est) ? economics.lifetime_est[0].value : undefined)
 
 
 
@@ -81,7 +81,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add CAC"
     name="cac"
     autocomplete="off"
-    value= (economics.cac.length > 0) ? economics.cac[0].value : undefined)
+    value= dataEntered(economics.cac) ? economics.cac[0].value : undefined)
 
 
 
@@ -94,7 +94,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add ASP"
     name="asp"
     autocomplete="off"
-    value= (economics.asp.length > 0) ? economics.asp[0].value : undefined)
+    value= dataEntered(economics.asp) ? economics.asp[0].value : undefined)
 
 
 
@@ -107,4 +107,4 @@ include ../mixins/edit_modal_mixin
     placeholder="Add GM %"
     name="gm_percentage"
     autocomplete="off"
-    value= (economics.gm_percentage.length > 0) ? economics.gm_percentage[0].value : undefined)
+    value= dataEntered(economics.gm_percentage) ? economics.gm_percentage[0].value : undefined)

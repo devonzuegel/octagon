@@ -9,7 +9,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add gross burn"
     name="gross_burn"
     autocomplete="off"
-    value= (operational.gross_burn.length > 0) ? operational.gross_burn[0].value : undefined)
+    value= dataEntered(operational.gross_burn) ? operational.gross_burn[0].value : undefined)
 
   div.small-label Net Burn
   input(
@@ -17,7 +17,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add net burn"
     name="net_burn"
     autocomplete="off"
-    value= (operational.net_burn.length > 0) ? operational.net_burn[0].value : undefined)
+    value= dataEntered(operational.net_burn) ? operational.net_burn[0].value : undefined)
 
 
   div.small-label Revenue
@@ -26,7 +26,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add revenue"
     name="revenue"
     autocomplete="off"
-    value= (operational.revenue.length > 0) ? operational.revenue[0].value : undefined)
+    value= dataEntered(operational.revenue) ? operational.revenue[0].value : undefined)
 
 
   div.small-label Head Count
@@ -35,7 +35,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add head count"
     name="head_count"
     autocomplete="off"
-    value= (operational.head_count.length > 0) ? operational.head_count[0].value : undefined)
+    value= dataEntered(operational.head_count) ? operational.head_count[0].value : undefined)
 
 
 
@@ -49,7 +49,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add gross burn"
     name="gross_burn"
     autocomplete="off"
-    value= (operational.gross_burn.length > 0) ? operational.gross_burn[0].value : undefined)
+    value= dataEntered(operational.gross_burn) ? operational.gross_burn[0].value : undefined)
 
 
 
@@ -62,7 +62,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add net burn"
     name="net_burn"
     autocomplete="off"
-    value= (operational.net_burn.length > 0) ? operational.net_burn[0].value : undefined)
+    value= dataEntered(operational.net_burn) ? operational.net_burn[0].value : undefined)
 
 
 
@@ -75,7 +75,7 @@ include ../mixins/edit_modal_mixin
     placeholder="Add revenue"
     name="revenue"
     autocomplete="off"
-    value= (operational.revenue.length > 0) ? operational.revenue[0].value : undefined)
+    value= dataEntered(operational.revenue) ? operational.revenue[0].value : undefined)
 
 
 
@@ -88,4 +88,4 @@ include ../mixins/edit_modal_mixin
     placeholder="Add head count"
     name="head_count"
     autocomplete="off"
-    value= (operational.head_count.length > 0) ? operational.head_count[0].value : undefined)
+    value= dataEntered(operational.head_count) ? operational.head_count[0].value : undefined)
