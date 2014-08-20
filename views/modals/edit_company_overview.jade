@@ -70,7 +70,7 @@ include ../mixins/edit_modal_mixin
 //- EDIT MILESTONES:
 +edit_modal(edit_link, 'edit-milestone', 'Edit Milestone')
   //- * This field tells the route (in Company.js) that this data should be used
-  //- * to update the object whose id is specified in the 'milestones' arry within a
+  //- * to update the object whose id is specified in the 'milestones' array within a
   //- * company in the db.
   input(type='hidden' name='edit_obj_in_array' value='milestones')
 
@@ -109,6 +109,34 @@ include ../mixins/edit_modal_mixin
 
   div.small-label Date Joined
   input(placeholder='Add date'  name='date_joined'  id='date_joined' autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY')  type='text')
+
+
+
+
+//- ADD MILESTONE:
++edit_modal(edit_link, 'edit-team-member', 'Add Team Member')
+  //- * This field tells the route (in Company.js) that this data should be used
+  //- * to update the object whose id is specified in the 'team' array within a
+  //- * company in the db.
+  input(type='hidden' name='array' value='team') 
+
+  input(type='hidden' name='_id' id='_id')
+
+  div.small-label Full name
+  input(placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off'  type='text')
+
+  div.small-label Image path
+  input(placeholder='Add date'  name='img_path'  id='img_path' autocomplete='off'  type='text')
+
+  div.small-label Role
+  input(placeholder='Add role'  name='role'  id='role' autocomplete='off'  type='text')
+
+  div.small-label Email
+  input(placeholder='Email'  name='email'  id='email' autocomplete='off'  type='text')
+
+  div.small-label Date Joined
+  input(placeholder='Add date'  name='date_joined'  id='date_joined' autocomplete='off' type='text')
+
 
 
 
