@@ -1,23 +1,12 @@
-.tab-pane#economics
+.tab-pane.row.graph-pane#economics
   .col-md-12.pane-header
     include quarter_info.jade
-
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics")
-      if dataEntered(economics.ltv) || dataEntered(economics.lifetime_est) || dataEntered(economics.cac) || dataEntered(economics.asp) || dataEntered(economics.gm_percentage)
-        i.fa.fa-pencil.fa-right
-        | edit all
-      else
-        i.fa.fa-plus.fa-right
-        | add all
 
   .col-md-3
     h3 LTV
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
-      if dataEntered(economics.ltv)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(economics.ltv)
@@ -37,10 +26,7 @@
     h3 Lifetime Est.
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
-      if dataEntered(economics.lifetime_est)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(economics.lifetime_est)
@@ -60,10 +46,7 @@
     h3 CAC
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
-      if dataEntered(economics.cac)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(economics.cac)
@@ -83,10 +66,7 @@
     h3 ASP
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
-      if dataEntered(economics.asp)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(economics.asp)
@@ -106,10 +86,7 @@
     h3 GM %
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
-      if dataEntered(economics.gm_percentage)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(economics.gm_percentage)

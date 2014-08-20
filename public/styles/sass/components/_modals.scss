@@ -101,6 +101,12 @@
             margin: 20px 0;
           }
         }
+
+        .inline-input-container {
+          display: inline-block;
+          margin-right: 20px;
+          width: 100px;  
+        }
       }
 
       .modal-footer {

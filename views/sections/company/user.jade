@@ -1,23 +1,12 @@
-.tab-pane#user
+.tab-pane.row.graph-pane#user
   .col-md-12.pane-header
     include quarter_info.jade
-
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user")
-      if dataEntered(user_metrics.avg_dau) || dataEntered(user_metrics.avg_mau) || dataEntered(user_metrics.churn)
-        i.fa.fa-pencil.fa-right
-        | edit all
-      else
-        i.fa.fa-plus.fa-right
-        | add all
 
   .col-md-3
     h3 AVG DAU
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-dau")
-      if dataEntered(user_metrics.avg_dau)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(user_metrics.avg_dau)
@@ -37,10 +26,7 @@
     h3 AVG MAU
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-mau")
-      if dataEntered(user_metrics.avg_mau)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(user_metrics.avg_mau)
@@ -60,10 +46,7 @@
     h3 Churn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-churn")
-      if dataEntered(user_metrics.churn)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(user_metrics.churn)

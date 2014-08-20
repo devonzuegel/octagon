@@ -28,14 +28,26 @@ var Company = {
     // Stores days remaining until start of next quarter
     var daysRemaining = moment().startOf('quarter')
                           .add(3, 'month')
-                          .diff(moment(), 'days');
+                          .diff(moment(), 'days'),
 
-    // Stores the label suffix for days remaining
-    var daysLabel = (daysRemaining == 1) ? 'day' : 'days';
+        // Previous quarter
+        prevQuarter = moment()
+                        .subtract(3, 'month')
+                        .quarter(),
+
+        // Year of the previous quarter
+        yearOfPrevQuarter = (prevQuarter === 4) ?
+                            moment().year() - 1 :
+                            moment().year(),
+
+        // Stores the label suffix for days remaining
+        daysLabel = (daysRemaining == 1) ? 'day' : 'days';
 
     // Populates the elements with the correct values
     e_current.text('Q' + moment().quarter() + ' ' + moment().year());
     e_days.text(daysRemaining + ' ' + daysLabel);
-    e_headers.prepend('Q' + moment().quarter() + ' ' + moment().year() + ' ');
+
+    // Unused
+    // e_headers.prepend('Q' + prevQuarter + ' ' + yearOfPrevQuarter + ' ');
   }
 };

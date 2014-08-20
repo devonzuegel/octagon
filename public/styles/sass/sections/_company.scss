@@ -211,13 +211,43 @@
               
             }
           }
+
+          .block-table {
+            overflow-y: scroll;
+
+            .table-section {
+
+              .value {
+                color: #666;
+                line-height: 100%;
+                margin-bottom: 8px;
+              }
+
+              .quarter {
+                color: #999;
+                font-size: 13px;
+                line-height: 100%;
+              }
+
+            }
+          }
         }
+
       }
 
       .overview-pane {
 
         > div .block-info {
           min-height: 350px;
+        }
+      }
+
+      .graph-pane {
+
+        .col-md-3,
+        .col-md-6,
+        .col-md-9 {
+          height: 350px;
         }
       }
     }

@@ -8,11 +8,14 @@ function convertData(data, field, label) {
   // Loop through the data object
   for(var i = 0; i < data.length; i++) {
 
-    // If it is a timestamp field
-    if(field === 'timestamp') {
+    // If it is a quarter field
+    if(field === 'quarter') {
 
       // Convert it to a nice format before pushing into the array
-      new_data.push('Q' + moment(data[i][field]).quarter() + ' ' + moment().year());
+      new_data.push('Q' + 
+                    moment(data[i][field]).quarter() +
+                    ' ' +
+                    moment(data[i][field]).year());
     } else {
 
       // Push the data into the array
@@ -24,15 +27,14 @@ function convertData(data, field, label) {
   return new_data;
 }
 
-
 // Operational Graphs
 var burnGraph = c3.generate({
   bindto: '#burnGraph',
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'Gross burn': 'x1', 'Net burn': 'x2' },
     columns: [
-      convertData(gross_burn_data, 'timestamp', 'x1'),
-      convertData(net_burn_data, 'timestamp', 'x2'),
+      convertData(gross_burn_data, 'quarter', 'x1'),
+      convertData(net_burn_data, 'quarter', 'x2'),
       convertData(gross_burn_data, 'value', 'Gross burn'),
       convertData(net_burn_data, 'value', 'Net burn')
     ],

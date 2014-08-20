@@ -1,6 +1,7 @@
 include ../mixins/edit_modal_mixin
 
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational", "Edit User Metrics")
+
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-gross-burn", "Add Gross Burn")
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Gross Burn
@@ -8,52 +9,24 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add gross burn"
     name="gross_burn"
-    autocomplete="off"
-    value= dataEntered(operational.gross_burn) ? operational.gross_burn[0].value : undefined)
-
-  div.small-label Net Burn
-  input(
-    type="text"
-    placeholder="Add net burn"
-    name="net_burn"
-    autocomplete="off"
-    value= dataEntered(operational.net_burn) ? operational.net_burn[0].value : undefined)
-
-
-  div.small-label Revenue
-  input(
-    type="text"
-    placeholder="Add revenue"
-    name="revenue"
-    autocomplete="off"
-    value= dataEntered(operational.revenue) ? operational.revenue[0].value : undefined)
-
-
-  div.small-label Head Count
-  input(
-    type="text"
-    placeholder="Add head count"
-    name="head_count"
-    autocomplete="off"
-    value= dataEntered(operational.head_count) ? operational.head_count[0].value : undefined)
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
 
 
 
-
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-gross-burn", "Edit Gross Burn")
-  input(type="hidden" name="form_name" value="operational")
-
-  div.small-label Gross Burn
-  input(
-    type="text"
-    placeholder="Add gross burn"
-    name="gross_burn"
-    autocomplete="off"
-    value= dataEntered(operational.gross_burn) ? operational.gross_burn[0].value : undefined)
-
-
-
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-net-burn", "Edit Net Burn")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-net-burn", "Add Net Burn")
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Net Burn
@@ -61,12 +34,24 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add net burn"
     name="net_burn"
-    autocomplete="off"
-    value= dataEntered(operational.net_burn) ? operational.net_burn[0].value : undefined)
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
 
 
 
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-revenue", "Edit Revenue")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-revenue", "Add Revenue")
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Revenue
@@ -74,12 +59,24 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add revenue"
     name="revenue"
-    autocomplete="off"
-    value= dataEntered(operational.revenue) ? operational.revenue[0].value : undefined)
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
 
 
 
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-head-count", "Edit Head Count")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-head-count", "Add Head Count")
   input(type="hidden" name="form_name" value="operational")
 
   div.small-label Head Count
@@ -87,5 +84,17 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add head count"
     name="head_count"
-    autocomplete="off"
-    value= dataEntered(operational.head_count) ? operational.head_count[0].value : undefined)
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")

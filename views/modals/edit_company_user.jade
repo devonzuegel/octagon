@@ -1,7 +1,7 @@
 include ../mixins/edit_modal_mixin
 
 
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user", "Edit User Metrics")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-dau", "Add AVG DAU")
   input(type="hidden" name="form_name" value="user_metrics")
 
   div.small-label AVG DAU
@@ -9,41 +9,24 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add AVG DAU"
     name="avg_dau"
-    autocomplete="off"
-    value=dataEntered(user_metrics.avg_dau) ? user_metrics.avg_dau[0].value : undefined)
-
-  div.small-label AVG MAU
-  input(
-    type="text"
-    placeholder="Add AVG MAU"
-    name="avg_mau"
-    autocomplete="off"
-    value=dataEntered(user_metrics.avg_mau) ? user_metrics.avg_mau[0].value : undefined)
-
-  div.small-label Churn
-  input(
-    type="text"
-    placeholder="Add churn"
-    name="churn"
-    autocomplete="off"
-    value=dataEntered(user_metrics.churn) ? user_metrics.churn[0].value : undefined)
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
 
 
 
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-dau", "Edit AVG DAU")
-  input(type="hidden" name="form_name" value="user_metrics")
-
-  div.small-label AVG DAU
-  input(
-    type="text"
-    placeholder="Add AVG DAU"
-    name="avg_dau"
-    autocomplete="off"
-    value=dataEntered(user_metrics.avg_dau) ? user_metrics.avg_dau[0].value : undefined)
-
-
-
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-mau", "Edit AVG MAU")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-mau", "Add AVG MAU")
   input(type="hidden" name="form_name" value="user_metrics")
 
   div.small-label AVG MAU
@@ -51,12 +34,24 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add AVG MAU"
     name="avg_mau"
-    autocomplete="off"
-    value=dataEntered(user_metrics.avg_mau) ? user_metrics.avg_mau[0].value : undefined)
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
 
 
 
-+edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-churn", "Edit Churn")
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-churn", "Add Churn")
   input(type="hidden" name="form_name" value="user_metrics")
 
   div.small-label Churn
@@ -64,5 +59,17 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add churn"
     name="churn"
-    autocomplete="off"
-    value=dataEntered(user_metrics.churn) ? user_metrics.churn[0].value : undefined)
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")

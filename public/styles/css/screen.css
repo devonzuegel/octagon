@@ -11348,6 +11348,10 @@ input:-webkit-autofill {
           display: none;
           font-size: 14px;
           margin: 20px 0; }
+        .modal .modal-dialog .modal-content .modal-body .inline-input-container {
+          display: inline-block;
+          margin-right: 20px;
+          width: 100px; }
       .modal .modal-dialog .modal-content .modal-footer {
         margin-top: -1px;
         padding: 20px; }
@@ -11754,8 +11758,22 @@ input:-webkit-autofill {
       .company-bkg .company-content .tab-content .tab-pane > div .block-graph {
         height: 300px;
         padding: 20px; }
+      .company-bkg .company-content .tab-content .tab-pane > div .block-table {
+        overflow-y: scroll; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section .value {
+          color: #666;
+          line-height: 100%;
+          margin-bottom: 8px; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section .quarter {
+          color: #999;
+          font-size: 13px;
+          line-height: 100%; }
     .company-bkg .company-content .tab-content .overview-pane > div .block-info {
       min-height: 350px; }
+    .company-bkg .company-content .tab-content .graph-pane .col-md-3,
+    .company-bkg .company-content .tab-content .graph-pane .col-md-6,
+    .company-bkg .company-content .tab-content .graph-pane .col-md-9 {
+      height: 350px; }
 
 .col-md-6 > .edit-btn {
   opacity: 0;

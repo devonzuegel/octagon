@@ -1,38 +1,27 @@
-.tab-pane#operational
+.tab-pane.row.graph-pane#operational
   .col-md-12.pane-header
     include quarter_info.jade
-
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational")
-      if dataEntered(operational.gross_burn) || dataEntered(operational.net_burn) || dataEntered(operational.revenue) || dataEntered(operational.head_count)
-        i.fa.fa-pencil.fa-right
-        | edit all
-      else
-        i.fa.fa-plus.fa-right
-        | add all
 
   .col-md-3
     h3 Gross Burn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
-      if dataEntered(operational.gross_burn)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(operational.gross_burn)
-        | #{usd(operational.gross_burn[0].value)}
+        for data in operational.gross_burn.sort(chronological).reverse()
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
       else
-        | Add
+        | Add data
 
   .col-md-3
     h3 Net Burn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
-      if dataEntered(operational.net_burn)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(operational.net_burn)
@@ -53,10 +42,7 @@
     h3 Revenue
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
-      if dataEntered(operational.revenue)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(operational.revenue)
@@ -76,10 +62,7 @@
     h3 Head Count
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
-      if dataEntered(operational.head_count)
-        i.fa.fa-pencil
-      else
-        i.fa.fa-plus
+      i.fa.fa-plus
 
     .block-info.block-num
       if dataEntered(operational.head_count)
