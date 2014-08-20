@@ -150,27 +150,6 @@
       }
     }
   }
-
-  // Stylize modal scrollbars
-  ::-webkit-scrollbar {
-    background: #fff;
-    @include border-top-right-radius(2px);
-    @include border-bottom-right-radius(2px);
-    height: 12px;
-    width: 14px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-      background: #ccc;
-      @include border-radius(2px);
-      border: 5px solid #fff;
-      margin: 4px;
-  }
-
-  ::-webkit-scrollbar-corner {
-      background: #000;
-  }
-
 }
 
 .modal-backdrop {

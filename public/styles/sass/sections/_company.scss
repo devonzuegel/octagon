@@ -206,16 +206,14 @@
           .block-graph {
             height: 300px;
             padding: 20px;
-
-            .graph-padding {
-              
-            }
           }
 
           .block-table {
+            max-height: 300px;
             overflow-y: scroll;
 
             .table-section {
+              position: relative;
 
               .value {
                 color: #666;
@@ -227,6 +225,13 @@
                 color: #999;
                 font-size: 13px;
                 line-height: 100%;
+              }
+
+              .edit-btn {
+                color: #999;
+                position: absolute;
+                top: 2px;
+                right: 0;
               }
 
             }
