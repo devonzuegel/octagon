@@ -305,12 +305,30 @@ module.exports = {
           // If the field doesn't exist in updated (or in the db) yet, create it
           if (updated[field] === undefined)   updated[field] = 'object';
 
-          // Inserts obj (with timestamp & value) to beginning of array obj
-          updated[field].unshift({
+          // Save the test for whether or not data exists for a specific quarter
+          var quarterDataExists = updated[field].length > 0 &&
+                                  moment(updated[field][0].timestamp).quarter() === moment().quarter() &&
+                                  moment(updated[field][0].timestamp).year() === moment().year();
+
+          // The new data to be inserted
+          var new_data = {
             timestamp: new Date(),
             value: form[field],
             label: field
-          });
+          };
+
+          // If there is already data for this quarter
+          if(quarterDataExists) {
+
+            // Overwrite the most recent quarter entry
+            updated[field][0] = new_data;
+
+          // If there is not data for this quarter
+          } else {
+
+            // Inserts data to the top of the array
+            updated[field].unshift(new_data);
+          }
         }
       }
 
