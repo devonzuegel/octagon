@@ -42,8 +42,9 @@ app.use('/portfolio', portfolio);
 app.use('/owners', owners);
 app.set('view options', { layout: false });
 
-var server = app.listen(3030, function() {
-    console.log('Listening on port %d', server.address().port);
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
 });
 
 
