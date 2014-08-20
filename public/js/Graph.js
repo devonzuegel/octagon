@@ -23,8 +23,8 @@ var burnGraph = c3.generate({
   data: { 
     xs: { 'Gross burn': 'x1', 'Net burn': 'x2' },
     columns: [
-      convertData(gross_burn_data, 'quarter', 'x1'),
-      convertData(net_burn_data, 'quarter', 'x2'),
+      convertData(gross_burn_data, 'date', 'x1'),
+      convertData(net_burn_data, 'date', 'x2'),
       convertData(gross_burn_data, 'value', 'Gross burn'),
       convertData(net_burn_data, 'value', 'Net burn')
     ],
@@ -51,7 +51,7 @@ var revenueGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'Revenue': 'x1' },
     columns: [
-      convertData(revenue_data, 'quarter', 'x1'),
+      convertData(revenue_data, 'date', 'x1'),
       convertData(revenue_data, 'value', 'Revenue')
     ],
     type: 'bar'
@@ -77,7 +77,7 @@ var headCountGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'Head count': 'x1' },
     columns: [
-      convertData(head_count_data, 'quarter', 'x1'),
+      convertData(head_count_data, 'date', 'x1'),
       convertData(head_count_data, 'value', 'Head count')
     ],
     type: 'bar'
@@ -104,7 +104,7 @@ var avgDauGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'AVG DAU': 'x1' },
     columns: [
-      convertData(avg_dau_data, 'quarter', 'x1'),
+      convertData(avg_dau_data, 'date', 'x1'),
       convertData(avg_dau_data, 'value', 'AVG DAU')
     ],
     type: 'bar'
@@ -130,7 +130,7 @@ var avgMauGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'AVG MAU': 'x1' },
     columns: [
-      convertData(avg_mau_data, 'quarter', 'x1'),
+      convertData(avg_mau_data, 'date', 'x1'),
       convertData(avg_mau_data, 'value', 'AVG MAU')
     ],
     type: 'bar'
@@ -156,7 +156,7 @@ var churnGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'Churn': 'x1' },
     columns: [
-      convertData(churn_data, 'quarter', 'x1'),
+      convertData(churn_data, 'date', 'x1'),
       convertData(churn_data, 'value', 'Churn')
     ],
     type: 'bar'
@@ -183,7 +183,7 @@ var ltvGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'LTV': 'x1' },
     columns: [
-      convertData(ltv_data, 'quarter', 'x1'),
+      convertData(ltv_data, 'date', 'x1'),
       convertData(ltv_data, 'value', 'LTV')
     ],
     type: 'bar'
@@ -209,7 +209,7 @@ var lifetimeEstGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'Lifetime est.': 'x1' },
     columns: [
-      convertData(lifetime_est_data, 'quarter', 'x1'),
+      convertData(lifetime_est_data, 'date', 'x1'),
       convertData(lifetime_est_data, 'value', 'Lifetime est.')
     ],
     type: 'bar'
@@ -235,7 +235,7 @@ var cacGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'CAC': 'x1' },
     columns: [
-      convertData(cac_data, 'quarter', 'x1'),
+      convertData(cac_data, 'date', 'x1'),
       convertData(cac_data, 'value', 'CAC')
     ],
     type: 'bar'
@@ -261,7 +261,7 @@ var aspGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'ASP': 'x1' },
     columns: [
-      convertData(asp_data, 'quarter', 'x1'),
+      convertData(asp_data, 'date', 'x1'),
       convertData(asp_data, 'value', 'ASP')
     ],
     type: 'bar'
@@ -287,7 +287,7 @@ var gmPercentageGraph = c3.generate({
   color: { pattern: ['#38AEC3', '#459BD3'] },
   data: { xs: { 'GM %': 'x1' },
     columns: [
-      convertData(gm_percentage_data, 'quarter', 'x1'),
+      convertData(gm_percentage_data, 'date', 'x1'),
       convertData(gm_percentage_data, 'value', 'GM %')
     ],
     type: 'bar'

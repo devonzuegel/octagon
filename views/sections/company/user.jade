@@ -13,7 +13,7 @@
         for data in user_metrics.avg_dau.sort(chronological)
           .table-section
             .value #{usd(data.value)}
-            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-user-dau")
               i.fa.fa-pencil
       else
@@ -38,7 +38,7 @@
         for data in user_metrics.avg_mau.sort(chronological)
           .table-section
             .value #{usd(data.value)}
-            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-user-mau")
               i.fa.fa-pencil
       else
@@ -63,7 +63,7 @@
         for data in user_metrics.churn.sort(chronological)
           .table-section
             .value #{data.value}
-            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-user-churn")
               i.fa.fa-pencil
       else

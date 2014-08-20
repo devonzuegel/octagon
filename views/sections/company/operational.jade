@@ -13,7 +13,7 @@
         for data in operational.gross_burn.sort(chronological)
           .table-section
             .value #{usd(data.value)}
-            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
               i.fa.fa-pencil
       else
@@ -30,7 +30,7 @@
         for data in operational.net_burn.sort(chronological)
           .table-section
             .value #{usd(data.value)}
-            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
               i.fa.fa-pencil
       else
@@ -56,7 +56,7 @@
         for data in operational.revenue.sort(chronological)
           .table-section
             .value #{usd(data.value)}
-            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
               i.fa.fa-pencil
       else
@@ -81,7 +81,7 @@
         for data in operational.head_count.sort(chronological)
           .table-section
             .value #{data.value}
-            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
               i.fa.fa-pencil
       else

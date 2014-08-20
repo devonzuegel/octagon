@@ -302,7 +302,7 @@ module.exports = {
       for (field in form) {
         // If the field is not an unintented field
         if (field !== 'form_name' &&
-            field !== 'quarter' &&
+            field !== 'date' &&
             field !=='year') {
 
           // If the field doesn't exist in updated (or in the db) yet, create it
@@ -310,7 +310,7 @@ module.exports = {
 
           // The new data to be inserted
           var new_data = {
-            quarter: moment(form.quarter + '-' + form.year, 'Q-YYYY'),
+            date: moment(form.date + '-' + form.year, 'Q-YYYY'),
             value: form[field],
             label: field,
             timestamp: moment()
@@ -326,7 +326,7 @@ module.exports = {
             if (updated[field].hasOwnProperty(entry)) {
 
               // If the data for the quarter already exists
-              if(moment(updated[field][entry].quarter).isSame(moment(new_data.quarter))) {
+              if(moment(updated[field][entry].date).isSame(moment(new_data.date))) {
 
                 // Update the boolean
                 quarterDataExists = true;
