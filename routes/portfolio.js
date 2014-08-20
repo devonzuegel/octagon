@@ -173,7 +173,7 @@ router.post('/:permalink/editMetrics', function(req, res) {
   );
 
   CompanyModel.editMetrics(link, req.body, cb = function() { 
-    res.redirect('/portfolio/' + link); 
+    res.redirect('/portfolio/' + link + '#' + req.body.form_name); 
   });
 });
 module.exports = router;
