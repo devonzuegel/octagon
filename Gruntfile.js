@@ -46,7 +46,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', 'sass');
   grunt.registerTask('deploy', 'watch');
-  grunt.registerTask('minify', 'cssmin')
+  grunt.registerTask('minify', 'cssmin');
   grunt.registerTask('js', 'jshint');
 
 };
