@@ -14,7 +14,7 @@
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+            .edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
               i.fa.fa-pencil
       else
         | Add data
@@ -31,7 +31,7 @@
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+            .edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
               i.fa.fa-pencil
       else
         | Add data
@@ -57,7 +57,7 @@
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+            .edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
               i.fa.fa-pencil
       else
         | Add data
@@ -82,7 +82,7 @@
           .table-section
             .value #{data.value}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+            .edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
               i.fa.fa-pencil
       else
         | Add data

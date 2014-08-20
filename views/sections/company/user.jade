@@ -14,7 +14,7 @@
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+            .edit-btn(data-toggle="modal" data-target="#edit-user-dau")
               i.fa.fa-pencil
 
   .col-md-9
@@ -37,7 +37,7 @@
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+            .edit-btn(data-toggle="modal" data-target="#edit-user-mau")
               i.fa.fa-pencil
 
   .col-md-9
@@ -60,7 +60,7 @@
           .table-section
             .value #{data.value}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+            .edit-btn(data-toggle="modal" data-target="#edit-user-churn")
               i.fa.fa-pencil
 
   .col-md-9

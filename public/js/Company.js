@@ -7,7 +7,9 @@ var Company = {
     this.elements = {
       currentQuarter: $('.current-quarter'),
       daysRemaining: $('.days-remaining'),
-      blockHeaders: $('.company-content .col-md-3 h3') 
+      blockHeaders: $('.company-content .col-md-3 h3'),
+      tableAdds: $('.col-md-3 .edit-btn'),
+      tableEdits: $('.table-section .edit-btn'),
     };
 
     // Calls the fn that calculates the quarter statistics
@@ -15,6 +17,39 @@ var Company = {
       this.elements.currentQuarter,
       this.elements.daysRemaining,
       this.elements.blockHeaders);
+
+    // Clears and populates form values depending on whether
+    // adding or editing
+    this.elements.tableAdds.on('click', this.clearFormValues);
+    this.elements.tableEdits.on('click', this.populateFormValues);
+  },
+
+  // Clears preloaded edit values from the form
+  clearFormValues: function() {
+    var modal_id = $(this).attr('data-target');
+    $(modal_id + ' input[type=text]').val('');
+  },
+
+  // Preloads default values into the edit form
+  populateFormValues: function() { 
+
+    // Saves important values from edit region
+    var modal_id = $(this).attr('data-target'),
+        parent = $(this).parent(),
+        value = parent.find('.value')
+                  .text()
+                  .substring(1, parent.find('.value').text().length - 3),
+        quarter = parent.find('.quarter')
+                    .text()
+                    .substring(1, 2),
+        year = parent.find('.quarter')
+                    .text()
+                    .substring(3, parent.find('.quarter').text().length)
+
+    // Populates modal form with saved values
+    $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
+    $(modal_id + ' input[name=quarter]').val(quarter);
+    $(modal_id + ' input[name=year]').val(year);
   },
 
   // Returns the current quarter
