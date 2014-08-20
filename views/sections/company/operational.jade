@@ -10,7 +10,7 @@
 
     .block-info.block-table
       if dataEntered(operational.gross_burn)
-        for data in operational.gross_burn.sort(chronological).reverse()
+        for data in operational.gross_burn.sort(chronological)
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
@@ -27,7 +27,7 @@
 
     .block-info.block-table
       if dataEntered(operational.net_burn)
-        for data in operational.net_burn.sort(chronological).reverse()
+        for data in operational.net_burn.sort(chronological)
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
@@ -53,7 +53,7 @@
 
     .block-info.block-table
       if dataEntered(operational.revenue)
-        for data in operational.revenue.sort(chronological).reverse()
+        for data in operational.revenue.sort(chronological)
           .table-section
             .value #{usd(data.value)}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
@@ -78,9 +78,9 @@
 
     .block-info.block-table
       if dataEntered(operational.head_count)
-        for data in operational.head_count.sort(chronological).reverse()
+        for data in operational.head_count.sort(chronological)
           .table-section
-            .value #{usd(data.value)}
+            .value #{data.value}
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-metric")
               i.fa.fa-pencil

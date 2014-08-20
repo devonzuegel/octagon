@@ -316,8 +316,34 @@ module.exports = {
             timestamp: moment()
           };
 
-          // Inserts data to the top of the array
-          updated[field].unshift(new_data);
+          // Initialize quarterDataExists boolean to false
+          var quarterDataExists = false;
+
+          // Loop through entries in company property
+          for(var entry in updated[field]) {
+
+            // Necessary check for all for... in statements
+            if (updated[field].hasOwnProperty(entry)) {
+
+              // If the data for the quarter already exists
+              if(moment(updated[field][entry].quarter).isSame(moment(new_data.quarter))) {
+
+                // Update the boolean
+                quarterDataExists = true;
+
+                // Overwrite the data
+                updated[field][entry] = new_data;
+
+                // Break out of the loop
+                break
+              }
+            }
+          }
+
+          // Inserts data to the top of the array if it doesn't exist
+          if(!quarterDataExists) {
+            updated[field].unshift(new_data);
+          }
         }
       }
 

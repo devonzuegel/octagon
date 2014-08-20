@@ -8,11 +8,14 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
       i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(economics.ltv)
-        | #{economics.ltv[0].value}
-      else
-        | Add
+        for data in economics.ltv.sort(chronological)
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
 
   .col-md-9
     h3 LTV By Quarter
@@ -28,11 +31,14 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
       i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(economics.lifetime_est)
-        | #{economics.lifetime_est[0].value}
-      else
-        | Add
+        for data in economics.lifetime_est.sort(chronological)
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
 
   .col-md-9
     h3 Lifetime Est. By Quarter
@@ -48,11 +54,14 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
       i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(economics.cac)
-        | #{economics.cac[0].value}
-      else
-        | Add
+        for data in economics.cac.sort(chronological)
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
 
   .col-md-9
     h3 CAC By Quarter
@@ -68,11 +77,14 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
       i.fa.fa-plus
 
-    .block-info.block-num
+     .block-info.block-table
       if dataEntered(economics.asp)
-        | #{economics.asp[0].value}
-      else
-        | Add
+        for data in economics.asp.sort(chronological)
+          .table-section
+            .value #{usd(data.value)}
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
 
   .col-md-9
     h3 ASP By Quarter
@@ -88,11 +100,14 @@
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
       i.fa.fa-plus
 
-    .block-info.block-num
+    .block-info.block-table
       if dataEntered(economics.gm_percentage)
-        | #{economics.gm_percentage[0].value}
-      else
-        | Add
+        for data in economics.gm_percentage.sort(chronological)
+          .table-section
+            .value #{data.value}%
+            .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-metric")
+              i.fa.fa-pencil
 
   .col-md-9
     h3 GM % By Quarter
