@@ -16,13 +16,21 @@ var Scroll = {
     };
 
     // Position elements on page load
-    Scroll.positionElement(this.elements.portfolioToolbar, this.distances.portfolioDist);
-    Scroll.positionElement(this.elements.companyNavbar, this.distances.companyDist);
+    Scroll.positionElement(
+      this.elements.portfolioToolbar,
+      this.distances.portfolioDist);
+    Scroll.positionElement(
+      this.elements.companyNavbar,
+      this.distances.companyDist);
 
     // On scroll, position elements
     $(window).scroll(function() {
-      Scroll.positionElement(Scroll.elements.portfolioToolbar, Scroll.distances.portfolioDist);
-      Scroll.positionElement(Scroll.elements.companyNavbar, Scroll.distances.companyDist);
+      Scroll.positionElement(
+        Scroll.elements.portfolioToolbar,
+        Scroll.distances.portfolioDist);
+      Scroll.positionElement(
+        Scroll.elements.companyNavbar,
+        Scroll.distances.companyDist);
     });
   },
 

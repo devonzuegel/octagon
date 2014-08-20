@@ -11,14 +11,19 @@ var Company = {
     };
 
     // Calls the fn that calculates the quarter statistics
-    this.calcQuarter(
+    this.calcQuarterInfo(
       this.elements.currentQuarter,
       this.elements.daysRemaining,
       this.elements.blockHeaders);
   },
 
-  // Calculates quarter time
-  calcQuarter: function(e_current, e_days, e_headers) {
+  // Returns the current quarter
+  getQuarter: function() {
+    return moment().quarter();
+  },
+
+  // Calculates quarter related info
+  calcQuarterInfo: function(e_current, e_days, e_headers) {
 
     // Stores days remaining until start of next quarter
     var daysRemaining = moment().startOf('quarter')
