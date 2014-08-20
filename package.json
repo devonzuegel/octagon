@@ -1,6 +1,6 @@
 {
-  "name": "auth",
-  "title": "auth",
+  "name": "octogon",
+  "title": "octogon",
   "description": "Intern F8 Project",
   "version": "0.0.1",
   "private": true,
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/devonzuegel/auth.git"
+    "url": "git://github.com/devonzuegel/octogon.git"
   },
   "bugs": {
-    "url": "https://github.com/devonzuegel/auth/issues"
+    "url": "https://github.com/devonzuegel/octogon/issues"
   },
   "env": {
     "PYTHON": "/opt/local/bin/python2.7"
