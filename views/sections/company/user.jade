@@ -16,6 +16,8 @@
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-user-dau")
               i.fa.fa-pencil
+      else
+        | Add data
 
   .col-md-9
     h3 AVG DAU By Quarter
@@ -39,6 +41,8 @@
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-user-mau")
               i.fa.fa-pencil
+      else
+        | Add data
 
   .col-md-9
     h3 AVG MAU By Quarter
@@ -62,6 +66,8 @@
             .quarter Q#{moment(data.quarter).quarter()} #{moment(data.quarter).year()}
             .edit-btn(data-toggle="modal" data-target="#edit-user-churn")
               i.fa.fa-pencil
+      else
+        | Add data
 
   .col-md-9
     h3 Churn By Quarter
