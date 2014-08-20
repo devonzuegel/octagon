@@ -7544,7 +7544,7 @@ input[readonly],
 select[readonly],
 textarea[readonly] {
   cursor: not-allowed;
-  background-color: #eeeeee;
+  background-color: transparent;
 }
 
 input[type="radio"][disabled],

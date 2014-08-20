@@ -7149,7 +7149,7 @@ input[readonly],
 select[readonly],
 textarea[readonly] {
   cursor: not-allowed;
-  background-color: #eeeeee; }
+  background-color: transparent; }
 
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
@@ -11177,6 +11177,9 @@ input {
   -webkit-box-shadow: 0 0 0 0;
   -moz-box-shadow: 0 0 0 0;
   box-shadow: 0 0 0 0; }
+
+input[readonly] {
+  border: none !important; }
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #ffe6ff inset; }

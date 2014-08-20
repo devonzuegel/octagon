@@ -27,7 +27,7 @@ var Company = {
   // Clears preloaded edit values from the form
   clearFormValues: function() {
     var modal_id = $(this).attr('data-target');
-    $(modal_id + ' input[type=text]').val('');
+    $(modal_id + ' input[type=text]').val('').prop('readonly', false);
   },
 
   // Preloads default values into the edit form
@@ -47,9 +47,10 @@ var Company = {
                     .substring(3, parent.find('.quarter').text().length)
 
     // Populates modal form with saved values
+    // Make quarter/year inputs readonly
     $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
-    $(modal_id + ' input[name=quarter]').val(quarter);
-    $(modal_id + ' input[name=year]').val(year);
+    $(modal_id + ' input[name=quarter]').val(quarter).prop('readonly', true);
+    $(modal_id + ' input[name=year]').val(year).prop('readonly', true);
   },
 
   // Returns the current quarter
@@ -66,14 +67,14 @@ var Company = {
                           .diff(moment(), 'days'),
 
         // Previous quarter
-        prevQuarter = moment()
-                        .subtract(3, 'month')
-                        .quarter(),
+        // prevQuarter = moment()
+        //                 .subtract(3, 'month')
+        //                 .quarter(),
 
         // Year of the previous quarter
-        yearOfPrevQuarter = (prevQuarter === 4) ?
-                            moment().year() - 1 :
-                            moment().year(),
+        // yearOfPrevQuarter = (prevQuarter === 4) ?
+        //                     moment().year() - 1 :
+        //                     moment().year(),
 
         // Stores the label suffix for days remaining
         daysLabel = (daysRemaining == 1) ? 'day' : 'days';
@@ -81,8 +82,5 @@ var Company = {
     // Populates the elements with the correct values
     e_current.text('Q' + moment().quarter() + ' ' + moment().year());
     e_days.text(daysRemaining + ' ' + daysLabel);
-
-    // Unused
-    // e_headers.prepend('Q' + prevQuarter + ' ' + yearOfPrevQuarter + ' ');
   }
 };
