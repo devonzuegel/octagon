@@ -1,6 +1,32 @@
 include ../mixins/edit_modal_mixin
 
 
+
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-gross-burn", "Add")
+  input(type="hidden" name="form_name" value="operational")
+
+  div.small-label Forecasted Gross Burn
+  input(
+    type="text"
+    placeholder="Add forecasted gross burn"
+    name="pred_gross_burn"
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
+
+
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-gross-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
 
@@ -9,6 +35,31 @@ include ../mixins/edit_modal_mixin
     type="text"
     placeholder="Add gross burn"
     name="gross_burn"
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
+
+
+
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-net-burn", "Add")
+  input(type="hidden" name="form_name" value="operational")
+
+  div.small-label Forecasted Net Burn
+  input(
+    type="text"
+    placeholder="Add forecasted net burn"
+    name="pred_net_burn"
     autocomplete="off")
   .inline-input-container
     div.small-label Quarter

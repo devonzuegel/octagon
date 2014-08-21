@@ -44,7 +44,9 @@ var Schema = mongoose.Schema,
       ],
       operational: {
         gross_burn: ['object'],
+        pred_gross_burn: ['object'],
         net_burn: ['object'],
+        pred_net_burn: ['object'],
         revenue: ['object'],
         head_count: ['object']
       },
@@ -195,7 +197,9 @@ module.exports = {
           'milestones': [],
           'operational': { 
             gross_burn: [], 
+            pred_gross_burn: [],
             net_burn: [], 
+            pred_net_burn: [],
             revenue: [], 
             head_count: []
           },

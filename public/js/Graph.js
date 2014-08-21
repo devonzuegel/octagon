@@ -42,14 +42,29 @@ function generateGraph(el, data, width_multiplier) {
   });
 }
 
-var burnGraph = generateGraph(
-  '#burnGraph',
+var grossBurnGraph = generateGraph(
+  '#grossBurnGraph',
   { 
-    xs: { 'Gross burn': 'x1', 'Net burn': 'x2' },
+    xs: { 'Forecasted Gross burn': 'x1', 'Gross burn': 'x2' },
     columns: [
-      convertData(gross_burn_data, 'date', 'x1'),
+      convertData(pred_gross_burn_data, 'date', 'x1'),
+      convertData(gross_burn_data, 'date', 'x2'),
+      convertData(pred_gross_burn_data, 'value', 'Forecasted Gross burn'),
+      convertData(gross_burn_data, 'value', 'Gross burn')
+    ],
+    type: 'bar'
+  },
+  0.5
+);
+
+var netBurnGraph = generateGraph(
+  '#netBurnGraph',
+  { 
+    xs: { 'Forecasted Net burn': 'x1', 'Net burn': 'x2' },
+    columns: [
+      convertData(pred_net_burn_data, 'date', 'x1'),
       convertData(net_burn_data, 'date', 'x2'),
-      convertData(gross_burn_data, 'value', 'Gross burn'),
+      convertData(pred_net_burn_data, 'value', 'Forecasted Net burn'),
       convertData(net_burn_data, 'value', 'Net burn')
     ],
     type: 'bar'

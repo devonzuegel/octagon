@@ -10,7 +10,8 @@ var Company = {
       blockHeaders: $('.company-content .col-md-3 h3'),
       tableAdds: $('.col-md-3 .edit-btn'),
       tableEdits: $('.table-section .edit-btn'),
-      graphRadios: $('.block-control input')
+      graphRadios: $('.block-control input'),
+      quarterMetrics: $('.table-section')
     };
 
     // Calls the fn that calculates the quarter statistics
@@ -24,7 +25,23 @@ var Company = {
     this.elements.tableAdds.on('click', this.clearFormValues);
     this.elements.tableEdits.on('click', this.populateFormValues);
 
+    // Handles the graph layout change radio buttons
     this.elements.graphRadios.on('click', this.changeGraphLayout);
+
+    // Highlights the last quarter metrics
+    this.highlightQuarter(this.elements.quarterMetrics);
+  },
+
+  // Highlights any metrics that belong to the last quarter
+  highlightQuarter: function(elems) {
+    elems.each(function() {
+      var el_quarter = $(this).find('.date').text(),
+          quarter = 'Q' + moment().subtract(3, 'M').format('Q YYYY')
+
+      if(el_quarter == quarter) {
+        $(this).addClass('highlighted-section');
+      }
+    });
   },
 
   // Clears preloaded edit values from the form
@@ -57,10 +74,13 @@ var Company = {
                     .substring(3, parent.find('.date').text().length);
 
     // Populates modal form with saved values
-    $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
-    $(modal_id + ' input[name=quarter]').val(quarter);
+    $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]')
+      .val(value);
+    $(modal_id + ' input[name=quarter]')
+      .val(quarter);
       // .prop('readonly', true);
-    $(modal_id + ' input[name=year]').val(year);
+    $(modal_id + ' input[name=year]')
+      .val(year);
       // .prop('readonly', true);
 
     // Change title to 'Edit'...
@@ -79,16 +99,6 @@ var Company = {
     var daysRemaining = moment().startOf('quarter')
                           .add(3, 'month')
                           .diff(moment(), 'days'),
-
-        // Previous quarter
-        // prevQuarter = moment()
-        //                 .subtract(3, 'month')
-        //                 .quarter(),
-
-        // Year of the previous quarter
-        // yearOfPrevQuarter = (prevQuarter === 4) ?
-        //                     moment().year() - 1 :
-        //                     moment().year(),
 
         // Stores the label suffix for days remaining
         daysLabel = (daysRemaining == 1) ? 'day' : 'days';
