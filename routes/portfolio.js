@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
             owners: all_owners.sort(sort_by_name),
             tab: 'companies',
             username: req.session.username,
-            is_admin: true
+            is_admin: true,
           });
         });
       });

@@ -20,7 +20,7 @@
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
 
           .card-header
-            if (c.profile != undefined)
+            if c.profile != undefined
               img(src=c.profile.img_path)
 
           .card-body
@@ -29,13 +29,25 @@
               .card-info #{c.username}
             div
               .small-label Cash
-              .card-info $5,000,000
+              .card-info 
+                if c.operational.cash.length > 0
+                  | #{usd(c.operational.cash[0].value)}
+                else
+                  | Add
             div
               .small-label Revenue
-              .card-info $20,000
+              .card-info
+                if c.operational.revenue.length > 0
+                  | #{usd(c.operational.revenue[0].value)}
+                else
+                  | Add
             div.hidden-on-grid
               .small-label Days of burn
               .card-info 15 days
             div.hidden-on-grid
               .small-label Total funding
-              .card-info $1000
+              .card-info 
+                if c.profile.total_funding != undefined
+                  | $#{c.profile.total_funding}
+                else
+                  | Add
