@@ -10,6 +10,7 @@ var Company = {
       blockHeaders: $('.company-content .col-md-3 h3'),
       tableAdds: $('.col-md-3 .edit-btn'),
       tableEdits: $('.table-section .edit-btn'),
+      graphRadios: $('.block-control input')
     };
 
     // Calls the fn that calculates the quarter statistics
@@ -22,6 +23,8 @@ var Company = {
     // adding or editing
     this.elements.tableAdds.on('click', this.clearFormValues);
     this.elements.tableEdits.on('click', this.populateFormValues);
+
+    this.elements.graphRadios.on('click', this.changeGraphLayout);
   },
 
   // Clears preloaded edit values from the form
@@ -93,5 +96,21 @@ var Company = {
     // Populates the elements with the correct values
     e_current.text('Q' + moment().quarter() + ' ' + moment().year());
     e_days.text(daysRemaining + ' ' + daysLabel);
+  },
+
+  // Handle changing the graph's layout with radio buttons
+  changeGraphLayout: function() {
+
+      /* Store the graph name (stored in the input's name attr)
+       * grab the graph object and find it's data fields */
+      var graph_name = window[$(this).attr('name')],
+          data = graph_name.data.xs;
+
+      /* Depending on the radio layout chosen, transform the
+       * graph's layout
+       * prop = data property */
+      for(var prop in data) {
+        graph_name.transform($(this).val(), prop);
+      }
   }
 };

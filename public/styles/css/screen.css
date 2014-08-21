@@ -177,6 +177,21 @@ input:-webkit-autofill {
   font-family: FontAwesome;
   vertical-align: middle; }
 
+[type=radio] {
+  display: none; }
+
+[type=radio] + label:before {
+  content: "\f10c";
+  font-family: FontAwesome;
+  margin-right: 6px; }
+
+[type=radio]:checked + label:before {
+  content: "\f192";
+  font-family: FontAwesome; }
+
+[type="radio"]:checked + label {
+  color: #333 !important; }
+
 .dropdown {
   display: inline-block; }
   .dropdown .dropdown-toggle {
@@ -688,6 +703,17 @@ input:-webkit-autofill {
       .company-bkg .company-content .tab-content .tab-pane > div h3 {
         display: inline-block;
         margin: 0 0 10px 0; }
+      .company-bkg .company-content .tab-content .tab-pane > div .block-control {
+        line-height: 20px;
+        position: absolute;
+        right: 10px;
+        top: 0; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-control label {
+          color: #999;
+          display: inline-block;
+          margin-left: 20px; }
+          .company-bkg .company-content .tab-content .tab-pane > div .block-control label:hover {
+            color: #666; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-edit {
         color: #999;
         line-height: 20px;

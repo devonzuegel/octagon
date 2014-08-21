@@ -1,0 +1,18 @@
+[type=radio] {
+  display: none;
+}
+
+[type=radio] + label:before {
+  content: "\f10c";
+  font-family: FontAwesome;
+  margin-right: 6px;
+}
+
+[type=radio]:checked + label:before {
+  content: "\f192";
+  font-family: FontAwesome;
+}
+
+[type="radio"]:checked + label {
+  color: #333 !important;
+}

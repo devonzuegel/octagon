@@ -22,6 +22,8 @@
   .col-md-9
     h3 LTV By Quarter
 
+    +block_control("ltvGraph", "ltvBar", "ltvArea")
+
     //- Grab the data
     script(type="text/javascript").
       var ltv_data = !{JSON.stringify(economics.ltv)};
@@ -46,6 +48,8 @@
 
   .col-md-9
     h3 Lifetime Est. By Quarter
+
+    +block_control("lifetimeEstGraph", "lifetimeEstBar", "lifetimeEstArea")
 
     //- Grab the data
     script(type="text/javascript").
@@ -72,6 +76,8 @@
   .col-md-9
     h3 CAC By Quarter
 
+    +block_control("cacGraph", "cacBar", "cacArea")
+
     //- Grab the data
     script(type="text/javascript").
       var cac_data = !{JSON.stringify(economics.cac)};
@@ -97,6 +103,8 @@
   .col-md-9
     h3 ASP By Quarter
 
+    +block_control("aspGraph", "aspBar", "aspArea")
+
     //- Grab the data
     script(type="text/javascript").
       var asp_data = !{JSON.stringify(economics.asp)};
@@ -121,6 +129,8 @@
 
   .col-md-9
     h3 GM % By Quarter
+
+    +block_control("gmPercentageGraph", "gmPercentageBar", "gmPercentageArea")
 
     //- Grab the data
     script(type="text/javascript").

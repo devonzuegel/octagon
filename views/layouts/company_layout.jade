@@ -8,6 +8,9 @@ block sub_layout
     -          moment(data[0].timestamp).year() === moment.year();
     - }
     
+    //- Mixins
+    include ../mixins/block_control_mixin
+
     //- Edit modals
     include ../modals/edit_company_overview
     include ../modals/edit_company_operational
