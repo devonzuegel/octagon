@@ -1,6 +1,27 @@
 include ../mixins/edit_modal_mixin
 
++edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-cash", "Add")
+  input(type="hidden" name="form_name" value="operational")
 
+  div.small-label Cash
+  input(
+    type="text"
+    placeholder="Add cash"
+    name="cash"
+    autocomplete="off")
+  .inline-input-container
+    div.small-label Quarter
+    input(
+      type="text"
+      placeholder="1-4"
+      name="quarter"
+      autocomplete="off")
+  .inline-input-container
+    div.small-label Year
+    input(
+      type="text"
+      name="year"
+      autocomplete="off")
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-gross-burn", "Add")
   input(type="hidden" name="form_name" value="operational")

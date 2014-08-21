@@ -1,6 +1,6 @@
-mixin block_control(name, id1, id2)
+mixin block_control(name, id1, id2, checked1, checked2)
   .block-control
-    input(type="radio", name=name, id=id1, value="bar", checked)
+    input(type="radio", name=name, id=id1, value="bar", checked=checked1)
     label(for=id1) Bar
-    input(type="radio", name=name, id=id2, value="area")
+    input(type="radio", name=name, id=id2, value="area", checked=checked2)
     label(for=id2) Area

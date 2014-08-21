@@ -42,6 +42,19 @@ function generateGraph(el, data, width_multiplier) {
   });
 }
 
+var cashGraph = generateGraph(
+  '#cashGraph',
+  { 
+    xs: { 'Cash': 'x1' },
+    columns: [
+      convertData(cash_data, 'date', 'x1'),
+      convertData(cash_data, 'value', 'Cash'),
+    ],
+    type: 'area'
+  },
+  0.75
+);
+
 var grossBurnGraph = generateGraph(
   '#grossBurnGraph',
   { 

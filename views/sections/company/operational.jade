@@ -3,6 +3,34 @@
     include quarter_info.jade
 
   .col-md-3
+    h3 Cash
+
+    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
+      i.fa.fa-plus
+
+    .block-info.block-table
+      if dataEntered(operational.cash)
+        for data in operational.cash.sort(chronological).reverse()
+          .table-section
+            .value #{usd(data.value)}
+            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+            .edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
+              i.fa.fa-pencil
+      else
+        | Add data
+
+  .col-md-9
+    h3 Cash By Quarter
+
+    +block_control("cashGraph", "cashBar", "cashArea", false, true)
+
+    //- Grab the data
+    script(type="text/javascript").
+      var cash_data = !{JSON.stringify(operational.cash)},
+          cash_data = !{JSON.stringify(operational.cash)};
+    .block-info.block-graph:.graph-padding#cashGraph
+
+  .col-md-3
     h3 Forecasted Gross Burn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-pred-gross-burn")
@@ -39,7 +67,7 @@
   .col-md-6
     h3 Gross Burn By Quarter
 
-    +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea")
+    +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea", true, false)
 
     //- Grab the data
     script(type="text/javascript").
@@ -84,7 +112,7 @@
   .col-md-6
     h3 Net Burn By Quarter
 
-    +block_control("netBurnGraph", "netBurnBar", "netBurnArea")
+    +block_control("netBurnGraph", "netBurnBar", "netBurnArea", true, false)
 
     //- Grab the data
     script(type="text/javascript").
@@ -112,7 +140,7 @@
   .col-md-9
     h3 Revenue By Quarter
 
-    +block_control("revenueGraph", "revenueBar", "revenueArea")
+    +block_control("revenueGraph", "revenueBar", "revenueArea", true, false)
 
     //- Grab the data
     script(type="text/javascript").
@@ -139,7 +167,7 @@
   .col-md-9
     h3 Head Count By Quarter
 
-    +block_control("headCountGraph", "headCountBar", "headCountArea")
+    +block_control("headCountGraph", "headCountBar", "headCountArea", true, false)
 
     //- Grab the data
     script(type="text/javascript").
