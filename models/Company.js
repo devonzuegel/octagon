@@ -302,8 +302,7 @@ module.exports = {
       for (field in form) {
         // If the field is not an unintented field
         if (field !== 'form_name' &&
-            field !== 'quarter
-            ' &&
+            field !== 'quarter' &&
             field !=='year') {
 
           // If the field doesn't exist in updated (or in the db) yet, create it
@@ -336,7 +335,7 @@ module.exports = {
                 updated[field][entry] = new_data;
 
                 // Break out of the loop
-                break
+                break;
               }
             }
           }

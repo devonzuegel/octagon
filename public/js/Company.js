@@ -51,7 +51,7 @@ var Company = {
                     .substring(1, 2),
         year = parent.find('.date')
                     .text()
-                    .substring(3, parent.find('.date').text().length)
+                    .substring(3, parent.find('.date').text().length);
 
     // Populates modal form with saved values
     $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
