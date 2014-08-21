@@ -69,7 +69,6 @@
 
     .block-edit(data-toggle="modal" data-target="#add-milestone")
       i.fa.fa-plus.fa-right
-      | Add milestone
 
     .block-info
       ul.block-list
@@ -92,16 +91,15 @@
         for (var i = 0; i < milestones.length; i++) {
           /* Iterate through milestones' edit btns: onclick, the form is
            * populated with that owner's info */
-          (function(n) { // variable binding
+          (function(n) {
             var m = milestones[i];
-            console.log('xxxxx');
             $('#edit-1408487934718').click(function() {
               $('#title').val(m.title);
               $('#date').val(moment(m.date).format('DD MMMM YYYY'));
               $('#description').val(m.description);
               $('#_id').val(m._id);
             });
-          }(i)) // end of variable binding
+          }(i))
         }
       };
 
@@ -111,7 +109,6 @@
 
     .block-edit(data-toggle="modal" data-target="#add-team-member")
       i.fa.fa-plus.fa-right
-      | Add team member
 
     .block-info
       ul.block-list
@@ -137,10 +134,9 @@
         for (var i = 0; i < team.length; i++) {
           /* Iterate through team member edit btns: onclick, the form is
            * populated with that owner's info */
-          (function(n) { // variable binding
+          (function(n) {
             var m = team[i];
             $('#edit-'+m._id).click(function() {
-              console.log(m.full_name);
               $('#img_path').val(m.img_path);
               $('#date_joined').val(moment(m.date_joined).format('DD MMMM YYYY'));
               $('#role').val(m.role);
@@ -148,7 +144,7 @@
               $('#full_name').val(m.full_name);
               $('#_id').val(m._id);
             });
-          }(i)) // end of variable binding
+          }(i))
         }
       };
 
