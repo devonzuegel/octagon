@@ -719,19 +719,45 @@ input:-webkit-autofill {
           margin: 0 0 20px 0; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-info > div:last-child {
           margin-bottom: 0px; }
-        .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone {
+        .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item {
           margin-bottom: 20px;
           position: relative; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-info {
+          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info {
             display: inline-block;
             min-width: 400px; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-info .date {
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info img {
+              border-radius: 100px;
+              -moz-border-radius: 100px;
+              -webkit-border-radius: 100px;
+              background-clip: padding-box;
+              float: left;
+              height: 80px;
+              margin-right: 20px; }
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .placeholder-img {
+              background-color: #eee;
+              border-radius: 100px;
+              -moz-border-radius: 100px;
+              -webkit-border-radius: 100px;
+              background-clip: padding-box;
+              float: left;
+              height: 80px;
+              margin-right: 20px;
+              width: 80px; }
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-header {
+              font-weight: 500;
+              line-height: 100%;
+              margin: 10px 0; }
+              .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-header span {
+                font-weight: 400; }
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-date {
               color: #999;
-              font-size: 12px;
+              font-size: 14px;
               line-height: 100%; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-info .description {
-              font-size: 13px; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-edit {
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-text {
+              font-size: 14px;
+              line-height: 100%;
+              margin-top: 10px; }
+          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-edit {
             color: #999;
             font-size: 16px;
             padding: 0 10px;
@@ -739,7 +765,7 @@ input:-webkit-autofill {
             top: 0;
             right: 0;
             vertical-align: middle; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-edit:hover {
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-edit:hover {
               color: #8a64d1; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-num {
         font-size: 22px;

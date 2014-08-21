@@ -72,15 +72,15 @@
       | Add milestone
 
     .block-info
-      ul.milestone-list
+      ul.block-list
         //- TODO sort by date (most recent first)
         for m in c.milestones.sort(chronological).reverse()
-          li.milestone
-            .milestone-info
-              .title #{m.title}
-              .date #{moment(m.date).format('DD MMMM YYYY')}
-              .description #{m.description}
-            a.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
+          li.list-item
+            .item-info
+              .item-header #{m.title}
+              .item-date #{moment(m.date).format('DD MMMM YYYY')}
+              .item-text #{m.description}
+            a.item-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
               i.fa.fa-pencil
 
 
@@ -114,19 +114,21 @@
       | Add team member
 
     .block-info
-      ul.team-list
+      ul.block-list
         //- TODO sort by date (most recent first)
         for m in c.team.sort(chronological).reverse()
-          li.milestone
-            .team-member-info
+          li.list-item
+            .item-info
               if m.img_path
                 img(src=m.img_path)
-              .full_name #{m.full_name}
-              .role #{m.role}
-              .date_joined Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
-              .email: a(href='mailto:'+m.email) #{m.email}
-              a.team-member-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-'+m._id)
-                i.fa.fa-pencil edit
+              else
+                div.placeholder-img
+              .item-header #{m.full_name} - 
+                span #{m.role}
+              .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
+              .item-text: a(href='mailto:' + m.email) #{m.email}
+            .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
+              i.fa.fa-pencil
 
     script.
       window.onload = function() {

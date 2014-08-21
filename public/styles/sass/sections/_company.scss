@@ -160,32 +160,56 @@
               margin-bottom: 0px;
             }
 
-            ul.milestone-list {
+            ul.block-list {
 
-              .milestone {
+              .list-item {
                 margin-bottom: 20px;
                 position: relative;
 
-                .milestone-info {
+                .item-info {
                   display: inline-block;
                   min-width: 400px;
 
-                  .title {
-
+                  img {
+                    @include border-radius(100px);
+                    float: left;
+                    height: 80px;
+                    margin-right: 20px;
                   }
 
-                  .date {
+                  .placeholder-img {
+                    background-color: #eee;
+                    @include border-radius(100px);
+                    float: left;
+                    height: 80px;
+                    margin-right: 20px;
+                    width: 80px;
+                  }
+
+                  .item-header {
+                    font-weight: 500;
+                    line-height: 100%;
+                    margin: 10px 0;
+
+                    span {
+                      font-weight: 400;
+                    }
+                  }
+
+                  .item-date {
                     color: #999;
-                    font-size: 12px;
+                    font-size: 14px;
                     line-height: 100%;
                   }
 
-                  .description {
-                    font-size: 13px;
+                  .item-text {
+                    font-size: 14px;
+                    line-height: 100%;
+                    margin-top: 10px;
                   }
                 }
 
-                .milestone-edit {
+                .item-edit {
                   color: #999;
                   font-size: 16px;
                   padding: 0 10px;
