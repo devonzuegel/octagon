@@ -272,7 +272,7 @@ input:-webkit-autofill {
   margin: 0 auto;
   z-index: 10000; }
   .modal .modal-dialog {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.97);
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -310,6 +310,7 @@ input:-webkit-autofill {
         .modal .modal-dialog .modal-content .modal-body input[type=text],
         .modal .modal-dialog .modal-content .modal-body input[type=password],
         .modal .modal-dialog .modal-content .modal-body textarea {
+          background: transparent;
           border-bottom: 1px solid #ddd;
           color: #666;
           height: 33px;
