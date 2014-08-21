@@ -81,12 +81,12 @@
               .date #{moment(m.date).format('DD MMMM YYYY')}
               .description #{m.description}
             a.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
-              i.fa.fa-pencil
+              i.fa.fa-pencil edit
 
 
-
+    script(type="text/javascript", src="../../bower_components/jquery/jquery.min.js")
     script.
-      window.onload = function() {
+      $(document).ready(function() {
         var milestones = !{JSON.stringify(c.milestones)};
 
         for (var i = 0; i < milestones.length; i++) {
@@ -94,8 +94,7 @@
            * populated with that owner's info */
           (function(n) { // variable binding
             var m = milestones[i];
-            console.log('xxxxx');
-            $('#edit-1408487934718').click(function() {
+            $('#edit-'+m._id).click(function() {
               $('#title').val(m.title);
               $('#date').val(moment(m.date).format('DD MMMM YYYY'));
               $('#description').val(m.description);
@@ -103,7 +102,7 @@
             });
           }(i)) // end of variable binding
         }
-      };
+      });
 
   //- TEAM
   .col-md-6
@@ -129,7 +128,7 @@
                 i.fa.fa-pencil edit
 
     script.
-      window.onload = function() {
+      $(document).ready(function() {
         var team = !{JSON.stringify(c.team)};
 
         for (var i = 0; i < team.length; i++) {
@@ -138,7 +137,6 @@
           (function(n) { // variable binding
             var m = team[i];
             $('#edit-'+m._id).click(function() {
-              console.log(m.full_name);
               $('#img_path').val(m.img_path);
               $('#date_joined').val(moment(m.date_joined).format('DD MMMM YYYY'));
               $('#role').val(m.role);
@@ -148,5 +146,5 @@
             });
           }(i)) // end of variable binding
         }
-      };
+      });
 
