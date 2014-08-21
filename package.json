@@ -18,6 +18,7 @@
     "PYTHON": "/opt/local/bin/python2.7"
   },
   "dependencies": {
+    "bcrypt": "0.8.0",
     "bcrypt-nodejs": "latest",
     "blueimp-file-upload-expressjs": "^0.2.9",
     "body-parser": "~1.0.0",
