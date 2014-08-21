@@ -96,19 +96,19 @@ include ../mixins/edit_modal_mixin
   input(type='hidden' name='array' value='team') 
 
   div.small-label Full name
-  input(placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off'  type='text')
+  input(placeholder='Add title'  name='full_name'  autocomplete='off'  type='text')
 
   div.small-label Image path
-  input(placeholder='Add date'  name='img_path'  id='img_path' autocomplete='off'  type='text')
+  input(placeholder='Add image path'  name='img_path'  autocomplete='off'  type='text')
 
   div.small-label Role
-  input(placeholder='Add role'  name='role'  id='role' autocomplete='off'  type='text')
+  input(placeholder='Add role'  name='role'  autocomplete='off'  type='text')
 
   div.small-label Email
-  input(placeholder='Email'  name='email'  id='email' autocomplete='off'  type='text')
+  input(placeholder='Add email'  name='email'  autocomplete='off'  type='text')
 
   div.small-label Date Joined
-  input(placeholder='Add date'  name='date_joined'  id='date_joined' autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY')  type='text')
+  input(placeholder='Add date joined'  name='date_joined'  autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY')  type='text')
 
 
 
@@ -118,7 +118,7 @@ include ../mixins/edit_modal_mixin
   //- * This field tells the route (in Company.js) that this data should be used
   //- * to update the object whose id is specified in the 'team' array within a
   //- * company in the db.
-  input(type='hidden' name='array' value='team') 
+  input(type='hidden' name='edit_obj_in_array' value='team') 
 
   input(type='hidden' name='_id' id='_id')
 
@@ -126,16 +126,16 @@ include ../mixins/edit_modal_mixin
   input(placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off'  type='text')
 
   div.small-label Image path
-  input(placeholder='Add date'  name='img_path'  id='img_path' autocomplete='off'  type='text')
+  input(placeholder='Add image path'  name='img_path'  id='img_path' autocomplete='off'  type='text')
 
   div.small-label Role
   input(placeholder='Add role'  name='role'  id='role' autocomplete='off'  type='text')
 
   div.small-label Email
-  input(placeholder='Email'  name='email'  id='email' autocomplete='off'  type='text')
+  input(placeholder='Add email'  name='email'  id='email' autocomplete='off'  type='text')
 
   div.small-label Date Joined
-  input(placeholder='Add date'  name='date_joined'  id='date_joined' autocomplete='off' type='text')
+  input(placeholder='Add date joined'  name='date_joined'  id='date_joined' autocomplete='off' type='text')
 
 
 

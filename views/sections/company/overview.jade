@@ -102,6 +102,7 @@
         }
       });
 
+
   //- TEAM
   .col-md-6
     h3 Team
@@ -134,6 +135,7 @@
            * populated with that owner's info */
           (function(n) { // variable binding
             var m = team[i];
+            console.log(JSON.stringify(m, null, 3));
             $('#edit-'+m._id).click(function() {
               $('#img_path').val(m.img_path);
               $('#date_joined').val(moment(m.date_joined).format('DD MMMM YYYY'));
