@@ -950,7 +950,8 @@ input:-webkit-autofill {
       color: #999;
       font-size: 14px;
       font-weight: 500;
-      line-height: 33px; }
+      line-height: 33px;
+      margin-left: 30px; }
       .auth-footer .footer-nav .footer-links a:hover,
       .footer .footer-nav .footer-links a:hover {
         color: #fff; }
