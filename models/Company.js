@@ -320,7 +320,7 @@ module.exports = {
 
           // The new data to be inserted
           var new_data = {
-            date: moment(form.quarter + '-' + form.year, 'Q-YYYY'),
+            date: moment(form.quarter + '-' + form.year, 'Q-YYYY').isISOString(),
             value: form[field],
             label: field,
             timestamp: moment()
