@@ -50,8 +50,7 @@ app.listen(port, function() {
 // Mongo/Heroku connection
 var mongo = require('mongodb');
 
-var mongoUri = process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
+var mongoUri = 'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039' ||
   'mongodb://localhost/test';
 
 mongo.Db.connect(mongoUri, function (err, db) {
