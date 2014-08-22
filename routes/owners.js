@@ -12,8 +12,8 @@ var bcrypt = require('bcryptjs'),
 // require (authentication stuff)
 var CompanyModel = require('../models/Company.js'),
 	  Companies = CompanyModel.Companies,
-     passport = CompanyModel.passport,
-     LocalStrategy = require('passport-local').Strategy,
+    passport = CompanyModel.passport,
+    LocalStrategy = require('passport-local').Strategy,
 	  privileges = require('./privileges.js');
 
 // require (owner stuff)

@@ -48,17 +48,19 @@ app.listen(port, function() {
 });
 
 // Mongo/Heroku connection
-var mongo = require('mongodb');
+// var mongo = require('mongodb');
 
-var mongoUri = process.env.MONGOLAB_URI ||
-  'mongodb://localhost/test';
+// console.log(process.env.MONGOLAB_URI);
 
-mongo.Db.connect(mongoUri, function (err, db) {
-  db.collection('test', function(er, collection) {
-    collection.insert({'admin': 'admin'}, {safe: true}, function(er,rs) {
-    });
-  });
-});
+// var mongoUri = process.env.MONGOLAB_URI ||
+//   'mongodb://localhost/test';
+
+// mongo.Db.connect(mongoUri, function (err, db) {
+//   db.collection('test', function(er, collection) {
+//     collection.insert({'admin': 'admin'}, {safe: true}, function(er,rs) {
+//     });
+//   });
+// });
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
