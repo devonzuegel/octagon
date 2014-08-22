@@ -1,4 +1,4 @@
-/* Function for converting data stored in objects
+/* Fn for converting data stored in objects
  * to a format that c3js loves */
 function convertData(data, field, label) {
 
@@ -16,7 +16,7 @@ function convertData(data, field, label) {
   return new_data;
 }
 
-/* Function for generating the c3 graphs
+/* Fn for generating the c3 graphs
  * params: takes the destination element, the data, and
  * a width multiplier */
 function generateGraph(el, data, width_multiplier) {
