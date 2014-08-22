@@ -322,15 +322,16 @@ ul.context-menu-list li {
   position: relative;
   width: 9px;
   height: 9px;
-  background: #F8F8F8;
+  background: #ddd;
   border: 1px solid #DDD;
 }
 
 .handsontable .dragdealer .handle {
   position: absolute;
-  width: 9px;
-  height: 9px;
-  background: #C5C5C5;
+  width: 5px;
+  height: 5px;
+  border: 2px solid #ddd;
+  background: #999;
 }
 
 .handsontable .dragdealer .disabled {
