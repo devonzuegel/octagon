@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(../../bower_components/c3/c3.css);
+@import url(../../bower_components/handsontable/dist/jquery.handsontable.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
 .hidden {
   display: none; }
@@ -118,11 +119,13 @@ body {
 
 .dashboard-container,
 .portfolio-content,
-.settings-container {
+.settings-container,
+.data-content {
   min-height: 100%; }
   .dashboard-container:after,
   .portfolio-content:after,
-  .settings-container:after {
+  .settings-container:after,
+  .data-content:after {
     content: '';
     display: block; }
 

@@ -27,22 +27,22 @@ router.get('/', function(req, res) {
 });
 
 // support page
-router.get('/support', function(req, res) {
+router.get('/data', function(req, res) {
 
 		privileges.require_privileges(
 		req, res, 
 		false,  // Do not include flash error msgs
 		admin_fn = function() {
-			res.render('support', {
-				title: 'Support', 
+			res.render('data', {
+				title: 'Data', 
 				errors: req.flash('error'),
 				username: req.session.username,
 				is_admin: true
 			});
 		}, 
 		user_fn = function() { 
-			res.render('support', {
-				title: 'Support', 
+			res.render('data', {
+				title: 'Data', 
 				errors: req.flash('error'),
 				username: req.session.username,
 				is_admin: false
