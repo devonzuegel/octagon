@@ -1,5 +1,6 @@
 .data-bkg {
   background-color: $data-bkg;
+  overflow: hidden;
 
   .data-content {
     padding-top: $toolbar-height;
@@ -8,12 +9,71 @@
       color: #666;
       font-size: 14px;
       font-weight: 400;
-      overflow: scroll;
+      position: relative;
       width: 100%;
 
       .currentRow,
       .currentCol {
         background-color: #f7f7f7;
+      }
+    }
+
+    .data-bottom-bar {
+      background-color: #ddd;
+      border-top: 1px solid #ccc;
+      height: 55px;
+      width: 100%;
+
+      ul.page-tabs {
+        display: inline-block;
+
+        li {
+          border-top: 3px solid transparent;
+          color: #999;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 49px;
+          margin-left: 20px;
+          text-transform: uppercase;
+
+          &:hover {
+            color: #666;
+          }
+        }
+
+        .active {
+          border-top-color: $purple;
+          color: $purple;
+
+          &:hover {
+            color: $purple;
+          }
+        }
+      }
+
+      button {
+        border: none;
+        @include border-radius(2px);
+        color: #fff;
+        height: 35px;
+        float: right;
+        font-size: 13px;
+        font-weight: 400;
+        margin: 10px 20px 0 20px;
+        padding: 0 20px;
+        text-transform: uppercase;
+      }
+
+      .save-btn {
+        background-color: $green;
+        border-bottom: 1px solid darken($green, 10%);
+      }
+
+      .download-btn {
+        background-color: #aaa;
+        border-bottom: 1px solid #888;
       }
     }
   }

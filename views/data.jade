@@ -8,3 +8,15 @@ block content
     var companies = !{JSON.stringify(all_companies)};
 
   #data
+  .data-bottom-bar
+    ul.page-tabs(role="tablist")
+      li.page-tab.active Esper
+      li.page-tab Hightower
+
+    button.save-btn 
+      i.fa.fa-database.fa-right
+      | Save
+
+    button.download-btn
+      i.fa.fa-download.fa-right
+      | Download

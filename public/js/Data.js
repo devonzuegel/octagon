@@ -80,6 +80,7 @@ $(document).ready(function () {
     
     $('#data').handsontable({
       data: data,
+      height: window.innerHeight - (2 * 56),
       stretchH: 'all',
       minSpareRows: 1,
       minRows: minRows,

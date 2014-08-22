@@ -406,7 +406,7 @@ input:-webkit-autofill {
   margin: 4px; }
 .col-md-3 ::-webkit-scrollbar-corner,
 .modal ::-webkit-scrollbar-corner {
-  background: #000; }
+  background: #fff; }
 
 .auth-bkg {
   background-color: #222222; }
@@ -497,18 +497,63 @@ input:-webkit-autofill {
         text-align: center; }
 
 .data-bkg {
-  background-color: #dddddd; }
+  background-color: white;
+  overflow: hidden; }
   .data-bkg .data-content {
     padding-top: 56px; }
     .data-bkg .data-content #data {
       color: #666;
       font-size: 14px;
       font-weight: 400;
-      overflow: scroll;
+      position: relative;
       width: 100%; }
       .data-bkg .data-content #data .currentRow,
       .data-bkg .data-content #data .currentCol {
         background-color: #f7f7f7; }
+    .data-bkg .data-content .data-bottom-bar {
+      background-color: #ddd;
+      border-top: 1px solid #ccc;
+      height: 55px;
+      width: 100%; }
+      .data-bkg .data-content .data-bottom-bar ul.page-tabs {
+        display: inline-block; }
+        .data-bkg .data-content .data-bottom-bar ul.page-tabs li {
+          border-top: 3px solid transparent;
+          color: #999;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 49px;
+          margin-left: 20px;
+          text-transform: uppercase; }
+          .data-bkg .data-content .data-bottom-bar ul.page-tabs li:hover {
+            color: #666; }
+        .data-bkg .data-content .data-bottom-bar ul.page-tabs .active {
+          border-top-color: #8a64d1;
+          color: #8a64d1; }
+          .data-bkg .data-content .data-bottom-bar ul.page-tabs .active:hover {
+            color: #8a64d1; }
+      .data-bkg .data-content .data-bottom-bar button {
+        border: none;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        background-clip: padding-box;
+        color: #fff;
+        height: 35px;
+        float: right;
+        font-size: 13px;
+        font-weight: 400;
+        margin: 10px 20px 0 20px;
+        padding: 0 20px;
+        text-transform: uppercase; }
+      .data-bkg .data-content .data-bottom-bar .save-btn {
+        background-color: #1ebba6;
+        border-bottom: 1px solid #178f7f; }
+      .data-bkg .data-content .data-bottom-bar .download-btn {
+        background-color: #aaa;
+        border-bottom: 1px solid #888; }
 
 .portfolio-bkg {
   background-color: #dddddd; }
