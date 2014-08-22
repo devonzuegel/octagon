@@ -33,11 +33,14 @@ router.get('/data', function(req, res) {
 		req, res, 
 		false,  // Do not include flash error msgs
 		admin_fn = function() {
-			res.render('data', {
-				title: 'Data', 
-				errors: req.flash('error'),
-				username: req.session.username,
-				is_admin: true
+			Companies.find({}, function(err, all_companies) {
+				res.render('data', {
+					title: 'Data', 
+					errors: req.flash('error'),
+					username: req.session.username,
+					is_admin: true,
+					all_companies: all_companies.sort()
+				});
 			});
 		}, 
 		user_fn = function() { 
@@ -45,7 +48,7 @@ router.get('/data', function(req, res) {
 				title: 'Data', 
 				errors: req.flash('error'),
 				username: req.session.username,
-				is_admin: false
+				is_admin: false,
 			});
     }
   );

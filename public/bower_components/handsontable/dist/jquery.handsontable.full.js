@@ -2612,7 +2612,7 @@ Handsontable.TableView = function (instance) {
         className: 'current',
         border: {
           width: 2,
-          color: '#5292F7',
+          color: '#8a64d1',
           style: 'solid',
           cornerVisible: function () {
             return that.settings.fillHandle && !that.isCellEdited() && !instance.selection.isMultiple()
@@ -2623,7 +2623,7 @@ Handsontable.TableView = function (instance) {
         className: 'area',
         border: {
           width: 1,
-          color: '#89AFF9',
+          color: '#8a64d1',
           style: 'solid',
           cornerVisible: function () {
             return that.settings.fillHandle && !that.isCellEdited() && instance.selection.isMultiple()
@@ -2638,7 +2638,7 @@ Handsontable.TableView = function (instance) {
         className: 'fill',
         border: {
           width: 1,
-          color: 'red',
+          color: '#e06663',
           style: 'solid'
         }
       }

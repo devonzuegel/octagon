@@ -1,4 +1,10 @@
 extends layouts/data_layout
 
 block content
+
+  script(type="text/javascript").
+
+    // I don't think that this is safe...
+    var companies = !{JSON.stringify(all_companies)};
+
   #data

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(../../bower_components/c3/c3.css);
-@import url(../../bower_components/handsontable/dist/jquery.handsontable.css);
+@import url(../../bower_components/handsontable/dist/jquery.handsontable.custom.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
 .hidden {
   display: none; }
@@ -496,6 +496,20 @@ input:-webkit-autofill {
         padding-top: 30px;
         text-align: center; }
 
+.data-bkg {
+  background-color: #dddddd; }
+  .data-bkg .data-content {
+    padding-top: 56px; }
+    .data-bkg .data-content #data {
+      color: #666;
+      font-size: 14px;
+      font-weight: 400;
+      overflow: scroll;
+      width: 100%; }
+      .data-bkg .data-content #data .currentRow,
+      .data-bkg .data-content #data .currentCol {
+        background-color: #f7f7f7; }
+
 .portfolio-bkg {
   background-color: #dddddd; }
   .portfolio-bkg .portfolio-toolbar {
@@ -908,6 +922,9 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
+
+.toolbar-padding {
+  padding: 0 20px; }
 
 .toolbar-dark {
   background: #222222 !important; }
