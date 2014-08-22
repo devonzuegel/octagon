@@ -12,10 +12,10 @@ var bcrypt = require('bcrypt'),
     hash = bcrypt.hashSync("my password", salt);
 
 // Localhost connection
-// mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test');
 
 // Heroku connection
-mongoose.connect('mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039');
+// mongoose.connect('mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039');
 
 var Schema = mongoose.Schema,
     CompanySchema = new Schema({
