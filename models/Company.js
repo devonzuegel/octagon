@@ -12,10 +12,10 @@ var bcrypt = require('bcrypt'),
     hash = bcrypt.hashSync("my password", salt);
 
 // Localhost connection
-// mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test');
 
 // Heroku connection
-mongoose.connect('mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039');
+// mongoose.connect('mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039');
 
 var Schema = mongoose.Schema,
     CompanySchema = new Schema({
@@ -320,7 +320,7 @@ module.exports = {
 
           // The new data to be inserted
           var new_data = {
-            date: moment(form.quarter + '-' + form.year, 'Q-YYYY').isISOString(),
+            date: moment(form.quarter + '-' + form.year, 'Q-YYYY').toISOString(),
             value: form[field],
             label: field,
             timestamp: moment()
