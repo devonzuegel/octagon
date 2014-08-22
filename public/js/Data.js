@@ -29,18 +29,18 @@ var Data = {
 
   // Save data
   saveData: function() {
-    $.ajax({
-      url: '/portfolio/' + Data.values.permalink + '/editMetrics',
-      data: { 'data': Data.data },
-      dataType: 'json',
-      type: 'POST',
-      success: function (res) {
+    // $.ajax({
+    //   url: '/portfolio/' + Data.values.permalink + '/editMetrics',
+    //   data: { 'data': Data.data },
+    //   dataType: 'json',
+    //   type: 'POST',
+    //   success: function (res) {
 
-      },
-      error: function () {
-        
-      }
-    });
+    //   },
+    //   error: function () {
+
+    //   }
+    // });
   },
 
   // Download data
@@ -75,8 +75,8 @@ var Data = {
 
       Data.data = new Array([]);
 
-      var colHeaders = new Array(),
-          rowHeaders = new Array();
+      var colHeaders = [],
+          rowHeaders = [];
 
       var minRows = 4 * (moment().year() - 2010),
           minCols = Object.keys(companies[1].operational).length +
@@ -109,7 +109,8 @@ var Data = {
             for(var o in companies[c].operational[p]) {
 
               var entry = companies[c].operational[p][o],
-                  row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
+                  row = 4 * (moment().year() - moment(entry.date).year()) +
+                  (4 - moment(entry.date).quarter());
 
               Data.data[row][i] = entry.value;
             }
@@ -123,7 +124,8 @@ var Data = {
             for(var o in companies[c].user_metrics[p]) {
 
               var entry = companies[c].user_metrics[p][o],
-                  row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
+                  row = 4 * (moment().year() - moment(entry.date).year()) +
+                        (4 - moment(entry.date).quarter());
 
               Data.data[row][i] = entry.value;
             }
@@ -137,7 +139,8 @@ var Data = {
             for(var o in companies[c].economics[p]) {
 
               var entry = companies[c].economics[p][o],
-                  row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
+                  row = 4 * (moment().year() - moment(entry.date).year()) +
+                        (4 - moment(entry.date).quarter());
 
               Data.data[row][i] = entry.value;
             }

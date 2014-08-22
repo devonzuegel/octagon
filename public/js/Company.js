@@ -36,7 +36,7 @@ var Company = {
   highlightQuarter: function(elems) {
     elems.each(function() {
       var el_quarter = $(this).find('.date').text(),
-          quarter = 'Q' + moment().subtract(3, 'M').format('Q YYYY')
+          quarter = 'Q' + moment().subtract(3, 'M').format('Q YYYY');
 
       if(el_quarter == quarter) {
         $(this).addClass('highlighted-section');
