@@ -534,6 +534,11 @@ input:-webkit-autofill {
           color: #8a64d1; }
           .data-bkg .data-content .data-bottom-bar ul.page-tabs .active:hover {
             color: #8a64d1; }
+      .data-bkg .data-content .data-bottom-bar .bottom-bar-text {
+        color: #999;
+        font-size: 14px;
+        line-height: 55px;
+        margin-left: 20px; }
       .data-bkg .data-content .data-bottom-bar button {
         border: none;
         border-radius: 2px;

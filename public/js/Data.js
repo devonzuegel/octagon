@@ -1,95 +1,160 @@
-$(document).ready(function () {
+var Data = {
 
-  if(typeof companies !== 'undefined') {
+  // Initialize elements, values, and click events
+  init: function() {
 
-    var data = new Array([]),
-        colHeaders = new Array(),
-        rowHeaders = new Array();
+    this.data = new Array([]);
 
-    var minRows = 4 * (moment().year() - 2010),
-        minCols = Object.keys(companies[1].operational).length +
-                  Object.keys(companies[1].user_metrics).length +
-                  Object.keys(companies[1].economics).length;
+    $('.data-bottom-bar .page-tab:first-child').addClass('active');
 
-    var q_counter = 0;
-    for(var counter = 0; counter < minRows; counter++) {
-      data.push(new Array(minCols));
-      rowHeaders.push('Q' + (4 - q_counter) + ' ' + (moment().year() - Math.floor(counter / 4)));
+    this.elements = {
+      data: $('#data'),
+      companies: $('.data-bottom-bar .page-tab'),
+      selectedCompany: $('.data-bottom-bar .active'),
+      save: $('.save-btn'),
+      download: $('.download-btn')
+    };
 
-      if(q_counter < 3) {
-        q_counter++;
-      } else {
-        q_counter = 0;
+    this.values = {
+      company: this.elements.selectedCompany.text()
+    };
+
+    this.updateData(this.values.company);
+
+    this.elements.companies.on('click', this.changeActive);
+
+    this.elements.save.on('click', this.saveData);
+
+    this.elements.download.on('click', this.downloadData);
+  },
+
+  // Save data
+  saveData: function() {
+
+    // Unimplemented
+
+  },
+
+  // Download data
+  downloadData: function() {
+
+    var data = Data.data,
+        csvContent = "data:text/csv;charset=utf-8,";
+
+    data.forEach(function(infoArray, index){
+
+       dataString = infoArray.join(",");
+       csvContent += index < infoArray.length ? dataString+ "\n" : dataString;
+
+    }); 
+
+    var encodedUri = encodeURI(csvContent);
+    window.open(encodedUri);
+  },
+
+  // Change active company tab
+  changeActive: function() {
+    Data.elements.companies.removeClass('active');
+    $(this).addClass('active');
+
+    Data.updateData($(this).text());
+  },
+
+  // Update the data table
+  updateData: function(company) {
+
+    if(typeof companies !== 'undefined') {
+
+      Data.data = new Array([]);
+
+      var colHeaders = new Array(),
+          rowHeaders = new Array();
+
+      var minRows = 4 * (moment().year() - 2010),
+          minCols = Object.keys(companies[1].operational).length +
+                    Object.keys(companies[1].user_metrics).length +
+                    Object.keys(companies[1].economics).length;
+
+      var q_counter = 0;
+      for(var counter = 0; counter < minRows; counter++) {
+        Data.data.push(new Array(minCols));
+        rowHeaders.push('Q' + (4 - q_counter) + ' ' + (moment().year() - Math.floor(counter / 4)));
+
+        if(q_counter < 3) {
+          q_counter++;
+        } else {
+          q_counter = 0;
+        }
       }
-    }
 
-    var i = 0;
-    for(var c in companies) {
-      if(companies[c].username == 'Esper') {
+      var i = 0;
+      for(var c in companies) {
+        if(companies[c].username == company) {
 
-        var p;
-        for(p in companies[c].operational) {
+          var p;
+          for(p in companies[c].operational) {
 
-          colHeaders.push(p);
+            colHeaders.push(p);
 
-          for(var o in companies[c].operational[p]) {
+            for(var o in companies[c].operational[p]) {
 
-            var entry = companies[c].operational[p][o],
-                row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
+              var entry = companies[c].operational[p][o],
+                  row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
 
-            console.log(moment().year() - moment(entry.date).year());
+              console.log(moment().year() - moment(entry.date).year());
 
-            data[row][i] = entry.value;
+              Data.data[row][i] = entry.value;
+            }
+            i++;
           }
-          i++;
-        }
 
-        for(p in companies[c].user_metrics) {
+          for(p in companies[c].user_metrics) {
 
-          colHeaders.push(p);
+            colHeaders.push(p);
 
-          for(var o in companies[c].user_metrics[p]) {
+            for(var o in companies[c].user_metrics[p]) {
 
-            var entry = companies[c].user_metrics[p][o],
-                row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
+              var entry = companies[c].user_metrics[p][o],
+                  row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
 
-            console.log(moment().year() - moment(entry.date).year());
+              console.log(moment().year() - moment(entry.date).year());
 
-            data[row][i] = entry.value;
+              Data.data[row][i] = entry.value;
+            }
+            i++;
           }
-          i++;
-        }
 
-        for(p in companies[c].economics) {
+          for(p in companies[c].economics) {
 
-          colHeaders.push(p);
+            colHeaders.push(p);
 
-          for(var o in companies[c].economics[p]) {
+            for(var o in companies[c].economics[p]) {
 
-            var entry = companies[c].economics[p][o],
-                row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
+              var entry = companies[c].economics[p][o],
+                  row = 4 * (moment().year() - moment(entry.date).year()) + (4 - moment(entry.date).quarter());
 
-            console.log(moment().year() - moment(entry.date).year());
+              console.log(moment().year() - moment(entry.date).year());
 
-            data[row][i] = entry.value;
+              Data.data[row][i] = entry.value;
+            }
+            i++;
           }
-          i++;
         }
       }
+      
+      $(Data.elements.data).handsontable({
+        data: Data.data,
+        height: window.innerHeight - (2 * 56),
+        stretchH: 'all',
+        minSpareRows: 1,
+        minRows: minRows,
+        minCols: minCols,
+        colHeaders: colHeaders,
+        rowHeaders: rowHeaders,
+        currentRowClassName: 'currentRow',
+        currentColClassName: 'currentCol',
+        contextMenu: false
+      });
     }
-    
-    $('#data').handsontable({
-      data: data,
-      height: window.innerHeight - (2 * 56),
-      stretchH: 'all',
-      minSpareRows: 1,
-      minRows: minRows,
-      minCols: minCols,
-      colHeaders: colHeaders,
-      rowHeaders: rowHeaders,
-      currentRowClassName: 'currentRow',
-      currentColClassName: 'currentCol',
-      contextMenu: false
-    });
   }
-});
+};

@@ -53,6 +53,13 @@
         }
       }
 
+      .bottom-bar-text {
+        color: #999;
+        font-size: 14px;
+        line-height: 55px;
+        margin-left: 20px;
+      }
+
       button {
         border: none;
         @include border-radius(2px);
