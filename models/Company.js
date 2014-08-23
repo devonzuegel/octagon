@@ -11,7 +11,12 @@ var bcrypt = require('bcrypt'),
     // Hash the password with the salt
     hash = bcrypt.hashSync("my password", salt);
 
-mongoose.connect('mongodb://localhost/test');
+
+var MONGO_URI = 'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039' ||
+                'mongodb://localhost/test';
+
+// Localhost connection
+mongoose.connect(MONGO_URI);
 
 var Schema = mongoose.Schema,
     CompanySchema = new Schema({
@@ -43,8 +48,11 @@ var Schema = mongoose.Schema,
         }
       ],
       operational: {
+        cash: ['object'],
         gross_burn: ['object'],
+        pred_gross_burn: ['object'],
         net_burn: ['object'],
+        pred_net_burn: ['object'],
         revenue: ['object'],
         head_count: ['object']
       },
@@ -107,8 +115,14 @@ function usd(num) {
 /* Given an id & an array, returns the index of the object
  * within the array that has the same id. */
 function indexFromId (id, obj_array) {
+  if (JSON.toString(obj_array) == '[object JSON]')
   for (var i = 0; i < obj_array.length; i++) {
-    if (id == obj_array[i]._id)     return i;
+    console.log(JSON.stringify(obj_array[i], null, 3));
+    console.log('_id: ' + obj_array[i]._id + '    id: ' + id);
+    if (id == obj_array[i].id) {
+      console.log(i);
+      return i;
+    }
   }
 }
 
@@ -194,8 +208,11 @@ module.exports = {
           'permalink': permalink,
           'milestones': [],
           'operational': { 
+            cash: [],
             gross_burn: [], 
+            pred_gross_burn: [],
             net_burn: [], 
+            pred_net_burn: [],
             revenue: [], 
             head_count: []
           },
@@ -252,8 +269,11 @@ module.exports = {
         // save name of array to edit in shorter variable
         var array_name = form.edit_obj_in_array;
         // Find index of obj in company[array_name] with _id from form
+        console.log('form: ' + JSON.stringify(form, null, 3));
         var i = indexFromId(form._id, company[array_name]);
-
+        console.log('company[array_name]: ' + JSON.stringify(company[array_name], null, 3))
+        console.log('i: ' + i);
+        // console.log('company[array_name][i]: ' + JSON.stringify(company[array_name][i], null, 3))
         // Replace obj at company[array_name][i] with new data from form
         for (var f in form) {
           if (f != 'edit_obj_in_array')   company[array_name][i][f] = form[f];
@@ -335,7 +355,7 @@ module.exports = {
                 updated[field][entry] = new_data;
 
                 // Break out of the loop
-                break
+                break;
               }
             }
           }

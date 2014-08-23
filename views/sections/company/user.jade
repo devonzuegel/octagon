@@ -22,6 +22,8 @@
   .col-md-9
     h3 AVG DAU By Quarter
 
+    +block_control("avgDauGraph", "avgDauBar", "avgDauArea", true, false)
+
     //- Grab the data
     script(type="text/javascript").
       var avg_dau_data = !{JSON.stringify(user_metrics.avg_dau)};
@@ -47,6 +49,8 @@
   .col-md-9
     h3 AVG MAU By Quarter
 
+    +block_control("avgMauGraph", "avgMauBar", "avgMauArea", true, false)
+
     //- Grab the data
     script(type="text/javascript").
       var avg_mau_data = !{JSON.stringify(user_metrics.avg_mau)};
@@ -71,6 +75,8 @@
 
   .col-md-9
     h3 Churn By Quarter
+
+    +block_control("churnGraph", "churnBar", "churnArea", true, false)
 
     //- Grab the data
     script(type="text/javascript").

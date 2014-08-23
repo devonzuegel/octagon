@@ -5,18 +5,8 @@ script(type='text/javascript', src="../../bower_components/mixitup/build/jquery.
 script(type="text/javascript", src="../../bower_components/bootstrap/dist/js/bootstrap.custom.js")
 script(type='text/javascript', src="../../bower_components/d3/d3.min.js")
 script(type='text/javascript', src="../../bower_components/c3/c3.min.js")
-
-
-//- Unused Ember scripts
-//- script(type='text/javascript', src="../../bower_components/handlebars/handlebars.min.js")
-//- script(type='text/javascript', src="../../bower_components/ember/ember.js")
-//- script(type='text/javascript', src="../../bower_components/lodash/dist/lodash.min.js")
-//- script(type='text/javascript', src="../../bower_components/ember-charts/dist/ember-charts.js")
-
+script(type='text/javascript', src="../../bower_components/handsontable/dist/jquery.handsontable.full.js")
 script(type='text/javascript', src="../../bower_components/moment/min/moment.min.js")
-
-//- Ember Application
-//- script(type='text/javascript', src='../../js/app.js')
 
 //- Application JS
 script(type='text/javascript', src="../../js/Scroll.js")
@@ -26,6 +16,7 @@ script(type='text/javascript', src="../../js/Portfolio.js")
 script(type='text/javascript', src="../../js/Dropdown.js")
 script(type='text/javascript', src="../../js/Tab.js")
 script(type='text/javascript', src="../../js/Graph.js")
+script(type='text/javascript', src="../../js/Data.js")
 
 
 script.
@@ -43,12 +34,18 @@ script.
     // Initialize Company
     Company.init();
 
+    // Initialize Data section
+    Data.init();
+
     // Initialize sticky tabs plugin
     $('.nav-tabs').stickyTabs();
 
-    // Creating Dropdowns
-    Dropdown.create('#owner-dropdown');
-    Dropdown.create('#order-dropdown');
+    // Initialize tooltips
+    // Currently commented out
+    //- $('.col-md-3 > .edit-btn').tooltip({
+    //-   placement: 'right',
+    //-   title: 'Add new metric'
+    //- });
 
     // Highlight label of input field on focus
     $('input[type=text], input[type=password], textarea').on('blur', function() {

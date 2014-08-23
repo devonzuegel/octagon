@@ -47,7 +47,6 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
-
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.status(404);

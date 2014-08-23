@@ -19,7 +19,7 @@ var sort_by_name = function(a, b) {
   var x = a.name.toLowerCase(),
       y = b.name.toLowerCase();
   return (x < y) ? -1 : ((x > y) ? 1 : 0);  
-}
+};
 
 
 router.get('/', function(req, res) {
@@ -41,8 +41,8 @@ router.get('/', function(req, res) {
             owners: all_owners.sort(sort_by_name),
             tab: 'companies',
             username: req.session.username,
-            is_admin: true
-          })
+            is_admin: true,
+          });
         });
       });
     }, 
@@ -63,7 +63,7 @@ router.post('/add', function(req, res) {
     if (err)    return done(err);
 
     // Search returns empty
-    if (c.length == 0) {
+    if (c.length === 0) {
       // Only add a company if the search returns empty
       CompanyModel.add(
         form.username,
@@ -92,7 +92,7 @@ router.get('/:permalink', function(req, res) {
   privileges.require_privileges(
     req, res, 
     false, // don't include flash error messages
-    admin_fn = function() { return }, // if admin, pass & continue on
+    admin_fn = function() { return; }, // if admin, pass & continue on
     user_fn = function() {
       // if authenticated as different user, don't allow access ...
       if (session_link != link)  res.redirect('/portfolio/' + session_link);
@@ -104,8 +104,8 @@ router.get('/:permalink', function(req, res) {
     if (err)    return done(err);
     
     // not a valid company >> doesn't have a profile
-    if (company == null  ||  link == 'admin') {
-        req.flash('error', 'That company doesn\'t exist! Here are your options:')
+    if (company === null  ||  link == 'admin') {
+        req.flash('error', 'That company doesn\'t exist! Here are your options:');
         return res.redirect('/portfolio/');
 
     // is a valid company with a profile
@@ -142,7 +142,7 @@ router.post('/:permalink/edit', function(req, res) {
     req, 
     res, 
     false, // don't include flash error messages
-    admin_fn = function() { return }, // if admin, pass & continue on
+    admin_fn = function() { return; }, // if admin, pass & continue on
     user_fn = function() {
       // if authenticated as different user, don't allow access ...
       if (session_link != link)  res.redirect('/portfolio/' + session_link);
@@ -164,7 +164,7 @@ router.post('/:permalink/editMetrics', function(req, res) {
     req, 
     res, 
     false, // don't include flash error messages
-    admin_fn = function() { return }, // if admin, pass & continue on
+    admin_fn = function() { return; }, // if admin, pass & continue on
     user_fn = function() {
       // if authenticated as different user, don't allow access ...
       if (session_link != link)  res.redirect('/portfolio/' + session_link);

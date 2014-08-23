@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 @import url(../../bower_components/c3/c3.css);
+@import url(../../bower_components/handsontable/dist/jquery.handsontable.custom.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,700italic,900,900italic);
 .hidden {
   display: none; }
@@ -118,11 +119,13 @@ body {
 
 .dashboard-container,
 .portfolio-content,
-.settings-container {
+.settings-container,
+.data-content {
   min-height: 100%; }
   .dashboard-container:after,
   .portfolio-content:after,
-  .settings-container:after {
+  .settings-container:after,
+  .data-content:after {
     content: '';
     display: block; }
 
@@ -176,6 +179,21 @@ input:-webkit-autofill {
   content: "\f046";
   font-family: FontAwesome;
   vertical-align: middle; }
+
+[type=radio] {
+  display: none; }
+
+[type=radio] + label:before {
+  content: "\f10c";
+  font-family: FontAwesome;
+  margin-right: 6px; }
+
+[type=radio]:checked + label:before {
+  content: "\f192";
+  font-family: FontAwesome; }
+
+[type="radio"]:checked + label {
+  color: #333 !important; }
 
 .dropdown {
   display: inline-block; }
@@ -257,7 +275,7 @@ input:-webkit-autofill {
   margin: 0 auto;
   z-index: 10000; }
   .modal .modal-dialog {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.97);
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -295,6 +313,7 @@ input:-webkit-autofill {
         .modal .modal-dialog .modal-content .modal-body input[type=text],
         .modal .modal-dialog .modal-content .modal-body input[type=password],
         .modal .modal-dialog .modal-content .modal-body textarea {
+          background: transparent;
           border-bottom: 1px solid #ddd;
           color: #666;
           height: 33px;
@@ -387,7 +406,7 @@ input:-webkit-autofill {
   margin: 4px; }
 .col-md-3 ::-webkit-scrollbar-corner,
 .modal ::-webkit-scrollbar-corner {
-  background: #000; }
+  background: #fff; }
 
 .auth-bkg {
   background-color: #222222; }
@@ -476,6 +495,70 @@ input:-webkit-autofill {
         line-height: 24px;
         padding-top: 30px;
         text-align: center; }
+
+.data-bkg {
+  background-color: white;
+  overflow: hidden; }
+  .data-bkg .data-content {
+    padding-top: 56px; }
+    .data-bkg .data-content #data {
+      color: #666;
+      font-size: 14px;
+      font-weight: 400;
+      position: relative;
+      width: 100%; }
+      .data-bkg .data-content #data .currentRow,
+      .data-bkg .data-content #data .currentCol {
+        background-color: #f7f7f7; }
+    .data-bkg .data-content .data-bottom-bar {
+      background-color: #ddd;
+      border-top: 1px solid #ccc;
+      height: 55px;
+      width: 100%; }
+      .data-bkg .data-content .data-bottom-bar ul.page-tabs {
+        display: inline-block; }
+        .data-bkg .data-content .data-bottom-bar ul.page-tabs li {
+          border-top: 3px solid transparent;
+          color: #999;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 49px;
+          margin-left: 20px;
+          text-transform: uppercase; }
+          .data-bkg .data-content .data-bottom-bar ul.page-tabs li:hover {
+            color: #666; }
+        .data-bkg .data-content .data-bottom-bar ul.page-tabs .active {
+          border-top-color: #8a64d1;
+          color: #8a64d1; }
+          .data-bkg .data-content .data-bottom-bar ul.page-tabs .active:hover {
+            color: #8a64d1; }
+      .data-bkg .data-content .data-bottom-bar .bottom-bar-text {
+        color: #999;
+        font-size: 14px;
+        line-height: 55px;
+        margin-left: 20px; }
+      .data-bkg .data-content .data-bottom-bar button {
+        border: none;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        background-clip: padding-box;
+        color: #fff;
+        height: 35px;
+        float: right;
+        font-size: 12px;
+        font-weight: 400;
+        margin: 10px 20px 0 20px;
+        padding: 0 20px;
+        text-transform: uppercase; }
+      .data-bkg .data-content .data-bottom-bar .save-btn {
+        background-color: #1ebba6;
+        border-bottom: 1px solid #178f7f; }
+      .data-bkg .data-content .data-bottom-bar .download-btn {
+        background-color: #aaa;
+        border-bottom: 1px solid #888; }
 
 .portfolio-bkg {
   background-color: #dddddd; }
@@ -688,6 +771,17 @@ input:-webkit-autofill {
       .company-bkg .company-content .tab-content .tab-pane > div h3 {
         display: inline-block;
         margin: 0 0 10px 0; }
+      .company-bkg .company-content .tab-content .tab-pane > div .block-control {
+        line-height: 20px;
+        position: absolute;
+        right: 10px;
+        top: 0; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-control label {
+          color: #999;
+          display: inline-block;
+          margin-left: 20px; }
+          .company-bkg .company-content .tab-content .tab-pane > div .block-control label:hover {
+            color: #666; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-edit {
         color: #999;
         line-height: 20px;
@@ -716,22 +810,48 @@ input:-webkit-autofill {
         .company-bkg .company-content .tab-content .tab-pane > div .block-info h4 {
           font-weight: 500; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-info > div {
-          margin: 0 0 20px 0; }
+          margin: 0 0 10px 0; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-info > div:last-child {
           margin-bottom: 0px; }
-        .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone {
+        .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item {
           margin-bottom: 20px;
           position: relative; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-info {
+          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info {
             display: inline-block;
             min-width: 400px; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-info .date {
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info img {
+              border-radius: 100px;
+              -moz-border-radius: 100px;
+              -webkit-border-radius: 100px;
+              background-clip: padding-box;
+              float: left;
+              height: 80px;
+              margin-right: 20px; }
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .placeholder-img {
+              background-color: #eee;
+              border-radius: 100px;
+              -moz-border-radius: 100px;
+              -webkit-border-radius: 100px;
+              background-clip: padding-box;
+              float: left;
+              height: 80px;
+              margin-right: 20px;
+              width: 80px; }
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-header {
+              font-weight: 500;
+              line-height: 100%;
+              margin: 10px 0; }
+              .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-header span {
+                font-weight: 400; }
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-date {
               color: #999;
-              font-size: 12px;
+              font-size: 14px;
               line-height: 100%; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-info .description {
-              font-size: 13px; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-edit {
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-text {
+              font-size: 14px;
+              line-height: 100%;
+              margin-top: 10px; }
+          .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-edit {
             color: #999;
             font-size: 16px;
             padding: 0 10px;
@@ -739,7 +859,7 @@ input:-webkit-autofill {
             top: 0;
             right: 0;
             vertical-align: middle; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.milestone-list .milestone .milestone-edit:hover {
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-edit:hover {
               color: #8a64d1; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-num {
         font-size: 22px;
@@ -749,8 +869,14 @@ input:-webkit-autofill {
         padding: 20px; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-table {
         max-height: 300px;
-        overflow-y: scroll; }
+        overflow-y: scroll;
+        padding: 10px !important; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section {
+          border-radius: 2px;
+          -moz-border-radius: 2px;
+          -webkit-border-radius: 2px;
+          background-clip: padding-box;
+          padding: 10px;
           position: relative; }
           .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section .value {
             color: #666;
@@ -763,36 +889,17 @@ input:-webkit-autofill {
           .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section .edit-btn {
             color: #999;
             position: absolute;
-            top: 2px;
-            right: 0; }
+            top: 10px;
+            right: 10px; }
+        .company-bkg .company-content .tab-content .tab-pane > div .block-table .highlighted-section {
+          background-color: #fff5cf;
+          border-bottom: 1px solid #ffe7c2; }
     .company-bkg .company-content .tab-content .overview-pane > div .block-info {
       min-height: 350px; }
     .company-bkg .company-content .tab-content .graph-pane .col-md-3,
     .company-bkg .company-content .tab-content .graph-pane .col-md-6,
     .company-bkg .company-content .tab-content .graph-pane .col-md-9 {
       height: 350px; }
-
-.col-md-6 > .edit-btn {
-  opacity: 0;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
-.col-md-6:hover .edit-btn.block-edit {
-  opacity: 1;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
-
-.milestone .edit-btn, .company-header .edit-btn {
-  opacity: 0;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
-.milestone:hover .edit-btn, .company-header:hover .edit-btn {
-  opacity: 1;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
 
 .edit-btn {
   cursor: pointer;
@@ -866,6 +973,9 @@ input:-webkit-autofill {
   -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
 
+.toolbar-padding {
+  padding: 0 20px; }
+
 .toolbar-dark {
   background: #222222 !important; }
   .toolbar-dark span {
@@ -911,7 +1021,8 @@ input:-webkit-autofill {
       color: #999;
       font-size: 14px;
       font-weight: 500;
-      line-height: 33px; }
+      line-height: 33px;
+      margin-left: 30px; }
       .auth-footer .footer-nav .footer-links a:hover,
       .footer .footer-nav .footer-links a:hover {
         color: #fff; }

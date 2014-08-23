@@ -74,7 +74,7 @@ include ../mixins/edit_modal_mixin
   //- * company in the db.
   input(type='hidden' name='edit_obj_in_array' value='milestones')
 
-  input(type='hidden' name='_id' id='_id')
+  input(type='hidden' name='_id' id='milestone_id')
 
   div.small-label Title
   input(placeholder='Add title'  name='title'  id='title'  autocomplete='off'  type='text')
@@ -120,7 +120,7 @@ include ../mixins/edit_modal_mixin
   //- * company in the db.
   input(type='hidden' name='edit_obj_in_array' value='team') 
 
-  input(type='hidden' name='_id' id='_id')
+  input(type='text' name='_id' id='team_member_id')
 
   div.small-label Full name
   input(placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off'  type='text')

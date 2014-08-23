@@ -3,11 +3,12 @@ block sub_layout
   body.company-bkg
     
     - function dataEntered(data) {
-    -   return data.length !== 0 &&
-    -          moment(data[0].timestamp).quarter() === moment().quarter() &&
-    -          moment(data[0].timestamp).year() === moment.year();
+    -   return data.length !== 0;
     - }
     
+    //- Mixins
+    include ../mixins/block_control_mixin
+
     //- Edit modals
     include ../modals/edit_company_overview
     include ../modals/edit_company_operational

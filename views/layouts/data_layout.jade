@@ -1,0 +1,12 @@
+extends ../layout
+block sub_layout
+  body.data-bkg
+
+   .toolbar.toolbar-absolute.toolbar-dark.toolbar-padding
+      include ../includes/toolbar.jade
+
+   .data-content
+      block content
+
+   .footer
+      include ../includes/footer.jade

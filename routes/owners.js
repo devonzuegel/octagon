@@ -1,24 +1,24 @@
 /* requires */
-	// require (general)
-	var express = require('express'),
-			router = express.Router(),
-		 	app = require('../app.js');
+// require (general)
+var express = require('express'),
+		router = express.Router(),
+	 	app = require('../app.js');
 
-	// hash/crypto stuff
-	var bcrypt = require('bcryptjs'),
-	    salt = bcrypt.genSaltSync(10),  
-	    hash = bcrypt.hashSync("B4c0/\/", salt);
+// hash/crypto stuff
+var bcrypt = require('bcryptjs'),
+    salt = bcrypt.genSaltSync(10),  
+    hash = bcrypt.hashSync("B4c0/\/", salt);
 
-	// require (authentication stuff)
-	var CompanyModel = require('../models/Company.js'),
-		  Companies = CompanyModel.Companies,
-	     passport = CompanyModel.passport,
-	     LocalStrategy = require('passport-local').Strategy,
-		  privileges = require('./privileges.js');
+// require (authentication stuff)
+var CompanyModel = require('../models/Company.js'),
+	  Companies = CompanyModel.Companies,
+    passport = CompanyModel.passport,
+    LocalStrategy = require('passport-local').Strategy,
+	  privileges = require('./privileges.js');
 
-	// require (owner stuff)
-	var OwnerModel = require('../models/Owner.js'),
-		  Owners = OwnerModel.Owners;
+// require (owner stuff)
+var OwnerModel = require('../models/Owner.js'),
+	  Owners = OwnerModel.Owners;
 
 
 router.post('/add', function(req, res) {

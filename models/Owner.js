@@ -18,9 +18,10 @@ var passport = require('passport'),
     Owners = mongoose.model('owners', OwnerSchema);
 
 /* Given an owner, this function iterates through each company & checks if they
- * are on the owner's list of companies. If a company IS on the owner's list but the
+ * are on the owner's 
+ companies. If a company IS on the owner's list but the
  * owner IS NOT on the company's list, it adds the owner to the list. If the company
- * IS NOT on the owner's list but the owner IS on the company's, the owner is removed
+ * IS NOT on the owner's list but the owner is on the company's, the owner is removed
  * from the company's list. */
 function update_companies_owners(o) {
   var owners_companies = o.companies;

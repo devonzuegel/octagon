@@ -1,25 +1,25 @@
 /* requires */
-	// require (general)
-	var express = require('express'),
-	router = express.Router(),
-	app = require('../app.js');
+// require (general)
+var express = require('express'),
+		router = express.Router(),
+		app = require('../app.js');
 
-	// hash/crypto stuff
-	var bcrypt = require('bcryptjs'),
-	salt = bcrypt.genSaltSync(10),  
-	hash = bcrypt.hashSync("B4c0/\/", salt);
+// hash/crypto stuff
+var bcrypt = require('bcryptjs'),
+		salt = bcrypt.genSaltSync(10),  
+		hash = bcrypt.hashSync("B4c0/\/", salt);
 
-	// require (authentication stuff)
-	var CompanyModel = require('../models/Company.js'),
-	Companies = CompanyModel.Companies,
-	passport = CompanyModel.passport,
-	bcrypt = CompanyModel.bcrypt,
-	LocalStrategy = require('passport-local').Strategy,
-	privileges = require('./privileges.js');
+// require (authentication stuff)
+var CompanyModel = require('../models/Company.js'),
+		Companies = CompanyModel.Companies,
+		passport = CompanyModel.passport,
+		bcrypt = CompanyModel.bcrypt,
+		LocalStrategy = require('passport-local').Strategy,
+		privileges = require('./privileges.js');
 
-	// require (owner stuff)
-	var OwnerModel = require('../models/Owner.js'),
-	Owners = OwnerModel.Owners;
+// require (owner stuff)
+var OwnerModel = require('../models/Owner.js'),
+		Owners = OwnerModel.Owners;
 
 // home page
 router.get('/', function(req, res) {
@@ -27,25 +27,28 @@ router.get('/', function(req, res) {
 });
 
 // support page
-router.get('/support', function(req, res) {
+router.get('/data', function(req, res) {
 
 		privileges.require_privileges(
 		req, res, 
 		false,  // Do not include flash error msgs
 		admin_fn = function() {
-			res.render('support', {
-				title: 'Support', 
-				errors: req.flash('error'),
-				username: req.session.username,
-				is_admin: true
+			Companies.find({}, function(err, all_companies) {
+				res.render('data', {
+					title: 'Data', 
+					errors: req.flash('error'),
+					username: req.session.username,
+					is_admin: true,
+					all_companies: all_companies.sort()
+				});
 			});
 		}, 
 		user_fn = function() { 
-			res.render('support', {
-				title: 'Support', 
+			res.render('data', {
+				title: 'Data', 
 				errors: req.flash('error'),
 				username: req.session.username,
-				is_admin: false
+				is_admin: false,
 			});
     }
   );

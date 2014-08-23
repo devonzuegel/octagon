@@ -56,6 +56,10 @@
   @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.5));
 }
 
+.toolbar-padding {
+  padding: 0 20px;
+}
+
 .toolbar-dark {
   background: $toolbar-dark-bkg !important;
 

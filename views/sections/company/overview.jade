@@ -69,10 +69,9 @@
 
     .block-edit(data-toggle="modal" data-target="#add-milestone")
       i.fa.fa-plus.fa-right
-      | Add milestone
 
     .block-info
-      ul.milestone-list
+      ul.block-list
         //- TODO sort by date (most recent first)
         for m in c.milestones.sort(chronological).reverse()
           li.milestone
@@ -81,7 +80,17 @@
               .date #{moment(m.date).format('DD MMMM YYYY')}
               .description #{m.description}
             a.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
-              i.fa.fa-pencil edit
+              i.fa.fa-pencil
+        //- FROM MERGE CONFLICT-- wasn't sure which would break
+          //- li.list-item
+          //-   .item-info
+          //-     .item-header #{m.title}
+          //-     .item-date #{moment(m.date).format('DD MMMM YYYY')}
+          //-     .item-text #{m.description}
+          //-   a.item-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
+          //-     i.fa.fa-pencil
+
+
 
     script.
       $(document).ready(function() {
@@ -90,15 +99,15 @@
         for (var i = 0; i < milestones.length; i++) {
           /* Iterate through milestones' edit btns: onclick, the form is
            * populated with that owner's info */
-          (function(n) { // variable binding
+          (function(n) {
             var m = milestones[i];
             $('#edit-'+m._id).click(function() {
               $('#title').val(m.title);
               $('#date').val(moment(m.date).format('DD MMMM YYYY'));
               $('#description').val(m.description);
-              $('#_id').val(m._id);
+              $('#milestone_id').val(m._id);
             });
-          }(i)) // end of variable binding
+          }(i))
         }
       });
 
@@ -109,22 +118,23 @@
 
     .block-edit(data-toggle="modal" data-target="#add-team-member")
       i.fa.fa-plus.fa-right
-      | Add team member
 
     .block-info
-      ul.team-list
+      ul.block-list
         //- TODO sort by date (most recent first)
         for m in c.team.sort(chronological).reverse()
-          li.milestone
-            .team-member-info
+          li.list-item
+            .item-info
               if m.img_path
                 img(src=m.img_path)
-              .full_name #{m.full_name}
-              .role #{m.role}
-              .date_joined Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
-              .email: a(href='mailto:'+m.email) #{m.email}
-              a.team-member-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-'+m._id)
-                i.fa.fa-pencil edit
+              else
+                div.placeholder-img
+              .item-header #{m.full_name} - 
+                span #{m.role}
+              .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
+              .item-text: a(href='mailto:' + m.email) #{m.email}
+            .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
+              i.fa.fa-pencil
 
     script.
       $(document).ready(function() {
@@ -133,7 +143,7 @@
         for (var i = 0; i < team.length; i++) {
           /* Iterate through team member edit btns: onclick, the form is
            * populated with that owner's info */
-          (function(n) { // variable binding
+          (function(n) {
             var m = team[i];
             console.log(JSON.stringify(m, null, 3));
             $('#edit-'+m._id).click(function() {
@@ -142,9 +152,10 @@
               $('#role').val(m.role);
               $('#email').val(m.email);
               $('#full_name').val(m.full_name);
-              $('#_id').val(m._id);
+              $('#team_member_id').val(m._id);
+              console.log('m._id: ' + m._id);
             });
-          }(i)) // end of variable binding
+          }(i))
         }
       });
 

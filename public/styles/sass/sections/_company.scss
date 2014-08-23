@@ -117,6 +117,23 @@
             margin: 0 0 10px 0;
           }
 
+          .block-control {
+            line-height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 0;
+
+            label {
+              color: #999;
+              display: inline-block;
+              margin-left: 20px;
+
+              &:hover {
+                color: #666;
+              }
+            }
+          }
+
           .block-edit {
             color: #999;
             line-height: 20px;
@@ -153,39 +170,63 @@
             }
 
             > div {
-              margin: 0 0 20px 0;
+              margin: 0 0 10px 0;
             }
 
             > div:last-child {
               margin-bottom: 0px;
             }
 
-            ul.milestone-list {
+            ul.block-list {
 
-              .milestone {
+              .list-item {
                 margin-bottom: 20px;
                 position: relative;
 
-                .milestone-info {
+                .item-info {
                   display: inline-block;
                   min-width: 400px;
 
-                  .title {
-
+                  img {
+                    @include border-radius(100px);
+                    float: left;
+                    height: 80px;
+                    margin-right: 20px;
                   }
 
-                  .date {
+                  .placeholder-img {
+                    background-color: #eee;
+                    @include border-radius(100px);
+                    float: left;
+                    height: 80px;
+                    margin-right: 20px;
+                    width: 80px;
+                  }
+
+                  .item-header {
+                    font-weight: 500;
+                    line-height: 100%;
+                    margin: 10px 0;
+
+                    span {
+                      font-weight: 400;
+                    }
+                  }
+
+                  .item-date {
                     color: #999;
-                    font-size: 12px;
+                    font-size: 14px;
                     line-height: 100%;
                   }
 
-                  .description {
-                    font-size: 13px;
+                  .item-text {
+                    font-size: 14px;
+                    line-height: 100%;
+                    margin-top: 10px;
                   }
                 }
 
-                .milestone-edit {
+                .item-edit {
                   color: #999;
                   font-size: 16px;
                   padding: 0 10px;
@@ -215,8 +256,11 @@
           .block-table {
             max-height: 300px;
             overflow-y: scroll;
+            padding: 10px !important;
 
             .table-section {
+              @include border-radius(2px);
+              padding: 10px;
               position: relative;
 
               .value {
@@ -234,10 +278,16 @@
               .edit-btn {
                 color: #999;
                 position: absolute;
-                top: 2px;
-                right: 0;
+                top: 10px;
+                right: 10px;
               }
             }
+
+            .highlighted-section {
+              background-color: #fff5cf;
+              border-bottom: 1px solid #ffe7c2;
+            }
+
           }
         }
 
@@ -260,16 +310,6 @@
       }
     }
   }
-}
-
-.col-md-6 {
-  > .edit-btn {  @include fade-out;  }
-  &:hover .edit-btn.block-edit {  @include fade-in;  }
-}
-
-.milestone, .company-header {
-  .edit-btn {  @include fade-out;  }
-  &:hover .edit-btn {  @include fade-in;  }
 }
 
 .edit-btn {

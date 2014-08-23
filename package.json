@@ -18,26 +18,38 @@
     "PYTHON": "/opt/local/bin/python2.7"
   },
   "dependencies": {
+    "bcrypt": "0.8.0",
     "bcrypt-nodejs": "latest",
+    "bcryptjs": "0.7.10",
     "blueimp-file-upload-expressjs": "^0.2.9",
     "body-parser": "~1.0.0",
+    "coffee-script": "^1.7.1",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "express": "~4.2.0",
     "express-session": "1.7.6",
+    "hooks": "0.3.2",
     "jade": "~1.3.0",
-    "morgan": "~1.0.0",
     "moment": "~2.8.1",
+    "mongodb": "^1.4.8",
+    "mongoose": "3.8.15",
+    "morgan": "~1.0.0",
+    "mpath": "0.2.1",
+    "mquery": "1.0.0",
+    "ms": "0.6.2",
+    "passport": "0.2.0",
+    "passport-local": "1.0.0",
+    "request": "2.40.0",
     "static-favicon": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-contrib-cssmin": "0.10.0",
     "grunt-contrib-jshint": "0.10.0",
     "grunt-contrib-nodeunit": "0.4.1",
-    "grunt-contrib-uglify": "0.5.0",
     "grunt-contrib-sass": "0.4.1",
-    "grunt-contrib-cssmin": "0.10.0",
+    "grunt-contrib-uglify": "0.5.0",
     "grunt-contrib-watch": "0.5.3"
   }
 }
