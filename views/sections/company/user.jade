@@ -2,83 +2,95 @@
   .col-md-12.pane-header
     include quarter_info.jade
 
-  .col-md-3
-    h3 AVG DAU
+  .row.bottom-line
+    .col-md-2
+      h3 AVG DAU
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-dau")
-      i.fa.fa-plus
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-dau")
+        i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(user_metrics.avg_dau)
-        for data in user_metrics.avg_dau.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-user-dau")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-info.block-table
+        if dataEntered(user_metrics.avg_dau)
+          for data in user_metrics.avg_dau.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-user-dau")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-  .col-md-9
-    h3 AVG DAU By Quarter
+    .col-md-10
+      h3 AVG DAU By Quarter
 
-    +block_control("avgDauGraph", "avgDauBar", "avgDauArea", true, false)
+      +block_control("avgDauGraph", "avgDauBar", "avgDauArea", true, false)
 
-    //- Grab the data
-    script(type="text/javascript").
-      var avg_dau_data = !{JSON.stringify(user_metrics.avg_dau)};
-    .block-info.block-graph:.graph-padding#avgDauGraph
+      //- Grab the data
+      script(type="text/javascript").
+        var avg_dau_data = !{JSON.stringify(user_metrics.avg_dau)};
+      - if (user_metrics.avg_dau.length > 0)
+        .block-info.block-graph:.graph-padding#avgDauGraph
+      - else
+        .block-info.block-table.faded No data available
 
-  .col-md-3
-    h3 AVG MAU
+  .row.bottom-line
+    .col-md-2
+      h3 AVG MAU
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-mau")
-      i.fa.fa-plus
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-mau")
+        i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(user_metrics.avg_mau)
-        for data in user_metrics.avg_mau.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-user-mau")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-info.block-table
+        if dataEntered(user_metrics.avg_mau)
+          for data in user_metrics.avg_mau.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-user-mau")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-  .col-md-9
-    h3 AVG MAU By Quarter
+    .col-md-10
+      h3 AVG MAU By Quarter
 
-    +block_control("avgMauGraph", "avgMauBar", "avgMauArea", true, false)
+      +block_control("avgMauGraph", "avgMauBar", "avgMauArea", true, false)
 
-    //- Grab the data
-    script(type="text/javascript").
-      var avg_mau_data = !{JSON.stringify(user_metrics.avg_mau)};
-    .block-info.block-graph:.graph-padding#avgMauGraph
+      //- Grab the data
+      script(type="text/javascript").
+        var avg_mau_data = !{JSON.stringify(user_metrics.avg_mau)};
+      - if (user_metrics.avg_mau.length > 0)
+        .block-info.block-graph:.graph-padding#avgMauGraph
+      - else
+        .block-info.block-table.faded No data available
 
-  .col-md-3
-    h3 Churn
+  .row.bottom-line
+    .col-md-2
+      h3 Churn
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-churn")
-      i.fa.fa-plus
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-user-churn")
+        i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(user_metrics.churn)
-        for data in user_metrics.churn.sort(chronological).reverse()
-          .table-section
-            .value #{data.value}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-user-churn")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-info.block-table
+        if dataEntered(user_metrics.churn)
+          for data in user_metrics.churn.sort(chronological).reverse()
+            .table-section
+              .value #{data.value}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-user-churn")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-  .col-md-9
-    h3 Churn By Quarter
+    .col-md-10
+      h3 Churn By Quarter
 
-    +block_control("churnGraph", "churnBar", "churnArea", true, false)
+      +block_control("churnGraph", "churnBar", "churnArea", true, false)
 
-    //- Grab the data
-    script(type="text/javascript").
-      var churn_data = !{JSON.stringify(user_metrics.churn)};
-    .block-info.block-graph:.graph-padding#churnGraph
+      //- Grab the data
+      script(type="text/javascript").
+        var churn_data = !{JSON.stringify(user_metrics.churn)};
+      - if (user_metrics.churn.length)
+        .block-info.block-graph:.graph-padding#churnGraph
+      - else
+        .block-info.block-table.faded No data available

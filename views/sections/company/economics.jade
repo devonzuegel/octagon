@@ -2,137 +2,160 @@
   .col-md-12.pane-header
     include quarter_info.jade
 
-  .col-md-3
-    h3 LTV
+  .row.bottom-line
+    .col-md-2
+      h3 LTV
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
-      i.fa.fa-plus
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
+        i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(economics.ltv)
-        for data in economics.ltv.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-info.block-table
+        if dataEntered(economics.ltv)
+          for data in economics.ltv.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-economics-ltv")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-  .col-md-9
-    h3 LTV By Quarter
+    .col-md-10
+      h3 LTV By Quarter
 
-    +block_control("ltvGraph", "ltvBar", "ltvArea", true, false)
+      +block_control("ltvGraph", "ltvBar", "ltvArea", true, false)
 
-    //- Grab the data
-    script(type="text/javascript").
-      var ltv_data = !{JSON.stringify(economics.ltv)};
-    .block-info.block-graph:.graph-padding#ltvGraph
+      //- Grab the data
+      script(type="text/javascript").
+        var ltv_data = !{JSON.stringify(economics.ltv)};
+      - if (economics.ltv.length > 0)
+        .block-info.block-graph:.graph-padding#ltvGraph
+      - else
+        .block-info.block-table.faded No data available
 
-  .col-md-3
-    h3 Lifetime Est.
+  .row.bottom-line
+    .col-md-2
+      h3 Lifetime Est.
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
-      i.fa.fa-plus
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
+        i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(economics.lifetime_est)
-        for data in economics.lifetime_est.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-info.block-table
+        if dataEntered(economics.lifetime_est)
+          for data in economics.lifetime_est.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-economics-lifetime-est")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-  .col-md-9
-    h3 Lifetime Est. By Quarter
+    .col-md-10
+      h3 Lifetime Est. By Quarter
 
-    +block_control("lifetimeEstGraph", "lifetimeEstBar", "lifetimeEstArea", true, false)
+      +block_control("lifetimeEstGraph", "lifetimeEstBar", "lifetimeEstArea", true, false)
 
-    //- Grab the data
-    script(type="text/javascript").
-      var lifetime_est_data = !{JSON.stringify(economics.lifetime_est)};
-    .block-info.block-graph:.graph-padding#lifetimeEstGraph
+      //- Grab the data
+      script(type="text/javascript").
+        var lifetime_est_data = !{JSON.stringify(economics.lifetime_est)};
 
-  .col-md-3
-    h3 CAC
+      - if (economics.lifetime_est.length > 0)
+        .block-info.block-graph:.graph-padding#lifetimeEstGraph
+      - else
+        .block-info.block-table.faded No data available
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
-      i.fa.fa-plus
+  .row.bottom-line
+    .col-md-2
+      h3 CAC
 
-    .block-info.block-table
-      if dataEntered(economics.cac)
-        for data in economics.cac.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
+        i.fa.fa-plus
 
-  .col-md-9
-    h3 CAC By Quarter
+      .block-info.block-table
+        if dataEntered(economics.cac)
+          for data in economics.cac.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-economics-cac")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-    +block_control("cacGraph", "cacBar", "cacArea", true, false)
+    .col-md-10
+      h3 CAC By Quarter
 
-    //- Grab the data
-    script(type="text/javascript").
-      var cac_data = !{JSON.stringify(economics.cac)};
-    .block-info.block-graph:.graph-padding#cacGraph
+      +block_control("cacGraph", "cacBar", "cacArea", true, false)
 
-  .col-md-3
-    h3 ASP
+      //- Grab the data
+      script(type="text/javascript").
+        var cac_data = !{JSON.stringify(economics.cac)};
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
-      i.fa.fa-plus
+      - if (economics.cac.length > 0)
+        block-info.block-graph:.graph-padding#cacGraph
+      - else
+        .block-info.block-table.faded No data available
 
-     .block-info.block-table
-      if dataEntered(economics.asp)
-        for data in economics.asp.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
-              i.fa.fa-pencil
-      else
-        | Add data
+  .row.bottom-line
+    .col-md-2
+      h3 ASP
 
-  .col-md-9
-    h3 ASP By Quarter
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
+        i.fa.fa-plus
 
-    +block_control("aspGraph", "aspBar", "aspArea", true, false)
+       .block-info.block-table
+        if dataEntered(economics.asp)
+          for data in economics.asp.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-economics-asp")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-    //- Grab the data
-    script(type="text/javascript").
-      var asp_data = !{JSON.stringify(economics.asp)};
-    .block-info.block-graph:.graph-padding#aspGraph
+    .col-md-10
+      h3 ASP By Quarter
 
-  .col-md-3
-    h3 GM %
+      +block_control("aspGraph", "aspBar", "aspArea", true, false)
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
-      i.fa.fa-plus
+      //- Grab the data
+      script(type="text/javascript").
+        var asp_data = !{JSON.stringify(economics.asp)};
+      
+      - if (economics.asp.length > 0)
+        .block-info.block-graph:.graph-padding#aspGraph
+      - else
+        .block-info.block-table.faded No data available
 
-    .block-info.block-table
-      if dataEntered(economics.gm_percentage)
-        for data in economics.gm_percentage.sort(chronological).reverse()
-          .table-section
-            .value #{data.value}%
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
-              i.fa.fa-pencil
-      else
-        | Add data
+  .row.bottom-line
+    .col-md-2
+      h3 GM %
 
-  .col-md-9
-    h3 GM % By Quarter
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
+        i.fa.fa-plus
 
-    +block_control("gmPercentageGraph", "gmPercentageBar", "gmPercentageArea", true, false)
+      .block-info.block-table
+        if dataEntered(economics.gm_percentage)
+          for data in economics.gm_percentage.sort(chronological).reverse()
+            .table-section
+              .value #{data.value}%
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-economics-gm")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-    //- Grab the data
-    script(type="text/javascript").
-      var gm_percentage_data = !{JSON.stringify(economics.gm_percentage)};
-    .block-info.block-graph:.graph-padding#gmPercentageGraph
+    .col-md-10
+      h3 GM % By Quarter
+
+      +block_control("gmPercentageGraph", "gmPercentageBar", "gmPercentageArea", true, false)
+
+      //- Grab the data
+      script(type="text/javascript").
+        var gm_percentage_data = !{JSON.stringify(economics.gm_percentage)};
+      - if (economics.gm_percentage.length > 0)
+        .block-info.block-graph:.graph-padding#gmPercentageGraph
+      - else
+        .block-info.block-table.faded No data available
