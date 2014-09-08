@@ -114,6 +114,7 @@ h3 {
   text-transform: uppercase; }
 
 .faded {
+  font-style: italic;
   color: #bbb !important; }
 
 html,
@@ -752,7 +753,7 @@ input:-webkit-autofill {
     .company-bkg .company-content .tab-content .tab-pane .pane-header {
       border-bottom: 1px solid #ccc;
       margin-bottom: 30px;
-      padding-bottom: 30px; }
+      padding-bottom: 20px; }
       .company-bkg .company-content .tab-content .tab-pane .pane-header .quarter-info {
         display: inline-block;
         font-size: 18px;
@@ -766,7 +767,7 @@ input:-webkit-autofill {
           font-weight: 500;
           margin: 0 5px; }
     .company-bkg .company-content .tab-content .tab-pane > div {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       position: relative; }
       .company-bkg .company-content .tab-content .tab-pane > div h2 {
         display: inline-block;
@@ -921,14 +922,17 @@ input:-webkit-autofill {
 
 .bottom-line {
   border-bottom: 1px solid #ccc;
-  padding-bottom: 70px; }
+  padding-bottom: 30px;
+  margin-bottom: 30px; }
+  .bottom-line .col-md-2, .bottom-line .col-md-8, .bottom-line .col-md-10 {
+    padding-top: 10px; }
 
 svg {
   width: 100%; }
 
 .graph-padding::before {
   height: 100%;
-  width: 15%;
+  width: 10%;
   right: 0;
   content: "\00a0";
   position: absolute;
@@ -939,9 +943,6 @@ svg {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), white);
   background-repeat: repeat-x;
   pointer-events: none; }
-
-.c3-zoom-rect {
-  background-color: red; }
 
 .c3-tooltip {
   border-radius: 2px;

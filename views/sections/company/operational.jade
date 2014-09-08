@@ -23,14 +23,15 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
               .edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
                 i.fa.fa-pencil
         else
-          | Add data
+          .faded Add data
     
     //- .col-md-1
 
     .col-md-10
       h3 Cash By Quarter
 
-      +block_control("cashGraph", "cashBar", "cashArea", false, true)
+      if dataEntered(operational.cash)
+        +block_control("cashGraph", "cashBar", "cashArea", false, true)
 
       //- Grab the data
       script(type="text/javascript").
@@ -39,7 +40,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
       - if (operational.cash.length > 0)
         .block-info.block-graph: .graph-padding#cashGraph
       - else
-        .block-info.block-table Add graph data
+        .block-info.block-table.faded No data available
 
   .row.bottom-line
 
@@ -58,7 +59,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
               .edit-btn(data-toggle="modal" data-target="#edit-operational-pred-gross-burn")
                 i.fa.fa-pencil
         else
-          | Add data
+          .faded Add data
 
     .col-md-2
       h3 Gross Burn
@@ -75,12 +76,13 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
               .edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
                 i.fa.fa-pencil
         else
-          | Add data
+          .faded Add data
 
     .col-md-8
       h3 Gross Burn By Quarter
 
-      +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea", true, false)
+      if dataEntered(operational.gross_burn)
+        +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea", true, false)
 
       //- Grab the data
       script(type="text/javascript").
@@ -90,103 +92,120 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
       if operational.pred_gross_burn.length > 0  ||  operational.gross_burn.length > 0
         .block-info.block-graph: .graph-padding#grossBurnGraph
       else
-        .block-info.block-table Add graph data
+        .block-info.block-table.faded No data available
 
-  .col-md-2
-    h3 Forecasted Net Burn
+  .row.bottom-line
+    .col-md-2
+      h3 Forecasted Net Burn
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-pred-net-burn")
-      i.fa.fa-plus
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-pred-net-burn")
+        i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(operational.pred_net_burn)
-        for data in operational.pred_net_burn.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-operational-pred-net-burn")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-info.block-table
+        if dataEntered(operational.pred_net_burn)
+          for data in operational.pred_net_burn.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-operational-pred-net-burn")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-  .col-md-2
-    h3 Net Burn
+    .col-md-2
+      h3 Net Burn
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
-      i.fa.fa-plus
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
+        i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(operational.net_burn)
-        for data in operational.net_burn.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
-              i.fa.fa-pencil
-      else
-        | Add data
+      .block-info.block-table
+        if dataEntered(operational.net_burn)
+          for data in operational.net_burn.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-  .col-md-8
-    h3 Net Burn By Quarter
+    .col-md-8
+      h3 Net Burn By Quarter
 
-    +block_control("netBurnGraph", "netBurnBar", "netBurnArea", true, false)
+      +block_control("netBurnGraph", "netBurnBar", "netBurnArea", true, false)
 
-    //- Grab the data
-    script(type="text/javascript").
-      var pred_net_burn_data = !{JSON.stringify(operational.pred_net_burn)},
-          net_burn_data = !{JSON.stringify(operational.net_burn)};
-    .block-info.block-graph:.graph-padding#netBurnGraph
+      //- Grab the data
+      script(type="text/javascript").
+        var pred_net_burn_data = !{JSON.stringify(operational.pred_net_burn)},
+            net_burn_data = !{JSON.stringify(operational.net_burn)};
 
-  .col-md-3
-    h3 Revenue
+      - if (operational.pred_net_burn.length > 0)
+        .block-info.block-graph:.graph-padding#netBurnGraph
+      - else
+        .block-info.block-table.faded No data available
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
-      i.fa.fa-plus
 
-    .block-info.block-table
-      if dataEntered(operational.revenue)
-        for data in operational.revenue.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
-              i.fa.fa-pencil
-      else
-        | Add data
+  .row.bottom-line
+    .col-md-2
+      h3 Revenue
 
-  .col-md-9
-    h3 Revenue By Quarter
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
+        i.fa.fa-plus
 
-    +block_control("revenueGraph", "revenueBar", "revenueArea", true, false)
+      .block-info.block-table
+        if dataEntered(operational.revenue)
+          for data in operational.revenue.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
+                i.fa.fa-pencil
+        else
+          .faded Add data
 
-    //- Grab the data
-    script(type="text/javascript").
-      var revenue_data = !{JSON.stringify(operational.revenue)};
-    .block-info.block-graph:.graph-padding#revenueGraph
+    .col-md-10
+      h3 Revenue By Quarter
 
-  .col-md-3
-    h3 Head Count
+      +block_control("revenueGraph", "revenueBar", "revenueArea", true, false)
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
-      i.fa.fa-plus
+      //- Grab the data
+      script(type="text/javascript").
+        var revenue_data = !{JSON.stringify(operational.revenue)};
 
-    .block-info.block-table
-      if dataEntered(operational.head_count)
-        for data in operational.head_count.sort(chronological).reverse()
-          .table-section
-            .value #{data.value}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
-              i.fa.fa-pencil
-      else
-        | Add data
+      - if (operational.revenue.length > 0)
+        .block-info.block-graph:.graph-padding#revenueGraph
+      - else
+        .block-info.block-table.faded No data available
 
-  .col-md-9
-    h3 Head Count By Quarter
 
-    +block_control("headCountGraph", "headCountBar", "headCountArea", true, false)
+  .row
+    .col-md-2
+      h3 Head Count
 
-    //- Grab the data
-    script(type="text/javascript").
-      var head_count_data = !{JSON.stringify(operational.head_count)};
-    .block-info.block-graph:.graph-padding#headCountGraph
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
+        i.fa.fa-plus
+
+      .block-info.block-table
+        if dataEntered(operational.head_count)
+          for data in operational.head_count.sort(chronological).reverse()
+            .table-section
+              .value #{data.value}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
+                i.fa.fa-pencil
+        else
+          .faded Add data
+
+    .col-md-10
+      h3 Head Count By Quarter
+
+      +block_control("headCountGraph", "headCountBar", "headCountArea", true, false)
+
+      //- Grab the data
+      script(type="text/javascript").
+        var head_count_data = !{JSON.stringify(operational.head_count)};
+
+      - if (operational.head_count.length > 0)
+        .block-info.block-graph:.graph-padding#headCountGraph
+      - else
+        .block-info.block-table.faded No data available

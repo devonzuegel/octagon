@@ -83,9 +83,6 @@ function generateGraph(el, data, width_multiplier) {
     }, 
     legend: { show: true, },
     zoom: { enabled: true },
-    // onresize: function() {
-    //   d3.select(this)
-    // }
   });
 
 

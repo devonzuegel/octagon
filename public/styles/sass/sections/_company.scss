@@ -82,7 +82,7 @@
         .pane-header {
           border-bottom: 1px solid #ccc;
           margin-bottom: 30px;
-          padding-bottom: 30px;
+          padding-bottom: 20px;
 
           .quarter-info {
             display: inline-block;
@@ -104,7 +104,7 @@
         }
 
         > div {
-          margin-bottom: 40px;
+          margin-bottom: 20px;
           position: relative;
 
           h2 {
@@ -337,7 +337,12 @@
 
 .bottom-line {
   border-bottom: 1px solid #ccc;
-  padding-bottom: 70px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+
+  .col-md-2, .col-md-8, .col-md-10 {
+    padding-top: 10px;
+  }
 }
 
 svg {
@@ -346,12 +351,11 @@ svg {
 
 .graph-padding::before {
   height: 100%;
-  width: 15%;
+  width: 10%;
   right: 0;
   content: "\00a0";
   position: absolute;
 
-  // background-color: blue;
   background-image: -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255,0))), to(rgba(255,255,255,1));
   background-image: -webkit-linear-gradient(left, rgba(255,255,255,0)), rgba(255,255,255,1);
@@ -360,11 +364,5 @@ svg {
   background-repeat: repeat-x;
 
   pointer-events:none;
-
-}
-
-.c3-zoom-rect {
-  background-color: red;
-
 
 }
