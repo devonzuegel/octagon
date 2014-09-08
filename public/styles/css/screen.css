@@ -869,7 +869,8 @@ input:-webkit-autofill {
         text-align: center; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-graph {
         height: 420px;
-        padding: 20px; }
+        padding: 20px;
+        width: 100%; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-table {
         max-height: 420px;
         overflow-y: auto;
@@ -921,6 +922,26 @@ input:-webkit-autofill {
 .bottom-line {
   border-bottom: 1px solid #ccc;
   padding-bottom: 70px; }
+
+svg {
+  width: 100%; }
+
+.graph-padding::before {
+  height: 100%;
+  width: 15%;
+  right: 0;
+  content: "\00a0";
+  position: absolute;
+  background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0), white);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0))), to(white);
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0)), white;
+  background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0), white);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  background-repeat: repeat-x;
+  pointer-events: none; }
+
+.c3-zoom-rect {
+  background-color: red; }
 
 .c3-tooltip {
   border-radius: 2px;

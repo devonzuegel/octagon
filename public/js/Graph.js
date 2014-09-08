@@ -53,7 +53,11 @@ function y_min_and_max(data) {
  * params: takes the destination element, the data, and
  * a width multiplier */
 function generateGraph(el, data, width_multiplier) {
-  return c3.generate({
+  var parent_width = $(el).closest('block-info block-graph').width();
+  console.log(parent_width);
+  console.log(el+'_div');
+  console.log($(el+'_div').width); //.parent());
+  var chart = c3.generate({
     bindto: el,
     color: { pattern: ['#38AEC3', '#459BD3'] },
     data: data,
@@ -70,8 +74,8 @@ function generateGraph(el, data, width_multiplier) {
       y: data.y
     },
     size: { 
-      height: 380, 
-      width: d3.select(this.parentNode).width,
+      height: 380,
+      width: parent_width // window.innerWidth * 0.9 * width_multiplier - 60,
     }, 
     padding: { 
       right: 20, 
@@ -79,7 +83,13 @@ function generateGraph(el, data, width_multiplier) {
     }, 
     legend: { show: true, },
     zoom: { enabled: true },
+    // onresize: function() {
+    //   d3.select(this)
+    // }
   });
+
+
+  return chart;
 }
 
 var cashGraph = generateGraph(

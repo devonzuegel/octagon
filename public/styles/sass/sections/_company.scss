@@ -251,6 +251,7 @@
           .block-graph {
             height: $graph-pane-height-outer;
             padding: 20px;
+            width: 100%;
           }
 
           .block-table {
@@ -337,4 +338,33 @@
 .bottom-line {
   border-bottom: 1px solid #ccc;
   padding-bottom: 70px;
+}
+
+svg {
+  width: 100%;
+}
+
+.graph-padding::before {
+  height: 100%;
+  width: 15%;
+  right: 0;
+  content: "\00a0";
+  position: absolute;
+
+  // background-color: blue;
+  background-image: -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255,0))), to(rgba(255,255,255,1));
+  background-image: -webkit-linear-gradient(left, rgba(255,255,255,0)), rgba(255,255,255,1);
+  background-image: -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));
+  background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+  background-repeat: repeat-x;
+
+  pointer-events:none;
+
+}
+
+.c3-zoom-rect {
+  background-color: red;
+
+
 }
