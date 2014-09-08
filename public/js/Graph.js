@@ -1,3 +1,15 @@
+Array.prototype.min = function () {
+  return this.reduce(function (p, v) {
+    return ( p < v ? p : v );
+  });
+}
+
+Array.prototype.max = function () {
+  return this.reduce(function (p, v) {
+    return ( p > v ? p : v );
+  });
+}
+
 /* Fn for converting data stored in objects
  * to a format that c3js loves */
 function convertData(data, field, label) {
@@ -7,13 +19,51 @@ function convertData(data, field, label) {
 
   // Loop through the data object
   for(var i = 0; i < data.length; i++) {
-
-      // Push the data into the array
-      new_data.push(data[i][field]);
+    // Push the data into the array
+    new_data.push(data[i][field]);
   }
 
   // Return the new array
   return new_data;
+}
+
+function y_min_and_max(data) {
+  // Set default min as 0, may change when there is data
+  var min = 0;
+
+  // Set default max as 1M, may change when there is data
+  var max = 1;
+  
+  for(var i = 0; i < data.length; i++) {
+    function update_min_and_max(n) {
+      /* The value of the data is in string format; this line
+       * converts it to the int data type. */
+      var val = parseInt(data[n].value);
+
+      /* If the value of data point is less than the current min,
+       * set it as the min y value. */
+      if (val < min)      min = val;
+
+      /* If the value of data point is greater than the current max,
+      * set it as the max y value. */
+      if (val > max)      max = val;
+    }
+    update_min_and_max(i);
+  }
+
+  console.log('min:  ' + min);
+  console.log('max:  ' + max);
+
+  return y = {
+    min: min,
+    max: max,
+    tick: {
+      // Sets tick format to be in millions (ex: '3M')
+      // Only applies when max is >= 1M.
+      format: d3.format("s")
+    }
+  }
+
 }
 
 /* Fn for generating the c3 graphs
@@ -33,7 +83,9 @@ function generateGraph(el, data, width_multiplier) {
             return 'Q' + moment(x).quarter() + ' ' + moment(x).year(); 
           }
         }
-      }
+      },
+
+      y: data.y
     },
     size: { height: 260, width: (window.innerWidth * 0.9 * width_multiplier) - 60 },
     padding: { right: 20, left: 40 },
@@ -50,7 +102,8 @@ var cashGraph = generateGraph(
       convertData(cash_data, 'date', 'x1'),
       convertData(cash_data, 'value', 'Cash'),
     ],
-    type: 'area'
+    type: 'area',
+    y: y_min_and_max(cash_data)
   },
   0.75
 );
@@ -65,7 +118,8 @@ var grossBurnGraph = generateGraph(
       convertData(pred_gross_burn_data, 'value', 'Forecasted Gross burn'),
       convertData(gross_burn_data, 'value', 'Gross burn')
     ],
-    type: 'bar'
+    type: 'bar',
+    y: y_min_and_max(gross_burn_data)
   },
   0.5
 );

@@ -6,13 +6,10 @@ var passport = require('passport'),
 
 // Bcrypt / password hashing stuff
 var bcrypt = require('bcrypt'),
-    // Generate a salt
-    salt = bcrypt.genSaltSync(10),
-    // Hash the password with the salt
-    hash = bcrypt.hashSync("my password", salt);
+    salt = bcrypt.genSaltSync(10); // Generate a salt
 
 
-var MONGO_URI = 'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039' ||
+var MONGO_URI = //'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039' ||
                 'mongodb://localhost/test';
 
 // Localhost connection
@@ -269,10 +266,7 @@ module.exports = {
         // save name of array to edit in shorter variable
         var array_name = form.edit_obj_in_array;
         // Find index of obj in company[array_name] with _id from form
-        console.log('form: ' + JSON.stringify(form, null, 3));
         var i = indexFromId(form._id, company[array_name]);
-        console.log('company[array_name]: ' + JSON.stringify(company[array_name], null, 3))
-        console.log('i: ' + i);
         // console.log('company[array_name][i]: ' + JSON.stringify(company[array_name][i], null, 3))
         // Replace obj at company[array_name][i] with new data from form
         for (var f in form) {
