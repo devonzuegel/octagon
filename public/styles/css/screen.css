@@ -113,6 +113,9 @@ h3 {
   line-height: 18px;
   text-transform: uppercase; }
 
+.faded {
+  color: #bbb !important; }
+
 html,
 body {
   height: 100%; }
@@ -865,11 +868,11 @@ input:-webkit-autofill {
         font-size: 22px;
         text-align: center; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-graph {
-        height: 300px;
+        height: 420px;
         padding: 20px; }
       .company-bkg .company-content .tab-content .tab-pane > div .block-table {
-        max-height: 300px;
-        overflow-y: scroll;
+        max-height: 420px;
+        overflow-y: auto;
         padding: 10px !important; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section {
           border-radius: 2px;
@@ -899,7 +902,9 @@ input:-webkit-autofill {
     .company-bkg .company-content .tab-content .graph-pane .col-md-3,
     .company-bkg .company-content .tab-content .graph-pane .col-md-6,
     .company-bkg .company-content .tab-content .graph-pane .col-md-9 {
-      height: 350px; }
+      max-height: 420px; }
+    .company-bkg .company-content .tab-content .graph-pane .graph-padding {
+      width: 100%; }
 
 .edit-btn {
   cursor: pointer;
@@ -912,6 +917,10 @@ input:-webkit-autofill {
   cursor: not-allowed !important; }
   .edit-disabled:hover {
     color: #bbb !important; }
+
+.bottom-line {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 70px; }
 
 .c3-tooltip {
   border-radius: 2px;

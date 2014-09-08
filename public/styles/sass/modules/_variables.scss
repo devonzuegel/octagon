@@ -28,6 +28,8 @@ $dashboard-bkg: #222;
 
 // Data section
 $data-bkg: #fff;
+$graph-pane-height-outer: 420px;
+$graph-pane-height-inner: 380px; // manually update size.height (Graph.js:73)
 
 // Portfolio section
 $portfolio-bkg: #ddd;

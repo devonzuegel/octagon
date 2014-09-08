@@ -1,81 +1,98 @@
+script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+
 .tab-pane.row.graph-pane#operational
   .col-md-12.pane-header
     include quarter_info.jade
 
-  .col-md-3
-    h3 Cash
+  .row.bottom-line
+    
+    //- .col-md-1
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
-      i.fa.fa-plus
+    .col-md-2
+      h3 Cash
 
-    .block-info.block-table
-      if dataEntered(operational.cash)
-        for data in operational.cash.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
-              i.fa.fa-pencil
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
+        i.fa.fa-plus
+
+      .block-info.block-table
+        if dataEntered(operational.cash)
+          for data in operational.cash.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
+                i.fa.fa-pencil
+        else
+          | Add data
+    
+    //- .col-md-1
+
+    .col-md-10
+      h3 Cash By Quarter
+
+      +block_control("cashGraph", "cashBar", "cashArea", false, true)
+
+      //- Grab the data
+      script(type="text/javascript").
+        var cash_data = !{JSON.stringify(operational.cash)};
+
+      - if (operational.cash.length > 0)
+        .block-info.block-graph: .graph-padding#cashGraph
+      - else
+        .block-info.block-table Add graph data
+
+  .row.bottom-line
+
+    .col-md-2
+      h3 Forecasted Gross Burn
+
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-pred-gross-burn")
+        i.fa.fa-plus
+
+      .block-info.block-table
+        if dataEntered(operational.pred_gross_burn)
+          for data in operational.pred_gross_burn.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-operational-pred-gross-burn")
+                i.fa.fa-pencil
+        else
+          | Add data
+
+    .col-md-2
+      h3 Gross Burn
+
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
+        i.fa.fa-plus
+
+      .block-info.block-table
+        if dataEntered(operational.gross_burn)
+          for data in operational.gross_burn.sort(chronological).reverse()
+            .table-section
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              .edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
+                i.fa.fa-pencil
+        else
+          | Add data
+
+    .col-md-8
+      h3 Gross Burn By Quarter
+
+      +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea", true, false)
+
+      //- Grab the data
+      script(type="text/javascript").
+        var pred_gross_burn_data = !{JSON.stringify(operational.pred_gross_burn)},
+            gross_burn_data = !{JSON.stringify(operational.gross_burn)};
+    
+      if operational.pred_gross_burn.length > 0  ||  operational.gross_burn.length > 0
+        .block-info.block-graph: .graph-padding#grossBurnGraph
       else
-        | Add data
+        .block-info.block-table Add graph data
 
-  .col-md-9
-    h3 Cash By Quarter
-
-    +block_control("cashGraph", "cashBar", "cashArea", false, true)
-
-    //- Grab the data
-    script(type="text/javascript").
-      var cash_data = !{JSON.stringify(operational.cash)},
-          cash_data = !{JSON.stringify(operational.cash)};
-    .block-info.block-graph:.graph-padding#cashGraph
-
-  .col-md-3
-    h3 Forecasted Gross Burn
-
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-pred-gross-burn")
-      i.fa.fa-plus
-
-    .block-info.block-table
-      if dataEntered(operational.pred_gross_burn)
-        for data in operational.pred_gross_burn.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-operational-pred-gross-burn")
-              i.fa.fa-pencil
-      else
-        | Add data
-
-  .col-md-3
-    h3 Gross Burn
-
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
-      i.fa.fa-plus
-
-    .block-info.block-table
-      if dataEntered(operational.gross_burn)
-        for data in operational.gross_burn.sort(chronological).reverse()
-          .table-section
-            .value #{usd(data.value)}
-            .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-            .edit-btn(data-toggle="modal" data-target="#edit-operational-gross-burn")
-              i.fa.fa-pencil
-      else
-        | Add data
-
-  .col-md-6
-    h3 Gross Burn By Quarter
-
-    +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea", true, false)
-
-    //- Grab the data
-    script(type="text/javascript").
-      var pred_gross_burn_data = !{JSON.stringify(operational.pred_gross_burn)},
-          gross_burn_data = !{JSON.stringify(operational.gross_burn)};
-    .block-info.block-graph:.graph-padding#grossBurnGraph
-
-  .col-md-3
+  .col-md-2
     h3 Forecasted Net Burn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-pred-net-burn")
@@ -92,7 +109,7 @@
       else
         | Add data
 
-  .col-md-3
+  .col-md-2
     h3 Net Burn
 
     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
@@ -109,7 +126,7 @@
       else
         | Add data
 
-  .col-md-6
+  .col-md-8
     h3 Net Burn By Quarter
 
     +block_control("netBurnGraph", "netBurnBar", "netBurnArea", true, false)
@@ -173,3 +190,11 @@
     script(type="text/javascript").
       var head_count_data = !{JSON.stringify(operational.head_count)};
     .block-info.block-graph:.graph-padding#headCountGraph
+
+
+
+  script.
+    $(document).ready(function() {
+      window.resizeby( -100, -10 ); 
+    });
+

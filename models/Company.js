@@ -266,7 +266,10 @@ module.exports = {
         // save name of array to edit in shorter variable
         var array_name = form.edit_obj_in_array;
         // Find index of obj in company[array_name] with _id from form
+        console.log('form: ' + JSON.stringify(form, null, 3));
         var i = indexFromId(form._id, company[array_name]);
+        console.log('company[array_name]: ' + JSON.stringify(company[array_name], null, 3))
+        console.log('i: ' + i);
         // console.log('company[array_name][i]: ' + JSON.stringify(company[array_name][i], null, 3))
         // Replace obj at company[array_name][i] with new data from form
         for (var f in form) {

@@ -249,13 +249,13 @@
           }
 
           .block-graph {
-            height: 300px;
+            height: $graph-pane-height-outer;
             padding: 20px;
           }
 
           .block-table {
-            max-height: 300px;
-            overflow-y: scroll;
+            max-height: $graph-pane-height-outer;
+            overflow-y: auto;
             padding: 10px !important;
 
             .table-section {
@@ -305,7 +305,11 @@
         .col-md-3,
         .col-md-6,
         .col-md-9 {
-          height: 350px;
+          max-height: $graph-pane-height-outer;
+        }
+
+        .graph-padding {
+          width: 100%;
         }
       }
     }
@@ -328,4 +332,9 @@
   &:hover {
     color: #bbb !important;
   }
+}
+
+.bottom-line {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 70px;
 }
