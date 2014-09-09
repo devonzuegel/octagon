@@ -321,10 +321,9 @@ module.exports = {
           if (updated[field] === undefined)   updated[field] = 'object';
 
           // The new data to be inserted
-          var WHOLE_DAY = 86400000;
-
           var new_data = {
-            date: moment(form.quarter + '-' + form.year, 'Q-YYYY') + WHOLE_DAY,
+            date: moment(form.quarter + '-' + form.year, 'Q-YYYY')
+                    .add(1, 'day'),
             value: form[field],
             label: field,
             timestamp: moment()
