@@ -20,7 +20,7 @@
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
 
           .card-header
-            if c.profile != undefined
+            if c.profile
               img(src=c.profile.img_path)
 
           .card-body
@@ -47,7 +47,7 @@
             div.hidden-on-grid
               .small-label Total funding
               .card-info 
-                if c.profile.total_funding != undefined
+                if c.profile && c.profile.total_funding
                   | $#{c.profile.total_funding}
                 else
                   | Add
