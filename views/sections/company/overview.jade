@@ -130,13 +130,15 @@
                 .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
                 .item-text: a(href='mailto:' + m.email) #{m.email}
               .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
-                i.fa.fa-pencil
+                i.fa.fa-pencil {{m.id}}
       else
         .faded Add team member
 
     script.
       $(document).ready(function() {
         var team = !{JSON.stringify(c.team)};
+
+        console.log('xxxxxx');
 
         for (var i = 0; i < team.length; i++) {
           /* Iterate through team member edit btns: onclick, the form is
