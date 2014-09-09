@@ -4,10 +4,9 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
   .col-md-12.pane-header
     include quarter_info.jade
 
+  //- CASH BY QUARTER (cash)
   .row.bottom-line
     
-    //- .col-md-1
-
     .col-md-2
       h3 Cash
 
@@ -25,8 +24,6 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         else
           .faded Add data
     
-    //- .col-md-1
-
     .col-md-10
       h3 Cash By Quarter
 
@@ -37,13 +34,15 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
       script(type="text/javascript").
         var cash_data = !{JSON.stringify(operational.cash)};
 
-      - if (operational.cash.length > 0)
+      if operational.cash.length > 0
         .block-info.block-graph: .graph-padding#cashGraph
-      - else
+      else
         .block-info.block-table.faded No data available
 
+  //- GROSS BURN BY QUARTER (pred_gross_burn + gross_burn)
   .row.bottom-line
 
+    //- Forcasted Gross Burn
     .col-md-2
       h3 Forecasted Gross Burn
 
@@ -61,6 +60,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         else
           .faded Add data
 
+    //- Gross Burn
     .col-md-2
       h3 Gross Burn
 
@@ -78,6 +78,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         else
           .faded Add data
 
+    //- Graph: Gross Burn by quarter
     .col-md-8
       h3 Gross Burn By Quarter
 
@@ -89,12 +90,14 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         var pred_gross_burn_data = !{JSON.stringify(operational.pred_gross_burn)},
             gross_burn_data = !{JSON.stringify(operational.gross_burn)};
     
-      if operational.pred_gross_burn.length > 0  ||  operational.gross_burn.length > 0
+      if operational.pred_gross_burn.length + operational.gross_burn.length > 0 
         .block-info.block-graph: .graph-padding#grossBurnGraph
       else
         .block-info.block-table.faded No data available
 
+  //- NET BURN BY QUARTER (pred_net_burn + net_burn)
   .row.bottom-line
+    //- Forecasted Net Burn
     .col-md-2
       h3 Forecasted Net Burn
 
@@ -112,6 +115,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         else
           .faded Add data
 
+    //- Net Burn
     .col-md-2
       h3 Net Burn
 
@@ -129,8 +133,9 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         else
           .faded Add data
 
+    //- Net Burn by Quarter
     .col-md-8
-      h3 Net Burn By Quarter
+      h3 Net Burn by Quarter
 
       if (operational.pred_net_burn.length + operational.net_burn.length > 0)
         +block_control("netBurnGraph", "netBurnBar", "netBurnArea", true, false)
@@ -140,13 +145,14 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         var pred_net_burn_data = !{JSON.stringify(operational.pred_net_burn)},
             net_burn_data = !{JSON.stringify(operational.net_burn)};
 
-      - if (operational.pred_net_burn.length > 0)
+      if (operational.pred_net_burn.length + operational.net_burn.length > 0)
         .block-info.block-graph:.graph-padding#netBurnGraph
-      - else
+      else
         .block-info.block-table.faded No data available
 
-
+  //- REVENUE BY QUARTER (revenue)
   .row.bottom-line
+    //- Revenue
     .col-md-2
       h3 Revenue
 
@@ -164,6 +170,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         else
           .faded Add data
 
+    //- Revenue By Quarter
     .col-md-10
       h3 Revenue By Quarter
 
@@ -174,12 +181,12 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
       script(type="text/javascript").
         var revenue_data = !{JSON.stringify(operational.revenue)};
 
-      - if (operational.revenue.length > 0)
+      if (operational.revenue.length > 0)
         .block-info.block-graph:.graph-padding#revenueGraph
-      - else
+      else
         .block-info.block-table.faded No data available
 
-
+  //- HEAD COUNT (head_count)
   .row
     .col-md-2
       h3 Head Count
@@ -208,7 +215,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
       script(type="text/javascript").
         var head_count_data = !{JSON.stringify(operational.head_count)};
 
-      - if (operational.head_count.length > 0)
+      if (operational.head_count.length > 0)
         .block-info.block-graph:.graph-padding#headCountGraph
-      - else
+      else
         .block-info.block-table.faded No data available
