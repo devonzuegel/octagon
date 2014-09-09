@@ -96,7 +96,7 @@ function objArrayToString(p, obj) {
     }
 
     // Return resulting string
-    return str; 
+    return str;
 
   // If obj is not defined
   } else {
@@ -121,13 +121,13 @@ function indexFromId (id, obj_array) {
 
 /* Simplify crunchbase profile object */
 function simplifyCrunchbaseProf(p) {
-  return { 
+  return {
     img_path:      (p.relationships.primary_image) ?
-                   "http://images.crunchbase.com/" + 
+                   "http://images.crunchbase.com/" +
                    p.relationships.primary_image.items[0].path :
                    undefined,
     short_descrip: p.properties.short_description,
-    description:   (p.properties.description) ? 
+    description:   (p.properties.description) ?
                    findLinks(p.properties.description) :
                    undefined,
     homepage_url:  (p.properties.homepage_url) ?
@@ -153,7 +153,7 @@ module.exports = {
 
   // Add a new company
   add: function(username, password, init_investmt_date, crunchbase_permalink, owners, cb) {
-    
+
     if (crunchbase_permalink === '') {
       crunchbase_permalink = 'NO_PERMALINK_SELECTED';
     }
@@ -170,7 +170,7 @@ module.exports = {
       // Create empty profile to be saved into the new company
       var profile = {};
 
-      /* Check that crunchbase request returns successfully with 
+      /* Check that crunchbase request returns successfully with
        * complete profile. Not equivalent to (p.response == true)
        * because need to ensure existence too */
       if (p.response !== false) {
@@ -182,16 +182,16 @@ module.exports = {
         profile = simplifyCrunchbaseProf(p);
 
       // Else if crunchbase request returned empty
-      } else if (username) { 
+      } else if (username) {
         // Create own permalink
         permalink = username.replace(/\s+/g, '-').toLowerCase();
       }
 
       bcrypt.hash(password, 10, function(err, hash) {
         // Build up company hash with details from above
-        var company = { 
+        var company = {
           'username': username,
-          'password': hash, 
+          'password': hash,
           'init_investmt_date': init_investmt_date,
           'crunchbase_permalink': crunchbase_permalink,
           'crunchbase_prof': p,
@@ -199,25 +199,25 @@ module.exports = {
           'profile': profile,
           'permalink': permalink,
           'milestones': [],
-          'operational': { 
+          'operational': {
             cash: [],
-            gross_burn: [], 
+            gross_burn: [],
             pred_gross_burn: [],
-            net_burn: [], 
+            net_burn: [],
             pred_net_burn: [],
-            revenue: [], 
+            revenue: [],
             head_count: []
           },
-          'user_metrics': { 
-            avg_dau: [], 
-            avg_mau: [], 
+          'user_metrics': {
+            avg_dau: [],
+            avg_mau: [],
             churn: []
           },
-          'economics': { 
-            ltv: [], 
-            lifetime_est: [], 
-            cac: [], 
-            asp: [], 
+          'economics': {
+            ltv: [],
+            lifetime_est: [],
+            cac: [],
+            asp: [],
             gm_percentage: []
           }
         };
@@ -243,12 +243,12 @@ module.exports = {
        * indicated by form['array']. */
       if (form.array) {
         // initialize obj to be filled w/ form data (w/ unique id for the obj)
-        var obj = {  
-          _id: (new Date()).getTime()  
+        var obj = {
+          _id: (new Date()).getTime()
         };
         // populate obj with form data (except the value of the array field)
         for (var field in form) {
-          if (field != 'array')     obj[field] = form[field]; 
+          if (field != 'array')     obj[field] = form[field];
         }
         // push obj to end of array defined by form.array, into company db document
         company[form.array].push(obj);
@@ -293,7 +293,7 @@ module.exports = {
 
   // Edit company metric information
   editMetrics: function(link, form, cb) {
-    /* Given the contents of a form (including a field called 'form.form_name'), 
+    /* Given the contents of a form (including a field called 'form.form_name'),
      * this update the corresponding field in company (access by calling:
      * company[form.form.form_name]) with the contents of the form. */
     Companies.findOne({ permalink: link }, function (err, company) {
@@ -321,8 +321,10 @@ module.exports = {
           if (updated[field] === undefined)   updated[field] = 'object';
 
           // The new data to be inserted
+          var WHOLE_DAY = 86400000;
+
           var new_data = {
-            date: moment(form.quarter + '-' + form.year, 'Q-YYYY'),
+            date: moment(form.quarter + '-' + form.year, 'Q-YYYY') + WHOLE_DAY,
             value: form[field],
             label: field,
             timestamp: moment()
