@@ -28,7 +28,7 @@
           | #{shorten(p.description)}
           a(href="http://www.crunchbase.com/organization/#{permalink}") read more on Crunchbase
       else
-        div Add description
+        .faded Add description
 
   //- INFO
   .col-md-6
@@ -43,25 +43,25 @@
         h4 Categories
         div #{p.categories}
       else
-        div Add categories
+        .faded Add categories
 
       if (p && p.founders)
         h4 Founders
         div #{p.founders}
       else
-        div Add founders
+        .faded Add founders
 
       if (p && p.founded_on)
         h4 Founding Date
         div #{p.founded_on}
       else
-        div Add date
+        .faded Add date
 
       if (p && p.total_funding)
         h4 Total Funding
         div $#{p.total_funding}
       else
-        div Add funding info
+        .faded Add funding info
 
   //- MILESTONES
   .col-md-6
@@ -71,24 +71,19 @@
       i.fa.fa-plus.fa-right
 
     .block-info
-      ul.block-list
-        //- TODO sort by date (most recent first)
-        for m in c.milestones.sort(chronological).reverse()
-          li.milestone
-            .milestone-info
-              .title #{m.title}
-              .date #{moment(m.date).format('DD MMMM YYYY')}
-              .description #{m.description}
-            a.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
-              i.fa.fa-pencil
-        //- FROM MERGE CONFLICT-- wasn't sure which would break
-          //- li.list-item
-          //-   .item-info
-          //-     .item-header #{m.title}
-          //-     .item-date #{moment(m.date).format('DD MMMM YYYY')}
-          //-     .item-text #{m.description}
-          //-   a.item-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
-          //-     i.fa.fa-pencil
+      if c.milestones.length > 0
+        ul.block-list
+          //- TODO sort by date (most recent first)
+          for m in c.milestones.sort(chronological).reverse()
+            li.milestone
+              .milestone-info
+                .title #{m.title}
+                .date #{moment(m.date).format('DD MMMM YYYY')}
+                .description #{m.description}
+              a.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
+                i.fa.fa-pencil
+      else
+        .faded Add milestone
 
 
 
@@ -120,21 +115,24 @@
       i.fa.fa-plus.fa-right
 
     .block-info
-      ul.block-list
-        //- TODO sort by date (most recent first)
-        for m in c.team.sort(chronological).reverse()
-          li.list-item
-            .item-info
-              if m.img_path
-                img(src=m.img_path)
-              else
-                div.placeholder-img
-              .item-header #{m.full_name} - 
-                span #{m.role}
-              .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
-              .item-text: a(href='mailto:' + m.email) #{m.email}
-            .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
-              i.fa.fa-pencil
+      if c.team.length > 0
+        ul.block-list
+          //- TODO sort by date (most recent first)
+          for m in c.team.sort(chronological).reverse()
+            li.list-item
+              .item-info
+                if m.img_path
+                  img(src=m.img_path)
+                else
+                  .placeholder-img: img(src='../assets/images/placeholder.png')
+                .item-header #{m.full_name} - 
+                  span #{m.role}
+                .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
+                .item-text: a(href='mailto:' + m.email) #{m.email}
+              .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
+                i.fa.fa-pencil
+      else
+        .faded Add team member
 
     script.
       $(document).ready(function() {

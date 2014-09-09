@@ -779,7 +779,8 @@ input:-webkit-autofill {
         line-height: 20px;
         position: absolute;
         right: 10px;
-        top: 0; }
+        top: 0;
+        padding-top: 10px; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-control label {
           color: #999;
           display: inline-block;
@@ -838,7 +839,6 @@ input:-webkit-autofill {
               -webkit-border-radius: 100px;
               background-clip: padding-box;
               float: left;
-              height: 80px;
               margin-right: 20px;
               width: 80px; }
             .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .item-header {
@@ -900,7 +900,7 @@ input:-webkit-autofill {
           background-color: #fff5cf;
           border-bottom: 1px solid #ffe7c2; }
     .company-bkg .company-content .tab-content .overview-pane > div .block-info {
-      min-height: 350px; }
+      min-height: 190px; }
     .company-bkg .company-content .tab-content .graph-pane .col-md-3,
     .company-bkg .company-content .tab-content .graph-pane .col-md-6,
     .company-bkg .company-content .tab-content .graph-pane .col-md-9 {
