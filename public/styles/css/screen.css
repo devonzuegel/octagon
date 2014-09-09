@@ -831,7 +831,8 @@ input:-webkit-autofill {
               -webkit-border-radius: 100px;
               background-clip: padding-box;
               float: left;
-              height: 80px;
+              max-height: 80px;
+              min-width: 80px;
               margin-right: 20px; }
             .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .placeholder-img {
               background-color: #eee;

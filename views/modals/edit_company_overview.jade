@@ -96,7 +96,7 @@ include ../mixins/edit_modal_mixin
   input(type='hidden' name='array' value='team') 
 
   div.small-label Full name
-  input(placeholder='Add title'  name='full_name'  autocomplete='off'  type='text')
+  input(placeholder='Add name'  name='full_name'  autocomplete='off'  type='text')
 
   div.small-label Image path
   input(placeholder='Add image path'  name='img_path'  autocomplete='off'  type='text')
@@ -114,13 +114,13 @@ include ../mixins/edit_modal_mixin
 
 
 //- EDIT TEAM MEMBER:
-+edit_modal(edit_link, 'edit-team-member', 'Add Team Member')
++edit_modal(edit_link, 'edit-team-member', 'Edit Team Member')
   //- * This field tells the route (in Company.js) that this data should be used
   //- * to update the object whose id is specified in the 'team' array within a
   //- * company in the db.
   input(type='hidden' name='edit_obj_in_array' value='team') 
 
-  input(type='text' name='_id' id='team_member_id')
+  input(type='hidden' name='_id' id='team_member_id')
 
   div.small-label Full name
   input(placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off'  type='text')

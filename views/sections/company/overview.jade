@@ -14,6 +14,7 @@
 - }
 
 
+script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
 .tab-pane.active.row.overview-pane#overview
   //- ABOUT
   .col-md-6
@@ -130,32 +131,33 @@
                 .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
                 .item-text: a(href='mailto:' + m.email) #{m.email}
               .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
-                i.fa.fa-pencil {{m.id}}
+                i.fa.fa-pencil
       else
         .faded Add team member
 
-    script.
-      $(document).ready(function() {
-        var team = !{JSON.stringify(c.team)};
+  //-       console.log('xxxxxx');
 
-        console.log('xxxxxx');
+  script.
+    $(document).ready(function() {
+      var team = !{JSON.stringify(c.team)};
 
-        for (var i = 0; i < team.length; i++) {
-          /* Iterate through team member edit btns: onclick, the form is
-           * populated with that owner's info */
-          (function(n) {
-            var m = team[i];
-            console.log(JSON.stringify(m, null, 3));
-            $('#edit-'+m._id).click(function() {
-              $('#img_path').val(m.img_path);
-              $('#date_joined').val(moment(m.date_joined).format('DD MMMM YYYY'));
-              $('#role').val(m.role);
-              $('#email').val(m.email);
-              $('#full_name').val(m.full_name);
-              $('#team_member_id').val(m._id);
-              console.log('m._id: ' + m._id);
-            });
-          }(i))
-        }
-      });
+
+      for (var i = 0; i < team.length; i++) {
+        /* Iterate through team member edit btns: onclick, the form is
+         * populated with that owner's info */
+        (function(n) {
+          var m = team[i];
+          console.log(JSON.stringify(m, null, 3));
+          $('#edit-'+m._id).click(function() {
+            $('#img_path').val(m.img_path);
+            $('#date_joined').val(moment(m.date_joined).format('DD MMMM YYYY'));
+            $('#role').val(m.role);
+            $('#email').val(m.email);
+            $('#full_name').val(m.full_name);
+            $('#team_member_id').val(m._id);
+            console.log('m._id: ' + m._id);
+          });
+        }(i))
+      }
+    });
 
