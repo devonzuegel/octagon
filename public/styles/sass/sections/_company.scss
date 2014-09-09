@@ -34,17 +34,20 @@
       .company-header-text {
         display: inline-block;
         margin-left: 40px;
-        width: 600px;
+        width: 60%;
+        max-width: 600px;
 
         .company-name {
           margin-bottom: 20px;
         }
+
 
         .company-description {
           color: #999;
           font-size: 15px;
           line-height: 22px;
           width: 100%;
+
         }
 
         .company-website {

@@ -259,7 +259,7 @@ input:-webkit-autofill {
       border-bottom: 3px solid transparent;
       display: inline-block;
       line-height: 47px;
-      margin: 0 15px 0 0; }
+      margin: 0 5px 0 0; }
   .nav-tabs .vertical-tab {
     display: block;
     text-align: right; }
@@ -724,7 +724,8 @@ input:-webkit-autofill {
     .company-bkg .company-header .company-header-info .company-header-text {
       display: inline-block;
       margin-left: 40px;
-      width: 600px; }
+      width: 60%;
+      max-width: 600px; }
       .company-bkg .company-header .company-header-info .company-header-text .company-name {
         margin-bottom: 20px; }
       .company-bkg .company-header .company-header-info .company-header-text .company-description {

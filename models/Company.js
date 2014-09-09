@@ -114,12 +114,7 @@ function usd(num) {
 function indexFromId (id, obj_array) {
   if (JSON.toString(obj_array) == '[object JSON]')
   for (var i = 0; i < obj_array.length; i++) {
-    console.log(JSON.stringify(obj_array[i], null, 3));
-    console.log('_id: ' + obj_array[i]._id + '    id: ' + id);
-    if (id == obj_array[i].id) {
-      console.log(i);
-      return i;
-    }
+    if (id == obj_array[i].id)       return i;
   }
 }
 

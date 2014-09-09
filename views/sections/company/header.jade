@@ -20,17 +20,17 @@
         if (name)
           | #{name}
         else
-          | Add name
+          .faded Add name
 
       //- Company description
       .company-description
         if (p && p.short_descrip)
           | #{p.short_descrip}
         else
-          | Add description
+          .faded Add description
 
       .company-website
         if (p && p.homepage_url)
           a(href="http://" + "#{p.homepage_url}") #{p.homepage_url}
         else
-          | Add homepage url 
+          .faded Add homepage url 
