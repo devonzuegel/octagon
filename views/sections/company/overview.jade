@@ -15,131 +15,130 @@
 
 
 .tab-pane.active.row.overview-pane#overview
-  //- ABOUT
-  .col-md-6
-    h3 About
+  
+  .row
+    //- ABOUT
+    .col-md-6
+      h3 About
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-about")
-      i.fa.fa-pencil
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-about")
+        i.fa.fa-pencil
 
-    .block-info
-      if (p && p.description)
-        div 
-          | #{shorten(p.description)}
-          a(href="http://www.crunchbase.com/organization/#{permalink}") read more on Crunchbase
-      else
-        .faded Add description
+      .block-info
+        if (p && p.description)
+          div 
+            | #{shorten(p.description)}
+            a(href="http://www.crunchbase.com/organization/#{permalink}") read more on Crunchbase
+        else
+          .faded Add description
 
-  //- INFO
-  .col-md-6
-    h3 Info
+    //- INFO
+    .col-md-6
+      h3 Info
 
-    .block-edit.edit-btn(data-toggle="modal" data-target="#edit-info")
-      i.fa.fa-pencil
+      .block-edit.edit-btn(data-toggle="modal" data-target="#edit-info")
+        i.fa.fa-pencil
 
-    .block-info
+      .block-info
 
-      if (p && p.categories)
-        h4 Categories
-        div #{p.categories}
-      else
-        .faded Add categories
+        if (p && p.categories)
+          h4 Categories
+          div #{p.categories}
+        else
+          .faded Add categories
 
-      if (p && p.founders)
-        h4 Founders
-        div #{p.founders}
-      else
-        .faded Add founders
+        if (p && p.founders)
+          h4 Founders
+          div #{p.founders}
+        else
+          .faded Add founders
 
-      if (p && p.founded_on)
-        h4 Founding Date
-        div #{p.founded_on}
-      else
-        .faded Add date
+        if (p && p.founded_on)
+          h4 Founding Date
+          div #{p.founded_on}
+        else
+          .faded Add date
 
-      if (p && p.total_funding)
-        h4 Total Funding
-        div $#{p.total_funding}
-      else
-        .faded Add funding info
+        if (p && p.total_funding)
+          h4 Total Funding
+          div $#{p.total_funding}
+        else
+          .faded Add funding info
 
-  //- MILESTONES
-  .col-md-6
-    h3 Milestones
+  .row
+    //- MILESTONES
+    .col-md-6
+      h3 Milestones
 
-    .block-edit(data-toggle="modal" data-target="#add-milestone")
-      i.fa.fa-plus.fa-right
+      .block-edit(data-toggle="modal" data-target="#add-milestone")
+        i.fa.fa-plus.fa-right
 
-    .block-info
-      if c.milestones.length > 0
-        ul.block-list
-          //- TODO sort by date (most recent first)
-          for m in c.milestones.sort(chronological).reverse()
-            li.milestone
-              .milestone-info
-                .title #{m.title}
-                .date #{moment(m.date).format('DD MMMM YYYY')}
-                .description #{m.description}
-              a.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
-                i.fa.fa-pencil
-      else
-        .faded Add milestone
-
-
-
-    script.
-      $(document).ready(function() {
-        var milestones = !{JSON.stringify(c.milestones)};
-
-        for (var i = 0; i < milestones.length; i++) {
-          /* Iterate through milestones' edit btns: onclick, the form is
-           * populated with that owner's info */
-          (function(n) {
-            var m = milestones[i];
-            $('#edit-'+m._id).click(function() {
-              $('#title').val(m.title);
-              $('#date').val(moment(m.date).format('DD MMMM YYYY'));
-              $('#description').val(m.description);
-              $('#milestone_id').val(m._id);
-            });
-          }(i))
-        }
-      });
+      .block-info
+        if c.milestones.length > 0
+          ul.block-list
+            //- TODO sort by date (most recent first)
+            for m in c.milestones.sort(chronological).reverse()
+              li.list-item.milestone
+                .item-info.milestone-info
+                  .item-header #{m.title} 
+                  .item-date #{moment(m.date).format('DD MMMM YYYY')}
+                  | #{m.description}
+                a.item-edit.milestone-edit.edit-btn(data-toggle="modal" data-target="#edit-milestone" id='edit-'+m._id)
+                  i.fa.fa-pencil
+        else
+          .faded Add milestone
 
 
-  //- TEAM
-  .col-md-6
-    h3 Team
+      script.
+        $(document).ready(function() {
+          var milestones = !{JSON.stringify(c.milestones)};
 
-    .block-edit(data-toggle="modal" data-target="#add-team-member")
-      i.fa.fa-plus.fa-right
+          for (var i = 0; i < milestones.length; i++) {
+            /* Iterate through milestones' edit btns: onclick, the form is
+             * populated with that owner's info */
+            (function(n) {
+              var m = milestones[i];
+              $('#edit-'+m._id).click(function() {
+                $('#title').val(m.title);
+                $('#date').val(moment(m.date).format('DD MMMM YYYY'));
+                $('#description').val(m.description);
+                $('#milestone_id').val(m._id);
+              });
+            }(i))
+          }
+        });
 
-    .block-info
-      if c.team.length > 0
-        ul.block-list
-          //- TODO sort by date (most recent first)
-          for m in c.team.sort(chronological).reverse()
-            li.list-item
-              .item-info
-                if m.img_path
-                  img(src=m.img_path)
-                else
-                  .placeholder-img: img(src='../assets/images/placeholder.png')
-                .item-header #{m.full_name} - 
-                  span #{m.role}
-                .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
-                .item-text: a(href='mailto:' + m.email) #{m.email}
-              .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
-                i.fa.fa-pencil
-      else
-        .faded Add team member
 
-  //-       console.log('xxxxxx');
+    //- TEAM
+    .col-md-6
+      h3 Team
+
+      .block-edit(data-toggle="modal" data-target="#add-team-member")
+        i.fa.fa-plus.fa-right
+
+      .block-info
+        if c.team.length > 0
+          ul.block-list
+            //- TODO sort by date (most recent first)
+            for m in c.team.sort(chronological).reverse()
+              li.list-item
+                .item-info
+                  if m.img_path
+                    img(src=m.img_path)
+                  else
+                    .placeholder-img: img(src='../assets/images/placeholder.png')
+                  .item-header #{m.full_name} - 
+                    span #{m.role}
+                  .item-date Joined #{moment(m.date_joined).format('DD MMMM YYYY')}
+                  .item-text: a(href='mailto:' + m.email) #{m.email}
+                .item-edit.edit-btn(data-toggle="modal" data-target="#edit-team-member" id='edit-' + m._id)
+                  i.fa.fa-pencil
+        else
+          .faded Add team member
 
   script.
     $(document).ready(function() {
       var team = !{JSON.stringify(c.team)};
-
 
       for (var i = 0; i < team.length; i++) {
         /* Iterate through team member edit btns: onclick, the form is
