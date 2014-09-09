@@ -932,20 +932,6 @@ input:-webkit-autofill {
 svg {
   width: 100%; }
 
-.graph-padding::before {
-  height: 100%;
-  width: 10%;
-  right: 0;
-  content: "\00a0";
-  position: absolute;
-  background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0), white);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0))), to(white);
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0)), white;
-  background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0), white);
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), white);
-  background-repeat: repeat-x;
-  pointer-events: none; }
-
 .c3-tooltip {
   border-radius: 2px;
   -moz-border-radius: 2px;

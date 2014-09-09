@@ -30,7 +30,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
     .col-md-10
       h3 Cash By Quarter
 
-      if operational.cash.length > 0
+      if (operational.cash.length > 0)
         +block_control("cashGraph", "cashBar", "cashArea", false, true)
 
       //- Grab the data
@@ -81,7 +81,7 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
     .col-md-8
       h3 Gross Burn By Quarter
 
-      if operational.gross_burn.length > 0
+      if operational.gross_burn.length + operational.pred_gross_burn.length > 0
         +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea", true, false)
 
       //- Grab the data

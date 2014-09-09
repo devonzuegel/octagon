@@ -84,7 +84,9 @@ function generateGraph(el, data, width_multiplier) {
     legend: { show: true, },
     zoom: { enabled: true },
   });
-
+  
+  console.log($(window).width());
+  chart.resize({width: parseInt($(window).width() * width_multiplier - 120), height: 380});
 
   return chart;
 }
@@ -102,6 +104,7 @@ var cashGraph = generateGraph(
   },
   10/12
 );
+
 
 var grossBurnGraph = generateGraph(
   '#grossBurnGraph',
