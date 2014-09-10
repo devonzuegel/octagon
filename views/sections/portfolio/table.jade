@@ -1,4 +1,4 @@
-//- Currently not implemented and thus commented out
+//- //- Currently not implemented and thus commented out
 //- portfolio-sub-toolbar
 //-   .sort-btn Cash
 //-   .sort-btn Revenue
@@ -33,21 +33,27 @@
                 if c.operational.cash.length > 0
                   | #{usd(c.operational.cash[0].value)}
                 else
-                  | Add
+                  .faded No data
             div
               .small-label Revenue
               .card-info
                 if c.operational.revenue.length > 0
                   | #{usd(c.operational.revenue[0].value)}
                 else
-                  | Add
+                  .faded No data
             div.hidden-on-grid
               .small-label Days of burn
-              .card-info 15 days
+              .card-info
+                if (c.operational.cash.length > 0  &&  c.operational.gross_burn.length > 0)
+                  - var days_of_burn = Math.floor(c.operational.cash[0].value/(c.operational.gross_burn[0].value/(3 * 90)))
+                if days_of_burn
+                  | #{days_of_burn}
+                else
+                  .faded No data
             div.hidden-on-grid
               .small-label Total funding
               .card-info 
                 if c.profile && c.profile.total_funding
                   | $#{c.profile.total_funding}
                 else
-                  | Add
+                  .faded No data

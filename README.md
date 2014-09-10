@@ -36,7 +36,7 @@ There are several ways to run the application:
 Go to the root directory of the app and execute `$ grunt watch`.
 
 ## Misc
-`$ grunt cssmin` minifies your css file
+`$ grunt cssmin` minifies your css file	
 
 `$ grunt jslint` highlights JSLint errors
 
