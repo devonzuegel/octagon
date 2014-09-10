@@ -40,13 +40,6 @@ script.
     // Initialize sticky tabs plugin
     $('.nav-tabs').stickyTabs();
 
-    // Initialize tooltips
-    // Currently commented out
-    //- $('.col-md-3 > .edit-btn').tooltip({
-    //-   placement: 'right',
-    //-   title: 'Add new metric'
-    //- });
-
     // Highlight label of input field on focus
     $('input[type=text], input[type=password], textarea').on('blur', function() {
       $(this).prevAll('.small-label:first')
@@ -80,3 +73,4 @@ script.
       $(this).prevAll('.small-label:first').addClass('small-label-focused');
     });
   });
+

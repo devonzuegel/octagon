@@ -22,24 +22,25 @@ var MONGO_URI = 'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds06389
 var MONGO_URI = /* 'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039'    ||    */ 'mongodb://localhost/test';
 </pre>
 
-2. Here are links to installing and running MongoDB. If you have a Mac, follow [these instructions](http://blog.troygrosfield.com/2011/03/21/installing-and-running-mongodb-on-a-mac/). If you have a PC, follow [these instructions](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/). These directions are geared towards a Mac environment will try to include commands for Windows computers as well.
+2. Here are links to installing and running MongoDB. If you have a Mac, follow [these instructions](http://blog.troygrosfield.com/2011/03/21/installing-and-running-mongodb-on-a-mac/). If you have a PC, follow [these instructions](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/). These directions are geared towards a Mac environment will try to include commands for Windows computers as well. The documentation on the [MongoDB website](http://docs.mongodb.org) is also very good.
 
+## Running the App
 
-~ ~ ~
+There are several ways to run the application:
 
-`$ mongod --dbpath data` runs MongoDB
+`$ node app.js` or `$ node app` runs the application. Each time a .js file is changed, you will have to restart the app. To fix this issue, run supervisor.
 
-- There are several ways to run the application:
-	- `$ node app.js` or `$ node app` runs the application. Each time a .js file is changed, you will have to restart the app.
-	- `$ supervisor app.js` or `$ supervisor app` runs the application just as `node app`, but it also watches for changes and on a change restarts. To run this command, execute `$ npm install supervisor`.
+`$ supervisor app.js` or `$ supervisor app` runs the application just as `node app`, but it also watches for changes and on a change restarts. To run this command, you'll have to first install supervisor by executing `$ npm install supervisor`.
+		
+## Watch for SASS changes
+Go to the root directory of the app and execute `$ grunt watch`.
 
-- `$ grunt watch` watches for SASS changes
+## Misc
+`$ grunt cssmin` minifies your css file
 
-- `$ grunt cssmin` minifies your css file
+`$ grunt jslint` highlights JSLint errors
 
-- `$ grunt jslint` highlights JSLint errors
-
-- `$ mocha` runs any tests
+`$ mocha` runs any tests
  
 # Support
 If you have any questions about how to run Octogon, email Devon Zuegel at [devonz@cs.stanford.edu](mailto:devonz@cs.stanford.edu).

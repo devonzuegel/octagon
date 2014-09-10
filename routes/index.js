@@ -26,10 +26,10 @@ router.get('/', function(req, res) {
 	return res.redirect('/portfolio');
 });
 
-// support page
+// data page
 router.get('/data', function(req, res) {
 
-		privileges.require_privileges(
+	privileges.require_privileges(
 		req, res, 
 		false,  // Do not include flash error msgs
 		admin_fn = function() {
@@ -44,46 +44,13 @@ router.get('/data', function(req, res) {
 			});
 		}, 
 		user_fn = function() { 
-			res.render('data', {
-				title: 'Data', 
-				errors: req.flash('error'),
-				username: req.session.username,
-				is_admin: false,
-			});
+      res.redirect('/portfolio/' + req.session.permalink); 
     }
   );
 
 });
 
-router.get('/dashboard', function(req, res) {
-	return res.redirect('/portfolio');
-	/*
-		privileges.require_privileges(
-			req, res, 
-			false,  // Do not include flash error msgs
-			admin_fn = function() {
-				// Render F8's dashboard
-				res.render('dashboard-f8', { 
-					title: 'Dashboard', 
-					errors: req.flash('error'),
-					username: req.session.username,
-					is_admin: true  
-				});
-			}, 
-			user_fn = function() { 
-				// Render company's individual dashboard
-				res.render('dashboard-individual', { 
-					title: 'Dashboard', 
-					errors: req.flash('error'),
-					username: req.session.username,
-					is_admin: false  
-				});                      
-			}
-		);
-	*/
-});
-
-
+// settings page
 router.get('/settings', function(req, res) {
 	privileges.require_privileges(
 		req, res, 

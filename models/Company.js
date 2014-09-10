@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt'),
     salt = bcrypt.genSaltSync(10); // Generate a salt
 
 
-var MONGO_URI = 'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039' ||
+var MONGO_URI = /*'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds063899.mongolab.com:63899/heroku_app28713039' ||*/
                 'mongodb://localhost/test';
 
 // Localhost connection
