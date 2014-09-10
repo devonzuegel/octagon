@@ -321,6 +321,8 @@ module.exports = {
           if (updated[field] === undefined)   updated[field] = 'object';
 
           // The new data to be inserted
+          /* TODO: New data should not be inserted every time, because at the moment
+           * this code handles editing data as well */
           var new_data = {
             date: moment(form.quarter + '-' + form.year, 'Q-YYYY')
                     .add(1, 'day'),
