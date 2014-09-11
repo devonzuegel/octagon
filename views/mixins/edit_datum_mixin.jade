@@ -1,0 +1,41 @@
+mixin q_year_inputs()
+  
+  .inline-input-container
+    .small-label Quarter
+    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
+
+  .inline-input-container
+    .small-label Year
+    input(type="text"  name="year"  autocomplete="off")
+
+
+mixin data_point(section_name, data)
+  .remove-btn(data-toggle="modal" data-target="#del-datum-"+section_name)
+    i.fa.fa-times
+  .edit-btn(data-toggle="modal" data-target="#edit-"+section_name)
+    i.fa.fa-pencil
+  .value #{usd(data.value)}
+  .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+
+
+mixin data_list(title, section_name, section_data_array)
+  h3 #{title}
+
+  .block-edit.edit-btn(data-toggle="modal" data-target="#edit-"+section_name)
+    i.fa.fa-plus
+
+  .block-info.block-table
+    for data in section_data_array.sort(chronological).reverse()
+      .table-section: +data_point(section_name, data)
+    else
+      .faded Add data
+
+
+mixin data_graph(title, name, num_data_points, bar, line)
+  h3 #{title}
+
+  if num_data_points > 0 
+    +block_control(name+"Graph", name+"Bar", name+"Area", bar, line)
+    .block-info.block-graph: .graph-padding(id=name+"Graph")
+  else
+    .block-info.block-table.faded No data available
