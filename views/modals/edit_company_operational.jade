@@ -4,7 +4,6 @@ include ../mixins/Q_year_inputs_mixin
 //- CASH
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-cash", "Add")
   input(type="hidden"  name="form_name"  value="operational")
-
   .small-label Cash
   input(type="text"  placeholder="Add cash"  name="cash"  autocomplete="off")
   +q_year_inputs()
@@ -12,11 +11,8 @@ include ../mixins/Q_year_inputs_mixin
 
 +edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-operational-cash", "Delete")
   input(type="hidden"  name="form_name"  value="operational")
-
   .warning Are you sure you want to delete this data?
-
   .hidden
-    .small-label Cash
     input(type="text"  placeholder="Add cash"  name="cash"  autocomplete="off")
     +q_year_inputs()
 
@@ -25,16 +21,23 @@ include ../mixins/Q_year_inputs_mixin
 //- PREDICTED GROSS BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-gross-burn", "Edit")
   input(type="hidden" name="form_name" value="operational")
-
   .small-label Forecasted Gross Burn
   input(type="text"  placeholder="Add forecasted gross burn"  name="pred_gross_burn"  autocomplete="off")
   +q_year_inputs()
 
 
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-operational-pred-gross-burn", "Delete")
+  input(type="hidden"  name="form_name"  value="operational")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  placeholder="Add forecasted gross burn"  name="pred_gross_burn"  autocomplete="off")
+    +q_year_inputs()
+
+
+
 //- GROSS BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-gross-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
-
   .small-label Gross Burn
   input(type="text"  placeholder="Add gross burn"  name="gross_burn"  autocomplete="off")
   +q_year_inputs()
@@ -43,7 +46,6 @@ include ../mixins/Q_year_inputs_mixin
 //- PREDICTED NET BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-net-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
-
   .small-label Forecasted Net Burn
   input(type="text"  placeholder="Add forecasted net burn"  name="pred_net_burn"  autocomplete="off")
   +q_year_inputs()
@@ -52,7 +54,6 @@ include ../mixins/Q_year_inputs_mixin
 //- NET BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-net-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
-    
   .small-label Net Burn
   input(type="text"  placeholder="Add net burn"  name="net_burn"  autocomplete="off")
   +q_year_inputs()
@@ -61,7 +62,6 @@ include ../mixins/Q_year_inputs_mixin
 //- REVENUE
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-revenue", "Add")
   input(type="hidden" name="form_name" value="operational")
-
   .small-label Revenue
   input(type="text"  placeholder="Add revenue"  name="revenue"  autocomplete="off")
   +q_year_inputs()
@@ -70,7 +70,6 @@ include ../mixins/Q_year_inputs_mixin
 //- HEAD COUNT
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-head-count", "Add")
   input(type="hidden" name="form_name" value="operational")
-
   .small-label Head Count
   input(type="text"  placeholder="Add head count"  name="head_count"  autocomplete="off")
   +q_year_inputs()
