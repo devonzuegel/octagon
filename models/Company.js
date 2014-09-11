@@ -118,6 +118,15 @@ function indexFromId (id, obj_array) {
   }
 }
 
+function newData(form, field) {
+  return new_data = {
+    date: moment(form.quarter + '-' + form.year, 'Q-YYYY').add(1, 'day'),
+    value: form[field],
+    label: field,
+    timestamp: moment()
+  };
+}
+
 
 /* Simplify crunchbase profile object */
 function simplifyCrunchbaseProf(p) {
@@ -259,12 +268,10 @@ module.exports = {
       } else if (form.edit_obj_in_array) {
         // save name of array to edit in shorter variable
         var array_name = form.edit_obj_in_array;
+
         // Find index of obj in company[array_name] with _id from form
-        console.log('form: ' + JSON.stringify(form, null, 3));
         var i = indexFromId(form._id, company[array_name]);
-        console.log('company[array_name]: ' + JSON.stringify(company[array_name], null, 3))
-        console.log('i: ' + i);
-        // console.log('company[array_name][i]: ' + JSON.stringify(company[array_name][i], null, 3))
+
         // Replace obj at company[array_name][i] with new data from form
         for (var f in form) {
           if (f != 'edit_obj_in_array')   company[array_name][i][f] = form[f];
@@ -311,9 +318,7 @@ module.exports = {
       // Update fields of 'updated' with data from form
       for (field in form) {
         // If the field is not an unintented field
-        if (field !== 'form_name' &&
-            field !== 'quarter' &&
-            field !=='year') {
+        if (field !== 'form_name'  &&  field !== 'quarter'  &&   field !=='year') {
 
           // If the field doesn't exist in updated (or in the db) yet, create it
           if (updated[field] === undefined)   updated[field] = 'object';
@@ -321,13 +326,7 @@ module.exports = {
           // The new data to be inserted
           /* TODO: New data should not be inserted every time, because at the moment
            * this code handles editing data as well */
-          var new_data = {
-            date: moment(form.quarter + '-' + form.year, 'Q-YYYY')
-                    .add(1, 'day'),
-            value: form[field],
-            label: field,
-            timestamp: moment()
-          };
+          var new_data = newData(form, field);
 
           // Initialize quarterDataExists boolean to false
           var quarterDataExists = false;
@@ -377,11 +376,8 @@ module.exports = {
 
       if (err)  return done(err);
 
-      // Initialize empty obj and
-      // counting variable 'field'
+      // Initialize empty obj and a counting variable 'field'
       var updated = {},  field;
-
-      console.log('company[form.form_name]:  ', JSON.stringify(company[form.form_name], null, 3));
 
       // Populate 'updated' with old values
       for (field in company[form.form_name]) {
@@ -391,36 +387,16 @@ module.exports = {
       // Update fields of 'updated' with data from form
       for (field in form) {
         // If the field is not an unintented field
-        if (field !== 'form_name' &&
-            field !== 'quarter' &&
-            field !=='year') {
+        if (field !== 'form_name'  &&  field !== 'quarter' &&  field !=='year') {
 
-          // If the field doesn't exist in updated (or in the db) yet, create it
-          if (updated[field] === undefined)   updated[field] = 'object';
-
-          // The new data to be inserted
-          var new_data = {
-            date: moment(form.quarter + '-' + form.year, 'Q-YYYY')
-                    .add(1, 'day'),
-            value: form[field],
-            label: field,
-            timestamp: moment()
-          };
-
-          // Initialize quarterDataExists boolean to false
-          var quarterDataExists = false;
+          // The new data to be checked for deletion
+          var new_data = newData(form, field);
 
           // Loop through entries in company property
-          for(var entry in updated[field]) {
-            // Necessary check for all for... in statements
-            if (updated[field].hasOwnProperty(entry)) {
-
-              // If the data for the quarter already exists
-              if(moment(updated[field][entry].date).isSame(moment(new_data.date))) {
-                updated[field].splice(entry, 1);
-                break;  // Break out of the loop
-              }
-
+          for(var i = 0; i < updated[field].length; i++) {
+            // If the data for the quarter already exists
+            if(moment(updated[field][i].date).isSame(moment(new_data.date))) {
+              updated[field].splice(i, 1);
             }
           }
 
