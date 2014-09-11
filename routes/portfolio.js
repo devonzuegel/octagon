@@ -176,4 +176,29 @@ router.post('/:permalink/editMetrics', function(req, res) {
     res.redirect('/portfolio/' + link + '#' + req.body.form_name); 
   });
 });
+
+
+
+router.post('/:permalink/deleteDatum', function(req, res) {
+  var link = req.params.permalink, // gets :permalink from the url
+      session_link = req.session.permalink; // gets permalink from session (who's logged in?)
+
+
+  privileges.require_privileges(
+    req, 
+    res, 
+    false, // don't include flash error messages
+    admin_fn = function() { return; }, // if admin, pass & continue on
+    user_fn = function() {
+      // if authenticated as different user, don't allow access ...
+      if (session_link != link)  res.redirect('/portfolio/' + session_link);
+      // ... otherwise, pass & continue
+    }
+  );
+
+  CompanyModel.deleteDatum(link, req.body, cb = function() { 
+    res.redirect('/portfolio/' + link + '#' + req.body.form_name); 
+  });
+});
+
 module.exports = router;

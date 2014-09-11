@@ -243,9 +243,8 @@ module.exports = {
        * indicated by form['array']. */
       if (form.array) {
         // initialize obj to be filled w/ form data (w/ unique id for the obj)
-        var obj = {
-          _id: (new Date()).getTime()
-        };
+        var obj = { _id: (new Date()).getTime()  };
+
         // populate obj with form data (except the value of the array field)
         for (var field in form) {
           if (field != 'array')     obj[field] = form[field];
@@ -302,8 +301,7 @@ module.exports = {
 
       // Initialize empty obj and
       // counting variable 'field'
-      var updated = {},
-          field;
+      var updated = {},  field;
 
       // Populate 'updated' with old values
       for (field in company[form.form_name]) {
@@ -372,7 +370,80 @@ module.exports = {
 
   // Delete a data point from company metric info
   deleteDatum: function(link, form, cb) {
+    /* Given the contents of a form (including a field called 'form.form_name'),
+     * this delete the corresponding field in company (access by calling:
+     * company[form.form.form_name]) with the contents of the form. */
+    Companies.findOne({ permalink: link }, function (err, company) {
 
+      if (err)  return done(err);
+
+      // Initialize empty obj and
+      // counting variable 'field'
+      var updated = {},  field;
+
+      // Populate 'updated' with old values
+      for (field in company[form.form_name]) {
+        updated[field] = company[form.form_name][field];
+      }
+
+      // Update fields of 'updated' with data from form
+      for (field in form) {
+        // If the field is not an unintented field
+        if (field !== 'form_name' &&
+            field !== 'quarter' &&
+            field !=='year') {
+
+          // If the field doesn't exist in updated (or in the db) yet, create it
+          if (updated[field] === undefined)   updated[field] = 'object';
+
+          // The new data to be inserted
+          /* TODO: New data should not be inserted every time, because at the moment
+           * this code handles editing data as well */
+          var new_data = {
+            date: moment(form.quarter + '-' + form.year, 'Q-YYYY')
+                    .add(1, 'day'),
+            value: form[field],
+            label: field,
+            timestamp: moment()
+          };
+
+          // Initialize quarterDataExists boolean to false
+          var quarterDataExists = false;
+
+          // Loop through entries in company property
+          for(var entry in updated[field]) {
+
+            // Necessary check for all for... in statements
+            if (updated[field].hasOwnProperty(entry)) {
+
+              // If the data for the quarter already exists
+              if(moment(updated[field][entry].date).isSame(moment(new_data.date))) {
+
+                // Update the boolean
+                quarterDataExists = true;
+
+                // Overwrite the data
+                updated[field][entry] = new_data;
+
+                // Break out of the loop
+                break;
+              }
+            }
+          }
+
+          // Inserts data to the top of the array if it doesn't exist
+          if(!quarterDataExists) {
+            updated[field].unshift(new_data);
+          }
+        }
+      }
+
+      // Update 'company[for.form.form_name]' to reflect changes from 'updated'
+      company[form.form_name] = updated;
+      // Save 'company' to db and call callback function
+      company.save(cb);
+
+    });
   },
 
   Companies: Companies,
