@@ -38,7 +38,7 @@ var Company = {
       var el_quarter = $(this).find('.date').text(),
           quarter = 'Q' + moment().subtract(3, 'M').format('Q YYYY');
 
-      if(el_quarter == quarter) {
+      if (el_quarter == quarter) {
         $(this).addClass('highlighted-section');
       }
     });
@@ -49,14 +49,14 @@ var Company = {
     var modal_id = $(this).attr('data-target'),
         title = $(modal_id).find('.modal-title');
 
+    // Empty all text inputs
     $(modal_id + ' input[type=text]').val('');
 
     // Set quarter and year as read-only
     $(modal_id + ' input[name=quarter]').prop('readonly', false);
     $(modal_id + ' input[name=year]').prop('readonly', false);
 
-
-    // Change title to 'Add'...
+    // Change title to 'Add'
     title.text('Add');
   },
 
@@ -101,10 +101,10 @@ var Company = {
     // Stores days remaining until start of next quarter
     var daysRemaining = moment().startOf('quarter')
                           .add(3, 'month')
-                          .diff(moment(), 'days'),
+                          .diff(moment(), 'days');
 
-        // Stores the label suffix for days remaining
-        daysLabel = (daysRemaining == 1) ? 'day' : 'days';
+    // Stores the label suffix for days remaining
+    var daysLabel = (daysRemaining == 1) ? 'day' : 'days';
 
     // Populates the elements with the correct values
     e_current.text('Q' + moment().quarter() + ' ' + moment().year());

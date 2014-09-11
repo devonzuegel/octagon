@@ -1,4 +1,4 @@
-.modal {
+ .modal {
   margin: 0 auto;
   z-index: 10000;
 
@@ -45,9 +45,10 @@
 
         input[type=text],
         input[type=password],
+        input[readonly],
+        input[readonly="readonly"],
         textarea {
           background: transparent;
-          border-bottom: 1px solid #ddd;
           color: #666;
           height: 33px;
           font-size: 15px;
@@ -55,11 +56,7 @@
           padding: 30px 0 15px 0;
           resize: none;
           width: 100%;
-        }
-
-        input[type=text],
-        input[type=password],
-        textarea {
+          border-bottom: 1px solid #ddd !important;
 
           &:hover {
             border-color: #ccc;
