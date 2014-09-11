@@ -7,7 +7,7 @@ include ../mixins/edit_modal_mixin
 
 //- EDIT ABOUT: description & link to unabridged description on Crunchbase
 +edit_modal(edit_link, 'edit-about', 'Edit About')
-  div.small-label Company description
+  .small-label Company description
   textarea(placeholder='Add company description'  name='description'  autocomplete='off')
    if (p)
       | #{p.description}
@@ -17,15 +17,15 @@ include ../mixins/edit_modal_mixin
 
 //- EDIT HEADER: company's name, site url, logo, & short description
 +edit_modal(edit_link, 'edit-header', 'Edit Header')
-  div.small-label Image path
+  .small-label Image path
   input(name='image' placeholder='Add image path'  value=(p) ? p.img_path : undefined autofocus  autocomplete='off' type='text')
 
-  div.small-label Company description
+  .small-label Company description
   textarea(name='short_descrip'  placeholder='Add company description'  autocomplete='off') 
       if (p)
         | #{p.short_descrip}
 
-  div.small-label Homepage url
+  .small-label Homepage url
   input(name='homepage_url'  placeholder='Add homepage url'  autocomplete='off' value=(p) ? p.homepage_url : undefined  type='text')
 
 
@@ -33,16 +33,16 @@ include ../mixins/edit_modal_mixin
 
 //- EDIT INFO: basic info, including categories, founders, founding date, & total funding
 +edit_modal(edit_link, 'edit-info', 'Edit Info')
-  div.small-label Categories
+  .small-label Categories
   input(name='categories'  placeholder='Add categories'  autocomplete='off' value=(p) ? p.categories : undefined  type='text')
 
-  div.small-label Founders
+  .small-label Founders
   input(name='founders'  placeholder='Add founders'  autocomplete='off' value=(p) ? p.founders : undefined  type='text')
 
-  div.small-label Date founded
+  .small-label Date founded
   input(name='founded_on'  placeholder='Add date founded'  autocomplete='off' value=(p) ? p.founded_on : undefined  type='text')
 
-  div.small-label Funding
+  .small-label Funding
   input(name='total_funding'  placeholder='Add total funding'  autocomplete='off' value=(p) ? p.total_funding : undefined  type='text')
 
 
@@ -55,13 +55,13 @@ include ../mixins/edit_modal_mixin
   //- * company rather than separate fields directly inside of company
   input(type='hidden' name='array' value='milestones') 
 
-  div.small-label Title
+  .small-label Title
   input(name='title'  placeholder='Add title'  autocomplete='off'  type='text')
 
-  div.small-label Date
+  .small-label Date
   input(name='date'  placeholder='Add date'  autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY')  type='text')
 
-  div.small-label Description
+  .small-label Description
   textarea(name='description'  placeholder='Add description'  autocomplete='off') 
 
 
@@ -76,13 +76,13 @@ include ../mixins/edit_modal_mixin
 
   input(type='hidden' name='_id' id='milestone_id')
 
-  div.small-label Title
+  .small-label Title
   input(placeholder='Add title'  name='title'  id='title'  autocomplete='off'  type='text')
 
-  div.small-label Date
+  .small-label Date
   input(placeholder='Add date'  name='date'  id='date'  autocomplete='off'  type='text')
 
-  div.small-label Description
+  .small-label Description
   textarea(placeholder='Add description'  name='description'  id='description'  autocomplete='off') 
 
 
@@ -95,19 +95,19 @@ include ../mixins/edit_modal_mixin
   //- * company rather than separate fields directly inside of company
   input(type='hidden' name='array' value='team') 
 
-  div.small-label Full name
+  .small-label Full name
   input(placeholder='Add name'  name='full_name'  autocomplete='off'  type='text')
 
-  div.small-label Image path
+  .small-label Image path
   input(placeholder='Add image path'  name='img_path'  autocomplete='off'  type='text')
 
-  div.small-label Role
+  .small-label Role
   input(placeholder='Add role'  name='role'  autocomplete='off'  type='text')
 
-  div.small-label Email
+  .small-label Email
   input(placeholder='Add email'  name='email'  autocomplete='off'  type='text')
 
-  div.small-label Date Joined
+  .small-label Date Joined
   input(placeholder='Add date joined'  name='date_joined'  autocomplete='off' value=moment(Date.now()).format('DD MMMM YYYY')  type='text')
 
 
@@ -122,19 +122,19 @@ include ../mixins/edit_modal_mixin
 
   input(type='hidden' name='_id' id='team_member_id')
 
-  div.small-label Full name
+  .small-label Full name
   input(placeholder='Add title'  name='full_name'  id='full_name'  autocomplete='off'  type='text')
 
-  div.small-label Image path
+  .small-label Image path
   input(placeholder='Add image path'  name='img_path'  id='img_path' autocomplete='off'  type='text')
 
-  div.small-label Role
+  .small-label Role
   input(placeholder='Add role'  name='role'  id='role' autocomplete='off'  type='text')
 
-  div.small-label Email
+  .small-label Email
   input(placeholder='Add email'  name='email'  id='email' autocomplete='off'  type='text')
 
-  div.small-label Date Joined
+  .small-label Date Joined
   input(placeholder='Add date joined'  name='date_joined'  id='date_joined' autocomplete='off' type='text')
 
 

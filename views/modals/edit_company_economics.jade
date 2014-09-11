@@ -1,125 +1,42 @@
 include ../mixins/edit_modal_mixin
+include ../mixins/Q_year_inputs_mixin
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-ltv", "Add")
   input(type="hidden" name="form_name" value="economics")
 
-  div.small-label LTV
-  input(
-    type="text"
-    placeholder="Add LTV"
-    name="ltv"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
-
+  .small-label LTV
+  input(type="text"  placeholder="Add LTV"  name="ltv"  autocomplete="off")
+  +q_year_inputs()
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-lifetime-est", "Add")
   input(type="hidden" name="form_name" value="economics")
 
-  div.small-label Lifetime Estimate
-  input(
-    type="text"
-    placeholder="Add lifetime est."
-    name="lifetime_est"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
-
+  .small-label Lifetime Estimate
+  input(type="text"  placeholder="Add lifetime est."  name="lifetime_est"  autocomplete="off")
+  +q_year_inputs()
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-cac", "Add")
   input(type="hidden" name="form_name" value="economics")
 
-  div.small-label CAC
-  input(
-    type="text"
-    placeholder="Add CAC"
-    name="cac"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
-
+  .small-label CAC
+  input(type="text"  placeholder="Add CAC"  name="cac"  autocomplete="off")
+  +q_year_inputs()
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-asp", "Add")
   input(type="hidden" name="form_name" value="economics")
 
-  div.small-label ASP
-  input(
-    type="text"
-    placeholder="Add ASP"
-    name="asp"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
-
+  .small-label ASP
+  input(type="text"  placeholder="Add ASP"  name="asp"  autocomplete="off")
+  +q_year_inputs()
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-gm", "Add")
   input(type="hidden" name="form_name" value="economics")
 
-  div.small-label GM %
-  input(
-    type="text"
-    placeholder="Add GM %"
-    name="gm_percentage"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
+  .small-label GM %
+  input(type="text"  placeholder="Add GM %"  name="gm_percentage"  autocomplete="off")
+  +q_year_inputs()

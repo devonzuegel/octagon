@@ -1,97 +1,62 @@
 include ../mixins/edit_modal_mixin
+include ../mixins/Q_year_inputs_mixin
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-cash", "Add")
   input(type="hidden"  name="form_name"  value="operational")
-  //- input(type="hidden"  )
 
-  div.small-label Cash
+  .small-label Cash
   input(type="text"  placeholder="Add cash"  name="cash"  autocomplete="off")
-  .inline-input-container.readonly
-    div.small-label Quarter
-    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
-  .inline-input-container.readonly
-    div.small-label Year
-    input(type="text"  name="year"  autocomplete="off")
+  +q_year_inputs()
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-gross-burn", "Edit")
   input(type="hidden" name="form_name" value="operational")
 
-  div.small-label Forecasted Gross Burn
+  .small-label Forecasted Gross Burn
   input(type="text"  placeholder="Add forecasted gross burn"  name="pred_gross_burn"  autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(type="text"  name="year"  autocomplete="off")
+  +q_year_inputs()
 
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-gross-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
 
-  div.small-label Gross Burn
+  .small-label Gross Burn
   input(type="text"  placeholder="Add gross burn"  name="gross_burn"  autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(type="text"  name="year"  autocomplete="off")
+  +q_year_inputs()
 
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-net-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
 
-  div.small-label Forecasted Net Burn
+  .small-label Forecasted Net Burn
   input(type="text"  placeholder="Add forecasted net burn"  name="pred_net_burn"  autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(type="text"  name="year"  autocomplete="off")
+  +q_year_inputs()
 
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-net-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
-
-  div.small-label Net Burn
+    
+  .small-label Net Burn
   input(type="text"  placeholder="Add net burn"  name="net_burn"  autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(type="text"  name="year"  autocomplete="off")
+  +q_year_inputs()
 
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-revenue", "Add")
   input(type="hidden" name="form_name" value="operational")
 
-  div.small-label Revenue
+  .small-label Revenue
   input(type="text"  placeholder="Add revenue"  name="revenue"  autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(type="text"  name="year"  autocomplete="off")
+  +q_year_inputs()
 
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-head-count", "Add")
   input(type="hidden" name="form_name" value="operational")
 
-  div.small-label Head Count
+  .small-label Head Count
   input(type="text"  placeholder="Add head count"  name="head_count"  autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(type="text"  placeholder="1-4"  name="quarter"  autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(type="text"  name="year"  autocomplete="off")
+  +q_year_inputs()
 

@@ -152,6 +152,7 @@ body {
   -o-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out; }
 
+/* NOTE: _modals.scss also contains some of the inputs styling. */
 input[type=email],
 input[type=text],
 input[type=password],

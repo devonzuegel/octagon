@@ -4,72 +4,22 @@ include ../mixins/edit_modal_mixin
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-dau", "Add")
   input(type="hidden" name="form_name" value="user_metrics")
 
-  div.small-label AVG DAU
-  input(
-    type="text"
-    placeholder="Add AVG DAU"
-    name="avg_dau"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
-
+  .small-label AVG DAU
+  input(type="text"  placeholder="Add AVG DAU"  name="avg_dau"  autocomplete="off")
+  +q_year_inputs()
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-mau", "Add")
   input(type="hidden" name="form_name" value="user_metrics")
 
-  div.small-label AVG MAU
-  input(
-    type="text"
-    placeholder="Add AVG MAU"
-    name="avg_mau"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
-
+  .small-label AVG MAU
+  input(type="text"  placeholder="Add AVG MAU"  name="avg_mau"  autocomplete="off")
+  +q_year_inputs()
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-churn", "Add")
   input(type="hidden" name="form_name" value="user_metrics")
 
-  div.small-label Churn
-  input(
-    type="text"
-    placeholder="Add churn"
-    name="churn"
-    autocomplete="off")
-  .inline-input-container
-    div.small-label Quarter
-    input(
-      type="text"
-      placeholder="1-4"
-      name="quarter"
-      autocomplete="off")
-  .inline-input-container
-    div.small-label Year
-    input(
-      type="text"
-      name="year"
-      autocomplete="off")
+  .small-label Churn
+  input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off")
+  +q_year_inputs()
