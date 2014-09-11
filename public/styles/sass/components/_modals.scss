@@ -96,6 +96,16 @@
           }
         }
 
+        .warning {
+          border: 1px solid lighten($red, 20%);
+          background: lighten($red, 30%);
+          color: darken($red, 10%);
+          font-size: 14px;
+          margin: 10px 0;
+          padding: 15px;
+          border-radius: 4px;
+        }
+
         .error {
 
           div {

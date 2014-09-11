@@ -357,6 +357,14 @@ input:-webkit-autofill {
               margin-right: 10px; }
             .modal .modal-dialog .modal-content .modal-body .checkbox-group label:hover {
               color: #666; }
+        .modal .modal-dialog .modal-content .modal-body .warning {
+          border: 1px solid #f1b9b8;
+          background: #f9e3e3;
+          color: #d83c38;
+          font-size: 14px;
+          margin: 10px 0;
+          padding: 15px;
+          border-radius: 4px; }
         .modal .modal-dialog .modal-content .modal-body .error div {
           color: #e06663;
           display: none;

@@ -22,8 +22,8 @@ var Company = {
       this.elements.blockHeaders
     );
 
-    // Clears and populates form values depending on whether
-    // adding or editing
+    /* Clears & populates form values depending on whether adding,
+     * editing, or deleting */
     this.elements.tableAdds.on('click', this.clearFormValues);
     this.elements.tableEdits.on('click', this.populateFormValues);
     this.elements.tableRemove.on('click', this.deleteDatum);
@@ -86,8 +86,6 @@ var Company = {
   },
 
   deleteDatum: function() {
-    console.log('xxxxxxx');
-    // TODO: set modal as not visible (access w/ modal_id)
 
     // Saves important values from edit region
     var modal_id = $(this).attr('data-target'),

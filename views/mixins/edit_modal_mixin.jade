@@ -6,5 +6,5 @@ mixin edit_modal(action, modal_id, modal_title)
         .modal-body
           block
         .modal-footer
-          input(type="button"  value="Cancel" data-dismiss="modal")
-          input(type="submit"  value="Save")
+          input(type="button"  value="Cancel"  data-dismiss="modal")
+          input(type="submit"  value=(modal_title=="Delete") ? "Delete" : "Save")
