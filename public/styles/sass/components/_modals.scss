@@ -68,6 +68,12 @@
           }
         }
 
+        input[readonly],
+        input[readonly="readonly"] {
+          color: #999;
+          font-style: italic;
+        }
+
         .checkbox-group {
           margin: 20px 0 20px 0;
           width: 100%;

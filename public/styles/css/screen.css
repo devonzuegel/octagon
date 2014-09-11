@@ -338,6 +338,10 @@ input:-webkit-autofill {
           .modal .modal-dialog .modal-content .modal-body textarea:focus {
             color: #8a64d1;
             border-bottom: 1px solid #8a64d1; }
+        .modal .modal-dialog .modal-content .modal-body input[readonly],
+        .modal .modal-dialog .modal-content .modal-body input[readonly="readonly"] {
+          color: #999;
+          font-style: italic; }
         .modal .modal-dialog .modal-content .modal-body .checkbox-group {
           margin: 20px 0 20px 0;
           width: 100%; }
