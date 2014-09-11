@@ -8,7 +8,7 @@ var Company = {
       currentQuarter: $('.current-quarter'),
       daysRemaining: $('.days-remaining'),
       blockHeaders: $('.company-content .col-md-3 h3'),
-      tableAdds: $('.col-md-3 .edit-btn'),
+      tableAdds: $('.col-md-2 .edit-btn'),
       tableEdits: $('.table-section .edit-btn'),
       graphRadios: $('.block-control input'),
       quarterMetrics: $('.table-section')
@@ -50,7 +50,11 @@ var Company = {
         title = $(modal_id).find('.modal-title');
 
     $(modal_id + ' input[type=text]').val('');
-      // .prop('readonly', false);
+
+    // Set quarter and year as read-only
+    $(modal_id + ' input[name=quarter]').prop('readonly', false);
+    $(modal_id + ' input[name=year]').prop('readonly', false);
+
 
     // Change title to 'Add'...
     title.text('Add');
@@ -74,14 +78,13 @@ var Company = {
                     .substring(3, parent.find('.date').text().length);
 
     // Populates modal form with saved values
-    $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]')
-      .val(value);
-    $(modal_id + ' input[name=quarter]')
-      .val(quarter);
-      // .prop('readonly', true);
-    $(modal_id + ' input[name=year]')
-      .val(year);
-      // .prop('readonly', true);
+    $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
+    $(modal_id + ' input[name=quarter]').val(quarter);
+    $(modal_id + ' input[name=year]').val(year);
+
+    // Set quarter and year as read-only
+    $(modal_id + ' input[name=quarter]').prop('readonly', true);
+    $(modal_id + ' input[name=year]').prop('readonly', true);
 
     // Change title to 'Edit'...
     title.text('Edit');
