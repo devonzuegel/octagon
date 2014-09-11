@@ -10,6 +10,7 @@ var Company = {
       blockHeaders: $('.company-content .col-md-3 h3'),
       tableAdds: $('.col-md-2 .edit-btn'),
       tableEdits: $('.table-section .edit-btn'),
+      tableRemove: $('.table-section .remove-btn'),
       graphRadios: $('.block-control input'),
       quarterMetrics: $('.table-section')
     };
@@ -18,12 +19,14 @@ var Company = {
     this.calcQuarterInfo(
       this.elements.currentQuarter,
       this.elements.daysRemaining,
-      this.elements.blockHeaders);
+      this.elements.blockHeaders
+    );
 
     // Clears and populates form values depending on whether
     // adding or editing
     this.elements.tableAdds.on('click', this.clearFormValues);
     this.elements.tableEdits.on('click', this.populateFormValues);
+    this.elements.tableRemove.on('click', this.deleteDatum);
 
     // Handles the graph layout change radio buttons
     this.elements.graphRadios.on('click', this.changeGraphLayout);
@@ -35,12 +38,10 @@ var Company = {
   // Highlights any metrics that belong to the last quarter
   highlightQuarter: function(elems) {
     elems.each(function() {
-      var el_quarter = $(this).find('.date').text(),
+      var elem_quarter = $(this).find('.date').text(),
           quarter = 'Q' + moment().subtract(3, 'M').format('Q YYYY');
 
-      if (el_quarter == quarter) {
-        $(this).addClass('highlighted-section');
-      }
+      if (elem_quarter == quarter)    $(this).addClass('highlighted-section');
     });
   },
 
@@ -67,15 +68,9 @@ var Company = {
     var modal_id = $(this).attr('data-target'),
         parent = $(this).parent(),
         title = $(modal_id).find('.modal-title'),
-        value = parent.find('.value')
-                  .text()
-                  .substring(1, parent.find('.value').text().length - 3),
-        quarter = parent.find('.date')
-                    .text()
-                    .substring(1, 2),
-        year = parent.find('.date')
-                    .text()
-                    .substring(3, parent.find('.date').text().length);
+        value = parent.find('.value').text().substring(1, parent.find('.value').text().length - 3),
+        quarter = parent.find('.date').text().substring(1, 2),
+        year = parent.find('.date').text().substring(3, parent.find('.date').text().length);
 
     // Populates modal form with saved values
     $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
@@ -90,6 +85,31 @@ var Company = {
     title.text('Edit');
   },
 
+  deleteDatum: function() {
+    console.log('xxxxxxx');
+    // TODO: set modal as not visible (access w/ modal_id)
+
+    // Saves important values from edit region
+    var modal_id = $(this).attr('data-target'),
+        parent = $(this).parent(),
+        title = $(modal_id).find('.modal-title'),
+        value = parent.find('.value').text().substring(1, parent.find('.value').text().length - 3),
+        quarter = parent.find('.date').text().substring(1, 2),
+        year = parent.find('.date').text().substring(3, parent.find('.date').text().length);
+
+    // Populates modal form with saved values
+    $(modal_id + ' input[type=text][name!=form_name][name!=quarter][name!=year]').val(value);
+    $(modal_id + ' input[name=quarter]').val(quarter);
+    $(modal_id + ' input[name=year]').val(year);
+
+    // Set quarter and year as read-only
+    $(modal_id + ' input[name=quarter]').prop('readonly', true);
+    $(modal_id + ' input[name=year]').prop('readonly', true);
+
+    // Change title to 'Edit'...
+    title.text('Remove');
+  },
+
   // Returns the current quarter
   getQuarter: function() {
     return moment().quarter();
@@ -99,9 +119,7 @@ var Company = {
   calcQuarterInfo: function(e_current, e_days, e_headers) {
 
     // Stores days remaining until start of next quarter
-    var daysRemaining = moment().startOf('quarter')
-                          .add(3, 'month')
-                          .diff(moment(), 'days');
+    var daysRemaining = moment().startOf('quarter').add(3, 'month').diff(moment(), 'days');
 
     // Stores the label suffix for days remaining
     var daysLabel = (daysRemaining == 1) ? 'day' : 'days';

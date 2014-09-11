@@ -282,12 +282,14 @@
                 line-height: 100%;
               }
 
-              .edit-btn {
+              .edit-btn, .remove-btn {
                 color: #999;
-                position: absolute;
+                float: right;
+                margin-left: 10px;
                 top: 10px;
                 right: 10px;
               }
+
             }
 
             .highlighted-section {
@@ -323,7 +325,7 @@
   }
 }
 
-.edit-btn {
+.edit-btn, .remove-btn {
   cursor: pointer;
   font-size: 14px;
 

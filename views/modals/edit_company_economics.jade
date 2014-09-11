@@ -10,12 +10,14 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-lifetime-est", "Add")
   input(type="hidden" name="form_name" value="economics")
 
   .small-label Lifetime Estimate
   input(type="text"  placeholder="Add lifetime est."  name="lifetime_est"  autocomplete="off")
   +q_year_inputs()
+
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-cac", "Add")
@@ -26,12 +28,14 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
+
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-asp", "Add")
   input(type="hidden" name="form_name" value="economics")
 
   .small-label ASP
   input(type="text"  placeholder="Add ASP"  name="asp"  autocomplete="off")
   +q_year_inputs()
+
 
 
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-gm", "Add")

@@ -54,9 +54,6 @@ function y_min_and_max(data) {
  * a width multiplier */
 function generateGraph(el, data, width_multiplier) {
   var parent_width = $(el).closest('block-info block-graph').width();
-  // console.log(parent_width);
-  // console.log(el+'_div');
-  // console.log($(el+'_div').width); //.parent());
   var chart = c3.generate({
     bindto: el,
     color: { pattern: ['#38AEC3', '#459BD3'] },
@@ -85,7 +82,6 @@ function generateGraph(el, data, width_multiplier) {
     zoom: { enabled: true },
   });
   
-  console.log($(window).width());
   chart.resize({width: parseInt($(window).width() * width_multiplier - 120), height: 380});
 
   return chart;

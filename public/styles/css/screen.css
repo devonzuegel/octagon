@@ -901,9 +901,10 @@ input:-webkit-autofill {
             color: #999;
             font-size: 13px;
             line-height: 100%; }
-          .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section .edit-btn {
+          .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section .edit-btn, .company-bkg .company-content .tab-content .tab-pane > div .block-table .table-section .remove-btn {
             color: #999;
-            position: absolute;
+            float: right;
+            margin-left: 10px;
             top: 10px;
             right: 10px; }
         .company-bkg .company-content .tab-content .tab-pane > div .block-table .highlighted-section {
@@ -918,10 +919,10 @@ input:-webkit-autofill {
     .company-bkg .company-content .tab-content .graph-pane .graph-padding {
       width: 100%; }
 
-.edit-btn {
+.edit-btn, .remove-btn {
   cursor: pointer;
   font-size: 14px; }
-  .edit-btn:hover {
+  .edit-btn:hover, .remove-btn:hover {
     color: #8a64d1 !important; }
 
 .edit-disabled {

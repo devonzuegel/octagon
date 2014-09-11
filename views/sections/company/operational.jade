@@ -17,10 +17,14 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
         if operational.cash.length > 0
           for data in operational.cash.sort(chronological).reverse()
             .table-section
-              .value #{usd(data.value)}
-              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+              //- "REMOVE" btn
+              .remove-btn(data-toggle="modal" data-target="#del-datum-operational-cash")
+                i.fa.fa-times
+              //- "EDIT" btn
               .edit-btn(data-toggle="modal" data-target="#edit-operational-cash")
                 i.fa.fa-pencil
+              .value #{usd(data.value)}
+              .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
         else
           .faded Add data
     

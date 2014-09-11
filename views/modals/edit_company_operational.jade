@@ -1,6 +1,7 @@
 include ../mixins/edit_modal_mixin
 include ../mixins/Q_year_inputs_mixin
 
+//- CASH
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-cash", "Add")
   input(type="hidden"  name="form_name"  value="operational")
 
@@ -8,6 +9,17 @@ include ../mixins/Q_year_inputs_mixin
   input(type="text"  placeholder="Add cash"  name="cash"  autocomplete="off")
   +q_year_inputs()
 
+
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-operational-cash", "Delete")
+  input(type="hidden"  name="form_name"  value="operational")
+
+  .small-label Cash
+  input(type="text"  placeholder="Add cash"  name="cash"  autocomplete="off")
+  +q_year_inputs()
+
+
+
+//- PREDICTED GROSS BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-gross-burn", "Edit")
   input(type="hidden" name="form_name" value="operational")
 
@@ -16,7 +28,7 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
-
+//- GROSS BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-gross-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
 
@@ -25,7 +37,7 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
-
+//- PREDICTED NET BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-pred-net-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
 
@@ -34,7 +46,7 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
-
+//- NET BURN
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-net-burn", "Add")
   input(type="hidden" name="form_name" value="operational")
     
@@ -43,7 +55,7 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
-
+//- REVENUE
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-revenue", "Add")
   input(type="hidden" name="form_name" value="operational")
 
@@ -52,7 +64,7 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
-
+//- HEAD COUNT
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-operational-head-count", "Add")
   input(type="hidden" name="form_name" value="operational")
 

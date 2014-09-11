@@ -370,6 +370,11 @@ module.exports = {
     });
   },
 
+  // Delete a data point from company metric info
+  deleteDatum: function(link, form, cb) {
+
+  },
+
   Companies: Companies,
   passport: passport,
   bcrypt: bcrypt
