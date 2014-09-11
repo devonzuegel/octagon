@@ -381,6 +381,8 @@ module.exports = {
       // counting variable 'field'
       var updated = {},  field;
 
+      console.log('company[form.form_name]:  ', JSON.stringify(company[form.form_name], null, 3));
+
       // Populate 'updated' with old values
       for (field in company[form.form_name]) {
         updated[field] = company[form.form_name][field];
@@ -397,8 +399,6 @@ module.exports = {
           if (updated[field] === undefined)   updated[field] = 'object';
 
           // The new data to be inserted
-          /* TODO: New data should not be inserted every time, because at the moment
-           * this code handles editing data as well */
           var new_data = {
             date: moment(form.quarter + '-' + form.year, 'Q-YYYY')
                     .add(1, 'day'),
@@ -412,29 +412,18 @@ module.exports = {
 
           // Loop through entries in company property
           for(var entry in updated[field]) {
-
             // Necessary check for all for... in statements
             if (updated[field].hasOwnProperty(entry)) {
 
               // If the data for the quarter already exists
               if(moment(updated[field][entry].date).isSame(moment(new_data.date))) {
-
-                // Update the boolean
-                quarterDataExists = true;
-
-                // Overwrite the data
-                updated[field][entry] = new_data;
-
-                // Break out of the loop
-                break;
+                updated[field].splice(entry, 1);
+                break;  // Break out of the loop
               }
+
             }
           }
 
-          // Inserts data to the top of the array if it doesn't exist
-          if(!quarterDataExists) {
-            updated[field].unshift(new_data);
-          }
         }
       }
 
