@@ -1,9 +1,11 @@
 include ../../mixins/edit_datum_mixin
 script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
 
+
 .tab-pane.row.graph-pane#operational
   .col-md-12.pane-header
     include quarter_info.jade
+
 
   //- CASH BY QUARTER (cash)
   .row.bottom-line
@@ -11,7 +13,8 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
       var cash_data = !{JSON.stringify(operational.cash)};
 
     .col-md-2:  +data_list("Cash", "operational-cash", operational.cash)
-    .col-md-10: +data_graph("Cash By Quarter", "cash", operational.cash.length, false, true)
+    .col-md-10: +data_graph("Cash by Quarter", "cash", operational.cash.length, false, true)
+
 
   //- GROSS BURN BY QUARTER (pred_gross_burn + gross_burn)
   .row.bottom-line
@@ -21,133 +24,32 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
 
     .col-md-2: +data_list("Forecasted Gross Burn", "operational-pred-gross-burn", operational.pred_gross_burn)
     .col-md-2: +data_list("Gross Burn", "operational-gross-burn", operational.gross_burn)
-    .col-md-8: +data_graph("Gross Burn By Quarter", "grossBurn", operational.pred_gross_burn.length + operational.gross_burn.length, true, false)
+    .col-md-8: +data_graph("Gross Burn by Quarter", "grossBurn", operational.pred_gross_burn.length + operational.gross_burn.length, true, false)
 
 
-//- -----------------------------------------
+  //- NET BURN BY QUARTER (pred_net_burn + net_burn)
+  .row.bottom-line
+    script(type="text/javascript").
+      var pred_net_burn_data = !{JSON.stringify(operational.pred_net_burn)},
+          net_burn_data = !{JSON.stringify(operational.net_burn)};
+
+    .col-md-2: +data_list("Forecasted Net Burn", "operational-pred-net-burn", operational.pred_net_burn)
+    .col-md-2: +data_list("Net Burn", "operational-net-burn", operational.net_burn)
+    .col-md-8: +data_graph("Net Burn by Quarter", "netBurn", operational.pred_net_burn.length + operational.net_burn.length, true, false)
 
 
-  //- //- NET BURN BY QUARTER (pred_net_burn + net_burn)
-  //- .row.bottom-line
-  //-   //- Forecasted Net Burn
-  //-   .col-md-2
-  //-     h3 Forecasted Net Burn
+  //- REVENUE BY QUARTER (revenue)
+  .row.bottom-line
+    script(type="text/javascript").
+      var revenue_data = !{JSON.stringify(operational.revenue)};
 
-  //-     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-pred-net-burn")
-  //-       i.fa.fa-plus
+    .col-md-2:  +data_list("Revenue", "operational-revenue", operational.revenue)
+    .col-md-10: +data_graph("Revenue by Quarter", "revenue", operational.revenue.length, true, false)
 
-  //-     .block-info.block-table
-  //-       if operational.pred_net_burn.length > 0
-  //-         for data in operational.pred_net_burn.sort(chronological).reverse()
-  //-           .table-section
-  //-             .value #{usd(data.value)}
-  //-             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-  //-             .edit-btn(data-toggle="modal" data-target="#edit-operational-pred-net-burn")
-  //-               i.fa.fa-pencil
-  //-       else
-  //-         .faded Add data
+  //- HEAD COUNT (head_count)
+  .row.bottom-line 
+    script(type="text/javascript").
+      var head_count_data = !{JSON.stringify(operational.head_count)};
 
-  //-   //- Net Burn
-  //-   .col-md-2
-  //-     h3 Net Burn
-
-  //-     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
-  //-       i.fa.fa-plus
-
-  //-     .block-info.block-table
-  //-       if operational.net_burn.length > 0
-  //-         for data in operational.net_burn.sort(chronological).reverse()
-  //-           .table-section
-  //-             .value #{usd(data.value)}
-  //-             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-  //-             .edit-btn(data-toggle="modal" data-target="#edit-operational-net-burn")
-  //-               i.fa.fa-pencil
-  //-       else
-  //-         .faded Add data
-
-  //-   //- Net Burn by Quarter
-  //-   .col-md-8
-  //-     h3 Net Burn by Quarter
-
-  //-     if (operational.pred_net_burn.length + operational.net_burn.length > 0)
-  //-       +block_control("netBurnGraph", "netBurnBar", "netBurnArea", true, false)
-
-  //-     //- Grab the data
-  //-     script(type="text/javascript").
-  //-       var pred_net_burn_data = !{JSON.stringify(operational.pred_net_burn)},
-  //-           net_burn_data = !{JSON.stringify(operational.net_burn)};
-
-  //-     if (operational.pred_net_burn.length + operational.net_burn.length > 0)
-  //-       .block-info.block-graph:.graph-padding#netBurnGraph
-  //-     else
-  //-       .block-info.block-table.faded No data available
-
-  //- //- REVENUE BY QUARTER (revenue)
-  //- .row.bottom-line
-  //-   //- Revenue
-  //-   .col-md-2
-  //-     h3 Revenue
-
-  //-     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
-  //-       i.fa.fa-plus
-
-  //-     .block-info.block-table
-  //-       if operational.revenue.length > 0
-  //-         for data in operational.revenue.sort(chronological).reverse()
-  //-           .table-section
-  //-             .value #{usd(data.value)}
-  //-             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-  //-             .edit-btn(data-toggle="modal" data-target="#edit-operational-revenue")
-  //-               i.fa.fa-pencil
-  //-       else
-  //-         .faded Add data
-
-  //-   //- Revenue By Quarter
-  //-   .col-md-10
-  //-     h3 Revenue By Quarter
-
-  //-     if operational.revenue.length > 0
-  //-       +block_control("revenueGraph", "revenueBar", "revenueArea", true, false)
-
-  //-     //- Grab the data
-  //-     script(type="text/javascript").
-  //-       var revenue_data = !{JSON.stringify(operational.revenue)};
-
-  //-     if (operational.revenue.length > 0)
-  //-       .block-info.block-graph:.graph-padding#revenueGraph
-  //-     else
-  //-       .block-info.block-table.faded No data available
-
-  //- //- HEAD COUNT (head_count)
-  //- .row
-  //-   .col-md-2
-  //-     h3 Head Count
-
-  //-     .block-edit.edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
-  //-       i.fa.fa-plus
-
-  //-     .block-info.block-table
-  //-       if operational.head_count.length > 0
-  //-         for data in operational.head_count.sort(chronological).reverse()
-  //-           .table-section
-  //-             .value #{data.value}
-  //-             .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
-  //-             .edit-btn(data-toggle="modal" data-target="#edit-operational-head-count")
-  //-               i.fa.fa-pencil
-  //-       else
-  //-         .faded Add data
-
-  //-   .col-md-10
-  //-     h3 Head Count By Quarter
-
-  //-     if operational.head_count.length > 0
-  //-       +block_control("headCountGraph", "headCountBar", "headCountArea", true, false)
-
-  //-     //- Grab the data
-  //-     script(type="text/javascript").
-  //-       var head_count_data = !{JSON.stringify(operational.head_count)};
-
-  //-     if (operational.head_count.length > 0)
-  //-       .block-info.block-graph:.graph-padding#headCountGraph
-  //-     else
-  //-       .block-info.block-table.faded No data available
+    .col-md-2:  +data_list("Head Count", "operational-head-count", operational.head_count)
+    .col-md-10: +data_graph("Head Count by Quarter", "headCount", operational.head_count.length, true, false)

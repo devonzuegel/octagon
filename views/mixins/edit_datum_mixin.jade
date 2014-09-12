@@ -25,8 +25,12 @@ mixin data_list(title, section_name, section_data_array)
     i.fa.fa-plus
 
   .block-info.block-table
-    for data in section_data_array.sort(chronological).reverse()
-      .table-section: +data_point(section_name, data)
+    if section_data_array.length > 0
+      for data in section_data_array.sort(chronological).reverse()
+        .table-section: +data_point(section_name, data)
+    else
+      .faded Add data
+
 
 mixin data_graph(title, name, num_data_points, bar, line)
   h3 #{title}

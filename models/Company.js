@@ -384,6 +384,8 @@ module.exports = {
         updated[field] = company[form.form_name][field];
       }
 
+      console.log(JSON.stringify(form));
+
       // Update fields of 'updated' with data from form
       for (field in form) {
         // If the field is not an unintented field
@@ -391,7 +393,6 @@ module.exports = {
 
           // The new data to be checked for deletion
           var new_data = newData(form, field);
-
           // Loop through entries in company property
           for(var i = 0; i < updated[field].length; i++) {
             // If the data for the quarter already exists

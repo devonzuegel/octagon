@@ -100,12 +100,11 @@ var Company = {
     $(modal_id + ' input[name=quarter]').val(quarter);
     $(modal_id + ' input[name=year]').val(year);
 
-    // Set quarter and year as read-only
-    $(modal_id + ' input[name=quarter]').prop('readonly', true);
-    $(modal_id + ' input[name=year]').prop('readonly', true);
+    // Set text inputs to be read-only
+    $(modal_id + ' input[type=text]').prop('readonly', true);
 
-    // Change title to 'Edit'...
-    title.text('Remove');
+    // Change title to 'Delete'
+    title.text('Delete');
   },
 
   // Returns the current quarter
