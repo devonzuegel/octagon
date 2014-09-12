@@ -1,48 +1,159 @@
+$text-color: #666;
+$text-color-focus: $purple;
+
 .landing-page-bkg {
   background-color: $landing-page-bkg;
-
-  .toolbar-bkg-extension {
-    background-color: $toolbar-bkg;
-    @include box-shadow(0, 0, 2px, #000);
-    height: $toolbar-extension-height;
-    position: absolute;
-    width: 100%;
-    z-index: -100;
-  }
 
   .landing-page-container {
     padding-top: $toolbar-extension-height - 127px;
     text-align: center;
+    color: #eee;
 
-    a.landing-page-btn {
-      display: inline-block;
-      margin: 0 20px;
-      width: 160px;
+    .center-form {
+      background: rgba(255, 255, 255, 0.97);
+      @include border-radius(2px);
+      max-height: 85%;
+      margin-top: 2%;
+      overflow-x: hidden;
+      overflow-y: auto;
 
-      .btn-icon {
-        color: $purple;
-        font-size: 50px;
+      color: $text-color;
+      max-width: 375px;
+      margin: auto;
+
+      input { max-width: 80%; }
+
+      .title {
+        font-size: 18px;
+        font-weight: 500;
         line-height: 100%;
-        text-align: center;
+        margin-bottom: 20px;
+        padding: 20px;
       }
 
-      .btn-title {
-        border-bottom: 10px solid $purple;
-        color: $purple;
-        font-size: 25px;
-        font-weight: 400;
-        line-height: 100%;
-        padding: 20px 0;
-        text-align: center;
+      .body {
+        padding: 0 20px;
+
+        .small-label {
+          color: $text-color;
+          margin: 20px 0 0 0;
+          text-transform: uppercase;
+        }
+
+        .small-label-focused {
+          color: $text-color-focus;
+        }
+
+        .info-label {
+          color: $text-color;
+          font-size: 14px;
+          margin-top: 10px;
+        }
+
+        input[type=text],
+        input[type=password],
+        input[readonly],
+        input[readonly="readonly"],
+        textarea {
+          background: transparent;
+          color: $text-color;
+          height: 33px;
+          font-size: 15px;
+          line-height: 22px;
+          padding: 30px 0 15px 0;
+          resize: none;
+          width: 100%;
+          border-bottom: 1px solid $text-color !important;
+
+          &:hover {
+            border-color: #ccc;
+          }
+
+          &:focus {
+            color: $text-color-focus;
+            border-bottom: 1px solid $text-color-focus !important;
+          }
+        }
+
+        input[readonly],
+        input[readonly="readonly"] {
+          font-style: italic;
+          font-weight: 200;
+        }
+
+        .checkbox-group {
+          margin: 20px 0 20px 0;
+          width: 100%;
+
+          label {
+            color: #999;
+            display: inline-block;
+            font-size: 15px;
+            line-height: 22px;
+
+            &:before {
+              color: #999;
+              font-size: 18px;
+              margin-right: 10px;
+            }
+
+            &:hover {
+              color: #666;
+            }
+          }
+        }
+
+        .error {
+          div {
+            display: none;
+            color: $red;
+            font-size: 14px;
+            margin: 20px 0;
+          }
+        }
+
+        .inline-input-container {
+          display: inline-block;
+          margin-right: 20px;
+          width: 100px;
+        }
       }
 
-      .btn-text {
-        color: #777;
-        font-size: 16px;
-        line-height: 24px;
-        padding-top: 30px;
-        text-align: center;
-      }
+      .footer {
+        margin-top: 0px;
+        padding: 25px;
+        margin: 10px;
+        background: none;
+
+        button[type=submit],
+        input[type=submit] {
+          background-color: transparent;
+          border: none;
+
+          font-size: 14px;
+          font-weight: 500;
+          text-transform: uppercase;
+
+          margin: 0 0 0 10px;
+          padding: 5px 15px;
+
+          color: $purple;
+
+          &:hover {
+            color: darken($purple, 10%);
+          }
+
+          &:focus {
+            color: darken($purple, 20%);
+          }
+
+          i {
+            margin-left: 5px;
+          }
+        }
+      }        
+  
     }
+
   }
 }

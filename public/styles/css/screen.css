@@ -475,42 +475,122 @@ input:-webkit-autofill {
         background-color: #eee; }
 
 .landing-page-bkg {
-  background-color: #45367c; }
-  .landing-page-bkg .toolbar-bkg-extension {
-    background-color: #eeeeee;
-    -webkit-box-shadow: 0 0 2px black;
-    -moz-box-shadow: 0 0 2px black;
-    box-shadow: 0 0 2px black;
-    height: 280px;
-    position: absolute;
-    width: 100%;
-    z-index: -100; }
+  background-color: #222222; }
   .landing-page-bkg .landing-page-container {
     padding-top: 153px;
-    text-align: center; }
-    .landing-page-bkg .landing-page-container a.landing-page-btn {
-      display: inline-block;
-      margin: 0 20px;
-      width: 160px; }
-      .landing-page-bkg .landing-page-container a.landing-page-btn .btn-icon {
-        color: #8a64d1;
-        font-size: 50px;
+    text-align: center;
+    color: #eee; }
+    .landing-page-bkg .landing-page-container .center-form {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 2px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      background-clip: padding-box;
+      max-height: 85%;
+      margin-top: 2%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      color: #666666;
+      max-width: 375px;
+      margin: auto; }
+      .landing-page-bkg .landing-page-container .center-form input {
+        max-width: 80%; }
+      .landing-page-bkg .landing-page-container .center-form .title {
+        font-size: 18px;
+        font-weight: 500;
         line-height: 100%;
-        text-align: center; }
-      .landing-page-bkg .landing-page-container a.landing-page-btn .btn-title {
-        border-bottom: 10px solid #8a64d1;
-        color: #8a64d1;
-        font-size: 25px;
-        font-weight: 400;
-        line-height: 100%;
-        padding: 20px 0;
-        text-align: center; }
-      .landing-page-bkg .landing-page-container a.landing-page-btn .btn-text {
-        color: #777;
-        font-size: 16px;
-        line-height: 24px;
-        padding-top: 30px;
-        text-align: center; }
+        margin-bottom: 20px;
+        padding: 20px; }
+      .landing-page-bkg .landing-page-container .center-form .body {
+        padding: 0 20px; }
+        .landing-page-bkg .landing-page-container .center-form .body .small-label {
+          color: #666666;
+          margin: 20px 0 0 0;
+          text-transform: uppercase; }
+        .landing-page-bkg .landing-page-container .center-form .body .small-label-focused {
+          color: #8a64d1; }
+        .landing-page-bkg .landing-page-container .center-form .body .info-label {
+          color: #666666;
+          font-size: 14px;
+          margin-top: 10px; }
+        .landing-page-bkg .landing-page-container .center-form .body input[type=text],
+        .landing-page-bkg .landing-page-container .center-form .body input[type=password],
+        .landing-page-bkg .landing-page-container .center-form .body input[readonly],
+        .landing-page-bkg .landing-page-container .center-form .body input[readonly="readonly"],
+        .landing-page-bkg .landing-page-container .center-form .body textarea {
+          background: transparent;
+          color: #666666;
+          height: 33px;
+          font-size: 15px;
+          line-height: 22px;
+          padding: 30px 0 15px 0;
+          resize: none;
+          width: 100%;
+          border-bottom: 1px solid #666666 !important; }
+          .landing-page-bkg .landing-page-container .center-form .body input[type=text]:hover,
+          .landing-page-bkg .landing-page-container .center-form .body input[type=password]:hover,
+          .landing-page-bkg .landing-page-container .center-form .body input[readonly]:hover,
+          .landing-page-bkg .landing-page-container .center-form .body input[readonly="readonly"]:hover,
+          .landing-page-bkg .landing-page-container .center-form .body textarea:hover {
+            border-color: #ccc; }
+          .landing-page-bkg .landing-page-container .center-form .body input[type=text]:focus,
+          .landing-page-bkg .landing-page-container .center-form .body input[type=password]:focus,
+          .landing-page-bkg .landing-page-container .center-form .body input[readonly]:focus,
+          .landing-page-bkg .landing-page-container .center-form .body input[readonly="readonly"]:focus,
+          .landing-page-bkg .landing-page-container .center-form .body textarea:focus {
+            color: #8a64d1;
+            border-bottom: 1px solid #8a64d1 !important; }
+        .landing-page-bkg .landing-page-container .center-form .body input[readonly],
+        .landing-page-bkg .landing-page-container .center-form .body input[readonly="readonly"] {
+          font-style: italic;
+          font-weight: 200; }
+        .landing-page-bkg .landing-page-container .center-form .body .checkbox-group {
+          margin: 20px 0 20px 0;
+          width: 100%; }
+          .landing-page-bkg .landing-page-container .center-form .body .checkbox-group label {
+            color: #999;
+            display: inline-block;
+            font-size: 15px;
+            line-height: 22px; }
+            .landing-page-bkg .landing-page-container .center-form .body .checkbox-group label:before {
+              color: #999;
+              font-size: 18px;
+              margin-right: 10px; }
+            .landing-page-bkg .landing-page-container .center-form .body .checkbox-group label:hover {
+              color: #666; }
+        .landing-page-bkg .landing-page-container .center-form .body .error div {
+          display: none;
+          color: #e06663;
+          font-size: 14px;
+          margin: 20px 0; }
+        .landing-page-bkg .landing-page-container .center-form .body .inline-input-container {
+          display: inline-block;
+          margin-right: 20px;
+          width: 100px; }
+      .landing-page-bkg .landing-page-container .center-form .footer {
+        margin-top: 0px;
+        padding: 25px;
+        margin: 10px;
+        background: none; }
+        .landing-page-bkg .landing-page-container .center-form .footer button[type=submit],
+        .landing-page-bkg .landing-page-container .center-form .footer input[type=submit] {
+          background-color: transparent;
+          border: none;
+          font-size: 14px;
+          font-weight: 500;
+          text-transform: uppercase;
+          margin: 0 0 0 10px;
+          padding: 5px 15px;
+          color: #8a64d1; }
+          .landing-page-bkg .landing-page-container .center-form .footer button[type=submit]:hover,
+          .landing-page-bkg .landing-page-container .center-form .footer input[type=submit]:hover {
+            color: #6c3dc5; }
+          .landing-page-bkg .landing-page-container .center-form .footer button[type=submit]:focus,
+          .landing-page-bkg .landing-page-container .center-form .footer input[type=submit]:focus {
+            color: #572fa0; }
+          .landing-page-bkg .landing-page-container .center-form .footer button[type=submit] i,
+          .landing-page-bkg .landing-page-container .center-form .footer input[type=submit] i {
+            margin-left: 5px; }
 
 .data-bkg {
   background-color: white;
