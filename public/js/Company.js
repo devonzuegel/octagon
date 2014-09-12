@@ -68,7 +68,7 @@ var Company = {
     var modal_id = $(this).attr('data-target'),
         parent = $(this).parent(),
         title = $(modal_id).find('.modal-title'),
-        value = parent.find('.value').text().substring(1, parent.find('.value').text().length - 3),
+        value = parent.find('.value').text().replace(/\D/g,''),
         quarter = parent.find('.date').text().substring(1, 2),
         year = parent.find('.date').text().substring(3, parent.find('.date').text().length);
 

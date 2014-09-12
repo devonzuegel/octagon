@@ -40,6 +40,6 @@
     script(type="text/javascript").
       var gm_percentage_data = !{JSON.stringify(economics.gm_percentage)};
 
-    .col-md-2:  +data_list("GM %", "economics-gm-percentage", economics.gm_percentage)
+    .col-md-2:  +data_list("GM %", "economics-gm", economics.gm_percentage)
     .col-md-10: +data_graph("GM % by Quarter", "gmPercentage", economics.gm_percentage.length, true, false)
 

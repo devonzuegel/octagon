@@ -25,7 +25,11 @@ mixin data_point(section_name, data)
     i.fa.fa-times
   .edit-btn(data-toggle="modal" data-target="#edit-"+section_name)
     i.fa.fa-pencil
-  .value #{usd(data.value)}
+  .value
+    if section_name == "economics-gm"
+      | #{comma_num(data.value)}%
+    else
+      | $#{comma_num(data.value)}
   .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
 
 
