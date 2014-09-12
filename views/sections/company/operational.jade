@@ -7,47 +7,21 @@ script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/
 
   //- CASH BY QUARTER (cash)
   .row.bottom-line
-    
-    .col-md-2: +data_list("Cash", "operational-cash", operational.cash)
-    
-    .col-md-10
-      h3 Cash By Quarter
+    script(type="text/javascript").
+      var cash_data = !{JSON.stringify(operational.cash)};
 
-      //- Grab the data
-      script(type="text/javascript").
-        var cash_data = !{JSON.stringify(operational.cash)};
-
-      if operational.cash.length > 0
-        +block_control("cashGraph", "cashBar", "cashArea", false, true)
-        .block-info.block-graph: .graph-padding#cashGraph
-      else
-        .block-info.block-table.faded No data available
+    .col-md-2:  +data_list("Cash", "operational-cash", operational.cash)
+    .col-md-10: +data_graph("Cash By Quarter", "cash", operational.cash.length, false, true)
 
   //- GROSS BURN BY QUARTER (pred_gross_burn + gross_burn)
   .row.bottom-line
+    script(type="text/javascript").
+      var pred_gross_burn_data = !{JSON.stringify(operational.pred_gross_burn)},
+          gross_burn_data = !{JSON.stringify(operational.gross_burn)};
 
-    //- Forcasted Gross Burn
     .col-md-2: +data_list("Forecasted Gross Burn", "operational-pred-gross-burn", operational.pred_gross_burn)
-
-    //- Gross Burn
     .col-md-2: +data_list("Gross Burn", "operational-gross-burn", operational.gross_burn)
-
-    //- Graph: Gross Burn by quarter
-    .col-md-8
-
-      //- Grab the data
-      script(type="text/javascript").
-        var pred_gross_burn_data = !{JSON.stringify(operational.pred_gross_burn)},
-            gross_burn_data = !{JSON.stringify(operational.gross_burn)};
-
-      
-      h3 Gross Burn By Quarter
-
-      if operational.pred_gross_burn.length + operational.gross_burn.length > 0 
-        +block_control("grossBurnGraph", "grossBurnBar", "grossBurnArea", true, false)
-        .block-info.block-graph: .graph-padding#grossBurnGraph
-      else
-        .block-info.block-table.faded No data available
+    .col-md-8: +data_graph("Gross Burn By Quarter", "grossBurn", operational.pred_gross_burn.length + operational.gross_burn.length, true, false)
 
 
 //- -----------------------------------------
