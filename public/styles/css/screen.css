@@ -366,8 +366,8 @@ input:-webkit-autofill {
           padding: 15px;
           border-radius: 4px; }
         .modal .modal-dialog .modal-content .modal-body .error div {
-          color: #e06663;
           display: none;
+          color: #e06663;
           font-size: 14px;
           margin: 20px 0; }
         .modal .modal-dialog .modal-content .modal-body .inline-input-container {
@@ -840,7 +840,7 @@ input:-webkit-autofill {
           position: relative; }
           .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info {
             display: inline-block;
-            min-width: 400px; }
+            width: 100%; }
             .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info img {
               border-radius: 100px;
               -moz-border-radius: 100px;

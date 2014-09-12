@@ -4,7 +4,7 @@ include ../mixins/edit_modal_mixin
 
   //- Name section
   .small-label Full name
-  .error#name-error You must include a name for the owner.
+  .error#name-error: div You must include a name for the owner.
 
   //- This is a fake input field to stop Chrome from autocompleting
   input(type="text" name="name" id="name_fake" autocomplete="off" disabled).hidden
@@ -15,7 +15,7 @@ include ../mixins/edit_modal_mixin
 
   //- Email section
   .small-label Email
-  .error#email-error You must include an email address for the owner.
+  .error#email-error: div You must include an email address for the owner.
 
   //- Name value set by javascript in settings.jade based on owner selected
   input(type="text" name="email"  id="email"  autocomplete="off")

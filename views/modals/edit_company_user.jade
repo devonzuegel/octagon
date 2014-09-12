@@ -1,6 +1,6 @@
 include ../mixins/edit_modal_mixin
 
-
+//- AVG DAU
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-dau", "Add")
   input(type="hidden" name="form_name" value="user_metrics")
 
@@ -9,6 +9,16 @@ include ../mixins/edit_modal_mixin
   +q_year_inputs()
 
 
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-user-dau", "Delete")
+  input(type="hidden"  name="form_name"  value="user_metrics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="avg_dau"  autocomplete="off")
+    +q_year_inputs()
+
+
+
+//- AVG MAU
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-mau", "Add")
   input(type="hidden" name="form_name" value="user_metrics")
 
@@ -17,9 +27,28 @@ include ../mixins/edit_modal_mixin
   +q_year_inputs()
 
 
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-user-mau", "Delete")
+  input(type="hidden"  name="form_name"  value="user_metrics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="avg_mau"  autocomplete="off")
+    +q_year_inputs()
+
+
+
+//- Churn
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-user-churn", "Add")
   input(type="hidden" name="form_name" value="user_metrics")
 
   .small-label Churn
   input(type="text"  placeholder="Add churn"  name="churn"  autocomplete="off")
   +q_year_inputs()
+  
+
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-user-churn", "Delete")
+  input(type="hidden"  name="form_name"  value="user_metrics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="churn"  autocomplete="off")
+    +q_year_inputs()
+
