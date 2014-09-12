@@ -478,9 +478,9 @@ input:-webkit-autofill {
       .auth-bkg .auth-container input[type=submit]:focus {
         background-color: #eee; }
 
-.dashboard-bkg {
-  background-color: #222222; }
-  .dashboard-bkg .toolbar-bkg-extension {
+.landing-page-bkg {
+  background-color: #45367c; }
+  .landing-page-bkg .toolbar-bkg-extension {
     background-color: #eeeeee;
     -webkit-box-shadow: 0 0 2px black;
     -moz-box-shadow: 0 0 2px black;
@@ -489,19 +489,19 @@ input:-webkit-autofill {
     position: absolute;
     width: 100%;
     z-index: -100; }
-  .dashboard-bkg .dashboard-container {
+  .landing-page-bkg .landing-page-container {
     padding-top: 153px;
     text-align: center; }
-    .dashboard-bkg .dashboard-container a.dashboard-btn {
+    .landing-page-bkg .landing-page-container a.landing-page-btn {
       display: inline-block;
       margin: 0 20px;
       width: 160px; }
-      .dashboard-bkg .dashboard-container a.dashboard-btn .btn-icon {
+      .landing-page-bkg .landing-page-container a.landing-page-btn .btn-icon {
         color: #8a64d1;
         font-size: 50px;
         line-height: 100%;
         text-align: center; }
-      .dashboard-bkg .dashboard-container a.dashboard-btn .btn-title {
+      .landing-page-bkg .landing-page-container a.landing-page-btn .btn-title {
         border-bottom: 10px solid #8a64d1;
         color: #8a64d1;
         font-size: 25px;
@@ -509,7 +509,7 @@ input:-webkit-autofill {
         line-height: 100%;
         padding: 20px 0;
         text-align: center; }
-      .dashboard-bkg .dashboard-container a.dashboard-btn .btn-text {
+      .landing-page-bkg .landing-page-container a.landing-page-btn .btn-text {
         color: #777;
         font-size: 16px;
         line-height: 24px;

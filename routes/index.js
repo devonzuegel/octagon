@@ -82,7 +82,25 @@ router.get('/settings', function(req, res) {
 
 // login methods
 router.get('/login', function(req, res) {
-	res.render('login', {title: 'Login', errors: req.flash('error')});
+	
+  Companies.find({}, function(err, companies) {
+	  if (companies.length == 0) {
+
+	    res.render('create_admin', {
+	      title: 'Create admin',
+	      errors: req.flash('error'),
+	    });
+
+	  } else {
+
+			res.render('login', {
+				title: 'Login', 
+				errors: req.flash('error')
+			});
+		}
+
+	}); // End of Companies.find({}, cb)
+
 });
 
 router.post('/login', passport.authenticate('local', { 

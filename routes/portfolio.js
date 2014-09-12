@@ -21,9 +21,7 @@ var sort_by_name = function(a, b) {
   return (x < y) ? -1 : ((x > y) ? 1 : 0);  
 };
 
-
 router.get('/', function(req, res) {
-
   privileges.require_privileges(
     req, res, 
     false,  // don't include flash error messages
@@ -49,8 +47,8 @@ router.get('/', function(req, res) {
     user_fn = function() { 
       // redirect to logged in company's page
       res.redirect('/portfolio/' + req.session.permalink); 
-    });
-
+    }
+  );
 });
 
 router.post('/add', function(req, res) {

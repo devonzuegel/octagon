@@ -1,5 +1,5 @@
-.dashboard-bkg {
-  background-color: $dashboard-bkg;
+.landing-page-bkg {
+  background-color: $landing-page-bkg;
 
   .toolbar-bkg-extension {
     background-color: $toolbar-bkg;
@@ -10,11 +10,11 @@
     z-index: -100;
   }
 
-  .dashboard-container {
+  .landing-page-container {
     padding-top: $toolbar-extension-height - 127px;
     text-align: center;
 
-    a.dashboard-btn {
+    a.landing-page-btn {
       display: inline-block;
       margin: 0 20px;
       width: 160px;
