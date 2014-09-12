@@ -1,9 +1,6 @@
 //- Functions
 - function comma_num(x) {
--   var parts = x.toString().split(".");
--   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
--   if (parts.length > 1)   return parts.join(".");
--   else                    return parts[0].concat(".00");
+-   return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(".")[0];
 - }
 
 
@@ -28,6 +25,8 @@ mixin data_point(section_name, data)
   .value
     if section_name == "economics-gm"
       | #{comma_num(data.value)}%
+    else if section_name == "user-dau"  ||  section_name == "user-mau"  ||  section_name == "user-churn"
+      | #{comma_num(data.value)}
     else
       | $#{comma_num(data.value)}
   .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}

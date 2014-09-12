@@ -2,15 +2,26 @@ include ../mixins/edit_modal_mixin
 include ../mixins/Q_year_inputs_mixin
 
 
+//- LTV
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-ltv", "Add")
   input(type="hidden" name="form_name" value="economics")
 
   .small-label LTV
-  input(type="text"  placeholder="Add LTV"  name="ltv"  autocomplete="off")
+  div
+    input(type="text"  placeholder="Add LTV"  name="ltv"  autocomplete="off")
   +q_year_inputs()
 
 
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-economics-ltv", "Delete")
+  input(type="hidden"  name="form_name"  value="economics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="ltv"  autocomplete="off")
+    +q_year_inputs()
 
+
+
+//- Lifetime Est.
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-lifetime-est", "Add")
   input(type="hidden" name="form_name" value="economics")
 
@@ -19,7 +30,16 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-economics-lifetime-est", "Delete")
+  input(type="hidden"  name="form_name"  value="economics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="lifetime_est"  autocomplete="off")
+    +q_year_inputs()
 
+
+
+//- CAC
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-cac", "Add")
   input(type="hidden" name="form_name" value="economics")
 
@@ -28,7 +48,16 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-economics-cac", "Delete")
+  input(type="hidden"  name="form_name"  value="economics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="cac"  autocomplete="off")
+    +q_year_inputs()
 
+
+
+//- ASP
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-asp", "Add")
   input(type="hidden" name="form_name" value="economics")
 
@@ -37,10 +66,28 @@ include ../mixins/Q_year_inputs_mixin
   +q_year_inputs()
 
 
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-economics-asp", "Delete")
+  input(type="hidden"  name="form_name"  value="economics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="asp"  autocomplete="off")
+    +q_year_inputs()
 
+
+
+//- GM %
 +edit_modal("/portfolio/"+permalink+"/editMetrics", "edit-economics-gm", "Add")
   input(type="hidden" name="form_name" value="economics")
 
   .small-label GM %
   input(type="text"  placeholder="Add GM %"  name="gm_percentage"  autocomplete="off")
   +q_year_inputs()
+
+
++edit_modal("/portfolio/"+permalink+"/deleteDatum", "del-datum-economics-gm", "Delete")
+  input(type="hidden"  name="form_name"  value="economics")
+  .warning Are you sure you want to delete this data?
+  .hidden
+    input(type="text"  name="gm"  autocomplete="off")
+    +q_year_inputs()
+

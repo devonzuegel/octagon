@@ -378,13 +378,16 @@ module.exports = {
 
       // Initialize empty obj and a counting variable 'field'
       var updated = {},  field;
+      console.log("updated:" + JSON.stringify(updated));
 
       // Populate 'updated' with old values
       for (field in company[form.form_name]) {
+        console.log(field);
         updated[field] = company[form.form_name][field];
       }
 
-      console.log(JSON.stringify(form));
+      // console.log("form:" + JSON.stringify(form));
+      // console.log(updated);
 
       // Update fields of 'updated' with data from form
       for (field in form) {

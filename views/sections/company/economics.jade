@@ -3,14 +3,12 @@
   .col-md-12.pane-header
     include quarter_info.jade
 
-
   .row.bottom-line
     script(type="text/javascript").
       var ltv_data = !{JSON.stringify(economics.ltv)};
 
     .col-md-2:  +data_list("LTV", "economics-ltv", economics.ltv)
     .col-md-10: +data_graph("LTV by Quarter", "ltv", economics.ltv.length, true, false)
-
 
   .row.bottom-line
     script(type="text/javascript").
@@ -42,4 +40,3 @@
 
     .col-md-2:  +data_list("GM %", "economics-gm", economics.gm_percentage)
     .col-md-10: +data_graph("GM % by Quarter", "gmPercentage", economics.gm_percentage.length, true, false)
-
