@@ -1,3 +1,13 @@
+//- Functions
+- function comma_num(x) {
+-   var parts = x.toString().split(".");
+-   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+-   if (parts.length > 1)   return parts.join(".");
+-   else                    return parts[0].concat(".00");
+- }
+
+
+
 mixin q_year_inputs()
   
   .inline-input-container
@@ -9,6 +19,7 @@ mixin q_year_inputs()
     input(type="text"  name="year"  autocomplete="off")
 
 
+
 mixin data_point(section_name, data)
   .remove-btn(data-toggle="modal" data-target="#del-datum-"+section_name)
     i.fa.fa-times
@@ -16,6 +27,7 @@ mixin data_point(section_name, data)
     i.fa.fa-pencil
   .value #{usd(data.value)}
   .date Q#{moment(data.date).quarter()} #{moment(data.date).year()}
+
 
 
 mixin data_list(title, section_name, section_data_array)
@@ -32,6 +44,16 @@ mixin data_list(title, section_name, section_data_array)
       .faded Add data
 
 
+
+mixin block_control(name, id1, id2, checked1, checked2)
+  .block-control
+    input(type="radio", name=name, id=id1, value="bar", checked=checked1)
+    label(for=id1) Bar
+    input(type="radio", name=name, id=id2, value="area", checked=checked2)
+    label(for=id2) Line
+
+
+
 mixin data_graph(title, name, num_data_points, bar, line)
   h3 #{title}
 
@@ -40,3 +62,4 @@ mixin data_graph(title, name, num_data_points, bar, line)
     .block-info.block-graph: .graph-padding(id=name+"Graph")
   else
     .block-info.block-table.faded No data available
+

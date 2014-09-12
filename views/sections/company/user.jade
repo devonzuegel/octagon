@@ -10,7 +10,7 @@
         i.fa.fa-plus
 
       .block-info.block-table
-        if dataEntered(user_metrics.avg_dau)
+        if user_metrics.avg_dau.length > 0
           for data in user_metrics.avg_dau.sort(chronological).reverse()
             .table-section
               .value #{usd(data.value)}
@@ -41,7 +41,7 @@
         i.fa.fa-plus
 
       .block-info.block-table
-        if dataEntered(user_metrics.avg_mau)
+        if user_metrics.avg_mau.length > 0
           for data in user_metrics.avg_mau.sort(chronological).reverse()
             .table-section
               .value #{usd(data.value)}
@@ -72,7 +72,7 @@
         i.fa.fa-plus
 
       .block-info.block-table
-        if dataEntered(user_metrics.churn)
+        if user_metrics.churn.length > 0
           for data in user_metrics.churn.sort(chronological).reverse()
             .table-section
               .value #{data.value}

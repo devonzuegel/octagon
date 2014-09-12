@@ -2,12 +2,9 @@ extends ../layout
 block sub_layout
   body.company-bkg
     
-    - function dataEntered(data) {
-    -   return data.length !== 0;
-    - }
-    
     //- Mixins
-    include ../mixins/block_control_mixin
+    include ../mixins/edit_datum_mixins
+
 
     //- Edit modals
     include ../modals/edit_company_overview
