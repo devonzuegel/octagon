@@ -26,9 +26,9 @@
 
       .block-info
         if (p && p.description)
-          div 
-            | #{shorten(p.description)}
-            a(href="http://www.crunchbase.com/organization/#{permalink}") read more on Crunchbase
+          //- Shortens & replaces all occurrences of "&#39;" with an apostrophe
+          | #{shorten(p.description.replace(/&#39;/g,"'"))}
+          a(href="http://www.crunchbase.com/organization/#{permalink}") Read more...
         else
           .faded Add description
 
