@@ -3,7 +3,14 @@
 -   return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(".")[0];
 - }
 
+//- - function needs_percent_unit(val) {
+//- -   
+//- - }
 
+- function needs_no_units(val) {
+-   var section_names = [ "user-dau", "user-mau", "user-churn", "operational-head-count" ];
+-   return (section_names.indexOf(val) != -1);
+- }
 
 mixin q_year_inputs()
   
@@ -25,7 +32,7 @@ mixin data_point(section_name, data)
   .value
     if section_name == "economics-gm"
       | #{comma_num(data.value)}%
-    else if section_name == "user-dau"  ||  section_name == "user-mau"  ||  section_name == "user-churn"
+    else if needs_no_units(section_name)
       | #{comma_num(data.value)}
     else
       | $#{comma_num(data.value)}
