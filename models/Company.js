@@ -376,12 +376,6 @@ module.exports = {
 
       if (err)  return done(err);
 
-      console.log('\ncompany[form.form_name] -------------------');
-      console.log(JSON.stringify(company[form.form_name], null, 3));
-
-      console.log('\nform: -------------------------------------');
-      console.log(JSON.stringify(form, null, 3));
-
       // Initialize empty obj and a counting variable 'field'
       var updated = {},  field;
 
@@ -410,6 +404,7 @@ module.exports = {
 
       // Update 'company[for.form.form_name]' to reflect changes from 'updated'
       company[form.form_name] = updated;
+      
       // Save 'company' to db and call callback function
       company.save(cb);
 
