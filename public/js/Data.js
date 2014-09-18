@@ -54,7 +54,7 @@ var Data = {
        dataString = infoArray.join(',');
        csvContent += index < infoArray.length ? dataString+ '\n' : dataString;
 
-    }); 
+    });
 
     var encodedUri = encodeURI(csvContent);
     window.open(encodedUri);
@@ -148,7 +148,7 @@ var Data = {
           }
         }
       }
-      
+
       $(Data.elements.data).handsontable({
         data: Data.data,
         height: window.innerHeight - (2 * 56),
@@ -160,7 +160,8 @@ var Data = {
         rowHeaders: rowHeaders,
         currentRowClassName: 'currentRow',
         currentColClassName: 'currentCol',
-        contextMenu: false
+        contextMenu: false,
+        readOnly: true
       });
     }
   }
