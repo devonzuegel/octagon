@@ -917,15 +917,19 @@ input:-webkit-autofill {
           .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info {
             display: inline-block;
             width: 100%; }
-            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info img {
-              border-radius: 100px;
-              -moz-border-radius: 100px;
-              -webkit-border-radius: 100px;
-              background-clip: padding-box;
+            .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .circle {
               float: left;
-              max-height: 80px;
-              min-width: 80px;
-              margin-right: 20px; }
+              height: 80px;
+              width: 80px;
+              border-radius: 80px;
+              -moz-border-radius: 80px;
+              -webkit-border-radius: 80px;
+              background-clip: padding-box;
+              margin-right: 20px;
+              overflow: hidden; }
+              .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .circle img {
+                max-height: 80px;
+                max-width: none; }
             .company-bkg .company-content .tab-content .tab-pane > div .block-info ul.block-list .list-item .item-info .placeholder-img {
               background-color: #eee;
               border-radius: 100px;

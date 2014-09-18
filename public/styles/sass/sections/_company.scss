@@ -191,12 +191,19 @@
                   display: inline-block;
                   width: 100%;
 
-                  img {
-                    @include border-radius(100px);
+                  .circle{
                     float: left;
-                    max-height: 80px;
-                    min-width: 80px;
+                    height: 80px;
+                    width: 80px;
+                    @include border-radius(80px);
                     margin-right: 20px;
+                    overflow: hidden;
+
+                    img {
+                      max-height: 80px;
+                      max-width: none;
+                    }
+
                   }
 
                   .placeholder-img {
