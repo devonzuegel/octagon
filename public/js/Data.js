@@ -112,6 +112,7 @@ var Data = {
                   row = 4 * (moment().year() - moment(entry.date).year()) +
                   (4 - moment(entry.date).quarter());
 
+              console.log(JSON.stringify(Data.data));
               Data.data[row][i] = entry.value;
             }
             i++;

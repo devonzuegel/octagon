@@ -1,7 +1,6 @@
 /* Fn for converting data stored in objects
  * to a format that c3js loves */
 function convertData(data, field, label) {
-
   // Create a new array with its label
   var new_data = [label];
 
