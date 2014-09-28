@@ -39,7 +39,14 @@ router.get('/data', function(req, res) {
 					errors: req.flash('error'),
 					username: req.session.username,
 					is_admin: true,
-					all_companies: all_companies.sort()
+					all_companies: all_companies.sort(function(a, b) { 
+						if (a.username.toLowerCase() < b.username.toLowerCase())
+							return -1;
+						if (a.username.toLowerCase() == b.username.toLowerCase())
+							return 0;
+						if (a.username.toLowerCase() > b.username.toLowerCase())
+							return 1;
+					})
 				});
 			});
 		}, 
