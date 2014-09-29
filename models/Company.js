@@ -369,8 +369,14 @@ module.exports = {
 
         var updated_col = new Array(data_table.length);
         for (var i = 0; i < data_table.length; i++) {
+          var years_ago = i/4;
+          var quarter = 1;
+          var year = moment().year() - years_ago;
           updated_col[i] = {
+            date: moment(quarter + '-' + year, 'Q-YYYY').add(1, 'day'),
             value: data_table[i][h],
+            label: hdr,
+            timestamp: moment()
           };
         }
 

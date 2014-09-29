@@ -50,13 +50,13 @@ function populate_data(companies, c_index, data) {
       var category = companies[c_index][section][c];
 
       // (3) Iterate through each datum in that category
-      for(var datum in category) {
+      for(var d in category) {
 
-        var entry = category[datum],
-            row = 4 * (moment().year() - moment(entry.date).year()) +
-                  (4 - moment(entry.date).quarter());
-
-        data[3][i] = entry.value;
+        var datum = category[d];
+        var row = 4 * (moment().year() - moment(datum.date).year()) +
+                  (4 - moment(datum.date).quarter());
+        console.log(row);
+        data[8][i] = datum.value;
 
       } // (3) END each category of data in each section
       
