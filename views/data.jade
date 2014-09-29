@@ -10,20 +10,22 @@ block content
   #data
   
   .data-bottom-bar
+    if all_companies.length > 1
 
-    if all_companies != 'undefined'
-      ul.page-tabs(role="tablist")
-        each c in all_companies
-          if c.username != 'admin'
-            li.page-tab #{c.username}
+      if all_companies != 'undefined'
+        ul.page-tabs(role="tablist")
+          each c in all_companies
+            if c.username != 'admin'
+              li.page-tab #{c.username}
+
+      //- This will be un-commented when save spreadsheet is implemented  
+      button.save-btn 
+        i.fa.fa-database.fa-right
+        | Save
+
+      button.download-btn
+        i.fa.fa-download.fa-right
+        | Download
+
     else
-      .bottom-bar-text No companies
-
-    //- This will be un-commented when save spreadsheet is implemented  
-    button.save-btn 
-      i.fa.fa-database.fa-right
-      | Save
-
-    button.download-btn
-      i.fa.fa-download.fa-right
-      | Download
+      .bottom-bar-text(style='text-align:center') No companies

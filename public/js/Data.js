@@ -1,29 +1,25 @@
 // Takes (1) the array of all companies and (2) a specific company
 // Adds the category name to columnHeaders
 function col_headers(companies, company) {
-  for(var c in companies) {
-    if(companies[c].username == company) {
+  console.log('companies' + companies);
+  var colHeaders = [];
 
-      var colHeaders = [];
-
-      // Fill in category names from Operational section
-      for (var p in companies[c].operational) {
-        colHeaders.push(p);
-      }
-
-      // Fill in category names from User Metrics section
-      for (var p in companies[c].user_metrics) {
-        colHeaders.push(p);
-      }
-
-      // Fill in category names from User Metrics section
-      for (var p in companies[c].economics) {
-        colHeaders.push(p);
-      }
-
-      return colHeaders;
-    }
+  // Fill in category names from Operational section
+  for (var p in companies[0].operational) {
+    colHeaders.push(p);
   }
+
+  // Fill in category names from User Metrics section
+  for (var p in companies[0].user_metrics) {
+    colHeaders.push(p);
+  }
+
+  // Fill in category names from User Metrics section
+  for (var p in companies[0].economics) {
+    colHeaders.push(p);
+  }
+
+  return colHeaders;
 }
 
 // Iterates thru each quarter to be represented
@@ -147,8 +143,7 @@ var Data = {
 
   // Update the data table
   updateData: function(company) {
-
-    if(typeof companies !== 'undefined') {
+    if(typeof companies !== 'undefined'  &&  companies.length > 1) {
 
       // Min # of columns required to hold all categories
       var minCols = Object.keys(companies[1].operational).length +
