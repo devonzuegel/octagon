@@ -155,7 +155,6 @@ function simplifyCrunchbaseProf(p) {
   };
 }
 
-
 //// EXPORTS /////
 
 module.exports = {
@@ -306,9 +305,8 @@ module.exports = {
 
       if (err)  return done(err);
 
-      // Initialize empty obj and
-      // counting variable 'field'
-      var updated = {},  field;
+      var updated = {}, // Initialize empty obj and
+          field; // counting variable 'field'
 
       // Populate 'updated' with old values
       for (field in company[form.form_name]) {
@@ -317,7 +315,7 @@ module.exports = {
 
       // Update fields of 'updated' with data from form
       for (field in form) {
-        // If the field is not an unintented field
+        // If the field is not an unintended field
         if (field !== 'form_name'  &&  field !== 'quarter'  &&   field !=='year') {
 
           // If the field doesn't exist in updated (or in the db) yet, create it
@@ -333,29 +331,21 @@ module.exports = {
 
           // Loop through entries in company property
           for(var entry in updated[field]) {
-
-            // Necessary check for all for... in statements
+            // Necessary check for all for ... in statements
             if (updated[field].hasOwnProperty(entry)) {
 
               // If the data for the quarter already exists
               if(moment(updated[field][entry].date).isSame(moment(new_data.date))) {
-
-                // Update the boolean
                 quarterDataExists = true;
-
-                // Overwrite the data
-                updated[field][entry] = new_data;
-
-                // Break out of the loop
-                break;
+                updated[field][entry] = new_data; // Overwrite the data
+                break; // Break out of the loop
               }
+
             }
           }
 
           // Inserts data to the top of the array if it doesn't exist
-          if(!quarterDataExists) {
-            updated[field].unshift(new_data);
-          }
+          if(!quarterDataExists)    updated[field].unshift(new_data);
         }
       }
 
@@ -365,6 +355,10 @@ module.exports = {
       company.save(cb);
 
     });
+  },
+
+  editSpreadsheet: function() {
+    console.log('xxx');
   },
 
   // Delete a data point from company metric info

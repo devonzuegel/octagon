@@ -170,9 +170,19 @@ router.post('/:permalink/editMetrics', function(req, res) {
     }
   );
 
-  CompanyModel.editMetrics(link, req.body, cb = function() { 
-    res.redirect('/portfolio/' + link + '#' + req.body.form_name); 
-  });
+  console.log(JSON.stringify(req.body, null, 2));
+
+  CompanyModel.editMetrics(
+    link, 
+    req.body, 
+    cb = function() { 
+      res.redirect('/portfolio/' + link + '#' + req.body.form_name); 
+    }
+  );
+});
+
+router.post('/:permalink/editSpreadsheet', function(req, res) {
+  CompanyModel.editSpreadsheet();
 });
 
 

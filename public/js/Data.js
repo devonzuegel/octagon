@@ -106,10 +106,8 @@ var Data = {
   // Save data
   saveData: function() {
     var data = Data.data;
-
     var company_name = Data.values.company;
-    console.log(company_name);
-
+    console.log(data);
     // var data = Data.data,
     // csvContent = 'data:text/csv;charset=utf-8,';
 
@@ -123,16 +121,24 @@ var Data = {
     // var encodedUri = encodeURI(csvContent);
     // window.open(encodedUri);
 
-    /*$.ajax({
-      url: '/portfolio/' + Data.values.permalink + '/editMetrics',
-      data: { 'data': Data.data },
+    $.post(
+      '/portfolio/' + Data.values.permalink + '/editSpreadsheet',
+      function(data) {
+        console.log(data);
+      }
+    );
+
+/*
+    $.ajax({
+      url: '/portfolio/' + Data.values.permalink, // + '/editSpreadsheet',
+      // data: { 'data': Data.data },
       dataType: 'json',
-      type: 'POST',
+      type: 'GET',
       success: function (res) {
-
+        console.log('SUCCESS');
       },
-      error: function () {
-
+      error: function (res) {
+        console.log(res);
       }
     });*/
   },
@@ -159,12 +165,13 @@ var Data = {
     Data.elements.companies.removeClass('active');
     $(this).addClass('active');
 
-    Data.updateData($(this).text());
+    var company_name = $(this).text();
+    Data.values.company = company_name;
+    Data.updateData(company_name);
   },
 
   // Update the data table
   updateData: function(company) {
-    Data.values.company = company;
 
     if(typeof companies !== 'undefined') {
 
@@ -176,12 +183,11 @@ var Data = {
           minRows = 4 * (moment().year() - 2010);
 
       // Initialize array to hold rows, represented by subarrays
+      // Then, iterates thru each quarter to be represented
+      // Fills Data.data with empty rows
+      // Each row represents a quarter's data
+      // Each row has minCols # of indices to fit each category
       Data.data = new Array([]);
-
-      // Iterates thru each quarter to be represented
-        // Fills Data.data with empty rows
-        // Each row represents a quarter's data
-        // Each row has minCols # of indices to fit each category
       for(var counter = 0; counter < minRows; counter++) {
         Data.data.push(new Array(minCols));
       }
