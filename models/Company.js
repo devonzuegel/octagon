@@ -357,8 +357,10 @@ module.exports = {
     });
   },
 
-  editSpreadsheet: function() {
-    console.log('xxx');
+  editSpreadsheet: function(permalink) {
+    Companies.findOne({ permalink: permalink }, function (err, company) {
+      console.log(company);
+    });
   },
 
   // Delete a data point from company metric info

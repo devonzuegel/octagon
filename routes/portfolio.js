@@ -170,8 +170,6 @@ router.post('/:permalink/editMetrics', function(req, res) {
     }
   );
 
-  console.log(JSON.stringify(req.body, null, 2));
-
   CompanyModel.editMetrics(
     link, 
     req.body, 
@@ -182,7 +180,8 @@ router.post('/:permalink/editMetrics', function(req, res) {
 });
 
 router.post('/:permalink/editSpreadsheet', function(req, res) {
-  CompanyModel.editSpreadsheet();
+  // console.log(JSON.stringify(req.body, null, 2));
+  CompanyModel.editSpreadsheet(req.params.permalink);
 });
 
 

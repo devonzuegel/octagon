@@ -105,42 +105,18 @@ var Data = {
 
   // Save data
   saveData: function() {
-    var data = Data.data;
-    var company_name = Data.values.company;
-    console.log(data);
-    // var data = Data.data,
-    // csvContent = 'data:text/csv;charset=utf-8,';
-
-    // data.forEach(function(infoArray, index){
-
-    //   dataString = infoArray.join(',');
-    //   csvContent += index < infoArray.length ? dataString+ '\n' : dataString;
-
-    // });
-
-    // var encodedUri = encodeURI(csvContent);
-    // window.open(encodedUri);
+    // console.log(data);
 
     $.post(
       '/portfolio/' + Data.values.permalink + '/editSpreadsheet',
+      {
+        data: Data.data,
+      },
       function(data) {
         console.log(data);
       }
     );
 
-/*
-    $.ajax({
-      url: '/portfolio/' + Data.values.permalink, // + '/editSpreadsheet',
-      // data: { 'data': Data.data },
-      dataType: 'json',
-      type: 'GET',
-      success: function (res) {
-        console.log('SUCCESS');
-      },
-      error: function (res) {
-        console.log(res);
-      }
-    });*/
   },
 
   // Download data
