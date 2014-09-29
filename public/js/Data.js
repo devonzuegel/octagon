@@ -1,7 +1,6 @@
 // Takes (1) the array of all companies and (2) a specific company
 // Adds the category name to columnHeaders
-function col_headers(companies, company) {
-  console.log('companies' + companies);
+function col_headers(companies) {
   var colHeaders = [];
 
   // Fill in category names from Operational section
@@ -106,6 +105,7 @@ var Data = {
     $.post(
       '/portfolio/' + Data.values.permalink + '/editSpreadsheet',
       {
+        col_headers: col_headers(companies),
         data: Data.data,
       },
       function(data) {
@@ -179,7 +179,7 @@ var Data = {
         minSpareRows: 0,
         minRows: minRows,
         minCols: minCols,
-        colHeaders: col_headers(companies, company),
+        colHeaders: col_headers(companies),
         rowHeaders: row_headers(minRows),
         currentRowClassName: 'currentRow',
         currentColClassName: 'currentCol',

@@ -1,6 +1,6 @@
 //- Functions
 - function comma_num(x) {
--   return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(".")[0];
+-   if (x)     return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(".")[0];
 - }
 
 //- - function needs_percent_unit(val) {

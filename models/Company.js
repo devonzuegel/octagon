@@ -357,11 +357,33 @@ module.exports = {
     });
   },
 
-  editSpreadsheet: function(permalink, data_table) {
+  editSpreadsheet: function(permalink, data_table, col_hdrs) {
     Companies.findOne({ permalink: permalink }, function (err, company) {
-      console.log(JSON.stringify(data_table));
-      console.log('\n');
-      console.log(JSON.stringify(company.economics));
+      console.log(data_table);
+
+      var sections = [ 'operational', 'user_metrics', 'economics' ];
+          company_updated = company;
+
+      for (var h in col_hdrs) {
+        var hdr = col_hdrs[h];
+
+        var updated_col = new Array(data_table.length);
+        for (var i = 0; i < data_table.length; i++) {
+          updated_col[i] = /*parseInt(*/data_table[i][h]/*)*/;
+        }
+
+        for (var s in sections) {
+          var section = sections[s];
+
+          if (company_updated[section][hdr]) {
+            company_updated[section][hdr] = updated_col;
+          }
+
+        }
+        console.log(JSON.stringify(company));
+      }
+      company = company_updated;
+      company.save();
     });
   },
 

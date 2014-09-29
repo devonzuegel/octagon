@@ -181,7 +181,11 @@ router.post('/:permalink/editMetrics', function(req, res) {
 
 router.post('/:permalink/editSpreadsheet', function(req, res) {
   // console.log(JSON.stringify(req.body, null, 2));
-  CompanyModel.editSpreadsheet(req.params.permalink, req.body.data);
+  CompanyModel.editSpreadsheet(
+    req.params.permalink, 
+    req.body.data, 
+    req.body.col_headers
+  );
 });
 
 
