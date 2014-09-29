@@ -132,30 +132,35 @@ var Data = {
       }
 
       var i = 0;
-      for(var c in companies) {
+      for(var c_index in companies) {
 
-        if(companies[c].username == company) {
+        if(companies[c_index].username == company) {
 
           // Add the companies permalink into Data.values (for Data.save, later)
-          Data.values.permalink = companies[c].permalink;
+          Data.values.permalink = companies[c_index].permalink;
 
           var sections = ['operational', 'user_metrics', 'economics'];
+          // (1) Iterate through each section
           for (var s in sections) {
             var section = sections[s];
 
-            for(var p in companies[c][section]) {
-              for(var o in companies[c][section][p]) {
+            // (2) Iterate through each category of data in each section
+            for(var category in companies[c_index][section]) {
 
-                var entry = companies[c][section][p][o],
+              // (3) Iterate through each datum in that category
+              for(var datum in companies[c_index][section][category]) {
+
+                var entry = companies[c_index][section][category][datum],
                     row = 4 * (moment().year() - moment(entry.date).year()) +
                           (4 - moment(entry.date).quarter());
 
                 Data.data[row][i] = entry.value;
-              }
-
+              } // (3) END each category of data in each section
+              
               i++;
-            }
-          }
+
+            } // (2) END each category of data in each section
+          } // (1) END each section
         }
       }
 
