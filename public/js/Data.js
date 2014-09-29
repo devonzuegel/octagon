@@ -26,6 +26,52 @@ function col_headers(companies, company) {
   }
 }
 
+// Iterates thru each quarter to be represented
+// Push quarter name (ex: 'Q1 2013') onto rowHeaders
+function row_headers(minRows) {
+  var rowHeaders = [],
+      q_counter = 0;
+
+  for(var counter = 0; counter < minRows; counter++) {
+    // Push quarter name (ex: 'Q1 2013') onto rowHeaders
+    rowHeaders.push('Q' + (4 - q_counter) + ' ' + (moment().year() - Math.floor(counter / 4)));
+
+    // Update q_counter to next quarter
+    // If we've hit 3, go back down to 0 (only want 0, 1, 2, 3)
+    q_counter = (q_counter < 3) ? q_counter + 1 : 0;
+  }
+  return rowHeaders;
+}
+
+function populate_data(companies, c_index, data) {
+  var i = 0;
+  var sections = ['operational', 'user_metrics', 'economics'];
+  // (1) Iterate through each section
+  for (var s in sections) {
+    var section = sections[s];
+
+    // (2) Iterate thru each category of data in each section of that company
+    for(var c in companies[c_index][section]) {
+      var category = companies[c_index][section][c];
+
+      // (3) Iterate through each datum in that category
+      for(var datum in category) {
+
+        var entry = category[datum],
+            row = 4 * (moment().year() - moment(entry.date).year()) +
+                  (4 - moment(entry.date).quarter());
+
+        data[row][i] = entry.value;
+
+      } // (3) END each category of data in each section
+      
+      i++;
+
+    } // (2) END each category of data in each section
+  } // (1) END each section
+  return data;
+}
+
 var Data = {
 
   // Initialize elements, values, and click events
@@ -101,66 +147,31 @@ var Data = {
 
     if(typeof companies !== 'undefined') {
 
-      // Initiliaze array to hold rows, represented by subarrays
-      Data.data = new Array([]);
-
-      // Initialize arrays to hold column & row headers / names
-      var colHeaders = [], // Will contain 'head_count', 'revenue', etc.
-          rowHeaders = []; // Will contains 'Q4 2014', 'Q3 2014', etc.
-
-      // # of columns required to hold all categories
+      // Min # of columns required to hold all categories
       var minCols = Object.keys(companies[1].operational).length +
                     Object.keys(companies[1].user_metrics).length +
-                    Object.keys(companies[1].economics).length;
-      // # of quarters to display
-      var minRows = 4 * (moment().year() - 2010);
+                    Object.keys(companies[1].economics).length,
+      // Min # of quarters to display
+          minRows = 4 * (moment().year() - 2010);
+
+      // Initialize array to hold rows, represented by subarrays
+      Data.data = new Array([]);
 
       // Iterates thru each quarter to be represented
-      // Push array onto Data.data to represent that quarter
-      // Push quarter name (ex: 'Q1 2013') onto rowHeaders
-      var q_counter = 0;
+      // Fills Data.data with empty rows
+      // Each row represents a quarter's data
+      // Each row has minCols # of indices to fit each category
       for(var counter = 0; counter < minRows; counter++) {
-        // Add a new row of data to represent a given quarter
         Data.data.push(new Array(minCols));
-
-        // Push quarter name (ex: 'Q1 2013') onto rowHeaders
-        rowHeaders.push('Q' + (4 - q_counter) + ' ' + (moment().year() - Math.floor(counter / 4)));
-
-        // Update q_counter to next quarter
-        // If we've hit 3, go back down to 0 (only want 0, 1, 2, 3)
-        q_counter = (q_counter < 3) ? q_counter + 1 : 0;
       }
 
-      var i = 0;
       for(var c_index in companies) {
-
         if(companies[c_index].username == company) {
-
           // Add the companies permalink into Data.values (for Data.save, later)
           Data.values.permalink = companies[c_index].permalink;
 
-          var sections = ['operational', 'user_metrics', 'economics'];
-          // (1) Iterate through each section
-          for (var s in sections) {
-            var section = sections[s];
-
-            // (2) Iterate through each category of data in each section
-            for(var category in companies[c_index][section]) {
-
-              // (3) Iterate through each datum in that category
-              for(var datum in companies[c_index][section][category]) {
-
-                var entry = companies[c_index][section][category][datum],
-                    row = 4 * (moment().year() - moment(entry.date).year()) +
-                          (4 - moment(entry.date).quarter());
-
-                Data.data[row][i] = entry.value;
-              } // (3) END each category of data in each section
-              
-              i++;
-
-            } // (2) END each category of data in each section
-          } // (1) END each section
+          // Populate Data.data with metrics
+          Data.data = populate_data(companies, c_index, Data.data);
         }
       }
 
@@ -172,11 +183,11 @@ var Data = {
         minRows: minRows,
         minCols: minCols,
         colHeaders: col_headers(companies, company),
-        rowHeaders: rowHeaders,
+        rowHeaders: row_headers(minRows),
         currentRowClassName: 'currentRow',
         currentColClassName: 'currentCol',
         contextMenu: false,
-        readOnly: true
+        readOnly: false
       });
     }
   }
