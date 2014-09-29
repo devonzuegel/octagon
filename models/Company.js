@@ -369,7 +369,9 @@ module.exports = {
 
         var updated_col = new Array(data_table.length);
         for (var i = 0; i < data_table.length; i++) {
-          updated_col[i] = /*parseInt(*/data_table[i][h]/*)*/;
+          updated_col[i] = {
+            value: parseInt(data_table[i][h])
+          };
         }
 
         for (var s in sections) {

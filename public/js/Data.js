@@ -56,7 +56,7 @@ function populate_data(companies, c_index, data) {
             row = 4 * (moment().year() - moment(entry.date).year()) +
                   (4 - moment(entry.date).quarter());
 
-        data[row][i] = entry.value;
+        data[3][i] = entry.value;
 
       } // (3) END each category of data in each section
       
