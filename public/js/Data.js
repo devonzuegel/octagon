@@ -89,6 +89,8 @@ var Data = {
       download: $('.download-btn')
     };
 
+    console.log(this.elements.data);
+
     this.values = {
       company: this.elements.selectedCompany.text(),
       permalink: ''
@@ -103,18 +105,36 @@ var Data = {
 
   // Save data
   saveData: function() {
-    // $.ajax({
-    //   url: '/portfolio/' + Data.values.permalink + '/editMetrics',
-    //   data: { 'data': Data.data },
-    //   dataType: 'json',
-    //   type: 'POST',
-    //   success: function (res) {
+    var data = Data.data;
 
-    //   },
-    //   error: function () {
+    var company_name = Data.values.company;
+    console.log(company_name);
 
-    //   }
+    // var data = Data.data,
+    // csvContent = 'data:text/csv;charset=utf-8,';
+
+    // data.forEach(function(infoArray, index){
+
+    //   dataString = infoArray.join(',');
+    //   csvContent += index < infoArray.length ? dataString+ '\n' : dataString;
+
     // });
+
+    // var encodedUri = encodeURI(csvContent);
+    // window.open(encodedUri);
+
+    /*$.ajax({
+      url: '/portfolio/' + Data.values.permalink + '/editMetrics',
+      data: { 'data': Data.data },
+      dataType: 'json',
+      type: 'POST',
+      success: function (res) {
+
+      },
+      error: function () {
+
+      }
+    });*/
   },
 
   // Download data
@@ -125,8 +145,8 @@ var Data = {
 
     data.forEach(function(infoArray, index){
 
-       dataString = infoArray.join(',');
-       csvContent += index < infoArray.length ? dataString+ '\n' : dataString;
+      dataString = infoArray.join(',');
+      csvContent += index < infoArray.length ? dataString+ '\n' : dataString;
 
     });
 
@@ -144,6 +164,7 @@ var Data = {
 
   // Update the data table
   updateData: function(company) {
+    Data.values.company = company;
 
     if(typeof companies !== 'undefined') {
 
@@ -158,9 +179,9 @@ var Data = {
       Data.data = new Array([]);
 
       // Iterates thru each quarter to be represented
-      // Fills Data.data with empty rows
-      // Each row represents a quarter's data
-      // Each row has minCols # of indices to fit each category
+        // Fills Data.data with empty rows
+        // Each row represents a quarter's data
+        // Each row has minCols # of indices to fit each category
       for(var counter = 0; counter < minRows; counter++) {
         Data.data.push(new Array(minCols));
       }
