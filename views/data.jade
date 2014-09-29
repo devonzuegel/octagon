@@ -14,8 +14,6 @@ block content
     if all_companies != 'undefined'
       ul.page-tabs(role="tablist")
         each c in all_companies
-          //- .sort(function(a, b) { console.log(a.username < 'Z'); return a.username.toLowerCase() < b.username.toLowerCase() })
-          //- - console.log(JSON.stringify(c.username.toLowerCase() < "apple", null, 3));
           if c.username != 'admin'
             li.page-tab #{c.username}
     else
