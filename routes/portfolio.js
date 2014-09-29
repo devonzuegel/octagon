@@ -184,7 +184,8 @@ router.post('/:permalink/editSpreadsheet', function(req, res) {
   CompanyModel.editSpreadsheet(
     req.params.permalink, 
     req.body.data, 
-    req.body.col_headers
+    req.body.col_headers,
+    req.body.row_headers
   );
 });
 

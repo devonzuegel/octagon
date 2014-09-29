@@ -357,9 +357,9 @@ module.exports = {
     });
   },
 
-  editSpreadsheet: function(permalink, data_table, col_hdrs) {
+  editSpreadsheet: function(permalink, data_table, col_hdrs, row_hdrs) {
     Companies.findOne({ permalink: permalink }, function (err, company) {
-      console.log(data_table);
+      // console.log(data_table);
 
       var sections = [ 'operational', 'user_metrics', 'economics' ];
           company_updated = company;
@@ -369,7 +369,7 @@ module.exports = {
 
         var updated_col = new Array(data_table.length);
         for (var i = 0; i < data_table.length; i++) {
-          var years_ago = i/4;
+          var years_ago = (i - i%4)/4;
           var quarter = 1;
           var year = moment().year() - years_ago;
           updated_col[i] = {
@@ -388,7 +388,7 @@ module.exports = {
           }
 
         }
-        console.log(JSON.stringify(company));
+        // console.log(JSON.stringify(company));
       }
       company = company_updated;
       company.save();

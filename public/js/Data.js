@@ -107,6 +107,7 @@ var Data = {
       {
         col_headers: col_headers(companies),
         data: Data.data,
+        row_headers: row_headers(4 * (moment().year() - 1990))
       },
       function(data) {
       }
