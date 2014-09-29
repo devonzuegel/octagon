@@ -357,9 +357,11 @@ module.exports = {
     });
   },
 
-  editSpreadsheet: function(permalink) {
+  editSpreadsheet: function(permalink, data_table) {
     Companies.findOne({ permalink: permalink }, function (err, company) {
-      console.log(company);
+      console.log(JSON.stringify(data_table));
+      console.log('\n');
+      console.log(JSON.stringify(company.economics));
     });
   },
 

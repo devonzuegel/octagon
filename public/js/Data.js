@@ -32,7 +32,7 @@ function row_headers(minRows) {
   var rowHeaders = [],
       q_counter = 0;
 
-  for(var counter = 0; counter < minRows; counter++) {
+  for(var counter = 0; counter <= minRows; counter++) {
     // Push quarter name (ex: 'Q1 2013') onto rowHeaders
     rowHeaders.push('Q' + (4 - q_counter) + ' ' + (moment().year() - Math.floor(counter / 4)));
 
@@ -113,7 +113,6 @@ var Data = {
         data: Data.data,
       },
       function(data) {
-        console.log(data);
       }
     );
 
@@ -156,7 +155,7 @@ var Data = {
                     Object.keys(companies[1].user_metrics).length +
                     Object.keys(companies[1].economics).length,
       // Min # of quarters to display
-          minRows = 4 * (moment().year() - 2010);
+          minRows = 4 * (moment().year() - 1990);
 
       // Initialize array to hold rows, represented by subarrays
       // Then, iterates thru each quarter to be represented
@@ -165,7 +164,7 @@ var Data = {
       // Each row has minCols # of indices to fit each category
       Data.data = new Array([]);
       for(var counter = 0; counter < minRows; counter++) {
-        Data.data.push(new Array(minCols));
+        Data.data.push(new Array());
       }
 
       for(var c_index in companies) {
@@ -182,7 +181,7 @@ var Data = {
         data: Data.data,
         height: window.innerHeight - (2 * 56),
         stretchH: 'all',
-        minSpareRows: 1,
+        minSpareRows: 0,
         minRows: minRows,
         minCols: minCols,
         colHeaders: col_headers(companies, company),
