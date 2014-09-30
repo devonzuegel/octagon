@@ -20,8 +20,10 @@
         a.mix(class=owners_class  data-name=c.username  href="../portfolio/#{c.permalink}")
 
           .card-header
-            if c.profile
+            if (c.profile && c.profile.img_path)
               img(src=c.profile.img_path)
+            else
+              img(src='../assets/images/placeholder.png')
 
           .card-body
             div.hidden-on-grid
