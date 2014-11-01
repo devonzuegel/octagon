@@ -13,7 +13,7 @@ var MONGO_URI = 'mongodb://heroku_app28713039:aa1jom2tna3p736qs2gglg2b2o@ds06389
 </pre>
 
 2. To manually change update the database, go to your [Heroku dashboard for Octogon](https://dashboard.heroku.com/apps/octogon-f8/resources) and under *Add-ons*, click *MongoLab*. Click on the collection that contains the document you wish to edit. Find that document within the collection and click the pencil-edit button to the right.
-3. When editing a document, make sure to conform to the [standard JSON format](http://json.org/example).
+3. When editing a document, be sure to conform to the [standard JSON format](http://json.org/example).
 
 ### Running the Database Locally
 

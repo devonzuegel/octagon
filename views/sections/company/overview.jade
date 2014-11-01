@@ -25,8 +25,8 @@
       .block-info
         if (p && p.description)
           //- Shortens & replaces all occurrences of "&#39;" with an apostrophe
-          | #{shorten(p.description.replace(/&#39;/g,"'"))}
-          a(href="http://www.crunchbase.com/organization/#{permalink}") Read more...
+          | #{p.description.replace(/&#39;/g,"'")}
+          //- a(href="http://www.crunchbase.com/organization/#{permalink}") Read more...
         else
           .faded Add description
 
@@ -99,7 +99,7 @@
               $('#edit-'+m._id).click(function() {
                 $('#title').val(m.title);
                 $('#date').val(moment(m.date).format('DD MMMM YYYY'));
-                $('#description').val(m.description);
+                $('#description').val(m.description.replace(/&#39;/g,"'"));
                 $('#milestone_id').val(m._id);
               });
             }(i))

@@ -56,7 +56,7 @@ function populate_data(companies, c_index, data) {
         var row = 4 * (moment().year() - moment(datum.date).year()) +
                   (4 - moment(datum.date).quarter());
         console.log(row);
-        data[8][i] = datum.value;
+        data[row][i] = datum.value;
 
       } // (3) END each category of data in each section
       
@@ -100,14 +100,14 @@ var Data = {
 
   // Save data
   saveData: function() {
-    // console.log(data);
+    console.log(data);
 
     $.post(
       '/portfolio/' + Data.values.permalink + '/editSpreadsheet',
       {
         col_headers: col_headers(companies),
         data: Data.data,
-        row_headers: row_headers(4 * (moment().year() - 1990))
+        row_headers: row_headers(4 * (moment().year() - 1990)),
       },
       function(data) {
       }

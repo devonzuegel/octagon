@@ -3,6 +3,9 @@ include ../mixins/edit_modal_mixin
 
 - var edit_link = '/portfolio/'+permalink+'/edit'
 
+- function decode(str) {
+-   return str.replace(/&#39;/g,"'");
+- }
 
 
 //- EDIT ABOUT: description & link to unabridged description on Crunchbase
@@ -10,7 +13,7 @@ include ../mixins/edit_modal_mixin
   .small-label Company description
   textarea(placeholder='Add company description'  name='description'  autocomplete='off')
    if (p)
-      | #{p.description}
+      | #{decode(p.description)}
   
 
 

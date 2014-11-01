@@ -119,6 +119,7 @@ function indexFromId (id, obj_array) {
 }
 
 function newData(form, field) {
+  console.log('xxxxxxxxxxxxxxxxxxxxxx');
   return new_data = {
     date: moment(form.quarter + '-' + form.year, 'Q-YYYY').add(1, 'day'),
     value: form[field],
