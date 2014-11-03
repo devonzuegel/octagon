@@ -84,8 +84,6 @@ var Data = {
       download: $('.download-btn')
     };
 
-    console.log(this.elements.data);
-
     this.values = {
       company: this.elements.selectedCompany.text(),
       permalink: ''
@@ -100,18 +98,18 @@ var Data = {
 
   // Save data
   saveData: function() {
-    console.log(data);
+    console.log(JSON.stringify(Data.data));
 
-    $.post(
-      '/portfolio/' + Data.values.permalink + '/editSpreadsheet',
-      {
-        col_headers: col_headers(companies),
-        data: Data.data,
-        row_headers: row_headers(4 * (moment().year() - 1990)),
-      },
-      function(data) {
-      }
-    );
+    // $.post(
+    //   '/portfolio/' + Data.values.permalink + '/editSpreadsheet',
+    //   {
+    //     col_headers: col_headers(companies),
+    //     data: Data.data,
+    //     row_headers: row_headers(4 * (moment().year() - 1990)),
+    //   },
+    //   function(data) {
+    //   }
+    // );
 
   },
 
