@@ -6,8 +6,7 @@ function convertData(data, field, label) {
   // Loop through the data object
   for(var i = 0; i < data.length; i++) {
     // Push the data into the array
-    var datum = data[i][field];
-    new_data.push(datum);
+    new_data.push(data[i][field]);
   }
 
   // Return the new array
