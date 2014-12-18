@@ -3,11 +3,11 @@
 function convertData(data, field, label) {
   // Create a new array with its label
   var new_data = [label];
-
   // Loop through the data object
   for(var i = 0; i < data.length; i++) {
     // Push the data into the array
-    new_data.push(data[i][field]);
+    var datum = data[i][field];
+    new_data.push(datum);
   }
 
   // Return the new array
@@ -85,20 +85,15 @@ function generateGraph(el, data, width_multiplier) {
 
   return chart;
 }
-
-var cashGraph = generateGraph(
-  '#cashGraph',
-  { 
-    xs: { 'Cash': 'x1' },
-    columns: [
-      convertData(cash_data, 'date', 'x1'),
-      convertData(cash_data, 'value', 'Cash'),
-    ],
-    type: 'area',
-    y: y_min_and_max(cash_data),
-  },
-  10/12
-);
+var cashGraph = generateGraph('#cashGraph', { 
+  xs: { 'Cash': 'x1' },
+  columns: [
+    convertData(cash_data, 'date', 'x1'),
+    convertData(cash_data, 'value', 'Cash'),
+  ],
+  type: 'area',
+  y: y_min_and_max(cash_data)
+}, 10/12);
 
 
 var grossBurnGraph = generateGraph(
