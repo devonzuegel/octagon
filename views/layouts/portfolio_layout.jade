@@ -2,17 +2,37 @@ extends ../layout
 block sub_layout
   body.portfolio-bkg
 
-   //- Add company modal
-   include ../modals/add_company.jade
+  //- Add company modal
+  include ../modals/add_company.jade
 
-   .toolbar.toolbar-absolute.toolbar-dark:.max-width
-      include ../includes/toolbar.jade
+  .toolbar.toolbar-absolute.toolbar-dark: .max-width
+    include ../includes/toolbar.jade
 
-   .portfolio-toolbar:.max-width
-      block toolbar
+  .portfolio-toolbar: .max-width
+    block toolbar
 
-   .portfolio-content:.max-width
-      block content
+  .portfolio-content: .max-width
+    block content
 
-   .footer
-      include ../includes/footer.jade
+  .footer
+    include ../includes/footer.jade
+
+
+block application_scripts
+  script(type='text/javascript', src="../../js/Portfolio.js")
+  script(type='text/javascript', src="../../js/Scroll.js")
+  script(type='text/javascript', src="../../js/AddCompany.js")
+
+  script.
+    $(document).ready(function() {
+    
+      // Initialize Portfolio
+      Portfolio.init();
+
+      // Initialize Toolbar
+      Scroll.init();
+
+      // Initialize AddCompany
+      AddCompany.init();
+    
+    });

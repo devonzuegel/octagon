@@ -24,4 +24,12 @@ block sub_layout
       include ../includes/footer.jade
 
 block application_scripts
+  script(type='text/javascript', src="../../js/Company.js")
   script(type='text/javascript', src="../../js/Graph.js")
+
+
+  script.
+    $(document).ready(function() {
+      // Initialize Company
+      Company.init();
+    });

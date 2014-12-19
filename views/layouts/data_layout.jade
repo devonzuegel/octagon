@@ -10,3 +10,15 @@ block sub_layout
 
    .footer
       include ../includes/footer.jade
+
+block application_scripts
+  script(type='text/javascript', src="../../js/Data.js")
+
+  script.
+    $(document).ready(function() {
+
+      // Initialize Data section
+      Data.init();
+
+    });
+

@@ -9,30 +9,11 @@ script(type='text/javascript', src="../../bower_components/handsontable/dist/jqu
 script(type='text/javascript', src="../../bower_components/moment/min/moment.min.js")
 
 //- Application JS
-script(type='text/javascript', src="../../js/Scroll.js")
-script(type='text/javascript', src="../../js/AddCompany.js")
-script(type='text/javascript', src="../../js/Company.js")
-script(type='text/javascript', src="../../js/Portfolio.js")
 script(type='text/javascript', src="../../js/Dropdown.js")
 script(type='text/javascript', src="../../js/Tab.js")
-script(type='text/javascript', src="../../js/Data.js")
 
 script.
   $(document).ready(function() {
-    // Initialize AddCompany
-    AddCompany.init();
-
-    // Initialize Portfolio
-    Portfolio.init();
-
-    // Initialize Toolbar
-    Scroll.init();
-
-    // Initialize Company
-    Company.init();
-
-    // Initialize Data section
-    Data.init();
 
     // Initialize sticky tabs plugin
     $('.nav-tabs').stickyTabs();
