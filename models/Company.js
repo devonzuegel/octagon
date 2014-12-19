@@ -156,6 +156,31 @@ function simplifyCrunchbaseProf(p) {
   };
 }
 
+function printData(data_table, company, sections, col_hdrs) {
+  for (var i = 0; i < data_table.length; i++) {
+    console.log(JSON.stringify(data_table[i]));
+  }
+  console.log('\n----------------------------------------------------------\n');
+
+  for (var i in sections) {
+    var section = sections[i];
+    console.log('company['+section+']:');
+    console.log(JSON.stringify(company[section], null, 2));
+    console.log('\n----------------------------------------------------------\n');
+  }
+
+  for (var i in sections) {
+    var section = sections[i];
+    for (var h in col_hdrs) {
+      var hdr = col_hdrs[h];
+      if (company[section][hdr]) {
+        console.log('\n' + hdr + ':');
+        console.log(JSON.stringify(company[section][hdr], null, 3));
+      }
+    }
+  }      
+}
+
 //// EXPORTS /////
 
 module.exports = {
@@ -360,11 +385,19 @@ module.exports = {
 
   editSpreadsheet: function(permalink, data_table, col_hdrs, row_hdrs) {
     Companies.findOne({ permalink: permalink }, function (err, company) {
-      // console.log(data_table);
 
       var sections = [ 'operational', 'user_metrics', 'economics' ];
-          company_updated = company;
+      var company_updated = company;
 
+      printData(data_table, company, sections, col_hdrs);
+
+      // 1: Clean data from data_table (rmv nulls, make integers instead of stringss)
+
+      // 2: "Turn" cleaned data » put into sections
+
+      // 3: Save into company
+
+    /*
       for (var h in col_hdrs) {
         var hdr = col_hdrs[h];
 
@@ -378,6 +411,12 @@ module.exports = {
             value: data_table[i][h],
             label: hdr,
             timestamp: moment()
+
+              date: moment(form.quarter + '-' + form.year, 'Q-YYYY').add(1, 'day'),
+              value: form[field],
+              label: field,
+              timestamp: moment()
+
           };
         }
 
@@ -393,6 +432,8 @@ module.exports = {
       }
       company = company_updated;
       company.save();
+    */
+
     });
   },
 

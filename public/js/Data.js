@@ -21,6 +21,10 @@ function col_headers(companies) {
   return colHeaders;
 }
 
+function calculate_row(datum) {
+  return 4*(moment().year() - moment(datum.date).year())  +  (4 - moment(datum.date).quarter());
+}
+
 // Iterates thru each quarter to be represented
 // Push quarter name (ex: 'Q1 2013') onto rowHeaders
 function row_headers(minRows) {
@@ -53,8 +57,7 @@ function populate_data(companies, c_index, data) {
       for(var d in category) {
 
         var datum = category[d];
-        var row = 4 * (moment().year() - moment(datum.date).year()) +
-                  (4 - moment(datum.date).quarter());
+        var row = calculate_row(datum);
         data[row][i] = datum.value;
 
       } // (3) END each category of data in each section
@@ -97,18 +100,13 @@ var Data = {
 
   // Save data
   saveData: function() {
-    console.log(JSON.stringify(Data.data));
+    // console.log(JSON.stringify(Data.data));
 
-    // $.post(
-    //   '/portfolio/' + Data.values.permalink + '/editSpreadsheet',
-    //   {
-    //     col_headers: col_headers(companies),
-    //     data: Data.data,
-    //     row_headers: row_headers(4 * (moment().year() - 1990)),
-    //   },
-    //   function(data) {
-    //   }
-    // );
+    $.post('/portfolio/' + Data.values.permalink + '/editSpreadsheet', {
+      col_headers: col_headers(companies),
+      data: Data.data,
+      row_headers: row_headers(4 * (moment().year() - 1990)),
+    }, function(data) { });
 
   },
 
@@ -146,9 +144,9 @@ var Data = {
       // Min # of columns required to hold all categories
       var minCols = Object.keys(companies[1].operational).length +
                     Object.keys(companies[1].user_metrics).length +
-                    Object.keys(companies[1].economics).length,
+                    Object.keys(companies[1].economics).length;
       // Min # of quarters to display
-          minRows = 4 * (moment().year() - 1990);
+      var minRows = 4 * (moment().year() - 1990);
 
       // Initialize array to hold rows, represented by subarrays
       // Then, iterates thru each quarter to be represented
