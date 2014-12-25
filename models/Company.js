@@ -119,7 +119,6 @@ function indexFromId (id, obj_array) {
 }
 
 function newData(form, field) {
-  console.log('xxxxxxxxxxxxxxxxxxxxxx');
   return new_data = {
     date: moment(form.quarter + '-' + form.year, 'Q-YYYY').add(1, 'day'),
     value: form[field],
@@ -158,27 +157,77 @@ function simplifyCrunchbaseProf(p) {
 
 function printData(data_table, company, sections, col_hdrs) {
   for (var i = 0; i < data_table.length; i++) {
+    console.log(JSON.stringify(rmvNullArrayElems(data_table[i])));
     console.log(JSON.stringify(data_table[i]));
+    console.log('---');
   }
   console.log('\n----------------------------------------------------------\n');
 
-  for (var i in sections) {
-    var section = sections[i];
-    console.log('company['+section+']:');
-    console.log(JSON.stringify(company[section], null, 2));
-    console.log('\n----------------------------------------------------------\n');
-  }
+  // for (var i in sections) {
+  //   var section = sections[i];
+  //   console.log('company['+section+']:');
+  //   console.log(JSON.stringify(company[section], null, 2));
+  //   console.log('\n----------------------------------------------------------\n');
+  // }
 
-  for (var i in sections) {
-    var section = sections[i];
-    for (var h in col_hdrs) {
-      var hdr = col_hdrs[h];
-      if (company[section][hdr]) {
-        console.log('\n' + hdr + ':');
-        console.log(JSON.stringify(company[section][hdr], null, 3));
-      }
-    }
-  }      
+  // for (var i in sections) {
+  //   var section = sections[i];
+  //   for (var h in col_hdrs) {
+  //     var hdr = col_hdrs[h];
+  //     if (company[section][hdr]) {
+  //       console.log('\n' + hdr + ':');
+  //       console.log(JSON.stringify(company[section][hdr], null, 3));
+  //     }
+  //   }
+  // }      
+}
+
+function isArray(v) {
+  return Object.prototype.toString.call(v) === '[object Array]';
+}
+
+function rmvNullArrayElems(arr) { 
+  /* If we are not passed an Array in the var arr, do not
+   * attempt to remove empty elems */
+  if (!isArray(arr))    return arr;
+
+  /* Filter out any null elems in the array */
+  var filtered = arr.filter(function(elem) { 
+    return elem !== null;
+  });
+
+  return filtered.map(rmvNullArrayElems);
+}
+
+function calc_row(datum) {
+  return 4*(moment().year() - moment(datum.date).year())  +  (4 - moment(datum.date).quarter());
+}
+
+function populate_data(company, data) {
+  var i = 0;
+  var sections = ['operational', 'user_metrics', 'economics'];
+  // (1) Iterate through each section
+  for (var s in sections) {
+    var section = sections[s];
+
+    // (2) Iterate thru each category of data in each section of that company
+    for(var c in company[section]) {
+      var category = company[section][c];
+
+      // (3) Iterate through each datum in that category
+      for(var d in category) {
+
+        var datum = category[d];
+        var row = calc_row(datum);
+        data[row][i] = datum.value;
+
+      } // (3) END each category of data in each section
+      
+      i++;
+
+    } // (2) END each category of data in each section
+  } // (1) END each section
+  return data;
 }
 
 //// EXPORTS /////
@@ -391,6 +440,7 @@ module.exports = {
 
       printData(data_table, company, sections, col_hdrs);
 
+      // var nullsRmvd = rmvNullArrayElems(company.operational.cash);
       // 1: Clean data from data_table (rmv nulls, make integers instead of stringss)
 
       // 2: "Turn" cleaned data » put into sections

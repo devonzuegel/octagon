@@ -1,3 +1,6 @@
+var EARLIEST_YR = 1990;
+var MIN_ROWS = 4 * (moment().year() - EARLIEST_YR);
+
 // Takes (1) the array of all companies and (2) a specific company
 // Adds the category name to columnHeaders
 function col_headers(companies) {
@@ -21,7 +24,7 @@ function col_headers(companies) {
   return colHeaders;
 }
 
-function calculate_row(datum) {
+function calc_row(datum) {
   return 4*(moment().year() - moment(datum.date).year())  +  (4 - moment(datum.date).quarter());
 }
 
@@ -31,7 +34,7 @@ function row_headers(minRows) {
   var rowHeaders = [],
       q_counter = 0;
 
-  for(var counter = 0; counter <= minRows; counter++) {
+  for(var counter = 0; counter <= MIN_ROWS; counter++) {
     // Push quarter name (ex: 'Q1 2013') onto rowHeaders
     rowHeaders.push('Q' + (4 - q_counter) + ' ' + (moment().year() - Math.floor(counter / 4)));
 
@@ -42,30 +45,68 @@ function row_headers(minRows) {
   return rowHeaders;
 }
 
-function populate_data(companies, c_index, data) {
+function populate_data(company, data, col_headers) {
+  var categories = [];
   var i = 0;
   var sections = ['operational', 'user_metrics', 'economics'];
+
+  // (0) Iterate thru each header (hdr)
+  for (var h in col_headers) {
+    var hdr = col_headers[h];
+    
+    // (1) Iterate through each section to see if it contains that header (hdr)
+    for (var s in sections) {
+      var section = sections[s];
+
+      if (company[section][hdr]) {
+        console.log('\n'+hdr);
+        var category = company[section][hdr];
+        categories.push(hdr);
+
+        for(var d in category) {
+          var datum = category[d];
+          var row = calc_row(datum);
+          data[row][i] = datum.value;
+          console.log(datum);
+        }
+
+        i++;
+      }
+
+    }
+    // (1) END each section
+  }
+  // (0) END each header
+
+
+/*
   // (1) Iterate through each section
   for (var s in sections) {
     var section = sections[s];
 
     // (2) Iterate thru each category of data in each section of that company
-    for(var c in companies[c_index][section]) {
-      var category = companies[c_index][section][c];
+    for(var c in company[section]) {
+      var category = company[section][c];
+      categories.push(company[section]);
 
       // (3) Iterate through each datum in that category
       for(var d in category) {
-
         var datum = category[d];
-        var row = calculate_row(datum);
+        var row = calc_row(datum);
         data[row][i] = datum.value;
-
-      } // (3) END each category of data in each section
+      } 
+      // (3) END each category of data in each section
       
       i++;
+    } 
+    // (2) END each category of data in each section
+  } 
+  // (1) END each section
+*/
 
-    } // (2) END each category of data in each section
-  } // (1) END each section
+
+  console.log('created categories: ' + JSON.stringify(categories, null, 2));
+  console.log('       col_headers: ' + JSON.stringify(col_headers, null, 2));
   return data;
 }
 
@@ -75,6 +116,8 @@ var Data = {
   init: function() {
 
     this.data = new Array([]);
+    this.col_headers = col_headers(companies);
+    this.row_headers = row_headers(MIN_ROWS);
 
     $('.data-bottom-bar .page-tab:first-child').addClass('active');
 
@@ -103,9 +146,9 @@ var Data = {
     // console.log(JSON.stringify(Data.data));
 
     $.post('/portfolio/' + Data.values.permalink + '/editSpreadsheet', {
-      col_headers: col_headers(companies),
+      col_headers: this.col_headers,
       data: Data.data,
-      row_headers: row_headers(4 * (moment().year() - 1990)),
+      row_headers: this.row_headers,
     }, function(data) { });
 
   },
@@ -145,8 +188,6 @@ var Data = {
       var minCols = Object.keys(companies[1].operational).length +
                     Object.keys(companies[1].user_metrics).length +
                     Object.keys(companies[1].economics).length;
-      // Min # of quarters to display
-      var minRows = 4 * (moment().year() - 1990);
 
       // Initialize array to hold rows, represented by subarrays
       // Then, iterates thru each quarter to be represented
@@ -154,7 +195,7 @@ var Data = {
       // Each row represents a quarter's data
       // Each row has minCols # of indices to fit each category
       Data.data = new Array([]);
-      for(var counter = 0; counter < minRows; counter++) {
+      for(var counter = 0; counter < MIN_ROWS; counter++) {
         Data.data.push(new Array());
       }
 
@@ -163,8 +204,8 @@ var Data = {
           // Add the companies permalink into Data.values (for Data.save, later)
           Data.values.permalink = companies[c_index].permalink;
 
-          // Populate Data.data with metrics
-          Data.data = populate_data(companies, c_index, Data.data);
+          // Populate Data.data with metrics *****
+          Data.data = populate_data(companies[c_index], Data.data, this.col_headers);
         }
       }
 
@@ -173,10 +214,10 @@ var Data = {
         height: window.innerHeight - (2 * 56),
         stretchH: 'all',
         minSpareRows: 0,
-        minRows: minRows,
+        minRows: MIN_ROWS,
         minCols: minCols,
-        colHeaders: col_headers(companies),
-        rowHeaders: row_headers(minRows),
+        colHeaders: this.col_headers,
+        rowHeaders: this.row_headers,
         currentRowClassName: 'currentRow',
         currentColClassName: 'currentCol',
         contextMenu: false,
