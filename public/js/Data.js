@@ -72,37 +72,10 @@ function populate_data(company, data, col_headers) {
         // increment the column in which to place the datum
         i++;
       }
-
     }
     // (1) END each section
   }
   // (0) END each header
-
-
-/*
-  // (1) Iterate through each section
-  for (var s in sections) {
-    var section = sections[s];
-
-    // (2) Iterate thru each category of data in each section of that company
-    for(var c in company[section]) {
-      var category = company[section][c];
-      categories.push(company[section]);
-
-      // (3) Iterate through each datum in that category
-      for(var d in category) {
-        var datum = category[d];
-        var row = calc_row(datum);
-        data[row][i] = datum.value;
-      } 
-      // (3) END each category of data in each section
-      
-      i++;
-    } 
-    // (2) END each category of data in each section
-  } 
-  // (1) END each section
-*/
 
   return data;
 }
