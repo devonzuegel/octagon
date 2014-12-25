@@ -1,5 +1,6 @@
 var EARLIEST_YR = 1990;
 var MIN_ROWS = 4 * (moment().year() - EARLIEST_YR);
+var N_COLS = 15;
 
 // Takes (1) the array of all companies and (2) a specific company
 // Adds the category name to columnHeaders
@@ -46,7 +47,7 @@ function row_headers(minRows) {
 }
 
 function populate_data(company, data, col_headers) {
-  var categories = [];
+  // var categories = [];
   var i = 0;
   var sections = ['operational', 'user_metrics', 'economics'];
 
@@ -60,7 +61,7 @@ function populate_data(company, data, col_headers) {
 
       if (company[section][hdr]) {
         var category = company[section][hdr];
-        categories.push(hdr);
+        // categories.push(hdr);
 
         for(var d in category) {
           var datum = category[d];
@@ -68,6 +69,7 @@ function populate_data(company, data, col_headers) {
           data[row][i] = datum.value;
         }
 
+        // increment the column in which to place the datum
         i++;
       }
 
@@ -139,9 +141,21 @@ var Data = {
   // Save data
   saveData: function() {
 
+    removeExtraCols = function(old_data, num_col_hdrs) {
+      var new_data = [];
+      old_data.forEach(function(old_row, num_col_hdrs) {
+        var new_row = old_row.slice(0, 15);
+        new_data.push(new_row);
+      });
+
+      return new_data;
+    };
+    
+    var new_data = removeExtraCols(Data.data, N_COLS);
+
     $.post('/portfolio/' + Data.values.permalink + '/editSpreadsheet', {
       col_headers: this.col_headers,
-      data: JSON.stringify(Data.data), // stringify data to pass around
+      data: JSON.stringify(new_data), // stringify data to pass around w/o corruption
       row_headers: this.row_headers,
     }, function(data) { });
 
