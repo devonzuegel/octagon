@@ -59,7 +59,6 @@ function populate_data(company, data, col_headers) {
       var section = sections[s];
 
       if (company[section][hdr]) {
-        console.log('\n'+hdr);
         var category = company[section][hdr];
         categories.push(hdr);
 
@@ -67,7 +66,6 @@ function populate_data(company, data, col_headers) {
           var datum = category[d];
           var row = calc_row(datum);
           data[row][i] = datum.value;
-          console.log(datum);
         }
 
         i++;
@@ -104,9 +102,6 @@ function populate_data(company, data, col_headers) {
   // (1) END each section
 */
 
-
-  console.log('created categories: ' + JSON.stringify(categories, null, 2));
-  console.log('       col_headers: ' + JSON.stringify(col_headers, null, 2));
   return data;
 }
 
@@ -143,11 +138,10 @@ var Data = {
 
   // Save data
   saveData: function() {
-    // console.log(JSON.stringify(Data.data));
 
     $.post('/portfolio/' + Data.values.permalink + '/editSpreadsheet', {
       col_headers: this.col_headers,
-      data: Data.data,
+      data: JSON.stringify(Data.data), // stringify data to pass around
       row_headers: this.row_headers,
     }, function(data) { });
 
@@ -156,14 +150,14 @@ var Data = {
   // Download data
   downloadData: function() {
 
-    var data = Data.data,
-        csvContent = 'data:text/csv;charset=utf-8,';
+    var data = Data.data;
+    var csvContent = 'data:text/csv;charset=utf-8,';
+
+    // console.log(data);
 
     data.forEach(function(infoArray, index){
-
       dataString = infoArray.join(',');
       csvContent += index < infoArray.length ? dataString+ '\n' : dataString;
-
     });
 
     var encodedUri = encodeURI(csvContent);
@@ -204,7 +198,7 @@ var Data = {
           // Add the companies permalink into Data.values (for Data.save, later)
           Data.values.permalink = companies[c_index].permalink;
 
-          // Populate Data.data with metrics *****
+          // Populate Data.data with metrics
           Data.data = populate_data(companies[c_index], Data.data, this.col_headers);
         }
       }

@@ -157,9 +157,15 @@ function simplifyCrunchbaseProf(p) {
 
 function printData(data_table, company, sections, col_hdrs) {
   for (var i = 0; i < data_table.length; i++) {
-    console.log(JSON.stringify(rmvNullArrayElems(data_table[i])));
+    // var row = data_table[i];
+    // for (var j = 0; j < row.length; j++) {
+    //   console.log(j+':'+row[j]);
+    // }
+    // console.log('');
+
+    // console.log(JSON.stringify(rmvNullArrayElems(data_table[i])));
     console.log(JSON.stringify(data_table[i]));
-    console.log('---');
+    // console.log('---');
   }
   console.log('\n----------------------------------------------------------\n');
 

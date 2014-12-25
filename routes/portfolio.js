@@ -180,10 +180,15 @@ router.post('/:permalink/editMetrics', function(req, res) {
 });
 
 router.post('/:permalink/editSpreadsheet', function(req, res) {
-  // console.log(JSON.stringify(req.body, null, 2));
+  var data = JSON.parse(req.body.data);
+  console.log(JSON.stringify(data, null, 2));
+  // data.forEach(function(infoArray, index){ 
+  //   console.log(JSON.stringify(infoArray));
+  // });
+
   CompanyModel.editSpreadsheet(
     req.params.permalink, 
-    req.body.data, 
+    data, 
     req.body.col_headers,
     req.body.row_headers
   );
