@@ -26,7 +26,8 @@ function col_headers(companies) {
 }
 
 function calc_row(datum) {
-  return 4*(moment().year() - moment(datum.date).year())  +  (4 - moment(datum.date).quarter());
+  var date = datum.date;
+  return 4*(moment().year() - moment(date).year())  +  (4 - moment(date).quarter());
 }
 
 // Iterates thru each quarter to be represented

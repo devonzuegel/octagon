@@ -73,6 +73,10 @@ var Schema = mongoose.Schema,
 
 //// Helper functions /////
 
+function title(t) {
+  console.log('\n\n-----------------------------------------------------------------------\n'+t+':\n-----------------------------------------------------------------------')
+}
+
 /* Function to remove unwanted link formatting */
 function findLinks(description) {
   // Regex to match onto the link syntax Crunchbase gives
@@ -167,7 +171,6 @@ function printData(data_table, company, sections, col_hdrs) {
     console.log(JSON.stringify(data_table[i]));
     // console.log('---');
   }
-  console.log('\n----------------------------------------------------------\n');
 
   // for (var i in sections) {
   //   var section = sections[i];
@@ -202,11 +205,16 @@ function rmvNullArrayElems(arr) {
     return elem !== null;
   });
 
-  return filtered.map(rmvNullArrayElems);
+  return filtered.maconsole.log(rmvNullArrayElems);
 }
 
 function calc_row(datum) {
   return 4*(moment().year() - moment(datum.date).year())  +  (4 - moment(datum.date).quarter());
+}
+
+function calc_date_from_row(datum) {
+  var date = datum.date;
+  return 4*(moment().year() - moment(date).year())  +  (4 - moment(date).quarter());
 }
 
 function populate_data(company, data) {
@@ -235,6 +243,24 @@ function populate_data(company, data) {
   } // (1) END each section
   return data;
 }
+
+function each_section_property(company, sections, callback) {
+  sections.forEach(function(section_name, i) {
+    console.log('\n\n\ncompany.'+section_name+' ----------------\n');
+    var section = company[section_name];
+    for (var key_name in section) {
+      if (section.hasOwnProperty(key_name)) {
+        var data_array = section[key_name];
+        // console.log('\n'+data_array);
+        // console.log(typeof data_array !== 'function');
+        if (data_array  &&  typeof data_array !== 'function') {
+          callback(key_name, data_array);
+        }
+      }
+    }
+  });
+}
+
 
 //// EXPORTS /////
 
@@ -440,19 +466,32 @@ module.exports = {
 
   editSpreadsheet: function(permalink, data_table, col_hdrs, row_hdrs) {
     Companies.findOne({ permalink: permalink }, function (err, company) {
-
       var sections = [ 'operational', 'user_metrics', 'economics' ];
       var company_updated = company;
 
+      title('DATA TABLE');
       printData(data_table, company, sections, col_hdrs);
 
-      // var nullsRmvd = rmvNullArrayElems(company.operational.cash);
-      // 1: Clean data from data_table (rmv nulls, make integers instead of stringss)
+      title('OLD');
+      each_section_property(company, sections, function(key_name, data_array) {
+        console.log(data_array);
+        for (var i = 0; i < data_array.length; i++) {
 
-      // 2: "Turn" cleaned data » put into sections
+        }
+        // data_array.forEach(function(datum, i) {
+        //   console.log(JSON.stringify(datum, null, 3));
+        // });
+      });
+    });
 
-      // 3: Save into company
+/*
 
+CURRENT GOAL:
+
+Iterate through existing data (in OLD) and try to extract correct year and quarter
+information from the datum.date property.
+
+*/
     /*
       for (var h in col_hdrs) {
         var hdr = col_hdrs[h];
@@ -490,7 +529,6 @@ module.exports = {
       company.save();
     */
 
-    });
   },
 
   // Delete a data point from company metric info
