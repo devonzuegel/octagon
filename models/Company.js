@@ -73,14 +73,9 @@ var Schema = mongoose.Schema,
 
 //// Helper functions /////
 
-function title(t) {
-  console.log('\n\n-----------------------------------------------------------------------\n'+t+':\n-----------------------------------------------------------------------')
-}
-
 function datum_from_data_table(data_table_row, row_num, col_num, prop_name) {
-
   var form = {
-    quarter: (row_num % 4 == 0)  ?  4  :  row_num % 4,
+    quarter: (row_num % 4 == 0)  ?  4  :  4 - (row_num % 4),
     year: moment().year() - Math.floor(row_num/4)
   };
   form[prop_name] = data_table_row[col_num];
@@ -169,53 +164,9 @@ function simplifyCrunchbaseProf(p) {
   };
 }
 
-function printData(data_table, company, sections, col_hdrs) {
-  for (var i = 0; i < data_table.length; i++) {
-    // var row = data_table[i];
-    // for (var j = 0; j < row.length; j++) {
-    //   console.log(j+':'+row[j]);
-    // }
-    // console.log('');
-
-    // console.log(JSON.stringify(rmvNullArrayElems(data_table[i])));
-    console.log(JSON.stringify(data_table[i]));
-    // console.log('---');
-  }
-
-  // for (var i in sections) {
-  //   var section = sections[i];
-  //   console.log('company['+section+']:');
-  //   console.log(JSON.stringify(company[section], null, 2));
-  //   console.log('\n----------------------------------------------------------\n');
-  // }
-
-  // for (var i in sections) {
-  //   var section = sections[i];
-  //   for (var h in col_hdrs) {
-  //     var hdr = col_hdrs[h];
-  //     if (company[section][hdr]) {
-  //       console.log('\n' + hdr + ':');
-  //       console.log(JSON.stringify(company[section][hdr], null, 3));
-  //     }
-  //   }
-  // }      
-}
 
 function isArray(v) {
   return Object.prototype.toString.call(v) === '[object Array]';
-}
-
-function rmvNullArrayElems(arr) { 
-  /* If we are not passed an Array in the var arr, do not
-   * attempt to remove empty elems */
-  if (!isArray(arr))    return arr;
-
-  /* Filter out any null elems in the array */
-  var filtered = arr.filter(function(elem) { 
-    return elem !== null;
-  });
-
-  return filtered.maconsole.log(rmvNullArrayElems);
 }
 
 function calc_row(datum) {
@@ -254,7 +205,10 @@ function populate_data(company, data) {
   return data;
 }
 
-function each_section_property(company, section_names, callback) {
+function each_section_property(company, callback) {
+  // List section names through which to iterate
+  var section_names = [ 'operational', 'user_metrics', 'economics' ];
+
   var col_num = 0;
 
   // (1) Iterate thru each section in company
@@ -268,7 +222,7 @@ function each_section_property(company, section_names, callback) {
         // Grab data_array from corresponding to property section
         var data_array = section[prop_name];
 
-        // Only call callback if the data_array is defined and is not a function
+        // Only call callback if the data_array is defined & isn't a function
         if (data_array  &&  typeof data_array !== 'function') {
           callback(section_name, prop_name, data_array, col_num);
           col_num++;
@@ -483,48 +437,22 @@ module.exports = {
 
   editSpreadsheet: function(permalink, data_table, col_hdrs, row_hdrs, cb) {
     Companies.findOne({ permalink: permalink }, function (err, company) {
-      var sections = [ 'operational', 'user_metrics', 'economics' ];
-      var company_updated = company;
-
-      title('NEW');
-      each_section_property(company, sections, function(section_name, prop_name, data_array, col_num) {
-        // console.log('\n'+col_num + ': ' + prop_name);
-
+      each_section_property(company, function(section_name, prop_name, data_array, col_num) {
         var new_data_array = [];
         data_table.forEach(function(data_table_row, row_num) {
+          // Create "form" to send into newData() fn
           var form = datum_from_data_table(data_table_row, row_num, col_num, prop_name);
           var datum = newData(form, prop_name);
+
+          // No need to save null & blank data into db
           if (datum.value !== null  &&  datum.value !== '') {
             new_data_array.push(datum);   
           }
         });
-        // console.log(JSON.stringify(new_data_array, null, 2));
         company[section_name][prop_name] = new_data_array;
       });
-      title('UPDATED');
-      console.log(JSON.stringify(company, null, 2));
       company.save();
     });
-
-/*
-
-  - [x] Iterate through existing data (in OLD) and try to extract correct year and quarter
-  information from the datum.date property.
-
-  - [x] Check that new data is in the correct format to be placed into db
-
-  - [ ] Save into db
-  
-  - [ ] reinstate privileges!!
-
-  - [ ] TEST TEST TEST
-
-  - [ ] email Drew
-
-  - [ ] documentation for the app
-
-*/
-  
   },
 
   // Delete a data point from company metric info
