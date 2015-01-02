@@ -244,8 +244,8 @@ function populate_data(company, data) {
   return data;
 }
 
-function each_section_property(company, section_names, callback) {
-
+function each_section_property(company, section_names, callback, cb2) {
+  var test = [];
   var row_num = 0;
 
   // (1) Iterate thru each section in company
@@ -267,6 +267,7 @@ function each_section_property(company, section_names, callback) {
       }
     }
   });
+  test = cb2(2);
 }
 
 
@@ -480,23 +481,6 @@ module.exports = {
       title('DATA TABLE');
       printData(data_table, company, sections, col_hdrs);
 
-      title('OLD');
-      each_section_property(company, sections, function(prop_name, data_array, col_num) {
-        // console.log('\n'+key_name+' ------------------------------------------------------------------------');
-        console.log(JSON.stringify(data_array, null, 3));
-        // // console.log('');
-
-        // // Print each available datum
-        // for (var i = 0; i < data_array.length; i++) {
-        //   var datum = data_array[i];
-        //   console.log(JSON.stringify(datum, null, 3));
-
-        //   var datum_yr = moment(datum.date).year();
-        //   var datum_Q = moment(datum.date).quarter();
-        //   console.log('datum_yr = ' + datum_yr);
-        //   console.log('datum_Q  = ' + datum_Q);
-        // }
-      });
 
       title('NEW');
       each_section_property(company, sections, function(prop_name, data_array, col_num) {
@@ -517,11 +501,33 @@ module.exports = {
           }
 
           var form = datum_from_data_table(data_table, row_num, col_num, prop_name);
-          var datum = form; //newData(form, prop_name);
+          var datum = newData(form, prop_name);
 
           new_data_array.push(datum);
         });
         console.log(JSON.stringify(new_data_array, null, 2));
+      }, function(arg) {
+        return [arg, arg, arg];
+      });
+
+
+      title('OLD');
+      each_section_property(company, sections, function(prop_name, data_array, col_num) {
+        console.log(JSON.stringify(data_array, null, 3));
+/*
+        // Print each available datum
+        for (var i = 0; i < data_array.length; i++) {
+          var datum = data_array[i];
+          console.log(JSON.stringify(datum, null, 3));
+
+          var datum_yr = moment(datum.date).year();
+          var datum_Q = moment(datum.date).quarter();
+          console.log('datum_yr = ' + datum_yr);
+          console.log('datum_Q  = ' + datum_Q);
+        }
+*/
+      }, function(arg) {
+        return [arg, arg, arg];
       });
     });
 
@@ -529,8 +535,14 @@ module.exports = {
 
 CURRENT GOAL:
 
-Iterate through existing data (in OLD) and try to extract correct year and quarter
+- [x] Iterate through existing data (in OLD) and try to extract correct year and quarter
 information from the datum.date property.
+
+- [x] Check that new data is in the correct format to be placed into db
+
+- [ ] Save into db
+
+- [ ] TEST TEST TEST
 
 */
     /*
