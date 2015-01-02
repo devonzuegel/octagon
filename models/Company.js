@@ -245,6 +245,9 @@ function populate_data(company, data) {
 }
 
 function each_section_property(company, section_names, callback) {
+
+  var row_num = 0;
+
   // (1) Iterate thru each section in company
   section_names.forEach(function(section_name, i) {
     // Get section obj from company
@@ -258,7 +261,8 @@ function each_section_property(company, section_names, callback) {
 
         // Only call callback if the data_array is defined and is not a function
         if (data_array  &&  typeof data_array !== 'function') {
-          callback(prop_name, data_array);
+          callback(prop_name, data_array, row_num);
+          row_num++;
         }
       }
     }
@@ -477,16 +481,47 @@ module.exports = {
       printData(data_table, company, sections, col_hdrs);
 
       title('OLD');
-      each_section_property(company, sections, function(key_name, data_array) {
-        console.log('\n'+key_name+' ----------------------------------------------------------------------------------');
+      each_section_property(company, sections, function(prop_name, data_array, col_num) {
+        // console.log('\n'+key_name+' ------------------------------------------------------------------------');
         console.log(JSON.stringify(data_array, null, 3));
-        console.log('');
+        // // console.log('');
 
-        // Print each available datum
-        for (var i = 0; i < data_array.length; i++) {
-          var datum = data_array[i];
-          console.log(JSON.stringify(datum, null, 3));
-        }
+        // // Print each available datum
+        // for (var i = 0; i < data_array.length; i++) {
+        //   var datum = data_array[i];
+        //   console.log(JSON.stringify(datum, null, 3));
+
+        //   var datum_yr = moment(datum.date).year();
+        //   var datum_Q = moment(datum.date).quarter();
+        //   console.log('datum_yr = ' + datum_yr);
+        //   console.log('datum_Q  = ' + datum_Q);
+        // }
+      });
+
+      title('NEW');
+      each_section_property(company, sections, function(prop_name, data_array, col_num) {
+        console.log('\n'+col_num + ': ' + prop_name);
+
+        var new_data_array = [];
+        data_table.forEach(function(data_table_row, row_num) {
+
+          function datum_from_data_table(data_table, row_num, col_num, prop_name) {
+
+            var form = {
+              quarter: (row_num % 4 == 0)  ?  4  :  row_num % 4,
+              year: moment().year() - Math.floor(row_num/4)
+            };
+            form[prop_name] = data_table_row[col_num];
+
+            return form;
+          }
+
+          var form = datum_from_data_table(data_table, row_num, col_num, prop_name);
+          var datum = form; //newData(form, prop_name);
+
+          new_data_array.push(datum);
+        });
+        console.log(JSON.stringify(new_data_array, null, 2));
       });
     });
 
