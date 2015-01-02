@@ -27,17 +27,6 @@ function col_headers(companies) {
 
 function calc_row(datum) {
   var date = datum.date;
-  
-  // console.log('\ndatum:');
-  // console.log(JSON.stringify(datum));
-  
-  console.log('\nmoment(date):');
-  console.log(moment(date));
-
-  console.log('\nmoment(date, \'Q-YYYY\')')
-  console.log(moment(date, 'Q-YYYY'));
-  console.log(moment(date, 'Q-YYYY').year());
-  console.log(moment(date, 'Q-YYYY').quarter());
   return 4*(moment().year() - moment(date).year())  +  (4 - moment(date).quarter());
 }
 
@@ -78,10 +67,6 @@ function populate_data(company, data, col_headers) {
         for(var d in category) {
           var datum = category[d];
           var row = calc_row(datum);
-          console.log('\nrow:');
-          console.log(JSON.stringify(row));
-          console.log('\ndata:');
-          console.log(JSON.stringify(data));
           data[row][i] = datum.value;
         }
 
@@ -156,8 +141,6 @@ var Data = {
     var data = Data.data;
     var csvContent = 'data:text/csv;charset=utf-8,';
 
-    // console.log(data);
-
     data.forEach(function(infoArray, index){
       dataString = infoArray.join(',');
       csvContent += index < infoArray.length ? dataString+ '\n' : dataString;
@@ -197,7 +180,6 @@ var Data = {
       }
 
       for(var c_index in companies) {
-        // console.log(companies[c_index]);
         if(companies[c_index].username == company) {
           // Add the companies permalink into Data.values (for Data.save, later)
           Data.values.permalink = companies[c_index].permalink;

@@ -84,11 +84,6 @@ function generateGraph(el, data, width_multiplier) {
 
   return chart;
 }
-  
-// console.log(toString(typeof(cash_data)));
-// console.log('cash_data' in this);
-
-// if (toString(typeof(cash_data)) != undefined) {
 
   var cashGraph = generateGraph('#cashGraph', { 
     xs: { 'Cash': 'x1' },

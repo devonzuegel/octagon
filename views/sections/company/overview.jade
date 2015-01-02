@@ -117,7 +117,7 @@
       .block-info
         if c.team.length > 0
           ul.block-list
-            //- TODO sort by date (most recent first)
+            //- TODO: add sort by date (most recent first)
             for m in c.team.sort(chronological).reverse()
               li.list-item
                 .item-info
@@ -145,7 +145,6 @@
          * populated with that owner's info */
         (function(n) {
           var m = team[i];
-          console.log(JSON.stringify(m, null, 3));
           $('#edit-'+m._id).click(function() {
             $('#img_path').val(m.img_path);
             $('#date_joined').val(moment(m.date_joined).format('DD MMMM YYYY'));
@@ -153,7 +152,6 @@
             $('#email').val(m.email);
             $('#full_name').val(m.full_name);
             $('#team_member_id').val(m._id);
-            console.log('m._id: ' + m._id);
           });
         }(i))
       }
