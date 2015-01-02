@@ -244,17 +244,21 @@ function populate_data(company, data) {
   return data;
 }
 
-function each_section_property(company, sections, callback) {
-  sections.forEach(function(section_name, i) {
-    console.log('\n\n\ncompany.'+section_name+' ----------------\n');
+function each_section_property(company, section_names, callback) {
+  // (1) Iterate thru each section in company
+  section_names.forEach(function(section_name, i) {
+    // Get section obj from company
     var section = company[section_name];
-    for (var key_name in section) {
-      if (section.hasOwnProperty(key_name)) {
-        var data_array = section[key_name];
-        // console.log('\n'+data_array);
-        // console.log(typeof data_array !== 'function');
+
+    // (2) Iterate thru each property in section & grab corresponding data_array
+    for (var prop_name in section) {
+      if (section.hasOwnProperty(prop_name)) {
+        // Grab data_array from corresponding to property section
+        var data_array = section[prop_name];
+
+        // Only call callback if the data_array is defined and is not a function
         if (data_array  &&  typeof data_array !== 'function') {
-          callback(key_name, data_array);
+          callback(prop_name, data_array);
         }
       }
     }
@@ -474,13 +478,15 @@ module.exports = {
 
       title('OLD');
       each_section_property(company, sections, function(key_name, data_array) {
-        console.log(data_array);
-        for (var i = 0; i < data_array.length; i++) {
+        console.log('\n'+key_name+' ----------------------------------------------------------------------------------');
+        console.log(JSON.stringify(data_array, null, 3));
+        console.log('');
 
+        // Print each available datum
+        for (var i = 0; i < data_array.length; i++) {
+          var datum = data_array[i];
+          console.log(JSON.stringify(datum, null, 3));
         }
-        // data_array.forEach(function(datum, i) {
-        //   console.log(JSON.stringify(datum, null, 3));
-        // });
       });
     });
 
