@@ -77,6 +77,17 @@ function title(t) {
   console.log('\n\n-----------------------------------------------------------------------\n'+t+':\n-----------------------------------------------------------------------')
 }
 
+function datum_from_data_table(data_table_row, row_num, col_num, prop_name) {
+
+  var form = {
+    quarter: (row_num % 4 == 0)  ?  4  :  row_num % 4,
+    year: moment().year() - Math.floor(row_num/4)
+  };
+  form[prop_name] = data_table_row[col_num];
+
+  return form;
+}
+
 /* Function to remove unwanted link formatting */
 function findLinks(description) {
   // Regex to match onto the link syntax Crunchbase gives
@@ -124,13 +135,12 @@ function indexFromId (id, obj_array) {
 
 function newData(form, field) {
   return new_data = {
-    date: moment(form.quarter + '-' + form.year, 'Q-YYYY').add(1, 'day'),
+    date: moment(form.quarter + '-' + form.year, 'Q-YYYY').add(1, 'day').valueOf(),
     value: form[field],
     label: field,
-    timestamp: moment()
+    timestamp: moment().valueOf()
   };
 }
-
 
 /* Simplify crunchbase profile object */
 function simplifyCrunchbaseProf(p) {
@@ -244,9 +254,8 @@ function populate_data(company, data) {
   return data;
 }
 
-function each_section_property(company, section_names, callback, cb2) {
-  var test = [];
-  var row_num = 0;
+function each_section_property(company, section_names, callback) {
+  var col_num = 0;
 
   // (1) Iterate thru each section in company
   section_names.forEach(function(section_name, i) {
@@ -261,13 +270,12 @@ function each_section_property(company, section_names, callback, cb2) {
 
         // Only call callback if the data_array is defined and is not a function
         if (data_array  &&  typeof data_array !== 'function') {
-          callback(prop_name, data_array, row_num);
-          row_num++;
+          callback(section_name, prop_name, data_array, col_num);
+          col_num++;
         }
       }
     }
   });
-  test = cb2(2);
 }
 
 
@@ -454,7 +462,7 @@ module.exports = {
               if(moment(updated[field][entry].date).isSame(moment(new_data.date))) {
                 quarterDataExists = true;
                 updated[field][entry] = new_data; // Overwrite the data
-                break; // Break out of the loop
+                break; // Break out of the <for entry in updated[field]> loop
               }
 
             }
@@ -473,115 +481,50 @@ module.exports = {
     });
   },
 
-  editSpreadsheet: function(permalink, data_table, col_hdrs, row_hdrs) {
+  editSpreadsheet: function(permalink, data_table, col_hdrs, row_hdrs, cb) {
     Companies.findOne({ permalink: permalink }, function (err, company) {
       var sections = [ 'operational', 'user_metrics', 'economics' ];
       var company_updated = company;
 
-      title('DATA TABLE');
-      printData(data_table, company, sections, col_hdrs);
-
-
       title('NEW');
-      each_section_property(company, sections, function(prop_name, data_array, col_num) {
-        console.log('\n'+col_num + ': ' + prop_name);
+      each_section_property(company, sections, function(section_name, prop_name, data_array, col_num) {
+        // console.log('\n'+col_num + ': ' + prop_name);
 
         var new_data_array = [];
         data_table.forEach(function(data_table_row, row_num) {
-
-          function datum_from_data_table(data_table, row_num, col_num, prop_name) {
-
-            var form = {
-              quarter: (row_num % 4 == 0)  ?  4  :  row_num % 4,
-              year: moment().year() - Math.floor(row_num/4)
-            };
-            form[prop_name] = data_table_row[col_num];
-
-            return form;
-          }
-
-          var form = datum_from_data_table(data_table, row_num, col_num, prop_name);
+          var form = datum_from_data_table(data_table_row, row_num, col_num, prop_name);
           var datum = newData(form, prop_name);
-
-          new_data_array.push(datum);
+          if (datum.value !== null  &&  datum.value !== '') {
+            new_data_array.push(datum);   
+          }
         });
-        console.log(JSON.stringify(new_data_array, null, 2));
-      }, function(arg) {
-        return [arg, arg, arg];
+        // console.log(JSON.stringify(new_data_array, null, 2));
+        company[section_name][prop_name] = new_data_array;
       });
-
-
-      title('OLD');
-      each_section_property(company, sections, function(prop_name, data_array, col_num) {
-        console.log(JSON.stringify(data_array, null, 3));
-/*
-        // Print each available datum
-        for (var i = 0; i < data_array.length; i++) {
-          var datum = data_array[i];
-          console.log(JSON.stringify(datum, null, 3));
-
-          var datum_yr = moment(datum.date).year();
-          var datum_Q = moment(datum.date).quarter();
-          console.log('datum_yr = ' + datum_yr);
-          console.log('datum_Q  = ' + datum_Q);
-        }
-*/
-      }, function(arg) {
-        return [arg, arg, arg];
-      });
+      title('UPDATED');
+      console.log(JSON.stringify(company, null, 2));
+      company.save();
     });
 
 /*
 
-CURRENT GOAL:
+  - [x] Iterate through existing data (in OLD) and try to extract correct year and quarter
+  information from the datum.date property.
 
-- [x] Iterate through existing data (in OLD) and try to extract correct year and quarter
-information from the datum.date property.
+  - [x] Check that new data is in the correct format to be placed into db
 
-- [x] Check that new data is in the correct format to be placed into db
+  - [ ] Save into db
+  
+  - [ ] reinstate privileges!!
 
-- [ ] Save into db
+  - [ ] TEST TEST TEST
 
-- [ ] TEST TEST TEST
+  - [ ] email Drew
+
+  - [ ] documentation for the app
 
 */
-    /*
-      for (var h in col_hdrs) {
-        var hdr = col_hdrs[h];
-
-        var updated_col = new Array(data_table.length);
-        for (var i = 0; i < data_table.length; i++) {
-          var years_ago = (i - i%4)/4;
-          var quarter = 1;
-          var year = moment().year() - years_ago;
-          updated_col[i] = {
-            date: moment(quarter + '-' + year, 'Q-YYYY').add(1, 'day'),
-            value: data_table[i][h],
-            label: hdr,
-            timestamp: moment()
-
-              date: moment(form.quarter + '-' + form.year, 'Q-YYYY').add(1, 'day'),
-              value: form[field],
-              label: field,
-              timestamp: moment()
-
-          };
-        }
-
-        for (var s in sections) {
-          var section = sections[s];
-
-          if (company_updated[section][hdr]) {
-            company_updated[section][hdr] = updated_col;
-          }
-
-        }
-        // console.log(JSON.stringify(company));
-      }
-      company = company_updated;
-      company.save();
-    */
-
+  
   },
 
   // Delete a data point from company metric info
