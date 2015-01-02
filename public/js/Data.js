@@ -28,8 +28,8 @@ function col_headers(companies) {
 function calc_row(datum) {
   var date = datum.date;
   
-  console.log('\ndatum:');
-  console.log(JSON.stringify(datum));
+  // console.log('\ndatum:');
+  // console.log(JSON.stringify(datum));
   
   console.log('\nmoment(date):');
   console.log(moment(date));
